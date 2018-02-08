@@ -2,4 +2,4 @@ patata
 
 zanahoria
 
-cacahuete
+maiz
