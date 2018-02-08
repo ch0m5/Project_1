@@ -2,4 +2,4 @@ brocoli
 
 zanahoria
 
-cacahuete
+maiz
