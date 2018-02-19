@@ -10,7 +10,7 @@ TODO: Describe the installation process
 
 TODO: Write usage instructions
 
-#### The Team: Crispy Crunch
+## The Team: Crispy Crunch
 * Xavi Marin
   * Role: Managment
   * Github: [Xavimarin35](https://github.com/xavimarin35)
@@ -26,6 +26,15 @@ TODO: Write usage instructions
 * Didac Romero
   * Role: QA
   * Github: [DidacRomero](https://github.com/DidacRomero)
+
+
+
+## Andro Dunos Original Gameplay video
+[Arcade Longplay](https://youtu.be/iQOrXlf34es)
+
+
+
+
 
 ## History
 
