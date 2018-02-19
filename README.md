@@ -1,6 +1,6 @@
 # Andro Dunos Tribute by Crispy Crunch
 
-TODO: Write a project description
+Andro Dunos is a side scrolling shoot 'em up Japanese game. Developed by SNK Corporation (Shin Nihon Kikaku) and published in the Neo-Geo by Visco in 1992. The player controls a spaceship that fires 4 different kind of projectiles which he can upgrade by defeating enemy ships and gathering power ups. The main goal is to shoot your way through several levels and defeat each final boss.
 
 ## Installation
 
@@ -10,13 +10,22 @@ TODO: Describe the installation process
 
 TODO: Write usage instructions
 
-## Contributing
+#### The Team: Crispy Crunch
+* Xavi Marin
+  * Role: Managment
+  * Github: [Xavimarin35](https://github.com/xavimarin35)
 
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
+* Andres Saladrigas
+  * Role: Art/Design
+  * Github: [TheArzhel](https://github.com/TheArzhel)
+
+* Carles Homs 
+  * Role: Code
+  * Github: [ch0m5](https://github.com/ch0m5)
+
+* Didac Romero
+  * Role: QA
+  * Github: [DidacRomero](https://github.com/DidacRomero)
 
 ## History
 
