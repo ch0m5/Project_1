@@ -1,14 +1,6 @@
 # Andro Dunos Tribute by Crispy Crunch
 
-Andro Dunos is a side scrolling shoot 'em up Japanese game. Developed by SNK Corporation (Shin Nihon Kikaku) and published in the Neo-Geo by Visco in 1992. The player controls a spaceship that fires 4 different kind of projectiles which he can upgrade by defeating enemy ships and gathering power ups. The main goal is to shoot your way through several levels and defeat each final boss.
-
-## Installation
-
-TODO: Describe the installation process
-
-## Usage
-
-TODO: Write usage instructions
+Andro Dunos is a side scrolling shoot 'em up Japanese arcade game developed by Visco Games and published in the Neo-Geo by SNK Corporation (Shin Nihon Kikaku) in 1992. In Andro Dunos the player controls a spaceship that fires 4 different kind of projectiles which he/she can upgrade by defeating enemy ships and gathering power ups. Each type of shot also offers a different charged attack, which allows the player to deal with big numbers of enemies in very though situations. The main goal of the game is to shoot your way through several levels and defeat each final boss.
 
 ## The Team: Crispy Crunch
 * Xavi Marin
@@ -34,15 +26,3 @@ TODO: Write usage instructions
 
 For the full playthrough, click this [link](https://www.youtube.com/watch?v=iQOrXlf34es&feature=youtu.be).
 
-
-## History
-
-TODO: Write history
-
-## Credits
-
-TODO: Write credits
-
-## License
-
-TODO: Write license
