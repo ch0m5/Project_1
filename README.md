@@ -30,6 +30,7 @@ TODO: Write usage instructions
 
 
 ## Andro Dunos Original Gameplay video
+<video src="Andro Dunos - Arcade Full Gameplay (240p).3gp" width="640" height="400" controls preload></video>
 
 For better quality, click this [link](https://www.youtube.com/watch?v=iQOrXlf34es&feature=youtu.be).
 
