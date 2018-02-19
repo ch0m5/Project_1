@@ -30,7 +30,7 @@ TODO: Write usage instructions
 
 
 ## Andro Dunos Original Gameplay video
-![Arcade Longplay](https://youtu.be/iQOrXlf34es)
+For better quality, click this ![link](https://www.youtube.com/watch?v=iQOrXlf34es&feature=youtu.be).
 
 <video src="Red Bull Problems.mp4" width="320" height="200" controls preload></video>
 
