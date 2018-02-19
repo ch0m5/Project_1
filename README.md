@@ -30,10 +30,10 @@ TODO: Write usage instructions
 
 
 ## Andro Dunos Original Gameplay video
-For better quality, click this ![link](https://www.youtube.com/watch?v=iQOrXlf34es&feature=youtu.be).
+For better quality, click this [link](https://www.youtube.com/watch?v=iQOrXlf34es&feature=youtu.be).
 
 <video src="Red Bull Problems.mp4" width="320" height="200" controls preload></video>
-
+<video src="video.mp4" poster="poster.jpg" width="320" height="200" controls preload></video>
 
 
 
