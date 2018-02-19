@@ -29,7 +29,7 @@ TODO: Write usage instructions
 
 
 
-## Andro Dunos Original Gameplay video: First Level
+## Andro Dunos Original Gameplay Video: First Level
 <video src="Andro Dunos - Arcade First Level Gameplay (480p).mp4" poster="Andro Dunos Poster.jpg" width="650" height="520" controls preload></video>
 
 For the full playthrough, click this [link](https://www.youtube.com/watch?v=iQOrXlf34es&feature=youtu.be).
