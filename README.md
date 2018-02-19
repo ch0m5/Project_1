@@ -30,7 +30,7 @@ TODO: Write usage instructions
 
 
 ## Andro Dunos Original Gameplay video
-[Arcade Longplay](https://youtu.be/iQOrXlf34es)
+![Arcade Longplay](https://youtu.be/iQOrXlf34es)
 
 
 
