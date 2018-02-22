@@ -1,5 +1,0 @@
-brocoli
-
-zanahoria
-
-maiz
