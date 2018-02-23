@@ -25,7 +25,7 @@ Andro Dunos is a side scrolling shoot 'em up Japanese arcade game developed by V
 <video src="Andro Dunos - Arcade First Level Gameplay (480p).mp4" poster="Andro Dunos Poster.jpg" width="650" height="520" controls preload></video>
 
 <iframe width="420" height="315"
-src="https://www.youtube.com/watch?v=MnGQaKxnA_E">
+src="https://www.youtube.com/embed/MnGQaKxnA_E">
 </iframe>
 
 For the full playthrough, click this [link](https://www.youtube.com/watch?v=iQOrXlf34es&feature=youtu.be).
