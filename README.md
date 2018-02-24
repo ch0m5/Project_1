@@ -24,7 +24,7 @@ Andro Dunos is a side scrolling shoot 'em up Japanese arcade game developed by V
 </p>
 *From left to right: Xavi Marín, Dídac Romero, Carles Homs, Andrés Saladrigas*
 
-## Andro Dunos Original Gameplay Video: First Level
+## Andro Dunos Original Gameplay Video
 <html>
 <body>
  
