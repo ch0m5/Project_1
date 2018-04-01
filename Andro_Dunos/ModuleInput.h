@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "Globals.h"
+#include "SDL\include\SDL_scancode.h"
 
 typedef unsigned char Uint8;
 
