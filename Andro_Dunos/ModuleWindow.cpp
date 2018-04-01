@@ -4,13 +4,11 @@
 #include "SDL/include/SDL.h"
 
 ModuleWindow::ModuleWindow() : Module()
-{
-}
+{}
 
 // Destructor
 ModuleWindow::~ModuleWindow()
-{
-}
+{}
 
 // Called before render is available
 bool ModuleWindow::Init()

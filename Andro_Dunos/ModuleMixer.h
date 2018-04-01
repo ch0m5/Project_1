@@ -8,7 +8,8 @@
 typedef struct _Mix_Music Mix_Music;
 struct Mix_Chunk;
 
-class ModuleMixer : public Module {
+class ModuleMixer : public Module 
+{
 
 public:
 	ModuleMixer();

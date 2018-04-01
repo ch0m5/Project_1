@@ -9,12 +9,12 @@
 #define MUSIC 10
 #define FX 50
 
-ModuleMixer::ModuleMixer() : Module()
-{}
+ModuleMixer::ModuleMixer() : Module() {}
 
 ModuleMixer::~ModuleMixer() {}
 
-bool ModuleMixer::Init() {
+bool ModuleMixer::Init() 
+{
 
 	LOG("Creating the music");
 	bool ret = true;
@@ -66,7 +66,8 @@ bool ModuleMixer::CleanUp()
 	return true;
 }//@andressala
 
-update_status ModuleMixer::Update() {
+update_status ModuleMixer::Update()
+{
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
