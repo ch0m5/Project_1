@@ -23,6 +23,6 @@ public:
 	Mix_Music* soundtrack = nullptr;
 	Mix_Chunk* shot = nullptr;
 
-};
+};//@andressala
 
 #endif

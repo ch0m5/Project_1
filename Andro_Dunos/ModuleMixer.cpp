@@ -36,7 +36,7 @@ bool ModuleMixer::Init() {
 
 		shot = Mix_LoadWAV("Music/Laser_Shot_Type-1_(Main_Ships).wav");
 		Mix_VolumeChunk(shot, FX);
-		//@andressala
+	
 	}
 
 	if (soundtrack == NULL) 
@@ -47,7 +47,7 @@ bool ModuleMixer::Init() {
 
 	return ret;
 	
-}
+}//@andressala
 
 bool ModuleMixer::CleanUp() 
 {
@@ -64,7 +64,7 @@ bool ModuleMixer::CleanUp()
 	}
 
 	return true;
-}
+}//@andressala
 
 update_status ModuleMixer::Update() {
 
@@ -76,4 +76,4 @@ update_status ModuleMixer::Update() {
 		
 	}
 	return update_status::UPDATE_CONTINUE;
-}
+}//@andressala

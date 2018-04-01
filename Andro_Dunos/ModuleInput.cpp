@@ -33,13 +33,12 @@ update_status ModuleInput::Update()
 
 	keyboard = SDL_GetKeyboardState(NULL);
 
-	// TODO 1: find out how to detect if the ESC key was pressed
-	// and quit the game
+	//ESC key pressed to quit the game 
+
 
 	if (keyboard[SDL_SCANCODE_ESCAPE])
 		return update_status::UPDATE_STOP;
 
-	// TODO 1: DONE
 
 	return update_status::UPDATE_CONTINUE;
 }

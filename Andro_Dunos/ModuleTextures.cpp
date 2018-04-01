@@ -9,12 +9,11 @@
 
 ModuleTextures::ModuleTextures() : Module()
 {
-	// TODO 5: Initialize all texture pointers to nullptr
+	//Initialize all texture pointers to nullptr
 
 	for (int i = 0; i < MAX_TEXTURES; ++i)
 		textures[i] = nullptr;
 
-	// TODO 5: DONE
 }
 
 // Destructor
@@ -45,7 +44,7 @@ bool ModuleTextures::CleanUp()
 {
 	LOG("Freeing textures and Image library");
 
-	// TODO 6: Free all textures
+	//Free all textures
 
 	for (int i = 0; i < MAX_TEXTURES; ++i)
 	{
@@ -56,8 +55,6 @@ bool ModuleTextures::CleanUp()
 		}
 	}
 
-	// TODO 6: DONE
-
 	IMG_Quit();
 	return true;
 }
@@ -65,8 +62,7 @@ bool ModuleTextures::CleanUp()
 // Load new texture from file path
 SDL_Texture* const ModuleTextures::Load(const char* path)
 {
-	// TODO 2: Load and image from a path (must be a png)
-	// and check for errors
+	//Load and image from a path (png) and check for errors
 
 	SDL_Surface* surf = IMG_Load(path);
 	SDL_Texture* tex = nullptr;
@@ -76,10 +72,9 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 		LOG("Surface could not be created! SDL_Error: %s\n", SDL_GetError());
 	}
 
-	// TODO 2: DONE
+	
 
-	// TODO 3: Once your have the SDL_surface*, you need to create
-	// a texture from it to return it (check for errors again)
+	// create a texture from it to return it (check for errors again)
 	
 	else
 	{
@@ -90,10 +85,8 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 			LOG("Texture could not be created! SDL_Error: %s\n", SDL_GetError());
 		}
 
-		// TODO 3: DONE
 
-		// TODO 4: Before leaving, remember to free the surface and
-		// add the texture to our own array so we can properly free them
+		// free the surface and add the texture to array so we can properly free them
 
 		SDL_FreeSurface(surf);
 	
