@@ -6,6 +6,7 @@
 #include "ModuleBackground.h"
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
+#include "ModuleMixer.h"
 
 Application::Application()
 {
@@ -16,6 +17,7 @@ Application::Application()
 	modules[4] = background = new ModuleBackground();
 	modules[5] = player2 = new ModulePlayer2();
 	modules[6] = player1 = new ModulePlayer1();
+	modules[7] = mixer = new ModuleMixer();
 }	
 
 Application::~Application()
