@@ -10,15 +10,15 @@ ModuleBackground::ModuleBackground()
 {
 	
 
-	// Background1Rect 
+	// Background1Rect  // i dont know why this  isnt working 
 	background1Rect.x = 0;
-	background1Rect.y = 0;
-	background1Rect.w = 1654;
-	background1Rect.h = 85;
+	background1Rect.y = 0; // i think the problem is here but i couldnt find it
+	background1Rect.w = 1654; //1654
+	background1Rect.h = 85; 
 
 	//map1Rect	
 	map1Rect.x = 0;
-	map1Rect.y = 0; //it should be -34 but i dont know why it doesnt work 
+	map1Rect.y = 60; // 60
 	map1Rect.w = 9305;
 	map1Rect.h = 505;
 
@@ -54,9 +54,12 @@ bool ModuleBackground::Init()
 update_status ModuleBackground::Update()
 {
 	// Draw everything --------------------------------------
-	App->render->Blit(background1Text, 0, 0, &background1Rect); // level background
-	App->render->Blit(map1Text, 0, -55, &map1Rect); // level background
+	App->render->Blit(background1Text, movementx, 0, &background1Rect); // level background
+	
+	App->render->Blit(map1Text, movementx, -55, &map1Rect); // level map
+	
 
+	movementx--; // for movement in x direction
 
 	return UPDATE_CONTINUE;
 }//@AndresSala

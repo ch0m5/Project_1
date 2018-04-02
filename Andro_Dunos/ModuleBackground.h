@@ -27,7 +27,7 @@ public:
 	SDL_Rect background1Rect;
 	SDL_Rect map1Rect;
 
-
+	int movementx = 0;
 
 };//@AndresSala
 
