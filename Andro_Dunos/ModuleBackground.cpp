@@ -36,6 +36,25 @@ ModuleBackground::ModuleBackground()
 	flag.PushBack({848, 256, 40, 40});
 	flag.PushBack({848, 304, 40, 40});
 	flag.speed = 0.08f;
+
+	//ANDRO DUNOS RECTS
+	// Background1Rect  // i dont know why this  isnt working 
+	background1Rect.x = 0;
+	background1Rect.y = 0; // i think the problem is here but i couldnt find it
+	background1Rect.w = 1654; //1654
+	background1Rect.h = 85;
+
+	//map1Rect	
+	map1Rect.x = 0;
+	map1Rect.y = 60; // 60
+	map1Rect.w = 9305;
+	map1Rect.h = 505;
+
+	// bluePlanetRect
+	bluePlanetRect.x = 0;
+	bluePlanetRect.y = 0;
+	bluePlanetRect.w = 165;
+	bluePlanetRect.h = 152;
 }
 
 ModuleBackground::~ModuleBackground()
@@ -46,41 +65,32 @@ bool ModuleBackground::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
-	graphics = App->textures->Load("ken_stage.png");
+	map1Text = App->textures->Load("Sprites/Backgrounds/1_FullMap.png");
+	background1Text = App->textures->Load("Sprites/Backgrounds/1_Background1.png");
+	bluePlanetText = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/Moon.png");
 	return ret;
 }
 
 // Update: draw background
 update_status ModuleBackground::Update()
 {
-	if (boatUp == true)
-	{
-		shipPos += 0.1;
-	}
-
-	else if (boatUp == false)
-	{
-		shipPos -= 0.1;
-	}
-
 	if (shipPos >= 5)
 		boatUp = false;
 
 	else if (shipPos <= -5)
 		boatUp = true;
 
-	// Draw everything --------------------------------------
-	App->render->Blit(graphics, 0, 0, &background, 0.75f); // sea and sky
-	App->render->Blit(graphics, 560, 8, &(flag.GetCurrentFrame()), 0.75f); // flag animation
+	// Draw everything -------------------------------------- Andro Dunos
+	App->render->Blit(background1Text, movementxBack, 118, &background1Rect); // level background
 
-	// TODO 2: Draw the ship from the sprite sheet with some parallax effect
+	App->render->Blit(map1Text, movementx, -55, &map1Rect); // level map
 
-	App->render->Blit(graphics, 0, shipPos+15, &ship, 0.75f); // ship
+	App->render->Blit(bluePlanetText, 500 + movementxPlanetsBack, -10, &bluePlanetRect);
 
-	// TODO 3: Animate the girl on the ship (see the sprite sheet)
-	App->render->Blit(graphics, 191, shipPos+105, &(girl.GetCurrentFrame()), 0.75f);
-	
-	App->render->Blit(graphics, 0, 170, &ground);
+	movementx -= 0.83f; // for movement in x direction
+	movementxBack -= 0.38f;
+	movementxPlanetsBack -= 0.2f;
+
 
 	return UPDATE_CONTINUE;
 }
