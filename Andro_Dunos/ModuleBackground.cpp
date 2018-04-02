@@ -22,6 +22,11 @@ ModuleBackground::ModuleBackground()
 	map1Rect.w = 9305;
 	map1Rect.h = 505;
 
+	// bluePlanetRect
+	bluePlanetRect.x = 0;
+	bluePlanetRect.y = 0;
+	bluePlanetRect.w = 165;
+	bluePlanetRect.h = 152;
 	////ship1Rect	
 	//ship1Rect.x = 0;
 	//ship1Rect.y = 0;
@@ -46,20 +51,22 @@ bool ModuleBackground::Init()
 	bool ret = true;
 	map1Text = App->textures->Load("Sprites/Backgrounds/1_FullMap.png");
 	background1Text = App->textures->Load("Sprites/Backgrounds/1_Background1.png");
-
+	bluePlanetText = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/Moon.png");
 	return ret;
-}//@AndresSala
+}//@AndresSala & @DídacRo
 
 // Update: draw background
 update_status ModuleBackground::Update()
 {
 	// Draw everything --------------------------------------
-	App->render->Blit(background1Text, movementx, 118, &background1Rect); // level background
+	App->render->Blit(background1Text, movementxBack, 118, &background1Rect); // level background
 	
 	App->render->Blit(map1Text, movementx, -55, &map1Rect); // level map
 	
+	App->render->Blit(bluePlanetText, 500 + movementxPlanetsBack, -10, &bluePlanetRect);
 
-	movementx--; // for movement in x direction
-
+	movementx-=0.83; // for movement in x direction
+	movementxBack-=0.39;
+	movementxPlanetsBack-= 0.2;
 	return UPDATE_CONTINUE;
-}//@AndresSala
+}//@AndresSala  & DídacRo
