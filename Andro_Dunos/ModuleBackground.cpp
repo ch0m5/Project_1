@@ -8,34 +8,7 @@
 
 ModuleBackground::ModuleBackground()
 {
-	// ground
-	ground.x = 8;
-	ground.y = 391;
-	ground.w = 896;
-	ground.h = 72;
 
-	// Background / sky
-	background.x = 72;
-	background.y = 208;
-	background.w = 768;
-	background.h = 176;
-
-	ship.x = 8;
-	ship.y = 38;
-	ship.w = 520;
-	ship.h = 185;
-
-	girl.PushBack({ 623, 16, 32, 56 });
-	girl.PushBack({ 623, 80, 32, 56 });
-	girl.PushBack({ 623, 144, 32, 56 });
-	girl.PushBack({ 623, 80, 32, 56 });
-	girl.speed = 0.08f;
-
-	// flag animation
-	flag.PushBack({848, 208, 40, 40});
-	flag.PushBack({848, 256, 40, 40});
-	flag.PushBack({848, 304, 40, 40});
-	flag.speed = 0.08f;
 
 	//ANDRO DUNOS RECTS
 	// Background1Rect  // i dont know why this  isnt working 
@@ -74,18 +47,14 @@ bool ModuleBackground::Start()
 // Update: draw background
 update_status ModuleBackground::Update()
 {
-	if (shipPos >= 5)
-		boatUp = false;
 
-	else if (shipPos <= -5)
-		boatUp = true;
 
 	// Draw everything -------------------------------------- Andro Dunos
 	App->render->Blit(background1Text, movementxBack, 118, &background1Rect); // level background
 
 	App->render->Blit(map1Text, movementx, -55, &map1Rect); // level map
 
-	App->render->Blit(bluePlanetText, 500 + movementxPlanetsBack, -10, &bluePlanetRect);
+	App->render->Blit(bluePlanetText, 500 + movementxPlanetsBack, -10, &bluePlanetRect); // Moon
 
 	movementx -= 0.83f; // for movement in x direction
 	movementxBack -= 0.38f;
