@@ -54,7 +54,7 @@ bool ModuleBackground::Init()
 update_status ModuleBackground::Update()
 {
 	// Draw everything --------------------------------------
-	App->render->Blit(background1Text, movementx, 0, &background1Rect); // level background
+	App->render->Blit(background1Text, movementx, 118, &background1Rect); // level background
 	
 	App->render->Blit(map1Text, movementx, -55, &map1Rect); // level map
 	
