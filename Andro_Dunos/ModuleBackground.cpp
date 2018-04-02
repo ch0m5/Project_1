@@ -11,9 +11,9 @@ ModuleBackground::ModuleBackground()
 
 
 	//ANDRO DUNOS RECTS
-	// Background1Rect  // i dont know why this  isnt working 
+	// Background1Rect  
 	background1Rect.x = 0;
-	background1Rect.y = 0; // i think the problem is here but i couldnt find it
+	background1Rect.y = 0; 
 	background1Rect.w = 1654; //1654
 	background1Rect.h = 85;
 
@@ -52,13 +52,29 @@ update_status ModuleBackground::Update()
 	// Draw everything -------------------------------------- Andro Dunos
 	App->render->Blit(background1Text, movementxBack, 118, &background1Rect); // level background
 
-	App->render->Blit(map1Text, movementx, -55, &map1Rect); // level map
+	App->render->Blit(map1Text, movementx, movementy, &map1Rect); // level map
 
 	App->render->Blit(bluePlanetText, 500 + movementxPlanetsBack, -10, &bluePlanetRect); // Moon
 
 	movementx -= 0.83f; // for movement in x direction
+
 	movementxBack -= 0.38f;
 	movementxPlanetsBack -= 0.2f;
+
+	//if (movementx >-2925.0) //2925
+	//movementx -= 0.83f; // for movement in x direction
+	////if (movementx == -2925.0 && movementy > -280.0) 
+	////{
+	////movementy -= 0.83f; 
+	////}
+	////if (movementx == -2925 && movementy == -280)
+	////{
+	////	movementx -= 0.83f;
+	////}
+	////if (movementx < -2925 && movementy >= -280)
+	//{
+	//	movementx -= 0.83f;
+	//}//@andressala
 
 
 	return UPDATE_CONTINUE;
