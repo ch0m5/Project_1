@@ -2,11 +2,10 @@
 #define __ModuleBackground_H__
 
 #include "Module.h"
+#include "Animation.h"
 #include "Globals.h"
-#include "SDL/include/SDL_rect.h"
 
 struct SDL_Texture;
-
 
 class ModuleBackground : public Module
 {
@@ -14,25 +13,20 @@ public:
 	ModuleBackground();
 	~ModuleBackground();
 
-	bool Init();
+	bool Start();
 	update_status Update();
 
 public:
-
+	
 	SDL_Texture* graphics = nullptr;
-	SDL_Texture* background1Text = nullptr;
-	SDL_Texture* map1Text = nullptr;
-	SDL_Texture* ship1Text = nullptr;
-	SDL_Texture* bluePlanetText = nullptr;
-	
-	
-	SDL_Rect background1Rect;
-	SDL_Rect map1Rect;
-	SDL_Rect bluePlanetRect;
+	SDL_Rect ground;
+	SDL_Rect background;
+	SDL_Rect ship;
+	Animation girl;
+	Animation flag;
 
-	float movementx = 0;
-	float movementxBack = 0;
-	float movementxPlanetsBack = 0;
-};//@AndresSala
+	float shipPos = 0;
+	bool boatUp = true;
+};
 
 #endif

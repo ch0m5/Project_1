@@ -9,11 +9,8 @@
 
 ModuleTextures::ModuleTextures() : Module()
 {
-	//Initialize all texture pointers to nullptr
-
-	for (int i = 0; i < MAX_TEXTURES; ++i)
+	for(uint i = 0; i < MAX_TEXTURES; ++i)
 		textures[i] = nullptr;
-
 }
 
 // Destructor
@@ -44,16 +41,9 @@ bool ModuleTextures::CleanUp()
 {
 	LOG("Freeing textures and Image library");
 
-	//Free all textures
-
-	for (int i = 0; i < MAX_TEXTURES; ++i)
-	{
-		if (textures[i] != nullptr)
-		{
+	for(uint i = 0; i < MAX_TEXTURES; ++i)
+		if(textures[i] != nullptr)
 			SDL_DestroyTexture(textures[i]);
-			textures[i] = nullptr;
-		}
-	}
 
 	IMG_Quit();
 	return true;
@@ -62,46 +52,28 @@ bool ModuleTextures::CleanUp()
 // Load new texture from file path
 SDL_Texture* const ModuleTextures::Load(const char* path)
 {
-	//Load and image from a path (png) and check for errors
+	SDL_Texture* texture = NULL;
+	SDL_Surface* surface = IMG_Load(path);
 
-	SDL_Surface* surf = IMG_Load(path);
-	SDL_Texture* tex = nullptr;
-
-	if (surf == nullptr)
+	if(surface == NULL)
 	{
-		LOG("Surface could not be created! SDL_Error: %s\n", SDL_GetError());
+		LOG("Could not load surface with path: %s. IMG_Load: %s", path, IMG_GetError());
 	}
-
-	
-
-	// create a texture from it to return it (check for errors again)
-	
 	else
 	{
-		tex = SDL_CreateTextureFromSurface(App->render->renderer, surf);
+		texture = SDL_CreateTextureFromSurface(App->render->renderer, surface);
 
-		if (tex == nullptr)
+		if(texture == NULL)
 		{
-			LOG("Texture could not be created! SDL_Error: %s\n", SDL_GetError());
+			LOG("Unable to create texture from surface! SDL Error: %s\n", SDL_GetError());
 		}
-
-
-		// free the surface and add the texture to array so we can properly free them
-
-		SDL_FreeSurface(surf);
-	
-		if (tex_index >= MAX_TEXTURES - 1)
-		{ 
-			LOG("Texture limit reached!");
-			return nullptr;
-		}
-
 		else
-		{ 
-			textures[tex_index++] = tex;
+		{
+			textures[last_texture++] = texture;
 		}
-		
+
+		SDL_FreeSurface(surface);
 	}
 
-	return tex;
+	return texture;
 }

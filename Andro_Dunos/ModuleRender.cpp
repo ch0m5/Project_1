@@ -2,11 +2,15 @@
 #include "Application.h"
 #include "ModuleRender.h"
 #include "ModuleWindow.h"
-#include "ModuleTextures.h"
+#include "ModuleInput.h"
 #include "SDL/include/SDL.h"
 
 ModuleRender::ModuleRender() : Module()
-{}
+{
+	camera.x = camera.y = 0;
+	camera.w = SCREEN_WIDTH;
+	camera.h = SCREEN_HEIGHT;
+}
 
 // Destructor
 ModuleRender::~ModuleRender()
@@ -32,37 +36,43 @@ bool ModuleRender::Init()
 		ret = false;
 	}
 
-	// load a texture 
-	
-
-	
-
 	return ret;
 }
 
 // Called every draw update
 update_status ModuleRender::PreUpdate()
 {
-	//Clear the screen to black before starting every frame
-
-	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
 
+	return update_status::UPDATE_CONTINUE;
+}
 
+update_status ModuleRender::Update()	
+{
+	/* Camera movement, which we don't need
+	int speed = 3;
 
-	//SDL_RenderCopy(renderer, tex, &rect, NULL);
+	if(App->input->keyboard[SDL_SCANCODE_UP] == 1)
+		camera.y += speed;
 
+	if(App->input->keyboard[SDL_SCANCODE_DOWN] == 1)
+		camera.y -= speed;
 
+	// TODO 1: Make the camera move left and right
+
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == 1)
+		camera.x += speed;
+
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == 1)
+		camera.x -= speed;
+	*/
 
 	return update_status::UPDATE_CONTINUE;
 }
 
 update_status ModuleRender::PostUpdate()
 {
-	//Switch buffers so we actually render
-
 	SDL_RenderPresent(renderer);
-
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -72,29 +82,34 @@ bool ModuleRender::CleanUp()
 	LOG("Destroying renderer");
 
 	//Destroy window
-	if(renderer != nullptr)
+	if(renderer != NULL)
+	{
 		SDL_DestroyRenderer(renderer);
+	}
 
 	return true;
 }
 
 // Blit to screen
-bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
+bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, float speed)
 {
 	bool ret = true;
 	SDL_Rect rect;
-	rect.x = x;
-	rect.y = y;
+	rect.x = (int)(camera.x * speed) + x * SCREEN_SIZE;
+	rect.y = (int)(camera.y * speed) + y * SCREEN_SIZE;
 
-	if(section != nullptr)
+	if(section != NULL)
 	{
 		rect.w = section->w;
 		rect.h = section->h;
 	}
 	else
 	{
-		SDL_QueryTexture(texture, nullptr, nullptr, &rect.w, &rect.h);
+		SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h);
 	}
+
+	rect.w *= SCREEN_SIZE;
+	rect.h *= SCREEN_SIZE;
 
 	if(SDL_RenderCopy(renderer, texture, section, &rect) != 0)
 	{
@@ -104,3 +119,4 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
 
 	return ret;
 }
+

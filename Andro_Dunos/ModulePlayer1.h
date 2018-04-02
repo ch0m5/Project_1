@@ -20,10 +20,20 @@ public:
 public:
 
 	SDL_Texture* graphics = nullptr;
-	Animation idle;
+
+	Animation superUpwards;
+	Animation superUpwardsBooster;
 	Animation upwards;
+	Animation upwardsBooster;
+	Animation idle;
+	Animation idleBooster;
 	Animation downwards;
+	Animation downwardsBooster;
+	Animation superDownwards;
+	Animation superDownwardsBooster;
 	iPoint position;
+	int movVertical;	// Counter for the vertical movement of the ship
+	int maxVertical;	// Maximum value
 };
 
 #endif

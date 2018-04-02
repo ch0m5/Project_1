@@ -4,69 +4,83 @@
 #include "ModuleRender.h"
 #include "ModuleBackground.h"
 
-// Reference at https://www.youtube.com/watch?v=iQOrXlf34es&t=993s
+// Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModuleBackground::ModuleBackground()
 {
-	
+	// ground
+	ground.x = 8;
+	ground.y = 391;
+	ground.w = 896;
+	ground.h = 72;
 
-	// Background1Rect  // i dont know why this  isnt working 
-	background1Rect.x = 0;
-	background1Rect.y = 0; // i think the problem is here but i couldnt find it
-	background1Rect.w = 1654; //1654
-	background1Rect.h = 85; 
+	// Background / sky
+	background.x = 72;
+	background.y = 208;
+	background.w = 768;
+	background.h = 176;
 
-	//map1Rect	
-	map1Rect.x = 0;
-	map1Rect.y = 60; // 60
-	map1Rect.w = 9305;
-	map1Rect.h = 505;
+	ship.x = 8;
+	ship.y = 38;
+	ship.w = 520;
+	ship.h = 185;
 
-	// bluePlanetRect
-	bluePlanetRect.x = 0;
-	bluePlanetRect.y = 0;
-	bluePlanetRect.w = 165;
-	bluePlanetRect.h = 152;
-	////ship1Rect	
-	//ship1Rect.x = 0;
-	//ship1Rect.y = 0;
-	//ship1Rect.w = 27;
-	//ship1Rect.h = 17;
+	girl.PushBack({ 623, 16, 32, 56 });
+	girl.PushBack({ 623, 80, 32, 56 });
+	girl.PushBack({ 623, 144, 32, 56 });
+	girl.PushBack({ 623, 80, 32, 56 });
+	girl.speed = 0.08f;
 
-	//// animation template for busters
-	//flag.PushBack({ 848, 208, 40, 40 });
-	//flag.PushBack({ 848, 256, 40, 40 });
-	//flag.PushBack({ 848, 304, 40, 40 });
-	//flag.speed = 0.08f;
-
-}//@AndresSala
+	// flag animation
+	flag.PushBack({848, 208, 40, 40});
+	flag.PushBack({848, 256, 40, 40});
+	flag.PushBack({848, 304, 40, 40});
+	flag.speed = 0.08f;
+}
 
 ModuleBackground::~ModuleBackground()
 {}
 
 // Load assets
-bool ModuleBackground::Init()
+bool ModuleBackground::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
-	map1Text = App->textures->Load("Sprites/Backgrounds/1_FullMap.png");
-	background1Text = App->textures->Load("Sprites/Backgrounds/1_Background1.png");
-	bluePlanetText = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/Moon.png");
+	graphics = App->textures->Load("ken_stage.png");
 	return ret;
-}//@AndresSala & @DídacRo
+}
 
 // Update: draw background
 update_status ModuleBackground::Update()
 {
-	// Draw everything --------------------------------------
-	App->render->Blit(background1Text, movementxBack, 118, &background1Rect); // level background
-	
-	App->render->Blit(map1Text, movementx, -55, &map1Rect); // level map
-	
-	App->render->Blit(bluePlanetText, 500 + movementxPlanetsBack, -10, &bluePlanetRect);
+	if (boatUp == true)
+	{
+		shipPos += 0.1;
+	}
 
-	movementx-=0.83; // for movement in x direction
-	movementxBack-=0.39;
-	movementxPlanetsBack-= 0.2;
+	else if (boatUp == false)
+	{
+		shipPos -= 0.1;
+	}
+
+	if (shipPos >= 5)
+		boatUp = false;
+
+	else if (shipPos <= -5)
+		boatUp = true;
+
+	// Draw everything --------------------------------------
+	App->render->Blit(graphics, 0, 0, &background, 0.75f); // sea and sky
+	App->render->Blit(graphics, 560, 8, &(flag.GetCurrentFrame()), 0.75f); // flag animation
+
+	// TODO 2: Draw the ship from the sprite sheet with some parallax effect
+
+	App->render->Blit(graphics, 0, shipPos+15, &ship, 0.75f); // ship
+
+	// TODO 3: Animate the girl on the ship (see the sprite sheet)
+	App->render->Blit(graphics, 191, shipPos+105, &(girl.GetCurrentFrame()), 0.75f);
+	
+	App->render->Blit(graphics, 0, 170, &ground);
+
 	return UPDATE_CONTINUE;
-}//@AndresSala  & DídacRo
+}

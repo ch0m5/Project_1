@@ -3,9 +3,9 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
-#include "ModuleMixer.h"
 #include "ModuleBackground.h"
-
+#include "ModulePlayer1.h"
+#include "ModulePlayer2.h"
 
 Application::Application()
 {
@@ -13,8 +13,9 @@ Application::Application()
 	modules[1] = render = new ModuleRender();
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
-	modules[4] = mixer = new ModuleMixer();
-	modules[5] = background = new ModuleBackground();
+	modules[4] = background = new ModuleBackground();
+	modules[5] = player2 = new ModulePlayer2();
+	modules[6] = player1 = new ModulePlayer1();
 }	
 
 Application::~Application()
@@ -29,6 +30,9 @@ bool Application::Init()
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();
+
+	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
+		ret = modules[i]->Start();
 
 	return ret;
 }

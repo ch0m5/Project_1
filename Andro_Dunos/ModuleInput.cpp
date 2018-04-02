@@ -4,7 +4,8 @@
 #include "SDL/include/SDL.h"
 
 ModuleInput::ModuleInput() : Module()
-{}
+{
+}
 
 // Destructor
 ModuleInput::~ModuleInput()
@@ -27,18 +28,14 @@ bool ModuleInput::Init()
 }
 
 // Called every draw update
-update_status ModuleInput::Update()
+update_status ModuleInput::PreUpdate()
 {
 	SDL_PumpEvents();
 
 	keyboard = SDL_GetKeyboardState(NULL);
 
-	//ESC key pressed to quit the game 
-
-
-	if (keyboard[SDL_SCANCODE_ESCAPE])
+	if(keyboard[SDL_SCANCODE_ESCAPE])
 		return update_status::UPDATE_STOP;
-
 
 	return update_status::UPDATE_CONTINUE;
 }
