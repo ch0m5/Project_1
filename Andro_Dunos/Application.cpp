@@ -4,6 +4,8 @@
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleMixer.h"
+#include "ModuleBackground.h"
+
 
 Application::Application()
 {
@@ -12,6 +14,7 @@ Application::Application()
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = mixer = new ModuleMixer();
+	modules[5] = background = new ModuleBackground();
 }	
 
 Application::~Application()
