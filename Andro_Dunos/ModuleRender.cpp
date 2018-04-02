@@ -33,8 +33,17 @@ bool ModuleRender::Init()
 	}
 
 	// load a texture 
-
-	tex = App->textures->Load("test.png");
+	
+	map1Text = App->textures->Load("Sprites/Backgrounds/1_FullMap.png");
+	background1Text = App->textures->Load("Sprites/Backgrounds/1_Background1.png");
+	ship1Text = App->textures->Load("Sprites/Ship_1/1_3_Ship.png");
+	/*mediumBulletText = App->textures->Load("Sprites/Medium_Blue.png");
+	smallBulletText = App->textures->Load("Sprites/Small_Blue.png");
+	ship1UpText = App->textures->Load("Sprites/1_1_Ship_Up.png");
+	ship1TiltUpText = App->textures->Load("Sprites/1_2_Ship_Tilt_Up.png");
+	ship1TiltDownText = App->textures->Load("Sprites/1_4_Ship_Tilt_Down.png");
+	ship1DownText = App->textures->Load("Sprites/1_5_Ship_Down.png");*/
+	
 
 	return ret;
 }
@@ -49,10 +58,17 @@ update_status ModuleRender::PreUpdate()
 
 
 	//Blit texture to check functionality
-	SDL_Rect rect = { 0, 0, 538, 381 };
+	SDL_Rect background1Rect = { 0, 0, 1684, 85 };
+	SDL_Rect map1Rect = { 0, 0, 9305, 563 };
+	SDL_Rect ship1Rect = { 0, 0, 27, 17 };
 
 	//SDL_RenderCopy(renderer, tex, &rect, NULL);
-	Blit(tex, 0, 0, &rect);
+	Blit(background1Text, horizontalCounter1, 118, &background1Rect);
+	Blit(map1Text, horizontalCounter1, -115, &map1Rect);
+	Blit(ship1Text, horizontalCounter2, 150, &ship1Rect);
+
+	horizontalCounter1--;
+	horizontalCounter2++;
 
 
 	return update_status::UPDATE_CONTINUE;
