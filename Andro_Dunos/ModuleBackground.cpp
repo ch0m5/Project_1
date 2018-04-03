@@ -57,7 +57,7 @@ update_status ModuleBackground::Update()
 	App->render->Blit(bluePlanetText, 500 + movementxPlanetsBack, -10, &bluePlanetRect); // Moon
 
 	movementx -= 0.83f; // for movement in x direction
-
+	LOG("%0.3f", movementx);
 	movementxBack -= 0.38f;
 	movementxPlanetsBack -= 0.2f;
 
