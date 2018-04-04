@@ -46,7 +46,8 @@ bool ModuleStage1::Start()
 
 	App->player1->Enable();
 	App->player2->Enable();
-	
+	App->stage2->Disable();
+
 	return ret;
 
 }
@@ -57,7 +58,10 @@ bool ModuleStage1::CleanUp()
 	App->player1->Disable();
 	App->player2->Disable();
 	
-	//LOG("Unloading players stage");
+	LOG("Unloading players stage");
+	App->textures->Unload(map1Text);
+	App->textures->Unload(background1Text);
+	App->textures->Unload(bluePlanetText);
 
 	return true;
 }
@@ -80,10 +84,10 @@ update_status ModuleStage1::Update()
 	movementxPlanetsBack -= 0.2f;
 
 	//make so pressing SPACE the other stage is loaded
-	/*if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
 		App->fade->FadeToBlack(App->stage1, App->stage2, 1);
-	}*/
+	}
 
 	//if (movementx >-2925.0) //2925
 	//movementx -= 0.83f; // for movement in x direction

@@ -4,6 +4,7 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModulePlayer1.h"
+#include "ModuleStage2.h"
 
 ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 {
@@ -121,7 +122,9 @@ bool ModulePlayer1::Start()
 	LOG("Loading player textures");
 	bool ret = true;
 	graphics = App->textures->Load("Sprites/Players_Ships/ships.png"); // arcade version
+	
 	return ret;
+
 }
 
 // Update: draw background
