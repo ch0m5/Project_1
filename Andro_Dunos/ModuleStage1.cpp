@@ -63,14 +63,8 @@ bool ModuleStage1::CleanUp()
 	LOG("Unloading players");
 	App->player1->Disable();
 	App->player2->Disable();
-<<<<<<< HEAD
-	
-	LOG("Unloading players stage");
-	App->textures->Unload(map1Text);
-	App->textures->Unload(background1Text);
-	App->textures->Unload(bluePlanetText);
-=======
->>>>>>> 787fa0edeb0805c359c5340113b4dd5d6d3a505f
+
+
 
 	return true;
 }
