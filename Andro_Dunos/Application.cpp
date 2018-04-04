@@ -8,6 +8,7 @@
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
 #include "ModuleStage1.h"
+#include "ModuleMainMenu.h"
 
 Application::Application()
 {
@@ -20,6 +21,7 @@ Application::Application()
 	modules[6] = stage1 = new ModuleStage1();
 	modules[7] = player2 = new ModulePlayer2();
 	modules[8] = player1 = new ModulePlayer1();
+	//modules[9] = mainMenu = new ModuleMainMenu();
 }	
 
 Application::~Application()
