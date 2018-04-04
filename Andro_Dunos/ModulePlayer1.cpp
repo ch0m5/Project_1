@@ -215,3 +215,13 @@ update_status ModulePlayer1::Update()
 
 	return UPDATE_CONTINUE;
 }
+
+bool ModulePlayer1::CleanUp()
+{
+	LOG("Unloading player 2");
+	App->textures->Unload(graphics);
+
+	App->player1->Disable();
+
+	return true;
+}

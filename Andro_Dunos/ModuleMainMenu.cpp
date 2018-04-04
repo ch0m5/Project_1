@@ -3,6 +3,8 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleMainMenu.h"
+#include "ModulePlayer1.h"
+#include "ModulePlayer2.h"
 
 ModuleMainMenu::ModuleMainMenu()	//@CarlesHoms
 {
@@ -46,6 +48,10 @@ bool ModuleMainMenu::Start()
 	viscoGamesText = App->textures->Load("Sprites/User_Interface/Intro/visco_games.png");
 	//orangeLettersText = App->textures->Load("Sprites/Backgrounds/1_FullMap.png");
 	//whiteLettersText = App->textures->Load("Sprites/Backgrounds/1_FullMap.png");
+
+	App->player1->Disable();
+	App->player2->Disable();
+
 	return ret;
 }
 
