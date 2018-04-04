@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 8
+#define NUM_MODULES 9
 
 class Module;
 
@@ -11,10 +11,11 @@ class ModuleWindow;
 class ModuleInput;
 class ModuleTextures;
 class ModuleRender;
+class ModuleMixer;
 class ModuleBackground;
+class ModuleFadeToBlack;
 class ModulePlayer1;
 class ModulePlayer2;
-class ModuleMixer;
 
 class Application
 {
@@ -25,10 +26,11 @@ public:
 	ModuleRender* render = nullptr;
 	ModuleInput* input = nullptr;
 	ModuleTextures* textures = nullptr;
+	ModuleMixer* mixer = nullptr;
 	ModuleBackground* background = nullptr;
 	ModulePlayer1* player1 = nullptr;
 	ModulePlayer2* player2 = nullptr;		// Player 2 comes before player 1 so that 1 renders over 2.
-	ModuleMixer* mixer = nullptr;
+	ModuleFadeToBlack* fade = nullptr;
 
 
 public:
