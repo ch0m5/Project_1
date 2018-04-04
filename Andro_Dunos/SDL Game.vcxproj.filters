@@ -62,9 +62,6 @@
     <ClInclude Include="ModuleMixer.h">
       <Filter>ModulesBase</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleMainMenu.h">
-      <Filter>ModulesStages</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleSecondStage.h">
       <Filter>ModulesStages</Filter>
     </ClInclude>
@@ -72,6 +69,9 @@
       <Filter>ModulesStages</Filter>
     </ClInclude>
     <ClInclude Include="ModuleStage1.h">
+      <Filter>ModulesStages</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleMainMenu.h">
       <Filter>ModulesStages</Filter>
     </ClInclude>
   </ItemGroup>

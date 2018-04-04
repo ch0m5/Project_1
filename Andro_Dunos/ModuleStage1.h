@@ -1,5 +1,5 @@
 #ifndef __ModuleStage1_H__
-#define __ModuleStage1_H__
+#define __ModuleStage1_H__	//@DídacRomero
 
 #include "Module.h"
 #include "Animation.h"
@@ -21,7 +21,6 @@ public:
 
 	SDL_Texture* background1Text = nullptr;		//
 	SDL_Texture* map1Text = nullptr;			//
-	SDL_Texture* ship1Text = nullptr;			//
 	SDL_Texture* bluePlanetText = nullptr;		//
 
 	//Rectangles

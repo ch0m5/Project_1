@@ -4,12 +4,8 @@
 #include "ModuleRender.h"
 #include "ModuleStage1.h"
 
-// Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
-
-ModuleStage1::ModuleStage1()
+ModuleStage1::ModuleStage1()	//@DídacRomero
 {
-
-
 	//ANDRO DUNOS RECTS
 	// Background1Rect  
 	background1Rect.x = 0;
