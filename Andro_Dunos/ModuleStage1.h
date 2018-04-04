@@ -1,5 +1,5 @@
 #ifndef __ModuleStage1_H__
-#define __ModuleStage1_H__	//@DídacRomero
+#define __ModuleStage1_H__	//@DídacRomero @AndresSaladrigas
 
 #include "Module.h"
 #include "Animation.h"
@@ -15,6 +15,7 @@ public:
 
 	bool Start();
 	update_status Update();
+	bool CleanUp();
 
 public:
 	//Textures

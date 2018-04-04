@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 9
+#define NUM_MODULES 10
 
 class Module;
 
@@ -23,7 +23,7 @@ class Application
 {
 public:
 
-	Module * modules[NUM_MODULES] = { nullptr };
+	Module* modules[NUM_MODULES] = { nullptr };
 	ModuleWindow* window = nullptr;
 	ModuleRender* render = nullptr;
 	ModuleInput* input = nullptr;
