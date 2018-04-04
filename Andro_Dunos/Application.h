@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 9
+#define NUM_MODULES 10
 
 class Module;
 
@@ -16,6 +16,7 @@ class ModuleFadeToBlack;
 class ModulePlayer1;
 class ModulePlayer2;
 class ModuleStage1;
+class ModuleSecondStage;
 
 class Application
 {
@@ -31,7 +32,7 @@ public:
 	ModulePlayer2* player2 = nullptr;		// Player 2 comes before player 1 so that 1 renders over 2.
 	ModuleFadeToBlack* fade = nullptr;
 	ModuleStage1* stage1 = nullptr;
-
+	ModuleSecondStage* stage2 = nullptr;
 
 public:
 
