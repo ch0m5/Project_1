@@ -13,8 +13,8 @@ ModuleStage2::ModuleStage2()	//@AndresSala
 {
 	//ANDRO DUNOS RECTS
 	// Background1Rect  
-	background2Rect.x = 48;
-	background2Rect.y = 27;
+	background2Rect.x = 0;
+	background2Rect.y = 0;
 	background2Rect.w = 410; 
 	background2Rect.h = 224;
 
@@ -39,14 +39,13 @@ bool ModuleStage2::Start()
 {
 	LOG("Loading background assets");	// Temporal, must decide if we load a full image,
 	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
-	//map2Text = App->textures->Load("Sprites/Levels/STAGE 2/Tileset/Background_lvl_2.png");
-	background2Text = App->textures->Load("Sprites/Levels/STAGE 2/Tileset/Background_lvl_2.png");
+	map2Text = App->textures->Load("Sprites/Levels/STAGE 2/Tileset/Background_lvl_2.png");
+	background2Text = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/1_Background1.png");
 	/*bluePlanetText = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/Moon.png");*/
 
 	App->player1->Enable();
 	App->player2->Enable();
 
-	App->stage1->Disable();
 	return ret;
 }
 
@@ -56,10 +55,8 @@ bool ModuleStage2::CleanUp()
 	App->player2->Disable();
 	
 
-	LOG("Unloading players stage");
-	//App->textures->Unload(map1Text);
-	App->textures->Unload(background2Text);
-	//App->textures->Unload(bluePlanetText);
+	//LOG("Unloading players stage");
+
 	return true;
 }
 
@@ -69,7 +66,7 @@ update_status ModuleStage2::Update()
 
 
 	// Draw everything -------------------------------------- Andro Dunos
-	App->render->Blit(background2Text, 0, 0, &background2Rect); // level background
+	App->render->Blit(background2Text, movementxBack, 27, &background2Rect); // level background
 
 	//App->render->Blit(map2Text, movementx, 0, &map2Rect); // level map
 

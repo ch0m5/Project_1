@@ -23,19 +23,7 @@ Application::Application()
 	modules[7] = player2 = new ModulePlayer2();
 	modules[8] = mainMenu = new ModuleMainMenu();
 	modules[9] = fade = new ModuleFadeToBlack();
-
-
-	/*modules[5] = stage2 = new ModuleStage2();
-	modules[6] = stage1 = new ModuleStage1();
-	modules[7] = player1 = new ModulePlayer1();
-	modules[8] = player2 = new ModulePlayer2();
-	modules[9] = fade = new ModuleFadeToBlack();*/
-	//modules[8] = mainMenu = new ModuleMainMenu();
-
-	
-
 	//modules[9] = stage2 = new ModuleStage2();
-
 
 }	
 
@@ -48,12 +36,6 @@ Application::~Application()
 bool Application::Init()
 {
 	bool ret = true;
-
-	// Player will be enabled on the first update of a new scene
-	player1->Disable();
-	player2->Disable();
-	// Disable the map that you do not start with
-	stage2->Disable(); 
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();
