@@ -41,9 +41,11 @@ bool ModuleMainMenu::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
-	//map1Text = App->textures->Load("Sprites/Backgrounds/1_FullMap.png");
-	//background1Text = App->textures->Load("Sprites/Backgrounds/1_Background1.png");
-	//bluePlanetText = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/Moon.png");
+	//backgroundText = App->textures->Load("Sprites/User_Interface/Intro/logo-background.png");
+	//titleText = App->textures->Load("Sprites/User_Interface/Intro/1_FullMap.png");
+	//viscoGamesText = App->textures->Load("Sprites/User_Interface/Intro/1_FullMap.png");
+	//orangeLettersText = App->textures->Load("Sprites/Backgrounds/1_FullMap.png");
+	//whiteLettersText = App->textures->Load("Sprites/Backgrounds/1_FullMap.png");
 	return ret;
 }
 
