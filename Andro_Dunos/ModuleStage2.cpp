@@ -2,7 +2,7 @@
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
-#include "ModuleMainMenu.h"
+#include "ModuleStage1.h"
 #include "ModuleStage2.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
@@ -43,16 +43,17 @@ bool ModuleStage2::Start()
 	background2Text = App->textures->Load("Sprites/Levels/STAGE 2/Tileset/Background_lvl_2.png");
 	/*bluePlanetText = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/Moon.png");*/
 
-	//App->player1->Enable();
-	//App->player2->Enable();
+	App->player1->Enable();
+	App->player2->Enable();
 
+	App->stage1->Disable();
 	return ret;
 }
 
 bool ModuleStage2::CleanUp()
 {
-	//App->player1->Disable();
-	//App->player2->Disable();
+	App->player1->Disable();
+	App->player2->Disable();
 	
 
 	LOG("Unloading players stage");
@@ -82,7 +83,7 @@ update_status ModuleStage2::Update()
 	//make so pressing SPACE the other stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
-		App->fade->FadeToBlack(this, App->mainMenu, 2);
+		App->fade->FadeToBlack(App->stage2, App->stage1, 1);
 	}
 
 	//if (movementx >-2925.0) //2925
