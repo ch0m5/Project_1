@@ -21,8 +21,8 @@ Application::Application()
 	modules[5] = fade = new ModuleFadeToBlack();
 	modules[6] = player1 = new ModulePlayer1();
 	modules[7] = player2 = new ModulePlayer2();
-	//modules[8] = mainMenu = new ModuleMainMenu();
-	modules[8] = stage1 = new ModuleStage1();
+	modules[8] = mainMenu = new ModuleMainMenu();
+	modules[9] = stage1 = new ModuleStage1();
 	//modules[9] = stage2 = new ModuleStage2();
 
 }	
