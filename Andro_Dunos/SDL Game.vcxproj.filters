@@ -65,6 +65,15 @@
     <ClInclude Include="ModuleMixer.h">
       <Filter>ModulesBase</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleMainMenu.h">
+      <Filter>ModulesStages</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleSecondStage.h">
+      <Filter>ModulesStages</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleDead.h">
+      <Filter>ModulesStages</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -102,6 +111,15 @@
     </ClCompile>
     <ClCompile Include="ModuleMixer.cpp">
       <Filter>ModulesBase</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleMainMenu.cpp">
+      <Filter>ModulesStages</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleSecondStage.cpp">
+      <Filter>ModulesStages</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleDead.cpp">
+      <Filter>ModulesStages</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
