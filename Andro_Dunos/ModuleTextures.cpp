@@ -78,7 +78,7 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 	return texture;
 }
 
-bool ModuleTextures::Unload(SDL_Texture * texture)
+bool ModuleTextures::Unload(SDL_Texture* texture)
 {
 	bool ret = false;
 

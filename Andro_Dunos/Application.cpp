@@ -23,6 +23,7 @@ Application::Application()
 	modules[7] = stage1 = new ModuleStage1();
 	modules[8] = mainMenu = new ModuleMainMenu();
 	modules[9] = fade = new ModuleFadeToBlack();
+<<<<<<< HEAD
 
 	/*modules[5] = stage2 = new ModuleStage2();
 	modules[6] = stage1 = new ModuleStage1();
@@ -32,6 +33,9 @@ Application::Application()
 	//modules[8] = mainMenu = new ModuleMainMenu();
 
 	
+=======
+	//modules[9] = stage2 = new ModuleStage2();
+>>>>>>> 787fa0edeb0805c359c5340113b4dd5d6d3a505f
 
 }	
 

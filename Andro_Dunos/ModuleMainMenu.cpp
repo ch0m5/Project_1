@@ -5,6 +5,9 @@
 #include "ModuleMainMenu.h"
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
+#include "ModuleStage1.h"
+#include "ModuleInput.h"
+#include "ModuleFadeToBlack.h"
 
 ModuleMainMenu::ModuleMainMenu()	//@CarlesHoms
 {
@@ -12,8 +15,8 @@ ModuleMainMenu::ModuleMainMenu()	//@CarlesHoms
 
 	// BackgroundRect
 	backgroundRect.x = 0;
-	backgroundRect.y = 16;
-	backgroundRect.w = 256;
+	backgroundRect.y = 0;
+	backgroundRect.w = 320;
 	backgroundRect.h = 224;
 
 	// TitleBoxRect (blue box behind the title letters)
@@ -29,10 +32,10 @@ ModuleMainMenu::ModuleMainMenu()	//@CarlesHoms
 	titleRect.h = 112;
 
 	// ViscoGamesRect
-	viscoGamesRect.x = 0;
-	viscoGamesRect.x = 0;
-	viscoGamesRect.x = 0;
-	viscoGamesRect.x = 0;
+	viscoGamesRect.x = 40;
+	viscoGamesRect.y = 116;
+	viscoGamesRect.w = 167;
+	viscoGamesRect.h = 15;
 }
 
 ModuleMainMenu::~ModuleMainMenu()
@@ -51,6 +54,7 @@ bool ModuleMainMenu::Start()
 
 	App->player1->Disable();
 	App->player2->Disable();
+	App->stage1->Disable();
 
 	return ret;
 }
@@ -59,9 +63,14 @@ bool ModuleMainMenu::Start()
 update_status ModuleMainMenu::Update()
 {
 	App->render->Blit(backgroundText, 0, 0, &backgroundRect); // background
-	App->render->Blit(titleText, 20, 20, &titleBoxRect); // logo back mark
-	App->render->Blit(titleText, 20, 20, &titleRect); // logo
-	App->render->Blit(viscoGamesText, 20, 120, &viscoGamesRect); // Visco Games
+	App->render->Blit(titleText, 52, 60, &titleBoxRect); // logo back mark
+	App->render->Blit(titleText, 36, 27, &titleRect); // logo
+	App->render->Blit(viscoGamesText, 75, 160, &viscoGamesRect); // Visco Games
+
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	{
+		App->fade->FadeToBlack(this, App->stage1, 2);
+	}
 
 	return UPDATE_CONTINUE;
 }
@@ -74,8 +83,6 @@ bool ModuleMainMenu::CleanUp()
 	App->textures->Unload(viscoGamesText);
 	//App->textures->Unload(orangeLettersText);
 	//App->textures->Unload(whiteLettersText);
-
-	//App->player->Disable();
 
 	return true;
 }
