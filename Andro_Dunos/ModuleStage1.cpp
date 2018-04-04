@@ -54,10 +54,14 @@ bool ModuleStage1::Start()
 // Unload assets
 bool ModuleStage1::CleanUp()
 {
+	LOG("Unloading stage 1");
+	App->textures->Unload(map1Text);
+	App->textures->Unload(background1Text);
+	App->textures->Unload(bluePlanetText);
+	
+	LOG("Unloading players");
 	App->player1->Disable();
 	App->player2->Disable();
-	
-	//LOG("Unloading players stage");
 
 	return true;
 }

@@ -18,11 +18,11 @@ Application::Application()
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = mixer = new ModuleMixer();
-	modules[5] = fade = new ModuleFadeToBlack();
-	modules[6] = player1 = new ModulePlayer1();
-	modules[7] = player2 = new ModulePlayer2();
+	modules[5] = player1 = new ModulePlayer1();
+	modules[6] = player2 = new ModulePlayer2();
+	modules[7] = stage1 = new ModuleStage1();
 	modules[8] = mainMenu = new ModuleMainMenu();
-	modules[9] = stage1 = new ModuleStage1();
+	modules[9] = fade = new ModuleFadeToBlack();
 	//modules[9] = stage2 = new ModuleStage2();
 
 }	
