@@ -66,6 +66,7 @@ bool ModuleStage1::CleanUp()
 =======
 <<<<<<< HEAD
 	
+<<<<<<< HEAD
 	LOG("Unloading players stage");
 	App->textures->Unload(map1Text);
 	App->textures->Unload(background1Text);
@@ -73,6 +74,9 @@ bool ModuleStage1::CleanUp()
 =======
 >>>>>>> 787fa0edeb0805c359c5340113b4dd5d6d3a505f
 >>>>>>> parent of 9007d1c... resolving merge problems
+=======
+	//LOG("Unloading players stage");
+>>>>>>> parent of 55c79d6... stage 1 and stage 2. fade to black must be inproved
 
 	return true;
 }

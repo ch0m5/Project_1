@@ -18,10 +18,11 @@ Application::Application()
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = mixer = new ModuleMixer();
-	modules[5] = player1 = new ModulePlayer1();
-	modules[6] = player2 = new ModulePlayer2();
-	modules[7] = stage1 = new ModuleStage1();
+	modules[5] = fade = new ModuleFadeToBlack();
+	modules[6] = player1 = new ModulePlayer1();
+	modules[7] = player2 = new ModulePlayer2();
 	modules[8] = mainMenu = new ModuleMainMenu();
+<<<<<<< HEAD
 	modules[9] = fade = new ModuleFadeToBlack();
 <<<<<<< HEAD
 	//modules[9] = stage2 = new ModuleStage2();
@@ -40,6 +41,10 @@ Application::Application()
 	//modules[9] = stage2 = new ModuleStage2();
 >>>>>>> 787fa0edeb0805c359c5340113b4dd5d6d3a505f
 >>>>>>> parent of 9007d1c... resolving merge problems
+=======
+	modules[9] = stage1 = new ModuleStage1();
+	//modules[9] = stage2 = new ModuleStage2();
+>>>>>>> parent of 55c79d6... stage 1 and stage 2. fade to black must be inproved
 
 }	
 
