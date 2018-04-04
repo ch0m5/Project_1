@@ -63,9 +63,13 @@ update_status ModuleMainMenu::Update()
 bool ModuleMainMenu::CleanUp()
 {
 	LOG("Unloading Main Menu");
-	App->textures->Unload(graphics);
+	App->textures->Unload(backgroundText);
+	App->textures->Unload(titleText);
+	App->textures->Unload(viscoGamesText);
+	//App->textures->Unload(orangeLettersText);
+	//App->textures->Unload(whiteLettersText);
 
-	App->player->Disable();
+	//App->player->Disable();
 
 	return true;
 }
