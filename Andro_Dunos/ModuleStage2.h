@@ -1,5 +1,5 @@
-#ifndef __ModuleStage1_H__
-#define __ModuleStage1_H__	//@DídacRomero
+#ifndef __ModuleStage2_H__
+#define __ModuleStage2_H__	//@AndrésSaladrigas
 
 #include "Module.h"
 #include "Animation.h"
@@ -7,11 +7,11 @@
 
 struct SDL_Texture;
 
-class ModuleSecondStage : public Module
+class ModuleStage2 : public Module
 {
 public:
-	ModuleSecondStage();
-	~ModuleSecondStage();
+	ModuleStage2();
+	~ModuleStage2();
 
 	bool Start();
 	update_status Update();

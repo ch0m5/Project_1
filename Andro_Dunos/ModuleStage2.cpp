@@ -2,9 +2,9 @@
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
-#include "ModuleSecondStage.h"
+#include "ModuleStage2.h"
 
-ModuleSecondStage::ModuleSecondStage()	//@AndresSala
+ModuleStage2::ModuleStage2()	//@AndresSala
 {
 	//ANDRO DUNOS RECTS
 	// Background1Rect  
@@ -26,11 +26,11 @@ ModuleSecondStage::ModuleSecondStage()	//@AndresSala
 	bluePlanetRect.h = 152;*/
 }
 
-ModuleSecondStage::~ModuleSecondStage()
+ModuleStage2::~ModuleStage2()
 {}
 
 // Load assets
-bool ModuleSecondStage::Start()
+bool ModuleStage2::Start()
 {
 	LOG("Loading background assets");	// Temporal, must decide if we load a full image,
 	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
@@ -41,7 +41,7 @@ bool ModuleSecondStage::Start()
 }
 
 // Update: draw background
-update_status ModuleSecondStage::Update()
+update_status ModuleStage2::Update()
 {
 
 

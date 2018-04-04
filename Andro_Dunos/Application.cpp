@@ -7,12 +7,9 @@
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
-#include "ModuleStage1.h"
-<<<<<<< HEAD
-#include "Module"
-=======
 #include "ModuleMainMenu.h"
->>>>>>> afb90c6a89fee0c68193bd2ff67e24fc52b13e97
+#include "ModuleStage1.h"
+#include "ModuleStage2.h"
 
 Application::Application()
 {
@@ -22,14 +19,12 @@ Application::Application()
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = mixer = new ModuleMixer();
 	modules[5] = fade = new ModuleFadeToBlack();
-	modules[6] = stage1 = new ModuleStage1();
+	modules[6] = player1 = new ModulePlayer1();
 	modules[7] = player2 = new ModulePlayer2();
-	modules[8] = player1 = new ModulePlayer1();
-<<<<<<< HEAD
-	modules[9] = stage2 = new ModuleSecondStage();
-=======
-	//modules[9] = mainMenu = new ModuleMainMenu();
->>>>>>> afb90c6a89fee0c68193bd2ff67e24fc52b13e97
+	//modules[8] = mainMenu = new ModuleMainMenu();
+	modules[8] = stage1 = new ModuleStage1();
+	//modules[9] = stage2 = new ModuleStage2();
+
 }	
 
 Application::~Application()
