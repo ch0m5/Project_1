@@ -46,8 +46,6 @@ ModulePlayer1::ModulePlayer1()
 	12, 17; size
 	*/
 
-	SDL_Rect j = { 94, 66, 27, 17 };
-
 	superUpwards.PushBack({ 94, 66, 27, 17 });
 	superUpwards.speed = 0.1f;
 
