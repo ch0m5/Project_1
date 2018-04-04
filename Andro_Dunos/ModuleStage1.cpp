@@ -32,10 +32,10 @@ ModuleStage1::~ModuleStage1()
 // Load assets
 bool ModuleStage1::Start()
 {
-	LOG("Loading background assets");
-	bool ret = true;
-	map1Text = App->textures->Load("Sprites/Backgrounds/1_FullMap.png");
-	background1Text = App->textures->Load("Sprites/Backgrounds/1_Background1.png");
+	LOG("Loading background assets");	// Temporal, must decide if we load a full image,
+	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
+	map1Text = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/1_FullMap1.png");
+	background1Text = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/1_Background1.png");
 	bluePlanetText = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/Moon.png");
 	return ret;
 }
