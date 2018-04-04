@@ -59,9 +59,6 @@
     <ClInclude Include="ModulePlayer1.h">
       <Filter>ModulesPlayers</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleBackground.h">
-      <Filter>ModulesStages</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleMixer.h">
       <Filter>ModulesBase</Filter>
     </ClInclude>
@@ -72,6 +69,9 @@
       <Filter>ModulesStages</Filter>
     </ClInclude>
     <ClInclude Include="ModuleDead.h">
+      <Filter>ModulesStages</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleStage1.h">
       <Filter>ModulesStages</Filter>
     </ClInclude>
   </ItemGroup>
@@ -106,9 +106,6 @@
     <ClCompile Include="ModulePlayer2.cpp">
       <Filter>ModulesPlayers</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleBackground.cpp">
-      <Filter>ModulesStages</Filter>
-    </ClCompile>
     <ClCompile Include="ModuleMixer.cpp">
       <Filter>ModulesBase</Filter>
     </ClCompile>
@@ -119,6 +116,9 @@
       <Filter>ModulesStages</Filter>
     </ClCompile>
     <ClCompile Include="ModuleDead.cpp">
+      <Filter>ModulesStages</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleStage1.cpp">
       <Filter>ModulesStages</Filter>
     </ClCompile>
   </ItemGroup>

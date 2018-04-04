@@ -2,11 +2,11 @@
 #include "Application.h"
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
-#include "ModuleBackground.h"
+#include "ModuleStage1.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
-ModuleBackground::ModuleBackground()
+ModuleStage1::ModuleStage1()
 {
 
 
@@ -30,11 +30,11 @@ ModuleBackground::ModuleBackground()
 	bluePlanetRect.h = 152;
 }
 
-ModuleBackground::~ModuleBackground()
+ModuleStage1::~ModuleStage1()
 {}
 
 // Load assets
-bool ModuleBackground::Start()
+bool ModuleStage1::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
@@ -45,7 +45,7 @@ bool ModuleBackground::Start()
 }
 
 // Update: draw background
-update_status ModuleBackground::Update()
+update_status ModuleStage1::Update()
 {
 
 

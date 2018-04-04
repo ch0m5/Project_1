@@ -4,10 +4,10 @@
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleMixer.h"
-#include "ModuleBackground.h"
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
+#include "ModuleStage1.h"
 
 Application::Application()
 {
@@ -16,8 +16,8 @@ Application::Application()
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = mixer = new ModuleMixer();
-	modules[5] = background = new ModuleBackground();
-	modules[6] = fade = new ModuleFadeToBlack();
+	modules[5] = fade = new ModuleFadeToBlack();
+	modules[6] = stage1 = new ModuleStage1();
 	modules[7] = player2 = new ModulePlayer2();
 	modules[8] = player1 = new ModulePlayer1();
 }	
