@@ -59,3 +59,13 @@ update_status ModuleMainMenu::Update()
 
 	return UPDATE_CONTINUE;
 }
+
+bool ModuleMainMenu::CleanUp()
+{
+	LOG("Unloading Main Menu");
+	App->textures->Unload(graphics);
+
+	App->player->Disable();
+
+	return true;
+}
