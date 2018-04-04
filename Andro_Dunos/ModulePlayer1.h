@@ -1,5 +1,5 @@
 #ifndef __ModulePlayer1_H__
-#define __ModulePlayer1_H__
+#define __ModulePlayer1_H__	//@CarlesHoms
 
 #include "Module.h"
 #include "Animation.h"

@@ -5,7 +5,7 @@
 #include "ModuleRender.h"
 #include "ModulePlayer1.h"
 
-ModulePlayer1::ModulePlayer1()
+ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 {
 	position.x = 0;
 	position.y = SCREEN_HEIGHT / 2 - 10;
