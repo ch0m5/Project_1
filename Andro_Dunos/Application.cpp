@@ -23,7 +23,23 @@ Application::Application()
 	modules[7] = stage1 = new ModuleStage1();
 	modules[8] = mainMenu = new ModuleMainMenu();
 	modules[9] = fade = new ModuleFadeToBlack();
+<<<<<<< HEAD
 	//modules[9] = stage2 = new ModuleStage2();
+=======
+<<<<<<< HEAD
+
+	/*modules[5] = stage2 = new ModuleStage2();
+	modules[6] = stage1 = new ModuleStage1();
+	modules[7] = player1 = new ModulePlayer1();
+	modules[8] = player2 = new ModulePlayer2();
+	modules[9] = fade = new ModuleFadeToBlack();*/
+	//modules[8] = mainMenu = new ModuleMainMenu();
+
+	
+=======
+	//modules[9] = stage2 = new ModuleStage2();
+>>>>>>> 787fa0edeb0805c359c5340113b4dd5d6d3a505f
+>>>>>>> parent of 9007d1c... resolving merge problems
 
 }	
 
