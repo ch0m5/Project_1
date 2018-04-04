@@ -16,7 +16,11 @@ class ModuleFadeToBlack;
 class ModulePlayer1;
 class ModulePlayer2;
 class ModuleStage1;
+<<<<<<< HEAD
 class ModuleSecondStage;
+=======
+class ModuleMainMenu;
+>>>>>>> afb90c6a89fee0c68193bd2ff67e24fc52b13e97
 
 class Application
 {
@@ -29,10 +33,14 @@ public:
 	ModuleTextures* textures = nullptr;
 	ModuleMixer* mixer = nullptr;
 	ModulePlayer1* player1 = nullptr;
-	ModulePlayer2* player2 = nullptr;		// Player 2 comes before player 1 so that 1 renders over 2.
+	ModulePlayer2* player2 = nullptr;
 	ModuleFadeToBlack* fade = nullptr;
 	ModuleStage1* stage1 = nullptr;
+<<<<<<< HEAD
 	ModuleSecondStage* stage2 = nullptr;
+=======
+	ModuleMainMenu* mainMenu = nullptr;
+>>>>>>> afb90c6a89fee0c68193bd2ff67e24fc52b13e97
 
 public:
 
