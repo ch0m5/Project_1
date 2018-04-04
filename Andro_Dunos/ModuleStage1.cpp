@@ -44,9 +44,8 @@ bool ModuleStage1::Start()
 	background1Text = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/1_Background1.png");
 	bluePlanetText = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/Moon.png");
 
-	App->player1->Enable();
-	App->player2->Enable();
-	App->stage2->Disable();
+	//App->player1->Enable();
+	//App->player2->Enable();
 
 	return ret;
 
@@ -56,15 +55,13 @@ bool ModuleStage1::Start()
 bool ModuleStage1::CleanUp()
 {
 	LOG("Unloading stage 1");
-	App->textures->Unload(map1Text);
-	App->textures->Unload(background1Text);
-	App->textures->Unload(bluePlanetText);
+	//App->textures->Unload(map1Text);
+	//App->textures->Unload(background1Text);
+	//App->textures->Unload(bluePlanetText);
 	
 	LOG("Unloading players");
-	App->player1->Disable();
-	App->player2->Disable();
-
-
+	//App->player1->Disable();
+	//App->player2->Disable();
 
 	return true;
 }
@@ -89,7 +86,7 @@ update_status ModuleStage1::Update()
 	//make so pressing SPACE the other stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
-		App->fade->FadeToBlack(App->stage1, App->stage2, 1);
+		App->fade->FadeToBlack(this, App->stage2, 1);
 	}
 
 	//if (movementx >-2925.0) //2925

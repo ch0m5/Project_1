@@ -6,6 +6,7 @@
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
 #include "ModuleStage1.h"
+#include "ModuleStage2.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
 
@@ -52,9 +53,10 @@ bool ModuleMainMenu::Start()
 	//orangeLettersText = App->textures->Load("Sprites/Backgrounds/1_FullMap.png");
 	//whiteLettersText = App->textures->Load("Sprites/Backgrounds/1_FullMap.png");
 
-	App->player1->Disable();
-	App->player2->Disable();
-	App->stage1->Disable();
+	//App->player1->Disable();
+	//App->player2->Disable();
+	//App->stage1->Disable();
+	//App->stage2->Disable();
 
 	return ret;
 }
