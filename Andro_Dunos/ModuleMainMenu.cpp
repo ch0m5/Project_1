@@ -10,6 +10,7 @@
 #include "ModuleHiScore.h"
 #include "ModuleFadeToBlack.h"
 
+
 ModuleMainMenu::ModuleMainMenu()	//@CarlesHoms
 {
 	//ANDRO DUNOS RECTS
@@ -55,6 +56,8 @@ bool ModuleMainMenu::Start()
 
 	App->player1->Disable();
 	App->player2->Disable();
+
+	
 
 
 	return ret;

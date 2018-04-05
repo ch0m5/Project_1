@@ -18,12 +18,19 @@ public:
 	bool Init();
 	update_status Update();
 	bool CleanUp();
+	
 
 public:
+	int counter = 0;
+	int loop = 0;
 
-	Mix_Music * soundtrack = nullptr;
+	Mix_Music * soundtrack0 = nullptr;
+	Mix_Music * soundtrack1 = nullptr;
+	Mix_Music * soundtrack2 = nullptr;
+	Mix_Music * soundtrack3 = nullptr;
 	Mix_Chunk* shot = nullptr;
 
 };
 
 #endif
+void startMusic();
