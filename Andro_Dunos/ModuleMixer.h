@@ -8,6 +8,14 @@
 typedef struct _Mix_Music Mix_Music;
 struct Mix_Chunk;
 
+enum StageStatus
+{
+	MAIN_MENU,
+	STAGE_1,
+	STAGE_2,
+	CRASHED_SHIP
+};
+
 class ModuleMixer : public Module
 {
 
@@ -21,8 +29,8 @@ public:
 	
 
 public:
-	int counter = 0;
-	int loop = 0;
+	int currentScreen = MAIN_MENU;
+	bool musicRunning = false;
 
 	Mix_Music * soundtrack0 = nullptr;
 	Mix_Music * soundtrack1 = nullptr;
@@ -33,4 +41,3 @@ public:
 };
 
 #endif
-void startMusic();

@@ -83,46 +83,69 @@ update_status ModuleMixer::Update()
 {
 	
 	// laser FX when pressing space
-	if (App->input->keyboard[SDL_SCANCODE_M] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_M] == 1 && currentScreen != MAIN_MENU)
 	{
 
-		Mix_PlayChannel(3, shot, 0);
-		
+		Mix_PlayChannel(3, shot, 0);	
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
+		currentScreen++;
 
-		loop++;
-		if (counter == -1){
-			counter = 0;
-		}
-		if (counter == 10){
-			counter = 2;
-		}
-		if (counter == 20) {
-			counter = 3;
-		}
-		if (counter == 30) {
-			counter = -1;
-		}
+		musicRunning == false;
 
-		counter = loop;
+		if (currentScreen == 4)
+			currentScreen = MAIN_MENU;
 	}
-	
- 	if (counter == 0 && loop !=0)
+
+ 	if (currentScreen == MAIN_MENU && musicRunning == false)
 	{
-		
 		soundtrack0 = Mix_LoadMUS("Music/02_Title.ogg");
-		
+
 		Mix_FadeInMusic(soundtrack0, 1, 1000);
 
 		Mix_VolumeMusic(MUSIC);
+
+		musicRunning = true;
 	}
 
+	else if (currentScreen == STAGE_1 && musicRunning == false)
+	{
+		soundtrack0 = Mix_LoadMUS("Music/04_Stage_1-The Moon-Loop.ogg");
+
+		Mix_FadeInMusic(soundtrack0, 1, 1000);
+
+		Mix_VolumeMusic(MUSIC);
+
+		musicRunning = true;
+	}
+
+	else if (currentScreen == STAGE_2 && musicRunning == false)
+	{
+		soundtrack0 = Mix_LoadMUS("Music/07_Stage_2 -Mechanized-Unit-Loop.ogg");
+
+		Mix_FadeInMusic(soundtrack0, 1, 1000);
+
+		Mix_VolumeMusic(MUSIC);
+
+		musicRunning = true;
+	}
+
+	else if (currentScreen == CRASHED_SHIP && musicRunning == false)
+	{
+		soundtrack0 = Mix_LoadMUS("Music/18_Game_Over.ogg");
+
+		Mix_FadeInMusic(soundtrack0, 1, 1000);
+
+		Mix_VolumeMusic(MUSIC);
+
+		musicRunning = true;
+	}
+	/*
   	else if (counter == 1)
 	{
-	
+
 		soundtrack0 = nullptr;
 		Mix_FreeMusic(soundtrack0);
 
@@ -162,7 +185,7 @@ update_status ModuleMixer::Update()
 		counter = 30;
 
 	}
-
+	*/
 
 	return update_status::UPDATE_CONTINUE;
 }

@@ -21,7 +21,7 @@ ModuleStage1::ModuleStage1()	//@AndresSaladrigas
 
 	//map1Rect	
 	map1Rect.x = 0;
-	map1Rect.y = 60; // 60
+	map1Rect.y = 58; // 60
 	map1Rect.w = 9305;
 	map1Rect.h = 505;
 
@@ -40,13 +40,15 @@ bool ModuleStage1::Start()
 {
 	LOG("Loading background assets");	// Temporal, must decide if we load a full image,
 	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
-	map1Text = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/1_FullMap1.png");
+
+	
 	background1Text = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/1_Background1.png");
 	bluePlanetText = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/Moon.png");
+ 	map1Text = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/FullMap1.png");
 
 	App->player1->Enable();
 	App->player2->Enable();
-	
+	 // we shoukd log the problem if not loaded correctly
 	
 	return ret;
 
