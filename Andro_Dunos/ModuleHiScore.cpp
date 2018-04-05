@@ -9,6 +9,8 @@
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
 #include "ModuleHiScore.h"
+#include "ModuleMainMenu.h"
+
 
 
 ModuleHiScore::ModuleHiScore()	//@DídacRomero
@@ -46,6 +48,12 @@ update_status ModuleHiScore::Update()
 	{
 		ySpeedAnimation -= 1;
 	}
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	{
+		App->fade->FadeToBlack(App->scene_HiScore, App->mainMenu, 1);
+	}
+
+
 	return UPDATE_CONTINUE;
 }
 

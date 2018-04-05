@@ -218,7 +218,7 @@ update_status ModulePlayer1::Update()
 
 bool ModulePlayer1::CleanUp()
 {
-	LOG("Unloading player 2");
+	LOG("Unloading player 1");
 	App->textures->Unload(graphics);
 
 	App->player1->Disable();

@@ -40,9 +40,8 @@ bool ModuleStage2::Start()
 {
 	LOG("Loading background assets");	// Temporal, must decide if we load a full image,
 	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
-	map2Text = App->textures->Load("Sprites/Levels/STAGE 2/Tileset/Background_lvl_2.png");
-	background2Text = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/1_Background1.png");
-	/*bluePlanetText = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/Moon.png");*/
+	
+	background2Text = App->textures->Load("Sprites/Levels/STAGE 2/Tileset/Background_lvl_2.png");
 
 	App->player1->Enable();
 	App->player2->Enable();
@@ -57,6 +56,7 @@ bool ModuleStage2::CleanUp()
 	
 
 	//LOG("Unloading players stage");
+	App->textures->Unload(background2Text);
 
 	return true;
 }
@@ -69,14 +69,6 @@ update_status ModuleStage2::Update()
 	// Draw everything -------------------------------------- Andro Dunos
 	App->render->Blit(background2Text, movementxBack, 27, &background2Rect); // level background
 
-	//App->render->Blit(map2Text, movementx, 0, &map2Rect); // level map
-
-	//App->render->Blit(bluePlanetText, 500 + movementxPlanetsBack, -10, &bluePlanetRect); // Moon
-
-	//movementx -= 0.83f; // for movement in x direction
-	//LOG("%0.3f", movementx);
-	//movementxBack -= 0.38f;
-	//movementxPlanetsBack -= 0.2f;
 
 	//make so pressing SPACE the other stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)

@@ -55,8 +55,7 @@ bool ModuleMainMenu::Start()
 
 	App->player1->Disable();
 	App->player2->Disable();
-	App->stage1->Disable();
-	App->scene_HiScore->Disable();
+
 
 	return ret;
 }
@@ -79,6 +78,9 @@ update_status ModuleMainMenu::Update()
 
 bool ModuleMainMenu::CleanUp()
 {
+	App->player1->Disable();
+	App->player2->Disable();
+	
 	LOG("Unloading Main Menu");
 	App->textures->Unload(backgroundText);
 	App->textures->Unload(titleText);
