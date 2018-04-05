@@ -7,6 +7,7 @@
 #include "ModulePlayer2.h"
 #include "ModuleStage1.h"
 #include "ModuleInput.h"
+#include "ModuleHiScore.h"
 #include "ModuleFadeToBlack.h"
 
 ModuleMainMenu::ModuleMainMenu()	//@CarlesHoms
@@ -55,6 +56,7 @@ bool ModuleMainMenu::Start()
 	App->player1->Disable();
 	App->player2->Disable();
 	App->stage1->Disable();
+	App->scene_HiScore->Disable();
 
 	return ret;
 }

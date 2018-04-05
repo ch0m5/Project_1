@@ -10,6 +10,7 @@
 #include "ModuleMainMenu.h"
 #include "ModuleStage1.h"
 #include "ModuleStage2.h"
+#include "ModuleHiScore.h"
 
 Application::Application()
 {
@@ -21,8 +22,9 @@ Application::Application()
 	modules[5] = player1 = new ModulePlayer1();
 	modules[6] = player2 = new ModulePlayer2();
 	modules[7] = stage1 = new ModuleStage1();
-	modules[8] = mainMenu = new ModuleMainMenu();
-	modules[9] = fade = new ModuleFadeToBlack();
+	modules[8] = scene_HiScore = new ModuleHiScore();
+	modules[9] = mainMenu = new ModuleMainMenu();
+	modules[10] = fade = new ModuleFadeToBlack();
 	//modules[9] = stage2 = new ModuleStage2();
 
 }	

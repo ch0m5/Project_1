@@ -8,7 +8,7 @@
 #include "ModuleStage2.h"
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
-
+#include "ModuleHiScore.h"
 
 ModuleStage1::ModuleStage1()	//@AndresSaladrigas
 {
@@ -88,7 +88,7 @@ update_status ModuleStage1::Update()
 	{
 		App->fade->FadeToBlack(App->stage1, App->stage2, 1);
 	}*/
-
+	
 	//if (movementx >-2925.0) //2925
 	//movementx -= 0.83f; // for movement in x direction
 	////if (movementx == -2925.0 && movementy > -280.0) 

@@ -74,6 +74,9 @@
     <ClInclude Include="ModuleStage2.h">
       <Filter>ModulesStages</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleHiScore.h">
+      <Filter>ModulesStages</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -119,6 +122,9 @@
       <Filter>ModulesStages</Filter>
     </ClCompile>
     <ClCompile Include="ModuleStage2.cpp">
+      <Filter>ModulesStages</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleHiScore.cpp">
       <Filter>ModulesStages</Filter>
     </ClCompile>
   </ItemGroup>
