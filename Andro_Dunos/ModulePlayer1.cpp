@@ -56,9 +56,7 @@ ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 	superUpwardsBooster.PushBack({ 0, 0, 12, 17 });
 	superUpwardsBooster.PushBack({ 73, 63, 12, 17 });
 	superUpwardsBooster.PushBack({ 0, 0, 12, 17 });
-	superUpwardsBooster.PushBack({ 59, 63, 12, 17 });
-	superUpwardsBooster.PushBack({ 0, 0, 12, 17 });
-	superUpwardsBooster.speed = 1.2f;
+	superUpwardsBooster.speed = 1.4f;
 
 	upwards.PushBack({ 94, 87, 27, 17 });
 	upwards.speed = 1.2f;
@@ -69,9 +67,7 @@ ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 	upwardsBooster.PushBack({ 0, 0, 12, 17 });
 	upwardsBooster.PushBack({ 74, 86, 12, 17 });
 	upwardsBooster.PushBack({ 0, 0, 12, 17 });
-	upwardsBooster.PushBack({ 60, 86, 12, 17 });
-	upwardsBooster.PushBack({ 0, 0, 12, 17 });
-	upwardsBooster.speed = 1.2f;
+	upwardsBooster.speed = 1.4f;
 
 	idle.PushBack({ 94, 108, 27, 17 });
 	idle.speed = 1.2f;
@@ -82,9 +78,7 @@ ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 	idleBooster.PushBack({ 0, 0, 12, 17 });
 	idleBooster.PushBack({ 74, 109, 12, 17 });
 	idleBooster.PushBack({ 0, 0, 12, 17 });
-	idleBooster.PushBack({ 62, 109, 12, 17 });
-	idleBooster.PushBack({ 0, 0, 12, 17 });
-	idleBooster.speed = 1.2f;
+	idleBooster.speed = 1.4f;
 
 	downwards.PushBack({ 94, 131, 27, 17 });
 	downwards.speed = 1.2f;
@@ -95,9 +89,7 @@ ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 	downwardsBooster.PushBack({ 0, 0, 12, 17 });
 	downwardsBooster.PushBack({ 74, 133, 12, 17 });
 	downwardsBooster.PushBack({ 0, 0, 12, 17 });
-	downwardsBooster.PushBack({ 60, 133, 12, 17 });
-	downwardsBooster.PushBack({ 0, 0, 12, 17 });
-	downwardsBooster.speed = 1.2f;
+	downwardsBooster.speed = 1.4f;
 
 	superDownwards.PushBack({ 94, 153, 27, 17 });
 	superDownwards.speed = 1.2f;
@@ -108,9 +100,7 @@ ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 	superDownwardsBooster.PushBack({ 0, 0, 12, 17 });
 	superDownwardsBooster.PushBack({ 74, 153, 12, 17 });
 	superDownwardsBooster.PushBack({ 0, 0, 12, 17 });
-	superDownwardsBooster.PushBack({ 60, 153, 12, 17 });
-	superDownwardsBooster.PushBack({ 0, 0, 12, 17 });
-	superDownwardsBooster.speed = 1.2f;
+	superDownwardsBooster.speed = 1.4f;
 }
 
 ModulePlayer1::~ModulePlayer1()
