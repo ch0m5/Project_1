@@ -3,9 +3,9 @@
 #include "ModuleTextures.h"
 #include "ModuleRender.h"
 #include "ModuleStage1.h"
+#include "ModuleStage2.h"
 #include "ModuleInput.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleStage2.h"
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
 #include "ModuleHiScore.h"
@@ -104,6 +104,10 @@ update_status ModuleStage1::Update()
 	//	movementx -= 0.83f;
 	//}//@andressala
 
+	/*if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	{
+		App->fade->FadeToBlack(this, App->stage2, 0.5);
+	}*/
 
 	return UPDATE_CONTINUE;
 }

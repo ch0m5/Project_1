@@ -19,13 +19,13 @@ Application::Application()
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = mixer = new ModuleMixer();
-	modules[5] = stage1 = new ModuleStage1();
-	modules[6] = player1 = new ModulePlayer1();
-	modules[7] = player2 = new ModulePlayer2();
-	modules[8] = scene_HiScore = new ModuleHiScore();
-	modules[9] = mainMenu = new ModuleMainMenu();
-	modules[10] = fade = new ModuleFadeToBlack();
-	//modules[9] = stage2 = new ModuleStage2();
+	modules[5] = scene_HiScore = new ModuleHiScore();
+	modules[6] = stage2 = new ModuleStage2();
+	modules[7] = stage1 = new ModuleStage1();
+	modules[8] = player1 = new ModulePlayer1();
+	modules[9] = player2 = new ModulePlayer2();
+	modules[10] = mainMenu = new ModuleMainMenu();
+	modules[11] = fade = new ModuleFadeToBlack();
 
 }	
 
@@ -38,6 +38,12 @@ Application::~Application()
 bool Application::Init()
 {
 	bool ret = true;
+
+	stage1->Disable();
+	stage2->Disable();
+	scene_HiScore->Disable();
+	player1->Disable();
+	player2->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

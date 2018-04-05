@@ -22,16 +22,16 @@ public:
 
 	SDL_Texture* background2Text = nullptr;		//
 	SDL_Texture* map2Text = nullptr;			//
-	//SDL_Texture* bluePlanetText = nullptr;		//
+												//SDL_Texture* bluePlanetText = nullptr;		//
 
 												//Rectangles
 
 	SDL_Rect background2Rect;	//
 	SDL_Rect map2Rect;			//
-	//SDL_Rect bluePlanetRect;	//
+								//SDL_Rect bluePlanetRect;	//
 
 
-	float movementx = 48 ;
+	float movementx = 48;
 	float movementxBack = 0;
 	float movementxPlanetsBack = 0;
 	float movementy = -55;

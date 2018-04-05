@@ -31,6 +31,8 @@ bool ModuleHiScore::Start()
 	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
 	hiScoreBackTex = App->textures->Load("Sprites/User_Interface/Grafical_Interface/game_over_background.png");
 
+
+
 	return ret;
 }
 
