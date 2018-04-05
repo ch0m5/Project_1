@@ -21,7 +21,7 @@ enum update_status
 typedef unsigned int uint;
 
 // Configuration -----------
-#define SCREEN_SIZE 3
+#define SCREEN_SIZE 3		// Multiplies the screen size and resolution
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 224
 #define WIN_FULLSCREEN 0
@@ -29,6 +29,6 @@ typedef unsigned int uint;
 #define WIN_BORDERLESS 0
 #define WIN_RESIZABLE 0
 #define REN_VSYNC 1
-#define VERSION " (v0.1.2)"
+#define VERSION " (v0.1.2)"		// Adds to the window name "Andro Dunos", used to mark the current working version
 
 #endif // __GLOBALS_H__

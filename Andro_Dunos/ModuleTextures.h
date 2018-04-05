@@ -4,7 +4,7 @@
 #include "Module.h"
 #include "Globals.h"
 
-#define MAX_TEXTURES 50
+#define MAX_TEXTURES 50	// Maximum possible textures.
 
 struct SDL_Texture;
 
@@ -21,7 +21,7 @@ public:
 	bool Unload(SDL_Texture* texture);
 
 public:
-	SDL_Texture* textures[MAX_TEXTURES];
+	SDL_Texture* textures[MAX_TEXTURES];	// Array of textures, allocates all textures and limitates the amount possible
 	uint last_texture = 0;
 };
 

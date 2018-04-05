@@ -32,7 +32,7 @@ bool ModuleWindow::Init()
 
 		char* windowName;
 
-		Uint32 flags = SDL_WINDOW_SHOWN;
+		Uint32 flags = SDL_WINDOW_SHOWN;	// Change flags value depending on the input parameters coming from global defines
 
 		if(WIN_FULLSCREEN == true)
 			flags |= SDL_WINDOW_FULLSCREEN;

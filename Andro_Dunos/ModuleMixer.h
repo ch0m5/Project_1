@@ -8,7 +8,7 @@
 typedef struct _Mix_Music Mix_Music;
 struct Mix_Chunk;
 
-enum StageStatus
+enum StageStatus	// Signals which screen we are currently in
 {
 	MAIN_MENU,
 	STAGE_1,
@@ -29,8 +29,8 @@ public:
 	
 
 public:
-	int currentScreen = MAIN_MENU;
-	bool musicRunning = false;
+	int currentScreen = MAIN_MENU;	// Variable that will update to current screen
+	bool musicRunning = false;		// Flag for music playing
 
 	Mix_Music * soundtrack0 = nullptr;
 	Mix_Music * soundtrack1 = nullptr;

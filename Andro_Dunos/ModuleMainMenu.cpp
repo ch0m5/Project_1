@@ -57,9 +57,6 @@ bool ModuleMainMenu::Start()
 	App->player1->Disable();
 	App->player2->Disable();
 
-	
-
-
 	return ret;
 }
 

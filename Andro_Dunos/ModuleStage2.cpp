@@ -54,7 +54,6 @@ bool ModuleStage2::CleanUp()
 	App->player1->Disable();
 	App->player2->Disable();
 	
-
 	//LOG("Unloading players stage");
 	App->textures->Unload(background2Text);
 
@@ -64,11 +63,8 @@ bool ModuleStage2::CleanUp()
 // Update: draw background
 update_status ModuleStage2::Update()
 {
-
-
 	// Draw everything -------------------------------------- Andro Dunos
 	App->render->Blit(background2Text, movementxBack, 0, &background2Rect); // level background
-
 
 	//make so pressing SPACE the other stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
@@ -90,7 +86,6 @@ update_status ModuleStage2::Update()
 	//{
 	//	movementx -= 0.83f;
 	//}//@andressala
-
 
 	return UPDATE_CONTINUE;
 }

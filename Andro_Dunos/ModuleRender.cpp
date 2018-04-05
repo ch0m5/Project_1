@@ -7,7 +7,7 @@
 
 ModuleRender::ModuleRender() : Module()
 {
-	camera.x = camera.y = 0;
+	camera.x = camera.y = 0;	// Camera square values, occupies whole screen.
 	camera.w = SCREEN_WIDTH;
 	camera.h = SCREEN_HEIGHT;
 }
@@ -47,7 +47,7 @@ update_status ModuleRender::PreUpdate()
 	return update_status::UPDATE_CONTINUE;
 }
 
-update_status ModuleRender::Update()	
+update_status ModuleRender::Update()	// Used for the camera movement, reacts to keys pressed to move the screen around (window != screen)
 {
 	/* Camera movement, which we don't need
 	int speed = 3;
@@ -72,7 +72,7 @@ update_status ModuleRender::Update()
 
 update_status ModuleRender::PostUpdate()
 {
-	SDL_RenderPresent(renderer);
+	SDL_RenderPresent(renderer);	// Prints all rendered stuff
 	return update_status::UPDATE_CONTINUE;
 }
 
@@ -91,7 +91,7 @@ bool ModuleRender::CleanUp()
 }
 
 // Blit to screen
-bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, float speed)
+bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, float speed)	// Prints a texture cutout in a section of the screen, based on camera movement and position
 {
 	bool ret = true;
 	SDL_Rect rect;

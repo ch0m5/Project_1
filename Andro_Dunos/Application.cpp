@@ -26,7 +26,6 @@ Application::Application()
 	modules[9] = player1 = new ModulePlayer1();
 	modules[10] = player2 = new ModulePlayer2();
 	modules[11] = fade = new ModuleFadeToBlack();
-	//modules[9] = stage2 = new ModuleStage2();
 
 }	
 
@@ -40,10 +39,11 @@ bool Application::Init()
 {
 	bool ret = true;
 
-	// Player will be enabled on the first update of a new scene
+	// Player will be disabled on the first update of a new scene
 	player1->Disable();
 	player2->Disable();
-	// Disable the map that you do not start with
+
+	// Disable all maps that you do not start with
 	stage1->Disable();
 	stage2->Disable(); 
 	scene_HiScore->Disable();

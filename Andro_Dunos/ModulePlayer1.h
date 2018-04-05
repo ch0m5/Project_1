@@ -22,7 +22,7 @@ public:
 
 	SDL_Texture* graphics = nullptr;
 
-	Animation superUpwards;
+	Animation superUpwards;			// All animations, 1 for each ship and booster sprite
 	Animation superUpwardsBooster;
 	Animation upwards;
 	Animation upwardsBooster;

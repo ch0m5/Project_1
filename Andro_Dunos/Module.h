@@ -20,7 +20,7 @@ public:
 
 	bool IsEnabled() const { return enabled; }
 
-	void Enable()
+	void Enable()	// Activates the Start() function of a class
 	{
 		if (enabled == false)
 		{
@@ -29,7 +29,7 @@ public:
 		}
 	}
 
-	void Disable()
+	void Disable()	// Activates the CleanUp() function of a class
 	{
 		if (enabled == true)
 		{

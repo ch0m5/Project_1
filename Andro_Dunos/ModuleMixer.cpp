@@ -7,7 +7,7 @@
 
 #pragma comment(lib, "SDL_mixer/libx86/SDL2_mixer.lib")
 
-#define MUSIC 60
+#define MUSIC 60	// Volume values
 #define FX 70
 
 ModuleMixer::ModuleMixer() : Module() {}
@@ -16,7 +16,6 @@ ModuleMixer::~ModuleMixer() {}
 
 bool ModuleMixer::Init()
 {
-
 	LOG("Creating the music");
 	bool ret = true;
 
@@ -25,7 +24,6 @@ bool ModuleMixer::Init()
 		LOG("Broken: %s ", SDL_GetError());
 		ret = false;
 	}
-
 
 	else
 	{ 
@@ -56,7 +54,6 @@ bool ModuleMixer::Init()
 	}
 
 	return ret;
-
 }
 
 bool ModuleMixer::CleanUp()
@@ -68,7 +65,7 @@ bool ModuleMixer::CleanUp()
 		/*Mix_FreeMusic(soundtrack1);
 		Mix_FreeMusic(soundtrack2);
 		Mix_FreeMusic(soundtrack3);
-*/
+		*/
 	}
 	if (shot != nullptr)
 	{
@@ -82,14 +79,14 @@ bool ModuleMixer::CleanUp()
 update_status ModuleMixer::Update()
 {
 	
-	// laser FX when pressing space
+	// Kaser FX when pressing space
 	if (App->input->keyboard[SDL_SCANCODE_M] == 1 && currentScreen != MAIN_MENU)
 	{
 
 		Mix_PlayChannel(3, shot, 0);	
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)	// When Spacebar is pressed, change currentScreen to the next and signal that the music must stop
 	{
 		currentScreen++;
 
@@ -99,7 +96,7 @@ update_status ModuleMixer::Update()
 			currentScreen = MAIN_MENU;
 	}
 
- 	if (currentScreen == MAIN_MENU && musicRunning == false)
+ 	if (currentScreen == MAIN_MENU && musicRunning == false)	// Condition for every stage so it initializes the music (and sounds?) needed.
 	{
 		soundtrack0 = Mix_LoadMUS("Music/02_Title.ogg");
 
@@ -142,50 +139,6 @@ update_status ModuleMixer::Update()
 
 		musicRunning = true;
 	}
-	/*
-  	else if (counter == 1)
-	{
-
-		soundtrack0 = nullptr;
-		Mix_FreeMusic(soundtrack0);
-
-		soundtrack0 = Mix_LoadMUS("Music/04_Stage_1-The Moon-Loop.ogg");
-
-		Mix_FadeInMusic(soundtrack0, -1, 1000);
-
-		Mix_VolumeMusic(MUSIC);
-		counter = 10;
-	}
-
-	else if (counter == 2)
-	{
-		
-		soundtrack0 = nullptr;
-		Mix_FreeMusic(soundtrack0);
-
-		soundtrack0 = Mix_LoadMUS("Music/07_Stage_2 -Mechanized-Unit-Loop.ogg");
-
-		Mix_FadeInMusic(soundtrack0, -1, 1000);
-
-		Mix_VolumeMusic(MUSIC);
-		counter = 20;
-	}
-
-	else if (counter == 3)
-	{
-		
-		soundtrack0 = nullptr;
-		Mix_FreeMusic(soundtrack0);
-
-		soundtrack0 = Mix_LoadMUS("Music/18_Game_Over.ogg");
-
-		Mix_FadeInMusic(soundtrack0, 1, 1000);
-
-		Mix_VolumeMusic(MUSIC);
-		counter = 30;
-
-	}
-	*/
 
 	return update_status::UPDATE_CONTINUE;
 }

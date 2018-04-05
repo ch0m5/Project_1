@@ -18,20 +18,18 @@ public:
 	bool CleanUp();
 
 public:
-												//Textures
+	//Textures
+	SDL_Texture* backgroundText = nullptr;
+	SDL_Texture* titleText = nullptr;
+	SDL_Texture* viscoGamesText = nullptr;
+	//SDL_Texture* orangeLettersText = nullptr;
+	//SDL_Texture* whiteLettersText = nullptr;
 
-	SDL_Texture* backgroundText = nullptr;		//
-	SDL_Texture* titleText = nullptr;			//
-	SDL_Texture* viscoGamesText = nullptr;		//
-	//SDL_Texture* orangeLettersText = nullptr;	//
-	//SDL_Texture* whiteLettersText = nullptr;	//
-
-												//Rectangles
-
-	SDL_Rect backgroundRect;	//
-	SDL_Rect titleBoxRect;		//
-	SDL_Rect titleRect;			//
-	SDL_Rect viscoGamesRect;	//
+	//Rectangles
+	SDL_Rect backgroundRect;
+	SDL_Rect titleBoxRect;
+	SDL_Rect titleRect;
+	SDL_Rect viscoGamesRect;
 };
 
 #endif

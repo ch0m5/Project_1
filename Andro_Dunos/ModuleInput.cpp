@@ -32,12 +32,12 @@ update_status ModuleInput::PreUpdate()
 {
 	SDL_PumpEvents();
 
-	keyboard = SDL_GetKeyboardState(NULL);
+	keyboard = SDL_GetKeyboardState(NULL);	// If the Escape key is pressed, exit game
 
 	if(keyboard[SDL_SCANCODE_ESCAPE])
 		return update_status::UPDATE_STOP;
 	
-	while (SDL_PollEvent(&event))
+	while (SDL_PollEvent(&event))	// If the windows application is required to quit (press x button), exit game
 	{
 		if (event.type == SDL_QUIT)
 		{

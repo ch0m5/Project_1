@@ -7,7 +7,7 @@
 
 ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 {
-	position.x = 0;
+	position.x = 0;							// Starting point of the ship (using p2Point)
 	position.y = SCREEN_HEIGHT / 2 - 10;
 
 	movVertical = 0;
@@ -46,6 +46,7 @@ ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 	12, 17; size
 	*/
 
+	// All ship and booster animations
 	superUpwards.PushBack({ 94, 66, 27, 17 });
 	superUpwards.speed = 1.2f;
 
@@ -125,7 +126,7 @@ bool ModulePlayer1::Start()
 }
 
 // Update: draw background
-update_status ModulePlayer1::Update()
+update_status ModulePlayer1::Update()	// Ship and booster animation used based on movVertical value, which changes on pressing UP and DOWN keys or neither
 {
 	Animation* current_animation = &idle;
 	Animation* propeller_animation = &idleBooster;
@@ -175,7 +176,7 @@ update_status ModulePlayer1::Update()
 		position.x += speed;
 	}
 
-	// Depending on the vertical counter, we decide the frame
+	// Depending on the vertical counter, we decide the animation
 	if (movVertical >= maxVertical)
 	{
 		current_animation = &superUpwards;
@@ -208,9 +209,9 @@ update_status ModulePlayer1::Update()
 
 	// Draw everything --------------------------------------
 	SDL_Rect r = current_animation->GetCurrentFrame();
-	SDL_Rect b = propeller_animation->GetCurrentFrame();
+	SDL_Rect p = propeller_animation->GetCurrentFrame();
 
-	App->render->Blit(graphics, position.x-12, position.y - r.h, &b);
+	App->render->Blit(graphics, position.x-12, position.y - r.h, &p);
 	App->render->Blit(graphics, position.x, position.y - r.h, &r);
 
 	return UPDATE_CONTINUE;

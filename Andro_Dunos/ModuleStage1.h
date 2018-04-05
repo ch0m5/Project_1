@@ -19,22 +19,20 @@ public:
 
 public:
 	//Textures
-
-	SDL_Texture* background1Text = nullptr;		//
-	SDL_Texture* map1Text = nullptr;			//
-	SDL_Texture* bluePlanetText = nullptr;		//
+	SDL_Texture* background1Text = nullptr;
+	SDL_Texture* map1Text = nullptr;
+	SDL_Texture* bluePlanetText = nullptr;
 
 	//Rectangles
+	SDL_Rect background1Rect;
+	SDL_Rect map1Rect;
+	SDL_Rect bluePlanetRect;
 
-	SDL_Rect background1Rect;	//
-	SDL_Rect map1Rect;			//
-	SDL_Rect bluePlanetRect;	//
-
-
+	// Background movement (position) values
 	float movementx = 0;
 	float movementxBack = 0;
 	float movementxPlanetsBack = 0;
-	float movementy = -55; 
+	float movementy = -55;
 };
 
 #endif
