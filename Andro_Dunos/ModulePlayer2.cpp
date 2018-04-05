@@ -23,92 +23,92 @@ ModulePlayer2::ModulePlayer2()	//@CarlesHoms
 	154, 153; superdown
 	27, 17; size
 
-	42, 62; superup first flame
-	60, 62; superup second flame
-	73, 62; superup third flame
+	42, 63; superup first flame
+	59, 63; superup second flame
+	73, 63; superup third flame
+	
+	43, 86; up first flame
+	60, 86; up second flame
+	74, 86; up third flame
 
-	42, 91; up first flame
-	60, 91; up second flame
-	73, 91; up third flame
+	43, 109; idle first flame
+	62, 109; idle second flame
+	74, 109; idle third flame
 
-	42, 108; idle first flame
-	60, 108; idle second flame
-	73, 108; idle third flame
+	43, 133; down first flame
+	60, 133; down second flame
+	74, 133; down third flame
 
-	42, 134; down first flame
-	60, 134; down second flame
-	73, 134; down third flame
-
-	42, 155; superdown first flame
-	60, 155; superdown second flame
-	73, 155; superdown third flame
+	43, 153; superdown first flame
+	60, 153; superdown second flame
+	74, 153; superdown third flame
 
 	12, 17; size
 	*/
 
 	// All ship and booster animations
 	superUpwards.PushBack({ 154, 66, 27, 17 });
-	superUpwards.speed = 0.1f;
+	superUpwards.speed = 1.2f;
 
-	superUpwardsBooster.PushBack({ 43, 63, 12, 17 });
+	superUpwardsBooster.PushBack({ 42, 63, 12, 17 });
 	superUpwardsBooster.PushBack({ 0, 0, 12, 17 });
-	superUpwardsBooster.PushBack({ 62, 63, 12, 17 });
+	superUpwardsBooster.PushBack({ 59, 63, 12, 17 });
 	superUpwardsBooster.PushBack({ 0, 0, 12, 17 });
-	superUpwardsBooster.PushBack({ 74, 63, 12, 17 });
+	superUpwardsBooster.PushBack({ 73, 63, 12, 17 });
 	superUpwardsBooster.PushBack({ 0, 0, 12, 17 });
-	superUpwardsBooster.PushBack({ 62, 63, 12, 17 });
+	superUpwardsBooster.PushBack({ 59, 63, 12, 17 });
 	superUpwardsBooster.PushBack({ 0, 0, 12, 17 });
 	superUpwardsBooster.speed = 1.2f;
 
 	upwards.PushBack({ 154, 87, 27, 17 });
-	upwards.speed = 0.1f;
+	upwards.speed = 1.2f;
 
-	upwardsBooster.PushBack({ 43, 87, 12, 17 });
+	upwardsBooster.PushBack({ 43, 86, 12, 17 });
 	upwardsBooster.PushBack({ 0, 0, 12, 17 });
-	upwardsBooster.PushBack({ 62, 87, 12, 17 });
+	upwardsBooster.PushBack({ 60, 86, 12, 17 });
 	upwardsBooster.PushBack({ 0, 0, 12, 17 });
-	upwardsBooster.PushBack({ 74, 87, 12, 17 });
+	upwardsBooster.PushBack({ 74, 86, 12, 17 });
 	upwardsBooster.PushBack({ 0, 0, 12, 17 });
-	upwardsBooster.PushBack({ 62, 87, 12, 17 });
+	upwardsBooster.PushBack({ 60, 86, 12, 17 });
 	upwardsBooster.PushBack({ 0, 0, 12, 17 });
 	upwardsBooster.speed = 1.2f;
 
 	idle.PushBack({ 154, 108, 27, 17 });
-	idle.speed = 0.1f;
+	idle.speed = 1.2f;
 
-	idleBooster.PushBack({ 43, 108, 12, 17 });
+	idleBooster.PushBack({ 43, 109, 12, 17 });
 	idleBooster.PushBack({ 0, 0, 12, 17 });
-	idleBooster.PushBack({ 62, 108, 12, 17 });
+	idleBooster.PushBack({ 62, 109, 12, 17 });
 	idleBooster.PushBack({ 0, 0, 12, 17 });
-	idleBooster.PushBack({ 74, 108, 12, 17 });
+	idleBooster.PushBack({ 74, 109, 12, 17 });
 	idleBooster.PushBack({ 0, 0, 12, 17 });
-	idleBooster.PushBack({ 62, 108, 12, 17 });
+	idleBooster.PushBack({ 62, 109, 12, 17 });
 	idleBooster.PushBack({ 0, 0, 12, 17 });
 	idleBooster.speed = 1.2f;
 
 	downwards.PushBack({ 154, 131, 27, 17 });
-	downwards.speed = 0.1f;
+	downwards.speed = 1.2f;
 
-	downwardsBooster.PushBack({ 43, 131, 12, 17 });
+	downwardsBooster.PushBack({ 43, 133, 12, 17 });
 	downwardsBooster.PushBack({ 0, 0, 12, 17 });
-	downwardsBooster.PushBack({ 62, 131, 12, 17 });
+	downwardsBooster.PushBack({ 60, 133, 12, 17 });
 	downwardsBooster.PushBack({ 0, 0, 12, 17 });
-	downwardsBooster.PushBack({ 74, 131, 12, 17 });
+	downwardsBooster.PushBack({ 74, 133, 12, 17 });
 	downwardsBooster.PushBack({ 0, 0, 12, 17 });
-	downwardsBooster.PushBack({ 62, 131, 12, 17 });
+	downwardsBooster.PushBack({ 60, 133, 12, 17 });
 	downwardsBooster.PushBack({ 0, 0, 12, 17 });
 	downwardsBooster.speed = 1.2f;
 
 	superDownwards.PushBack({ 154, 153, 27, 17 });
-	superDownwards.speed = 0.1f;
+	superDownwards.speed = 1.2f;
 
 	superDownwardsBooster.PushBack({ 43, 153, 12, 17 });
 	superDownwardsBooster.PushBack({ 0, 0, 12, 17 });
-	superDownwardsBooster.PushBack({ 62, 153, 12, 17 });
+	superDownwardsBooster.PushBack({ 60, 153, 12, 17 });
 	superDownwardsBooster.PushBack({ 0, 0, 12, 17 });
 	superDownwardsBooster.PushBack({ 74, 153, 12, 17 });
 	superDownwardsBooster.PushBack({ 0, 0, 12, 17 });
-	superDownwardsBooster.PushBack({ 62, 153, 12, 17 });
+	superDownwardsBooster.PushBack({ 60, 153, 12, 17 });
 	superDownwardsBooster.PushBack({ 0, 0, 12, 17 });
 	superDownwardsBooster.speed = 1.2f;
 }
