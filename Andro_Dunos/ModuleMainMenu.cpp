@@ -6,12 +6,14 @@
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
 #include "ModuleStage1.h"
+#include "ModuleStage2.h"
 #include "ModuleInput.h"
 #include "ModuleHiScore.h"
 #include "ModuleFadeToBlack.h"
 
 ModuleMainMenu::ModuleMainMenu()	//@CarlesHoms
 {
+
 	//ANDRO DUNOS RECTS
 
 	// BackgroundRect
@@ -53,10 +55,13 @@ bool ModuleMainMenu::Start()
 	//orangeLettersText = App->textures->Load("Sprites/Backgrounds/1_FullMap.png");
 	//whiteLettersText = App->textures->Load("Sprites/Backgrounds/1_FullMap.png");
 
+<<<<<<< HEAD
 	App->player1->Disable();
 	App->player2->Disable();
 
 
+=======
+>>>>>>> d94a0047b6e57e5fa10088ea04afaaaac943448a
 	return ret;
 }
 

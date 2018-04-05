@@ -19,6 +19,7 @@ Application::Application()
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = mixer = new ModuleMixer();
+<<<<<<< HEAD
 	modules[5] = stage1 = new ModuleStage1();
 	modules[6] = scene_HiScore = new ModuleHiScore();
 	modules[7] = mainMenu = new ModuleMainMenu();
@@ -26,6 +27,15 @@ Application::Application()
 	modules[9] = player2 = new ModulePlayer2();
 	modules[10] = fade = new ModuleFadeToBlack();
 	//modules[9] = stage2 = new ModuleStage2();
+=======
+	modules[5] = scene_HiScore = new ModuleHiScore();
+	modules[6] = stage2 = new ModuleStage2();
+	modules[7] = stage1 = new ModuleStage1();
+	modules[8] = player1 = new ModulePlayer1();
+	modules[9] = player2 = new ModulePlayer2();
+	modules[10] = mainMenu = new ModuleMainMenu();
+	modules[11] = fade = new ModuleFadeToBlack();
+>>>>>>> d94a0047b6e57e5fa10088ea04afaaaac943448a
 
 }	
 
@@ -39,6 +49,7 @@ bool Application::Init()
 {
 	bool ret = true;
 
+<<<<<<< HEAD
 	// Player will be enabled on the first update of a new scene
 	player1->Disable();
 	player2->Disable();
@@ -46,6 +57,13 @@ bool Application::Init()
 	stage1->Disable();
 	//stage2->Disable(); 
 	scene_HiScore->Disable();
+=======
+	stage1->Disable();
+	stage2->Disable();
+	scene_HiScore->Disable();
+	player1->Disable();
+	player2->Disable();
+>>>>>>> d94a0047b6e57e5fa10088ea04afaaaac943448a
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

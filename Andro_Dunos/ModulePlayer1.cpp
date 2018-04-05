@@ -121,6 +121,7 @@ bool ModulePlayer1::Start()
 	LOG("Loading player textures");
 	bool ret = true;
 	graphics = App->textures->Load("Sprites/Players_Ships/ships.png"); // arcade version
+	
 	return ret;
 }
 

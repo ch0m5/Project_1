@@ -14,9 +14,9 @@ ModuleStage2::ModuleStage2()	//@AndresSala
 {
 	//ANDRO DUNOS RECTS
 	// Background1Rect  
-	background2Rect.x = 0;
-	background2Rect.y = 0;
-	background2Rect.w = 410; 
+	background2Rect.x = 48;
+	background2Rect.y = 27;
+	background2Rect.w = 410;
 	background2Rect.h = 224;
 
 	//map1Rect	
@@ -40,8 +40,15 @@ bool ModuleStage2::Start()
 {
 	LOG("Loading background assets");	// Temporal, must decide if we load a full image,
 	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
+<<<<<<< HEAD
 	
 	background2Text = App->textures->Load("Sprites/Levels/STAGE 2/Tileset/Background_lvl_2.png");
+=======
+
+										//map2Text = App->textures->Load("Sprites/Levels/STAGE 2/Tileset/Background_lvl_2.png");
+	background2Text = App->textures->Load("Sprites/Levels/STAGE 2/Tileset/Background_lvl_2.png");
+	/*bluePlanetText = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/Moon.png");*/
+>>>>>>> d94a0047b6e57e5fa10088ea04afaaaac943448a
 
 	App->player1->Enable();
 	App->player2->Enable();
@@ -51,12 +58,19 @@ bool ModuleStage2::Start()
 
 bool ModuleStage2::CleanUp()
 {
+	LOG("Unloading stage 2");
+	App->textures->Unload(background2Text);
+
+	LOG("Unloading players");
 	App->player1->Disable();
 	App->player2->Disable();
+<<<<<<< HEAD
 	
 
 	//LOG("Unloading players stage");
 	App->textures->Unload(background2Text);
+=======
+>>>>>>> d94a0047b6e57e5fa10088ea04afaaaac943448a
 
 	return true;
 }
@@ -64,7 +78,9 @@ bool ModuleStage2::CleanUp()
 // Update: draw background
 update_status ModuleStage2::Update()
 {
+	//App->render->Blit(background2Text, 0, 0, &background2Rect); // level background
 
+<<<<<<< HEAD
 
 	// Draw everything -------------------------------------- Andro Dunos
 	App->render->Blit(background2Text, movementxBack, 27, &background2Rect); // level background
@@ -72,24 +88,14 @@ update_status ModuleStage2::Update()
 
 	//make so pressing SPACE the other stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+=======
+	/*if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+>>>>>>> d94a0047b6e57e5fa10088ea04afaaaac943448a
 	{
-		App->fade->FadeToBlack(App->stage2, App->scene_HiScore, 1);
-	}
+		App->fade->FadeToBlack(this, App->scene_HiScore, 0.5);
+	}*/
 
-	//if (movementx >-2925.0) //2925
-	//movementx -= 0.83f; // for movement in x direction
-	////if (movementx == -2925.0 && movementy > -280.0) 
-	////{
-	////movementy -= 0.83f; 
-	////}
-	////if (movementx == -2925 && movementy == -280)
-	////{
-	////	movementx -= 0.83f;
-	////}
-	////if (movementx < -2925 && movementy >= -280)
-	//{
-	//	movementx -= 0.83f;
-	//}//@andressala
+	//@andressala
 
 
 	return UPDATE_CONTINUE;

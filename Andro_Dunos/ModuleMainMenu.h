@@ -23,8 +23,8 @@ public:
 	SDL_Texture* backgroundText = nullptr;		//
 	SDL_Texture* titleText = nullptr;			//
 	SDL_Texture* viscoGamesText = nullptr;		//
-	//SDL_Texture* orangeLettersText = nullptr;	//
-	//SDL_Texture* whiteLettersText = nullptr;	//
+	SDL_Texture* orangeLettersText = nullptr;	//
+	SDL_Texture* whiteLettersText = nullptr;	//
 
 												//Rectangles
 
