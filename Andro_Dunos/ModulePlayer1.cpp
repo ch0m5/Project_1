@@ -47,7 +47,7 @@ ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 	*/
 
 	superUpwards.PushBack({ 94, 66, 27, 17 });
-	superUpwards.speed = 0.1f;
+	superUpwards.speed = 1.2f;
 
 	superUpwardsBooster.PushBack({ 43, 63, 12, 17 });
 	superUpwardsBooster.PushBack({ 0, 0, 12, 17 });
@@ -60,7 +60,7 @@ ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 	superUpwardsBooster.speed = 1.2f;
 
 	upwards.PushBack({ 94, 87, 27, 17 });
-	upwards.speed = 0.1f;
+	upwards.speed = 1.2f;
 
 	upwardsBooster.PushBack({ 43, 87, 12, 17 });
 	upwardsBooster.PushBack({ 0, 0, 12, 17 });
@@ -73,7 +73,7 @@ ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 	upwardsBooster.speed = 1.2f;
 
 	idle.PushBack({ 94, 108, 27, 17 });
-	idle.speed = 0.1f;
+	idle.speed = 1.2f;
 
 	idleBooster.PushBack({ 43, 108, 12, 17 });
 	idleBooster.PushBack({ 0, 0, 12, 17 });
@@ -83,10 +83,10 @@ ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 	idleBooster.PushBack({ 0, 0, 12, 17 });
 	idleBooster.PushBack({ 62, 108, 12, 17 });
 	idleBooster.PushBack({ 0, 0, 12, 17 });
-	idleBooster.speed = 1.2f;
+	idleBooster.speed = 0.1f;
 
 	downwards.PushBack({ 94, 131, 27, 17 });
-	downwards.speed = 0.1f;
+	downwards.speed = 1.2f;
 
 	downwardsBooster.PushBack({ 43, 131, 12, 17 });
 	downwardsBooster.PushBack({ 0, 0, 12, 17 });
@@ -99,7 +99,7 @@ ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 	downwardsBooster.speed = 1.2f;
 
 	superDownwards.PushBack({ 94, 153, 27, 17 });
-	superDownwards.speed = 0.1f;
+	superDownwards.speed = 1.2f;
 
 	superDownwardsBooster.PushBack({ 43, 153, 12, 17 });
 	superDownwardsBooster.PushBack({ 0, 0, 12, 17 });
