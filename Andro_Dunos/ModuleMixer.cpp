@@ -80,7 +80,7 @@ update_status ModuleMixer::Update()
 {
 	
 	// Kaser FX when pressing space
-	if (App->input->keyboard[SDL_SCANCODE_M] == 1 && currentScreen != MAIN_MENU)
+	if (App->input->keyboard[SDL_SCANCODE_P] == 1 && currentScreen != MAIN_MENU)
 	{
 
 		Mix_PlayChannel(3, shot, 0);	

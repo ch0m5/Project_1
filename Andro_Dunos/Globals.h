@@ -10,11 +10,20 @@ void log(const char file[], int line, const char* format, ...);
 #define MIN( a, b ) ( ((a) < (b)) ? (a) : (b) )
 #define MAX( a, b ) ( ((a) > (b)) ? (a) : (b) )
 
-enum update_status
+enum update_status	// To flag if the modules' status
 {
 	UPDATE_CONTINUE = 1,
 	UPDATE_STOP,
 	UPDATE_ERROR
+};
+
+enum ship_status	// To mark the position in the array of SDL_rects related the the ship vertical status
+{
+	SHIP_FULL_UP,
+	SHIP_UP,
+	SHIP_IDLE,
+	SHIP_DOWN,
+	SHIP_FULL_DOWN
 };
 
 // Useful typedefs ---------

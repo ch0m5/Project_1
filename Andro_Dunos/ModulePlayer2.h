@@ -22,19 +22,21 @@ public:
 
 	SDL_Texture* graphics = nullptr;
 
-	Animation superUpwards;			// All animations, 1 for each ship and booster sprite
+	// Ship and booster animations
+	Animation shipVerticalMovement;
 	Animation superUpwardsBooster;
-	Animation upwards;
 	Animation upwardsBooster;
-	Animation idle;
 	Animation idleBooster;
-	Animation downwards;
 	Animation downwardsBooster;
-	Animation superDownwards;
 	Animation superDownwardsBooster;
+
+	// Animation pointers
+	Animation* shipAnimation = nullptr;
+	Animation* propellerAnimation = nullptr;
+
 	iPoint position;
-	int movVertical;	// Counter for the vertical movement of the ship
-	int maxVertical;	// Maximum value
+	float movVertical;	// Counter for the vertical movement of the ship
+	int maxVertical;	// Limit of the counter
 };
 
 #endif

@@ -3,8 +3,10 @@
 #include "ModuleInput.h"
 #include "SDL/include/SDL.h"
 
-ModuleInput::ModuleInput() : Module()
+ModuleInput::ModuleInput() : Module()	//@CarlesHoms
 {
+	for (uint i = 0; i < MAX_KEYS; ++i)
+		keyboard[i] = KEY_IDLE;
 }
 
 // Destructor
@@ -18,7 +20,7 @@ bool ModuleInput::Init()
 	bool ret = true;
 	SDL_Init(0);
 
-	if(SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
+	if (SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
 	{
 		LOG("SDL_EVENTS could not initialize! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
@@ -32,18 +34,37 @@ update_status ModuleInput::PreUpdate()
 {
 	SDL_PumpEvents();
 
-	keyboard = SDL_GetKeyboardState(NULL);	// If the Escape key is pressed, exit game
+	keys = SDL_GetKeyboardState(NULL);
 
-	if(keyboard[SDL_SCANCODE_ESCAPE])
-		return update_status::UPDATE_STOP;
-	
-	while (SDL_PollEvent(&event))	// If the windows application is required to quit (press x button), exit game
+	for (int i = 0; i < MAX_KEYS; ++i)
 	{
-		if (event.type == SDL_QUIT)
+		if (keys[i] == 1)
+		{
+			if (keyboard[i] == KEY_IDLE)
+				keyboard[i] = KEY_DOWN;
+			else
+				keyboard[i] = KEY_REPEAT;
+		}
+		else
+		{
+			if (keyboard[i] == KEY_REPEAT || keyboard[i] == KEY_DOWN)
+				keyboard[i] = KEY_UP;
+			else
+				keyboard[i] = KEY_IDLE;
+		}
+	}
+
+	if (keyboard[SDL_SCANCODE_ESCAPE])		// If the Escape key is pressed, exit game
+		return update_status::UPDATE_STOP;
+
+	while (SDL_PollEvent(&e))	// If the windows application is required to quit (press x button), exit game
+	{
+		if (e.type == SDL_QUIT)
 		{
 			return update_status::UPDATE_STOP;
 		}
 	}
+
 	return update_status::UPDATE_CONTINUE;
 }
 

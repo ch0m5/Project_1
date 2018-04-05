@@ -7,6 +7,9 @@
 
 ModulePlayer2::ModulePlayer2()	//@CarlesHoms
 {
+	shipAnimation = nullptr;
+	propellerAnimation = nullptr;
+
 	position.x = 0;							// Starting point of the ship (using p2Point)
 	position.y = SCREEN_HEIGHT / 2 + 10;
 
@@ -46,10 +49,28 @@ ModulePlayer2::ModulePlayer2()	//@CarlesHoms
 	12, 17; size
 	*/
 
-	// All ship and booster animations
-	superUpwards.PushBack({ 154, 66, 27, 17 });
-	superUpwards.speed = 1.2f;
+	/*GoingUp
+	goingDown.PushBack({ 94, 66, 27, 17 });
+	goingDown.PushBack({ 94, 87, 27, 17 });
+	goingDown.PushBack({ 94, 108, 27, 17 });
+	goingDown.PushBack({ 94, 131, 27, 17 });
+	goingDown.PushBack({ 94, 153, 27, 17 });
 
+	goingDown.PushBack({ 94, 153, 27, 17 });
+	goingDown.PushBack({ 94, 131, 27, 17 });
+	goingDown.PushBack({ 94, 108, 27, 17 });
+	goingDown.PushBack({ 94, 87, 27, 17 });
+	goingDown.PushBack({ 94, 66, 27, 17 });
+	*/
+
+	// Ship "animation" (works as an array of states which you switch from based on the movVertical counter)
+	shipVerticalMovement.PushBack({ 154, 66, 27, 17 });
+	shipVerticalMovement.PushBack({ 154, 87, 27, 17 });
+	shipVerticalMovement.PushBack({ 154, 108, 27, 17 });
+	shipVerticalMovement.PushBack({ 154, 131, 27, 17 });
+	shipVerticalMovement.PushBack({ 154, 153, 27, 17 });
+
+	// Booster animations
 	superUpwardsBooster.PushBack({ 42, 63, 12, 17 });
 	superUpwardsBooster.PushBack({ 0, 0, 12, 17 });
 	superUpwardsBooster.PushBack({ 59, 63, 12, 17 });
@@ -57,9 +78,6 @@ ModulePlayer2::ModulePlayer2()	//@CarlesHoms
 	superUpwardsBooster.PushBack({ 73, 63, 12, 17 });
 	superUpwardsBooster.PushBack({ 0, 0, 12, 17 });
 	superUpwardsBooster.speed = 1.4f;
-
-	upwards.PushBack({ 154, 87, 27, 17 });
-	upwards.speed = 1.2f;
 
 	upwardsBooster.PushBack({ 43, 86, 12, 17 });
 	upwardsBooster.PushBack({ 0, 0, 12, 17 });
@@ -69,9 +87,6 @@ ModulePlayer2::ModulePlayer2()	//@CarlesHoms
 	upwardsBooster.PushBack({ 0, 0, 12, 17 });
 	upwardsBooster.speed = 1.4f;
 
-	idle.PushBack({ 154, 108, 27, 17 });
-	idle.speed = 1.2f;
-
 	idleBooster.PushBack({ 43, 109, 12, 17 });
 	idleBooster.PushBack({ 0, 0, 12, 17 });
 	idleBooster.PushBack({ 62, 109, 12, 17 });
@@ -80,9 +95,6 @@ ModulePlayer2::ModulePlayer2()	//@CarlesHoms
 	idleBooster.PushBack({ 0, 0, 12, 17 });
 	idleBooster.speed = 1.4f;
 
-	downwards.PushBack({ 154, 131, 27, 17 });
-	downwards.speed = 1.2f;
-
 	downwardsBooster.PushBack({ 43, 133, 12, 17 });
 	downwardsBooster.PushBack({ 0, 0, 12, 17 });
 	downwardsBooster.PushBack({ 60, 133, 12, 17 });
@@ -90,9 +102,6 @@ ModulePlayer2::ModulePlayer2()	//@CarlesHoms
 	downwardsBooster.PushBack({ 74, 133, 12, 17 });
 	downwardsBooster.PushBack({ 0, 0, 12, 17 });
 	downwardsBooster.speed = 1.4f;
-
-	superDownwards.PushBack({ 154, 153, 27, 17 });
-	superDownwards.speed = 1.2f;
 
 	superDownwardsBooster.PushBack({ 43, 153, 12, 17 });
 	superDownwardsBooster.PushBack({ 0, 0, 12, 17 });
@@ -116,14 +125,18 @@ bool ModulePlayer2::Start()
 }
 
 // Update: draw background
-update_status ModulePlayer2::Update()	// Ship and booster used based on movVertical value, which changes on pressing W and S keys or neither
+update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed sprite depending on a counter.
 {
-	Animation* current_animation = &idle;
-	Animation* propeller_animation = &idleBooster;
+	// How it works: A counter (movVertical) changes values by pressing W, S or neither and then one of the SDL_Rects inside
+	// the frames array of ship animation (shipVerticalMovement) is blited depending on the value of the counter.
+
+	shipAnimation = &shipVerticalMovement;
+	propellerAnimation = &idleBooster;
+	SDL_Rect shipRect = shipAnimation->frames[SHIP_IDLE];
 
 	int speed = 2;
 
-	if (App->input->keyboard[SDL_SCANCODE_S] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
 		position.y += speed;
 
@@ -133,7 +146,7 @@ update_status ModulePlayer2::Update()	// Ship and booster used based on movVerti
 		}
 	}
 
-	else if (App->input->keyboard[SDL_SCANCODE_W] == 1)
+	else if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
 		position.y -= speed;
 
@@ -143,7 +156,8 @@ update_status ModulePlayer2::Update()	// Ship and booster used based on movVerti
 		}
 	}
 
-	else if (App->input->keyboard[SDL_SCANCODE_W] == 0 && App->input->keyboard[SDL_SCANCODE_S] == 0)
+	else if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE &&
+		App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE)
 	{
 		if (movVertical > 0)
 		{
@@ -156,12 +170,12 @@ update_status ModulePlayer2::Update()	// Ship and booster used based on movVerti
 		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_A] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x -= speed;
 	}
 
-	else if (App->input->keyboard[SDL_SCANCODE_D] == 1)
+	else if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
 		position.x += speed;
 	}
@@ -169,40 +183,39 @@ update_status ModulePlayer2::Update()	// Ship and booster used based on movVerti
 	// Depending on the vertical counter, we decide the animation
 	if (movVertical >= maxVertical)
 	{
-		current_animation = &superUpwards;
-		propeller_animation = &superUpwardsBooster;
+		shipRect = shipAnimation->frames[SHIP_FULL_UP];
+		propellerAnimation = &superUpwardsBooster;
 	}
 
-	else if (movVertical > 7 && movVertical < maxVertical)
+	else if (movVertical > (maxVertical / 2) && movVertical < maxVertical)
 	{
-		current_animation = &upwards;
-		propeller_animation = &upwardsBooster;
+		shipRect = shipAnimation->frames[SHIP_UP];
+		propellerAnimation = &upwardsBooster;
 	}
 
-	else if (movVertical <= 7 && movVertical >= -7)
+	else if (movVertical <= (maxVertical / 2) && movVertical >= -(maxVertical / 2))
 	{
-		current_animation = &idle;
-		propeller_animation = &idleBooster;
+		shipRect = shipAnimation->frames[SHIP_IDLE];
+		propellerAnimation = &idleBooster;
 	}
 
-	else if (movVertical < -7 && movVertical > -maxVertical)
+	else if (movVertical < -(maxVertical / 2) && movVertical > -maxVertical)
 	{
-		current_animation = &downwards;
-		propeller_animation = &downwardsBooster;
+		shipRect = shipAnimation->frames[SHIP_DOWN];
+		propellerAnimation = &downwardsBooster;
 	}
 
 	else if (movVertical <= -maxVertical)
 	{
-		current_animation = &superDownwards;
-		propeller_animation = &superDownwardsBooster;
+		shipRect = shipAnimation->frames[SHIP_FULL_DOWN];
+		propellerAnimation = &superDownwardsBooster;
 	}
 
 	// Draw everything --------------------------------------
-	SDL_Rect r = current_animation->GetCurrentFrame();
-	SDL_Rect p = propeller_animation->GetCurrentFrame();
+	SDL_Rect propellerRect = propellerAnimation->GetCurrentFrame();
 
-	App->render->Blit(graphics, position.x - 12, position.y - r.h, &p);
-	App->render->Blit(graphics, position.x, position.y - r.h, &r);
+	App->render->Blit(graphics, position.x - 12, position.y - shipRect.h, &propellerRect);
+	App->render->Blit(graphics, position.x, position.y - shipRect.h, &shipRect);
 
 	return UPDATE_CONTINUE;
 }
