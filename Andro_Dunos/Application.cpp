@@ -19,9 +19,9 @@ Application::Application()
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
 	modules[4] = mixer = new ModuleMixer();
-	modules[5] = player1 = new ModulePlayer1();
-	modules[6] = player2 = new ModulePlayer2();
-	modules[7] = stage1 = new ModuleStage1();
+	modules[5] = stage1 = new ModuleStage1();
+	modules[6] = player1 = new ModulePlayer1();
+	modules[7] = player2 = new ModulePlayer2();
 	modules[8] = scene_HiScore = new ModuleHiScore();
 	modules[9] = mainMenu = new ModuleMainMenu();
 	modules[10] = fade = new ModuleFadeToBlack();

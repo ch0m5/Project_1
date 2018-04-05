@@ -68,7 +68,7 @@ bool ModuleMixer::CleanUp()
 update_status ModuleMixer::Update()
 {
 	// laser FX when pressing space
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_M] == 1)
 	{
 
 		Mix_PlayChannel(3, shot, 0);
