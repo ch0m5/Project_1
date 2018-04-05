@@ -31,7 +31,7 @@ public:
 	//SDL_Rect bluePlanetRect;	//
 
 
-	float movementx = 48 ;
+	float movementx = 0 ;
 	float movementxBack = 0;
 	float movementxPlanetsBack = 0;
 	float movementy = -55;

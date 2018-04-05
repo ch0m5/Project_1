@@ -90,7 +90,7 @@ update_status ModuleStage1::Update()
 	//make so pressing SPACE the other stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
-		App->fade->FadeToBlack(App->stage1, App->scene_HiScore, 1);
+		App->fade->FadeToBlack(App->stage1, App->stage2, 1);
 	}
 	
 	//if (movementx >-2925.0) //2925

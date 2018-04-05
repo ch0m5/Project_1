@@ -14,8 +14,8 @@ ModuleStage2::ModuleStage2()	//@AndresSala
 {
 	//ANDRO DUNOS RECTS
 	// Background1Rect  
-	background2Rect.x = 0;
-	background2Rect.y = 0;
+	background2Rect.x = 48;
+	background2Rect.y = 27;
 	background2Rect.w = 410; 
 	background2Rect.h = 224;
 
@@ -67,7 +67,7 @@ update_status ModuleStage2::Update()
 
 
 	// Draw everything -------------------------------------- Andro Dunos
-	App->render->Blit(background2Text, movementxBack, 27, &background2Rect); // level background
+	App->render->Blit(background2Text, movementxBack, 0, &background2Rect); // level background
 
 
 	//make so pressing SPACE the other stage is loaded
