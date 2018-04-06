@@ -13,7 +13,8 @@ enum StageStatus	// Signals which screen we are currently in
 	MAIN_MENU,
 	STAGE_1,
 	STAGE_2,
-	CRASHED_SHIP
+	CRASHED_SHIP,
+	END_REACHED
 };
 
 class ModuleMixer : public Module
@@ -23,7 +24,11 @@ public:
 	ModuleMixer();
 	~ModuleMixer();
 
+	void LoadMusic(Mix_Music* music, char* audioPath);	// Function to check a music load, if fail SDL_Error, if success execute it
+	void LoadSound(Mix_Chunk* sound);	// Function to check a sound load, if fail SDL_Error, if success execute it
+
 	bool Init();
+	bool Start();
 	update_status Update();
 	bool CleanUp();
 	

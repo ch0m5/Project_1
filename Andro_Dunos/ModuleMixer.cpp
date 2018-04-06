@@ -26,39 +26,46 @@ bool ModuleMixer::Init()
 	}
 
 	else
-	{ 
-		//Music
+	{
+		// Initialize Audio
 		Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
-		soundtrack0 = Mix_LoadMUS("Music/02_Title.ogg");
+
 		/*soundtrack1 = Mix_LoadMUS("Music/04_Stage_1-The Moon-Loop.ogg");
 		soundtrack2 = Mix_LoadMUS("Music/07_Stage_2 -Mechanized-Unit-Loop.ogg");
 		soundtrack3 = Mix_LoadMUS("Music/18_Game_Over.ogg");*/
 		//
 		//Mix_PlayMusic(soundtrack0, 1);
 		//
-		Mix_FadeInMusic(soundtrack0,1,1500);
-
-		Mix_VolumeMusic(MUSIC);
-
-
-		//FX
-		shot = Mix_LoadWAV("Music/Laser_Shot_Type-1_(Main_Ships).wav");
-		Mix_VolumeChunk(shot, FX);
-
-	}
-
-	if (soundtrack0 == NULL/* || soundtrack1==NULL || soundtrack2==NULL || soundtrack3==NULL*/)
-	{
-		LOG("Broken: %s", SDL_GetError());
-		ret = false;
 	}
 
 	return ret;
 }
 
+bool ModuleMixer::Start()	// Here we load and start the first music track and load all other FX sounds
+{
+	// Music
+	LoadMusic(soundtrack0, "Music/02_Title.ogg");
+	
+	//soundtrack0 = Mix_LoadMUS("Music/02_Title.ogg");
+	//if (soundtrack0 == NULL/* || soundtrack1==NULL || soundtrack2==NULL || soundtrack3==NULL*/)
+	//{
+		//LOG("Broken: %s", SDL_GetError());
+	//}
+
+	// Sounds
+	shot = Mix_LoadWAV("Music/Laser_Shot_Type-1_(Main_Ships).wav");
+	LoadSound(shot);
+
+	// Sounds
+	//shot = Mix_LoadWAV("Music/Laser_Shot_Type-1_(Main_Ships).wav");
+	//Mix_VolumeChunk(shot, FX);
+	
+
+	return true;
+}
+
 bool ModuleMixer::CleanUp()
 {
-
 	if (soundtrack0 != nullptr /*|| soundtrack1 != NULL || soundtrack2 != NULL || soundtrack3 != NULL*/)
 	{
 		Mix_FreeMusic(soundtrack0);
@@ -67,22 +74,22 @@ bool ModuleMixer::CleanUp()
 		Mix_FreeMusic(soundtrack3);
 		*/
 	}
+
 	if (shot != nullptr)
 	{
 		Mix_FreeChunk(shot);
-		Mix_Quit();
 	}
+
+	Mix_Quit();
 
 	return true;
 }
 
 update_status ModuleMixer::Update()
 {
-	
 	// Kaser FX when pressing space
 	if (App->input->keyboard[SDL_SCANCODE_P] == 1 && currentScreen != MAIN_MENU)
 	{
-
 		Mix_PlayChannel(3, shot, 0);	
 	}
 
@@ -92,53 +99,88 @@ update_status ModuleMixer::Update()
 
 		musicRunning == false;
 
-		if (currentScreen == 4)
+		if (currentScreen == END_REACHED)
 			currentScreen = MAIN_MENU;
 	}
 
  	if (currentScreen == MAIN_MENU && musicRunning == false)	// Condition for every stage so it initializes the music (and sounds?) needed.
 	{
-		soundtrack0 = Mix_LoadMUS("Music/02_Title.ogg");
-
-		Mix_FadeInMusic(soundtrack0, 1, 1000);
-
-		Mix_VolumeMusic(MUSIC);
+		LoadMusic(soundtrack0, "Music/02_Title.ogg");
+		
+		//soundtrack0 = Mix_LoadMUS("Music/02_Title.ogg");
+		//Mix_FadeInMusic(soundtrack0, 1, 1000);
+		//Mix_VolumeMusic(MUSIC);
 
 		musicRunning = true;
 	}
 
 	else if (currentScreen == STAGE_1 && musicRunning == false)
 	{
-		soundtrack0 = Mix_LoadMUS("Music/04_Stage_1-The Moon-Loop.ogg");
+		LoadMusic(soundtrack0, "Music/04_Stage_1-The Moon-Loop.ogg");
 
-		Mix_FadeInMusic(soundtrack0, 1, 1000);
-
-		Mix_VolumeMusic(MUSIC);
+		//soundtrack0 = Mix_LoadMUS("Music/04_Stage_1-The Moon-Loop.ogg");
+		//Mix_FadeInMusic(soundtrack0, 1, 1000);
+		//Mix_VolumeMusic(MUSIC);
 
 		musicRunning = true;
 	}
 
 	else if (currentScreen == STAGE_2 && musicRunning == false)
 	{
-		soundtrack0 = Mix_LoadMUS("Music/07_Stage_2 -Mechanized-Unit-Loop.ogg");
+		LoadMusic(soundtrack0, "Music/07_Stage_2 -Mechanized-Unit-Loop.ogg");
 
-		Mix_FadeInMusic(soundtrack0, 1, 1000);
-
-		Mix_VolumeMusic(MUSIC);
+		//soundtrack0 = Mix_LoadMUS("Music/07_Stage_2 -Mechanized-Unit-Loop.ogg");
+		//Mix_FadeInMusic(soundtrack0, 1, 1000);
+		//Mix_VolumeMusic(MUSIC);
 
 		musicRunning = true;
 	}
 
 	else if (currentScreen == CRASHED_SHIP && musicRunning == false)
 	{
-		soundtrack0 = Mix_LoadMUS("Music/18_Game_Over.ogg");
+		LoadMusic(soundtrack0, "Music/18_Game_Over.ogg");
 
-		Mix_FadeInMusic(soundtrack0, 1, 1000);
-
-		Mix_VolumeMusic(MUSIC);
+		//soundtrack0 = Mix_LoadMUS("Music/18_Game_Over.ogg");
+		//Mix_FadeInMusic(soundtrack0, 1, 1000);
+		//Mix_VolumeMusic(MUSIC);
 
 		musicRunning = true;
 	}
 
 	return update_status::UPDATE_CONTINUE;
+}
+
+void ModuleMixer::LoadMusic(Mix_Music* music, char* audioPath)	// Function to check a music file load and send an SDL_Error otherwise
+{
+	bool ret = true;
+
+	music = Mix_LoadMUS(audioPath);
+
+	if (music == nullptr)
+	{
+		LOG("Couldn't load music: %s", SDL_GetError());
+		ret = false;
+	}
+
+	else
+	{
+		Mix_FadeInMusic(music, 1, 1000);
+		Mix_VolumeMusic(MUSIC);
+	}
+}
+
+void ModuleMixer::LoadSound(Mix_Chunk* sound)	// Function to check a sound file load and send an SDL_Error otherwise
+{
+	bool ret = true;
+
+	if (sound == nullptr)
+	{
+		LOG("Couldn't load sound: %s", SDL_GetError());
+		ret = false;
+	}
+
+	else
+	{
+		Mix_VolumeChunk(sound, FX);
+	}
 }
