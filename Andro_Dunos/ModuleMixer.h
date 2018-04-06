@@ -24,8 +24,8 @@ public:
 	ModuleMixer();
 	~ModuleMixer();
 
-	void LoadMusic(Mix_Music* music, char* audioPath);	// Function to check a music load, if fail SDL_Error, if success execute it
-	void LoadSound(Mix_Chunk* sound);	// Function to check a sound load, if fail SDL_Error, if success execute it
+	void LoadMusic(Mix_Music* music, char* audioPath);	// Function to check a music load, if fail SDL_GetError, if success execute it
+	void LoadSound(Mix_Chunk* sound);	// Function to check a sound load, if fail SDL_GetError, if success execute it
 
 	bool Init();
 	bool Start();

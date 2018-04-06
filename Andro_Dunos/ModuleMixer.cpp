@@ -150,7 +150,7 @@ update_status ModuleMixer::Update()
 	return update_status::UPDATE_CONTINUE;
 }
 
-void ModuleMixer::LoadMusic(Mix_Music* music, char* audioPath)	// Function to check a music file load and send an SDL_Error otherwise
+void ModuleMixer::LoadMusic(Mix_Music* music, char* audioPath)	// Function to check a music load, if fail SDL_GetError, if success execute it
 {
 	bool ret = true;
 
@@ -169,7 +169,7 @@ void ModuleMixer::LoadMusic(Mix_Music* music, char* audioPath)	// Function to ch
 	}
 }
 
-void ModuleMixer::LoadSound(Mix_Chunk* sound)	// Function to check a sound file load and send an SDL_Error otherwise
+void ModuleMixer::LoadSound(Mix_Chunk* sound)	// Function to check a sound load, if fail SDL_GetError, if success execute it
 {
 	bool ret = true;
 
