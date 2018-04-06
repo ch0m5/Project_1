@@ -175,7 +175,7 @@ void ModuleMixer::LoadSound(Mix_Chunk* sound)	// Function to check a sound file 
 
 	if (sound == nullptr)
 	{
-		LOG("Couldn't load sound: %s", SDL_GetError());
+		LOG("Couldn't load sound: %s", SDL_GetError());	// Does SDL_GetError work with Mix_LoadWAV?
 		ret = false;
 	}
 
