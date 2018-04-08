@@ -23,24 +23,20 @@ class ModuleMixer : public Module
 public:
 	ModuleMixer();
 	~ModuleMixer();
-
-	void LoadMusic(Mix_Music* music, char* audioPath);	// Function to check a music load, if fail SDL_GetError, if success execute it
-	void LoadSound(Mix_Chunk* sound);	// Function to check a sound load, if fail SDL_GetError, if success execute it
-
+	
 	bool Init();
 	bool Start();
 	update_status Update();
 	bool CleanUp();
 	
+	void LoadMusic(Mix_Music* music, char* audioPath);	// Function to check a music load, if fail SDL_GetError, if success execute it
+	void LoadSound(Mix_Chunk* sound);	// Function to check a sound load, if fail SDL_GetError, if success execute it
 
 public:
 	int currentScreen = MAIN_MENU;	// Variable that will update to current screen
 	bool musicRunning = false;		// Flag for music playing
-
+	
 	Mix_Music * soundtrack0 = nullptr;
-	Mix_Music * soundtrack1 = nullptr;
-	Mix_Music * soundtrack2 = nullptr;
-	Mix_Music * soundtrack3 = nullptr;
 	Mix_Chunk* shot = nullptr;
 
 };

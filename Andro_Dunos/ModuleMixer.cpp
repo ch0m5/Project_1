@@ -28,6 +28,7 @@ bool ModuleMixer::Init()
 	else
 	{
 		// Initialize Audio
+		
 		Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
 
 		/*soundtrack1 = Mix_LoadMUS("Music/04_Stage_1-The Moon-Loop.ogg");
@@ -46,12 +47,12 @@ bool ModuleMixer::Start()	// Here we load and start the first music track and lo
 	// Music
 	LoadMusic(soundtrack0, "Music/02_Title.ogg");
 	
-	//soundtrack0 = Mix_LoadMUS("Music/02_Title.ogg");
-	//if (soundtrack0 == NULL/* || soundtrack1==NULL || soundtrack2==NULL || soundtrack3==NULL*/)
-	//{
-		//LOG("Broken: %s", SDL_GetError());
-	//}
-
+	/*soundtrack0 = Mix_LoadMUS("Music/02_Title.ogg");
+	if (soundtrack0 == NULL)
+	{
+		LOG("Broken: %s", SDL_GetError());
+	}*/
+	
 	// Sounds
 	shot = Mix_LoadWAV("Music/Laser_Shot_Type-1_(Main_Ships).wav");
 	LoadSound(shot);
@@ -66,23 +67,19 @@ bool ModuleMixer::Start()	// Here we load and start the first music track and lo
 
 bool ModuleMixer::CleanUp()
 {
-	if (soundtrack0 != nullptr /*|| soundtrack1 != NULL || soundtrack2 != NULL || soundtrack3 != NULL*/)
+	if (soundtrack0 != nullptr)
 	{
 		Mix_FreeMusic(soundtrack0);
-		/*Mix_FreeMusic(soundtrack1);
-		Mix_FreeMusic(soundtrack2);
-		Mix_FreeMusic(soundtrack3);
-		*/
 	}
 
 	if (shot != nullptr)
 	{
 		Mix_FreeChunk(shot);
 	}
+	
+	Mix_Quit(); 
 
-	Mix_Quit();
-
-	return true;
+	return true; 
 }
 
 update_status ModuleMixer::Update()
@@ -105,44 +102,44 @@ update_status ModuleMixer::Update()
 
  	if (currentScreen == MAIN_MENU && musicRunning == false)	// Condition for every stage so it initializes the music (and sounds?) needed.
 	{
-		LoadMusic(soundtrack0, "Music/02_Title.ogg");
+		//LoadMusic(soundtrack0, "Music/02_Title.ogg");	// -----------> THIS FUCKS EVERYTHING UP (Frame not in module)
 		
-		//soundtrack0 = Mix_LoadMUS("Music/02_Title.ogg");
-		//Mix_FadeInMusic(soundtrack0, 1, 1000);
-		//Mix_VolumeMusic(MUSIC);
+		soundtrack0 = Mix_LoadMUS("Music/02_Title.ogg");
+		Mix_FadeInMusic(soundtrack0, 1, 1000);
+		Mix_VolumeMusic(MUSIC);
 
 		musicRunning = true;
 	}
 
 	else if (currentScreen == STAGE_1 && musicRunning == false)
 	{
-		LoadMusic(soundtrack0, "Music/04_Stage_1-The Moon-Loop.ogg");
+		//LoadMusic(soundtrack0, "Music/04_Stage_1-The Moon-Loop.ogg");
 
-		//soundtrack0 = Mix_LoadMUS("Music/04_Stage_1-The Moon-Loop.ogg");
-		//Mix_FadeInMusic(soundtrack0, 1, 1000);
-		//Mix_VolumeMusic(MUSIC);
+		soundtrack0 = Mix_LoadMUS("Music/04_Stage_1-The Moon-Loop.ogg");
+		Mix_FadeInMusic(soundtrack0, 1, 1000);
+		Mix_VolumeMusic(MUSIC);
 
 		musicRunning = true;
 	}
 
 	else if (currentScreen == STAGE_2 && musicRunning == false)
 	{
-		LoadMusic(soundtrack0, "Music/07_Stage_2 -Mechanized-Unit-Loop.ogg");
+		//LoadMusic(soundtrack0, "Music/07_Stage_2 -Mechanized-Unit-Loop.ogg");
 
-		//soundtrack0 = Mix_LoadMUS("Music/07_Stage_2 -Mechanized-Unit-Loop.ogg");
-		//Mix_FadeInMusic(soundtrack0, 1, 1000);
-		//Mix_VolumeMusic(MUSIC);
+		soundtrack0 = Mix_LoadMUS("Music/07_Stage_2 -Mechanized-Unit-Loop.ogg");
+		Mix_FadeInMusic(soundtrack0, 1, 1000);
+		Mix_VolumeMusic(MUSIC);
 
 		musicRunning = true;
 	}
 
 	else if (currentScreen == CRASHED_SHIP && musicRunning == false)
 	{
-		LoadMusic(soundtrack0, "Music/18_Game_Over.ogg");
+		//LoadMusic(soundtrack0, "Music/18_Game_Over.ogg");
 
-		//soundtrack0 = Mix_LoadMUS("Music/18_Game_Over.ogg");
-		//Mix_FadeInMusic(soundtrack0, 1, 1000);
-		//Mix_VolumeMusic(MUSIC);
+		soundtrack0 = Mix_LoadMUS("Music/18_Game_Over.ogg");
+		Mix_FadeInMusic(soundtrack0, 1, 1000);
+		Mix_VolumeMusic(MUSIC);
 
 		musicRunning = true;
 	}
