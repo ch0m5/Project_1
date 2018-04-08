@@ -29,10 +29,18 @@ public:
 	SDL_Rect bluePlanetRect;
 
 	// Background movement (position) values
+	//X Axis
 	float movementx = 0;
 	float movementxBack = 0;
 	float movementxPlanetsBack = 0;
-	float movementy = -55;
+	//Y Axis
+	float movementy = 0;
+	float movementyBack = 0;
+
+	//Background Movement logic variables
+	bool moveMapRight = true;
+	bool moveMapUp = false;
+	bool moveMapDown = false;  
 };
 
 #endif

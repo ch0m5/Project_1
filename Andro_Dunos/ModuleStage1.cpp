@@ -78,16 +78,51 @@ update_status ModuleStage1::Update()
 
 
 	// Draw everything -------------------------------------- Andro Dunos
-	App->render->Blit(background1Text, movementxBack, 118, &background1Rect); // level background
+	App->render->Blit(background1Text, movementxBack, 118 + movementyBack, &background1Rect); // level background
 
-	App->render->Blit(map1Text, movementx, movementy, &map1Rect); // level map
+	App->render->Blit(map1Text, movementx, -55 + movementy, &map1Rect); // level map
 
 	App->render->Blit(bluePlanetText, 500 + movementxPlanetsBack, -10, &bluePlanetRect); // Moon
 
-	movementx -= 0.83f; // for movement in x direction
-	LOG("%0.3f", movementx);
-	movementxBack -= 0.38f;
-	movementxPlanetsBack -= 0.2f;
+	//Level 1 Map movement Code
+
+	if (moveMapRight==true)
+	{
+		movementx -= 0.83f; // for movement in x direction
+		LOG("%0.3f", movementx);
+		movementxBack -= 0.38f;
+		movementxPlanetsBack -= 0.2f;
+	}
+	// TO BE IMPLEMENTED if's for moveMapUp & moveMapDown
+	if (moveMapDown == true)
+	{
+		movementy -= 0.82f;
+		movementyBack -= 0.38f;
+	}
+	if (moveMapUp == true)
+	{
+		movementy += 0.82f;
+		movementyBack += 0.38f;
+	}
+	//Conditions: Where does the background change X and Y speeds
+	if (movementx < -2920) // 1st SPEED CHANGE: Ships enter the inside of the Moon 
+	{
+		moveMapRight = false;
+		moveMapDown = true;
+	}
+	if (movementy < -226) // 2nd SPEED CHANGE: Ships continue through the inside of the Moon
+	{
+		moveMapRight = true;
+		moveMapDown = false;
+	}
+	if (movementx < -4015) // 3rd SPEED CHANGE: Ships continue through the inside of the Moon:: Diagonal Upwards movement 1/3
+	{
+		moveMapRight = false;
+		moveMapUp = true;
+	}
+
+	// Implement the other SPEED CHANGES Currently 3/12
+
 
 	//make so pressing SPACE the other stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
