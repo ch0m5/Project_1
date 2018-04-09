@@ -26,6 +26,9 @@ public:
 	SDL_Rect hiScoreBackRect;
 
 	float ySpeedAnimation = 0;
+
+	//Music 
+	Mix_Music * MusicHighScore = nullptr;
 };
 
 

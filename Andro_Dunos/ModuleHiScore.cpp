@@ -10,6 +10,7 @@
 #include "ModulePlayer2.h"
 #include "ModuleHiScore.h"
 #include "ModuleMainMenu.h"
+#include "ModuleMixer.h"
 
 
 
@@ -32,6 +33,12 @@ bool ModuleHiScore::Start()
 	LOG("Loading background assets");	// Temporal, must decide if we load a full image,
 	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
 	hiScoreBackTex = App->textures->Load("Sprites/User_Interface/Grafical_Interface/game_over_background.png");
+
+
+	//Music
+	MusicHighScore = App->mixer->LoadMusic("Music/18_Game_Over.ogg");
+	Mix_FadeInMusic(MusicHighScore, -1, 1000);
+	Mix_Volume(-1, MUSIC);
 
 	return ret;
 }

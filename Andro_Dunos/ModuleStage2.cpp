@@ -50,7 +50,7 @@ bool ModuleStage2::Start()
 	//Music
 	MusicLvl2 = App->mixer->LoadMusic("Music/07_Stage_2 -Mechanized-Unit-Loop.ogg");
 	Mix_FadeInMusic(MusicLvl2, -1, 1000);
-	Mix_Volume(-1, 15);
+	Mix_Volume(-1, MUSIC);
 	return ret;
 }
 
