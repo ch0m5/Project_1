@@ -9,6 +9,7 @@
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
 #include "ModuleHiScore.h"
+#include "ModuleMixer.h"
 
 ModuleStage2::ModuleStage2()	//@AndresSala
 {
@@ -46,6 +47,10 @@ bool ModuleStage2::Start()
 	App->player1->Enable();
 	App->player2->Enable();
 
+	//Music
+	MusicLvl2 = App->mixer->LoadMusic("Music/07_Stage_2 -Mechanized-Unit-Loop.ogg");
+	Mix_PlayMusic(MusicLvl2, -1);
+	Mix_Volume(-1, 15);
 	return ret;
 }
 

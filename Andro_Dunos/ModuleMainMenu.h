@@ -5,6 +5,9 @@
 #include "Animation.h"
 #include "Globals.h"
 
+#include "SDL_mixer/include/SDL_mixer.h"
+#pragma comment(lib,"SDL_mixer/libx86/SDL2_mixer.lib")
+
 struct SDL_Texture;
 
 class ModuleMainMenu : public Module
@@ -30,6 +33,9 @@ public:
 	SDL_Rect titleBoxRect;
 	SDL_Rect titleRect;
 	SDL_Rect viscoGamesRect;
+
+	//Music 
+	Mix_Music * MusicMainMenu = nullptr;
 };
 
 #endif

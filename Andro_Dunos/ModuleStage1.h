@@ -5,6 +5,9 @@
 #include "Animation.h"
 #include "Globals.h"
 
+#include "SDL_mixer/include/SDL_mixer.h"
+#pragma comment(lib,"SDL_mixer/libx86/SDL2_mixer.lib")
+
 struct SDL_Texture;
 
 class ModuleStage1 : public Module
@@ -41,6 +44,9 @@ public:
 	bool moveMapRight = true;
 	bool moveMapUp = false;
 	bool moveMapDown = false;  
+
+	//Music									@XaviMarin
+	Mix_Music * MusicLvl1 = nullptr;
 };
 
 #endif

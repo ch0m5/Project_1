@@ -9,6 +9,7 @@
 #include "ModuleInput.h"
 #include "ModuleHiScore.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleMixer.h"
 
 
 ModuleMainMenu::ModuleMainMenu()	//@CarlesHoms
@@ -57,6 +58,10 @@ bool ModuleMainMenu::Start()
 	App->player1->Disable();
 	App->player2->Disable();
 
+	//Music
+	MusicMainMenu = App->mixer->LoadMusic("Music/02_Title.ogg");
+	Mix_PlayMusic(MusicMainMenu, -1);
+	Mix_Volume(-1, 15);
 	return ret;
 }
 

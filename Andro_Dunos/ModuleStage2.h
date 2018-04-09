@@ -5,6 +5,9 @@
 #include "Animation.h"
 #include "Globals.h"
 
+#include "SDL_mixer/include/SDL_mixer.h"
+#pragma comment(lib,"SDL_mixer/libx86/SDL2_mixer.lib")
+
 struct SDL_Texture;
 
 class ModuleStage2 : public Module
@@ -33,6 +36,9 @@ public:
 	float movementxBack = 0;
 	float movementxPlanetsBack = 0;
 	float movementy = -55;
+
+	//Music
+	Mix_Music * MusicLvl2 = nullptr;
 };
 
 #endif

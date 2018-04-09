@@ -9,6 +9,8 @@
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
 #include "ModuleHiScore.h"
+#include "ModuleMixer.h"
+
 
 ModuleStage1::ModuleStage1()	//@AndresSaladrigas
 {
@@ -48,8 +50,12 @@ bool ModuleStage1::Start()
 
 	App->player1->Enable();
 	App->player2->Enable();
-	 // we shoukd log the problem if not loaded correctly
+	// we shoukd log the problem if not loaded correctly
 	
+	//Music
+	MusicLvl1 = App->mixer->LoadMusic("Music/04_Stage_1-The Moon-Loop.ogg");
+	Mix_PlayMusic(MusicLvl1, -1);
+	Mix_Volume(-1, 15);
 	return ret;
 
 }
