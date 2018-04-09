@@ -31,6 +31,11 @@ public:
 			current_frame = (loop) ? 0.0f : last_frame - 1;
 			loops++;
 		}
+		
+		if (current_frame >= MAX_FRAMES)
+		{
+			Reset();
+		}
 
 		return frames[(int)current_frame];
 	}
