@@ -62,9 +62,6 @@
     <ClInclude Include="ModuleMixer.h">
       <Filter>ModulesBase</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleDead.h">
-      <Filter>ModulesStages</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleStage1.h">
       <Filter>ModulesStages</Filter>
     </ClInclude>
@@ -113,9 +110,6 @@
       <Filter>ModulesBase</Filter>
     </ClCompile>
     <ClCompile Include="ModuleMainMenu.cpp">
-      <Filter>ModulesStages</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleDead.cpp">
       <Filter>ModulesStages</Filter>
     </ClCompile>
     <ClCompile Include="ModuleStage1.cpp">

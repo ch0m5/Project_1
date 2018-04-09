@@ -7,9 +7,6 @@
 
 #pragma comment(lib, "SDL_mixer/libx86/SDL2_mixer.lib")
 
-#define MUSIC 60	// Volume values
-#define FX 70
-
 ModuleMixer::ModuleMixer() : Module() {
 
 	for (int i = 0; i < MAX_MUSIC; ++i) {
@@ -35,13 +32,6 @@ bool ModuleMixer::Init()
 	}
 	// Initialize Audio
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
-
-		/*soundtrack1 = Mix_LoadMUS("Music/04_Stage_1-The Moon-Loop.ogg");
-		soundtrack2 = Mix_LoadMUS("Music/07_Stage_2 -Mechanized-Unit-Loop.ogg");
-		soundtrack3 = Mix_LoadMUS("Music/18_Game_Over.ogg");*/
-		//
-		//Mix_PlayMusic(soundtrack0, 1);
-		//
 	return ret;
 	
 }
