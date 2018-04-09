@@ -43,7 +43,12 @@ public:
 	//Background Movement logic variables
 	bool moveMapRight = true;
 	bool moveMapUp = false;
-	bool moveMapDown = false;  
+	bool moveMapDown = false; 
+	int xSpeedMultiplier = 1;
+	float ySpeedMultiplier = 1;
+
+	//Debug and Developing purpose variables
+	bool fasterX = false;
 
 	//Music									@XaviMarin
 	Mix_Music * MusicLvl1 = nullptr;
