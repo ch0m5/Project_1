@@ -3,7 +3,7 @@
 
 #include "Module.h"
 #include "Globals.h"
-#include "ModuleInput.h"	//@XaviMarin
+#include "ModuleInput.h"	//@XaviMarin @AndresSaladrigas
 
 #define MUSIC 60	// Volume values
 #define FX 70

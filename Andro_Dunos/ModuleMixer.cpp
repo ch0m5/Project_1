@@ -38,7 +38,7 @@ bool ModuleMixer::Init()
 
 bool ModuleMixer::CleanUp()
 {
-	LOG("Free Audio");
+	LOG("CleanUp Module Mixer. Cleaning music and Sound effects");
 
 	for (int i = 0; i < MAX_MUSIC; ++i) {
 		if (soundtrack[i] != nullptr) {
