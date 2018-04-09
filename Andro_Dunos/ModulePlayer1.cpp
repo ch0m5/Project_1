@@ -4,6 +4,8 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModulePlayer1.h"
+#include "ModuleParticles.h"
+#include "ModuleMixer.h"
 
 ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 {
@@ -175,6 +177,13 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	else if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - shipWidth)
 	{
 		position.x += speed;
+	}
+
+	// Fire lasers
+	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN)
+	{
+		App->particles->AddParticle(App->particles->smallBlue, position.x + 6, position.y - 3);
+		App->particles->AddParticle(App->particles->smallBlue, position.x + 6, position.y - 9);
 	}
 	
 	// Depending on the vertical counter, we decide the animation

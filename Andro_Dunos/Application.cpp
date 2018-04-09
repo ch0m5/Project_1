@@ -7,6 +7,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
+#include "ModuleParticles.h"
 #include "ModuleMainMenu.h"
 #include "ModuleStage1.h"
 #include "ModuleStage2.h"
@@ -23,9 +24,10 @@ Application::Application()
 	modules[6] = stage1 = new ModuleStage1();
 	modules[7] = scene_HiScore = new ModuleHiScore();
 	modules[8] = mainMenu = new ModuleMainMenu();
-	modules[9] = player1 = new ModulePlayer1();
-	modules[10] = player2 = new ModulePlayer2();
-	modules[11] = fade = new ModuleFadeToBlack();
+	modules[9] = particles = new ModuleParticles();
+	modules[10] = player1 = new ModulePlayer1();
+	modules[11] = player2 = new ModulePlayer2();
+	modules[12] = fade = new ModuleFadeToBlack();
 
 }	
 

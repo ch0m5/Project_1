@@ -80,7 +80,7 @@ update_status ModuleMainMenu::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_1] == 1) //press for 1 player mode @AndresSala
 	{
-		App->input->secondPlayerState = true;
+		App->input->secondPlayerState = false;
 	}
 
 

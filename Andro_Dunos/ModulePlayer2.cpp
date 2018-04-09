@@ -4,6 +4,7 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModulePlayer2.h"
+#include "ModuleParticles.h"
 
 ModulePlayer2::ModulePlayer2()	//@CarlesHoms
 {
@@ -189,6 +190,12 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 	else if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - shipWidth)
 	{
 		position.x += speed;
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_N] == KEY_DOWN)
+	{
+		App->particles->AddParticle(App->particles->smallBlue, position.x + 6, position.y - 3);
+		App->particles->AddParticle(App->particles->smallBlue, position.x + 6, position.y - 9);
 	}
 
 	// Depending on the vertical counter, we decide the animation

@@ -74,6 +74,9 @@
     <ClInclude Include="ModuleHiScore.h">
       <Filter>ModulesStages</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleParticles.h">
+      <Filter>ModulesPlayers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -120,6 +123,9 @@
     </ClCompile>
     <ClCompile Include="ModuleHiScore.cpp">
       <Filter>ModulesStages</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleParticles.cpp">
+      <Filter>ModulesPlayers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
