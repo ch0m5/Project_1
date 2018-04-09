@@ -54,7 +54,7 @@ bool ModuleStage1::Start()
 	
 	//Music
 	MusicLvl1 = App->mixer->LoadMusic("Music/04_Stage_1-The Moon-Loop.ogg");
-	Mix_PlayMusic(MusicLvl1, -1);
+	Mix_FadeInMusic(MusicLvl1, -1, 1000);
 	Mix_Volume(-1, 15);
 	return ret;
 
