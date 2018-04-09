@@ -49,7 +49,7 @@ bool ModuleStage1::Start()
  	map1Text = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/FullMap1.png");
 
 	App->player1->Enable();
-	if (App->input->secondPlayerState == true)
+	if (App->input->secondPlayerState == true)  //@AndresSala
 	{
 		App->player2->Enable();
 	}
@@ -68,7 +68,7 @@ bool ModuleStage1::CleanUp()
 {
 	LOG("Unloading players");
 	App->player1->Disable();
-	if (App->input->secondPlayerState == true)
+	if (App->input->secondPlayerState == true) //@AndresSala
 	{
 		App->player2->Disable();
 	}
