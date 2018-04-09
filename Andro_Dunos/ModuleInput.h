@@ -31,6 +31,9 @@ public:
 	const Uint8* keys = nullptr;
 	KEY_STATE keyboard[MAX_KEYS];
 	SDL_Event e;
+
+	//second player on off
+	bool secondPlayerState;
 };
 
 #endif // __ModuleInput_H__

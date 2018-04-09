@@ -41,8 +41,10 @@ bool ModuleStage2::Start()
 	map2Text = App->textures->Load("Sprites/Levels/STAGE 2/Tileset/Map_2.png");
 
 	App->player1->Enable();
-	App->player2->Enable();
-
+	if (App->input->secondPlayerState == true)
+	{
+		App->player2->Enable();
+	}
 	//Music
 	MusicLvl2 = App->mixer->LoadMusic("Music/07_Stage_2 -Mechanized-Unit-Loop.ogg");
 	Mix_FadeInMusic(MusicLvl2, -1, 1000);
@@ -53,8 +55,10 @@ bool ModuleStage2::Start()
 bool ModuleStage2::CleanUp()
 {
 	App->player1->Disable();
-	App->player2->Disable();
-	
+	if (App->input->secondPlayerState == true)
+	{
+		App->player2->Disable();
+	}
 	//LOG("Unloading players stage");
 	App->textures->Unload(background2Text);
 	App->textures->Unload(map2Text);

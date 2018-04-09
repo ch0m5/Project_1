@@ -19,6 +19,7 @@ bool ModuleInput::Init()
 	LOG("Init SDL input event system");
 	bool ret = true;
 	SDL_Init(0);
+	secondPlayerState = false; //statr with one player
 
 	if (SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
 	{

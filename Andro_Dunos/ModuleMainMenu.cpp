@@ -78,6 +78,17 @@ update_status ModuleMainMenu::Update()
 		App->fade->FadeToBlack(this, App->stage1, 0.5);
 	}
 
+	if (App->input->keyboard[SDL_SCANCODE_1] == 1) //press for 1 player mode
+	{
+		App->input->secondPlayerState = true;
+	}
+
+
+	if (App->input->keyboard[SDL_SCANCODE_2] == 1) // press for 2 players mode
+	{
+		App->input->secondPlayerState = true;
+	}
+
 	return UPDATE_CONTINUE;
 }
 
