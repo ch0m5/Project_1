@@ -8,13 +8,18 @@
 ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 {
 	shipAnimation = nullptr;
+	shipWidth = 27;
+	shipHeight = 17;
+
 	propellerAnimation = nullptr;
+	propellerWidth = 12;
+	propellerHeight = 17;
 
 	position.x = 0;							// Starting point of the ship (using p2Point)
 	position.y = SCREEN_HEIGHT / 2 - 10;
 
-	movVertical = 0;
-	maxVertical = 14;
+	movVertical = 0;	// Counter for the vertical movement of the ship
+	maxVertical = 14;	// Limit of the counter
 
 	/*
 	Sprites positioning
@@ -50,51 +55,51 @@ ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 	*/
 
 	// Ship "animation" (works as an array of states which you switch from based on the movVertical counter)
-	shipVerticalMovement.PushBack({ 94, 66, 27, 17 });
-	shipVerticalMovement.PushBack({ 94, 87, 27, 17 });
-	shipVerticalMovement.PushBack({ 94, 108, 27, 17 });
-	shipVerticalMovement.PushBack({ 94, 131, 27, 17 });
-	shipVerticalMovement.PushBack({ 94, 153, 27, 17 });
+	shipVerticalMovement.PushBack({ 94, 66, shipWidth, shipHeight });
+	shipVerticalMovement.PushBack({ 94, 87, shipWidth, shipHeight });
+	shipVerticalMovement.PushBack({ 94, 108, shipWidth, shipHeight });
+	shipVerticalMovement.PushBack({ 94, 131, shipWidth, shipHeight });
+	shipVerticalMovement.PushBack({ 94, 153, shipWidth, shipHeight });
 
 	// Booster animations
-	superUpwardsBooster.PushBack({ 42, 63, 12, 17 });
-	superUpwardsBooster.PushBack({ 0, 0, 12, 17 });
-	superUpwardsBooster.PushBack({ 59, 63, 12, 17 });
-	superUpwardsBooster.PushBack({ 0, 0, 12, 17 });
-	superUpwardsBooster.PushBack({ 73, 63, 12, 17 });
-	superUpwardsBooster.PushBack({ 0, 0, 12, 17 });
+	superUpwardsBooster.PushBack({ 42, 63, propellerWidth, propellerHeight });
+	superUpwardsBooster.PushBack({ 0, 0, propellerWidth, propellerHeight });
+	superUpwardsBooster.PushBack({ 59, 63, propellerWidth, propellerHeight });
+	superUpwardsBooster.PushBack({ 0, 0, propellerWidth, propellerHeight });
+	superUpwardsBooster.PushBack({ 73, 63, propellerWidth, propellerHeight });
+	superUpwardsBooster.PushBack({ 0, 0, propellerWidth, propellerHeight });
 	superUpwardsBooster.speed = 1.4f;
 
-	upwardsBooster.PushBack({ 43, 86, 12, 17 });
-	upwardsBooster.PushBack({ 0, 0, 12, 17 });
-	upwardsBooster.PushBack({ 60, 86, 12, 17 });
-	upwardsBooster.PushBack({ 0, 0, 12, 17 });
-	upwardsBooster.PushBack({ 74, 86, 12, 17 });
-	upwardsBooster.PushBack({ 0, 0, 12, 17 });
+	upwardsBooster.PushBack({ 43, 86, propellerWidth, propellerHeight });
+	upwardsBooster.PushBack({ 0, 0, propellerWidth, propellerHeight });
+	upwardsBooster.PushBack({ 60, 86, propellerWidth, propellerHeight });
+	upwardsBooster.PushBack({ 0, 0, propellerWidth, propellerHeight });
+	upwardsBooster.PushBack({ 74, 86, propellerWidth, propellerHeight });
+	upwardsBooster.PushBack({ 0, 0, propellerWidth, propellerHeight });
 	upwardsBooster.speed = 1.4f;
 
-	idleBooster.PushBack({ 43, 109, 12, 17 });
-	idleBooster.PushBack({ 0, 0, 12, 17 });
-	idleBooster.PushBack({ 62, 109, 12, 17 });
-	idleBooster.PushBack({ 0, 0, 12, 17 });
-	idleBooster.PushBack({ 74, 109, 12, 17 });
-	idleBooster.PushBack({ 0, 0, 12, 17 });
+	idleBooster.PushBack({ 43, 109, propellerWidth, propellerHeight });
+	idleBooster.PushBack({ 0, 0, propellerWidth, propellerHeight });
+	idleBooster.PushBack({ 62, 109, propellerWidth, propellerHeight });
+	idleBooster.PushBack({ 0, 0, propellerWidth, propellerHeight });
+	idleBooster.PushBack({ 74, 109, propellerWidth, propellerHeight });
+	idleBooster.PushBack({ 0, 0, propellerWidth, propellerHeight });
 	idleBooster.speed = 1.4f;
 
-	downwardsBooster.PushBack({ 43, 133, 12, 17 });
-	downwardsBooster.PushBack({ 0, 0, 12, 17 });
-	downwardsBooster.PushBack({ 60, 133, 12, 17 });
-	downwardsBooster.PushBack({ 0, 0, 12, 17 });
-	downwardsBooster.PushBack({ 74, 133, 12, 17 });
-	downwardsBooster.PushBack({ 0, 0, 12, 17 });
+	downwardsBooster.PushBack({ 43, 133, propellerWidth, propellerHeight });
+	downwardsBooster.PushBack({ 0, 0, propellerWidth, propellerHeight });
+	downwardsBooster.PushBack({ 60, 133, propellerWidth, propellerHeight });
+	downwardsBooster.PushBack({ 0, 0, propellerWidth, propellerHeight });
+	downwardsBooster.PushBack({ 74, 133, propellerWidth, propellerHeight });
+	downwardsBooster.PushBack({ 0, 0, propellerWidth, propellerHeight });
 	downwardsBooster.speed = 1.4f;
 
-	superDownwardsBooster.PushBack({ 43, 153, 12, 17 });
-	superDownwardsBooster.PushBack({ 0, 0, 12, 17 });
-	superDownwardsBooster.PushBack({ 60, 153, 12, 17 });
-	superDownwardsBooster.PushBack({ 0, 0, 12, 17 });
-	superDownwardsBooster.PushBack({ 74, 153, 12, 17 });
-	superDownwardsBooster.PushBack({ 0, 0, 12, 17 });
+	superDownwardsBooster.PushBack({ 43, 153, propellerWidth, propellerHeight });
+	superDownwardsBooster.PushBack({ 0, 0, propellerWidth, propellerHeight });
+	superDownwardsBooster.PushBack({ 60, 153, propellerWidth, propellerHeight });
+	superDownwardsBooster.PushBack({ 0, 0, propellerWidth, propellerHeight });
+	superDownwardsBooster.PushBack({ 74, 153, propellerWidth, propellerHeight });
+	superDownwardsBooster.PushBack({ 0, 0, propellerWidth, propellerHeight });
 	superDownwardsBooster.speed = 1.4f;
 }
 
@@ -124,7 +129,10 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
-		position.y += speed;
+		if (position.y < SCREEN_HEIGHT)
+		{
+			position.y += speed;
+		}
 
 		if (movVertical > -maxVertical)
 		{
@@ -134,7 +142,10 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 	else if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
 	{
-		position.y -= speed;
+		if (position.y > shipHeight)
+		{
+			position.y -= speed;
+		}
 
 		if (movVertical < maxVertical)
 		{
@@ -156,12 +167,12 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0)
 	{
 		position.x -= speed;
 	}
 
-	else if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+	else if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - shipWidth)
 	{
 		position.x += speed;
 	}

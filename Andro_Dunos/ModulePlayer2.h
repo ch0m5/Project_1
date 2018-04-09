@@ -34,6 +34,12 @@ public:
 	Animation* shipAnimation = nullptr;
 	Animation* propellerAnimation = nullptr;
 
+	// Ship and propeller sizes in pixels
+	int shipHeight;
+	int shipWidth;
+	int propellerWidth;
+	int propellerHeight;
+
 	iPoint position;
 	float movVertical;	// Counter for the vertical movement of the ship
 	int maxVertical;	// Limit of the counter
