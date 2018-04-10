@@ -3,9 +3,11 @@
 #include "ModuleTextures.h"
 #include "ModuleInput.h"
 #include "ModuleRender.h"
+#include "ModuleCollision.h"
 #include "ModulePlayer1.h"
 #include "ModuleParticles.h"
 #include "ModuleMixer.h"
+#include "ModuleFadeToBlack.h"
 
 ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 {
@@ -115,11 +117,12 @@ bool ModulePlayer1::Start()
 	bool ret = true;
 	graphics = App->textures->Load("Sprites/Players_Ships/ships.png"); // arcade version
 
-
     //Music
 	shot = App->mixer->LoadFX("Music/Laser_Shot_Type-1_(Main_Ships).wav");
 	Mix_VolumeChunk(shot, FX);
 	
+	// Place player hitbox
+	playerHitbox = App->collision->AddCollider({ position.x, position.y, shipWidth, shipHeight, }, COLLIDER_PLAYER);
 	
 	return ret;
 }
@@ -226,6 +229,9 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 		propellerAnimation = &superDownwardsBooster;
 	}
 
+	// Update collider position to player position
+	playerHitbox->SetPos(position.x, position.y);
+
 	// Draw everything --------------------------------------
 	SDL_Rect propellerRect = propellerAnimation->GetCurrentFrame();
 
@@ -243,4 +249,9 @@ bool ModulePlayer1::CleanUp()
 	App->player1->Disable();
 
 	return true;
+}
+
+void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
+{
+	// NEED TO FILL
 }

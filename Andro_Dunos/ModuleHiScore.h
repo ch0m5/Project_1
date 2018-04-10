@@ -1,7 +1,6 @@
 #ifndef __ModuleHiScore_H__
 #define __ModuleHiScore_H__
 
-
 #include "Module.h"
 #include "Animation.h"
 #include "Globals.h"

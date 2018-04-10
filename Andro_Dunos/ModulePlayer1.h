@@ -9,7 +9,7 @@
 #include "SDL_mixer/include/SDL_mixer.h"
 
 struct SDL_Texture;
-
+struct Collider;
 
 class ModulePlayer1 : public Module
 {
@@ -20,6 +20,8 @@ public:
 	bool Start();
 	update_status Update();
 	bool CleanUp();
+
+	void OnCollision(Collider* c1, Collider* c2) override;
 
 public:
 
@@ -48,7 +50,10 @@ public:
 	int maxVertical;	// Limit of the counter
 
 	//Music 
-	Mix_Chunk * shot = nullptr;
+	Mix_Chunk *shot = nullptr;
+
+	//Collider
+	struct Collider* playerHitbox;
 };
 
 #endif

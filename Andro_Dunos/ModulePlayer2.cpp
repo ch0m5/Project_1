@@ -4,8 +4,10 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModulePlayer2.h"
+#include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModuleMixer.h"
+#include "ModuleFadeToBlack.h"
 
 
 ModulePlayer2::ModulePlayer2()	//@CarlesHoms
@@ -134,6 +136,9 @@ bool ModulePlayer2::Start()
 	shot = App->mixer->LoadFX("Music/Laser_Shot_Type-1_(Main_Ships).wav");
 	Mix_VolumeChunk(shot, FX);
 
+	// Place player hitbox
+	playerHitbox = App->collision->AddCollider({ position.x, position.y, shipWidth, shipHeight, }, COLLIDER_PLAYER);
+
 	return ret;
 }
 
@@ -238,6 +243,9 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 		propellerAnimation = &superDownwardsBooster;
 	}
 
+	// Update collider position to player position
+	playerHitbox->SetPos(position.x, position.y);
+
 	// Draw everything --------------------------------------
 	SDL_Rect propellerRect = propellerAnimation->GetCurrentFrame();
 
@@ -255,4 +263,9 @@ bool ModulePlayer2::CleanUp()
 	App->player2->Disable();
 
 	return true;
+}
+
+void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
+{
+	// NEED TO FILL
 }

@@ -77,6 +77,9 @@
     <ClInclude Include="ModuleParticles.h">
       <Filter>ModulesPlayers</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleCollision.h">
+      <Filter>ModulesBase</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -126,6 +129,9 @@
     </ClCompile>
     <ClCompile Include="ModuleParticles.cpp">
       <Filter>ModulesPlayers</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleCollision.cpp">
+      <Filter>ModulesBase</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

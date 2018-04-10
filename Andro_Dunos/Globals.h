@@ -1,6 +1,8 @@
 #ifndef __GLOBALS_H__
 #define __GLOBALS_H__
 
+#include "SDL\include\SDL_rect.h"
+
 #define LOG(format, ...) log(__FILE__, __LINE__, format, __VA_ARGS__);
 void log(const char file[], int line, const char* format, ...);
 
@@ -38,6 +40,6 @@ typedef unsigned int uint;
 #define WIN_BORDERLESS 0
 #define WIN_RESIZABLE 0
 #define REN_VSYNC 1
-#define VERSION " (v0.1.2)"		// Adds to the window name "Andro Dunos", used to mark the current working version
+#define VERSION " (v0.2.0)"		// Adds to the window name "Andro Dunos", used to mark the current working version
 
 #endif // __GLOBALS_H__

@@ -12,22 +12,25 @@
 #include "ModuleStage1.h"
 #include "ModuleStage2.h"
 #include "ModuleHiScore.h"
+#include "ModuleCollision.h"
 
 Application::Application()
 {
-	modules[0] = window = new ModuleWindow();
-	modules[1] = render = new ModuleRender();
-	modules[2] = input = new ModuleInput();
-	modules[3] = textures = new ModuleTextures();
-	modules[4] = mixer = new ModuleMixer();
-	modules[5] = stage2 = new ModuleStage2();
-	modules[6] = stage1 = new ModuleStage1();
-	modules[7] = scene_HiScore = new ModuleHiScore();
-	modules[8] = mainMenu = new ModuleMainMenu();
-	modules[9] = particles = new ModuleParticles();
-	modules[10] = player1 = new ModulePlayer1();
-	modules[11] = player2 = new ModulePlayer2();
-	modules[12] = fade = new ModuleFadeToBlack();
+	int i = 0;
+	modules[i++] = window = new ModuleWindow();
+	modules[i++] = render = new ModuleRender();
+	modules[i++] = input = new ModuleInput();
+	modules[i++] = textures = new ModuleTextures();
+	modules[i++] = mixer = new ModuleMixer();
+	modules[i++] = collision = new ModuleCollision();
+	modules[i++] = stage2 = new ModuleStage2();
+	modules[i++] = stage1 = new ModuleStage1();
+	modules[i++] = scene_HiScore = new ModuleHiScore();
+	modules[i++] = mainMenu = new ModuleMainMenu();
+	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = player1 = new ModulePlayer1();
+	modules[i++] = player2 = new ModulePlayer2();
+	modules[i++] = fade = new ModuleFadeToBlack();
 
 }	
 
@@ -41,6 +44,9 @@ bool Application::Init()
 {
 	bool ret = true;
 
+	// Disable modules
+	collision->Disable();
+
 	// Player will be disabled on the first update of a new scene
 	player1->Disable();
 	player2->Disable();
@@ -49,6 +55,7 @@ bool Application::Init()
 	stage1->Disable();
 	stage2->Disable(); 
 	scene_HiScore->Disable();
+
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();
