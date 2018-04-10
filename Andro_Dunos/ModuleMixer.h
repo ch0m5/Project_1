@@ -5,7 +5,7 @@
 #include "Globals.h"
 #include "ModuleInput.h"	//@XaviMarin @AndresSaladrigas
 
-#define MUSIC 60	// Volume values
+#define MUSIC 55	// Volume values
 #define FX 70
 #define MAX_MUSIC 10  //Max number of elements
 #define MAX_FX 60

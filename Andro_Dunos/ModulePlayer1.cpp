@@ -114,6 +114,13 @@ bool ModulePlayer1::Start()
 	LOG("Loading player textures");
 	bool ret = true;
 	graphics = App->textures->Load("Sprites/Players_Ships/ships.png"); // arcade version
+
+
+    //Music
+	shot = App->mixer->LoadFX("Music/Laser_Shot_Type-1_(Main_Ships).wav");
+	Mix_VolumeChunk(shot, FX);
+	
+	
 	return ret;
 }
 
@@ -184,6 +191,8 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	{
 		App->particles->AddParticle(App->particles->smallBlue, position.x + 6, position.y - 3);
 		App->particles->AddParticle(App->particles->smallBlue, position.x + 6, position.y - 9);
+
+		Mix_PlayChannel(3, shot, 0);
 	}
 	
 	// Depending on the vertical counter, we decide the animation

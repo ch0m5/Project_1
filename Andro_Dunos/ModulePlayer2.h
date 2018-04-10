@@ -6,6 +6,8 @@
 #include "Globals.h"
 #include "p2Point.h"
 
+#include "SDL_mixer/include/SDL_mixer.h"
+
 struct SDL_Texture;
 
 class ModulePlayer2 : public Module
@@ -43,6 +45,9 @@ public:
 	iPoint position;
 	float movVertical;	// Counter for the vertical movement of the ship
 	int maxVertical;	// Limit of the counter
+
+	//Music 
+	Mix_Chunk *shot = nullptr;
 };
 
 #endif
