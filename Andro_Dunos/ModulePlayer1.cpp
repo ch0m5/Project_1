@@ -233,7 +233,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	//Change weapon @Andres
 	if  (App->input->keyboard[SDL_SCANCODE_O] == KEY_DOWN)
 	{
-		if (type < 4 && type >= 0)
+		if (type < 3 && type >= 0)
 		{
 			type++;
 		}
