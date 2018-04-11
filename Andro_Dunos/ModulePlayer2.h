@@ -54,6 +54,9 @@ public:
 
 	//Collider
 	Collider* playerHitbox;
+
+	//Debug Purpose Variables
+	bool godMode = false;
 };
 
 #endif

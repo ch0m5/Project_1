@@ -269,9 +269,31 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 		Mix_PlayChannel(3, shot, 0);
 	}
+	//GodMode Function
+	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN)
+	{
+		if (App->input->keyboard[SDL_SCANCODE_F2] != KEY_REPEAT)
+		{
+			godMode = !godMode;
+		}
+
+		if (godMode == true)
+		{
+			playerHitbox->to_delete = true;
+			playerHitbox = nullptr;
+		}
+		else if (godMode == false)
+		{
+			godMode = false;
+			playerHitbox = App->collision->AddCollider({ position.x, position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
+		}
+	}
 
 	// Update collider position to player position
-	playerHitbox->SetPos(position.x, position.y);
+	if (godMode == false)
+	{
+		playerHitbox->SetPos(position.x, position.y);
+	}
 
 	// Draw everything --------------------------------------
 	SDL_Rect propellerRect = propellerAnimation->GetCurrentFrame();

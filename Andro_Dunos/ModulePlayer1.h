@@ -57,6 +57,9 @@ public:
 
 	//Lasers
 	int type;
+
+	//Debug Purpose Variables
+	bool godMode = false;
 };
 
 #endif
