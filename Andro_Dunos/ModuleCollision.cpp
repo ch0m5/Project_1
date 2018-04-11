@@ -107,9 +107,7 @@ void ModuleCollision::DebugDraw()
 	if (App->input->keyboard[SDL_SCANCODE_F1] == KEY_DOWN)
 	{
 		debug = !debug;
-		// render bacl in the back to avoid green scren issue @Andres
-		SDL_SetRenderDrawColor(App->render->renderer, 0, 0, 0, 255.0f);
-		SDL_RenderFillRect(App->render->renderer, &screen);
+		
 	}
 
 	if (debug == false)
