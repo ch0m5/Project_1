@@ -58,10 +58,13 @@ bool ModuleStage1::Start()
 	// Collider
 	App->collision->Enable();
 
+	// Ground Collider
+	App->collision->AddCollider({ 0, 195, 4000, 30 }, COLLIDER_WALL);
+
 	//Music
 	MusicLvl1 = App->mixer->LoadMusic("Music/04_Stage_1-The Moon-Loop.ogg");
 	Mix_FadeInMusic(MusicLvl1, -1, 1000);
-	Mix_Volume(-1, MUSIC);
+	Mix_VolumeMusic(MUSIC); //Andres acuerdate de cambiar esto
 	return ret;
 
 }
