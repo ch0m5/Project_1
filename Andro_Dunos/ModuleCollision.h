@@ -58,6 +58,7 @@ private:
 	Collider* colliders[MAX_COLLIDERS];
 	bool matrix[COLLIDER_MAX][COLLIDER_MAX];
 	bool debug = true;
+	SDL_Rect screen;
 };
 
 #endif // __ModuleCollision_H__

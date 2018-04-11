@@ -22,6 +22,7 @@ Application::Application()
 	modules[i++] = input = new ModuleInput();
 	modules[i++] = textures = new ModuleTextures();
 	modules[i++] = mixer = new ModuleMixer();
+	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = stage2 = new ModuleStage2();
 	modules[i++] = stage1 = new ModuleStage1();
 	modules[i++] = scene_HiScore = new ModuleHiScore();
@@ -29,7 +30,6 @@ Application::Application()
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = player1 = new ModulePlayer1();
 	modules[i++] = player2 = new ModulePlayer2();
-	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 
 }	

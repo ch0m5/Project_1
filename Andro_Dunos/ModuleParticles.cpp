@@ -65,7 +65,7 @@ bool ModuleParticles::Start()
 	smallBlue.life = 1200;
 	smallBlue.anim.speed = 0.3f;
 
-	//Player Type 2 laser yellow
+	//Player Type 2 laser yellow @Andres
 	yellowSmallRight.anim.PushBack({ 6, 69, 10, 3 });
 	yellowSmallRight.anim.loop = false;
 	yellowSmallRight.speed.x += 5;
@@ -89,7 +89,7 @@ bool ModuleParticles::Start()
 	arrow1.anim.PushBack({ 41, 11, 13, 2});
 	arrow1.anim.PushBack({ 41, 11, 13, 6 });
 	arrow1.anim.PushBack({ 41, 11, 13, 8 });
-	arrow1.anim.loop = false;
+	arrow1.anim.loop = true;
 	arrow1.speed.x += 8;
 	arrow1.speed.y += 1;
 	arrow1.life = 1200;
@@ -97,12 +97,12 @@ bool ModuleParticles::Start()
 
 	arrow2.anim.PushBack({ 41, 11, 13, 2 });
 	arrow2.anim.PushBack({ 41, 11, 13, 6 });
-	arrow2.anim.PushBack({ 41, 11, 13, 8 });
+	arrow2.anim.PushBack({ 41, 11, 13, 8 });// I dont know why this animation does not work
 	arrow2.anim.loop = true;
 	arrow2.speed.x += 8;
 	arrow2.speed.y -= 1;
 	arrow2.life = 1200;
-	arrow2.anim.speed = 0.5f;
+	arrow2.anim.speed = 0.3f;
 
 	return true;
 }
