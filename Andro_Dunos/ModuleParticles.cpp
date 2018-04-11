@@ -22,7 +22,7 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	graphics = App->textures->Load("Sprites/Players_Ships/laser_types.png");
-
+	Explotion = App->textures->Load("Sprites/Common_level_elements.png");
 	/* Laser Sprites
 
 	Type 1:
@@ -103,6 +103,15 @@ bool ModuleParticles::Start()
 	arrow2.speed.y -= 1;
 	arrow2.life = 1200;
 	arrow2.anim.speed = 0.3f;
+
+		//---------------------------
+	// Explosion particle // @Andres
+	explosion.anim.PushBack({ 33, 66, 6, 6 });
+	explosion.anim.PushBack({ 45, 64, 10, 8 });
+	explosion.anim.PushBack({ 59, 56, 16, 16 });
+	explosion.anim.PushBack({ 81, 58, 14, 14 });
+	explosion.anim.loop = false;
+	explosion.anim.speed = 0.2f;
 
 	return true;
 }
@@ -222,6 +231,10 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
+			if (c2->type == COLLIDER_WALL) // @Andres
+			{
+				AddParticle(explosion, active[i]->position.x, active[i]->position.y);
+			}
 			if (active[i] != nullptr && active[i]->collider == c1) {
 				AddParticle(smallBlue, active[i]->position.x, active[i]->position.y);
 			}

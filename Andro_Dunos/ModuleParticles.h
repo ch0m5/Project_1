@@ -48,6 +48,7 @@ private:
 	Particle* active[MAX_ACTIVE_PARTICLES];
 	uint last_particle = 0;
 
+	SDL_Texture* Explotion = nullptr;
 public:
 
 		// Type 1 particles
@@ -79,6 +80,8 @@ public:
 
 
 	// Shield particles
+
+	Particle explosion;
 
 
 };
