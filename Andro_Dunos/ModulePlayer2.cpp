@@ -265,6 +265,11 @@ bool ModulePlayer2::CleanUp()
 
 	App->player2->Disable();
 
+	//Reset player pos
+	position.x = 0;							// Starting point of the ship (using p2Point)
+	position.y = SCREEN_HEIGHT / 2 - 10;
+
+
 	return true;
 }
 

@@ -73,6 +73,7 @@ bool ModuleStage2::CleanUp()
 	LOG("Unloading colliders")
 		App->collision->Disable();
 
+
 	return true;
 }
 

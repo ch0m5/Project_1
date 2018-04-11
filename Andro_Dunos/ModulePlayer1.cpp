@@ -131,6 +131,7 @@ bool ModulePlayer1::Start()
 	playerHitbox = App->collision->AddCollider({ position.x, position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
 	
 	
+	
 	return ret;
 }
 
@@ -287,6 +288,10 @@ bool ModulePlayer1::CleanUp()
 	App->textures->Unload(graphics);
 
 	App->player1->Disable();
+
+	//Reset player pos
+	position.x = 0;							// Starting point of the ship (using p2Point)
+	position.y = SCREEN_HEIGHT / 2 - 10;
 
 	return true;
 }
