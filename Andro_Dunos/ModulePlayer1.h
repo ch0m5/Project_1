@@ -54,6 +54,9 @@ public:
 
 	//Collider
 	Collider* playerHitbox;
+
+	//Lasers
+	int type;
 };
 
 #endif

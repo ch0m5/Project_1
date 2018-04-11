@@ -42,6 +42,7 @@ bool ModuleParticles::Start()
 	63, 11, 3, 16	|
 	57, 35, 16, 18	/
 	57, 60, 16, 18	\
+	42, 87, 32 ,3   --
 
 	76, y
 
@@ -63,6 +64,45 @@ bool ModuleParticles::Start()
 	smallBlue.speed.x += 5;
 	smallBlue.life = 1200;
 	smallBlue.anim.speed = 0.3f;
+
+	//Player Type 2 laser yellow
+	yellowSmallRight.anim.PushBack({ 6, 69, 10, 3 });
+	yellowSmallRight.anim.loop = false;
+	yellowSmallRight.speed.x += 5;
+	yellowSmallRight.life = 1200;
+	yellowSmallRight.anim.speed = 0.3f;
+	
+	yellowSmallLeft.anim.PushBack({ 6, 84, 10, 3 });
+	yellowSmallLeft.anim.loop = false;
+	yellowSmallLeft.speed.x -= 5;
+	yellowSmallLeft.life = 1200;
+	yellowSmallLeft.anim.speed = 0.3f;
+
+	//Player Type 3 laser green
+	straightGreen.anim.PushBack({ 42, 87, 32 ,3 });
+	straightGreen.anim.loop = false;
+	straightGreen.speed.x += 7;
+	straightGreen.life = 1200;
+	straightGreen.anim.speed = 0.3f;
+
+	//Player Laser Type 4 white
+	arrow1.anim.PushBack({ 41, 11, 13, 2});
+	arrow1.anim.PushBack({ 41, 11, 13, 6 });
+	arrow1.anim.PushBack({ 41, 11, 13, 8 });
+	arrow1.anim.loop = false;
+	arrow1.speed.x += 8;
+	arrow1.speed.y += 1;
+	arrow1.life = 1200;
+	arrow1.anim.speed = 0.3f;
+
+	arrow2.anim.PushBack({ 41, 11, 13, 2 });
+	arrow2.anim.PushBack({ 41, 11, 13, 6 });
+	arrow2.anim.PushBack({ 41, 11, 13, 8 });
+	arrow2.anim.loop = true;
+	arrow2.speed.x += 8;
+	arrow2.speed.y -= 1;
+	arrow2.life = 1200;
+	arrow2.anim.speed = 0.5f;
 
 	return true;
 }

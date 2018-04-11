@@ -108,6 +108,9 @@ ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 	superDownwardsBooster.PushBack({ 74, 153, propellerWidth, propellerHeight });
 	superDownwardsBooster.PushBack({ 0, 0, propellerWidth, propellerHeight });
 	superDownwardsBooster.speed = 1.4f;
+
+	//laser type
+	type = 0;
 }
 
 ModulePlayer1::~ModulePlayer1()
@@ -126,6 +129,7 @@ bool ModulePlayer1::Start()
 	
 	// Place player hitbox
 	playerHitbox = App->collision->AddCollider({ position.x, position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
+	
 	
 	return ret;
 }
@@ -192,14 +196,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 		position.x += speed;
 	}
 
-	// Fire lasers
-	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN)
-	{
-		App->particles->AddParticle(App->particles->smallBlue, position.x + 6, position.y - 3);
-		App->particles->AddParticle(App->particles->smallBlue, position.x + 6, position.y - 9);
-
-		Mix_PlayChannel(3, shot, 0);
-	}
+	
 	
 	// Depending on the vertical counter, we decide the animation
 	if (movVertical >= maxVertical)
@@ -230,6 +227,46 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	{
 		shipRect = shipAnimation->frames[SHIP_FULL_DOWN];
 		propellerAnimation = &superDownwardsBooster;
+	}
+
+	//Change weapon @Andres
+	if  (App->input->keyboard[SDL_SCANCODE_O] == KEY_DOWN)
+	{
+		if (type < 4 && type >= 0)
+		{
+			type++;
+		}
+		else
+			type = 0;
+	}
+	// Fire lasers @Andres
+	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN && type==0)
+	{
+		App->particles->AddParticle(App->particles->smallBlue, position.x + 6, position.y + 5);
+		App->particles->AddParticle(App->particles->smallBlue, position.x + 6, position.y + 11);
+
+		Mix_PlayChannel(3, shot, 0);
+	}
+
+	else if (App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN && type == 1)
+	{
+		App->particles->AddParticle(App->particles->yellowSmallRight, position.x + 6, position.y +10);
+		App->particles->AddParticle(App->particles->yellowSmallLeft, position.x - 6, position.y +10);
+
+		Mix_PlayChannel(3, shot, 0);
+	}
+	else if (App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN && type == 2)
+	{
+		App->particles->AddParticle(App->particles->straightGreen, position.x + 6, position.y + 10);
+
+		Mix_PlayChannel(3, shot, 0);
+	}
+	else if (App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN && type == 3)
+	{
+		App->particles->AddParticle(App->particles->arrow1, position.x + 6, position.y + 10);
+		App->particles->AddParticle(App->particles->arrow2, position.x + 6, position.y + 10);
+
+		Mix_PlayChannel(3, shot, 0);
 	}
 
 	// Update collider position to player position

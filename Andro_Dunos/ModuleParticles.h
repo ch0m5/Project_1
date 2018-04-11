@@ -50,29 +50,30 @@ private:
 
 public:
 
-	// Type 1 particles
+		// Type 1 particles
 	Particle smallBlue;
 	/*Particle mediumBlue;
 	Particle bigBlue;
+	*/
 
-	// Type 2 particles
-	Particle YellowBigRight;
-	Particle YellowBigLeft;
-	Particle yellowUpLeft;
+		// Type 2 particles
+	//Particle YellowBigRight;
+	//Particle YellowBigLeft;
+	//Particle yellowUpLeft;
 	Particle yellowSmallRight;
 	Particle yellowSmallLeft;
 
-	// Type 3 particles
+		// Type 3 particles
 	Particle straightGreen;
-	Particle upRightGreen;
-	Particle downRightGreen;
+	//Particle upRightGreen;
+	//Particle downRightGreen;
 
-	// Type 4 particles
+		// Type 4 particles
 	Particle arrow1;
 	Particle arrow2;
-	Particle arrow3;
-	Particle arrow4;
-	Particle arrow5;*/
+	//Particle arrow3;
+	//Particle arrow4;
+	//Particle arrow5;
 
 	// Homing particles
 
