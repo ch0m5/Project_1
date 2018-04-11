@@ -9,6 +9,7 @@
 #include "ModuleMixer.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleMainMenu.h"
+#include "ModuleHiScore.h"
 #include "ModuleStage1.h"
 #include "ModuleStage2.h"
 
@@ -27,6 +28,8 @@ ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 
 	movVertical = 0;	// Counter for the vertical movement of the ship
 	maxVertical = 14;	// Limit of the counter
+
+	type = TYPE_1;		//laser type
 
 	/*
 	Sprites positioning
@@ -108,9 +111,6 @@ ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 	superDownwardsBooster.PushBack({ 74, 153, propellerWidth, propellerHeight });
 	superDownwardsBooster.PushBack({ 0, 0, propellerWidth, propellerHeight });
 	superDownwardsBooster.speed = 1.4f;
-
-	//laser type
-	type = 0;
 }
 
 ModulePlayer1::~ModulePlayer1()
@@ -130,8 +130,6 @@ bool ModulePlayer1::Start()
 	// Place player hitbox
 	playerHitbox = App->collision->AddCollider({ position.x, position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
 	
-	
-	
 	return ret;
 }
 
@@ -147,7 +145,23 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	
 	int speed = 2;
 
-	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE &&
+		App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE ||
+		App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT &&
+		App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+	{
+		if (movVertical > 0)
+		{
+			--movVertical;		// Decrease vertical counter.
+		}
+
+		if (movVertical < 0)
+		{
+			++movVertical;		// Increase vertical counter.
+		}
+	}
+
+	else if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 	{
 		if (position.y < SCREEN_HEIGHT - shipHeight)
 		{
@@ -173,31 +187,15 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 		}
 	}
 
-	else if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE &&
-		App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE)
-	{
-		if (movVertical > 0)
-		{
-			--movVertical;		// Decrease vertical counter.
-		}
-
-		if (movVertical < 0)
-		{
-			++movVertical;		// Increase vertical counter.
-		}
-	}
-
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0)
 	{
 		position.x -= speed;
 	}
 
-	else if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - shipWidth)
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - shipWidth)
 	{
 		position.x += speed;
 	}
-
-	
 	
 	// Depending on the vertical counter, we decide the animation
 	if (movVertical >= maxVertical)
@@ -233,15 +231,16 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	//Change weapon @Andres
 	if  (App->input->keyboard[SDL_SCANCODE_O] == KEY_DOWN)
 	{
-		if (type < 3 && type >= 0)
+		if (type >= TYPE_4)
 		{
-			type++;
+			type = TYPE_1;
 		}
 		else
-			type = 0;
+			type++;
 	}
+
 	// Fire lasers @Andres
-	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN && type==0)
+	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN && type == TYPE_1)
 	{
 		App->particles->AddParticle(App->particles->smallBlue, position.x + 6, position.y + 5,COLLIDER_PLAYER_SHOT);
 		App->particles->AddParticle(App->particles->smallBlue, position.x + 6, position.y + 11, COLLIDER_PLAYER_SHOT);
@@ -249,26 +248,27 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 		Mix_PlayChannel(3, shot, 0);
 	}
 
-	else if (App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN && type == 1)
+	else if (App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN &&  type == TYPE_2)
 	{
-		App->particles->AddParticle(App->particles->yellowSmallRight, position.x + 6, position.y +10, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->yellowSmallLeft, position.x - 6, position.y +10, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->yellowSmallRight, position.x + 6, position.y + 10, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->yellowSmallLeft, position.x - 6, position.y + 10, COLLIDER_PLAYER_SHOT);
 
 		Mix_PlayChannel(3, shot, 0);
 	}
-	else if (App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN && type == 2)
+	else if (App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN &&  type == TYPE_3)
 	{
 		App->particles->AddParticle(App->particles->straightGreen, position.x + 6, position.y + 10, COLLIDER_PLAYER_SHOT);
 
 		Mix_PlayChannel(3, shot, 0);
 	}
-	else if (App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN && type == 3)
+	else if (App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN &&  type == TYPE_4)
 	{
 		App->particles->AddParticle(App->particles->arrow1, position.x + 6, position.y + 10, COLLIDER_PLAYER_SHOT);
 		App->particles->AddParticle(App->particles->arrow2, position.x + 6, position.y + 10, COLLIDER_PLAYER_SHOT);
 
 		Mix_PlayChannel(3, shot, 0);
 	}
+
 	//GodMode Function
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN)
 	{
@@ -323,6 +323,6 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 	if (c1->type == COLLIDER_WALL || c2->type == COLLIDER_WALL)
 	{
 		App->player1->Disable();
-		App->fade->FadeToBlack(App->stage1, App->mainMenu);
+		App->fade->FadeToBlack(App->stage1, App->scene_HiScore);
 	}
 }

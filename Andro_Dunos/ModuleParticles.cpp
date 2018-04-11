@@ -22,7 +22,8 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	graphics = App->textures->Load("Sprites/Players_Ships/laser_types.png");
-	Explotion = App->textures->Load("Sprites/Common_level_elements.png");
+	//explosionPtr = App->textures->Load("Sprites/Common_level_elements.png");
+	
 	/* Laser Sprites
 
 	Type 1:
@@ -59,29 +60,28 @@ bool ModuleParticles::Start()
 
 	// Player blue laser
 	smallBlue.anim.PushBack({ 24, 39, 11, 4 });
-	smallBlue.anim.PushBack({ 24, 39, 11, 4 });
-	smallBlue.anim.loop = true;
-	smallBlue.speed.x += 5;
+	smallBlue.anim.loop = false;
+	smallBlue.speed.x = 6.0f;
 	smallBlue.life = 1200;
 	smallBlue.anim.speed = 0.3f;
 
 	//Player Type 2 laser yellow @Andres
 	yellowSmallRight.anim.PushBack({ 6, 69, 10, 3 });
 	yellowSmallRight.anim.loop = false;
-	yellowSmallRight.speed.x += 5;
+	yellowSmallRight.speed.x = 6.0f;
 	yellowSmallRight.life = 1200;
 	yellowSmallRight.anim.speed = 0.3f;
 	
 	yellowSmallLeft.anim.PushBack({ 6, 84, 10, 3 });
 	yellowSmallLeft.anim.loop = false;
-	yellowSmallLeft.speed.x -= 5;
+	yellowSmallLeft.speed.x = 6.0f;
 	yellowSmallLeft.life = 1200;
 	yellowSmallLeft.anim.speed = 0.3f;
 
 	//Player Type 3 laser green
 	straightGreen.anim.PushBack({ 42, 87, 32 ,3 });
 	straightGreen.anim.loop = false;
-	straightGreen.speed.x += 7;
+	straightGreen.speed.x = 6.0f;
 	straightGreen.life = 1200;
 	straightGreen.anim.speed = 0.3f;
 
@@ -90,8 +90,8 @@ bool ModuleParticles::Start()
 	arrow1.anim.PushBack({ 41, 11, 13, 6 });
 	arrow1.anim.PushBack({ 41, 11, 13, 8 });
 	arrow1.anim.loop = true;
-	arrow1.speed.x += 8;
-	arrow1.speed.y += 1;
+	arrow1.speed.x = 6.0f;
+	arrow1.speed.y = 0.8f;
 	arrow1.life = 1200;
 	arrow1.anim.speed = 0.3f;
 
@@ -99,19 +99,19 @@ bool ModuleParticles::Start()
 	arrow2.anim.PushBack({ 41, 11, 13, 6 });
 	arrow2.anim.PushBack({ 41, 11, 13, 8 });// I dont know why this animation does not work
 	arrow2.anim.loop = true;
-	arrow2.speed.x += 8;
-	arrow2.speed.y -= 1;
+	arrow2.speed.x = 6.0f;
+	arrow2.speed.y = 0.8f;
 	arrow2.life = 1200;
 	arrow2.anim.speed = 0.3f;
 
 		//---------------------------
 	// Explosion particle // @Andres
-	explosion.anim.PushBack({ 33, 66, 6, 6 });
+	/*explosion.anim.PushBack({ 33, 66, 6, 6 });
 	explosion.anim.PushBack({ 45, 64, 10, 8 });
 	explosion.anim.PushBack({ 59, 56, 16, 16 });
 	explosion.anim.PushBack({ 81, 58, 14, 14 });
 	explosion.anim.loop = false;
-	explosion.anim.speed = 0.2f;
+	explosion.anim.speed = 0.2f;*/
 
 	return true;
 }
@@ -165,16 +165,6 @@ update_status ModuleParticles::Update()
 
 void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)
 {
-	Particle* p = new Particle(particle);
-	p->born = SDL_GetTicks() + delay;
-	p->position.x = x;
-	p->position.y = y;
-
-	if (last_particle == MAX_ACTIVE_PARTICLES)
-		last_particle = 0;
-
-	active[last_particle++] = p;
-
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		if (active[i] == nullptr)
@@ -186,6 +176,25 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 			if (collider_type != COLLIDER_NONE)
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			active[i] = p;
+			break;
+		}
+	}
+}
+
+void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
+{
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+		// Always destroy particles that collide
+		if (active[i] != nullptr && active[i]->collider == c1)
+		{
+			if (c2->type == COLLIDER_WALL)
+			{
+				AddParticle(explosion, active[i]->position.x, active[i]->position.y);
+			}
+
+			delete active[i];
+			active[i] = nullptr;
 			break;
 		}
 	}
@@ -205,6 +214,12 @@ Particle::Particle(const Particle& p) :
 	fx(p.fx), born(p.born), life(p.life)
 {}
 
+Particle::~Particle()
+{
+	if (collider != nullptr)
+		collider->to_delete = true;
+}
+
 bool Particle::Update()
 {
 	bool ret = true;
@@ -221,26 +236,8 @@ bool Particle::Update()
 	position.x += speed.x;
 	position.y += speed.y;
 
-	return ret;
-}
+	if (collider != nullptr)
+		collider->SetPos(position.x, position.y);
 
-void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
-{
-	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
-	{
-		// Always destroy particles that collide
-		if (active[i] != nullptr && active[i]->collider == c1)
-		{
-			if (c2->type == COLLIDER_WALL) // @Andres
-			{
-				AddParticle(explosion, active[i]->position.x, active[i]->position.y);
-			}
-			if (active[i] != nullptr && active[i]->collider == c1) {
-				AddParticle(smallBlue, active[i]->position.x, active[i]->position.y);
-			}
-			delete active[i];
-			active[i] = nullptr;
-			break;
-		}
-	}
+	return ret;
 }

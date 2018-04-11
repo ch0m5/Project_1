@@ -26,6 +26,7 @@ struct Particle
 
 	Particle();
 	Particle(const Particle& p);
+	~Particle();
 	bool Update();
 };
 
@@ -48,7 +49,7 @@ private:
 	Particle* active[MAX_ACTIVE_PARTICLES];
 	uint last_particle = 0;
 
-	SDL_Texture* Explotion = nullptr;
+	SDL_Texture* explosionPtr = nullptr;
 public:
 
 		// Type 1 particles

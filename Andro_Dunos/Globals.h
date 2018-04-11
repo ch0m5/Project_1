@@ -28,6 +28,14 @@ enum ship_status	// To mark the position in the array of SDL_rects related the t
 	SHIP_FULL_DOWN
 };
 
+enum laserTypes
+{
+	TYPE_1,
+	TYPE_2,
+	TYPE_3,
+	TYPE_4
+};
+
 // Useful typedefs ---------
 typedef unsigned int uint;
 
