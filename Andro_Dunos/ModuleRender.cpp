@@ -70,6 +70,7 @@ update_status ModuleRender::Update()	// Used for the camera movement, reacts to 
 
 update_status ModuleRender::PostUpdate()
 {
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
 	SDL_RenderPresent(renderer);	// Prints all rendered stuff
 	return update_status::UPDATE_CONTINUE;
 }

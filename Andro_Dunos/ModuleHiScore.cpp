@@ -11,6 +11,7 @@
 #include "ModuleHiScore.h"
 #include "ModuleMainMenu.h"
 #include "ModuleMixer.h"
+#include "ModuleCollision.h"
 
 
 
@@ -34,6 +35,7 @@ bool ModuleHiScore::Start()
 	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
 	hiScoreBackTex = App->textures->Load("Sprites/User_Interface/Grafical_Interface/game_over_background.png");
 
+	App->collision->Disable();
 
 	//Music
 	MusicHighScore = App->mixer->LoadMusic("Music/18_Game_Over.ogg");

@@ -143,6 +143,8 @@ void ModuleCollision::DebugDraw()
 		case COLLIDER_ENEMY_SHOT: // magenta
 			App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
 			break;
+
+			
 		}
 	}
 }

@@ -39,6 +39,8 @@ ModuleMainMenu::ModuleMainMenu()	//@CarlesHoms
 	viscoGamesRect.y = 116;
 	viscoGamesRect.w = 167;
 	viscoGamesRect.h = 15;
+
+	
 }
 
 ModuleMainMenu::~ModuleMainMenu()
@@ -57,6 +59,7 @@ bool ModuleMainMenu::Start()
 
 	App->player1->Disable();
 	App->player2->Disable();
+	App->collision->Disable();
 
 	//Music
 	MusicMainMenu = App->mixer->LoadMusic("Music/02_Title.ogg");

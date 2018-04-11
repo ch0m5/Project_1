@@ -4,7 +4,7 @@
 #include "Module.h"
 #include "Globals.h"
 
-#define MAX_TEXTURES 50	// Maximum possible textures.
+#define MAX_TEXTURES 100	// Maximum possible textures.
 
 struct SDL_Texture;
 
