@@ -5,8 +5,6 @@
 
 #include "Module.h"
 
-struct SDL_Rect;
-
 enum COLLIDER_TYPE
 {
 	COLLIDER_NONE = -1,

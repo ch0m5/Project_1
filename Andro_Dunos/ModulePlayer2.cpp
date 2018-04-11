@@ -159,7 +159,7 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
-		if (position.y < SCREEN_HEIGHT)
+		if (position.y < SCREEN_HEIGHT - shipHeight)
 		{
 			position.y += speed;
 		}
@@ -172,7 +172,7 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 
 	else if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		if (position.y > shipHeight)
+		if (position.y > 0)
 		{
 			position.y -= speed;
 		}
@@ -252,8 +252,8 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 	// Draw everything --------------------------------------
 	SDL_Rect propellerRect = propellerAnimation->GetCurrentFrame();
 
-	App->render->Blit(graphics, position.x - 12, position.y - shipRect.h, &propellerRect);
-	App->render->Blit(graphics, position.x, position.y - shipRect.h, &shipRect);
+	App->render->Blit(graphics, position.x - propellerWidth, position.y, &propellerRect);
+	App->render->Blit(graphics, position.x, position.y, &shipRect);
 
 	return UPDATE_CONTINUE;
 }

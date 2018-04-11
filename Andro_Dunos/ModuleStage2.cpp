@@ -10,6 +10,7 @@
 #include "ModulePlayer2.h"
 #include "ModuleHiScore.h"
 #include "ModuleMixer.h"
+#include "ModuleCollision.h"
 
 ModuleStage2::ModuleStage2()	//@AndresSala
 {
@@ -45,6 +46,10 @@ bool ModuleStage2::Start()
 	{
 		App->player2->Enable();
 	}
+
+	// Collider
+	App->collision->Enable();
+
 	//Music
 	MusicLvl2 = App->mixer->LoadMusic("Music/07_Stage_2 -Mechanized-Unit-Loop.ogg");
 	Mix_FadeInMusic(MusicLvl2, -1, 1000);
@@ -54,14 +59,19 @@ bool ModuleStage2::Start()
 
 bool ModuleStage2::CleanUp()
 {
+	LOG("Unloading players");
 	App->player1->Disable();
 	if (App->input->secondPlayerState == true) //@AndresSala
 	{
 		App->player2->Disable();
 	}
-	//LOG("Unloading players stage");
+
+	LOG("Unloading stage 2");
 	App->textures->Unload(background2Text);
 	App->textures->Unload(map2Text);
+
+	LOG("Unloading colliders")
+		App->collision->Disable();
 
 	return true;
 }

@@ -10,7 +10,7 @@
 #include "ModuleHiScore.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleMixer.h"
-
+#include "ModuleCollision.h"
 
 ModuleMainMenu::ModuleMainMenu()	//@CarlesHoms
 {

@@ -44,9 +44,6 @@ bool Application::Init()
 {
 	bool ret = true;
 
-	// Disable modules
-	collision->Disable();
-
 	// Player will be disabled on the first update of a new scene
 	player1->Disable();
 	player2->Disable();
@@ -56,6 +53,8 @@ bool Application::Init()
 	stage2->Disable(); 
 	scene_HiScore->Disable();
 
+	// Disable collisions
+	collision->Disable();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();

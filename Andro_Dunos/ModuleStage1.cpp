@@ -10,7 +10,7 @@
 #include "ModulePlayer2.h"
 #include "ModuleHiScore.h"
 #include "ModuleMixer.h"
-
+#include "ModuleCollision.h"
 
 ModuleStage1::ModuleStage1()	//@AndresSaladrigas
 {
@@ -55,6 +55,9 @@ bool ModuleStage1::Start()
 	}
 	// we shoukd log the problem if not loaded correctly
 	
+	// Collider
+	App->collision->Enable();
+
 	//Music
 	MusicLvl1 = App->mixer->LoadMusic("Music/04_Stage_1-The Moon-Loop.ogg");
 	Mix_FadeInMusic(MusicLvl1, -1, 1000);
@@ -77,9 +80,9 @@ bool ModuleStage1::CleanUp()
 	App->textures->Unload(map1Text);
 	App->textures->Unload(background1Text);
 	App->textures->Unload(bluePlanetText);
-	
 
-	
+	LOG("Unloading colliders")
+	App->collision->Disable();
 
 	return true;
 }
