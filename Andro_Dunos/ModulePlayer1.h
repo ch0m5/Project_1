@@ -54,9 +54,12 @@ public:
 
 	//Collider
 	Collider* playerHitbox;
-
+	
 	//Lasers
-	int type;
+	int type;					// Flag/counter for type equipped
+	int laserFrontOffset;		// Offset for front bullets
+	int laserBackOffset;		// Offset for back bullets	// Distance from ship position to bullet creation
+	int laserVerticalOffset;	// Offset for all bullets
 
 	//Debug Purpose Variables
 	bool godMode = false;
