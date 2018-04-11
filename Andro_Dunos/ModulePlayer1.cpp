@@ -125,7 +125,7 @@ bool ModulePlayer1::Start()
 
     //Music
 	shot = App->mixer->LoadFX("Music/Laser_Shot_Type-1_(Main_Ships).wav");
-	Mix_VolumeChunk(shot, FX);
+	Mix_VolumeChunk(shot, FXVol);
 	
 	// Place player hitbox
 	playerHitbox = App->collision->AddCollider({ position.x, position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);

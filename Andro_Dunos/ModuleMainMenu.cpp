@@ -63,7 +63,7 @@ bool ModuleMainMenu::Start()
 
 	//Music
 	MusicMainMenu = App->mixer->LoadMusic("Music/02_Title.ogg");
-	Mix_Volume(-1, MUSIC);
+	Mix_VolumeMusic(MUSICVol);
 	Mix_FadeInMusic(MusicMainMenu, 0, 1000);
 	
 	return ret;
