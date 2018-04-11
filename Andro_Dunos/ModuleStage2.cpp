@@ -59,6 +59,13 @@ bool ModuleStage2::Start()
 
 bool ModuleStage2::CleanUp()
 {
+	// reset Background movement (position) values
+	movementx = 0;
+	movementxBack = 0;
+	movementxPlanetsBack = 0;
+	movementy = -55;
+
+	//--------
 	LOG("Unloading players");
 	App->player1->Disable();
 	if (App->input->secondPlayerState == true) //@AndresSala

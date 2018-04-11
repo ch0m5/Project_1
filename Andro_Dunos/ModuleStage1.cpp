@@ -59,7 +59,9 @@ bool ModuleStage1::Start()
 	App->collision->Enable();
 
 	// Ground Collider
+	
 	App->collision->AddCollider({ 0, 195, 4000, 30 }, COLLIDER_WALL);
+
 
 	//Music
 	MusicLvl1 = App->mixer->LoadMusic("Music/04_Stage_1-The Moon-Loop.ogg");
@@ -72,6 +74,17 @@ bool ModuleStage1::Start()
 // Unload assets
 bool ModuleStage1::CleanUp()
 {
+
+	// reset Background movement (position) values
+	//X Axis
+	 movementx = 0;
+	 movementxBack = 0;
+	 movementxPlanetsBack = 0;
+	//Y Axis
+	 movementy = 0;
+	 movementyBack = 0;
+
+	 //--------
 	LOG("Unloading players");
 	App->player1->Disable();
 	if (App->input->secondPlayerState == true) //@AndresSala
@@ -86,6 +99,8 @@ bool ModuleStage1::CleanUp()
 
 	LOG("Unloading colliders")
 	App->collision->Disable();
+
+	
 
 	return true;
 }
