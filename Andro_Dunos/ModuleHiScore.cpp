@@ -40,7 +40,7 @@ bool ModuleHiScore::Start()
 	//Music
 	MusicHighScore = App->mixer->LoadMusic("Music/18_Game_Over.ogg");
 	Mix_FadeInMusic(MusicHighScore, 0, 1000);
-	Mix_Volume(-1, MUSIC);
+	Mix_VolumeMusic(MUSICVol);
 
 	return ret;
 }
