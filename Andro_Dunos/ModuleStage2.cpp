@@ -49,6 +49,9 @@ bool ModuleStage2::Start()
 
 	// Collider
 	App->collision->Enable();
+	
+	// Ground Collider
+	App->collision->AddCollider({ 0, 198, 320, 224 }, COLLIDER_WALL);
 
 	//Music
 	MusicLvl2 = App->mixer->LoadMusic("Music/07_Stage_2 -Mechanized-Unit-Loop.ogg");
