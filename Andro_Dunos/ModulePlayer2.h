@@ -53,7 +53,7 @@ public:
 	Mix_Chunk *shot = nullptr;
 
 	//Collider
-	struct Collider* playerHitbox;
+	Collider* playerHitbox;
 };
 
 #endif

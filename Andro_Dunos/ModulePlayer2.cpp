@@ -8,6 +8,9 @@
 #include "ModuleParticles.h"
 #include "ModuleMixer.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleMainMenu.h"
+#include "ModuleStage1.h"
+#include "ModuleStage2.h"
 
 
 ModulePlayer2::ModulePlayer2()	//@CarlesHoms
@@ -137,7 +140,7 @@ bool ModulePlayer2::Start()
 	Mix_VolumeChunk(shot, FX);
 
 	// Place player hitbox
-	playerHitbox = App->collision->AddCollider({ position.x, position.y, shipWidth, shipHeight, }, COLLIDER_PLAYER);
+	playerHitbox = App->collision->AddCollider({ position.x, position.y, shipWidth, shipHeight, }, COLLIDER_PLAYER, this);
 
 	return ret;
 }
@@ -267,5 +270,9 @@ bool ModulePlayer2::CleanUp()
 
 void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 {
-	// NEED TO FILL
+	if (c1->type == COLLIDER_WALL || c2->type == COLLIDER_WALL)
+	{
+		App->player2->Disable();
+		App->fade->FadeToBlack(App->stage1, App->mainMenu);
+	}
 }

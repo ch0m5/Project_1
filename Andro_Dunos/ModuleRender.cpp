@@ -58,8 +58,6 @@ update_status ModuleRender::Update()	// Used for the camera movement, reacts to 
 	if(App->input->keyboard[SDL_SCANCODE_DOWN] == 1)
 		camera.y -= speed;
 
-	// TODO 1: Make the camera move left and right
-
 	if (App->input->keyboard[SDL_SCANCODE_LEFT] == 1)
 		camera.x += speed;
 
