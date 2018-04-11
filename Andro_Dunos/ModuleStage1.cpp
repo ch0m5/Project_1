@@ -61,6 +61,7 @@ bool ModuleStage1::Start()
 	// Ground Collider
 	
 	App->collision->AddCollider({ 0, 195, 4000, 30 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 300, 20, 87, 282 }, COLLIDER_WALL);
 
 
 	//Music
@@ -121,7 +122,7 @@ update_status ModuleStage1::Update()
 	if (moveMapRight == true && fasterX == false)
 	{
 		movementx -= xSpeedMultiplier*0.83f; // for movement in x direction
-		LOG("%0.3f", movementx);
+		//LOG("%0.3f", movementx);
 		movementxBack -= xSpeedMultiplier*0.38f;
 		movementxPlanetsBack -= xSpeedMultiplier*0.2f;
 	}
