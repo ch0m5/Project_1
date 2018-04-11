@@ -68,8 +68,23 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 			LOG("Unable to create texture from surface! SDL Error: %s\n", SDL_GetError());
 		}
 		else
-		{
-			textures[last_texture++] = texture;
+		{ 
+			for (int i = 0; i < MAX_TEXTURES; ++i) 
+			{
+				if (textures[i] == nullptr) //@AndresSala
+				{
+					i = textureCounter;
+					textures[textureCounter] = texture;
+					break;
+				}
+				else //AndresSala
+				{
+					LOG ("Unable to load texture, capacity overfload! SDL Error: %s\n", SDL_GetError());
+				}
+			}
+			
+
+			
 		}
 
 		SDL_FreeSurface(surface);

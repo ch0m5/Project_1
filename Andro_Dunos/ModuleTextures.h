@@ -23,6 +23,9 @@ public:
 public:
 	SDL_Texture* textures[MAX_TEXTURES];	// Array of textures, allocates all textures and limitates the amount possible
 	uint last_texture = 0;
+
+private:
+	int textureCounter=0;
 };
 
 #endif // __ModuleTextures_H__
