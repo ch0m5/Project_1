@@ -89,18 +89,18 @@ bool ModuleParticles::Start()
 	arrow1.anim.PushBack({ 41, 11, 13, 2});
 	arrow1.anim.PushBack({ 41, 11, 13, 6 });
 	arrow1.anim.PushBack({ 41, 11, 13, 8 });
-	arrow1.anim.loop = true;
+	arrow1.anim.loop = false;
 	arrow1.speed.x = 6.0f;
-	arrow1.speed.y = 0.8f;
+	arrow1.speed.y = 1.5f;
 	arrow1.life = 1200;
 	arrow1.anim.speed = 0.3f;
 
 	arrow2.anim.PushBack({ 41, 11, 13, 2 });
 	arrow2.anim.PushBack({ 41, 11, 13, 6 });
 	arrow2.anim.PushBack({ 41, 11, 13, 8 });// I dont know why this animation does not work
-	arrow2.anim.loop = true;
+	arrow2.anim.loop = false;
 	arrow2.speed.x = 6.0f;
-	arrow2.speed.y = 0.8f;
+	arrow2.speed.y = -1.5f;
 	arrow2.life = 1200;
 	arrow2.anim.speed = 0.3f;
 

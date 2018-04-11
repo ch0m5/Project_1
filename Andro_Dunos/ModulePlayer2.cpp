@@ -266,7 +266,7 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 	else if (App->input->keyboard[SDL_SCANCODE_V] == KEY_DOWN &&  type == TYPE_2)
 	{
 		App->particles->AddParticle(App->particles->yellowSmallRight, position.x + 6, position.y + 10, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->yellowSmallLeft, position.x - 6, position.y + 10, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->yellowSmallLeft, position.x + 6, position.y + 10, COLLIDER_PLAYER_SHOT);
 
 		Mix_PlayChannel(3, shot, 0);
 	}

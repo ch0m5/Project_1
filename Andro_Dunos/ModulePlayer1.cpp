@@ -240,28 +240,28 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	}
 
 	// Fire lasers @Andres
-	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN && type == TYPE_1)
+	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN && type == TYPE_1)
 	{
-		App->particles->AddParticle(App->particles->smallBlue, position.x + 6, position.y + 5,COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->smallBlue, position.x + 6, position.y + 5, COLLIDER_PLAYER_SHOT);
 		App->particles->AddParticle(App->particles->smallBlue, position.x + 6, position.y + 11, COLLIDER_PLAYER_SHOT);
 
 		Mix_PlayChannel(3, shot, 0);
 	}
 
-	else if (App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN &&  type == TYPE_2)
+	else if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN &&  type == TYPE_2)
 	{
 		App->particles->AddParticle(App->particles->yellowSmallRight, position.x + 6, position.y + 10, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->yellowSmallLeft, position.x - 6, position.y + 10, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->yellowSmallLeft, position.x + 6, position.y + 10, COLLIDER_PLAYER_SHOT);
 
 		Mix_PlayChannel(3, shot, 0);
 	}
-	else if (App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN &&  type == TYPE_3)
+	else if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN &&  type == TYPE_3)
 	{
 		App->particles->AddParticle(App->particles->straightGreen, position.x + 6, position.y + 10, COLLIDER_PLAYER_SHOT);
 
 		Mix_PlayChannel(3, shot, 0);
 	}
-	else if (App->input->keyboard[SDL_SCANCODE_P] == KEY_DOWN &&  type == TYPE_4)
+	else if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN &&  type == TYPE_4)
 	{
 		App->particles->AddParticle(App->particles->arrow1, position.x + 6, position.y + 10, COLLIDER_PLAYER_SHOT);
 		App->particles->AddParticle(App->particles->arrow2, position.x + 6, position.y + 10, COLLIDER_PLAYER_SHOT);
