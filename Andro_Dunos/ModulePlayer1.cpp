@@ -132,7 +132,7 @@ bool ModulePlayer1::Start()
 	Mix_VolumeChunk(shot, FXVol);
 	
 	// Place player hitbox
-	playerHitbox = App->collision->AddCollider({ position.x, position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
+	playerHitbox = App->collision->AddCollider({ (int)position.x, (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
 	
 	return ret;
 }
@@ -200,10 +200,15 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	{
 		position.x += speed;
 	}
-	/*
-	if (position.x >= App->render->camera.x)
+	
+	if (App->stage1->moveMapRight == true)
 	{
-		position.x += speed;
+		position.x += 2.7f;		//HARDCODED: NEEDS TO BE SAME SPEED AS CAMERA
+	}
+	/*
+	if (App->stage2->moveMapRight == true)
+	{
+		position.x += 1.0f;		//HARDCODED: NEEDS TO BE SAME SPEED AS CAMERA
 	}
 	*/
 	// Depending on the vertical counter, we decide the animation
@@ -294,7 +299,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 		else if (godMode == false)
 		{
 			godMode = false;
-			playerHitbox = App->collision->AddCollider({ position.x, position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
+			playerHitbox = App->collision->AddCollider({ (int)position.x, (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
 		}
 	}
 

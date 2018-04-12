@@ -45,7 +45,7 @@ public:
 	int propellerWidth;
 	int propellerHeight;
 
-	iPoint position;
+	fPoint position;	// Float movement
 	float movVertical;	// Counter for the vertical movement of the ship
 	int maxVertical;	// Limit of the counter
 

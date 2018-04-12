@@ -135,7 +135,7 @@ update_status ModuleStage1::Update()
 	{
 		movementy -= ySpeedMultiplier * 0.82f;
 		movementyBack += ySpeedMultiplier * 0.38f;
-		App->render->camera.y =  3.25*movementy;
+		App->render->camera.y = 3.25*movementy;
 		
 	}
 	if (moveMapUp == true)
