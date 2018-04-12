@@ -182,7 +182,7 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 
 	else if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
-		if (position.y < SCREEN_HEIGHT - shipHeight)
+		if (position.y < App->render->camera.y + App->render->camera.w)
 		{
 			position.y += speed;
 		}
@@ -195,7 +195,7 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 
 	else if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		if (position.y > 0)
+		if (position.y > App->render->camera.y)
 		{
 			position.y -= speed;
 		}
@@ -206,16 +206,21 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0)
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT /*&& position.x < App->render->camera.x*/)
 	{
 		position.x -= speed;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - shipWidth)
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x > App->render->camera.x - App->render->camera.w)
 	{
 		position.x += speed;
 	}
-
+	/*
+	if (position.x >= App->render->camera.x)
+	{
+	position.x += speed;
+	}
+	*/
 	// Depending on the vertical counter, we decide the animation
 	if (movVertical >= maxVertical)
 	{
