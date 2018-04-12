@@ -192,7 +192,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 		position.x -= speed;
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - shipWidth)
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < App->render->camera.w + shipWidth -3.25*App->render->camera.x)
 	{
 		position.x += speed;
 	}
