@@ -29,6 +29,10 @@ ModulePlayer2::ModulePlayer2()	//@CarlesHoms
 
 	movVertical = 0;	// Counter for the vertical movement of the ship
 	maxVertical = 14;	// Limit of the counter
+						
+	laserFrontOffset = 20;	// Offset for front bullets
+	laserBackOffset = 18;	// Offset for back bullets		// Distance from ship position to bullet creation
+	laserVerticalOffset = 11;	// Offset for all bullets
 
 	type = TYPE_1;		//laser type
 
@@ -255,31 +259,31 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 	}
 
 	// Fire lasers @Andres
-	if (App->input->keyboard[SDL_SCANCODE_V] == KEY_DOWN && type == TYPE_1)
+	if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN && type == TYPE_1)
 	{
-		App->particles->AddParticle(App->particles->smallBlue, position.x + 6, position.y + 5, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->smallBlue, position.x + 6, position.y + 11, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->smallBlue, position.x + laserFrontOffset, position.y + laserVerticalOffset - 5, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->smallBlue, position.x + laserFrontOffset, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
 
 		Mix_PlayChannel(3, shot, 0);
 	}
 
-	else if (App->input->keyboard[SDL_SCANCODE_V] == KEY_DOWN &&  type == TYPE_2)
+	else if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN &&  type == TYPE_2)
 	{
-		App->particles->AddParticle(App->particles->yellowSmallRight, position.x + 6, position.y + 10, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->yellowSmallLeft, position.x + 6, position.y + 10, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserFrontOffset, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->yellowSmallLeft, position.x + laserBackOffset, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
 
 		Mix_PlayChannel(3, shot, 0);
 	}
-	else if (App->input->keyboard[SDL_SCANCODE_V] == KEY_DOWN &&  type == TYPE_3)
+	else if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN &&  type == TYPE_3)
 	{
-		App->particles->AddParticle(App->particles->straightGreen, position.x + 6, position.y + 10, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->straightGreen, position.x + laserFrontOffset, position.y + laserVerticalOffset - 1, COLLIDER_PLAYER_SHOT);
 
 		Mix_PlayChannel(3, shot, 0);
 	}
-	else if (App->input->keyboard[SDL_SCANCODE_V] == KEY_DOWN &&  type == TYPE_4)
+	else if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN &&  type == TYPE_4)
 	{
-		App->particles->AddParticle(App->particles->arrow1, position.x + 6, position.y + 10, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->arrow2, position.x + 6, position.y + 10, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->arrow1, position.x + 14, position.y + 5, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->arrow2, position.x + 14, position.y + 5, COLLIDER_PLAYER_SHOT);
 
 		Mix_PlayChannel(3, shot, 0);
 	}

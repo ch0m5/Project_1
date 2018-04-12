@@ -50,10 +50,10 @@ bool ModuleParticles::Start()
 	94, y
 
 	Type 4:
-	41, 11, 13, 2	1
-	41, 23, 13, 6	2
-	41, 38, 13, 8	3
-	41, 49, 13, 12	4
+	41, 5, 13, 14	1
+	41, 19, 13, 14	2
+	41, 35, 13, 14	3
+	41, 48, 13, 14	4
 	41, 64, 13, 14	5
 
 	*/
@@ -61,48 +61,48 @@ bool ModuleParticles::Start()
 	// Player blue laser
 	smallBlue.anim.PushBack({ 24, 39, 11, 4 });
 	smallBlue.anim.loop = false;
-	smallBlue.speed.x = 6.0f;
+	smallBlue.speed.x = 7.0f;
 	smallBlue.life = 1200;
 	smallBlue.anim.speed = 0.3f;
 
 	//Player Type 2 laser yellow @Andres
 	yellowSmallRight.anim.PushBack({ 6, 69, 10, 3 });
 	yellowSmallRight.anim.loop = false;
-	yellowSmallRight.speed.x = 6.0f;
+	yellowSmallRight.speed.x = 7.0f;
 	yellowSmallRight.life = 1200;
 	yellowSmallRight.anim.speed = 0.3f;
 	
 	yellowSmallLeft.anim.PushBack({ 6, 84, 10, 3 });
 	yellowSmallLeft.anim.loop = false;
-	yellowSmallLeft.speed.x = 6.0f;
+	yellowSmallLeft.speed.x = -7.0f;
 	yellowSmallLeft.life = 1200;
 	yellowSmallLeft.anim.speed = 0.3f;
 
 	//Player Type 3 laser green
 	straightGreen.anim.PushBack({ 42, 87, 32 ,3 });
 	straightGreen.anim.loop = false;
-	straightGreen.speed.x = 6.0f;
+	straightGreen.speed.x = 7.0f;
 	straightGreen.life = 1200;
 	straightGreen.anim.speed = 0.3f;
 
 	//Player Laser Type 4 white
-	arrow1.anim.PushBack({ 41, 11, 13, 2});
-	arrow1.anim.PushBack({ 41, 11, 13, 6 });
-	arrow1.anim.PushBack({ 41, 11, 13, 8 });
+	arrow1.anim.PushBack({ 41, 5, 13, 14 });
+	arrow1.anim.PushBack({ 41, 19, 13, 14 });
+	arrow1.anim.PushBack({ 41, 35, 13, 14 });
 	arrow1.anim.loop = false;
-	arrow1.speed.x = 6.0f;
-	arrow1.speed.y = 1.5f;
+	arrow1.speed.x = 7.0f;
+	arrow1.speed.y = 1.0f;
 	arrow1.life = 1200;
-	arrow1.anim.speed = 0.3f;
+	arrow1.anim.speed = 0.5f;
 
-	arrow2.anim.PushBack({ 41, 11, 13, 2 });
-	arrow2.anim.PushBack({ 41, 11, 13, 6 });
-	arrow2.anim.PushBack({ 41, 11, 13, 8 });// I dont know why this animation does not work
+	arrow2.anim.PushBack({ 41, 5, 13, 14 });
+	arrow2.anim.PushBack({ 41, 19, 13, 14 });
+	arrow2.anim.PushBack({ 41, 35, 13, 14 });
 	arrow2.anim.loop = false;
-	arrow2.speed.x = 6.0f;
-	arrow2.speed.y = -1.5f;
+	arrow2.speed.x = 7.0f;
+	arrow2.speed.y = -1.0f;
 	arrow2.life = 1200;
-	arrow2.anim.speed = 0.3f;
+	arrow2.anim.speed = 0.5f;
 
 		//---------------------------
 	// Explosion particle // @Andres
