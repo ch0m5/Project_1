@@ -203,7 +203,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	
 	if (App->stage1->moveMapRight == true)
 	{
-		position.x += 2.7f;		//HARDCODED: NEEDS TO BE SAME SPEED AS CAMERA
+		position.x += 1.0f;		//HARDCODED: NEEDS TO BE SAME SPEED AS CAMERA
 	}
 	/*
 	if (App->stage2->moveMapRight == true)
