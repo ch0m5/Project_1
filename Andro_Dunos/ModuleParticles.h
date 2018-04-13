@@ -1,5 +1,5 @@
 #ifndef __MODULEPARTICLES_H__
-#define __MODULEPARTICLES_H__
+#define __MODULEPARTICLES_H__	// @CarlesHoms @Andres
 
 #include "Module.h"
 #include "Animation.h"
@@ -44,47 +44,76 @@ public:
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 private:
-
 	SDL_Texture* graphics = nullptr;
 	Particle* active[MAX_ACTIVE_PARTICLES];
 	uint last_particle = 0;
 
 	SDL_Texture* explosionPtr = nullptr;
-public:
 
+public:
 		// Type 1 particles
 	Particle smallBlue;
-	/*Particle mediumBlue;
-	Particle bigBlue;
-	*/
+	Particle mediumBlue;			// Needs paths
+	Particle bigBlue;				
+
+	//Particle missileHorizontal;
+	//Particle missileUp;			// Needs paths
+	//Particle missileDown;
 
 		// Type 2 particles
-	//Particle YellowBigRight;
-	//Particle YellowBigLeft;
-	//Particle yellowUpLeft;
+	Particle YellowBigRight;
+	Particle YellowBigLeft;
+	Particle yellowDown;
+	Particle yellowUp;
 	Particle yellowSmallRight;
 	Particle yellowSmallLeft;
 
+	//Particle redRocket;
+
 		// Type 3 particles
 	Particle straightGreen;
-	//Particle upRightGreen;
-	//Particle downRightGreen;
+	Particle upRightGreen;		// Diagonal: needs modified collider
+	Particle downRightGreen;	// Diagonal: needs modified collider
+
+	//Particle nigger and split lasers
+
+	//Particle bomb;
 
 		// Type 4 particles
-	Particle arrow1;
-	Particle arrow2;
-	//Particle arrow3;
-	//Particle arrow4;
-	//Particle arrow5;
+	Particle arrowUp1;
+	Particle arrowStraight1;	// Animation stops at 2nd frame
+	Particle arrowDown1;
 
-	// Homing particles
+	Particle arrowSuperUp2;
+	Particle arrowUp2;
+	Particle arrowStraight2;	// Animation stops at 3rd frame
+	Particle arrowDown2;
+	Particle arrowSuperDown2;
 
+	Particle arrowSuperUp3;
+	Particle arrowUpDown3;
+	Particle arrowStraight3;	// Animation stops at 5th frame
+	Particle arrowDown3;
+	Particle arrowSuperDown3;
 
-	// Shield particles
+	Particle laserUp;
+	Particle laserDown;
+	//Particle downRightGreen;	// Reusing particles (keep commented)
+	//Particle upRightGreen;
+
+		// Homing particles
+
+	//Particle SeekingMissile1;
+	//Particle SeekingMissile2;		// Needs paths
+	//Particle SeekingMissile3;
+
+		// Shield particles
+
+	//Particle redShield;
+	//Particle greenShield;		// Needs paths
+	//Particle yellowShield;
 
 	Particle explosion;
-
-
 };
 
 #endif // __MODULEPARTICLES_H__

@@ -14,7 +14,7 @@
 #include "ModuleStage2.h"
 
 
-ModulePlayer2::ModulePlayer2()	//@CarlesHoms
+ModulePlayer2::ModulePlayer2()	// @CarlesHoms @Andres
 {
 	shipAnimation = nullptr;
 	shipWidth = 27;
@@ -292,8 +292,8 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 	}
 	else if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN &&  type == TYPE_4)
 	{
-		App->particles->AddParticle(App->particles->arrow1, position.x + 14, position.y + 5, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->arrow2, position.x + 14, position.y + 5, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->arrowUp1, position.x + 14, position.y + 5, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->arrowDown1, position.x + 14, position.y + 5, COLLIDER_PLAYER_SHOT);
 
 		Mix_PlayChannel(3, shot, 0);
 	}

@@ -25,7 +25,7 @@ public:
 	uint last_texture = 0;
 
 private:
-	int textureCounter=0;
+	int textureCounter = 0;
 };
 
 #endif // __ModuleTextures_H__

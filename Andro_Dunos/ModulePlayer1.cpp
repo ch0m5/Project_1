@@ -13,7 +13,7 @@
 #include "ModuleStage1.h"
 #include "ModuleStage2.h"
 
-ModulePlayer1::ModulePlayer1()	//@CarlesHoms
+ModulePlayer1::ModulePlayer1()	// @CarlesHoms @Andres
 {
 	shipAnimation = nullptr;
 	shipWidth = 27;
@@ -23,7 +23,7 @@ ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 	propellerWidth = 12;
 	propellerHeight = 17;
 
-	position.x = 0;							// Starting point of the ship (using p2Point)
+	position.x = 0;		// Starting point of the ship (using p2Point)
 	position.y = SCREEN_HEIGHT / 2 - 10;
 
 	movVertical = 0;	// Counter for the vertical movement of the ship
@@ -33,7 +33,7 @@ ModulePlayer1::ModulePlayer1()	//@CarlesHoms
 	laserBackOffset = 18;	// Offset for back bullets		// Distance from ship position to bullet creation
 	laserVerticalOffset = 11;	// Offset for all bullets
 
-	type = TYPE_1;		//laser type
+	type = TYPE_1;		// Laser type
 
 	/*
 	Sprites positioning
@@ -242,7 +242,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 		propellerAnimation = &superDownwardsBooster;
 	}
 
-	//Change weapon @Andres
+	//Change weapon
 	if  (App->input->keyboard[SDL_SCANCODE_O] == KEY_DOWN)
 	{
 		if (type >= TYPE_4)
@@ -253,7 +253,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 			type++;
 	}
 
-	// Fire lasers @Andres
+	// Fire lasers
 	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN && type == TYPE_1)
 	{
 		App->particles->AddParticle(App->particles->smallBlue, position.x + laserFrontOffset, position.y + laserVerticalOffset -5, COLLIDER_PLAYER_SHOT);
@@ -277,8 +277,8 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	}
 	else if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN &&  type == TYPE_4)
 	{
-		App->particles->AddParticle(App->particles->arrow1, position.x + 14, position.y + 5, COLLIDER_PLAYER_SHOT);
-		App->particles->AddParticle(App->particles->arrow2, position.x + 14, position.y + 5, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->arrowUp1, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->arrowDown1, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
 
 		Mix_PlayChannel(3, shot, 0);
 	}
