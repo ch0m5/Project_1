@@ -51,18 +51,18 @@ bool ModuleMainMenu::Start()
 {
 	LOG("Loading background assets");
 	bool ret = true;
-	backgroundText = App->textures->Load("Sprites/User_Interface/Intro/logo-background.png");
-	titleText = App->textures->Load("Sprites/User_Interface/Intro/logo.png");
-	viscoGamesText = App->textures->Load("Sprites/User_Interface/Intro/visco_games.png");
-	//orangeLettersText = App->textures->Load("Sprites/Backgrounds/1_FullMap.png");
-	//whiteLettersText = App->textures->Load("Sprites/Backgrounds/1_FullMap.png");
+	backgroundText = App->textures->Load("Assets/Sprites/User_Interface/Intro/logo-background.png");
+	titleText = App->textures->Load("Assets/Sprites/User_Interface/Intro/logo.png");
+	viscoGamesText = App->textures->Load("Assets/Sprites/User_Interface/Intro/visco_games.png");
+	//orangeLettersText = App->textures->Load("Assets/Sprites/Backgrounds/1_FullMap.png");
+	//whiteLettersText = App->textures->Load("Assets/Sprites/Backgrounds/1_FullMap.png");
 
 	App->player1->Disable();
 	App->player2->Disable();
 	App->collision->Disable();
 
 	//Music
-	MusicMainMenu = App->mixer->LoadMusic("Music/02_Title.ogg");
+	MusicMainMenu = App->mixer->LoadMusic("Assets/Audio/Music/02_Title.ogg");
 	Mix_VolumeMusic(MUSICVol);
 	Mix_FadeInMusic(MusicMainMenu, 0, 1000);
 	

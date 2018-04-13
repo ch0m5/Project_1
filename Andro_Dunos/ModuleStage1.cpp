@@ -44,9 +44,9 @@ bool ModuleStage1::Start()
 	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
 
 	
-	background1Text = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/1_Background1.png");
-	bluePlanetText = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/Moon.png");
- 	map1Text = App->textures->Load("Sprites/Levels/STAGE 1/Tileset/Background/FullMap1.png");
+	background1Text = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/1_Background1.png");
+	bluePlanetText = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/Moon.png");
+ 	map1Text = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/FullMap1.png");
 
 
 	App->player1->Enable();
@@ -66,7 +66,7 @@ bool ModuleStage1::Start()
 
 
 	//Music
-	MusicLvl1 = App->mixer->LoadMusic("Music/04_Stage_1-The Moon-Loop.ogg");
+	MusicLvl1 = App->mixer->LoadMusic("Assets/Audio/Music/04_Stage_1-The Moon-Loop.ogg");
 	Mix_FadeInMusic(MusicLvl1, -1, 1000);
 	Mix_VolumeMusic(MUSICVol);
 	return ret;

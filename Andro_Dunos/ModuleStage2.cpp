@@ -38,8 +38,8 @@ bool ModuleStage2::Start()
 	LOG("Loading background assets");	// Temporal, must decide if we load a full image,
 	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
 	
-	background2Text = App->textures->Load("Sprites/Levels/STAGE 2/Tileset/Background_lvl_2.png");
-	map2Text = App->textures->Load("Sprites/Levels/STAGE 2/Tileset/Map_2.png");
+	background2Text = App->textures->Load("Assets/Sprites/Levels/STAGE 2/Tileset/Background_lvl_2.png");
+	map2Text = App->textures->Load("Assets/Sprites/Levels/STAGE 2/Tileset/Map_2.png");
 
 	App->player1->Enable();
 	if (App->input->secondPlayerState == true) //@AndresSala
@@ -54,7 +54,7 @@ bool ModuleStage2::Start()
 	App->collision->AddCollider({ 0, 198, 320, 224 }, COLLIDER_WALL);
 
 	//Music
-	MusicLvl2 = App->mixer->LoadMusic("Music/07_Stage_2 -Mechanized-Unit-Loop.ogg");
+	MusicLvl2 = App->mixer->LoadMusic("Assets/Audio/Music/07_Stage_2 -Mechanized-Unit-Loop.ogg");
 	Mix_FadeInMusic(MusicLvl2, -1, 1000);
 	Mix_VolumeMusic(MUSICVol);
 	return ret;

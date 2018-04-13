@@ -140,10 +140,10 @@ bool ModulePlayer2::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
-	graphics = App->textures->Load("Sprites/Players_Ships/ships.png"); // arcade version
+	graphics = App->textures->Load("Assets/Sprites/Players_Ships/ships.png"); // arcade version
 
 	//Music															   
-	shot = App->mixer->LoadFX("Music/Laser_Shot_Type-1_(Main_Ships).wav");
+	shot = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Shot_Type-1_(Main_Ships).wav");
 	Mix_VolumeChunk(shot, FXVol);
 
 	// Place player hitbox

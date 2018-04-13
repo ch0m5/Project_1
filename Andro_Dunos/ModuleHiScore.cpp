@@ -33,12 +33,12 @@ bool ModuleHiScore::Start()
 {
 	LOG("Loading background assets");	// Temporal, must decide if we load a full image,
 	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
-	hiScoreBackTex = App->textures->Load("Sprites/User_Interface/Grafical_Interface/game_over_background.png");
+	hiScoreBackTex = App->textures->Load("Assets/Sprites/User_Interface/Grafical_Interface/game_over_background.png");
 
 	App->collision->Disable();
 
 	//Music
-	MusicHighScore = App->mixer->LoadMusic("Music/18_Game_Over.ogg");
+	MusicHighScore = App->mixer->LoadMusic("Assets/Audio/Music/18_Game_Over.ogg");
 	Mix_FadeInMusic(MusicHighScore, 0, 1000);
 	Mix_VolumeMusic(MUSICVol);
 
