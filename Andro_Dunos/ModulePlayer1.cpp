@@ -132,9 +132,15 @@ bool ModulePlayer1::Start()
 	bool ret = true;
 	graphics = App->textures->Load("Assets/Sprites/Players_Ships/ships.png"); // arcade version
 
-    //Music
-	shot = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Shot_Type-1_(Main_Ships).wav");
-	Mix_VolumeChunk(shot, FXVol);
+	//Music
+	type1Shot = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Shot_Type-1_(Main_Ships).wav");
+	type2Shot = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Shot_Type-2_(Main_Ships).wav");
+	type3Shot = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Shot_Type-3_(Main_Ships).wav");
+	type4Shot = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Shot_Type-4_(Main_Ships).wav");
+	Mix_VolumeChunk(type1Shot, FXVol);
+	Mix_VolumeChunk(type2Shot, FXVol);
+	Mix_VolumeChunk(type3Shot, FXVol);
+	Mix_VolumeChunk(type4Shot, FXVol);
 	
 	// Place player hitbox
 	playerHitbox = App->collision->AddCollider({ (int)position.x, (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
@@ -411,7 +417,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				break;
 			}
 
-			Mix_PlayChannel(3, shot, 0);
+			Mix_PlayChannel(3, type1Shot, 0);
 			break;
 
 		case TYPE_2:
@@ -511,7 +517,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				break;
 			}
 
-			Mix_PlayChannel(3, shot, 0);
+			Mix_PlayChannel(3, type2Shot, 0);
 			break;
 
 		case TYPE_3:
@@ -610,7 +616,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				break;
 			}
 
-			Mix_PlayChannel(3, shot, 0);
+			Mix_PlayChannel(3, type3Shot, 0);
 			break;
 
 		case TYPE_4:
@@ -712,7 +718,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				break;
 			}
 
-			Mix_PlayChannel(3, shot, 0);
+			Mix_PlayChannel(3, type4Shot, 0);
 			break;
 		}
 	}

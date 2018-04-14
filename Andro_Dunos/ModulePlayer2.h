@@ -50,7 +50,10 @@ public:
 	int maxVertical;	// Limit of the counter
 
 	//Music 
-	Mix_Chunk *shot = nullptr;
+	Mix_Chunk *type1Shot = nullptr;		// All use the same channel (3)
+	Mix_Chunk *type2Shot = nullptr;
+	Mix_Chunk *type3Shot = nullptr;
+	Mix_Chunk *type4Shot = nullptr;
 
 	//Collider
 	Collider* playerHitbox;
