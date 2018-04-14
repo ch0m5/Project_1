@@ -54,6 +54,9 @@ public:
 	Mix_Chunk *type2Shot = nullptr;
 	Mix_Chunk *type3Shot = nullptr;
 	Mix_Chunk *type4Shot = nullptr;
+	Mix_Chunk *typeSwap = nullptr;
+	Mix_Chunk *powerUp = nullptr;
+	Mix_Chunk *playerDeathExplosion = nullptr;
 
 	//Collider
 	Collider* playerHitbox;

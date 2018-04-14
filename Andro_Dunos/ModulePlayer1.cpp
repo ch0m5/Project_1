@@ -137,10 +137,16 @@ bool ModulePlayer1::Start()
 	type2Shot = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Shot_Type-2_(Main_Ships).wav");
 	type3Shot = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Shot_Type-3_(Main_Ships).wav");
 	type4Shot = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Shot_Type-4_(Main_Ships).wav");
+	typeSwap = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Shot_Type_CHANGE.wav");
+	powerUp = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Power_Up_Picked.wav");
+	playerDeathExplosion = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Player_Death_Explosion.wav");
 	Mix_VolumeChunk(type1Shot, FXVol);
 	Mix_VolumeChunk(type2Shot, FXVol);
 	Mix_VolumeChunk(type3Shot, FXVol);
 	Mix_VolumeChunk(type4Shot, FXVol);
+	Mix_VolumeChunk(typeSwap, FXVol);
+	Mix_VolumeChunk(powerUp, FXVol);
+	Mix_VolumeChunk(playerDeathExplosion, FXVol);
 	
 	// Place player hitbox
 	playerHitbox = App->collision->AddCollider({ (int)position.x, (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
@@ -256,16 +262,28 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 	// (TEMPORAL) level up and down
 	if (App->input->keyboard[SDL_SCANCODE_6] == KEY_DOWN && bluePower < LEVEL_7)	// Level up blue
+	{
 		bluePower++;
+		Mix_PlayChannel(3, powerUp, 0);
+	}
 
 	if (App->input->keyboard[SDL_SCANCODE_7] == KEY_DOWN && orangePower < LEVEL_5)	// Level up orange
+	{
 		orangePower++;
+		Mix_PlayChannel(3, powerUp, 0);
+	}
 
 	if (App->input->keyboard[SDL_SCANCODE_8] == KEY_DOWN && yellowPower < LEVEL_8)	// Level up yellow
+	{
 		yellowPower++;
+		Mix_PlayChannel(3, powerUp, 0);
+	}
 
 	if (App->input->keyboard[SDL_SCANCODE_9] == KEY_DOWN && yellowPower < LEVEL_8)	// Level up green
+	{
 		greenPower++;
+		Mix_PlayChannel(3, powerUp, 0);
+	}
 
 	if (App->input->keyboard[SDL_SCANCODE_0] == KEY_DOWN)	// Level all down
 	{
@@ -311,6 +329,8 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 			break;
 		}
+
+		Mix_PlayChannel(3, typeSwap, 0);
 	}
 
 	// Fire lasers
@@ -752,7 +772,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	// Draw everything --------------------------------------
 	SDL_Rect propellerRect = propellerAnimation->GetCurrentFrame();
 
-	App->render->Blit(graphics, position.x-propellerWidth, position.y, &propellerRect);
+	App->render->Blit(graphics, position.x - propellerWidth, position.y, &propellerRect);
 	App->render->Blit(graphics, position.x, position.y, &shipRect);
 
 	return UPDATE_CONTINUE;
@@ -774,9 +794,11 @@ bool ModulePlayer1::CleanUp()
 
 void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1->type == COLLIDER_WALL || c2->type == COLLIDER_WALL)
+	Mix_PlayChannel(3, playerDeathExplosion, 0);
+
+	if ((c1->type == COLLIDER_WALL || c2->type == COLLIDER_WALL))
 	{
 		App->player1->Disable();
-		App->fade->FadeToBlack(App->stage1, App->scene_HiScore);
+		App->fade->FadeToBlack(App->stage1, App->scene_HiScore);	// HARDCODED: Needs "current stage" functionality
 	}
 }
