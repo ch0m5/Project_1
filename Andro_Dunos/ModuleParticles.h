@@ -9,6 +9,14 @@
 
 #define MAX_ACTIVE_PARTICLES 100
 
+enum weapon_types	// To mark the weapon Type currently using
+{
+	TYPE_1 = 1,
+	TYPE_2,
+	TYPE_3,
+	TYPE_4
+};
+
 struct SDL_Texture;
 struct Collider;
 enum COLLIDER_TYPE;
@@ -91,7 +99,7 @@ public:
 	Particle arrowSuperDown2;
 
 	Particle arrowSuperUp3;
-	Particle arrowUpDown3;
+	Particle arrowUp3;
 	Particle arrowStraight3;	// Animation stops at 5th frame
 	Particle arrowDown3;
 	Particle arrowSuperDown3;

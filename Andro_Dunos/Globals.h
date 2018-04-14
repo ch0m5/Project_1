@@ -28,12 +28,18 @@ enum ship_status	// To mark the position in the array of SDL_rects related the t
 	SHIP_FULL_DOWN
 };
 
-enum laserTypes
+enum weapon_levels	// To mark the different player weapon levels
 {
-	TYPE_1,
-	TYPE_2,
-	TYPE_3,
-	TYPE_4
+	LEVEL_0,
+	LEVEL_1,
+	LEVEL_2,
+	LEVEL_3,
+	LEVEL_4,
+	LEVEL_5,
+	LEVEL_6,
+	LEVEL_7,
+	LEVEL_8,
+	LEVEL_9
 };
 
 // Useful typedefs ---------

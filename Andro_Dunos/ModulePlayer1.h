@@ -56,10 +56,16 @@ public:
 	Collider* playerHitbox;
 	
 	//Lasers
-	int type;					// Flag/counter for type equipped
 	int laserFrontOffset;		// Offset for front bullets
 	int laserBackOffset;		// Offset for back bullets	// Distance from ship position to bullet creation
 	int laserVerticalOffset;	// Offset for all bullets
+
+	//Types and levels
+	int type;					// Flag/counter for type equipped
+	int bluePower;				// Flag/counter for blue power level
+	int orangePower;			// Flag/counter for orange power level
+	int yellowPower;			// Flag/counter for yellow power level
+	int greenPower;				// Flag/counter for green power level
 
 	//Debug Purpose Variables
 	bool godMode = false;

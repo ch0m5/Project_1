@@ -148,6 +148,13 @@ bool ModuleParticles::Start()
 	arrowUp1.life = 1200;
 	arrowUp1.anim.speed = 0.5f;
 
+	arrowStraight1.anim.PushBack({ 41, 9, 13, 6 });
+	arrowStraight1.anim.PushBack({ 41, 23, 13, 6 });
+	arrowStraight1.anim.loop = false;
+	arrowStraight1.speed.x = 7.0f;
+	arrowStraight1.life = 1200;
+	arrowStraight1.anim.speed = 0.5f;
+
 	arrowDown1.anim.PushBack({ 41, 9, 13, 6 });
 	arrowDown1.anim.PushBack({ 41, 23, 13, 6 });
 	arrowDown1.anim.loop = false;
@@ -155,6 +162,108 @@ bool ModuleParticles::Start()
 	arrowDown1.speed.y = 1.0f;
 	arrowDown1.life = 1200;
 	arrowDown1.anim.speed = 0.5f;
+
+	//------------------------------------------------
+
+	arrowSuperUp2.anim.PushBack({ 41, 9, 13, 6 });
+	arrowSuperUp2.anim.PushBack({ 41, 23, 13, 6 });
+	arrowSuperUp2.anim.PushBack({ 41, 38, 13, 8 });
+	arrowSuperUp2.anim.loop = false;
+	arrowSuperUp2.speed.x = 7.0f;
+	arrowSuperUp2.speed.y = -2.0f;
+	arrowSuperUp2.life = 1200;
+	arrowSuperUp2.anim.speed = 0.5f;
+
+	arrowUp2.anim.PushBack({ 41, 9, 13, 6 });
+	arrowUp2.anim.PushBack({ 41, 23, 13, 6 });
+	arrowUp2.anim.PushBack({ 41, 38, 13, 8 });
+	arrowUp2.anim.loop = false;
+	arrowUp2.speed.x = 7.0f;
+	arrowUp2.speed.y = -1.0f;
+	arrowUp2.life = 1200;
+	arrowUp2.anim.speed = 0.5f;
+
+	arrowStraight2.anim.PushBack({ 41, 9, 13, 6 });
+	arrowStraight2.anim.PushBack({ 41, 23, 13, 6 });
+	arrowStraight2.anim.PushBack({ 41, 38, 13, 8 });
+	arrowStraight2.anim.loop = false;
+	arrowStraight2.speed.x = 7.0f;
+	arrowStraight2.life = 1200;
+	arrowStraight2.anim.speed = 0.5f;
+
+	arrowDown2.anim.PushBack({ 41, 9, 13, 6 });
+	arrowDown2.anim.PushBack({ 41, 23, 13, 6 });
+	arrowDown2.anim.PushBack({ 41, 38, 13, 8 });
+	arrowDown2.anim.loop = false;
+	arrowDown2.speed.x = 7.0f;
+	arrowDown2.speed.y = 1.0f;
+	arrowDown2.life = 1200;
+	arrowDown2.anim.speed = 0.5f;
+
+	arrowSuperDown2.anim.PushBack({ 41, 9, 13, 6 });
+	arrowSuperDown2.anim.PushBack({ 41, 23, 13, 6 });
+	arrowSuperDown2.anim.PushBack({ 41, 38, 13, 8 });
+	arrowSuperDown2.anim.loop = false;
+	arrowSuperDown2.speed.x = 7.0f;
+	arrowSuperDown2.speed.y = 2.0f;
+	arrowSuperDown2.life = 1200;
+	arrowSuperDown2.anim.speed = 0.5f;
+
+	//--------------------------------------------------
+
+	arrowSuperUp3.anim.PushBack({ 41, 9, 13, 6 });
+	arrowSuperUp3.anim.PushBack({ 41, 23, 13, 6 });
+	arrowSuperUp3.anim.PushBack({ 41, 38, 13, 8 });
+	arrowSuperUp3.anim.PushBack({ 41, 49, 13, 12 });
+	arrowSuperUp3.anim.PushBack({ 41, 64, 13, 14 });
+	arrowSuperUp3.anim.loop = false;
+	arrowSuperUp3.speed.x = 7.0f;
+	arrowSuperUp3.speed.y = -2.0f;
+	arrowSuperUp3.life = 1200;
+	arrowSuperUp3.anim.speed = 0.2f;
+
+	arrowUp3.anim.PushBack({ 41, 9, 13, 6 });
+	arrowUp3.anim.PushBack({ 41, 23, 13, 6 });
+	arrowUp3.anim.PushBack({ 41, 38, 13, 8 });
+	arrowUp3.anim.PushBack({ 41, 49, 13, 12 });
+	arrowUp3.anim.PushBack({ 41, 64, 13, 14 });
+	arrowUp3.anim.loop = false;
+	arrowUp3.speed.x = 7.0f;
+	arrowUp3.speed.y = -1.0f;
+	arrowUp3.life = 1200;
+	arrowUp3.anim.speed = 0.2f;
+
+	arrowStraight3.anim.PushBack({ 41, 9, 13, 6 });
+	arrowStraight3.anim.PushBack({ 41, 23, 13, 6 });
+	arrowStraight3.anim.PushBack({ 41, 38, 13, 8 });
+	arrowStraight3.anim.PushBack({ 41, 49, 13, 12 });
+	arrowStraight3.anim.PushBack({ 41, 64, 13, 14 });
+	arrowStraight3.anim.loop = false;
+	arrowStraight3.speed.x = 7.0f;
+	arrowStraight3.life = 1200;
+	arrowStraight3.anim.speed = 0.2f;
+
+	arrowDown3.anim.PushBack({ 41, 9, 13, 6 });
+	arrowDown3.anim.PushBack({ 41, 23, 13, 6 });
+	arrowDown3.anim.PushBack({ 41, 38, 13, 8 });
+	arrowDown3.anim.PushBack({ 41, 49, 13, 12 });
+	arrowDown3.anim.PushBack({ 41, 64, 13, 14 });
+	arrowDown3.anim.loop = false;
+	arrowDown3.speed.x = 7.0f;
+	arrowDown3.speed.y = 1.0f;
+	arrowDown3.life = 1200;
+	arrowDown3.anim.speed = 0.2f;
+
+	arrowSuperDown3.anim.PushBack({ 41, 9, 13, 6 });
+	arrowSuperDown3.anim.PushBack({ 41, 23, 13, 6 });
+	arrowSuperDown3.anim.PushBack({ 41, 38, 13, 8 });
+	arrowSuperDown3.anim.PushBack({ 41, 49, 13, 12 });
+	arrowSuperDown3.anim.PushBack({ 41, 64, 13, 14 });
+	arrowSuperDown3.anim.loop = false;
+	arrowSuperDown3.speed.x = 7.0f;
+	arrowSuperDown3.speed.y = 2.0f;
+	arrowSuperDown3.life = 1200;
+	arrowSuperDown3.anim.speed = 0.2f;
 
 	// Explosion particle // @Andres
 	explosion.anim.PushBack({ 33, 66, 6, 6 });
