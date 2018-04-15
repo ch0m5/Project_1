@@ -69,10 +69,11 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 		}
 		else
 		{ 
-			for (int textureCounter = 0; textureCounter < MAX_TEXTURES; ++textureCounter)
+			for (int i = 0; i < MAX_TEXTURES; ++i)
 			{
-				if (textures[textureCounter] == nullptr) //@AndresSala
+				if (textures[i] == nullptr) //@AndresSala
 				{
+					i = textureCounter;
 					textures[textureCounter] = texture;
 					break;
 				}
