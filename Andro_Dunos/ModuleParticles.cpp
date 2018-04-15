@@ -22,7 +22,7 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	graphics = App->textures->Load("Assets/Sprites/Players_Ships/laser_types.png");
-	explosionPtr = App->textures->Load("Assets/Sprites/Common_level_elements.png");
+	explosionPtr = App->textures->Load("Assets/Sprites/Players_Ships/ship-explosion.png");
 
 	/* Laser Sprites
 
