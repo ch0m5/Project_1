@@ -11,6 +11,7 @@
 #include "ModuleHiScore.h"
 #include "ModuleMixer.h"
 #include "ModuleCollision.h"
+#include "ModuleEnemies.h"
 
 ModuleStage1::ModuleStage1()	//@AndresSaladrigas
 {
@@ -43,11 +44,9 @@ bool ModuleStage1::Start()
 	LOG("Loading background assets");	// Temporal, must decide if we load a full image,
 	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
 
-	
 	background1Text = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/1_Background1.png");
 	bluePlanetText = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/Moon.png");
  	map1Text = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/FullMap1.png");
-
 
 	App->player1->Enable();
 	if (App->input->secondPlayerState == true)  //@AndresSala
@@ -56,14 +55,39 @@ bool ModuleStage1::Start()
 	}
 	// we shoukd log the problem if not loaded correctly
 	
+	// Enemies
+	App->enemies->Enable();
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 180, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 210, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 240, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 270, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 300, 20);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 180, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 210, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 240, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 270, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 300, 60);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 180, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 210, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 240, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 270, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 300, 100);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 180, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 210, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 240, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 270, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 300, 140);
+	
 	// Collider
 	App->collision->Enable();
 
 	// Ground Collider
-	
 	App->collision->AddCollider({ 0, 195, 4000, 30 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 300, 20, 87, 282 }, COLLIDER_WALL);
-
+	//App->collision->AddCollider({ 300, 20, 87, 282 }, COLLIDER_WALL);		// Giant wall to test bullets
 
 	//Music
 	MusicLvl1 = App->mixer->LoadMusic("Assets/Audio/Music/04_Stage_1-The Moon-Loop.ogg");
@@ -100,6 +124,9 @@ bool ModuleStage1::CleanUp()
 	App->textures->Unload(map1Text);
 	App->textures->Unload(background1Text);
 	App->textures->Unload(bluePlanetText);
+
+	LOG("Unloading enemies");
+	App->enemies->Disable();
 
 	LOG("Unloading colliders")
 	App->collision->Disable();

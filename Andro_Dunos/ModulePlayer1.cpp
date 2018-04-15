@@ -162,7 +162,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 	shipAnimation = &shipVerticalMovement;
 	propellerAnimation = &idleBooster;
-	SDL_Rect shipRect = shipAnimation->frames[SHIP_IDLE];
+	shipRect = &shipAnimation->frames[SHIP_IDLE];
 	
 	int speed = 2;
 
@@ -232,31 +232,31 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	
 	if (movVertical >= maxVertical)
 	{
-		shipRect = shipAnimation->frames[SHIP_FULL_UP];
+		shipRect = &shipAnimation->frames[SHIP_FULL_UP];
 		propellerAnimation = &superUpwardsBooster;
 	}
 
 	else if (movVertical > (maxVertical / 2) && movVertical < maxVertical)
 	{
-		shipRect = shipAnimation->frames[SHIP_UP];
+		shipRect = &shipAnimation->frames[SHIP_UP];
 		propellerAnimation = &upwardsBooster;
 	}
 
 	else if (movVertical <= (maxVertical / 2) && movVertical >= -(maxVertical / 2))
 	{
-		shipRect = shipAnimation->frames[SHIP_IDLE];
+		shipRect = &shipAnimation->frames[SHIP_IDLE];
 		propellerAnimation = &idleBooster;
 	}
 
 	else if (movVertical < -(maxVertical/2) && movVertical > -maxVertical)
 	{
-		shipRect = shipAnimation->frames[SHIP_DOWN];
+		shipRect = &shipAnimation->frames[SHIP_DOWN];
 		propellerAnimation = &downwardsBooster;
 	}
 
 	else if (movVertical <= -maxVertical)
 	{
-		shipRect = shipAnimation->frames[SHIP_FULL_DOWN];
+		shipRect = &shipAnimation->frames[SHIP_FULL_DOWN];
 		propellerAnimation = &superDownwardsBooster;
 	}
 
@@ -773,7 +773,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	SDL_Rect propellerRect = propellerAnimation->GetCurrentFrame();
 
 	App->render->Blit(graphics, position.x - propellerWidth, position.y, &propellerRect);
-	App->render->Blit(graphics, position.x, position.y, &shipRect);
+	App->render->Blit(graphics, position.x, position.y, shipRect);
 
 	return UPDATE_CONTINUE;
 }
@@ -796,8 +796,14 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 {
 	Mix_PlayChannel(3, playerDeathExplosion, 0);
 
-	if ((c1->type == COLLIDER_WALL || c2->type == COLLIDER_WALL))
+	if ((c1->type == COLLIDER_WALL ||
+		c2->type == COLLIDER_WALL ||
+		c1->type == COLLIDER_ENEMY_SHOT ||
+		c1->type == COLLIDER_ENEMY_SHOT ||
+		c2->type == COLLIDER_ENEMY ||
+		c2->type == COLLIDER_ENEMY))
 	{
+		playerHitbox->to_delete = true;
 		App->player1->Disable();
 		App->fade->FadeToBlack(App->stage1, App->scene_HiScore);	// HARDCODED: Needs "current stage" functionality
 	}

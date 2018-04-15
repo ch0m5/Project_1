@@ -11,6 +11,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleMixer.h"
 #include "ModuleCollision.h"
+#include "ModuleEnemies.h"
 
 ModuleMainMenu::ModuleMainMenu()	//@CarlesHoms
 {
@@ -59,6 +60,8 @@ bool ModuleMainMenu::Start()
 
 	App->player1->Disable();
 	App->player2->Disable();
+	App->enemies->Disable();
+
 	App->collision->Disable();
 
 	//Music

@@ -11,6 +11,7 @@
 #include "ModuleHiScore.h"
 #include "ModuleMixer.h"
 #include "ModuleCollision.h"
+#include "ModuleEnemies.h"
 
 ModuleStage2::ModuleStage2()	//@AndresSala
 {
@@ -47,6 +48,9 @@ bool ModuleStage2::Start()
 		App->player2->Enable();
 	}
 
+	// Enemies
+	App->enemies->Enable();
+
 	// Collider
 	App->collision->Enable();
 	
@@ -75,6 +79,9 @@ bool ModuleStage2::CleanUp()
 	{
 		App->player2->Disable();
 	}
+
+	LOG("Unloading enemies");
+	App->enemies->Disable();
 
 	LOG("Unloading stage 2");
 	App->textures->Unload(background2Text);

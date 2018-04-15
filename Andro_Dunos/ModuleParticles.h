@@ -83,7 +83,7 @@ public:
 	Particle upRightGreen;		// Diagonal: needs modified collider
 	Particle downRightGreen;	// Diagonal: needs modified collider
 
-	//Particle nigger and split lasers
+	//Particle split lasers
 
 	//Particle bomb;
 
