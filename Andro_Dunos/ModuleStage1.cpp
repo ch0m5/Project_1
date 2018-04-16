@@ -66,12 +66,12 @@ bool ModuleStage1::Start()
 	// Enemies
 	App->enemies->Enable();
 
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 180, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 210, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 240, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 270, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 300, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 500, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 380, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 390, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 400, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 410, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 420, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 430, 20);
 
 	/*App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 180, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 210, 60);

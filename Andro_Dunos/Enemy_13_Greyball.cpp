@@ -2,6 +2,9 @@
 #include "Enemy_13_Greyball.h"
 #include "ModuleCollision.h"
 #include "ModuleRender.h"
+#include "ModulePlayer1.h"
+#include "ModuleParticles.h"
+
 
 Enemy_13_Greyball::Enemy_13_Greyball(int x, int y) : Enemy(x, y)
 {
@@ -47,3 +50,12 @@ void Enemy_13_Greyball::Move()
 	position.y = int(float(original_y) + (15.0f * sinf(2*PI*wave + 0)));
 	position.x -= 1;
 }
+
+void Enemy_13_Greyball::Fire()
+{
+	if (position.y == App->player1->position.y)
+	{
+		App->particles->AddParticle(App->particles->yellowSmallLeft, position.x, position.y, COLLIDER_ENEMY_SHOT);
+	}
+}
+

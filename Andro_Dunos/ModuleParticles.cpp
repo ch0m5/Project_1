@@ -352,7 +352,7 @@ update_status ModuleParticles::Update()
 		else if (SDL_GetTicks() >= p->born)
 		{
 			//App->render->Blit(shipExplosion, p->position.x, p->position.y, &(p->anim.GetCurrentFrame())); // need to put the player position
-			App->render->Blit(enemyExplosion, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+		//	App->render->Blit(enemyExplosion, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 			App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame())); 
 			if (p->fx_played == false)
 			{

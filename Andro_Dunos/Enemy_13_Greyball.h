@@ -20,6 +20,7 @@ public:
 	int hitboxHeight;
 
 	void Move();
+	void Fire();
 };
 
 #endif // __ENEMY_EXAMPLE_H__
