@@ -25,17 +25,20 @@ public:
 	SDL_Texture* background1Text = nullptr;
 	SDL_Texture* map1Text = nullptr;
 	SDL_Texture* bluePlanetText = nullptr;
+	SDL_Texture* caveBackText = nullptr;
 
 	//Rectangles
 	SDL_Rect background1Rect;
 	SDL_Rect map1Rect;
 	SDL_Rect bluePlanetRect;
+	SDL_Rect caveBackRect;
 
 	// Background movement (position) values
 	//X Axis
 	float movementx = 0;
 	float movementxBack = 0;
 	float movementxPlanetsBack = 0;
+	float  backmovementcaveX = 2946; 
 	//Y Axis
 	float movementy = 0;
 	float movementyBack = 0;
@@ -46,6 +49,7 @@ public:
 	bool moveMapDown = false; 
 	int xSpeedMultiplier = 1;
 	float ySpeedMultiplier = 1;
+
 
 	//Debug and Developing purpose variables
 	bool fasterX = false;

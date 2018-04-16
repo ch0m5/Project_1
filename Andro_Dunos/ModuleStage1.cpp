@@ -33,6 +33,13 @@ ModuleStage1::ModuleStage1()	//@AndresSaladrigas
 	bluePlanetRect.y = 0;
 	bluePlanetRect.w = 165;
 	bluePlanetRect.h = 152;
+
+	// caveBackRect
+	caveBackRect.x = 0;
+	caveBackRect.y = 0;
+	caveBackRect.w = 4509;
+	caveBackRect.h = 489;
+
 }
 
 ModuleStage1::~ModuleStage1()
@@ -46,7 +53,8 @@ bool ModuleStage1::Start()
 
 	background1Text = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/1_Background1.png");
 	bluePlanetText = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/Moon.png");
- 	map1Text = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/FullMap1.png");
+ 	map1Text = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/FullMap1_1.png");
+	caveBackText = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/cave_background.png");
 
 	App->player1->Enable();
 	if (App->input->secondPlayerState == true)  //@AndresSala
@@ -64,7 +72,7 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 270, 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 300, 20);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 180, 60);
+	/*App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 180, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 210, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 240, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 270, 60);
@@ -80,13 +88,13 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 210, 140);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 240, 140);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 270, 140);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 300, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 300, 140);*/
 	
 	// Collider
 	App->collision->Enable();
 
 	// Ground Collider
-	App->collision->AddCollider({ 0, 195, 4000, 30 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0, 195, 3000, 275 }, COLLIDER_WALL);
 	//App->collision->AddCollider({ 300, 20, 87, 282 }, COLLIDER_WALL);		// Giant wall to test bullets
 
 	//Music
@@ -142,26 +150,37 @@ update_status ModuleStage1::Update()
 
 
 	// Draw everything -------------------------------------- Andro Dunos
+	App->render->Blit(caveBackText, backmovementcaveX, -40, &caveBackRect); // cave background
+	
 	App->render->Blit(background1Text, movementxBack, 120 + movementyBack, &background1Rect); // level background
 
 	App->render->Blit(map1Text, 0, -55, &map1Rect); // level map
 
 	App->render->Blit(bluePlanetText, 500 + movementxPlanetsBack, -10 , &bluePlanetRect); // Moon 
 
+	
+
 	//Level 1 Map movement Code
 	
 	if (moveMapRight == true)
 	{
-		movementx -= xSpeedMultiplier*0.83f; // for movement in x direction
-		//LOG("%0.3f", movementx);
-		movementxBack += xSpeedMultiplier*0.5f ;
-		movementxPlanetsBack += xSpeedMultiplier*0.7f;
-		App->render->camera.x = 3.25*movementx;
+		//movementx -= xSpeedMultiplier*0.83f; // for movement in x direction
+		////LOG("%0.3f", movementx);
+		//movementxBack += xSpeedMultiplier*0.5f ;
+		//movementxPlanetsBack += xSpeedMultiplier*0.7f;
+		//
+		//App->render->camera.x = 3.25*movementx;
+
+		movementx -= xSpeedMultiplier*0.83f*2; // for movement in x direction
+		movementxBack += xSpeedMultiplier*0.5f*2;
+		movementxPlanetsBack += xSpeedMultiplier*0.7f*2;
+		App->render->camera.x = 3.25*movementx*2;
+	
 	}
 	if (moveMapDown == true)
 	{
 		movementy -= ySpeedMultiplier * 0.82f;
-		movementyBack += ySpeedMultiplier * 0.38f;
+		//movementyBack += ySpeedMultiplier * 0.38f; this should not be here, this moves the background
 		App->render->camera.y = 3.25*movementy;
 		
 	}
