@@ -272,13 +272,13 @@ update_status ModuleStage1::Update()
 	}
 	if (App->render->camera.x > 7130* SCREEN_SIZE) // 11th SPEED CHANGE: Ships EXIT the inside of the Moon
 	{
-
+		ySpeedMultiplier = 1;
 		moveMapRight = false;
 		moveMapDown = false;
 		moveMapUp = true;
 	}
 
-	if (App->render->camera.y > 0 && moveMapUp == true && App->render->camera.x > -7120* SCREEN_SIZE) // 12th SPEED CHANGE: Ships are OUTSIDE the Moon. They leave to the right
+	if (App->render->camera.y < 0 && moveMapUp == true && App->render->camera.x > 7120* SCREEN_SIZE) // 12th SPEED CHANGE: Ships are OUTSIDE the Moon. They leave to the right
 	{
 		moveMapRight = true;
 		moveMapDown = false;
