@@ -398,6 +398,10 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			{
 				AddParticle(EnemyExplo, active[i]->position.x, active[i]->position.y);
 			}
+			else if (c1->type == COLLIDER_ENEMY_SHOT || c2->type == COLLIDER_ENEMY_SHOT)
+			{
+				
+			}
 			delete active[i];
 			active[i] = nullptr;
 			break;
