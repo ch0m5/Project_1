@@ -132,6 +132,7 @@ bool ModuleStage1::CleanUp()
 	App->textures->Unload(map1Text);
 	App->textures->Unload(background1Text);
 	App->textures->Unload(bluePlanetText);
+	App->textures->Unload(caveBackText);
 
 	LOG("Unloading enemies");
 	App->enemies->Disable();
