@@ -13,6 +13,7 @@
 #include "ModuleStage2.h"
 #include "ModuleHiScore.h"
 #include "ModuleCollision.h"
+#include "ModuleEnemies.h"
 
 Application::Application()
 {
@@ -29,6 +30,7 @@ Application::Application()
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = player1 = new ModulePlayer1();
 	modules[i++] = player2 = new ModulePlayer2();
+	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 
@@ -44,9 +46,10 @@ bool Application::Init()
 {
 	bool ret = true;
 
-	// Player will be disabled on the first update of a new scene
+	// Characters will be disabled on the first update of a new scene
 	player1->Disable();
 	player2->Disable();
+	enemies->Disable();
 
 	// Disable all maps that you do not start with
 	stage1->Disable();

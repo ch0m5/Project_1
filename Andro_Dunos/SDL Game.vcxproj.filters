@@ -18,6 +18,12 @@
     <Filter Include="ModulesPlayers">
       <UniqueIdentifier>{11bec66d-7239-4aad-a547-afa5b11feb20}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ModulesEnemies">
+      <UniqueIdentifier>{3bb81693-a99a-4a88-aac5-d263155e5d49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ModulesEnemies\Enemies">
+      <UniqueIdentifier>{97ac0001-32a2-486d-b768-6c49b0370c48}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -80,6 +86,18 @@
     <ClInclude Include="ModuleCollision.h">
       <Filter>ModulesBase</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleEnemies.h">
+      <Filter>ModulesEnemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>ModulesEnemies\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_Example.h">
+      <Filter>ModulesEnemies\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy_13_Greyball.h">
+      <Filter>ModulesEnemies\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -132,6 +150,18 @@
     </ClCompile>
     <ClCompile Include="ModuleCollision.cpp">
       <Filter>ModulesBase</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleEnemies.cpp">
+      <Filter>ModulesEnemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>ModulesEnemies\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_Example.cpp">
+      <Filter>ModulesEnemies\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy_13_Greyball.cpp">
+      <Filter>ModulesEnemies\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

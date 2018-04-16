@@ -39,6 +39,9 @@ public:
 	Animation* shipAnimation = nullptr;
 	Animation* propellerAnimation = nullptr;
 
+	// Player rectangle pointer
+	SDL_Rect* shipRect;
+
 	// Ship and propeller sizes in pixels
 	int shipHeight;
 	int shipWidth;

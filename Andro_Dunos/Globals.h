@@ -12,6 +12,8 @@ void log(const char file[], int line, const char* format, ...);
 #define MIN( a, b ) ( ((a) < (b)) ? (a) : (b) )
 #define MAX( a, b ) ( ((a) > (b)) ? (a) : (b) )
 
+#define PI 3.14
+
 enum update_status	// To flag if the modules' status
 {
 	UPDATE_CONTINUE = 1,
