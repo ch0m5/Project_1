@@ -165,78 +165,78 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	shipRect = &shipAnimation->frames[SHIP_IDLE];
 	
 	int speed = 2;
-
-	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE &&
-		App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE ||
-		App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT &&
-		App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
-	{
-		if (movVertical > 0)
+	
+		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE &&
+			App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE ||
+			App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT &&
+			App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
 		{
-			--movVertical;		// Decrease vertical counter.
+			if (movVertical > 0)
+			{
+				--movVertical;		// Decrease vertical counter.
+			}
+
+			if (movVertical < 0)
+			{
+				++movVertical;		// Increase vertical counter.
+			}
 		}
 
-		if (movVertical < 0)
+		//Calculus on player movement starts here. 
+		else if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 		{
-			++movVertical;		// Increase vertical counter.
-		}
-	}
+			if (position.y < (App->render->camera.y / SCREEN_SIZE) + App->render->camera.h - shipHeight)
+			{
+				position.y += speed;
+			}
 
-	//Calculus on player movement starts here. As the values of camera.x and camera.y are negative, we switch them to positive
-	// with the - operator to calculate.
-	else if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
-	{
-		if (position.y < (-App->render->camera.y / SCREEN_SIZE) + App->render->camera.h - shipHeight)
-		{
-			position.y += speed;
-		}
-
-		if (movVertical > -maxVertical)
-		{
-			--movVertical;		// Decrease vertical counter.
-		}
-	}
-
-	else if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
-	{
-		if (position.y > (-App->render->camera.y / SCREEN_SIZE))
-		{
-			position.y -= speed;
+			if (movVertical > -maxVertical)
+			{
+				--movVertical;		// Decrease vertical counter.
+			}
 		}
 
-		if (movVertical < maxVertical)
+		else if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
 		{
-			++movVertical;		// Increase vertical counter.
+			if (position.y > (App->render->camera.y / SCREEN_SIZE))
+			{
+				position.y -= speed;
+			}
+
+			if (movVertical < maxVertical)
+			{
+				++movVertical;		// Increase vertical counter.
+			}
 		}
-	}
 
-	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && position.x - 1 > -(App->render->camera.x / SCREEN_SIZE))
-	{
-		position.x -= speed;
-	}
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && position.x - 1 > (App->render->camera.x / SCREEN_SIZE))
+		{
+			position.x -= speed;
+		}
 
 
-	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < -(App->render->camera.x / SCREEN_SIZE) + SCREEN_WIDTH - shipWidth)
-	{
-		position.x += speed;
-	}
-	//Ship moves at same speed of the camera in game, so we will apply it to going up, down & right
-	if (App->stage1->moveMapRight == true)
-	{
-		position.x += 0.89f;		//HARDCODED: NEEDS TO BE SAME SPEED AS CAMERA
-	}
-	if (position.x <= -(App->render->camera.x / SCREEN_SIZE))
-	{
-		position.x = -(App->render->camera.x / SCREEN_SIZE);
-	}
-	if (App->stage1->moveMapDown == true)
-	{
-		position.y += 0.89f;		//HARDCODED: NEEDS TO BE SAME SPEED AS CAMERA
-	}
-	if (App->stage1->moveMapUp == true)
-	{
-		position.y -= 0.89f;		//HARDCODED: NEEDS TO BE SAME SPEED AS CAMERA
-	}
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < (App->render->camera.x / SCREEN_SIZE) + SCREEN_WIDTH - shipWidth)
+		{
+			position.x += speed;
+		}
+		//Ship moves at same speed of the camera in game, so we will apply it to going up, down & right
+		if (App->stage1->moveMapRight == true)
+		{
+			position.x += 0.89f;		//HARDCODED: NEEDS TO BE SAME SPEED AS CAMERA
+		}
+		if (position.x <= (App->render->camera.x / SCREEN_SIZE))
+		{
+			position.x = (App->render->camera.x / SCREEN_SIZE);
+		}
+		if (App->stage1->moveMapDown == true)
+		{
+			position.y += 0.89f;		//HARDCODED: NEEDS TO BE SAME SPEED AS CAMERA
+		}
+		if (App->stage1->moveMapUp == true)
+		{
+			position.y -= 0.89f;		//HARDCODED: NEEDS TO BE SAME SPEED AS CAMERA
+		}
+	
 	/*
 	if (App->stage2->moveMapRight == true)
 	{
