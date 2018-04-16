@@ -352,7 +352,7 @@ update_status ModuleParticles::Update()
 		else if (SDL_GetTicks() >= p->born)
 		{
 			//App->render->Blit(shipExplosion, p->position.x, p->position.y, &(p->anim.GetCurrentFrame())); // need to put the player position
-			App->render->Blit(enemyExplosion, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+		//	App->render->Blit(enemyExplosion, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 			App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame())); 
 			if (p->fx_played == false)
 			{
@@ -397,6 +397,10 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			else if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_ENEMY) 
 			{
 				AddParticle(EnemyExplo, active[i]->position.x, active[i]->position.y);
+			}
+			else if (c1->type == COLLIDER_ENEMY_SHOT || c2->type == COLLIDER_ENEMY_SHOT)
+			{
+				
 			}
 			delete active[i];
 			active[i] = nullptr;
