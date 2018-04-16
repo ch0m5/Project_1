@@ -57,6 +57,8 @@ private:
 	uint last_particle = 0;
 
 	SDL_Texture* explosionPtr = nullptr;
+	SDL_Texture* shipExplosion = nullptr;
+	SDL_Texture* enemyExplosion = nullptr;
 
 public:
 		// Type 1 particles
@@ -122,6 +124,11 @@ public:
 	//Particle yellowShield;
 
 	Particle explosion;
+	//@XaviMarin
+	//Particle shipExplo;
+	Particle EnemyExplo;
+
+	
 };
 
 #endif // __MODULEPARTICLES_H__

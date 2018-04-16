@@ -22,7 +22,9 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	graphics = App->textures->Load("Assets/Sprites/Players_Ships/laser_types.png");
-	explosionPtr = App->textures->Load("Assets/Sprites/Players_Ships/ship-explosion.png");
+	//explosionPtr = App->textures->Load("Assets/Sprites/Players_Ships/ship-explosion.png");
+	shipExplosion = App->textures->Load("Assets/Sprites/Players_Ships/ship-explosion.png");
+	enemyExplosion = App->textures->Load("Assets/Sprites/Common_level_elements/explosion_2.png");
 
 	/* Laser Sprites
 
@@ -266,12 +268,48 @@ bool ModuleParticles::Start()
 	arrowSuperDown3.anim.speed = 0.2f;
 
 	// Explosion particle // @Andres
-	explosion.anim.PushBack({ 33, 66, 6, 6 });
+	/*explosion.anim.PushBack({ 33, 66, 6, 6 });
 	explosion.anim.PushBack({ 45, 64, 10, 8 });
 	explosion.anim.PushBack({ 59, 56, 16, 16 });
 	explosion.anim.PushBack({ 81, 58, 14, 14 });
 	explosion.anim.loop = false;
-	explosion.anim.speed = 0.2f;
+	explosion.anim.speed = 0.2f;*/
+
+	// @XaviMarin
+	// Explosion ship 
+	/*shipExplo.anim.PushBack({ 50, 35, 27, 17 });
+	shipExplo.anim.PushBack({ 87, 34, 28, 18 });
+	shipExplo.anim.PushBack({ 125, 31, 30, 21 });
+	shipExplo.anim.PushBack({ 165, 27, 31, 25 });
+	shipExplo.anim.PushBack({ 50, 63, 32, 27 });
+	shipExplo.anim.PushBack({ 92, 59, 32, 31 });
+	shipExplo.anim.PushBack({ 134, 57, 32, 32 });
+	shipExplo.anim.PushBack({ 92, 105, 30, 30 });
+	shipExplo.anim.PushBack({ 132, 110, 24, 15 });
+	shipExplo.anim.PushBack({ 168, 114, 19, 11 });
+	shipExplo.anim.PushBack({ 199, 116, 15, 9 });
+	shipExplo.anim.loop = false;
+	shipExplo.anim.speed = 0.2f;*/
+
+	// Enemy explosion
+	EnemyExplo.anim.PushBack({ 4, 25, 8, 8 });
+	EnemyExplo.anim.PushBack({ 14, 19, 13, 15 });
+	EnemyExplo.anim.PushBack({ 30, 8, 25, 25 });
+	EnemyExplo.anim.PushBack({ 60, 7, 27, 26 });
+	EnemyExplo.anim.PushBack({ 90, 4, 30, 29 });
+	EnemyExplo.anim.PushBack({ 4, 40, 29, 28 });
+	EnemyExplo.anim.PushBack({ 37, 40, 29, 28 });
+	EnemyExplo.anim.PushBack({ 70, 41, 28, 27 });
+	EnemyExplo.anim.PushBack({ 100, 43, 29, 27 });
+	EnemyExplo.anim.PushBack({ 4, 75, 29, 27 });
+	EnemyExplo.anim.PushBack({ 37, 77, 28, 26 });
+	EnemyExplo.anim.PushBack({ 70, 78, 26, 24 });
+	EnemyExplo.anim.PushBack({ 99, 80, 21, 21 });
+	EnemyExplo.anim.PushBack({ 10, 108, 17, 17 });
+	EnemyExplo.anim.PushBack({ 37, 116, 6, 6 });
+	EnemyExplo.anim.loop = false;
+	EnemyExplo.anim.speed = 0.4f;
+
 
 	return true;
 }
@@ -281,7 +319,8 @@ bool ModuleParticles::CleanUp()
 {
 	LOG("Unloading particles");
 	App->textures->Unload(graphics);
-	App->textures->Unload(explosionPtr);
+	//App->textures->Unload(shipExplosion);
+	App->textures->Unload(enemyExplosion);
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -312,7 +351,9 @@ update_status ModuleParticles::Update()
 		}
 		else if (SDL_GetTicks() >= p->born)
 		{
-			App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+			//App->render->Blit(shipExplosion, p->position.x, p->position.y, &(p->anim.GetCurrentFrame())); // need to put the player position
+			App->render->Blit(enemyExplosion, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+			App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame())); 
 			if (p->fx_played == false)
 			{
 				p->fx_played = true;
@@ -349,11 +390,14 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
-			if (c2->type == COLLIDER_WALL) // Should be collider enemy
+			if (c2->type == COLLIDER_WALL || c2->type == COLLIDER_ENEMY) 
 			{
-				AddParticle(explosion, active[i]->position.x, active[i]->position.y);
+				//AddParticle(shipExplo, active[i]->position.x, active[i]->position.y);
 			}
-
+			else if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_ENEMY) 
+			{
+				AddParticle(EnemyExplo, active[i]->position.x, active[i]->position.y);
+			}
 			delete active[i];
 			active[i] = nullptr;
 			break;
