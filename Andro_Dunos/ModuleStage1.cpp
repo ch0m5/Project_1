@@ -164,17 +164,18 @@ update_status ModuleStage1::Update()
 	
 	if (moveMapRight == true)
 	{
-		//movementx -= xSpeedMultiplier*0.83f; // for movement in x direction
-		////LOG("%0.3f", movementx);
-		//movementxBack += xSpeedMultiplier*0.5f ;
-		//movementxPlanetsBack += xSpeedMultiplier*0.7f;
-		//
-		//App->render->camera.x = 3.25*movementx;
+		movementx -= xSpeedMultiplier*0.83f; // for movement in x direction
+		//LOG("%0.3f", movementx);
+		movementxBack += xSpeedMultiplier*0.5f ;
+		movementxPlanetsBack += xSpeedMultiplier*0.7f;
+		
+		App->render->camera.x = 3.25*movementx;
 
-		movementx -= xSpeedMultiplier*0.83f*2; // for movement in x direction
-		movementxBack += xSpeedMultiplier*0.5f*2;
-		movementxPlanetsBack += xSpeedMultiplier*0.7f*2;
-		App->render->camera.x = 3.25*movementx*2;
+		//fast movement testing 
+		//movementx -= xSpeedMultiplier*0.83f*2; // for movement in x direction
+		//movementxBack += xSpeedMultiplier*0.5f*2;
+		//movementxPlanetsBack += xSpeedMultiplier*0.7f*2;
+		//App->render->camera.x = 3.25*movementx*2;
 	
 	}
 	if (moveMapDown == true)
