@@ -71,6 +71,7 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 240, 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 270, 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 300, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 500, 20);
 
 	/*App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 180, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 210, 60);
