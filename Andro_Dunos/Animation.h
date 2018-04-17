@@ -2,7 +2,7 @@
 #define __ANIMATION_H__
 
 #include "Globals.h"
-#define MAX_FRAMES 25
+#define MAX_FRAMES 50
 
 class Animation
 {

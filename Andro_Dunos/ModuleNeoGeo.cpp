@@ -73,8 +73,8 @@ ModuleNeoGeo::~ModuleNeoGeo()
 bool ModuleNeoGeo::Start()
 {
 	LOG("Loading music and textures");
-	App->mixer->LoadMusic("Assets/Audio/neoGeo.ogg");
-	graphics = App->textures->Load("Assets/Sprites/NeoGeo/neogeo.png");
+	App->mixer->LoadMusic("Assets/Audio/Music/01_Neo_Geo_Logo.ogg");
+	graphics = App->textures->Load("Assets/Sprites/User_Interface/NeoGeo/neogeo.png");
 	return true;
 }
 
