@@ -22,6 +22,7 @@ class ModuleStage2;
 class ModuleHiScore;
 class ModuleCollision;
 class ModuleEnemies;
+class ModuleNeoGeo;
 
 class Application
 {
@@ -43,6 +44,7 @@ public:
 	ModuleHiScore* scene_HiScore = nullptr;
 	ModuleCollision* collision = nullptr;
 	ModuleEnemies* enemies = nullptr;
+	ModuleNeoGeo* neogeo = nullptr;
 
 public:
 

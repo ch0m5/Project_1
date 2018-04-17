@@ -83,6 +83,7 @@
     <ClInclude Include="ModuleCollision.h" />
     <ClInclude Include="ModuleEnemies.h" />
     <ClInclude Include="ModuleHiScore.h" />
+    <ClInclude Include="ModuleNeoGeo.h" />
     <ClInclude Include="ModuleParticles.h" />
     <ClInclude Include="ModuleStage1.h" />
     <ClInclude Include="ModuleFadeToBlack.h" />
@@ -119,6 +120,7 @@
     <ClCompile Include="ModuleStage2.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
+    <ClCompile Include="ModuleNeoGeo.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

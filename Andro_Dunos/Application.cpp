@@ -14,6 +14,7 @@
 #include "ModuleHiScore.h"
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
+#include "ModuleNeoGeo.h"
 
 Application::Application()
 {
@@ -33,6 +34,7 @@ Application::Application()
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
+	modules[i++] = neogeo = new ModuleNeoGeo();
 
 }	
 
