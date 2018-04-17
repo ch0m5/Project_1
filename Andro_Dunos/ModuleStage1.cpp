@@ -73,23 +73,19 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 420, 20);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 430, 20);
 
-	/*App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 180, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 210, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 240, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 270, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 300, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 380 + 50, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 390 + 50, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 400 + 50, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 410 + 50, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 420 + 50, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 430 + 50, 100);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 180, 100);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 210, 100);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 240, 100);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 270, 100);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 300, 100);
-
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 180, 140);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 210, 140);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 240, 140);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 270, 140);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 300, 140);*/
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 380 + 150, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 390 + 150, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 400 + 150, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 410 + 150, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 420 + 150, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 430 + 150, 60);
 	
 	// Collider
 	App->collision->Enable();
