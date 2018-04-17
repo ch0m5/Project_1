@@ -91,7 +91,8 @@ bool ModuleStage1::Start()
 	App->collision->Enable();
 
 	// Ground Collider
-	App->collision->AddCollider({ 0, 195, 3000, 275 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0, 195, 3000, 275 }, COLLIDER_WALL);  // Moon ground collider 
+	App->collision->AddCollider({ 3090, 430, 1000, 50 }, COLLIDER_WALL);  // Cave ground Collider
 	//App->collision->AddCollider({ 300, 20, 87, 282 }, COLLIDER_WALL);		// Giant wall to test bullets
 
 	//Music
