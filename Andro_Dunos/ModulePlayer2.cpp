@@ -196,11 +196,12 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 			++movVertical;		// Increase vertical counter.
 		}
 	}
-	//Calculus on player movement starts here. As the values of camera.x and camera.y are negative, we switch them to positive
-	// with the - operator to calculate.
+
+	// Calculus on player movement starts here. 
+	// As the values of camera.x and camera.y are negative, we switch them to positive with the - operator to calculate.
 	else if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
-		if (position.y < (-App->render->camera.y / SCREEN_SIZE) + App->render->camera.h - shipHeight)
+		if (position.y < (App->render->camera.y / SCREEN_SIZE) + App->render->camera.h - shipHeight)
 		{
 			position.y += speed;
 		}
@@ -213,7 +214,7 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 
 	else if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		if (position.y > (-App->render->camera.y / SCREEN_SIZE))
+		if (position.y > (App->render->camera.y / SCREEN_SIZE))
 		{
 			position.y -= speed;
 		}
@@ -224,13 +225,13 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x - 1 > -(App->render->camera.x / SCREEN_SIZE))
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x - 1 >(App->render->camera.x / SCREEN_SIZE))
 	{
 		position.x -= speed;
 	}
 
 
-	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x < -(App->render->camera.x / SCREEN_SIZE) + SCREEN_WIDTH - shipWidth)
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x < (App->render->camera.x / SCREEN_SIZE) + SCREEN_WIDTH - shipWidth)
 	{
 		position.x += speed;
 	}
@@ -239,9 +240,9 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 	{
 		position.x += 0.89f;		//HARDCODED: NEEDS TO BE SAME SPEED AS CAMERA
 	}
-	if (position.x <= -(App->render->camera.x / SCREEN_SIZE))
+	if (position.x <= (App->render->camera.x / SCREEN_SIZE))
 	{
-		position.x = -(App->render->camera.x / SCREEN_SIZE);
+		position.x = (App->render->camera.x / SCREEN_SIZE);
 	}
 	if (App->stage1->moveMapDown == true)
 	{
@@ -251,13 +252,22 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 	{
 		position.y -= 0.89f;		//HARDCODED: NEEDS TO BE SAME SPEED AS CAMERA
 	}
+
 	/*
 	if (App->stage2->moveMapRight == true)
 	{
-		position.x += 1.0f;		//HARDCODED: NEEDS TO BE SAME SPEED AS CAMERA
+	position.x += 1.0f;		//HARDCODED: NEEDS TO BE SAME SPEED AS CAMERA
 	}
 	*/
 	// Depending on the vertical counter, we decide the animation
+	/*
+	if (App->stage2->moveMapRight == true)
+	{
+	position.x += 1.0f;		//HARDCODED: NEEDS TO BE SAME SPEED AS CAMERA
+	}
+	*/
+	// Depending on the vertical counter, we decide the animation
+
 	if (movVertical >= maxVertical)
 	{
 		shipRect = &shipAnimation->frames[SHIP_FULL_UP];

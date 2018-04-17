@@ -182,7 +182,8 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 			}
 		}
 
-		//Calculus on player movement starts here. 
+		// Calculus on player movement starts here. 
+		// As the values of camera.x and camera.y are negative, we switch them to positive with the - operator to calculate.
 		else if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
 		{
 			if (position.y < (App->render->camera.y / SCREEN_SIZE) + App->render->camera.h - shipHeight)
