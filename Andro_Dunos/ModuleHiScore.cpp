@@ -37,6 +37,8 @@ bool ModuleHiScore::Start()
 
 	App->collision->Disable();
 
+	//Set the animation Speed to initial condition
+	ySpeedAnimation = 0;
 	//Music
 	MusicHighScore = App->mixer->LoadMusic("Assets/Audio/Music/18_Game_Over.ogg");
 	Mix_FadeInMusic(MusicHighScore, 0, 1000);

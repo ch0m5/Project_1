@@ -34,6 +34,12 @@ ModuleStage1::ModuleStage1()	//@AndresSaladrigas
 	bluePlanetRect.w = 165;
 	bluePlanetRect.h = 152;
 
+	// redPlanetRect
+	redPlanetRect.x = 0;
+	redPlanetRect.y = 0;
+	redPlanetRect.w = 65;
+	redPlanetRect.h = 65;
+
 	// caveBackRect
 	caveBackRect.x = 0;
 	caveBackRect.y = 0;
@@ -55,6 +61,7 @@ bool ModuleStage1::Start()
 	bluePlanetText = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/Moon.png");
  	map1Text = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/FullMap1_1.png");
 	caveBackText = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/cave_background.png");
+	redPlanetText = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/mars.png");
 
 	App->player1->Enable();
 	if (App->input->secondPlayerState == true)  //@AndresSala
@@ -154,12 +161,28 @@ update_status ModuleStage1::Update()
 
 	// Draw everything -------------------------------------- Andro Dunos
 	App->render->Blit(caveBackText, backmovementcaveX, -40, &caveBackRect); // cave background
-	
-	App->render->Blit(background1Text, movementxBack, 120 + movementyBack, &background1Rect); // level background
+	//These two if's control the first part of the level outside and the end of the level also outside
+	if (App->render->camera.y < 180 * SCREEN_SIZE)
+	{
+		App->render->Blit(background1Text, movementxBack, 120 + movementyBack, &background1Rect); // level background
+		
+	}
+	if (App->render->camera.x > 7130 * SCREEN_SIZE && App->render->camera.x < 7131 * SCREEN_SIZE)
+	{
+		movementxBack = 0;
+		movementxPlanetsBack = 0;
+	}
+	if (App->render->camera.x > 7130 * SCREEN_SIZE && App->render->camera.y < 180 * SCREEN_SIZE)
+	{
+		App->render->Blit(redPlanetText, 7450 + movementxPlanetsBack, 40, &redPlanetRect); // Mars
+		App->render->Blit(background1Text, 7130 + movementxBack, 120 + movementyBack, &background1Rect); // level background
+	}
 
 	App->render->Blit(map1Text, 0, -55, &map1Rect); // level map
 
 	App->render->Blit(bluePlanetText, 500 + movementxPlanetsBack, -10 , &bluePlanetRect); // Moon 
+	
+	
 
 	
 
@@ -184,14 +207,14 @@ update_status ModuleStage1::Update()
 	if (moveMapDown == true)
 	{
 		movementy += ySpeedMultiplier * 0.82f;
-		//movementyBack += ySpeedMultiplier * 0.38f; this should not be here, this moves the background
+		movementyBack += ySpeedMultiplier * 0.38f; 
 		App->render->camera.y = 3.25*movementy;
 		
 	}
 	if (moveMapUp == true)
 	{
 		movementy -= ySpeedMultiplier * 0.82f;
-		movementyBack += ySpeedMultiplier * 0.38f;
+		movementyBack -= ySpeedMultiplier * 0.38f;
 		App->render->camera.y = 3.25*movementy;
 	}
 

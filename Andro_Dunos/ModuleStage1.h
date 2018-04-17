@@ -26,12 +26,14 @@ public:
 	SDL_Texture* map1Text = nullptr;
 	SDL_Texture* bluePlanetText = nullptr;
 	SDL_Texture* caveBackText = nullptr;
+	SDL_Texture* redPlanetText = nullptr;
 
 	//Rectangles
 	SDL_Rect background1Rect;
 	SDL_Rect map1Rect;
 	SDL_Rect bluePlanetRect;
 	SDL_Rect caveBackRect;
+	SDL_Rect redPlanetRect;
 
 	// Background movement (position) values
 	//X Axis
