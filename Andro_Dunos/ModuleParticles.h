@@ -78,16 +78,22 @@ public:
 	Particle yellowSmallRight;
 	Particle yellowSmallLeft;
 
-	//Particle redRocket;
+	Particle redRocketDown;
+	Particle redRocketUp;
+	Particle redRocketRightDown;
+	Particle redRocketRightUp;
 
 		// Type 3 particles
 	Particle straightGreen;
 	Particle upRightGreen;		// Diagonal: needs modified collider
 	Particle downRightGreen;	// Diagonal: needs modified collider
 
-	//Particle split lasers
+	//Particle big split lasers
 
-	//Particle bomb;
+	Particle bombRightDown;
+	Particle bombRightUp;
+	Particle bombLeftDown;
+	Particle bombLeftUp;
 
 		// Type 4 particles
 	Particle arrowUp1;

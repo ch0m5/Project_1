@@ -21,7 +21,8 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("Assets/Sprites/Players_Ships/laser_types.png");
+	graphics = App->textures->Load("Assets/Sprites/Players_Ships/Laser_particles.png");
+	/*graphics = App->textures->Load("Assets/Sprites/Players_Ships/laser_types.png");*/
 	//explosionPtr = App->textures->Load("Assets/Sprites/Players_Ships/ship-explosion.png");
 	shipExplosion = App->textures->Load("Assets/Sprites/Players_Ships/ship-explosion.png");
 	enemyExplosion = App->textures->Load("Assets/Sprites/Common_level_elements/explosion_2.png");
@@ -122,6 +123,63 @@ bool ModuleParticles::Start()
 	yellowSmallLeft.life = 1200;
 	yellowSmallLeft.anim.speed = 0.3f;
 
+	redRocketDown.anim.PushBack({ 0, 99, 16, 9 });	// RedRockets sprites need to be fixed
+	redRocketDown.anim.PushBack({ 0, 113, 16, 9 });
+	redRocketDown.anim.PushBack({ 2, 129, 16, 9 });
+	redRocketDown.anim.PushBack({ 3, 142, 16, 9 });
+	redRocketDown.anim.PushBack({ 3, 158, 16, 9 });
+	redRocketDown.anim.PushBack({ 2, 173, 16, 9 });
+	redRocketDown.anim.PushBack({ 3, 188, 16, 9 });
+	redRocketDown.anim.PushBack({ 3, 202, 16, 9 });
+	redRocketDown.anim.loop = true;
+	redRocketDown.speed.x = 1.0f;	// Should be camera horizontal speed
+	redRocketDown.speed.y = 2.0f;
+	redRocketDown.life = 1200;
+	redRocketDown.anim.speed = 0.3f;
+
+	redRocketUp.anim.PushBack({ 0, 99, 16, 9 });
+	redRocketUp.anim.PushBack({ 0, 113, 16, 9 });
+	redRocketUp.anim.PushBack({ 2, 129, 16, 9 });
+	redRocketUp.anim.PushBack({ 3, 142, 16, 9 });
+	redRocketUp.anim.PushBack({ 3, 158, 16, 9 });
+	redRocketUp.anim.PushBack({ 2, 173, 16, 9 });
+	redRocketUp.anim.PushBack({ 3, 188, 16, 9 });
+	redRocketUp.anim.PushBack({ 3, 202, 16, 9 });
+	redRocketUp.anim.loop = true;
+	redRocketUp.speed.x = 1.0f;	// Should be camera horizontal speed
+	redRocketUp.speed.y = -2.0f;
+	redRocketUp.life = 1200;
+	redRocketUp.anim.speed = 0.3f;
+
+	redRocketRightDown.anim.PushBack({ 0, 99, 16, 9 });
+	redRocketRightDown.anim.PushBack({ 0, 113, 16, 9 });
+	redRocketRightDown.anim.PushBack({ 2, 129, 16, 9 });
+	redRocketRightDown.anim.PushBack({ 3, 142, 16, 9 });
+	redRocketRightDown.anim.PushBack({ 3, 158, 16, 9 });
+	redRocketRightDown.anim.PushBack({ 2, 173, 16, 9 });
+	redRocketRightDown.anim.PushBack({ 3, 188, 16, 9 });
+	redRocketRightDown.anim.PushBack({ 3, 202, 16, 9 });
+	redRocketRightDown.anim.loop = true;
+	redRocketRightDown.speed.x = 2.0f;
+	redRocketRightDown.speed.y = 2.0f;
+	redRocketRightDown.life = 1200;
+	redRocketRightDown.anim.speed = 0.3f;
+
+	redRocketRightUp.anim.PushBack({ 0, 99, 16, 9 });
+	redRocketRightUp.anim.PushBack({ 0, 113, 16, 9 });
+	redRocketRightUp.anim.PushBack({ 2, 129, 16, 9 });
+	redRocketRightUp.anim.PushBack({ 3, 142, 16, 9 });
+	redRocketRightUp.anim.PushBack({ 3, 158, 16, 9 });
+	redRocketRightUp.anim.PushBack({ 2, 173, 16, 9 });
+	redRocketRightUp.anim.PushBack({ 3, 188, 16, 9 });
+	redRocketRightUp.anim.PushBack({ 3, 202, 16, 9 });
+	redRocketRightUp.anim.loop = true;
+	redRocketRightUp.speed.x = 2.0f;
+	redRocketRightUp.speed.y = -2.0f;
+	redRocketRightUp.life = 1200;
+	redRocketRightUp.anim.speed = 0.3f;
+
+
 	//Player Type 3 (green)
 	straightGreen.anim.PushBack({ 42, 87, 32, 3 });
 	straightGreen.anim.loop = false;
@@ -140,6 +198,34 @@ bool ModuleParticles::Start()
 	downRightGreen.speed.x = 7.0f;
 	downRightGreen.life = 1200;
 	downRightGreen.anim.speed = 0.3f;*/
+
+	bombRightDown.anim.PushBack({ 121, 113, 8, 9 });
+	bombRightDown.anim.loop = false;
+	bombRightDown.speed.x = 3.0f;
+	bombRightDown.speed.y = 1.0f;
+	bombRightDown.life = 1200;
+	bombRightDown.anim.speed = 0.5f;
+
+	bombRightUp.anim.PushBack({ 121, 98, 8, 9 });
+	bombRightUp.anim.loop = false;
+	bombRightUp.speed.x = 3.0f;
+	bombRightUp.speed.y = -1.0f;
+	bombRightUp.life = 1200;
+	bombRightUp.anim.speed = 0.5f;
+
+	bombLeftDown.anim.PushBack({ 121, 113, 8, 9 });
+	bombLeftDown.anim.loop = false;
+	bombLeftDown.speed.x = -2.0f;
+	bombLeftDown.speed.y = 1.0f;
+	bombLeftDown.life = 1200;
+	bombLeftDown.anim.speed = 0.5f;
+
+	bombLeftUp.anim.PushBack({ 121, 98, 8, 9 });
+	bombLeftUp.anim.loop = false;
+	bombLeftUp.speed.x = -2.0f;
+	bombLeftUp.speed.y = -1.0f;
+	bombLeftUp.life = 1200;
+	bombLeftUp.anim.speed = 0.5f;
 
 	//Player Type 4 (white)
 	arrowUp1.anim.PushBack({ 41, 9, 13, 6 });
@@ -167,44 +253,48 @@ bool ModuleParticles::Start()
 
 	//------------------------------------------------
 
-	arrowSuperUp2.anim.PushBack({ 41, 9, 13, 6 });
-	arrowSuperUp2.anim.PushBack({ 41, 23, 13, 6 });
+	arrowSuperUp2.anim.PushBack({ 41, 8, 13, 8 });
+	arrowSuperUp2.anim.PushBack({ 41, 22, 13, 8 });
 	arrowSuperUp2.anim.PushBack({ 41, 38, 13, 8 });
+	arrowSuperUp2.anim.loop = false;
 	arrowSuperUp2.anim.loop = false;
 	arrowSuperUp2.speed.x = 7.0f;
 	arrowSuperUp2.speed.y = -2.0f;
 	arrowSuperUp2.life = 1200;
 	arrowSuperUp2.anim.speed = 0.5f;
 
-	arrowUp2.anim.PushBack({ 41, 9, 13, 6 });
-	arrowUp2.anim.PushBack({ 41, 23, 13, 6 });
+	arrowUp2.anim.PushBack({ 41, 8, 13, 8 });
+	arrowUp2.anim.PushBack({ 41, 22, 13, 8 });
 	arrowUp2.anim.PushBack({ 41, 38, 13, 8 });
+	arrowUp2.anim.loop = false;
 	arrowUp2.anim.loop = false;
 	arrowUp2.speed.x = 7.0f;
 	arrowUp2.speed.y = -1.0f;
 	arrowUp2.life = 1200;
 	arrowUp2.anim.speed = 0.5f;
 
-	arrowStraight2.anim.PushBack({ 41, 9, 13, 6 });
-	arrowStraight2.anim.PushBack({ 41, 23, 13, 6 });
+	arrowStraight2.anim.PushBack({ 41, 8, 13, 8 });
+	arrowStraight2.anim.PushBack({ 41, 22, 13, 8 });
 	arrowStraight2.anim.PushBack({ 41, 38, 13, 8 });
 	arrowStraight2.anim.loop = false;
 	arrowStraight2.speed.x = 7.0f;
 	arrowStraight2.life = 1200;
 	arrowStraight2.anim.speed = 0.5f;
 
-	arrowDown2.anim.PushBack({ 41, 9, 13, 6 });
-	arrowDown2.anim.PushBack({ 41, 23, 13, 6 });
+	arrowDown2.anim.PushBack({ 41, 8, 13, 8 });
+	arrowDown2.anim.PushBack({ 41, 22, 13, 8 });
 	arrowDown2.anim.PushBack({ 41, 38, 13, 8 });
+	arrowDown2.anim.loop = false;
 	arrowDown2.anim.loop = false;
 	arrowDown2.speed.x = 7.0f;
 	arrowDown2.speed.y = 1.0f;
 	arrowDown2.life = 1200;
 	arrowDown2.anim.speed = 0.5f;
 
-	arrowSuperDown2.anim.PushBack({ 41, 9, 13, 6 });
-	arrowSuperDown2.anim.PushBack({ 41, 23, 13, 6 });
+	arrowSuperDown2.anim.PushBack({ 41, 8, 13, 8 });
+	arrowSuperDown2.anim.PushBack({ 41, 22, 13, 8 });
 	arrowSuperDown2.anim.PushBack({ 41, 38, 13, 8 });
+	arrowSuperDown2.anim.loop = false;
 	arrowSuperDown2.anim.loop = false;
 	arrowSuperDown2.speed.x = 7.0f;
 	arrowSuperDown2.speed.y = 2.0f;
@@ -213,54 +303,54 @@ bool ModuleParticles::Start()
 
 	//--------------------------------------------------
 
-	arrowSuperUp3.anim.PushBack({ 41, 9, 13, 6 });
-	arrowSuperUp3.anim.PushBack({ 41, 23, 13, 6 });
-	arrowSuperUp3.anim.PushBack({ 41, 38, 13, 8 });
-	arrowSuperUp3.anim.PushBack({ 41, 49, 13, 12 });
-	arrowSuperUp3.anim.PushBack({ 41, 64, 13, 14 });
+	arrowSuperUp3.anim.PushBack({ 41, 5, 13, 14 });
+	arrowSuperUp3.anim.PushBack({ 41, 19, 13, 14 });
+	arrowSuperUp3.anim.PushBack({ 41, 35, 13, 14 });
+	arrowSuperUp3.anim.PushBack({ 41, 49, 13, 14 });
+	arrowSuperUp3.anim.PushBack({ 41, 48, 13, 14 });
 	arrowSuperUp3.anim.loop = false;
 	arrowSuperUp3.speed.x = 7.0f;
 	arrowSuperUp3.speed.y = -2.0f;
 	arrowSuperUp3.life = 1200;
 	arrowSuperUp3.anim.speed = 0.2f;
 
-	arrowUp3.anim.PushBack({ 41, 9, 13, 6 });
-	arrowUp3.anim.PushBack({ 41, 23, 13, 6 });
-	arrowUp3.anim.PushBack({ 41, 38, 13, 8 });
-	arrowUp3.anim.PushBack({ 41, 49, 13, 12 });
-	arrowUp3.anim.PushBack({ 41, 64, 13, 14 });
+	arrowUp3.anim.PushBack({ 41, 5, 13, 14 });
+	arrowUp3.anim.PushBack({ 41, 19, 13, 14 });
+	arrowUp3.anim.PushBack({ 41, 35, 13, 14 });
+	arrowUp3.anim.PushBack({ 41, 49, 13, 14 });
+	arrowUp3.anim.PushBack({ 41, 48, 13, 14 });
 	arrowUp3.anim.loop = false;
 	arrowUp3.speed.x = 7.0f;
 	arrowUp3.speed.y = -1.0f;
 	arrowUp3.life = 1200;
 	arrowUp3.anim.speed = 0.2f;
 
-	arrowStraight3.anim.PushBack({ 41, 9, 13, 6 });
-	arrowStraight3.anim.PushBack({ 41, 23, 13, 6 });
-	arrowStraight3.anim.PushBack({ 41, 38, 13, 8 });
-	arrowStraight3.anim.PushBack({ 41, 49, 13, 12 });
-	arrowStraight3.anim.PushBack({ 41, 64, 13, 14 });
+	arrowStraight3.anim.PushBack({ 41, 5, 13, 14 });
+	arrowStraight3.anim.PushBack({ 41, 19, 13, 14 });
+	arrowStraight3.anim.PushBack({ 41, 35, 13, 14 });
+	arrowStraight3.anim.PushBack({ 41, 49, 13, 14 });
+	arrowStraight3.anim.PushBack({ 41, 48, 13, 14 });
 	arrowStraight3.anim.loop = false;
 	arrowStraight3.speed.x = 7.0f;
 	arrowStraight3.life = 1200;
 	arrowStraight3.anim.speed = 0.2f;
 
-	arrowDown3.anim.PushBack({ 41, 9, 13, 6 });
-	arrowDown3.anim.PushBack({ 41, 23, 13, 6 });
-	arrowDown3.anim.PushBack({ 41, 38, 13, 8 });
-	arrowDown3.anim.PushBack({ 41, 49, 13, 12 });
-	arrowDown3.anim.PushBack({ 41, 64, 13, 14 });
+	arrowDown3.anim.PushBack({ 41, 5, 13, 14 });
+	arrowDown3.anim.PushBack({ 41, 19, 13, 14 });
+	arrowDown3.anim.PushBack({ 41, 35, 13, 14 });
+	arrowDown3.anim.PushBack({ 41, 49, 13, 14 });
+	arrowDown3.anim.PushBack({ 41, 48, 13, 14 });
 	arrowDown3.anim.loop = false;
 	arrowDown3.speed.x = 7.0f;
 	arrowDown3.speed.y = 1.0f;
 	arrowDown3.life = 1200;
 	arrowDown3.anim.speed = 0.2f;
 
-	arrowSuperDown3.anim.PushBack({ 41, 9, 13, 6 });
-	arrowSuperDown3.anim.PushBack({ 41, 23, 13, 6 });
-	arrowSuperDown3.anim.PushBack({ 41, 38, 13, 8 });
-	arrowSuperDown3.anim.PushBack({ 41, 49, 13, 12 });
-	arrowSuperDown3.anim.PushBack({ 41, 64, 13, 14 });
+	arrowSuperDown3.anim.PushBack({ 41, 5, 13, 14 });
+	arrowSuperDown3.anim.PushBack({ 41, 19, 13, 14 });
+	arrowSuperDown3.anim.PushBack({ 41, 35, 13, 14 });
+	arrowSuperDown3.anim.PushBack({ 41, 49, 13, 14 });
+	arrowSuperDown3.anim.PushBack({ 41, 48, 13, 14 });
 	arrowSuperDown3.anim.loop = false;
 	arrowSuperDown3.speed.x = 7.0f;
 	arrowSuperDown3.speed.y = 2.0f;
@@ -352,7 +442,7 @@ update_status ModuleParticles::Update()
 		else if (SDL_GetTicks() >= p->born)
 		{
 			//App->render->Blit(shipExplosion, p->position.x, p->position.y, &(p->anim.GetCurrentFrame())); // need to put the player position
-			App->render->Blit(enemyExplosion, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+			//App->render->Blit(enemyExplosion, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 			App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame())); 
 			if (p->fx_played == false)
 			{

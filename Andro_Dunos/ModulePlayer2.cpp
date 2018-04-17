@@ -507,23 +507,31 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 				break;
 
 			case LEVEL_1:
-
+				App->particles->AddParticle(App->particles->redRocketDown, position.x + 5, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
 				break;
 
 			case LEVEL_2:
-
+				App->particles->AddParticle(App->particles->redRocketDown, position.x + 5, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->redRocketUp, position.x + 5, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
 				break;
 
 			case LEVEL_3:
-
+				App->particles->AddParticle(App->particles->redRocketDown, position.x + 5, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->redRocketUp, position.x + 5, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
 				break;
 
 			case LEVEL_4:
-
+				App->particles->AddParticle(App->particles->redRocketDown, position.x + 5, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->redRocketUp, position.x + 5, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->redRocketRightDown, position.x + 5, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->redRocketRightUp, position.x + 5, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
 				break;
 
 			case LEVEL_5:
-
+				App->particles->AddParticle(App->particles->redRocketDown, position.x + 5, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->redRocketUp, position.x + 5, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->redRocketRightDown, position.x + 5, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->redRocketRightUp, position.x + 5, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
 				break;
 			}
 
@@ -606,23 +614,31 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 				break;
 
 			case LEVEL_1:
-
+				App->particles->AddParticle(App->particles->bombRightDown, position.x + 7, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
 				break;
 
 			case LEVEL_2:
-
+				App->particles->AddParticle(App->particles->bombRightDown, position.x + 7, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->bombRightUp, position.x + 7, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
 				break;
 
 			case LEVEL_3:
-
+				App->particles->AddParticle(App->particles->bombRightDown, position.x + 7, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->bombRightUp, position.x + 7, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
 				break;
 
 			case LEVEL_4:
-
+				App->particles->AddParticle(App->particles->bombRightDown, position.x + 7, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->bombRightUp, position.x + 7, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->bombLeftDown, position.x + 7, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->bombLeftUp, position.x + 7, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
 				break;
 
 			case LEVEL_5:
-
+				App->particles->AddParticle(App->particles->bombRightDown, position.x + 7, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->bombRightUp, position.x + 7, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->bombLeftDown, position.x + 7, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->bombLeftUp, position.x + 7, position.y + laserVerticalOffset, COLLIDER_PLAYER_SHOT);
 				break;
 			}
 
@@ -682,23 +698,39 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 				break;
 
 			case LEVEL_3:
-
+				App->particles->AddParticle(App->particles->arrowUp2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowStraight2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowDown2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
 				break;
 
 			case LEVEL_4:
-
+				App->particles->AddParticle(App->particles->arrowSuperUp2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowUp2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowDown2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowSuperDown2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
 				break;
 
 			case LEVEL_5:
-
+				App->particles->AddParticle(App->particles->arrowSuperUp2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowUp3, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowDown3, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowSuperDown2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
 				break;
 
 			case LEVEL_6:
-
+				App->particles->AddParticle(App->particles->arrowSuperUp2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowUp3, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowStraight3, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowDown3, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowSuperDown2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
 				break;
 
 			case LEVEL_7:
-
+				App->particles->AddParticle(App->particles->arrowSuperUp3, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowUp3, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowStraight3, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowDown3, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowSuperDown3, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
 				break;
 			}
 
