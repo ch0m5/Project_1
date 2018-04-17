@@ -232,7 +232,7 @@ bool ModuleParticles::Start()
 	arrowUp1.anim.PushBack({ 41, 23, 13, 6 });
 	arrowUp1.anim.loop = false;
 	arrowUp1.speed.x = 7.0f;
-	arrowUp1.speed.y = -1.0f;
+	arrowUp1.speed.y = -0.3f;		// CHANGED FOR TESTING
 	arrowUp1.life = 1200;
 	arrowUp1.anim.speed = 0.5f;
 
@@ -444,7 +444,8 @@ update_status ModuleParticles::Update()
 			//App->render->Blit(shipExplosion, p->position.x, p->position.y, &(p->anim.GetCurrentFrame())); // need to put the player position
 			//App->render->Blit(enemyExplosion, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 
-			App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame())); 
+			App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+
 			if (p->fx_played == false)
 			{
 				p->fx_played = true;
@@ -464,8 +465,8 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 		{
 			Particle* p = new Particle(particle);
 			p->born = SDL_GetTicks() + delay;
-			p->position.x = x;
-			p->position.y = y;
+			p->position.x = p->fPositionHorizontal = x;	// Carles Edit
+			p->position.y = p->fPositionVertical = y;	// Carles Edit
 			if (collider_type != COLLIDER_NONE)
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			active[i] = p;
@@ -532,9 +533,16 @@ bool Particle::Update()
 	else
 		if (anim.Finished())
 			ret = false;
+	
+	fPositionHorizontal += speed.x;
+	fPositionVertical += speed.y;
 
+	position.x = (int)fPositionHorizontal;
+	position.y = (int)fPositionVertical;
+	/*
 	position.x += speed.x;
 	position.y += speed.y;
+	*/
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);

@@ -49,7 +49,7 @@ public:
 		return(r);
 	}
 
-	p2Point operator + (const p2Point &v) const
+	p2Point operator +(const p2Point &v) const
 	{
 		p2Point r;
 
