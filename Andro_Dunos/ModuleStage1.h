@@ -51,6 +51,7 @@ public:
 	float ySpeedMultiplier = 1;
 
 
+
 	//Debug and Developing purpose variables
 	bool fasterX = false;
 

@@ -66,11 +66,12 @@ bool ModuleStage1::Start()
 	// Enemies
 	App->enemies->Enable();
 
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 180, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 210, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 240, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 270, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 300, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 380, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 390, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 400, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 410, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 420, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 430, 20);
 
 	/*App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 180, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 210, 60);
@@ -120,6 +121,10 @@ bool ModuleStage1::CleanUp()
 	 //Reset Camera Position
 	 App->render->camera.x = 0;
 	 App->render->camera.y = 0;
+	 //Reset starting directions
+	 moveMapRight = true;
+	 moveMapDown = false;
+	 moveMapUp = false;
 	 //--------
 	LOG("Unloading players");
 	App->player1->Disable();
@@ -165,7 +170,7 @@ update_status ModuleStage1::Update()
 	
 	if (moveMapRight == true)
 	{
-		movementx -= xSpeedMultiplier*0.83f; // for movement in x direction
+		movementx += xSpeedMultiplier*0.83f; // for movement in x direction
 		//LOG("%0.3f", movementx);
 		movementxBack += xSpeedMultiplier*0.5f ;
 		movementxPlanetsBack += xSpeedMultiplier*0.7f;
@@ -181,76 +186,76 @@ update_status ModuleStage1::Update()
 	}
 	if (moveMapDown == true)
 	{
-		movementy -= ySpeedMultiplier * 0.82f;
+		movementy += ySpeedMultiplier * 0.82f;
 		//movementyBack += ySpeedMultiplier * 0.38f; this should not be here, this moves the background
 		App->render->camera.y = 3.25*movementy;
 		
 	}
 	if (moveMapUp == true)
 	{
-		movementy += ySpeedMultiplier * 0.82f;
-		movementyBack -= ySpeedMultiplier * 0.38f;
+		movementy -= ySpeedMultiplier * 0.82f;
+		movementyBack += ySpeedMultiplier * 0.38f;
 		App->render->camera.y = 3.25*movementy;
 	}
 
 	//Conditions: Where does the background change X and Y speeds
-	if (App->render->camera.x < -2920*3) // 1st SPEED CHANGE: Ships enter the inside of the Moon 
+	if (App->render->camera.x > 2920* SCREEN_SIZE) // 1st SPEED CHANGE: Ships enter the inside of the Moon 
 	{
 		moveMapRight = false;
 		moveMapDown = true;
 		moveMapUp = false;
 	}
 	
-	if (App->render->camera.y < -226*3 && moveMapUp == false) // 2nd SPEED CHANGE: Ships continue through the inside of the Moon
+	if (App->render->camera.y > 226* SCREEN_SIZE && moveMapUp == false) // 2nd SPEED CHANGE: Ships continue through the inside of the Moon
 	{
 		moveMapRight = true;
 		moveMapDown = false;
 		moveMapUp = false;
 	}
 	
-	if (App->render->camera.x < -4015*3) // 3rd SPEED CHANGE: Ships continue through the inside of the Moon:: Diagonal Upwards movement 1/2
+	if (App->render->camera.x > 4015* SCREEN_SIZE) // 3rd SPEED CHANGE: Ships continue through the inside of the Moon:: Diagonal Upwards movement 1/2
 	{
 		moveMapRight = true;
 		moveMapDown = false;
 		moveMapUp = true;
 		
 	}
-	if (App->render->camera.x < -4145*3) // 4th SPEED CHANGE: Ships continue through the inside of the Moon:: now straight to Right 1/4
+	if (App->render->camera.x > 4145* SCREEN_SIZE) // 4th SPEED CHANGE: Ships continue through the inside of the Moon:: now straight to Right 1/4
 	{
 		moveMapRight = true;
 		moveMapDown = false;
 		moveMapUp = false;
 		
 	}
-	if (App->render->camera.x < -4530*3) // 5th SPEED CHANGE: Ships continue through the inside of the Moon:: Diagonal Downwards to Right 1/2
+	if (App->render->camera.x > 4530* SCREEN_SIZE) // 5th SPEED CHANGE: Ships continue through the inside of the Moon:: Diagonal Downwards to Right 1/2
 	{
 		
 		moveMapRight = true;
 		moveMapDown = true;
 		moveMapUp = false;
 	}
-	if (App->render->camera.x < -4658*3) // 6th SPEED CHANGE: Ships continue through the inside of the Moon:: now Straight to Right 2/4
+	if (App->render->camera.x > 4658* SCREEN_SIZE) // 6th SPEED CHANGE: Ships continue through the inside of the Moon:: now Straight to Right 2/4
 	{
 	
 		moveMapRight = true;
 		moveMapDown = false;
 		moveMapUp = false;
 	}
-	if (App->render->camera.x < -5071*3) // 7th SPEED CHANGE: Ships continue through the inside of the Moon:: Diagonal Upwards to Right 2/2
+	if (App->render->camera.x > 5071* SCREEN_SIZE) // 7th SPEED CHANGE: Ships continue through the inside of the Moon:: Diagonal Upwards to Right 2/2
 	{
 	
 		moveMapRight = true;
 		moveMapDown = false;
 		moveMapUp = true;
 	}
-	if (App->render->camera.x < -5300*3) // 8th SPEED CHANGE: Ships continue through the inside of the Moon:: Straight to Right 3/4
+	if (App->render->camera.x > 5300* SCREEN_SIZE) // 8th SPEED CHANGE: Ships continue through the inside of the Moon:: Straight to Right 3/4
 	{
 		
 		moveMapRight = true;
 		moveMapDown = false;
 		moveMapUp = false;
 	}
-	if (App->render->camera.x < -6044*3) // 9th SPEED CHANGE: Ships continue through the inside of the Moon:: Downwards to Right 2/2
+	if (App->render->camera.x > 6044* SCREEN_SIZE) // 9th SPEED CHANGE: Ships continue through the inside of the Moon:: Downwards to Right 2/2
 	{
 		
 		ySpeedMultiplier = 0.65;
@@ -258,22 +263,22 @@ update_status ModuleStage1::Update()
 		moveMapDown = true;
 		moveMapUp = false;
 	}
-	if (App->render->camera.x < -6390*3) // 10th SPEED CHANGE: Ships continue through the inside of the Moon:: Straight to Right 4/4
+	if (App->render->camera.x > 6390* SCREEN_SIZE) // 10th SPEED CHANGE: Ships continue through the inside of the Moon:: Straight to Right 4/4
 	{
 	
 		moveMapRight = true;
 		moveMapDown = false;
 		moveMapUp = false;
 	}
-	if (App->render->camera.x < -7130*3) // 11th SPEED CHANGE: Ships EXIT the inside of the Moon
+	if (App->render->camera.x > 7130* SCREEN_SIZE) // 11th SPEED CHANGE: Ships EXIT the inside of the Moon
 	{
-
+		ySpeedMultiplier = 1;
 		moveMapRight = false;
 		moveMapDown = false;
 		moveMapUp = true;
 	}
 
-	if (App->render->camera.y > 0 && moveMapUp == true && App->render->camera.x < -7120*3) // 12th SPEED CHANGE: Ships are OUTSIDE the Moon. They leave to the right
+	if (App->render->camera.y < 0 && moveMapUp == true && App->render->camera.x > 7120* SCREEN_SIZE) // 12th SPEED CHANGE: Ships are OUTSIDE the Moon. They leave to the right
 	{
 		moveMapRight = true;
 		moveMapDown = false;
@@ -288,20 +293,19 @@ update_status ModuleStage1::Update()
 		App->fade->FadeToBlack(App->stage1, App->stage2, 1);
 	}
 
-	
-	//Debugging purpose methods
-	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN)
+	//FasterX function Increase the horizontal velocity 
+	if (App->input->keyboard[SDL_SCANCODE_LSHIFT] == KEY_DOWN)
 	{
 		if (App->input->keyboard[SDL_SCANCODE_LSHIFT] != KEY_REPEAT)
 		{
-			fasterX != fasterX;
+			fasterX = !fasterX;
 		}
 
 		if (fasterX == true)
 		{
 			xSpeedMultiplier = 10;
 		}
-		if (fasterX == false)
+		else if (fasterX == false)
 		{
 			xSpeedMultiplier = 1;
 		}

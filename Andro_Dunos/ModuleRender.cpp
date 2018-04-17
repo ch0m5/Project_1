@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleRender.h"
 #include "ModuleWindow.h"
+#include "ModuleCollision.h"
 #include "ModuleInput.h"
 #include "SDL/include/SDL.h"
 
@@ -49,21 +50,21 @@ update_status ModuleRender::PreUpdate()
 
 update_status ModuleRender::Update()	// Used for the camera movement, reacts to keys pressed to move the screen around (window != screen)
 {
-	/* Camera movement, which we don't need
-	int speed = 3;
 
-	if(App->input->keyboard[SDL_SCANCODE_UP] == 1)
-		camera.y += speed;
+		//int speed = 10;
 
-	if(App->input->keyboard[SDL_SCANCODE_DOWN] == 1)
-		camera.y -= speed;
+		//if (App->input->keyboard[SDL_SCANCODE_U] == KEY_REPEAT)
+		//	camera.y += speed;
 
-	if (App->input->keyboard[SDL_SCANCODE_LEFT] == 1)
-		camera.x += speed;
+		//if (App->input->keyboard[SDL_SCANCODE_J] == KEY_REPEAT)
+		//	camera.y -= speed;
 
-	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == 1)
-		camera.x -= speed;
-	*/
+		//if (App->input->keyboard[SDL_SCANCODE_K] == KEY_REPEAT)
+		//	camera.x -= speed;
+
+		//if (App->input->keyboard[SDL_SCANCODE_H] == KEY_REPEAT)
+		//	camera.x += speed;
+	
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -94,8 +95,8 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, f
 {
 	bool ret = true;
 	SDL_Rect rect;
-	rect.x = (int)(camera.x * speed) + x * SCREEN_SIZE;
-	rect.y = (int)(camera.y * speed) + y * SCREEN_SIZE;
+	rect.x = (int)(-camera.x * speed) + x * SCREEN_SIZE;
+	rect.y = (int)(-camera.y * speed) + y * SCREEN_SIZE;
 
 	if(section != NULL)
 	{
@@ -129,8 +130,8 @@ bool ModuleRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uin
 	SDL_Rect rec(rect);
 	if (use_camera)
 	{
-		rec.x = (int)(camera.x + rect.x * SCREEN_SIZE);
-		rec.y = (int)(camera.y + rect.y * SCREEN_SIZE);
+		rec.x = (int)(-camera.x + rect.x * SCREEN_SIZE);
+		rec.y = (int)(-camera.y + rect.y * SCREEN_SIZE);
 		rec.w *= SCREEN_SIZE;
 		rec.h *= SCREEN_SIZE;
 	}
