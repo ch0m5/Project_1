@@ -98,9 +98,6 @@
     <ClInclude Include="Enemy_13_Greyball.h">
       <Filter>ModulesEnemies\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleNeoGeo.h">
-      <Filter>ModulesStages</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -165,9 +162,6 @@
     </ClCompile>
     <ClCompile Include="Enemy_13_Greyball.cpp">
       <Filter>ModulesEnemies\Enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleNeoGeo.cpp">
-      <Filter>ModulesStages</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
