@@ -682,50 +682,50 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 			switch (bluePower)
 			{
 			case LEVEL_1:
-				App->particles->AddParticle(App->particles->arrowUp1, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->arrowDown1, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowUp1, position.x + 13, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowDown1, position.x + 13, position.y + 8, COLLIDER_PLAYER_SHOT);
 				break;
 
 			case LEVEL_2:
-				App->particles->AddParticle(App->particles->arrowUp1, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->arrowStraight1, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->arrowDown1, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowUp1, position.x + 13, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowStraight1, position.x + 26, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowDown1, position.x + 13, position.y + 8, COLLIDER_PLAYER_SHOT);
 				break;
 
 			case LEVEL_3:
-				App->particles->AddParticle(App->particles->arrowUp2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->arrowStraight2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->arrowDown2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowUp2, position.x + 13, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowStraight2, position.x + 26, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowDown2, position.x + 13, position.y + 8, COLLIDER_PLAYER_SHOT);
 				break;
 
 			case LEVEL_4:
-				App->particles->AddParticle(App->particles->arrowSuperUp2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->arrowUp2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->arrowDown2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->arrowSuperDown2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowSuperUp2, position.x + 13, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowUp2, position.x + 26, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowDown2, position.x + 26, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowSuperDown2, position.x + 13, position.y + 8, COLLIDER_PLAYER_SHOT);
 				break;
 
 			case LEVEL_5:
-				App->particles->AddParticle(App->particles->arrowSuperUp2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->arrowUp3, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->arrowDown3, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->arrowSuperDown2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowSuperUp2, position.x + 26, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowUp3, position.x + 13, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowDown3, position.x + 13, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowSuperDown2, position.x + 26, position.y + 8, COLLIDER_PLAYER_SHOT);
 				break;
 
 			case LEVEL_6:
-				App->particles->AddParticle(App->particles->arrowSuperUp2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->arrowUp3, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->arrowStraight3, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->arrowDown3, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->arrowSuperDown2, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowSuperUp2, position.x, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowUp3, position.x + 13, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowStraight3, position.x + 26, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowDown3, position.x + 13, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowSuperDown2, position.x, position.y + 8, COLLIDER_PLAYER_SHOT);
 				break;
 
 			case LEVEL_7:
-				App->particles->AddParticle(App->particles->arrowSuperUp3, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->arrowUp3, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->arrowStraight3, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->arrowDown3, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->arrowSuperDown3, position.x + 14, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowSuperUp3, position.x, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowUp3, position.x + 13, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowStraight3, position.x + 26, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowDown3, position.x + 13, position.y + 8, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->arrowSuperDown3, position.x, position.y + 8, COLLIDER_PLAYER_SHOT);
 				break;
 			}
 

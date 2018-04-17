@@ -232,7 +232,7 @@ bool ModuleParticles::Start()
 	arrowUp1.anim.PushBack({ 41, 23, 13, 6 });
 	arrowUp1.anim.loop = false;
 	arrowUp1.speed.x = 7.0f;
-	arrowUp1.speed.y = -0.3f;		// CHANGED FOR TESTING
+	arrowUp1.speed.y = -1.0f;
 	arrowUp1.life = 1200;
 	arrowUp1.anim.speed = 0.5f;
 
@@ -259,7 +259,7 @@ bool ModuleParticles::Start()
 	arrowSuperUp2.anim.loop = false;
 	arrowSuperUp2.anim.loop = false;
 	arrowSuperUp2.speed.x = 7.0f;
-	arrowSuperUp2.speed.y = -2.0f;
+	arrowSuperUp2.speed.y = -1.5f;
 	arrowSuperUp2.life = 1200;
 	arrowSuperUp2.anim.speed = 0.5f;
 
@@ -297,7 +297,7 @@ bool ModuleParticles::Start()
 	arrowSuperDown2.anim.loop = false;
 	arrowSuperDown2.anim.loop = false;
 	arrowSuperDown2.speed.x = 7.0f;
-	arrowSuperDown2.speed.y = 2.0f;
+	arrowSuperDown2.speed.y = 1.5f;
 	arrowSuperDown2.life = 1200;
 	arrowSuperDown2.anim.speed = 0.5f;
 
@@ -310,7 +310,7 @@ bool ModuleParticles::Start()
 	arrowSuperUp3.anim.PushBack({ 41, 48, 13, 14 });
 	arrowSuperUp3.anim.loop = false;
 	arrowSuperUp3.speed.x = 7.0f;
-	arrowSuperUp3.speed.y = -2.0f;
+	arrowSuperUp3.speed.y = -1.5;
 	arrowSuperUp3.life = 1200;
 	arrowSuperUp3.anim.speed = 0.2f;
 
@@ -353,7 +353,7 @@ bool ModuleParticles::Start()
 	arrowSuperDown3.anim.PushBack({ 41, 48, 13, 14 });
 	arrowSuperDown3.anim.loop = false;
 	arrowSuperDown3.speed.x = 7.0f;
-	arrowSuperDown3.speed.y = 2.0f;
+	arrowSuperDown3.speed.y = 1.5f;
 	arrowSuperDown3.life = 1200;
 	arrowSuperDown3.anim.speed = 0.2f;
 
@@ -511,8 +511,14 @@ Particle::Particle()
 }
 
 Particle::Particle(const Particle& p) :
-	anim(p.anim), position(p.position), speed(p.speed),
-	fx(p.fx), born(p.born), life(p.life)
+	anim(p.anim),
+	position(p.position),
+	fPositionHorizontal(p.fPositionHorizontal),
+	fPositionVertical(p.fPositionVertical),
+	speed(p.speed),
+	fx(p.fx),
+	born(p.born),
+	life(p.life)
 {}
 
 Particle::~Particle()
