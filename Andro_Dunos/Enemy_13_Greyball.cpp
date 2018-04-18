@@ -47,7 +47,7 @@ void Enemy_13_Greyball::Move()
 			wave -= 0.01f;
 	}
 	
-	position.y = int(float(original_y) + (15.0f * sinf(2*PI*wave + 0)));
+	position.y = int(float(original_y) + (25.0f * sinf(2*PI*wave + 0)));
 	position.x -= 1;
 }
 
