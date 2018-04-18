@@ -27,8 +27,10 @@ bool ModuleMixer::Init()
 
 	if (SDL_Init(SDL_INIT_AUDIO) != 0)
 	{
-		LOG("Broken: %s ", SDL_GetError());
+		
+		LOG("Broken: %s \n", SDL_GetError());
 		ret = false;
+		SDL_ClearError();
 	}
 	// Initialize Audio
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
@@ -79,7 +81,9 @@ Mix_Music * const ModuleMixer::LoadMusic(const char* path)	// Function to check 
 
 	if (!music)
 	{
-		LOG("Couldn't load music: %s", SDL_GetError());
+		
+		LOG("Couldn't load music: %s \n", SDL_GetError());
+		SDL_ClearError();
 	}
 	
 	return music;
@@ -93,7 +97,9 @@ Mix_Chunk * const ModuleMixer::LoadFX(const char* path)	// Function to check a s
 
 	if (!sound)
 	{
-		LOG("Couldn't load fx: %s", SDL_GetError());	// Does SDL_GetError work with Mix_LoadWAV?
+		
+		LOG("Couldn't load fx: %s \n", SDL_GetError());	// Does SDL_GetError work with Mix_LoadWAV?
+		SDL_ClearError();
 	}
 
 	return sound;

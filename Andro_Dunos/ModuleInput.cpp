@@ -23,8 +23,10 @@ bool ModuleInput::Init()
 
 	if (SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
 	{
+		
 		LOG("SDL_EVENTS could not initialize! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
+		SDL_ClearError();
 	}
 
 	return ret;

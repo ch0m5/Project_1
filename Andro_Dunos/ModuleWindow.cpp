@@ -20,9 +20,11 @@ bool ModuleWindow::Init()
 
 	if(SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
-		LOG("SDL_VIDEO could not initialize! SDL_Error:\n");
+		LOG("SDL_VIDEO could not initialize! SDL_Error: \n");
 		LOG(SDL_GetError());
 		ret = false;
+		SDL_ClearError();
+
 	}
 	else
 	{
@@ -52,6 +54,8 @@ bool ModuleWindow::Init()
 		{
 			LOG("Window could not be created! SDL_Error: %s\n", SDL_GetError());
 			ret = false;
+			SDL_ClearError();
+
 		}
 
 		else

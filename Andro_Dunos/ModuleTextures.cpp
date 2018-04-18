@@ -29,8 +29,11 @@ bool ModuleTextures::Init()
 
 	if((init & flags) != flags)
 	{
-		LOG("Could not initialize Image lib. IMG_Init: %s", IMG_GetError());
+		SDL_ClearError();
+		LOG("Could not initialize Image lib. IMG_Init: %s \n", IMG_GetError());
 		ret = false;
+		SDL_ClearError();
+
 	}
 
 	return ret;
@@ -57,7 +60,10 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 
 	if (surface == NULL)
 	{
-		LOG("Could not load surface with path: %s. IMG_Load: %s", path, IMG_GetError());
+		SDL_ClearError();
+		LOG("Could not load surface with path: %s. IMG_Load: %s \n", path, IMG_GetError());
+		SDL_ClearError();
+
 	}
 	else
 	{
@@ -65,7 +71,9 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 
 		if(texture == NULL)
 		{
-			LOG("Unable to create texture from surface! SDL Error: %s\n", SDL_GetError());
+			LOG("Unable to create texture from surface! SDL Error: %s\n %s \n", SDL_GetError(),path);
+			SDL_ClearError();
+
 		}
 		else
 		{ 
@@ -77,9 +85,11 @@ SDL_Texture* const ModuleTextures::Load(const char* path)
 					textures[textureCounter] = texture;
 					break;
 				}
-				else //AndresSala
+				else if (i== (MAX_TEXTURES-1)) //AndresSala
 				{
-					LOG ("Unable to load texture, capacity overfload! SDL Error: %s\n", SDL_GetError());
+					LOG ("Unable to load texture, capacity overfload! SDL Error: %s \n", SDL_GetError());
+					SDL_ClearError();
+
 				}
 			}
 			

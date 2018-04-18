@@ -33,8 +33,10 @@ bool ModuleRender::Init()
 	
 	if(renderer == NULL)
 	{
+		
 		LOG("Renderer could not be created! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
+		SDL_ClearError();
 	}
 
 	return ret;
@@ -113,8 +115,10 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, f
 
 	if(SDL_RenderCopy(renderer, texture, section, &rect) != 0)
 	{
-		LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
+		
+		LOG("Cannot blit to screen. SDL_RenderCopy error: %s \n", SDL_GetError());
 		ret = false;
+		SDL_ClearError();
 	}
 
 	return ret;
@@ -138,8 +142,11 @@ bool ModuleRender::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uin
 
 	if (SDL_RenderFillRect(renderer, &rec) != 0)
 	{
-		LOG("Cannot draw quad to screen. SDL_RenderFillRect error: %s", SDL_GetError());
+	
+		LOG("Cannot draw quad to screen. SDL_RenderFillRect error: %s \n", SDL_GetError());
 		ret = false;
+		SDL_ClearError();
+
 	}
 
 	return ret;
