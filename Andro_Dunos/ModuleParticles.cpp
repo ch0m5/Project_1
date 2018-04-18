@@ -71,7 +71,7 @@ bool ModuleParticles::Start()
 	smallBlue.anim.PushBack({ 24, 39, 11, 4 });
 	smallBlue.anim.loop = false;
 	smallBlue.speed.x = 7.0f;
-	smallBlue.life = 1200;
+	smallBlue.life = shortLife;
 	smallBlue.anim.speed = 0.3f;
 
 	/*mediumBlue.anim.PushBack({ 24, 39, 11, 4 });
@@ -114,13 +114,13 @@ bool ModuleParticles::Start()
 	yellowSmallRight.anim.PushBack({ 6, 69, 10, 3 });
 	yellowSmallRight.anim.loop = false;
 	yellowSmallRight.speed.x = 7.0f;
-	yellowSmallRight.life = 1200;
+	yellowSmallRight.life = shortLife;
 	yellowSmallRight.anim.speed = 0.3f;
 
 	yellowSmallLeft.anim.PushBack({ 6, 84, 10, 3 });
 	yellowSmallLeft.anim.loop = false;
 	yellowSmallLeft.speed.x = -7.0f;
-	yellowSmallLeft.life = 1200;
+	yellowSmallLeft.life = shortLife;
 	yellowSmallLeft.anim.speed = 0.3f;
 
 	redRocketDown.anim.PushBack({ 0, 99, 16, 9 });	// RedRockets sprites need to be fixed
@@ -134,7 +134,7 @@ bool ModuleParticles::Start()
 	redRocketDown.anim.loop = true;
 	redRocketDown.speed.x = 1.0f;	// Should be camera horizontal speed
 	redRocketDown.speed.y = 2.0f;
-	redRocketDown.life = 1200;
+	redRocketDown.life = shortLife;
 	redRocketDown.anim.speed = 0.3f;
 
 	redRocketUp.anim.PushBack({ 0, 99, 16, 9 });
@@ -148,7 +148,7 @@ bool ModuleParticles::Start()
 	redRocketUp.anim.loop = true;
 	redRocketUp.speed.x = 1.0f;	// Should be camera horizontal speed
 	redRocketUp.speed.y = -2.0f;
-	redRocketUp.life = 1200;
+	redRocketUp.life = shortLife;
 	redRocketUp.anim.speed = 0.3f;
 
 	redRocketRightDown.anim.PushBack({ 0, 99, 16, 9 });
@@ -162,7 +162,7 @@ bool ModuleParticles::Start()
 	redRocketRightDown.anim.loop = true;
 	redRocketRightDown.speed.x = 2.0f;
 	redRocketRightDown.speed.y = 2.0f;
-	redRocketRightDown.life = 1200;
+	redRocketRightDown.life = shortLife;
 	redRocketRightDown.anim.speed = 0.3f;
 
 	redRocketRightUp.anim.PushBack({ 0, 99, 16, 9 });
@@ -176,7 +176,7 @@ bool ModuleParticles::Start()
 	redRocketRightUp.anim.loop = true;
 	redRocketRightUp.speed.x = 2.0f;
 	redRocketRightUp.speed.y = -2.0f;
-	redRocketRightUp.life = 1200;
+	redRocketRightUp.life = shortLife;
 	redRocketRightUp.anim.speed = 0.3f;
 
 
@@ -184,7 +184,7 @@ bool ModuleParticles::Start()
 	straightGreen.anim.PushBack({ 42, 87, 32, 3 });
 	straightGreen.anim.loop = false;
 	straightGreen.speed.x = 7.0f;
-	straightGreen.life = 1200;
+	straightGreen.life = shortLife;
 	straightGreen.anim.speed = 0.3f;
 
 	/*upRightGreen.anim.PushBack({ 42, 87, 32 ,3 });
@@ -203,28 +203,28 @@ bool ModuleParticles::Start()
 	bombRightDown.anim.loop = false;
 	bombRightDown.speed.x = 3.0f;
 	bombRightDown.speed.y = 1.0f;
-	bombRightDown.life = 1200;
+	bombRightDown.life = shortLife;
 	bombRightDown.anim.speed = 0.5f;
 
 	bombRightUp.anim.PushBack({ 121, 98, 8, 9 });
 	bombRightUp.anim.loop = false;
 	bombRightUp.speed.x = 3.0f;
 	bombRightUp.speed.y = -1.0f;
-	bombRightUp.life = 1200;
+	bombRightUp.life = shortLife;
 	bombRightUp.anim.speed = 0.5f;
 
 	bombLeftDown.anim.PushBack({ 121, 113, 8, 9 });
 	bombLeftDown.anim.loop = false;
 	bombLeftDown.speed.x = -2.0f;
 	bombLeftDown.speed.y = 1.0f;
-	bombLeftDown.life = 1200;
+	bombLeftDown.life = shortLife;
 	bombLeftDown.anim.speed = 0.5f;
 
 	bombLeftUp.anim.PushBack({ 121, 98, 8, 9 });
 	bombLeftUp.anim.loop = false;
 	bombLeftUp.speed.x = -2.0f;
 	bombLeftUp.speed.y = -1.0f;
-	bombLeftUp.life = 1200;
+	bombLeftUp.life = shortLife;
 	bombLeftUp.anim.speed = 0.5f;
 
 	//Player Type 4 (white)
@@ -233,14 +233,14 @@ bool ModuleParticles::Start()
 	arrowUp1.anim.loop = false;
 	arrowUp1.speed.x = 7.0f;
 	arrowUp1.speed.y = -1.0f;
-	arrowUp1.life = 1200;
+	arrowUp1.life = shortLife;
 	arrowUp1.anim.speed = 0.5f;
 
 	arrowStraight1.anim.PushBack({ 41, 9, 13, 6 });
 	arrowStraight1.anim.PushBack({ 41, 23, 13, 6 });
 	arrowStraight1.anim.loop = false;
 	arrowStraight1.speed.x = 7.0f;
-	arrowStraight1.life = 1200;
+	arrowStraight1.life = shortLife;
 	arrowStraight1.anim.speed = 0.5f;
 
 	arrowDown1.anim.PushBack({ 41, 9, 13, 6 });
@@ -248,7 +248,7 @@ bool ModuleParticles::Start()
 	arrowDown1.anim.loop = false;
 	arrowDown1.speed.x = 7.0f;
 	arrowDown1.speed.y = 1.0f;
-	arrowDown1.life = 1200;
+	arrowDown1.life = shortLife;
 	arrowDown1.anim.speed = 0.5f;
 
 	//------------------------------------------------
@@ -260,7 +260,7 @@ bool ModuleParticles::Start()
 	arrowSuperUp2.anim.loop = false;
 	arrowSuperUp2.speed.x = 7.0f;
 	arrowSuperUp2.speed.y = -1.5f;
-	arrowSuperUp2.life = 1200;
+	arrowSuperUp2.life = shortLife;
 	arrowSuperUp2.anim.speed = 0.5f;
 
 	arrowUp2.anim.PushBack({ 41, 8, 13, 8 });
@@ -270,7 +270,7 @@ bool ModuleParticles::Start()
 	arrowUp2.anim.loop = false;
 	arrowUp2.speed.x = 7.0f;
 	arrowUp2.speed.y = -1.0f;
-	arrowUp2.life = 1200;
+	arrowUp2.life = shortLife;
 	arrowUp2.anim.speed = 0.5f;
 
 	arrowStraight2.anim.PushBack({ 41, 8, 13, 8 });
@@ -278,7 +278,7 @@ bool ModuleParticles::Start()
 	arrowStraight2.anim.PushBack({ 41, 38, 13, 8 });
 	arrowStraight2.anim.loop = false;
 	arrowStraight2.speed.x = 7.0f;
-	arrowStraight2.life = 1200;
+	arrowStraight2.life = shortLife;
 	arrowStraight2.anim.speed = 0.5f;
 
 	arrowDown2.anim.PushBack({ 41, 8, 13, 8 });
@@ -288,7 +288,7 @@ bool ModuleParticles::Start()
 	arrowDown2.anim.loop = false;
 	arrowDown2.speed.x = 7.0f;
 	arrowDown2.speed.y = 1.0f;
-	arrowDown2.life = 1200;
+	arrowDown2.life = shortLife;
 	arrowDown2.anim.speed = 0.5f;
 
 	arrowSuperDown2.anim.PushBack({ 41, 8, 13, 8 });
@@ -298,7 +298,7 @@ bool ModuleParticles::Start()
 	arrowSuperDown2.anim.loop = false;
 	arrowSuperDown2.speed.x = 7.0f;
 	arrowSuperDown2.speed.y = 1.5f;
-	arrowSuperDown2.life = 1200;
+	arrowSuperDown2.life = shortLife;
 	arrowSuperDown2.anim.speed = 0.5f;
 
 	//--------------------------------------------------
@@ -311,7 +311,7 @@ bool ModuleParticles::Start()
 	arrowSuperUp3.anim.loop = false;
 	arrowSuperUp3.speed.x = 7.0f;
 	arrowSuperUp3.speed.y = -1.5;
-	arrowSuperUp3.life = 1200;
+	arrowSuperUp3.life = shortLife;
 	arrowSuperUp3.anim.speed = 0.2f;
 
 	arrowUp3.anim.PushBack({ 41, 5, 13, 14 });
@@ -322,7 +322,7 @@ bool ModuleParticles::Start()
 	arrowUp3.anim.loop = false;
 	arrowUp3.speed.x = 7.0f;
 	arrowUp3.speed.y = -1.0f;
-	arrowUp3.life = 1200;
+	arrowUp3.life = shortLife;
 	arrowUp3.anim.speed = 0.2f;
 
 	arrowStraight3.anim.PushBack({ 41, 5, 13, 14 });
@@ -332,7 +332,7 @@ bool ModuleParticles::Start()
 	arrowStraight3.anim.PushBack({ 41, 48, 13, 14 });
 	arrowStraight3.anim.loop = false;
 	arrowStraight3.speed.x = 7.0f;
-	arrowStraight3.life = 1200;
+	arrowStraight3.life = shortLife;
 	arrowStraight3.anim.speed = 0.2f;
 
 	arrowDown3.anim.PushBack({ 41, 5, 13, 14 });
@@ -343,7 +343,7 @@ bool ModuleParticles::Start()
 	arrowDown3.anim.loop = false;
 	arrowDown3.speed.x = 7.0f;
 	arrowDown3.speed.y = 1.0f;
-	arrowDown3.life = 1200;
+	arrowDown3.life = shortLife;
 	arrowDown3.anim.speed = 0.2f;
 
 	arrowSuperDown3.anim.PushBack({ 41, 5, 13, 14 });
@@ -354,7 +354,7 @@ bool ModuleParticles::Start()
 	arrowSuperDown3.anim.loop = false;
 	arrowSuperDown3.speed.x = 7.0f;
 	arrowSuperDown3.speed.y = 1.5f;
-	arrowSuperDown3.life = 1200;
+	arrowSuperDown3.life = shortLife;
 	arrowSuperDown3.anim.speed = 0.2f;
 
 	// Explosion particle // @Andres
@@ -465,12 +465,56 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 		{
 			Particle* p = new Particle(particle);
 			p->born = SDL_GetTicks() + delay;
-			p->position.x = p->fPositionHorizontal = x;	// Carles Edit
-			p->position.y = p->fPositionVertical = y;	// Carles Edit
+			p->position.x = p->fPositionHorizontal = x;
+			p->position.y = p->fPositionVertical = y;
 			if (collider_type != COLLIDER_NONE)
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			active[i] = p;
 			break;
+		}
+	}
+}
+
+void ModuleParticles::AddParticleArray(const Particle* colliderArray, int arraySize, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)
+{
+	uint i;
+
+	for (i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+		if (active[i] == nullptr)
+		{
+			bool enoughSpace = true;
+
+			for (int j = i; j < arraySize; j++)
+			{
+				if (j >= MAX_ACTIVE_PARTICLES || active[j] != nullptr)
+				{
+					enoughSpace = false;
+					break;
+				}
+			}
+
+			if (enoughSpace == true)
+			{
+				Particle* p = new Particle[arraySize];
+
+				for (int j = i; j < arraySize; j++)
+				{
+					if (j >= MAX_ACTIVE_PARTICLES)
+						j = 0;
+
+					(p + j)->born = SDL_GetTicks() + delay;
+					(p + j)->position.x = (p + j)->fPositionHorizontal = x;
+					(p + j)->position.y = (p + j)->fPositionVertical = y;
+					if (collider_type != COLLIDER_NONE)
+						(p + j)->collider = App->collision->AddCollider((p + j)->anim.GetCurrentFrame(), collider_type, this);
+					active[i] = (p + j);
+
+					j++;
+				}
+
+				break;
+			}
 		}
 	}
 }
@@ -545,10 +589,6 @@ bool Particle::Update()
 
 	position.x = (int)fPositionHorizontal;
 	position.y = (int)fPositionVertical;
-	/*
-	position.x += speed.x;
-	position.y += speed.y;
-	*/
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
