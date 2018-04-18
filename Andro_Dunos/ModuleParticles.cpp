@@ -719,8 +719,8 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 		{
 			Particle* p = new Particle(particle);
 			p->born = SDL_GetTicks() + delay;
-			p->position.x = p->fPositionHorizontal = x;
-			p->position.y = p->fPositionVertical = y;
+			p->position.x = p->fPositionHorizontal = x + App->render->camera.x / SCREEN_SIZE;
+			p->position.y = p->fPositionVertical = y + App->render->camera.y / SCREEN_SIZE;
 			if (collider_type != COLLIDER_NONE)
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			active[i] = p;
