@@ -41,7 +41,7 @@ update_status ModuleEnemies::PreUpdate()
 			{
 				SpawnEnemy(queue[i]);
 				queue[i].type = ENEMY_TYPES::NO_TYPE;
-				LOG("Spawning enemy at %d", queue[i].x * SCREEN_SIZE);
+			//	LOG("Spawning enemy at %d", queue[i].x * SCREEN_SIZE);
 			}
 		}
 	}
@@ -73,7 +73,7 @@ update_status ModuleEnemies::PostUpdate()
 		{
 			if (enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
 			{
-				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
+			//	LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
 				delete enemies[i];
 				enemies[i] = nullptr;
 			}

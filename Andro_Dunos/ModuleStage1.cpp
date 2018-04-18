@@ -12,6 +12,7 @@
 #include "ModuleMixer.h"
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
+#include "ModuleHiScore.h"
 
 ModuleStage1::ModuleStage1()	//@AndresSaladrigas
 {
@@ -55,7 +56,7 @@ ModuleStage1::~ModuleStage1()
 bool ModuleStage1::Start()
 {
 	LOG("Loading background assets");	// Temporal, must decide if we load a full image,
-	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
+ 	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
 
 	background1Text = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/1_Background1.png");
 	bluePlanetText = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/Moon.png");
@@ -97,7 +98,7 @@ bool ModuleStage1::Start()
 	// Collider
 	App->collision->Enable();
 
-	// Ground Collider
+	// Ground Collider @Andres&Didac
 	App->collision->AddCollider({ 0, 195, 3000, 275 }, COLLIDER_WALL);  // Moon ground collider 
 	App->collision->AddCollider({ 906,180, 100, 45 }, COLLIDER_WALL);  // crater 1
 	App->collision->AddCollider({ 1565, 187, 99, 40 }, COLLIDER_WALL);  // crater 2
@@ -385,7 +386,7 @@ update_status ModuleStage1::Update()
 	//make so pressing SPACE the other stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
 	{
-		App->fade->FadeToBlack(App->stage1, App->stage2, 1);
+		App->fade->FadeToBlack(App->stage1, App->scene_HiScore, 1);
 	}
 
 	//FasterX function Increase the horizontal velocity 

@@ -22,7 +22,7 @@ int ModuleFont::Load(const char* texture_path, const char* characters, uint rows
 
 	if (texture_path == nullptr || characters == nullptr || rows == 0)
 	{
-		LOG("Could not load font");
+		LOG("Could not load font\n");
 		return id;
 	}
 
@@ -30,7 +30,7 @@ int ModuleFont::Load(const char* texture_path, const char* characters, uint rows
 
 	if (tex == nullptr || strlen(characters) >= MAX_FONT_CHARS)
 	{
-		LOG("Could not load font at %s with characters '%s'", texture_path, characters);
+		LOG("Could not load font at %s with characters '%s \n'", texture_path, characters);
 		return id;
 	}
 
@@ -41,7 +41,7 @@ int ModuleFont::Load(const char* texture_path, const char* characters, uint rows
 
 	if (id == MAX_FONTS)
 	{
-		LOG("Cannot load font %s. Array is full (max %d).", texture_path, MAX_FONTS);
+		LOG("Cannot load font %s. Array is full (max %d).\n", texture_path, MAX_FONTS);
 		return id;
 	}
 
@@ -81,7 +81,7 @@ void ModuleFont::BlitText(int x, int y, int font_id, const char* text) const
 {
 	if (text == nullptr || font_id < 0 || font_id >= MAX_FONTS || fonts[font_id].graphic == nullptr)
 	{
-		LOG("Unable to render text with bmp font id %d", font_id);
+		LOG("Unable to render text with bmp font id %d\n", font_id);
 		return;
 	}
 
