@@ -13,8 +13,6 @@
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
 #include "ModuleHiScore.h"
-#include "ModuleStageClear.h"
-#include "ModuleParticles.h"
 
 ModuleStage1::ModuleStage1()	//@AndresSaladrigas
 {
@@ -73,9 +71,6 @@ bool ModuleStage1::Start()
 	}
 	// we shoukd log the problem if not loaded correctly
 	
-	//enable modules
-	App->collision->Enable();
-	App->particles->Enable();
 	// Enemies
 	App->enemies->Enable();
 
@@ -230,9 +225,6 @@ bool ModuleStage1::CleanUp()
 	LOG("Unloading colliders")
 	App->collision->Disable();
 
-	LOG("Unloading particles")
-	App->particles->Disable();
-
 	
 
 	return true;
@@ -245,7 +237,6 @@ update_status ModuleStage1::Update()
 
 	// Draw everything -------------------------------------- Andro Dunos
 	App->render->Blit(caveBackText, backmovementcaveX, -40, &caveBackRect); // cave background
-
 	//These two if's control the first part of the level outside and the end of the level also outside
 	if (App->render->camera.y < 180 * SCREEN_SIZE)
 	{
@@ -398,17 +389,6 @@ update_status ModuleStage1::Update()
 		App->fade->FadeToBlack(App->stage1, App->scene_HiScore, 1);
 	}
 
-	//enter direct win condition @Andres
-	if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_DOWN && App->input->debugMode== true) 
-	{
-		App->fade->FadeToBlack(App->stage1, App->stageClear, 1);
-	}
-	//enter direct lose condition @Andres
-	if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_DOWN && App->input->debugMode == true)
-	{
-		App->fade->FadeToBlack(App->stage1, App->scene_HiScore, 1);
-	}
-
 	//FasterX function Increase the horizontal velocity 
 	if (App->input->keyboard[SDL_SCANCODE_LSHIFT] == KEY_DOWN)
 	{
@@ -427,11 +407,6 @@ update_status ModuleStage1::Update()
 		}
 	}
 	
-	if (App->render->camera.x / SCREEN_SIZE > 8912)
-	{
-		App->fade->FadeToBlack(this, App->stageClear, 1);
-	}
-
 	return UPDATE_CONTINUE;
 
 }

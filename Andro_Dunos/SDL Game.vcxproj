@@ -94,8 +94,8 @@
     <ClInclude Include="ModulePlayer2.h" />
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleStage2.h" />
-    <ClInclude Include="ModuleStageClear.h" />
     <ClInclude Include="ModuleTextures.h" />
+    <ClInclude Include="ModuleUserInterface.h" />
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="p2Point.h" />
   </ItemGroup>
@@ -120,8 +120,8 @@
     <ClCompile Include="ModulePlayer2.cpp" />
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleStage2.cpp" />
-    <ClCompile Include="ModuleStageClear.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
+    <ClCompile Include="ModuleUserInterface.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

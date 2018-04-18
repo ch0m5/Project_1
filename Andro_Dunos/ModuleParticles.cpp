@@ -22,6 +22,10 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	graphics = App->textures->Load("Assets/Sprites/Players_Ships/Laser_particles.png");
+	/*graphics = App->textures->Load("Assets/Sprites/Players_Ships/laser_types.png");*/
+	//explosionPtr = App->textures->Load("Assets/Sprites/Players_Ships/ship-explosion.png");
+	shipExplosion = App->textures->Load("Assets/Sprites/Players_Ships/ship-explosion.png");
+	enemyExplosion = App->textures->Load("Assets/Sprites/Common_level_elements/explosion_2.png");
 
 	/* Laser Sprites
 
@@ -57,7 +61,7 @@ bool ModuleParticles::Start()
 	Type 4:
 	41, 11, 13, 2	1
 	41, 23, 13, 6	2
-	41, 38, 13, 8	3	// Lasers grow, collider should change while travelling (HAHAHAHAHA, making the collider grow...)
+	41, 38, 13, 8	3	// Lasers grow, collider should change while travelling
 	41, 49, 13, 12	4
 	41, 64, 13, 14	5
 
@@ -175,6 +179,7 @@ bool ModuleParticles::Start()
 	redRocketRightUp.life = shortLife;
 	redRocketRightUp.anim.speed = 0.3f;
 
+
 	//Player Type 3 (green)
 	straightGreen.anim.PushBack({ 42, 87, 32, 3 });
 	straightGreen.anim.loop = false;
@@ -182,280 +187,18 @@ bool ModuleParticles::Start()
 	straightGreen.life = shortLife;
 	straightGreen.anim.speed = 0.3f;
 
-	int upRightGreenPosX = 57;
-	int upRightGreenPosY = 49;
-	upRightGreen1[0].anim.PushBack({ upRightGreenPosX + 2 * 0, upRightGreenPosY - 2 * 0, 2, 4 });	// First diagonals
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].speed.y = -5.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
+	/*upRightGreen.anim.PushBack({ 42, 87, 32 ,3 });
+	upRightGreen.anim.loop = false;
+	upRightGreen.speed.x = 7.0f;
+	upRightGreen.life = 1200;
+	upRightGreen.anim.speed = 0.3f;
 
-	upRightGreen1[1].anim.PushBack({ upRightGreenPosX + 2 * 1, upRightGreenPosY - 2 * 1, 2, 4 });
-	upRightGreen1[1].anim.loop = false;
-	upRightGreen1[1].speed.x = 7.0f;
-	upRightGreen1[1].speed.y = -5.0f;
-	upRightGreen1[1].life = shortLife;
-	upRightGreen1[1].anim.speed = 0.3f;
+	downRightGreen.anim.PushBack({ 42, 87, 32 ,3 });
+	downRightGreen.anim.loop = false;
+	downRightGreen.speed.x = 7.0f;
+	downRightGreen.life = 1200;
+	downRightGreen.anim.speed = 0.3f;*/
 
-	upRightGreen1[2].anim.PushBack({ upRightGreenPosX + 2 * 2, upRightGreenPosY - 2 * 2, 2, 4 });
-	upRightGreen1[2].anim.loop = false;
-	upRightGreen1[2].speed.x = 7.0f;
-	upRightGreen1[2].speed.y = -5.0f;
-	upRightGreen1[2].life = shortLife;
-	upRightGreen1[2].anim.speed = 0.3f;
-
-	upRightGreen1[3].anim.PushBack({ upRightGreenPosX + 2 * 3, upRightGreenPosY - 2 * 3, 2, 4 });
-	upRightGreen1[3].anim.loop = false;
-	upRightGreen1[3].speed.x = 7.0f;
-	upRightGreen1[3].speed.y = -5.0f;
-	upRightGreen1[3].life = shortLife;
-	upRightGreen1[3].anim.speed = 0.3f;
-
-	upRightGreen1[4].anim.PushBack({ upRightGreenPosX + 2 * 4, upRightGreenPosY - 2 * 4, 2, 4 });
-	upRightGreen1[4].anim.loop = false;
-	upRightGreen1[4].speed.x = 7.0f;
-	upRightGreen1[4].speed.y = -5.0f;
-	upRightGreen1[4].life = shortLife;
-	upRightGreen1[4].anim.speed = 0.3f;
-
-	upRightGreen1[5].anim.PushBack({ upRightGreenPosX + 2 * 5, upRightGreenPosY - 2 * 5, 2, 4 });
-	upRightGreen1[5].anim.loop = false;
-	upRightGreen1[5].speed.x = 7.0f;
-	upRightGreen1[5].speed.y = -5.0f;
-	upRightGreen1[5].life = shortLife;
-	upRightGreen1[5].anim.speed = 0.3f;
-
-	upRightGreen1[6].anim.PushBack({ upRightGreenPosX + 2 * 6, upRightGreenPosY - 2 * 6, 2, 4 });
-	upRightGreen1[6].anim.loop = false;
-	upRightGreen1[6].speed.x = 7.0f;
-	upRightGreen1[6].speed.y = -5.0f;
-	upRightGreen1[6].life = shortLife;
-	upRightGreen1[6].anim.speed = 0.3f;
-
-	upRightGreen1[7].anim.PushBack({ upRightGreenPosX + 2 * 7, upRightGreenPosY - 2 * 7, 2, 4 });
-	upRightGreen1[7].anim.loop = false;
-	upRightGreen1[7].speed.x = 7.0f;
-	upRightGreen1[7].speed.y = -5.0f;
-	upRightGreen1[7].life = shortLife;
-	upRightGreen1[7].anim.speed = 0.3f;
-	/* 1
-	upRightGreen1.anim.PushBack({ upRightGreenPosX + 2 * 0, upRightGreenPosY + 4 * 0, 2, 4 });	// First diagonals
-	upRightGreen1.anim.PushBack({ upRightGreenPosX + 2 * 1, upRightGreenPosY + 4 * 1, 2, 4 });
-	upRightGreen1.anim.PushBack({ upRightGreenPosX + 2 * 2, upRightGreenPosY + 4 * 2, 2, 4 });
-	upRightGreen1.anim.PushBack({ upRightGreenPosX + 2 * 3, upRightGreenPosY + 4 * 3, 2, 4 });
-	upRightGreen1.anim.PushBack({ upRightGreenPosX + 2 * 4, upRightGreenPosY + 4 * 4, 2, 4 });
-	upRightGreen1.anim.PushBack({ upRightGreenPosX + 2 * 5, upRightGreenPosY + 4 * 5, 2, 4 });
-	upRightGreen1.anim.PushBack({ upRightGreenPosX + 2 * 6, upRightGreenPosY + 4 * 6, 2, 4 });
-	upRightGreen1.anim.loop = false;
-	upRightGreen1.speed.x = 7.0f;
-	upRightGreen1.speed.y = -5.0f;
-	upRightGreen1.life = shortLife;
-	upRightGreen1.anim.speed = 0.3f;
-	*/
-
-	/* 2
-	int upRightGreenPosX = 57;
-	int upRightGreenPosY = 53;
-	upRightGreen1[0].anim.PushBack({ upRightGreenPosX + 2 * 0, upRightGreenPosY + 4 * 0, 2, 4 });	// First diagonals
-	upRightGreen1[0].anim.PushBack({ upRightGreenPosX + 2 * 1, upRightGreenPosY + 4 * 1, 2, 4 });
-	upRightGreen1[0].anim.PushBack({ upRightGreenPosX + 2 * 2, upRightGreenPosY + 4 * 2, 2, 4 });
-	upRightGreen1[0].anim.PushBack({ upRightGreenPosX + 2 * 3, upRightGreenPosY + 4 * 3, 2, 4 });
-	upRightGreen1[0].anim.PushBack({ upRightGreenPosX + 2 * 4, upRightGreenPosY + 4 * 4, 2, 4 });
-	upRightGreen1[0].anim.PushBack({ upRightGreenPosX + 2 * 5, upRightGreenPosY + 4 * 5, 2, 4 });
-	upRightGreen1[0].anim.PushBack({ upRightGreenPosX + 2 * 6, upRightGreenPosY + 4 * 6, 2, 4 });
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].speed.y = -5.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
-	
-	upRightGreen1[1].anim.PushBack({ upRightGreenPosX + 2 * 1, upRightGreenPosX + 4 * 1, 2, 4 });
-	upRightGreen1[1].anim.loop = false;
-	upRightGreen1[1].speed.x = 7.0f;
-	upRightGreen1[1].speed.y = -5.0f;
-	upRightGreen1[1].life = shortLife;
-	upRightGreen1[1].anim.speed = 0.3f;
-	
-	upRightGreen1[2].anim.PushBack({ upRightGreenPosX + 2 * 2, upRightGreenPosX + 4 * 2, 2, 4 });
-	upRightGreen1[2].anim.loop = false;
-	upRightGreen1[2].speed.x = 7.0f;
-	upRightGreen1[2].speed.y = -5.0f;
-	upRightGreen1[2].life = shortLife;
-	upRightGreen1[2].anim.speed = 0.3f;
-
-	upRightGreen1[3].anim.PushBack({ upRightGreenPosX + 2 * 3, upRightGreenPosX + 4 * 3, 2, 4 });
-	upRightGreen1[3].anim.loop = false;
-	upRightGreen1[3].speed.x = 7.0f;
-	upRightGreen1[3].speed.y = -5.0f;
-	upRightGreen1[3].life = shortLife;
-	upRightGreen1[3].anim.speed = 0.3f;
-
-	upRightGreen1[4].anim.PushBack({ upRightGreenPosX + 2 * 4, upRightGreenPosX + 4 * 4, 2, 4 });
-	upRightGreen1[4].anim.loop = false;
-	upRightGreen1[4].speed.x = 7.0f;
-	upRightGreen1[4].speed.y = -5.0f;
-	upRightGreen1[4].life = shortLife;
-	upRightGreen1[4].anim.speed = 0.3f;
-
-	upRightGreen1[5].anim.PushBack({ upRightGreenPosX + 2 * 5, upRightGreenPosX + 4 * 5, 2, 4 });
-	upRightGreen1[5].anim.loop = false;
-	upRightGreen1[5].speed.x = 7.0f;
-	upRightGreen1[5].speed.y = -5.0f;
-	upRightGreen1[5].life = shortLife;
-	upRightGreen1[5].anim.speed = 0.3f;
-
-	upRightGreen1[6].anim.PushBack({ upRightGreenPosX + 2 * 6, upRightGreenPosX + 4 * 6, 2, 4 });
-	upRightGreen1[6].anim.loop = false;
-	upRightGreen1[6].speed.x = 7.0f;
-	upRightGreen1[6].speed.y = -5.0f;
-	upRightGreen1[6].life = shortLife;
-	upRightGreen1[6].anim.speed = 0.3f;
-
-	upRightGreen1[7].anim.PushBack({ upRightGreenPosX + 2 * 7, upRightGreenPosX + 4 * 7, 2, 4 });
-	upRightGreen1[7].anim.loop = false;
-	upRightGreen1[7].speed.x = 7.0f;
-	upRightGreen1[7].speed.y = -5.0f;
-	upRightGreen1[7].life = shortLife;
-	upRightGreen1[7].anim.speed = 0.3f;
-	*/
-	/*
-	Particle* downRightGreen1 = nullptr;
-	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
-
-	Particle* upLeftGreen1 = nullptr;
-	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
-
-	Particle* downLeftGreen1 = nullptr;
-	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
-
-	Particle* upRightGreen2 = nullptr;
-	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });	// Second diagonals cut in half
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
-
-	Particle* downRightGreen2 = nullptr;
-	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
-
-	Particle* upLeftGreen2 = nullptr;
-	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
-
-	Particle* downLeftGreen2 = nullptr;
-	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
-
-
-	Particle* upRightGreen3 = nullptr;	// Second diagonals full
-	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
-
-	Particle* downRightGreen3 = nullptr;
-	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
-
-	Particle* upLeftGreen3 = nullptr;
-	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
-
-	Particle* downLeftGreen3 = nullptr;
-	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
-
-
-	Particle* upRightGreen4 = nullptr;	// Third diagonals cut in half
-	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
-
-	Particle* downRightGreen4 = nullptr;
-	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
-
-	Particle* upLeftGreen4 = nullptr;
-	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
-
-	Particle* downLeftGreen4 = nullptr;
-	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
-
-
-	Particle* upRightGreen5 = nullptr;
-	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });	// Third diagonals full
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
-
-	Particle* downRightGreen5 = nullptr;
-	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
-
-	Particle* upLeftGreen5 = nullptr;
-	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
-
-	Particle* downLeftGreen5 = nullptr;
-	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
-	*/
 	bombRightDown.anim.PushBack({ 121, 113, 8, 9 });
 	bombRightDown.anim.loop = false;
 	bombRightDown.speed.x = 3.0f;
@@ -698,6 +441,9 @@ update_status ModuleParticles::Update()
 		}
 		else if (SDL_GetTicks() >= p->born)
 		{
+			//App->render->Blit(shipExplosion, p->position.x, p->position.y, &(p->anim.GetCurrentFrame())); // need to put the player position
+			//App->render->Blit(enemyExplosion, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+
 			App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 
 			if (p->fx_played == false)
@@ -729,17 +475,7 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 	}
 }
 
-/*
-player 1 code
-App->particles->AddParticle(App->particles->upRightGreen1[0], position.x + laserFrontOffset + 2 * 0, position.y + laserVerticalOffset - 2 * 0, COLLIDER_PLAYER_SHOT);
-App->particles->AddParticle(App->particles->upRightGreen1[1], position.x + laserFrontOffset + 2 * 1, position.y + laserVerticalOffset - 2 * 1, COLLIDER_PLAYER_SHOT);
-App->particles->AddParticle(App->particles->upRightGreen1[2], position.x + laserFrontOffset + 2 * 2, position.y + laserVerticalOffset - 2 * 2, COLLIDER_PLAYER_SHOT);
-App->particles->AddParticle(App->particles->upRightGreen1[3], position.x + laserFrontOffset + 2 * 3, position.y + laserVerticalOffset - 2 * 3, COLLIDER_PLAYER_SHOT);
-App->particles->AddParticle(App->particles->upRightGreen1[4], position.x + laserFrontOffset + 2 * 4, position.y + laserVerticalOffset - 2 * 4, COLLIDER_PLAYER_SHOT);
-App->particles->AddParticle(App->particles->upRightGreen1[5], position.x + laserFrontOffset + 2 * 5, position.y + laserVerticalOffset - 2 * 5, COLLIDER_PLAYER_SHOT);
-App->particles->AddParticle(App->particles->upRightGreen1[6], position.x + laserFrontOffset + 2 * 6, position.y + laserVerticalOffset - 2 * 6, COLLIDER_PLAYER_SHOT);
-*/
-void ModuleParticles::AddParticleArray(const Particle* particleArray, int arraySize, int x, int y, int horizontalOffset, int verticalOffset, COLLIDER_TYPE collider_type, Uint32 delay)
+void ModuleParticles::AddParticleArray(const Particle* colliderArray, int arraySize, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)
 {
 	uint i;
 
@@ -760,80 +496,21 @@ void ModuleParticles::AddParticleArray(const Particle* particleArray, int arrayS
 
 			if (enoughSpace == true)
 			{
-				Particle** p = new Particle*[arraySize];
-				int particleArrayPos = 0;
+				Particle* p = new Particle[arraySize];
 
 				for (int j = i; j < arraySize; j++)
 				{
 					if (j >= MAX_ACTIVE_PARTICLES)
 						j = 0;
 
-					// Since a new array doesn't accept custom constructors, we'll initialize the array here
-					p[j]->anim = particleArray[particleArrayPos].anim;
-					p[j]->position = particleArray[particleArrayPos].position;
-					p[j]->fPositionHorizontal = particleArray[particleArrayPos].fPositionHorizontal;
-					p[j]->fPositionVertical = particleArray[particleArrayPos].fPositionVertical;
-					p[j]->speed = particleArray[particleArrayPos].speed;
-					p[j]->fx = particleArray[particleArrayPos].fx;
-					p[j]->born = particleArray[particleArrayPos].born;
-					p[j]->life = particleArray[particleArrayPos].life;
-
-					p[j]->born = SDL_GetTicks() + delay;
-					p[j]->position.x = p[j]->fPositionHorizontal = x + horizontalOffset * particleArrayPos;
-					p[j]->position.y = p[j]->fPositionVertical = y + verticalOffset * particleArrayPos;
+					(p + j)->born = SDL_GetTicks() + delay;
+					(p + j)->position.x = (p + j)->fPositionHorizontal = x;
+					(p + j)->position.y = (p + j)->fPositionVertical = y;
 					if (collider_type != COLLIDER_NONE)
-						p[j]->collider = App->collision->AddCollider(p[j]->anim.GetCurrentFrame(), collider_type, this);
-					active[i] = p[j];
+						(p + j)->collider = App->collision->AddCollider((p + j)->anim.GetCurrentFrame(), collider_type, this);
+					active[i] = (p + j);
 
-					particleArrayPos++;
-				}
-
-				break;
-			}
-		}
-	}
-}
-
-void ModuleParticles::AddParticleArray2(const Particle& particle, int arraySize, int x, int y, int horizontalOffset, int verticalOffset, COLLIDER_TYPE collider_type, Uint32 delay)
-{
-	uint i;
-
-	for (i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
-	{
-		if (active[i] == nullptr)
-		{
-			bool enoughSpace = true;
-
-			for (int j = i; j < arraySize; j++)
-			{
-				if (j >= MAX_ACTIVE_PARTICLES || active[j] != nullptr)
-				{
-					enoughSpace = false;
-					break;
-				}
-			}
-
-			if (enoughSpace == true)
-			{
-				int particleArrayPos = 0;
-
-				for (int j = i; j < arraySize; j++)
-				{
-					if (j >= MAX_ACTIVE_PARTICLES)
-						j = 0;
-
-					Particle* p = new Particle(particle);
-
-					p->born = SDL_GetTicks() + delay;
-					p->position.x = p->fPositionHorizontal = x + horizontalOffset;
-					p->position.y = p->fPositionVertical = y + verticalOffset;
-					if (collider_type != COLLIDER_NONE)
-						p->collider = App->collision->AddCollider(p->anim.frames[particleArrayPos], collider_type, this);
-					active[i] = p;
-
-					// delete p?
-
-					particleArrayPos++;
+					j++;
 				}
 
 				break;

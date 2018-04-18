@@ -151,7 +151,7 @@ bool ModulePlayer1::Start()
 	
 	// UI must change
 	score = 0;
-	font_score = App->fonts->Load("Assets/Sprites/User_Interface/Grafical_Interface/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
+	//font_score = App->fonts->Load("Assets/Sprites/User_Interface/Grafical_Interface/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 	// Place player hitbox
 	playerHitbox = App->collision->AddCollider({ (int)position.x, (int)position.y, shipWidth, shipHeight}, COLLIDER_PLAYER, this);
 	
@@ -169,7 +169,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	shipRect = &shipAnimation->frames[SHIP_IDLE];
 
 	// Bliting Text
-	App->fonts->BlitText(50, 10, font_score, "we are going to do the best game ric has ever seen dude!!");
+	//App->fonts->BlitText(50, 10, font_score, "we are going to do the best game ric has ever seen dude!!");
 	
 	int speed = 2;
 	
@@ -775,11 +775,11 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	//GodMode Function
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN)
 	{
-		if (App->input->keyboard[SDL_SCANCODE_F2] != KEY_REPEAT && App->input->debugMode == true)
+		if (App->input->keyboard[SDL_SCANCODE_F2] != KEY_REPEAT)
 		{
 			godMode = !godMode;
 		}
-		if (App->input->keyboard[SDL_SCANCODE_F2] != KEY_REPEAT && App->input->debugMode == true)
+		if (App->input->keyboard[SDL_SCANCODE_F2] != KEY_REPEAT)
 		{
 			if (godMode == true)
 			{

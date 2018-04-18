@@ -23,8 +23,7 @@ class ModuleHiScore;
 class ModuleCollision;
 class ModuleEnemies;
 class ModuleFont;
-class ModuleStageClear;
-
+class ModuleUserInterface;
 
 class Application
 {
@@ -47,7 +46,7 @@ public:
 	ModuleCollision* collision = nullptr;
 	ModuleEnemies* enemies = nullptr;
 	ModuleFont* fonts = nullptr;
-	ModuleStageClear* stageClear = nullptr;
+	ModuleUserInterface* UI = nullptr;
 	
 
 public:

@@ -7,7 +7,7 @@
 #include "p2Point.h"
 #include "ModuleCollision.h"
 
-#define MAX_ACTIVE_PARTICLES 500
+#define MAX_ACTIVE_PARTICLES 300
 
 enum weapon_types	// To mark the weapon Type currently using
 {
@@ -50,8 +50,7 @@ public:
 	bool CleanUp();
 
 	void AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
-	void AddParticleArray(const Particle* particleArray, int arraySize, int x, int y, int horizontalOffset, int verticalOffset, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
-	void AddParticleArray2(const Particle& particle, int arraySize, int x, int y, int horizontalOffset, int verticalOffset, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
+	void AddParticleArray(const Particle* colliderArray, int arraySize, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 private:
@@ -74,7 +73,6 @@ public:
 	Particle mediumBlue;			// Needs paths
 	Particle bigBlue;				
 
-	// Orange Power
 	//Particle missileHorizontal;
 	//Particle missileUp;			// Needs paths
 	//Particle missileDown;
@@ -87,50 +85,18 @@ public:
 	Particle yellowSmallRight;
 	Particle yellowSmallLeft;
 
-	// Orange Power
 	Particle redRocketDown;
 	Particle redRocketUp;
 	Particle redRocketRightDown;
 	Particle redRocketRightUp;
 
 		// Type 3 particles
-	Particle straightGreen;					// First diagonals
-	//Particle upRightGreen1;				// Starts at  57, 53, Up, Right	// TESTING HERE
-	Particle upRightGreen1[8];				// Starts at  57, 53, Up, Right	// TESTING HERE
-	Particle* downRightGreen1 = nullptr;	// Starts at  57, 53, Up
-	Particle* upLeftGreen1 = nullptr;		// Starts at  57, 53, Up
-	Particle* downLeftGreen1 = nullptr;		// Starts at  57, 53, Up
-	int greenSize1 = 8;						// Size: 2, 4. Move: 2, 2.
+	Particle straightGreen;
+	Particle upRightGreen;		// Diagonal: needs modified collider
+	Particle downRightGreen;	// Diagonal: needs modified collider
 
-	// Second diagonals cut in half
-	Particle* upRightGreen2 = nullptr;
-	Particle* downRightGreen2 = nullptr;
-	Particle* upLeftGreen2 = nullptr;
-	Particle* downLeftGreen2 = nullptr;
-	int greenSize2 = 0;
+	//Particle big split lasers
 
-	// Second diagonals full
-	Particle* upRightGreen3 = nullptr;		
-	Particle* downRightGreen3 = nullptr;
-	Particle* upLeftGreen3 = nullptr;
-	Particle* downLeftGreen3 = nullptr;
-	int greenSize3 = 0;						// Size: 4, 12. Move: 4, 4.
-
-	// Third diagonals cut in half
-	Particle* upRightGreen4 = nullptr;
-	Particle* downRightGreen4 = nullptr;
-	Particle* upLeftGreen4 = nullptr;
-	Particle* downLeftGreen4 = nullptr;
-	int greenSize4 = 0;						
-	
-	// Third diagonals full
-	Particle* upRightGreen5 = nullptr;		
-	Particle* downRightGreen5 = nullptr;
-	Particle* upLeftGreen5 = nullptr;
-	Particle* downLeftGreen5 = nullptr;
-	int greenSize5 = 0;						// Size 4, 12, starts in 80, 68 in spritesheet, goes up by 4 pixels each time
-
-	// Orange Power
 	Particle bombRightDown;
 	Particle bombRightUp;
 	Particle bombLeftDown;
@@ -153,11 +119,10 @@ public:
 	Particle arrowDown3;
 	Particle arrowSuperDown3;
 
-	// Orange Power
 	Particle laserUp;
 	Particle laserDown;
-	//Particle* downRightGreen = nullptr;	// Reusing particles (keep commented)
-	//Particle* upRightGreen = nullptr;
+	//Particle downRightGreen;	// Reusing particles (keep commented)
+	//Particle upRightGreen;
 
 		// Homing particles
 
