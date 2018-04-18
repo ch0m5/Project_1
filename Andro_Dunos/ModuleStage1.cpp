@@ -245,6 +245,7 @@ update_status ModuleStage1::Update()
 
 	// Draw everything -------------------------------------- Andro Dunos
 	App->render->Blit(caveBackText, backmovementcaveX, -40, &caveBackRect); // cave background
+
 	//These two if's control the first part of the level outside and the end of the level also outside
 	if (App->render->camera.y < 180 * SCREEN_SIZE)
 	{
@@ -426,6 +427,11 @@ update_status ModuleStage1::Update()
 		}
 	}
 	
+	if (App->render->camera.x / SCREEN_SIZE > 8912)
+	{
+		App->fade->FadeToBlack(this, App->stageClear, 1);
+	}
+
 	return UPDATE_CONTINUE;
 
 }
