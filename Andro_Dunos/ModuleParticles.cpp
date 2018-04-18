@@ -57,6 +57,46 @@ bool ModuleParticles::Start()
 	Type 4:
 	41, 11, 13, 2	1
 	41, 23, 13, 6	2
+	41, 38, 13, 8	3	// Lasers grow, collider should change while travelling
+	41, 49, 13, 12	4
+	41, 64, 13, 14	5
+
+	*/
+
+	/* Laser Sprites
+
+	Type 1:
+	21, 6, 16, 10	big
+	24, 39, 11, 4	small	// Lasers grow, collider should change while travelling
+	22, 51, 15, 6	medium
+
+	Type 2:
+	3, 8, 15, 5		big right
+	3, 23, 15, 5	big left
+	5, 45, 11, 8	down
+	5, 50, 11, 8	up
+	6, 69, 10, 3	right
+	6, 84, 10, 3	left
+
+	Type 3:
+	42, 87, 32, 3   --	small
+	66, 27, 3, 16	|	small
+	57, 35, 16, 18	/	small
+	57, 60, 16, 18	\	small
+
+	76, 2, 16, 22	/1	medium
+	76, 32, 16, 22	\1	medium
+	76, 65, 16, 22	/2	medium
+	76, 95, 16, 22	\2	medium
+
+	94, 0, 31, 31	/1	big
+	94, 32, 31, 31	\1	big
+	94, 64, 31, 31	/2	big
+	94, 96, 31, 31	\2	big
+
+	Type 4:
+	41, 11, 13, 2	1
+	41, 23, 13, 6	2
 	41, 38, 13, 8	3	// Lasers grow, collider should change while travelling (HAHAHAHAHA, making the collider grow...)
 	41, 49, 13, 12	4
 	41, 64, 13, 14	5
@@ -81,7 +121,7 @@ bool ModuleParticles::Start()
 	bigBlue.speed.x = 7.0f;
 	bigBlue.life = 1200;
 	bigBlue.anim.speed = 0.3f;*/
-	
+
 	//Player Type 2 (yellow)
 	/*YellowBigRight.anim.PushBack({ 6, 69, 10, 3 });
 	YellowBigRight.anim.loop = false;
@@ -269,14 +309,14 @@ bool ModuleParticles::Start()
 	upRightGreen1[0].speed.y = -5.0f;
 	upRightGreen1[0].life = shortLife;
 	upRightGreen1[0].anim.speed = 0.3f;
-	
+
 	upRightGreen1[1].anim.PushBack({ upRightGreenPosX + 2 * 1, upRightGreenPosX + 4 * 1, 2, 4 });
 	upRightGreen1[1].anim.loop = false;
 	upRightGreen1[1].speed.x = 7.0f;
 	upRightGreen1[1].speed.y = -5.0f;
 	upRightGreen1[1].life = shortLife;
 	upRightGreen1[1].anim.speed = 0.3f;
-	
+
 	upRightGreen1[2].anim.PushBack({ upRightGreenPosX + 2 * 2, upRightGreenPosX + 4 * 2, 2, 4 });
 	upRightGreen1[2].anim.loop = false;
 	upRightGreen1[2].speed.x = 7.0f;
@@ -666,8 +706,6 @@ bool ModuleParticles::CleanUp()
 {
 	LOG("Unloading particles");
 	App->textures->Unload(graphics);
-	//App->textures->Unload(shipExplosion);
-	App->textures->Unload(enemyExplosion);
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -698,6 +736,9 @@ update_status ModuleParticles::Update()
 		}
 		else if (SDL_GetTicks() >= p->born)
 		{
+			//App->render->Blit(shipExplosion, p->position.x, p->position.y, &(p->anim.GetCurrentFrame())); // need to put the player position
+			//App->render->Blit(enemyExplosion, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
+
 			App->render->Blit(graphics, p->position.x, p->position.y, &(p->anim.GetCurrentFrame()));
 
 			if (p->fx_played == false)
@@ -719,8 +760,8 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 		{
 			Particle* p = new Particle(particle);
 			p->born = SDL_GetTicks() + delay;
-			p->position.x = p->fPositionHorizontal = x;
-			p->position.y = p->fPositionVertical = y;
+			p->position.x = p->fPositionHorizontal = x + App->render->camera.x / SCREEN_SIZE;
+			p->position.y = p->fPositionVertical = y + App->render->camera.y / SCREEN_SIZE;
 			if (collider_type != COLLIDER_NONE)
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			active[i] = p;
@@ -729,17 +770,7 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 	}
 }
 
-/*
-player 1 code
-App->particles->AddParticle(App->particles->upRightGreen1[0], position.x + laserFrontOffset + 2 * 0, position.y + laserVerticalOffset - 2 * 0, COLLIDER_PLAYER_SHOT);
-App->particles->AddParticle(App->particles->upRightGreen1[1], position.x + laserFrontOffset + 2 * 1, position.y + laserVerticalOffset - 2 * 1, COLLIDER_PLAYER_SHOT);
-App->particles->AddParticle(App->particles->upRightGreen1[2], position.x + laserFrontOffset + 2 * 2, position.y + laserVerticalOffset - 2 * 2, COLLIDER_PLAYER_SHOT);
-App->particles->AddParticle(App->particles->upRightGreen1[3], position.x + laserFrontOffset + 2 * 3, position.y + laserVerticalOffset - 2 * 3, COLLIDER_PLAYER_SHOT);
-App->particles->AddParticle(App->particles->upRightGreen1[4], position.x + laserFrontOffset + 2 * 4, position.y + laserVerticalOffset - 2 * 4, COLLIDER_PLAYER_SHOT);
-App->particles->AddParticle(App->particles->upRightGreen1[5], position.x + laserFrontOffset + 2 * 5, position.y + laserVerticalOffset - 2 * 5, COLLIDER_PLAYER_SHOT);
-App->particles->AddParticle(App->particles->upRightGreen1[6], position.x + laserFrontOffset + 2 * 6, position.y + laserVerticalOffset - 2 * 6, COLLIDER_PLAYER_SHOT);
-*/
-void ModuleParticles::AddParticleArray(const Particle* particleArray, int arraySize, int x, int y, int horizontalOffset, int verticalOffset, COLLIDER_TYPE collider_type, Uint32 delay)
+void ModuleParticles::AddParticleArray(const Particle* colliderArray, int arraySize, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)
 {
 	uint i;
 
@@ -760,80 +791,21 @@ void ModuleParticles::AddParticleArray(const Particle* particleArray, int arrayS
 
 			if (enoughSpace == true)
 			{
-				Particle** p = new Particle*[arraySize];
-				int particleArrayPos = 0;
+				Particle* p = new Particle[arraySize];
 
 				for (int j = i; j < arraySize; j++)
 				{
 					if (j >= MAX_ACTIVE_PARTICLES)
 						j = 0;
 
-					// Since a new array doesn't accept custom constructors, we'll initialize the array here
-					p[j]->anim = particleArray[particleArrayPos].anim;
-					p[j]->position = particleArray[particleArrayPos].position;
-					p[j]->fPositionHorizontal = particleArray[particleArrayPos].fPositionHorizontal;
-					p[j]->fPositionVertical = particleArray[particleArrayPos].fPositionVertical;
-					p[j]->speed = particleArray[particleArrayPos].speed;
-					p[j]->fx = particleArray[particleArrayPos].fx;
-					p[j]->born = particleArray[particleArrayPos].born;
-					p[j]->life = particleArray[particleArrayPos].life;
-
-					p[j]->born = SDL_GetTicks() + delay;
-					p[j]->position.x = p[j]->fPositionHorizontal = x + horizontalOffset * particleArrayPos;
-					p[j]->position.y = p[j]->fPositionVertical = y + verticalOffset * particleArrayPos;
+					(p + j)->born = SDL_GetTicks() + delay;
+					(p + j)->position.x = (p + j)->fPositionHorizontal = x;
+					(p + j)->position.y = (p + j)->fPositionVertical = y;
 					if (collider_type != COLLIDER_NONE)
-						p[j]->collider = App->collision->AddCollider(p[j]->anim.GetCurrentFrame(), collider_type, this);
-					active[i] = p[j];
+						(p + j)->collider = App->collision->AddCollider((p + j)->anim.GetCurrentFrame(), collider_type, this);
+					active[i] = (p + j);
 
-					particleArrayPos++;
-				}
-
-				break;
-			}
-		}
-	}
-}
-
-void ModuleParticles::AddParticleArray2(const Particle& particle, int arraySize, int x, int y, int horizontalOffset, int verticalOffset, COLLIDER_TYPE collider_type, Uint32 delay)
-{
-	uint i;
-
-	for (i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
-	{
-		if (active[i] == nullptr)
-		{
-			bool enoughSpace = true;
-
-			for (int j = i; j < arraySize; j++)
-			{
-				if (j >= MAX_ACTIVE_PARTICLES || active[j] != nullptr)
-				{
-					enoughSpace = false;
-					break;
-				}
-			}
-
-			if (enoughSpace == true)
-			{
-				int particleArrayPos = 0;
-
-				for (int j = i; j < arraySize; j++)
-				{
-					if (j >= MAX_ACTIVE_PARTICLES)
-						j = 0;
-
-					Particle* p = new Particle(particle);
-
-					p->born = SDL_GetTicks() + delay;
-					p->position.x = p->fPositionHorizontal = x + horizontalOffset;
-					p->position.y = p->fPositionVertical = y + verticalOffset;
-					if (collider_type != COLLIDER_NONE)
-						p->collider = App->collision->AddCollider(p->anim.frames[particleArrayPos], collider_type, this);
-					active[i] = p;
-
-					// delete p?
-
-					particleArrayPos++;
+					j++;
 				}
 
 				break;

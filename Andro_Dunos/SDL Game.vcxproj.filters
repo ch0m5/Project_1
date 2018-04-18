@@ -101,8 +101,8 @@
     <ClInclude Include="ModuleFont.h">
       <Filter>ModulesBase</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleStageClear.h">
-      <Filter>ModulesStages</Filter>
+    <ClInclude Include="ModuleUserInterface.h">
+      <Filter>ModulesBase</Filter>
     </ClInclude>
     <ClInclude Include="RedLineShip_Enemy.h">
       <Filter>ModulesEnemies\Enemies</Filter>
@@ -175,8 +175,8 @@
     <ClCompile Include="ModuleFont.cpp">
       <Filter>ModulesBase</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleStageClear.cpp">
-      <Filter>ModulesStages</Filter>
+    <ClCompile Include="ModuleUserInterface.cpp">
+      <Filter>ModulesBase</Filter>
     </ClCompile>
     <ClCompile Include="RedLineShip_Enemy.cpp">
       <Filter>ModulesEnemies\Enemies</Filter>

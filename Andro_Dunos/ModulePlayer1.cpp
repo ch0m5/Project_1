@@ -151,7 +151,7 @@ bool ModulePlayer1::Start()
 	
 	// UI must change
 	score = 0;
-	font_score = App->fonts->Load("Assets/Sprites/User_Interface/Grafical_Interface/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
+	//font_score = App->fonts->Load("Assets/Sprites/User_Interface/Grafical_Interface/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 	// Place player hitbox
 	playerHitbox = App->collision->AddCollider({ (int)position.x, (int)position.y, shipWidth, shipHeight}, COLLIDER_PLAYER, this);
 	
@@ -169,7 +169,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	shipRect = &shipAnimation->frames[SHIP_IDLE];
 
 	// Bliting Text
-	App->fonts->BlitText(50, 10, font_score, "we are going to do the best game ric has ever seen dude!!");
+	//App->fonts->BlitText(50, 10, font_score, "we are going to do the best game ric has ever seen dude!!");
 	
 	int speed = 2;
 	
@@ -553,7 +553,14 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				break;
 
 			case LEVEL_2:
-
+				App->particles->AddParticle(App->particles->upRightGreen1[0], position.x + 2 * 0, position.y + laserVerticalOffset - 2 * 0, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->upRightGreen1[1], position.x + 2 * 1, position.y + laserVerticalOffset - 2 * 1, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->upRightGreen1[2], position.x + 2 * 2, position.y + laserVerticalOffset - 2 * 2, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->upRightGreen1[3], position.x + 2 * 3, position.y + laserVerticalOffset - 2 * 3, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->upRightGreen1[4], position.x + 2 * 4, position.y + laserVerticalOffset - 2 * 4, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->upRightGreen1[5], position.x + 2 * 5, position.y + laserVerticalOffset - 2 * 5, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->upRightGreen1[6], position.x + 2 * 6, position.y + laserVerticalOffset - 2 * 6, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->upRightGreen1[7], position.x + 2 * 7, position.y + laserVerticalOffset - 2 * 7, COLLIDER_PLAYER_SHOT);
 				break;
 
 			case LEVEL_3:
@@ -775,11 +782,11 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	//GodMode Function
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN)
 	{
-		if (App->input->keyboard[SDL_SCANCODE_F2] != KEY_REPEAT && App->input->debugMode == true)
+		if (App->input->keyboard[SDL_SCANCODE_F2] != KEY_REPEAT)
 		{
 			godMode = !godMode;
 		}
-		if (App->input->keyboard[SDL_SCANCODE_F2] != KEY_REPEAT && App->input->debugMode == true)
+		if (App->input->keyboard[SDL_SCANCODE_F2] != KEY_REPEAT)
 		{
 			if (godMode == true)
 			{

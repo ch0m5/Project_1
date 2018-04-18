@@ -3,7 +3,6 @@
 #include "ModuleInput.h"
 #include "SDL/include/SDL.h"
 
-
 ModuleInput::ModuleInput() : Module()	//@CarlesHoms
 {
 	for (uint i = 0; i < MAX_KEYS; ++i)
@@ -60,17 +59,6 @@ update_status ModuleInput::PreUpdate()
 
 	if (keyboard[SDL_SCANCODE_ESCAPE])		// If the Escape key is pressed, exit game
 		return update_status::UPDATE_STOP;
-	
-	if (App->input->keyboard[SDL_SCANCODE_F1] == KEY_DOWN) //enter debug mode
-	{
-		debugMode = !debugMode;
-	}
-	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN && debugMode==true) //enter debug mode
-	{
-		coliderView = !coliderView;
-	}
-	
-
 
 	while (SDL_PollEvent(&e))	// If the windows application is required to quit (press x button), exit game
 	{
