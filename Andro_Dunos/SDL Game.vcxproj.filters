@@ -98,6 +98,9 @@
     <ClInclude Include="Enemy_13_Greyball.h">
       <Filter>ModulesEnemies\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleFont.h">
+      <Filter>ModulesBase</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -162,6 +165,9 @@
     </ClCompile>
     <ClCompile Include="Enemy_13_Greyball.cpp">
       <Filter>ModulesEnemies\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleFont.cpp">
+      <Filter>ModulesBase</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -14,6 +14,7 @@
 #include "ModuleHiScore.h"
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
+#include "ModuleFont.h"
 
 
 Application::Application()
@@ -34,6 +35,7 @@ Application::Application()
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
+	modules[i++] = fonts = new ModuleFont();
 	
 }	
 

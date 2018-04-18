@@ -91,7 +91,7 @@ bool ModuleRender::CleanUp()
 }
 
 // Blit to screen
-bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, float speed)	// Prints a texture cutout in a section of the screen, based on camera movement and position
+bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, float speed, bool use_camera)	// Prints a texture cutout in a section of the screen, based on camera movement and position
 {
 	bool ret = true;
 	SDL_Rect rect;

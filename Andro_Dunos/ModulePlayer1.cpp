@@ -12,6 +12,7 @@
 #include "ModuleHiScore.h"
 #include "ModuleStage1.h"
 #include "ModuleStage2.h"
+#include "ModuleFont.h"
 
 ModulePlayer1::ModulePlayer1()	// @CarlesHoms @Andres
 {
@@ -148,6 +149,9 @@ bool ModulePlayer1::Start()
 	Mix_VolumeChunk(powerUp, FXVol);
 	Mix_VolumeChunk(playerDeathExplosion, FXVol);
 	
+	// UI must change
+	score = 0;
+	font_score = App->fonts->Load("fonts/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 	// Place player hitbox
 	playerHitbox = App->collision->AddCollider({ (int)position.x, (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
 	
@@ -163,6 +167,9 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	shipAnimation = &shipVerticalMovement;
 	propellerAnimation = &idleBooster;
 	shipRect = &shipAnimation->frames[SHIP_IDLE];
+
+	// Bliting Text
+	App->fonts->BlitText(10, 10, font_score, "work pls");
 	
 	int speed = 2;
 	
@@ -836,6 +843,7 @@ bool ModulePlayer1::CleanUp()
 {
 	LOG("Unloading player 1");
 	App->textures->Unload(graphics);
+	App->fonts->UnLoad(font_score);
 
 	App->player1->Disable();
 
