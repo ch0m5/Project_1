@@ -93,6 +93,13 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 410 + 150, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 420 + 150, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 430 + 150, 60);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 660, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 675, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 690, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 705, 80);
+
+
 	
 	// Collider
 	App->collision->Enable();

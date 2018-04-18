@@ -9,18 +9,19 @@
 Enemy_13_Greyball::Enemy_13_Greyball(int x, int y) : Enemy(x, y)
 {
 	hitboxWidth = 18;
-	hitboxHeight = 22;
+	hitboxHeight = 19;
 
-	fly.PushBack({ 21, 22, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 54, 22, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 87, 22, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 21, 53, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 54, 54, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 87, 55, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 6, 89, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 39, 89, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 72, 88, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 105, 88, hitboxWidth, hitboxHeight });
+	fly.PushBack({ 0, 3, hitboxWidth, hitboxHeight });
+	fly.PushBack({ 19, 3, hitboxWidth, hitboxHeight });
+	fly.PushBack({ 39, 3, hitboxWidth, hitboxHeight });
+	fly.PushBack({ 59, 1, hitboxWidth, hitboxHeight });
+	fly.PushBack({ 79, 0, hitboxWidth, hitboxHeight });
+	fly.PushBack({ 101, 0, hitboxWidth, hitboxHeight });
+
+	fly.PushBack({ 0, 22, hitboxWidth, hitboxHeight });
+	fly.PushBack({ 22, 23, hitboxWidth, hitboxHeight });
+	fly.PushBack({ 44, 24, hitboxWidth, hitboxHeight });
+	fly.PushBack({ 67, 26, hitboxWidth, hitboxHeight });
 	fly.speed = 0.2f;
 
 	animation = &fly;

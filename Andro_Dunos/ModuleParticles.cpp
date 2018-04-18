@@ -22,10 +22,6 @@ bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
 	graphics = App->textures->Load("Assets/Sprites/Players_Ships/Laser_particles.png");
-	/*graphics = App->textures->Load("Assets/Sprites/Players_Ships/laser_types.png");*/
-	//explosionPtr = App->textures->Load("Assets/Sprites/Players_Ships/ship-explosion.png");
-	shipExplosion = App->textures->Load("Assets/Sprites/Players_Ships/ship-explosion.png");
-	enemyExplosion = App->textures->Load("Assets/Sprites/Common_level_elements/explosion_2.png");
 
 	/* Laser Sprites
 
@@ -67,6 +63,46 @@ bool ModuleParticles::Start()
 
 	*/
 
+	/* Laser Sprites
+
+	Type 1:
+	21, 6, 16, 10	big
+	24, 39, 11, 4	small	// Lasers grow, collider should change while travelling
+	22, 51, 15, 6	medium
+
+	Type 2:
+	3, 8, 15, 5		big right
+	3, 23, 15, 5	big left
+	5, 45, 11, 8	down
+	5, 50, 11, 8	up
+	6, 69, 10, 3	right
+	6, 84, 10, 3	left
+
+	Type 3:
+	42, 87, 32, 3   --	small
+	66, 27, 3, 16	|	small
+	57, 35, 16, 18	/	small
+	57, 60, 16, 18	\	small
+
+	76, 2, 16, 22	/1	medium
+	76, 32, 16, 22	\1	medium
+	76, 65, 16, 22	/2	medium
+	76, 95, 16, 22	\2	medium
+
+	94, 0, 31, 31	/1	big
+	94, 32, 31, 31	\1	big
+	94, 64, 31, 31	/2	big
+	94, 96, 31, 31	\2	big
+
+	Type 4:
+	41, 11, 13, 2	1
+	41, 23, 13, 6	2
+	41, 38, 13, 8	3	// Lasers grow, collider should change while travelling (HAHAHAHAHA, making the collider grow...)
+	41, 49, 13, 12	4
+	41, 64, 13, 14	5
+
+	*/
+
 	// Player Type 1 (blue)
 	smallBlue.anim.PushBack({ 24, 39, 11, 4 });
 	smallBlue.anim.loop = false;
@@ -85,7 +121,7 @@ bool ModuleParticles::Start()
 	bigBlue.speed.x = 7.0f;
 	bigBlue.life = 1200;
 	bigBlue.anim.speed = 0.3f;*/
-	
+
 	//Player Type 2 (yellow)
 	/*YellowBigRight.anim.PushBack({ 6, 69, 10, 3 });
 	YellowBigRight.anim.loop = false;
@@ -179,7 +215,6 @@ bool ModuleParticles::Start()
 	redRocketRightUp.life = shortLife;
 	redRocketRightUp.anim.speed = 0.3f;
 
-
 	//Player Type 3 (green)
 	straightGreen.anim.PushBack({ 42, 87, 32, 3 });
 	straightGreen.anim.loop = false;
@@ -187,18 +222,280 @@ bool ModuleParticles::Start()
 	straightGreen.life = shortLife;
 	straightGreen.anim.speed = 0.3f;
 
-	/*upRightGreen.anim.PushBack({ 42, 87, 32 ,3 });
-	upRightGreen.anim.loop = false;
-	upRightGreen.speed.x = 7.0f;
-	upRightGreen.life = 1200;
-	upRightGreen.anim.speed = 0.3f;
+	int upRightGreenPosX = 57;
+	int upRightGreenPosY = 49;
+	upRightGreen1[0].anim.PushBack({ upRightGreenPosX + 2 * 0, upRightGreenPosY - 2 * 0, 2, 4 });	// First diagonals
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].speed.y = -5.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
 
-	downRightGreen.anim.PushBack({ 42, 87, 32 ,3 });
-	downRightGreen.anim.loop = false;
-	downRightGreen.speed.x = 7.0f;
-	downRightGreen.life = 1200;
-	downRightGreen.anim.speed = 0.3f;*/
+	upRightGreen1[1].anim.PushBack({ upRightGreenPosX + 2 * 1, upRightGreenPosY - 2 * 1, 2, 4 });
+	upRightGreen1[1].anim.loop = false;
+	upRightGreen1[1].speed.x = 7.0f;
+	upRightGreen1[1].speed.y = -5.0f;
+	upRightGreen1[1].life = shortLife;
+	upRightGreen1[1].anim.speed = 0.3f;
 
+	upRightGreen1[2].anim.PushBack({ upRightGreenPosX + 2 * 2, upRightGreenPosY - 2 * 2, 2, 4 });
+	upRightGreen1[2].anim.loop = false;
+	upRightGreen1[2].speed.x = 7.0f;
+	upRightGreen1[2].speed.y = -5.0f;
+	upRightGreen1[2].life = shortLife;
+	upRightGreen1[2].anim.speed = 0.3f;
+
+	upRightGreen1[3].anim.PushBack({ upRightGreenPosX + 2 * 3, upRightGreenPosY - 2 * 3, 2, 4 });
+	upRightGreen1[3].anim.loop = false;
+	upRightGreen1[3].speed.x = 7.0f;
+	upRightGreen1[3].speed.y = -5.0f;
+	upRightGreen1[3].life = shortLife;
+	upRightGreen1[3].anim.speed = 0.3f;
+
+	upRightGreen1[4].anim.PushBack({ upRightGreenPosX + 2 * 4, upRightGreenPosY - 2 * 4, 2, 4 });
+	upRightGreen1[4].anim.loop = false;
+	upRightGreen1[4].speed.x = 7.0f;
+	upRightGreen1[4].speed.y = -5.0f;
+	upRightGreen1[4].life = shortLife;
+	upRightGreen1[4].anim.speed = 0.3f;
+
+	upRightGreen1[5].anim.PushBack({ upRightGreenPosX + 2 * 5, upRightGreenPosY - 2 * 5, 2, 4 });
+	upRightGreen1[5].anim.loop = false;
+	upRightGreen1[5].speed.x = 7.0f;
+	upRightGreen1[5].speed.y = -5.0f;
+	upRightGreen1[5].life = shortLife;
+	upRightGreen1[5].anim.speed = 0.3f;
+
+	upRightGreen1[6].anim.PushBack({ upRightGreenPosX + 2 * 6, upRightGreenPosY - 2 * 6, 2, 4 });
+	upRightGreen1[6].anim.loop = false;
+	upRightGreen1[6].speed.x = 7.0f;
+	upRightGreen1[6].speed.y = -5.0f;
+	upRightGreen1[6].life = shortLife;
+	upRightGreen1[6].anim.speed = 0.3f;
+
+	upRightGreen1[7].anim.PushBack({ upRightGreenPosX + 2 * 7, upRightGreenPosY - 2 * 7, 2, 4 });
+	upRightGreen1[7].anim.loop = false;
+	upRightGreen1[7].speed.x = 7.0f;
+	upRightGreen1[7].speed.y = -5.0f;
+	upRightGreen1[7].life = shortLife;
+	upRightGreen1[7].anim.speed = 0.3f;
+	/* 1
+	upRightGreen1.anim.PushBack({ upRightGreenPosX + 2 * 0, upRightGreenPosY + 4 * 0, 2, 4 });	// First diagonals
+	upRightGreen1.anim.PushBack({ upRightGreenPosX + 2 * 1, upRightGreenPosY + 4 * 1, 2, 4 });
+	upRightGreen1.anim.PushBack({ upRightGreenPosX + 2 * 2, upRightGreenPosY + 4 * 2, 2, 4 });
+	upRightGreen1.anim.PushBack({ upRightGreenPosX + 2 * 3, upRightGreenPosY + 4 * 3, 2, 4 });
+	upRightGreen1.anim.PushBack({ upRightGreenPosX + 2 * 4, upRightGreenPosY + 4 * 4, 2, 4 });
+	upRightGreen1.anim.PushBack({ upRightGreenPosX + 2 * 5, upRightGreenPosY + 4 * 5, 2, 4 });
+	upRightGreen1.anim.PushBack({ upRightGreenPosX + 2 * 6, upRightGreenPosY + 4 * 6, 2, 4 });
+	upRightGreen1.anim.loop = false;
+	upRightGreen1.speed.x = 7.0f;
+	upRightGreen1.speed.y = -5.0f;
+	upRightGreen1.life = shortLife;
+	upRightGreen1.anim.speed = 0.3f;
+	*/
+
+	/* 2
+	int upRightGreenPosX = 57;
+	int upRightGreenPosY = 53;
+	upRightGreen1[0].anim.PushBack({ upRightGreenPosX + 2 * 0, upRightGreenPosY + 4 * 0, 2, 4 });	// First diagonals
+	upRightGreen1[0].anim.PushBack({ upRightGreenPosX + 2 * 1, upRightGreenPosY + 4 * 1, 2, 4 });
+	upRightGreen1[0].anim.PushBack({ upRightGreenPosX + 2 * 2, upRightGreenPosY + 4 * 2, 2, 4 });
+	upRightGreen1[0].anim.PushBack({ upRightGreenPosX + 2 * 3, upRightGreenPosY + 4 * 3, 2, 4 });
+	upRightGreen1[0].anim.PushBack({ upRightGreenPosX + 2 * 4, upRightGreenPosY + 4 * 4, 2, 4 });
+	upRightGreen1[0].anim.PushBack({ upRightGreenPosX + 2 * 5, upRightGreenPosY + 4 * 5, 2, 4 });
+	upRightGreen1[0].anim.PushBack({ upRightGreenPosX + 2 * 6, upRightGreenPosY + 4 * 6, 2, 4 });
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].speed.y = -5.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
+
+	upRightGreen1[1].anim.PushBack({ upRightGreenPosX + 2 * 1, upRightGreenPosX + 4 * 1, 2, 4 });
+	upRightGreen1[1].anim.loop = false;
+	upRightGreen1[1].speed.x = 7.0f;
+	upRightGreen1[1].speed.y = -5.0f;
+	upRightGreen1[1].life = shortLife;
+	upRightGreen1[1].anim.speed = 0.3f;
+
+	upRightGreen1[2].anim.PushBack({ upRightGreenPosX + 2 * 2, upRightGreenPosX + 4 * 2, 2, 4 });
+	upRightGreen1[2].anim.loop = false;
+	upRightGreen1[2].speed.x = 7.0f;
+	upRightGreen1[2].speed.y = -5.0f;
+	upRightGreen1[2].life = shortLife;
+	upRightGreen1[2].anim.speed = 0.3f;
+
+	upRightGreen1[3].anim.PushBack({ upRightGreenPosX + 2 * 3, upRightGreenPosX + 4 * 3, 2, 4 });
+	upRightGreen1[3].anim.loop = false;
+	upRightGreen1[3].speed.x = 7.0f;
+	upRightGreen1[3].speed.y = -5.0f;
+	upRightGreen1[3].life = shortLife;
+	upRightGreen1[3].anim.speed = 0.3f;
+
+	upRightGreen1[4].anim.PushBack({ upRightGreenPosX + 2 * 4, upRightGreenPosX + 4 * 4, 2, 4 });
+	upRightGreen1[4].anim.loop = false;
+	upRightGreen1[4].speed.x = 7.0f;
+	upRightGreen1[4].speed.y = -5.0f;
+	upRightGreen1[4].life = shortLife;
+	upRightGreen1[4].anim.speed = 0.3f;
+
+	upRightGreen1[5].anim.PushBack({ upRightGreenPosX + 2 * 5, upRightGreenPosX + 4 * 5, 2, 4 });
+	upRightGreen1[5].anim.loop = false;
+	upRightGreen1[5].speed.x = 7.0f;
+	upRightGreen1[5].speed.y = -5.0f;
+	upRightGreen1[5].life = shortLife;
+	upRightGreen1[5].anim.speed = 0.3f;
+
+	upRightGreen1[6].anim.PushBack({ upRightGreenPosX + 2 * 6, upRightGreenPosX + 4 * 6, 2, 4 });
+	upRightGreen1[6].anim.loop = false;
+	upRightGreen1[6].speed.x = 7.0f;
+	upRightGreen1[6].speed.y = -5.0f;
+	upRightGreen1[6].life = shortLife;
+	upRightGreen1[6].anim.speed = 0.3f;
+
+	upRightGreen1[7].anim.PushBack({ upRightGreenPosX + 2 * 7, upRightGreenPosX + 4 * 7, 2, 4 });
+	upRightGreen1[7].anim.loop = false;
+	upRightGreen1[7].speed.x = 7.0f;
+	upRightGreen1[7].speed.y = -5.0f;
+	upRightGreen1[7].life = shortLife;
+	upRightGreen1[7].anim.speed = 0.3f;
+	*/
+	/*
+	Particle* downRightGreen1 = nullptr;
+	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
+
+	Particle* upLeftGreen1 = nullptr;
+	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
+
+	Particle* downLeftGreen1 = nullptr;
+	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
+
+	Particle* upRightGreen2 = nullptr;
+	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });	// Second diagonals cut in half
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
+
+	Particle* downRightGreen2 = nullptr;
+	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
+
+	Particle* upLeftGreen2 = nullptr;
+	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
+
+	Particle* downLeftGreen2 = nullptr;
+	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
+
+
+	Particle* upRightGreen3 = nullptr;	// Second diagonals full
+	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
+
+	Particle* downRightGreen3 = nullptr;
+	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
+
+	Particle* upLeftGreen3 = nullptr;
+	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
+
+	Particle* downLeftGreen3 = nullptr;
+	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
+
+
+	Particle* upRightGreen4 = nullptr;	// Third diagonals cut in half
+	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
+
+	Particle* downRightGreen4 = nullptr;
+	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
+
+	Particle* upLeftGreen4 = nullptr;
+	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
+
+	Particle* downLeftGreen4 = nullptr;
+	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
+
+
+	Particle* upRightGreen5 = nullptr;
+	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });	// Third diagonals full
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
+
+	Particle* downRightGreen5 = nullptr;
+	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
+
+	Particle* upLeftGreen5 = nullptr;
+	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
+
+	Particle* downLeftGreen5 = nullptr;
+	upRightGreen1[0].anim.PushBack({ 0, 0, 0, 0 });
+	upRightGreen1[0].anim.loop = false;
+	upRightGreen1[0].speed.x = 7.0f;
+	upRightGreen1[0].life = shortLife;
+	upRightGreen1[0].anim.speed = 0.3f;
+	*/
 	bombRightDown.anim.PushBack({ 121, 113, 8, 9 });
 	bombRightDown.anim.loop = false;
 	bombRightDown.speed.x = 3.0f;
@@ -409,8 +706,6 @@ bool ModuleParticles::CleanUp()
 {
 	LOG("Unloading particles");
 	App->textures->Unload(graphics);
-	//App->textures->Unload(shipExplosion);
-	App->textures->Unload(enemyExplosion);
 
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{

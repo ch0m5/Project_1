@@ -104,6 +104,9 @@
     <ClInclude Include="ModuleUserInterface.h">
       <Filter>ModulesBase</Filter>
     </ClInclude>
+    <ClInclude Include="RedLineShip_Enemy.h">
+      <Filter>ModulesEnemies\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -174,6 +177,9 @@
     </ClCompile>
     <ClCompile Include="ModuleUserInterface.cpp">
       <Filter>ModulesBase</Filter>
+    </ClCompile>
+    <ClCompile Include="RedLineShip_Enemy.cpp">
+      <Filter>ModulesEnemies\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
