@@ -3,6 +3,7 @@
 
 #include "Module.h"			// Following: Includes of all enemy headers
 #include "Enemy_13_Greyball.h"
+#include "RedLineShip_Enemy.h"
 
 #define MAX_ENEMIES 100
 
@@ -10,6 +11,7 @@ enum ENEMY_TYPES
 {
 	NO_TYPE,
 	GREYBALL_UP_DOWN,
+	REDLINE_SHIP
 };
 
 class Enemy;
@@ -45,6 +47,7 @@ private:
 	EnemyInfo queue[MAX_ENEMIES];
 	Enemy* enemies[MAX_ENEMIES];
 	SDL_Texture* sprites;
+	SDL_Texture* table_enemy;
 };
 
 #endif // __ModuleEnemies_H__

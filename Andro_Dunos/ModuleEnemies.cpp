@@ -8,6 +8,7 @@
 
 //Enemy types includes
 #include "Enemy_13_Greyball.h"
+#include "RedLineShip_Enemy.h"
 
 #define SPAWN_MARGIN 50
 
@@ -25,7 +26,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	sprites = App->textures->Load("Assets/Sprites/Enemies_and_projectiles/enemies_13.png");
+	sprites = App->textures->Load("Assets/Sprites/Enemies_and_projectiles/table_enemy.png");
 
 	return true;
 }
@@ -134,9 +135,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::GREYBALL_UP_DOWN:
 			enemies[i] = new Enemy_13_Greyball(info.x, info.y);
 			break;
-		/*case ENEMY_TYPES::BROWNCOOKIE:
-			enemies[i] = new Enemy_BrownCookie(info.x, info.y);
-			break;*/
+		case ENEMY_TYPES::REDLINE_SHIP:
+			enemies[i] = new RedLineShip_Enemy(info.x, info.y);
+			break;
 		}
 	}
 }
