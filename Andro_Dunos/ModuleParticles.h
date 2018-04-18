@@ -7,7 +7,7 @@
 #include "p2Point.h"
 #include "ModuleCollision.h"
 
-#define MAX_ACTIVE_PARTICLES 100
+#define MAX_ACTIVE_PARTICLES 300
 
 enum weapon_types	// To mark the weapon Type currently using
 {
@@ -50,6 +50,7 @@ public:
 	bool CleanUp();
 
 	void AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
+	void AddParticleArray(const Particle* colliderArray, int arraySize, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 private:
@@ -62,6 +63,11 @@ private:
 	SDL_Texture* enemyExplosion = nullptr;
 
 public:
+		// Particle current used values
+	int shortLife = 1000;
+	int mediumLife = 2000;
+	int	longLife = 3000;
+
 		// Type 1 particles
 	Particle smallBlue;
 	Particle mediumBlue;			// Needs paths
