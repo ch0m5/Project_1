@@ -13,6 +13,8 @@
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
 #include "ModuleHiScore.h"
+#include "ModuleStageClear.h"
+#include "ModuleParticles.h"
 
 ModuleStage1::ModuleStage1()	//@AndresSaladrigas
 {
@@ -71,6 +73,9 @@ bool ModuleStage1::Start()
 	}
 	// we shoukd log the problem if not loaded correctly
 	
+	//enable modules
+	App->collision->Enable();
+	App->particles->Enable();
 	// Enemies
 	App->enemies->Enable();
 
@@ -224,6 +229,9 @@ bool ModuleStage1::CleanUp()
 
 	LOG("Unloading colliders")
 	App->collision->Disable();
+
+	LOG("Unloading particles")
+	App->particles->Disable();
 
 	
 
@@ -385,6 +393,17 @@ update_status ModuleStage1::Update()
 
 	//make so pressing SPACE the other stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	{
+		App->fade->FadeToBlack(App->stage1, App->scene_HiScore, 1);
+	}
+
+	//enter direct win condition @Andres
+	if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_DOWN && App->input->debugMode== true) 
+	{
+		App->fade->FadeToBlack(App->stage1, App->stageClear, 1);
+	}
+	//enter direct lose condition @Andres
+	if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_DOWN && App->input->debugMode == true)
 	{
 		App->fade->FadeToBlack(App->stage1, App->scene_HiScore, 1);
 	}

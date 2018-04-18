@@ -49,16 +49,18 @@ public:
 	update_status PreUpdate() override;
 	update_status Update() override;
 	bool CleanUp() override;
+	
 
 	Collider* AddCollider(SDL_Rect rect, COLLIDER_TYPE type, Module* callback = nullptr);
 	void DebugDraw();
+;
 	
 
 private:
 
 	Collider* colliders[MAX_COLLIDERS];
 	bool matrix[COLLIDER_MAX][COLLIDER_MAX];
-	bool debug = false;
+	
 	SDL_Rect screen;
 };
 
