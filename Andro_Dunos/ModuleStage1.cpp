@@ -170,6 +170,11 @@ bool ModuleStage1::Start()
 	App->collision->AddCollider({ 7156, 172, 51, 120  }, COLLIDER_WALL);  // out of crater left  *
 	App->collision->AddCollider({ 7408, 189, 46, 260 }, COLLIDER_WALL);  // out of crater right  *
 
+	App->collision->AddCollider({ 7408, 197, 1897, 45 }, COLLIDER_WALL);  // moon surface 2*
+	App->collision->AddCollider({ 7785, 188, 99, 45 }, COLLIDER_WALL);  // moon surface 2 crater 1*
+	App->collision->AddCollider({ 8409, 188, 99, 45 }, COLLIDER_WALL);  // moon surface 2 crater 2 * 
+	App->collision->AddCollider({ 8651, 183, 99, 45 }, COLLIDER_WALL);  // moon surface 2 crater 3*
+
 	//App->collision->AddCollider({ 300, 20, 87, 282 }, COLLIDER_WALL);		// Giant wall to test bullets
 
 	//Music
