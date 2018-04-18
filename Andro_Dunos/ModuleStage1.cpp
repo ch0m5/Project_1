@@ -99,7 +99,36 @@ bool ModuleStage1::Start()
 
 	// Ground Collider
 	App->collision->AddCollider({ 0, 195, 3000, 275 }, COLLIDER_WALL);  // Moon ground collider 
-	App->collision->AddCollider({ 3090, 430, 1000, 50 }, COLLIDER_WALL);  // Cave ground Collider
+	App->collision->AddCollider({ 906,180, 100, 45 }, COLLIDER_WALL);  // crater 1
+	App->collision->AddCollider({ 1565, 187, 99, 40 }, COLLIDER_WALL);  // crater 2
+	App->collision->AddCollider({ 2363, 185, 103, 41 }, COLLIDER_WALL);  // crater 3
+	App->collision->AddCollider({ 2605, 180, 97, 46 }, COLLIDER_WALL);  // crater 4
+	App->collision->AddCollider({ 3203, 180, 54, 109 }, COLLIDER_WALL);  // crater 5 cave
+	App->collision->AddCollider({ 2999, 400, 53, 53 }, COLLIDER_WALL);  // cave wall
+
+
+	App->collision->AddCollider({ 3203, 257, 50, 43 }, COLLIDER_WALL);  // cave *
+	App->collision->AddCollider({ 3248, 226, 817, 20 }, COLLIDER_WALL);  // ceailing *
+	App->collision->AddCollider({ 3248, 245, 177, 17 }, COLLIDER_WALL);  // cealinng details *
+	App->collision->AddCollider({ 3248, 262, 98, 7 }, COLLIDER_WALL);  // cealinng details *
+
+	App->collision->AddCollider({ 3894, 417, 66, 33 }, COLLIDER_WALL);  // floor details *
+
+	App->collision->AddCollider({ 3052, 430, 1030, 50 }, COLLIDER_WALL);  // Cave ground Collider
+
+	App->collision->AddCollider({ 4074, 163, 55, 33 }, COLLIDER_WALL);  // cealinng stairs up *
+	App->collision->AddCollider({ 4129, 133, 26, 32 }, COLLIDER_WALL);  // cealinng stairs up *
+	App->collision->AddCollider({ 4155, 113, 30, 21 }, COLLIDER_WALL);  // cealinng stairs up *
+	App->collision->AddCollider({ 4185, 80, 696, 35 }, COLLIDER_WALL);  // cealinng flat *
+
+	App->collision->AddCollider({ 4074, 418, 55, 33 }, COLLIDER_WALL);  // floor stairs up *
+	App->collision->AddCollider({ 4028, 194, 46, 33 }, COLLIDER_WALL);  // cealinng stairs up *
+	App->collision->AddCollider({ 4113, 387, 43, 33 }, COLLIDER_WALL);  // floor stairs up *
+	App->collision->AddCollider({ 4138, 357, 49, 33 }, COLLIDER_WALL);  // floor stairs up *
+	App->collision->AddCollider({ 4185, 325, 434, 33 }, COLLIDER_WALL);  // floor stairs up *
+	App->collision->AddCollider({ 4203, 310, 402, 18 }, COLLIDER_WALL);  // floor stairs up *
+	 
+	  
 	//App->collision->AddCollider({ 300, 20, 87, 282 }, COLLIDER_WALL);		// Giant wall to test bullets
 
 	//Music
