@@ -108,21 +108,21 @@ bool ModuleStage1::Start()
 
 
 	App->collision->AddCollider({ 3203, 257, 50, 43 }, COLLIDER_WALL);  // cave *
-	App->collision->AddCollider({ 3248, 226, 817, 20 }, COLLIDER_WALL);  // ceailing *
-	App->collision->AddCollider({ 3248, 245, 177, 17 }, COLLIDER_WALL);  // cealinng details *
-	App->collision->AddCollider({ 3248, 262, 98, 7 }, COLLIDER_WALL);  // cealinng details *
+	App->collision->AddCollider({ 3248, 226, 817, 20 }, COLLIDER_WALL);  // roof *
+	App->collision->AddCollider({ 3248, 245, 177, 17 }, COLLIDER_WALL);  // roof details *
+	App->collision->AddCollider({ 3248, 262, 98, 7 }, COLLIDER_WALL);  // roof details *
 
 	App->collision->AddCollider({ 3894, 417, 66, 33 }, COLLIDER_WALL);  // floor details *
 
 	App->collision->AddCollider({ 3052, 430, 1030, 50 }, COLLIDER_WALL);  // Cave ground Collider
 
-	App->collision->AddCollider({ 4074, 163, 55, 33 }, COLLIDER_WALL);  // cealinng stairs up *
-	App->collision->AddCollider({ 4129, 133, 26, 32 }, COLLIDER_WALL);  // cealinng stairs up *
-	App->collision->AddCollider({ 4155, 113, 30, 21 }, COLLIDER_WALL);  // cealinng stairs up *
-	App->collision->AddCollider({ 4185, 80, 696, 35 }, COLLIDER_WALL);  // cealinng flat *
+	App->collision->AddCollider({ 4074, 163, 55, 33 }, COLLIDER_WALL);  // roof stairs up *
+	App->collision->AddCollider({ 4129, 133, 26, 32 }, COLLIDER_WALL);  // roof stairs up *
+	App->collision->AddCollider({ 4155, 113, 30, 21 }, COLLIDER_WALL);  // roof stairs up *
+	App->collision->AddCollider({ 4185, 80, 696, 35 }, COLLIDER_WALL);  // roof flat *
 
 	App->collision->AddCollider({ 4074, 418, 55, 33 }, COLLIDER_WALL);  // floor stairs up *
-	App->collision->AddCollider({ 4028, 194, 46, 33 }, COLLIDER_WALL);  // cealinng stairs up *
+	App->collision->AddCollider({ 4028, 194, 46, 33 }, COLLIDER_WALL);  // roof stairs up *
 	App->collision->AddCollider({ 4113, 387, 43, 33 }, COLLIDER_WALL);  // floor stairs up *
 	App->collision->AddCollider({ 4138, 357, 49, 33 }, COLLIDER_WALL);  // floor stairs up *
 	App->collision->AddCollider({ 4185, 325, 434, 33 }, COLLIDER_WALL);  // floor stairs up *
@@ -131,7 +131,7 @@ bool ModuleStage1::Start()
 	App->collision->AddCollider({ 4620, 356, 54, 65 }, COLLIDER_WALL);  // floor stair down *
 	App->collision->AddCollider({ 4674, 388, 27, 42 }, COLLIDER_WALL);  // floor stair down *
 	App->collision->AddCollider({ 4701, 419, 29, 31 }, COLLIDER_WALL);  // floor stair down *
-	App->collision->AddCollider({ 4730, 429, 491, 20 }, COLLIDER_WALL);  // floor stair down *
+	App->collision->AddCollider({ 4730, 429, 491, 20 }, COLLIDER_WALL);  // floor falt  *
 	 
 	App->collision->AddCollider({ 5220, 419, 29, 31 }, COLLIDER_WALL);  // floor stair up *
 	App->collision->AddCollider({ 5220, 419, 29, 31 }, COLLIDER_WALL);  // floor stair up *
@@ -142,7 +142,34 @@ bool ModuleStage1::Start()
 	App->collision->AddCollider({ 5389, 245, 52, 36 }, COLLIDER_WALL);  // floor stair up *
 
 	App->collision->AddCollider({ 5440, 212, 781, 41 }, COLLIDER_WALL);  // floor falt *
-	  
+
+	App->collision->AddCollider({ 6221, 243, 53, 38 }, COLLIDER_WALL);  // floor stairs down *
+	App->collision->AddCollider({ 6273, 274, 29, 33 }, COLLIDER_WALL);  // floor stairs down *
+	App->collision->AddCollider({ 6302, 308, 34, 55 }, COLLIDER_WALL);  // floor stairs down *
+	App->collision->AddCollider({ 6336, 357, 50, 40 }, COLLIDER_WALL);  // floor stairs down *
+	App->collision->AddCollider({ 6385, 389, 27, 47 }, COLLIDER_WALL);  // floor stairs down *
+	App->collision->AddCollider({ 6413, 421, 53, 38 }, COLLIDER_WALL);  // floor stairs down *
+	App->collision->AddCollider({ 6440, 437, 1015, 13 }, COLLIDER_WALL);  // floor flat *
+
+	App->collision->AddCollider({ 6208, -57, 29, 16 }, COLLIDER_WALL);  // roof stairs down *
+	App->collision->AddCollider({ 6236, -46, 47, 47 }, COLLIDER_WALL);  // roof stairs down *
+	App->collision->AddCollider({ 6285, -8, 33, 43 }, COLLIDER_WALL);  // roof stairs down *
+	App->collision->AddCollider({ 6317, 36, 28, 34 }, COLLIDER_WALL);  // roof stairs down *
+	App->collision->AddCollider({ 6345, 70, 52, 31 }, COLLIDER_WALL);  // roof stairs down *
+	App->collision->AddCollider({ 6397, 100, 35, 50 }, COLLIDER_WALL);  // roof stairs down *
+	App->collision->AddCollider({ 6317, 36, 28, 34 }, COLLIDER_WALL);  // roof stairs down *
+
+	App->collision->AddCollider({ 6432, 149, 30, 33 }, COLLIDER_WALL);  // roof stairs down *
+	App->collision->AddCollider({ 6462, 180, 50, 33 }, COLLIDER_WALL);  // roof stairs down *
+	App->collision->AddCollider({ 6511, 210, 693, 31 }, COLLIDER_WALL);  // roof flat  *
+
+	App->collision->AddCollider({ 7011, 226, 195, 34 }, COLLIDER_WALL);  // roof flat detail *
+
+	App->collision->AddCollider({ 7360, 400, 48, 51 }, COLLIDER_WALL);  // floor flat detail *
+
+	App->collision->AddCollider({ 7156, 172, 51, 120  }, COLLIDER_WALL);  // out of crater left  *
+	App->collision->AddCollider({ 7408, 189, 46, 260 }, COLLIDER_WALL);  // out of crater right  *
+
 	//App->collision->AddCollider({ 300, 20, 87, 282 }, COLLIDER_WALL);		// Giant wall to test bullets
 
 	//Music
