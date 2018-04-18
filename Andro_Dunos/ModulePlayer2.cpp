@@ -164,7 +164,7 @@ bool ModulePlayer2::Start()
 	Mix_VolumeChunk(playerDeathExplosion, FXVol);
 
 	// Place player hitbox
-	playerHitbox = App->collision->AddCollider({ (int)position.x, (int)position.y, shipWidth, shipHeight, }, COLLIDER_PLAYER, this);
+	playerHitbox = App->collision->AddCollider({ App->render->camera.x / SCREEN_SIZE + (int)position.x,App->render->camera.y / SCREEN_SIZE + (int)position.y, shipWidth, shipHeight, }, COLLIDER_PLAYER, this);
 
 	return ret;
 }
@@ -197,75 +197,43 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 		}
 	}
 
-	// Calculus on player movement starts here. 
-	// As the values of camera.x and camera.y are negative, we switch them to positive with the - operator to calculate.
+	//Player Movement
 	else if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
-		if (position.y < (App->render->camera.y / SCREEN_SIZE) + App->render->camera.h - shipHeight)
+		if (position.y < SCREEN_HEIGHT - shipHeight)
 		{
 			position.y += speed;
 		}
 
 		if (movVertical > -maxVertical)
 		{
-			--movVertical;		// Decrease vertical counter.
+			--movVertical;		// Decrease vertical counter. Animation Purpose.
 		}
 	}
 
 	else if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		if (position.y > (App->render->camera.y / SCREEN_SIZE))
+		if (position.y > 0)
 		{
 			position.y -= speed;
 		}
 
 		if (movVertical < maxVertical)
 		{
-			++movVertical;		// Increase vertical counter.
+			++movVertical;		// Increase vertical counter. Animation Purpose.
 		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x - 1 >(App->render->camera.x / SCREEN_SIZE))
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT && position.x > 0)
 	{
 		position.x -= speed;
 	}
 
-
-	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x < (App->render->camera.x / SCREEN_SIZE) + SCREEN_WIDTH - shipWidth)
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - shipWidth)
 	{
 		position.x += speed;
 	}
-	//Ship moves at same speed of the camera in game, so we will apply it to going up, down & right
-	if (App->stage1->moveMapRight == true)
-	{
-		position.x += 0.89f;		//HARDCODED: NEEDS TO BE SAME SPEED AS CAMERA
-	}
-	if (position.x <= (App->render->camera.x / SCREEN_SIZE))
-	{
-		position.x = (App->render->camera.x / SCREEN_SIZE);
-	}
-	if (App->stage1->moveMapDown == true)
-	{
-		position.y += 0.89f;		//HARDCODED: NEEDS TO BE SAME SPEED AS CAMERA
-	}
-	if (App->stage1->moveMapUp == true)
-	{
-		position.y -= 0.89f;		//HARDCODED: NEEDS TO BE SAME SPEED AS CAMERA
-	}
 
-	/*
-	if (App->stage2->moveMapRight == true)
-	{
-	position.x += 1.0f;		//HARDCODED: NEEDS TO BE SAME SPEED AS CAMERA
-	}
-	*/
-	// Depending on the vertical counter, we decide the animation
-	/*
-	if (App->stage2->moveMapRight == true)
-	{
-	position.x += 1.0f;		//HARDCODED: NEEDS TO BE SAME SPEED AS CAMERA
-	}
-	*/
 	// Depending on the vertical counter, we decide the animation
 
 	if (movVertical >= maxVertical)
@@ -825,25 +793,26 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 		{
 			playerHitbox->to_delete = true;
 			playerHitbox = nullptr;
+
 		}
 		else if (godMode == false)
 		{
 			godMode = false;
-			playerHitbox = App->collision->AddCollider({ (int)position.x, (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
+			playerHitbox = App->collision->AddCollider({ App->render->camera.x / SCREEN_SIZE + (int)position.x, App->render->camera.y / SCREEN_SIZE + (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
 		}
 	}
 
 	// Update collider position to player position
 	if (godMode == false)
 	{
-		playerHitbox->SetPos(position.x, position.y);
+		playerHitbox->SetPos(App->render->camera.x / SCREEN_SIZE + position.x, App->render->camera.y / SCREEN_SIZE + position.y);
 	}
 
 	// Draw everything --------------------------------------
 	SDL_Rect propellerRect = propellerAnimation->GetCurrentFrame();
 
-	App->render->Blit(graphics, position.x - propellerWidth, position.y, &propellerRect);
-	App->render->Blit(graphics, position.x, position.y, shipRect);
+	App->render->Blit(graphics, position.x - propellerWidth, position.y, &propellerRect, 1.0f,false);
+	App->render->Blit(graphics, position.x, position.y, shipRect,1.0f,false);
 
 	return UPDATE_CONTINUE;
 }
