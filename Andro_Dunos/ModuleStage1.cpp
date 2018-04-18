@@ -127,7 +127,21 @@ bool ModuleStage1::Start()
 	App->collision->AddCollider({ 4138, 357, 49, 33 }, COLLIDER_WALL);  // floor stairs up *
 	App->collision->AddCollider({ 4185, 325, 434, 33 }, COLLIDER_WALL);  // floor stairs up *
 	App->collision->AddCollider({ 4203, 310, 402, 18 }, COLLIDER_WALL);  // floor stairs up *
+
+	App->collision->AddCollider({ 4620, 356, 54, 65 }, COLLIDER_WALL);  // floor stair down *
+	App->collision->AddCollider({ 4674, 388, 27, 42 }, COLLIDER_WALL);  // floor stair down *
+	App->collision->AddCollider({ 4701, 419, 29, 31 }, COLLIDER_WALL);  // floor stair down *
+	App->collision->AddCollider({ 4730, 429, 491, 20 }, COLLIDER_WALL);  // floor stair down *
 	 
+	App->collision->AddCollider({ 5220, 419, 29, 31 }, COLLIDER_WALL);  // floor stair up *
+	App->collision->AddCollider({ 5220, 419, 29, 31 }, COLLIDER_WALL);  // floor stair up *
+	App->collision->AddCollider({ 5249, 388, 27, 31 }, COLLIDER_WALL);  // floor stair up *
+	App->collision->AddCollider({ 5275, 355, 50, 38 }, COLLIDER_WALL);  // floor stair up *
+	App->collision->AddCollider({ 5324, 307, 34, 52 }, COLLIDER_WALL);  // floor stair up *
+	App->collision->AddCollider({ 5358, 276, 31, 37 }, COLLIDER_WALL);  // floor stair up *
+	App->collision->AddCollider({ 5389, 245, 52, 36 }, COLLIDER_WALL);  // floor stair up *
+
+	App->collision->AddCollider({ 5440, 212, 781, 41 }, COLLIDER_WALL);  // floor falt *
 	  
 	//App->collision->AddCollider({ 300, 20, 87, 282 }, COLLIDER_WALL);		// Giant wall to test bullets
 
