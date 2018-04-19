@@ -18,7 +18,7 @@ private:
 	int BigGrey_posy;
 
 public:
-
+	virtual void OnCollision(Collider* collider) override;
 	BigGrey_Enemy(int x, int y);
 
 	// Enemy Hitbox
@@ -27,6 +27,8 @@ public:
 
 	void Move();
 	//void Fire();
+	bool dead = false;
+	uint score = 150;
 };
 
 #endif // __BIGGREY_ENEMY_H__

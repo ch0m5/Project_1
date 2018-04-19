@@ -17,7 +17,7 @@ private:
 	int RedLineShip_posy;
 
 public:
-
+	virtual void OnCollision(Collider* collider) override;
 	RedLineShip_Enemy(int x, int y);
 
 	// Enemy Hitbox
@@ -25,6 +25,9 @@ public:
 	int hitboxHeight;
 
 	void Move();
+
+	uint score = 200;
+	bool dead = false;
 
 };
 

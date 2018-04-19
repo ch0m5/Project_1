@@ -17,7 +17,7 @@ private:
 	int PowerUpEnemy_posy;
 
 public:
-
+	virtual void OnCollision(Collider* collider) override;
 	PowerUp_Enemy(int x, int y);
 
 	// Enemy Hitbox
@@ -25,7 +25,9 @@ public:
 	int hitboxHeight;
 
 	void Move();
+	uint score = 100;
 
+	bool dead = false;
 };
 
 #endif // __POWERUP_ENEMY_H__

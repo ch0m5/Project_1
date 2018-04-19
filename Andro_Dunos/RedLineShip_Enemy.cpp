@@ -4,6 +4,7 @@
 #include "ModuleRender.h"
 #include "ModulePlayer1.h"
 #include "ModuleParticles.h"
+#include "ModuleUserInterface.h"
 
 
 RedLineShip_Enemy::RedLineShip_Enemy(int x, int y) : Enemy(x, y)
@@ -41,6 +42,26 @@ void RedLineShip_Enemy::Move()
 
 }
 
+
+void RedLineShip_Enemy::OnCollision(Collider* collider)
+{
+	//App->particles->AddParticle(App->particles->explosion, position.x, position.y);
+	//App->particles->AddParticle(App->particles->shipExplo, (int)position.x, (int)position.y); // Well done!! Only must put the player position in the parameters
+
+	if (dead == false)
+	{
+		App->particles->AddParticle(App->particles->EnemyExplo, position.x, position.y);
+		if (collider->type == COLLIDER_PLAYER_SHOT)
+		{
+			App->UI->player1Score += score;
+		}
+		if (collider->type == COLLIDER_PLAYER_2_SHOT)
+		{
+			App->UI->player2Score += score;
+		}
+	}
+	dead = true;
+}
 
 /*
 void Enemy_13_Greyball::Fire()

@@ -12,15 +12,17 @@ private:
 	Animation fly;
 
 public:
-
 	Enemy_13_Greyball(int x, int y);
-
+	virtual void OnCollision(Collider* collider) override;
 	// Enemy Hitbox
 	int hitboxWidth;
 	int hitboxHeight;
 
 	void Move();
 	void Fire();
+
+	bool dead = false;
+	uint score = 100;
 };
 
 #endif // __ENEMY_EXAMPLE_H__
