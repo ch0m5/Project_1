@@ -111,5 +111,7 @@ bool ModuleMainMenu::CleanUp()
 	//App->textures->Unload(orangeLettersText);
 	//App->textures->Unload(whiteLettersText);
 
+	App->mixer->UnloadMusic(MusicMainMenu);
+
 	return true;
 }

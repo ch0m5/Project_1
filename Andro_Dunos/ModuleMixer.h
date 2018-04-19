@@ -25,7 +25,9 @@ public:
 	bool CleanUp();
 	
 	Mix_Music * const LoadMusic(const char * path);
+	bool UnloadMusic( Mix_Music * music);
 	Mix_Chunk * const LoadFX(const char * path);
+	bool UnloadFx(Mix_Chunk * sound);
 	
 public:
 

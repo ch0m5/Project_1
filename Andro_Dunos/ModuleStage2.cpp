@@ -90,6 +90,7 @@ bool ModuleStage2::CleanUp()
 	LOG("Unloading colliders")
 		App->collision->Disable();
 
+	App->mixer->UnloadMusic(MusicLvl2);
 
 	return true;
 }

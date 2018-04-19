@@ -74,6 +74,7 @@ bool ModuleHiScore::CleanUp()
 	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
 	App->textures->Unload(hiScoreBackTex);
 	App->scene_HiScore->Disable();
+	App->mixer->UnloadMusic(MusicHighScore);
 	
 	return ret;
 }

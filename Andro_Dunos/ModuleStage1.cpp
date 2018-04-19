@@ -66,6 +66,9 @@ bool ModuleStage1::Start()
 	caveBackText = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/cave_background.png");
 	redPlanetText = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/mars.png");
 
+	//Enable modules
+	
+
 	App->player1->Enable();
 	if (App->input->secondPlayerState == true)  //@AndresSala
 	{
@@ -73,57 +76,59 @@ bool ModuleStage1::Start()
 	}
 	// we shoukd log the problem if not loaded correctly
 	
+	App->collision->Enable();
+	App->particles->Enable();
+
 	//ship position
 	App->player1->position.x = 20;
 	App->player2->position.x = 20;
 	App->player1->position.y = 50;
 	App->player2->position.y = 100;
+
 	// Enemies
 	App->enemies->Enable();
 
+	//wave 1 ------------------------------------------------------
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 380, 30);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 395, 30);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 410, 30);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 425, 30);
 	
-
+	//wave 2 ------------------------------------------------------
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 380 + 50, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 390 + 50, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 400 + 50, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 410 + 50, 100);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 420 + 50, 100);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 430 + 50, 100);
-
+	
+	//wave 3 ------------------------------------------------------
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 380 + 150, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 390 + 150, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 400 + 150, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 410 + 150, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 420 + 150, 60);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 430 + 150, 60);
 
+	//wave 4 ------------------------------------------------------
 	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 720, 140);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 765, 120);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 790, 65);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 825, 100);
 
+	//Powerup------------------------------------------------------
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP_ENEMY, 900, 75); // must deliver a powerup particle
 
+	//wave 5 ------------------------------------------------------
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1100, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1130, 105);
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1160, 135);
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1190, 80);
 
+	//wave 6 ------------------------------------------------------
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1100 + 300, 90);
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1130 + 300, 110);
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1160 + 300, 75);
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1190 + 300, 130);
 
-    //enable modules
-	App->collision->Enable();
-	App->particles->Enable();
-	
-	// Collider
-	App->collision->Enable();
+   
+
 
 	// Ground Collider @Andres&Didac
 	App->collision->AddCollider({ 0, 195, 3000, 275 }, COLLIDER_WALL);  // Moon ground collider 
@@ -133,34 +138,33 @@ bool ModuleStage1::Start()
 	App->collision->AddCollider({ 2605, 180, 97, 46 }, COLLIDER_WALL);  // crater 4
 	App->collision->AddCollider({ 3203, 180, 54, 109 }, COLLIDER_WALL);  // crater 5 cave
 	App->collision->AddCollider({ 2999, 400, 53, 53 }, COLLIDER_WALL);  // cave wall
-
-
+	// -------------------------------------------------------------
 	App->collision->AddCollider({ 3203, 257, 50, 43 }, COLLIDER_WALL);  // cave *
 	App->collision->AddCollider({ 3248, 226, 817, 20 }, COLLIDER_WALL);  // roof *
 	App->collision->AddCollider({ 3248, 245, 177, 17 }, COLLIDER_WALL);  // roof details *
 	App->collision->AddCollider({ 3248, 262, 98, 7 }, COLLIDER_WALL);  // roof details *
-
+	 // -------------------------------------------------------------
 	App->collision->AddCollider({ 3894, 417, 66, 33 }, COLLIDER_WALL);  // floor details *
-
+	// --------------------------------------------------------------
 	App->collision->AddCollider({ 3052, 430, 1030, 50 }, COLLIDER_WALL);  // Cave ground Collider
-
+	// --------------------------------------------------------------
 	App->collision->AddCollider({ 4074, 163, 55, 33 }, COLLIDER_WALL);  // roof stairs up *
 	App->collision->AddCollider({ 4129, 133, 26, 32 }, COLLIDER_WALL);  // roof stairs up *
 	App->collision->AddCollider({ 4155, 113, 30, 21 }, COLLIDER_WALL);  // roof stairs up *
 	App->collision->AddCollider({ 4185, 80, 696, 35 }, COLLIDER_WALL);  // roof flat *
-
+	// ---------------------------------------------------------------
 	App->collision->AddCollider({ 4074, 418, 55, 33 }, COLLIDER_WALL);  // floor stairs up *
 	App->collision->AddCollider({ 4028, 194, 46, 33 }, COLLIDER_WALL);  // roof stairs up *
 	App->collision->AddCollider({ 4113, 387, 43, 33 }, COLLIDER_WALL);  // floor stairs up *
 	App->collision->AddCollider({ 4138, 357, 49, 33 }, COLLIDER_WALL);  // floor stairs up *
 	App->collision->AddCollider({ 4185, 325, 434, 33 }, COLLIDER_WALL);  // floor stairs up *
 	App->collision->AddCollider({ 4203, 310, 402, 18 }, COLLIDER_WALL);  // floor stairs up *
-
+	// ---------------------------------------------------------------
 	App->collision->AddCollider({ 4620, 356, 54, 65 }, COLLIDER_WALL);  // floor stair down *
 	App->collision->AddCollider({ 4674, 388, 27, 42 }, COLLIDER_WALL);  // floor stair down *
 	App->collision->AddCollider({ 4701, 419, 29, 31 }, COLLIDER_WALL);  // floor stair down *
 	App->collision->AddCollider({ 4730, 429, 491, 20 }, COLLIDER_WALL);  // floor falt  *
-	 
+	 // ---------------------------------------------------------------
 	App->collision->AddCollider({ 5220, 419, 29, 31 }, COLLIDER_WALL);  // floor stair up *
 	App->collision->AddCollider({ 5220, 419, 29, 31 }, COLLIDER_WALL);  // floor stair up *
 	App->collision->AddCollider({ 5249, 388, 27, 31 }, COLLIDER_WALL);  // floor stair up *
@@ -168,9 +172,9 @@ bool ModuleStage1::Start()
 	App->collision->AddCollider({ 5324, 307, 34, 52 }, COLLIDER_WALL);  // floor stair up *
 	App->collision->AddCollider({ 5358, 276, 31, 37 }, COLLIDER_WALL);  // floor stair up *
 	App->collision->AddCollider({ 5389, 245, 52, 36 }, COLLIDER_WALL);  // floor stair up *
-
+	// ----------------------------------------------------------------
 	App->collision->AddCollider({ 5440, 212, 781, 41 }, COLLIDER_WALL);  // floor falt *
-
+	// ----------------------------------------------------------------
 	App->collision->AddCollider({ 6221, 243, 53, 38 }, COLLIDER_WALL);  // floor stairs down *
 	App->collision->AddCollider({ 6273, 274, 29, 33 }, COLLIDER_WALL);  // floor stairs down *
 	App->collision->AddCollider({ 6302, 308, 34, 55 }, COLLIDER_WALL);  // floor stairs down *
@@ -178,7 +182,7 @@ bool ModuleStage1::Start()
 	App->collision->AddCollider({ 6385, 389, 27, 47 }, COLLIDER_WALL);  // floor stairs down *
 	App->collision->AddCollider({ 6413, 421, 53, 38 }, COLLIDER_WALL);  // floor stairs down *
 	App->collision->AddCollider({ 6440, 437, 1015, 13 }, COLLIDER_WALL);  // floor flat *
-
+	// ----------------------------------------------------------------
 	App->collision->AddCollider({ 6208, -57, 29, 16 }, COLLIDER_WALL);  // roof stairs down *
 	App->collision->AddCollider({ 6236, -46, 47, 47 }, COLLIDER_WALL);  // roof stairs down *
 	App->collision->AddCollider({ 6285, -8, 33, 43 }, COLLIDER_WALL);  // roof stairs down *
@@ -186,23 +190,23 @@ bool ModuleStage1::Start()
 	App->collision->AddCollider({ 6345, 70, 52, 31 }, COLLIDER_WALL);  // roof stairs down *
 	App->collision->AddCollider({ 6397, 100, 35, 50 }, COLLIDER_WALL);  // roof stairs down *
 	App->collision->AddCollider({ 6317, 36, 28, 34 }, COLLIDER_WALL);  // roof stairs down *
-
+	// ----------------------------------------------------------------
 	App->collision->AddCollider({ 6432, 149, 30, 33 }, COLLIDER_WALL);  // roof stairs down *
 	App->collision->AddCollider({ 6462, 180, 50, 33 }, COLLIDER_WALL);  // roof stairs down *
 	App->collision->AddCollider({ 6511, 210, 693, 31 }, COLLIDER_WALL);  // roof flat  *
-
+// ----------------------------------------------------------------
 	App->collision->AddCollider({ 7011, 226, 195, 34 }, COLLIDER_WALL);  // roof flat detail *
-
+// ----------------------------------------------------------------
 	App->collision->AddCollider({ 7360, 400, 48, 51 }, COLLIDER_WALL);  // floor flat detail *
-
+	// ----------------------------------------------------------------
 	App->collision->AddCollider({ 7156, 172, 51, 120  }, COLLIDER_WALL);  // out of crater left  *
 	App->collision->AddCollider({ 7408, 189, 46, 260 }, COLLIDER_WALL);  // out of crater right  *
-
+	// ----------------------------------------------------------------
 	App->collision->AddCollider({ 7408, 197, 1897, 45 }, COLLIDER_WALL);  // moon surface 2*
 	App->collision->AddCollider({ 7785, 188, 99, 45 }, COLLIDER_WALL);  // moon surface 2 crater 1*
 	App->collision->AddCollider({ 8409, 188, 99, 45 }, COLLIDER_WALL);  // moon surface 2 crater 2 * 
 	App->collision->AddCollider({ 8651, 183, 99, 45 }, COLLIDER_WALL);  // moon surface 2 crater 3*
-
+	// ----------------------------------------------------------------
 	//App->collision->AddCollider({ 300, 20, 87, 282 }, COLLIDER_WALL);		// Giant wall to test bullets
 
 	//Music
@@ -232,8 +236,11 @@ bool ModuleStage1::CleanUp()
 	 moveMapRight = true;
 	 moveMapDown = false;
 	 moveMapUp = false;
-	 //--------
+
+	 //----------------
+
 	LOG("Unloading players");
+
 	App->player1->Disable();
 	if (App->input->secondPlayerState == true) //@AndresSala
 	{
@@ -245,6 +252,7 @@ bool ModuleStage1::CleanUp()
 	App->textures->Unload(background1Text);
 	App->textures->Unload(bluePlanetText);
 	App->textures->Unload(caveBackText);
+	App->textures->Unload(redPlanetText);
 
 	LOG("Unloading enemies");
 	App->enemies->Disable();
@@ -255,6 +263,7 @@ bool ModuleStage1::CleanUp()
 	LOG("Unloading particles")
 	App->particles->Disable();
 
+	App->mixer->UnloadMusic(MusicLvl1);
 
 	
 

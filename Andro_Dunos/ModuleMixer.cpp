@@ -89,6 +89,29 @@ Mix_Music * const ModuleMixer::LoadMusic(const char* path)	// Function to check 
 	return music;
 }
 
+bool ModuleMixer::UnloadMusic(Mix_Music * music)
+{
+	bool ret = false;
+
+	if (music != nullptr)
+	{
+		for (int i = 0; i < MAX_MUSIC; ++i)
+		{
+			if (soundtrack[i] == music)
+			{
+				Mix_FreeMusic(music);
+				soundtrack[i] = nullptr;
+				ret = true;
+				break;
+			}
+		}
+
+		
+	}
+
+	return ret;
+}
+
 Mix_Chunk * const ModuleMixer::LoadFX(const char* path)	// Function to check a sound load, if fail SDL_GetError, if success execute it
 {
 	Mix_Chunk *sound = nullptr;
@@ -103,4 +126,27 @@ Mix_Chunk * const ModuleMixer::LoadFX(const char* path)	// Function to check a s
 	}
 
 	return sound;
+}
+
+bool ModuleMixer::UnloadFx(Mix_Chunk * soundfx)
+{
+	bool ret = false;
+
+	if (soundfx != nullptr)
+	{
+		for (int i = 0; i < MAX_MUSIC; ++i)
+		{
+			if (fx[i] == soundfx)
+			{
+
+				Mix_FreeChunk(soundfx);
+				fx[i] = nullptr;
+				ret = true;
+				break;
+			}
+		}
+
+	}
+
+	return ret;
 }

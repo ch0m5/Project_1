@@ -56,7 +56,7 @@ update_status ModuleStageClear::Update()
 	// Draw everything -------------------------------------- Andro Dunos
 
 	App->render->Blit(stageClearText, 10, 200 + ySpeedAnimation, &stageClearRect); // Crashed Ship background Drawn on Screen
-
+	
 																				   //Small animation, Crashed ship appears from the lower part until all the sprite is seen
 	if (200 + ySpeedAnimation>50)
 	{
@@ -77,6 +77,7 @@ bool ModuleStageClear::CleanUp()
 	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
 	App->textures->Unload(stageClearText);
 	App->stageClear->Disable();
+	App->mixer->UnloadMusic(MusicStageClear);
 
 	return ret;
 }

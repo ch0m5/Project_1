@@ -794,7 +794,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 				break;
 			}
-
+			
 			Mix_PlayChannel(3, type4Shot, 0);
 			break;
 		}
