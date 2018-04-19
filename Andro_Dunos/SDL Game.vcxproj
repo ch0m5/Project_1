@@ -97,6 +97,7 @@
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleUserInterface.h" />
     <ClInclude Include="ModuleWindow.h" />
+    <ClInclude Include="NewPath.h" />
     <ClInclude Include="p2Point.h" />
     <ClInclude Include="RedLineShip_Enemy.h" />
   </ItemGroup>
