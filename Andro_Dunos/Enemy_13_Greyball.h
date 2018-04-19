@@ -7,7 +7,7 @@ class Enemy_13_Greyball : public Enemy
 {
 private:
 	float wave = -1.0f;
-	bool going_up = true;
+	bool going_up = false;
 	int original_y = 0;
 	Animation fly;
 

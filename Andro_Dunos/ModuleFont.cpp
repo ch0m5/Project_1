@@ -110,3 +110,26 @@ void ModuleFont::BlitText(int x, int y, int font_id, const char* text) const
 		App->render->Blit(font->graphic, x + (i*font->char_w), y, &rect, 1.0f, false);
 	}
 }
+
+
+void ModuleFont::scoreToText(char* string, uint score, uint size)
+{
+
+	/*uint mul = 10;
+	for (uint i = size - 1; i >= 0; --i,mul*=10)
+	{
+		*string[i] = (score % mul) + 48;
+	}
+	for (int i = 0; i < size; ++i)
+	{
+		if (*string[i] == 0 && *string[i]!= size-2)
+		{
+			*string[i] == ' ';
+		}
+		else 
+		{
+			break;
+		}
+	}
+*/
+}

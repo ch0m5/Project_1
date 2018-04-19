@@ -71,15 +71,19 @@ bool ModuleStage1::Start()
 	}
 	// we shoukd log the problem if not loaded correctly
 	
+	//ship position
+	App->player1->position.x = 20;
+	App->player2->position.x = 20;
+	App->player1->position.y = 50;
+	App->player2->position.y = 100;
 	// Enemies
 	App->enemies->Enable();
 
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 380, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 390, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 400, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 410, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 420, 20);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 430, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 380, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 395, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 410, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 425, 30);
+	
 
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 380 + 50, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 390 + 50, 100);
@@ -94,6 +98,13 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 410 + 150, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 420 + 150, 60);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 430 + 150, 60);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 660, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 675, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 690, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 705, 80);
+
+
 	
 	// Collider
 	App->collision->Enable();
