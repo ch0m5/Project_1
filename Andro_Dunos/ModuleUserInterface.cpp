@@ -37,7 +37,7 @@ bool ModuleUserInterface::Start()
 	player2Score = 145;
 	char player1ScoreStr[8] = {NULL,NULL,NULL,NULL,NULL,NULL,NULL };
 	char player2ScoreStr[8] = { NULL,NULL,NULL,NULL,NULL,NULL,NULL };
-	font_score = App->fonts->Load("Assets/Sprites/User_Interface/Grafical_Interface/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
+	font_score = App->fonts->Load("Assets/Sprites/User_Interface/fonts/Font-score-white.png", "1234567890P", 1);
 	
 	return ret;
 }
@@ -56,13 +56,13 @@ update_status ModuleUserInterface::Update()
 {
 	if (App->mainMenu->IsEnabled() == false)
 	{
-		App->fonts->BlitText(10, 10, font_score, "1p");
+		App->fonts->BlitText(10, 10, font_score, "1P");
 		sprintf_s(player1Score_text, 10, "%7d", score);
 		App->fonts->BlitText(50, 10, 0, player1Score_text);
 		
 		if(App->input->secondPlayerState == true)
 		{
-			App->fonts->BlitText(210, 10, font_score, "2p");
+			App->fonts->BlitText(210, 10, font_score, "2P");
 			sprintf_s(player2Score_text, 10, "%7d", score);
 			App->fonts->BlitText(250, 10, 0, player2Score_text);
 		}
