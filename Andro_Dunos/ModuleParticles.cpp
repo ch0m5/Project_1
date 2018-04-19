@@ -230,8 +230,7 @@ bool ModuleParticles::Start()
 	upRightGreen1[0].speed.y = -5.0f;
 	upRightGreen1[0].life = shortLife;
 	upRightGreen1[0].anim.speed = 0.3f;
-	//upRightGreen1[0].arrayId = 0;			// ArrayId is a number identification for a type of shot, which will be used to mark the arraIdList (arrayIdList[example.arrayId]++)
-											// The value of the array
+	
 	upRightGreen1[1].anim.PushBack({ upRightGreenPosX + 2 * 1, upRightGreenPosY - 2 * 1, 2, 4 });
 	upRightGreen1[1].anim.loop = false;
 	upRightGreen1[1].speed.x = 7.0f;
@@ -556,9 +555,9 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 	}
 }
 
-void ModuleParticles::AddParticleArray(const Particle& particle, int arraySize, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)	// Carles edit
+void ModuleParticles::AddParticleArray(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)	// Carles edit
 {
-	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)	// Carles edit
 	{
 		if (active[i] == nullptr)
 		{
@@ -566,6 +565,7 @@ void ModuleParticles::AddParticleArray(const Particle& particle, int arraySize, 
 			p->born = SDL_GetTicks() + delay;
 			p->position.x = p->fPositionHorizontal = x + App->render->camera.x / SCREEN_SIZE;
 			p->position.y = p->fPositionVertical = y + App->render->camera.y / SCREEN_SIZE;
+			p->arrayId = arrayIdList;
 			if (collider_type != COLLIDER_NONE)
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			active[i] = p;
@@ -584,29 +584,30 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			if (c2->type == COLLIDER_WALL || c2->type == COLLIDER_ENEMY) 
 			{
 				//AddParticle(shipExplo, active[i]->position.x, active[i]->position.y);
-			}
-			else if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_ENEMY) 
-			{
-				/*if (active[i]->arrayId > -1)	// Carles Code
+				
+				// Carles Code <- THIS TRIGGERS THE CORRECT CONDITION
+				if (active[i]->arrayId > -1)	
 				{
-					//int arrayMarker = arrayIdCounter[active[i]->arrayId];
-					
+					int arrayIdMarker = active[i]->arrayId;
+
+					//AddParticle(EnemyExplo, active[i]->position.x, active[i]->position.y); explosion needs to be here somewhere?
+
 					for (uint j = 0; j < MAX_ACTIVE_PARTICLES; j++)
 					{
-						if (active[j] != nullptr && active[j]->arrayId == arrayMarker)
+						if (active[j] != nullptr && active[j]->arrayId == arrayIdMarker)
+						{
 							delete active[j];
-						active[j] = nullptr;
+							active[j] = nullptr;
+						}
 					}
-					
+
+					break;
 				}
-
-				else
-				{
-					AddParticle(EnemyExplo, active[i]->position.x, active[i]->position.y);
-				}*/
+				// End Carles code
+			}
+			else if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_ENEMY)
+			{
 				
-				AddParticle(EnemyExplo, active[i]->position.x, active[i]->position.y);
-
 			}
 			else if (c1->type == COLLIDER_ENEMY_SHOT || c2->type == COLLIDER_ENEMY_SHOT)
 			{
@@ -618,6 +619,14 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			break;
 		}
 	}
+}
+
+void ModuleParticles::arrayListNext()
+{
+	if (arrayIdList < MAX_ACTIVE_PARTICLES)
+		arrayIdList++;
+
+	else { arrayIdList = 0; }
 }
 
 // -------------------------------------------------------------
@@ -637,8 +646,8 @@ Particle::Particle(const Particle& p) :
 	speed(p.speed),
 	fx(p.fx),
 	born(p.born),
-	life(p.life)
-	//arrayId(p.arrayId)	// Carles edit
+	life(p.life),
+	arrayId(p.arrayId)	// Carles edit
 {}
 
 Particle::~Particle()

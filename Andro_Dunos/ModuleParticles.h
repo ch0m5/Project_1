@@ -8,7 +8,6 @@
 #include "ModuleCollision.h"
 
 #define MAX_ACTIVE_PARTICLES 500
-#define MAX_ID 100	// Carles edit
 
 enum weapon_types	// To mark the weapon Type currently using
 {
@@ -29,7 +28,7 @@ struct Particle
 	uint fx = 0;
 	iPoint position;
 	float fPositionHorizontal, fPositionVertical;
-	//int arrayId = -1;	// carles edit
+	int arrayId = -1;	// carles edit
 	fPoint speed;
 	Uint32 born = 0;
 	Uint32 life = 0;
@@ -52,8 +51,9 @@ public:
 	bool CleanUp();
 
 	void AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
-	void AddParticleArray(const Particle& particle, int arraySize, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);	// Carles edit
+	void AddParticleArray(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);	// Carles edit
 	void OnCollision(Collider* c1, Collider* c2) override;
+	void arrayListNext();
 
 private:
 	SDL_Texture* graphics = nullptr;
@@ -66,8 +66,7 @@ public:
 	int mediumLife = 2000;
 	int	longLife = 3000;
 
-	//int* arrayIdCounter = nullptr;	// Carles edit
-	int wtf;
+	int arrayIdList = 0;	// Carles edit
 
 	// Type 1 particles
 	Particle smallBlue;
