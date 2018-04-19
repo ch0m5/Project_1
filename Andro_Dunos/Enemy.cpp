@@ -33,5 +33,12 @@ void Enemy::OnCollision(Collider* collider)
 	//App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 	//App->particles->AddParticle(App->particles->shipExplo, (int)position.x, (int)position.y); // Well done!! Only must put the player position in the parameters
 	App->particles->AddParticle(App->particles->EnemyExplo, position.x, position.y);
-	App->UI->player1Score += 100;
+	if (collider->type == COLLIDER_PLAYER_SHOT)			//ADDED CHANGES HERE
+	{
+		App->UI->player1Score += 100;
+	}
+	if (collider->type == COLLIDER_PLAYER_2_SHOT)
+	{
+		App->UI->player2Score += 100;
+	}
 }
