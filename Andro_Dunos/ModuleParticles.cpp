@@ -221,65 +221,10 @@ bool ModuleParticles::Start()
 	straightGreen.speed.x = 7.0f;
 	straightGreen.life = shortLife;
 	straightGreen.anim.speed = 0.3f;
-
-	int upRightGreenPosX = 57;
-	int upRightGreenPosY = 49;
-	upRightGreen1[0].anim.PushBack({ upRightGreenPosX + 2 * 0, upRightGreenPosY - 2 * 0, 2, 4 });	// First diagonals
-	upRightGreen1[0].anim.loop = false;
-	upRightGreen1[0].speed.x = 7.0f;
-	upRightGreen1[0].speed.y = -5.0f;
-	upRightGreen1[0].life = shortLife;
-	upRightGreen1[0].anim.speed = 0.3f;
 	
-	upRightGreen1[1].anim.PushBack({ upRightGreenPosX + 2 * 1, upRightGreenPosY - 2 * 1, 2, 4 });
-	upRightGreen1[1].anim.loop = false;
-	upRightGreen1[1].speed.x = 7.0f;
-	upRightGreen1[1].speed.y = -5.0f;
-	upRightGreen1[1].life = shortLife;
-	upRightGreen1[1].anim.speed = 0.3f;
-
-	upRightGreen1[2].anim.PushBack({ upRightGreenPosX + 2 * 2, upRightGreenPosY - 2 * 2, 2, 4 });
-	upRightGreen1[2].anim.loop = false;
-	upRightGreen1[2].speed.x = 7.0f;
-	upRightGreen1[2].speed.y = -5.0f;
-	upRightGreen1[2].life = shortLife;
-	upRightGreen1[2].anim.speed = 0.3f;
-
-	upRightGreen1[3].anim.PushBack({ upRightGreenPosX + 2 * 3, upRightGreenPosY - 2 * 3, 2, 4 });
-	upRightGreen1[3].anim.loop = false;
-	upRightGreen1[3].speed.x = 7.0f;
-	upRightGreen1[3].speed.y = -5.0f;
-	upRightGreen1[3].life = shortLife;
-	upRightGreen1[3].anim.speed = 0.3f;
-
-	upRightGreen1[4].anim.PushBack({ upRightGreenPosX + 2 * 4, upRightGreenPosY - 2 * 4, 2, 4 });
-	upRightGreen1[4].anim.loop = false;
-	upRightGreen1[4].speed.x = 7.0f;
-	upRightGreen1[4].speed.y = -5.0f;
-	upRightGreen1[4].life = shortLife;
-	upRightGreen1[4].anim.speed = 0.3f;
-
-	upRightGreen1[5].anim.PushBack({ upRightGreenPosX + 2 * 5, upRightGreenPosY - 2 * 5, 2, 4 });
-	upRightGreen1[5].anim.loop = false;
-	upRightGreen1[5].speed.x = 7.0f;
-	upRightGreen1[5].speed.y = -5.0f;
-	upRightGreen1[5].life = shortLife;
-	upRightGreen1[5].anim.speed = 0.3f;
-
-	upRightGreen1[6].anim.PushBack({ upRightGreenPosX + 2 * 6, upRightGreenPosY - 2 * 6, 2, 4 });
-	upRightGreen1[6].anim.loop = false;
-	upRightGreen1[6].speed.x = 7.0f;
-	upRightGreen1[6].speed.y = -5.0f;
-	upRightGreen1[6].life = shortLife;
-	upRightGreen1[6].anim.speed = 0.3f;
-
-	upRightGreen1[7].anim.PushBack({ upRightGreenPosX + 2 * 7, upRightGreenPosY - 2 * 7, 2, 4 });
-	upRightGreen1[7].anim.loop = false;
-	upRightGreen1[7].speed.x = 7.0f;
-	upRightGreen1[7].speed.y = -5.0f;
-	upRightGreen1[7].life = shortLife;
-	upRightGreen1[7].anim.speed = 0.3f;
-	
+	// Parameter list: (Particle* particleArray, int arraySize, int particleSizeX, int particleSizeY, int startX, int startY, int movX, int movY, float speedX, float speedY, int life, int animSpeed, bool animLoop)
+	SetParticlearray(upRightGreen1, 8, 2, 4, 57, 49, 2, -2, 7.0f, -5.0f, shortLife, 0.3f, false);
+	SetParticlearray(downRightGreen3, 8, 4, 12, 114, 41, 4, 4, 5.0f, 7.0f, shortLife, 0.3f, false);
 
 	bombRightDown.anim.PushBack({ 121, 113, 8, 9 });
 	bombRightDown.anim.loop = false;
@@ -571,6 +516,19 @@ void ModuleParticles::AddParticleArray(const Particle& particle, int x, int y, C
 			active[i] = p;
 			break;
 		}
+	}
+}
+// Parameter list: (Particle* particleArray, int arraySize, int particleSizeX, int particleSizeY, int startX, int startY, int movX, int movY, float speedX, float speedY, int life, int animSpeed, bool animLoop)
+void ModuleParticles::SetParticlearray(Particle* particleArray, int arraySize, int particleSizeX, int particleSizeY, int startX, int startY, int movX, int movY, float speedX, float speedY, int particleLife, float animSpeed, bool animLoop) // Carles edit
+{
+	for (int j = 0; j < arraySize; ++j)	// Carles edit
+	{
+		particleArray[j].anim.PushBack({ startX + movX * j, startY + movY * j, particleSizeX, particleSizeY });	// First diagonals
+		particleArray[j].anim.loop = animLoop;
+		particleArray[j].speed.x = speedX;
+		particleArray[j].speed.y = speedY;
+		particleArray[j].life = particleLife;
+		particleArray[j].anim.speed = animSpeed;
 	}
 }
 

@@ -52,6 +52,7 @@ public:
 
 	void AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
 	void AddParticleArray(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);	// Carles edit
+	void SetParticlearray(Particle* particleArray, int arraySize, int particleSizeX, int particleSizeY, int startX, int startY, int movX, int movY, float speedX, float speedY, int particleLife, float animSpeed, bool animLoop);	// Carles edit
 	void OnCollision(Collider* c1, Collider* c2) override;
 	void arrayListNext();
 
@@ -96,10 +97,10 @@ public:
 	Particle straightGreen;			
 
 	// First diagonals				// Size: 2, 4. Move: 2, 2.
-	Particle upRightGreen1[8];		// Starts at 57, 53
-	Particle downRightGreen1[8];	// Starts at 57, 60
-	Particle upLeftGreen1[8];		// Starts at 57, 53
-	Particle downLeftGreen1[8];		// Starts at 57, 53
+	Particle upRightGreen1[8];		// Starts at 57, 49
+	Particle downRightGreen1[8];	// Starts at
+	Particle upLeftGreen1[8];		// Starts at
+	Particle downLeftGreen1[8];		// Starts at
 
 	// Second diagonals cut in half
 	Particle upRightGreen2[1];		
@@ -108,10 +109,10 @@ public:
 	Particle downLeftGreen2[1];
 
 	// Second diagonals full		// Size: 4, 12. Move: 4, 4. Array size: 8.
-	Particle upRightGreen3[3];		// Starts at 57, 53
-	Particle downRightGreen3[8];	// Starts at 57, 53
-	Particle upLeftGreen3[8];		// Starts at 57, 53
-	Particle downLeftGreen3[8];		// Starts at 57, 53
+	Particle upRightGreen3[3];		// Starts at
+	Particle downRightGreen3[8];	// Starts at 114, 42
+	Particle upLeftGreen3[8];		// Starts at
+	Particle downLeftGreen3[8];		// Starts at
 
 	// Third diagonals cut in half
 	Particle upRightGreen4[8];		
