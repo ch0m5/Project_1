@@ -116,6 +116,9 @@
     <ClInclude Include="ModuleStageClear.h">
       <Filter>ModulesStages</Filter>
     </ClInclude>
+    <ClInclude Include="BigGrey_Enemy.h">
+      <Filter>ModulesEnemies\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -195,6 +198,9 @@
     </ClCompile>
     <ClCompile Include="ModuleStageClear.cpp">
       <Filter>ModulesStages</Filter>
+    </ClCompile>
+    <ClCompile Include="BigGrey_Enemy.cpp">
+      <Filter>ModulesEnemies\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
