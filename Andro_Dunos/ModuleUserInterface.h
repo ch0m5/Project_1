@@ -22,6 +22,7 @@ public:
 public:
 	//Variables
 	uint score;
+	uint player1Score;
 	uint player2Score;
 	
 	int font_score = -1;
