@@ -107,6 +107,9 @@
     <ClInclude Include="RedLineShip_Enemy.h">
       <Filter>ModulesEnemies\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="NewPath.h">
+      <Filter>Containers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
