@@ -221,10 +221,14 @@ bool ModuleParticles::Start()
 	straightGreen.speed.x = 7.0f;
 	straightGreen.life = shortLife;
 	straightGreen.anim.speed = 0.3f;
-	
-	// Parameter list: (Particle* particleArray, int arraySize, int particleSizeX, int particleSizeY, int startX, int startY, int movX, int movY, float speedX, float speedY, int life, int animSpeed, bool animLoop)
-	SetParticlearray(upRightGreen1, 8, 2, 4, 57, 49, 2, -2, 7.0f, -5.0f, shortLife, 0.3f, false);
-	SetParticlearray(downRightGreen3, 8, 4, 12, 114, 41, 4, 4, 5.0f, 7.0f, shortLife, 0.3f, false);
+
+	// Parameter list: (Particle* particleArray, int arraySize, int startX, int startY, int particleSizeX, int particleSizeY, int movX, int movY, float speedX, float speedY, int life, int animSpeed = 0.0f, bool animLoop = false)
+	SetParticleArray(upRightGreen1, 8, 57, 49, 2, 4, 2, -2, 5.0f, -4.0f, shortLife);
+	SetParticleArray(downRightGreen1, 8, 57, 60, 2, 4, 2, 2, 5.0f, 4.0f, shortLife);
+	SetParticleArray(upLeftGreen1, 8, 71, 74, 2, 4, -2, -2, -5.0f, -4.0f, shortLife);
+	SetParticleArray(downLeftGreen1, 8, 71, 35, 2, 4, -2, 2, -5.0f, 4.0f, shortLife);
+
+	SetParticleArray(downRightGreen3, 8, 114, 41, 4, 12, 4, 4, 5.0f, 7.0f, shortLife);
 
 	bombRightDown.anim.PushBack({ 121, 113, 8, 9 });
 	bombRightDown.anim.loop = false;
@@ -284,7 +288,6 @@ bool ModuleParticles::Start()
 	arrowSuperUp2.anim.PushBack({ 41, 22, 13, 8 });
 	arrowSuperUp2.anim.PushBack({ 41, 38, 13, 8 });
 	arrowSuperUp2.anim.loop = false;
-	arrowSuperUp2.anim.loop = false;
 	arrowSuperUp2.speed.x = 7.0f;
 	arrowSuperUp2.speed.y = -1.5f;
 	arrowSuperUp2.life = shortLife;
@@ -293,7 +296,6 @@ bool ModuleParticles::Start()
 	arrowUp2.anim.PushBack({ 41, 8, 13, 8 });
 	arrowUp2.anim.PushBack({ 41, 22, 13, 8 });
 	arrowUp2.anim.PushBack({ 41, 38, 13, 8 });
-	arrowUp2.anim.loop = false;
 	arrowUp2.anim.loop = false;
 	arrowUp2.speed.x = 7.0f;
 	arrowUp2.speed.y = -1.0f;
@@ -312,7 +314,6 @@ bool ModuleParticles::Start()
 	arrowDown2.anim.PushBack({ 41, 22, 13, 8 });
 	arrowDown2.anim.PushBack({ 41, 38, 13, 8 });
 	arrowDown2.anim.loop = false;
-	arrowDown2.anim.loop = false;
 	arrowDown2.speed.x = 7.0f;
 	arrowDown2.speed.y = 1.0f;
 	arrowDown2.life = shortLife;
@@ -321,7 +322,6 @@ bool ModuleParticles::Start()
 	arrowSuperDown2.anim.PushBack({ 41, 8, 13, 8 });
 	arrowSuperDown2.anim.PushBack({ 41, 22, 13, 8 });
 	arrowSuperDown2.anim.PushBack({ 41, 38, 13, 8 });
-	arrowSuperDown2.anim.loop = false;
 	arrowSuperDown2.anim.loop = false;
 	arrowSuperDown2.speed.x = 7.0f;
 	arrowSuperDown2.speed.y = 1.5f;
@@ -482,6 +482,20 @@ update_status ModuleParticles::Update()
 	return UPDATE_CONTINUE;
 }
 
+// Parameter list: (Particle* particleArray, int arraySize, int particleSizeX, int particleSizeY, int startX, int startY, int movX, int movY, float speedX, float speedY, int life, int animSpeed, bool animLoop)
+void ModuleParticles::SetParticleArray(Particle* particleArray, int arraySize, int startX, int startY, int particleSizeX, int particleSizeY, int movX, int movY, float speedX, float speedY, int particleLife, float animSpeed, bool animLoop) // Carles edit
+{
+	for (int i = 0; i < arraySize; i++)	// Carles edit
+	{
+		particleArray[i].anim.PushBack({ startX + movX * i, startY + movY * i, particleSizeX, particleSizeY });
+		particleArray[i].anim.loop = animLoop;
+		particleArray[i].speed.x = speedX;
+		particleArray[i].speed.y = speedY;
+		particleArray[i].life = particleLife;
+		particleArray[i].anim.speed = animSpeed;
+	}
+}
+
 void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
@@ -500,36 +514,38 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 	}
 }
 
-void ModuleParticles::AddParticleArray(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)	// Carles edit
+void ModuleParticles::AddParticleArray(Particle* particleArray, int arraySize, int x, int y, int movX, int movY,  COLLIDER_TYPE collider_type, Uint32 delay)	// Carles edit
 {
-	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)	// Carles edit
+	uint i = 0;
+
+	for (int j = 0; j < arraySize; j++)
 	{
-		if (active[i] == nullptr)
+		for (i; i < MAX_ACTIVE_PARTICLES; ++i)	// Carles edit
 		{
-			Particle* p = new Particle(particle);
-			p->born = SDL_GetTicks() + delay;
-			p->position.x = p->fPositionHorizontal = x + App->render->camera.x / SCREEN_SIZE;
-			p->position.y = p->fPositionVertical = y + App->render->camera.y / SCREEN_SIZE;
-			p->arrayId = arrayIdList;
-			if (collider_type != COLLIDER_NONE)
-				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
-			active[i] = p;
-			break;
+			if (active[i] == nullptr)
+			{
+				Particle* p = new Particle(particleArray[j]);	// maybe fails in here
+				p->born = SDL_GetTicks() + delay;
+				p->position.x = p->fPositionHorizontal = x + App->render->camera.x / SCREEN_SIZE + movX * j;
+				p->position.y = p->fPositionVertical = y + App->render->camera.y / SCREEN_SIZE + movY * j;
+				p->arrayId = arrayIdList;
+				if (collider_type != COLLIDER_NONE)
+					p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
+				active[i] = p;
+				break;
+			}
 		}
 	}
+
+	ArrayListNext();
 }
-// Parameter list: (Particle* particleArray, int arraySize, int particleSizeX, int particleSizeY, int startX, int startY, int movX, int movY, float speedX, float speedY, int life, int animSpeed, bool animLoop)
-void ModuleParticles::SetParticlearray(Particle* particleArray, int arraySize, int particleSizeX, int particleSizeY, int startX, int startY, int movX, int movY, float speedX, float speedY, int particleLife, float animSpeed, bool animLoop) // Carles edit
+
+void ModuleParticles::ArrayListNext()
 {
-	for (int j = 0; j < arraySize; ++j)	// Carles edit
-	{
-		particleArray[j].anim.PushBack({ startX + movX * j, startY + movY * j, particleSizeX, particleSizeY });	// First diagonals
-		particleArray[j].anim.loop = animLoop;
-		particleArray[j].speed.x = speedX;
-		particleArray[j].speed.y = speedY;
-		particleArray[j].life = particleLife;
-		particleArray[j].anim.speed = animSpeed;
-	}
+	if (arrayIdList < MAX_ACTIVE_PARTICLES)
+		arrayIdList++;
+
+	else { arrayIdList = 0; }
 }
 
 void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
@@ -578,15 +594,47 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		}
 	}
 }
-
-void ModuleParticles::arrayListNext()
+/*
+// TESTING
+void ModuleParticles::SetParticleArray2(Particle* particleArray, int arraySize, int startX, int startY, int particleSizeX, int particleSizeY, int movX, int movY, float speedX, float speedY, int particleLife, float animSpeed, bool animLoop) // Carles edit
 {
-	if (arrayIdList < MAX_ACTIVE_PARTICLES)
-		arrayIdList++;
-
-	else { arrayIdList = 0; }
+	for (int i = 0; i < arraySize; i++)	// Carles edit
+	{
+		particleArray[i].anim.PushBack({ startX + movX * i, startY + movY * i, particleSizeX, particleSizeY });
+		particleArray[i].anim.loop = animLoop;
+		particleArray[i].speed.x = speedX;
+		particleArray[i].speed.y = speedY;
+		particleArray[i].life = particleLife;
+		particleArray[i].anim.speed = animSpeed;
+	}
 }
 
+void ModuleParticles::AddParticleArray2(Particle* particleArray, int arraySize, int x, int y, int movX, int movY, COLLIDER_TYPE collider_type, Uint32 delay)	// Carles edit
+{
+	uint i = 0;
+
+	for (int j = 0; j < arraySize; j++)
+	{
+		for (i; i < MAX_ACTIVE_PARTICLES; ++i)	// Carles edit
+		{
+			if (active[i] == nullptr)
+			{
+				Particle* p = new Particle(particleArray[j]);	// maybe fails in here
+				p->born = SDL_GetTicks() + delay;
+				p->position.x = p->fPositionHorizontal = x + App->render->camera.x / SCREEN_SIZE + movX * j;
+				p->position.y = p->fPositionVertical = y + App->render->camera.y / SCREEN_SIZE + movY * j;
+				p->arrayId = arrayIdList;
+				if (collider_type != COLLIDER_NONE)
+					p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
+				active[i] = p;
+				break;
+			}
+		}
+	}
+
+	ArrayListNext();
+}
+*/
 // -------------------------------------------------------------
 // -------------------------------------------------------------
 

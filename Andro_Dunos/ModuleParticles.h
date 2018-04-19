@@ -7,7 +7,7 @@
 #include "p2Point.h"
 #include "ModuleCollision.h"
 
-#define MAX_ACTIVE_PARTICLES 500
+#define MAX_ACTIVE_PARTICLES 2000
 
 enum weapon_types	// To mark the weapon Type currently using
 {
@@ -50,11 +50,14 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+	//void SetParticleArray2(Particle* particleArray, int arraySize, int startX, int startY, int particleSizeX, int particleSizeY, int movX, int movY, float speedX, float speedY, int particleLife, float animSpeed = 0.0f, bool animLoop = false);
+	//void AddParticleArray2(Particle* particleArray, int arraySize, int x, int y, int movX, int movY, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
+
+	void SetParticleArray(Particle* particleArray, int arraySize, int startX, int startY, int particleSizeX, int particleSizeY, int movX, int movY, float speedX, float speedY, int particleLife, float animSpeed = 0.0f, bool animLoop = false);
 	void AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
-	void AddParticleArray(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);	// Carles edit
-	void SetParticlearray(Particle* particleArray, int arraySize, int particleSizeX, int particleSizeY, int startX, int startY, int movX, int movY, float speedX, float speedY, int particleLife, float animSpeed, bool animLoop);	// Carles edit
+	void AddParticleArray(Particle* particleArray, int arraySize, int x, int y, int movX, int movY, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
+	void ArrayListNext();
 	void OnCollision(Collider* c1, Collider* c2) override;
-	void arrayListNext();
 
 private:
 	SDL_Texture* graphics = nullptr;
