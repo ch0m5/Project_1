@@ -61,8 +61,9 @@ bool ModuleMainMenu::Start()
 	App->player1->Disable();
 	App->player2->Disable();
 	App->enemies->Disable();
-
 	App->collision->Disable();
+	
+	
 
 	//Music
 	MusicMainMenu = App->mixer->LoadMusic("Assets/Audio/Music/02_Title.ogg");

@@ -39,6 +39,7 @@ bool ModuleStageClear::Start()
 	App->collision->Disable();
 	App->player1->Disable();
 	App->player2->Disable();
+	
 
 	//Set the animation Speed to initial condition
 	ySpeedAnimation = 0;

@@ -36,6 +36,7 @@ bool ModuleHiScore::Start()
 	hiScoreBackTex = App->textures->Load("Assets/Sprites/User_Interface/Grafical_Interface/game_over_background.png");
 
 	App->collision->Disable();
+	
 
 	//Set the animation Speed to initial condition
 	ySpeedAnimation = 0;
