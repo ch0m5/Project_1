@@ -572,6 +572,16 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				App->particles->AddParticleArray(App->particles->upRightGreen1[7], position.x + 2 * 7, position.y + laserVerticalOffset - 2 * 7, COLLIDER_PLAYER_SHOT);
 				App->particles->arrayListNext();
 
+				App->particles->AddParticleArray(App->particles->downRightGreen3[0], position.x + 4 * 0, position.y + laserVerticalOffset + 4 * 0, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticleArray(App->particles->downRightGreen3[1], position.x + 4 * 1, position.y + laserVerticalOffset + 4 * 1, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticleArray(App->particles->downRightGreen3[2], position.x + 4 * 2, position.y + laserVerticalOffset + 4 * 2, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticleArray(App->particles->downRightGreen3[3], position.x + 4 * 3, position.y + laserVerticalOffset + 4 * 3, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticleArray(App->particles->downRightGreen3[4], position.x + 4 * 4, position.y + laserVerticalOffset + 4 * 4, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticleArray(App->particles->downRightGreen3[5], position.x + 4 * 5, position.y + laserVerticalOffset + 4 * 5, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticleArray(App->particles->downRightGreen3[6], position.x + 4 * 6, position.y + laserVerticalOffset + 4 * 6, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticleArray(App->particles->downRightGreen3[7], position.x + 4 * 7, position.y + laserVerticalOffset + 4 * 7, COLLIDER_PLAYER_SHOT);
+				App->particles->arrayListNext();
+
 				break;
 
 			case LEVEL_3:
