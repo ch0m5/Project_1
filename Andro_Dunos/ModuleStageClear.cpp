@@ -57,7 +57,7 @@ update_status ModuleStageClear::Update()
 
 	App->render->Blit(stageClearText, 10, 200 + ySpeedAnimation, &stageClearRect); // Crashed Ship background Drawn on Screen
 
-																					//Small animation, Crashed ship appears from the lower part until all the sprite is seen
+																				   //Small animation, Crashed ship appears from the lower part until all the sprite is seen
 	if (200 + ySpeedAnimation>50)
 	{
 		ySpeedAnimation -= 1;

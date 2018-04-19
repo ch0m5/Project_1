@@ -16,6 +16,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleFont.h"
 #include "ModuleUserInterface.h"
+#include "ModuleStageClear.h"
 
 
 Application::Application()
@@ -28,6 +29,7 @@ Application::Application()
 	modules[i++] = mixer = new ModuleMixer();
 	//modules[i++] = stage2 = new ModuleStage2();
 	modules[i++] = stage1 = new ModuleStage1();
+	modules[i++] = stageClear = new ModuleStageClear();
 	modules[i++] = scene_HiScore = new ModuleHiScore();
 	modules[i++] = mainMenu = new ModuleMainMenu();
 	modules[i++] = particles = new ModuleParticles();
@@ -60,7 +62,7 @@ bool Application::Init()
 	stage1->Disable();
 	//stage2->Disable(); 
 	scene_HiScore->Disable();
-
+	stageClear->Disable();
 	// Disable collisions
 	collision->Disable();
 

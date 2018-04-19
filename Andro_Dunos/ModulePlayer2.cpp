@@ -784,22 +784,26 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 	//GodMode Function
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN)
 	{
-		if (App->input->keyboard[SDL_SCANCODE_F2] != KEY_REPEAT)
+		if (App->input->debugMode == false)
+		{
+			godMode = false;
+		}
+		if (App->input->keyboard[SDL_SCANCODE_F2] != KEY_REPEAT && App->input->debugMode == true)
 		{
 			godMode = !godMode;
 		}
-
-		if (godMode == true)
-		{
-			playerHitbox->to_delete = true;
-			playerHitbox = nullptr;
-
-		}
-		else if (godMode == false)
-		{
+		
+			if (godMode == true)
+			{
+				playerHitbox->to_delete = true;
+				playerHitbox = nullptr;
+			}
+		
+			else if (godMode == false)
+			{
 			godMode = false;
 			playerHitbox = App->collision->AddCollider({ App->render->camera.x / SCREEN_SIZE + (int)position.x, App->render->camera.y / SCREEN_SIZE + (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
-		}
+			}
 	}
 
 	// Update collider position to player position

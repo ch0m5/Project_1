@@ -104,15 +104,13 @@ update_status ModuleCollision::Update()
 
 void ModuleCollision::DebugDraw()
 {
-	if (App->input->keyboard[SDL_SCANCODE_F1] == KEY_DOWN)
-	{
-		debug = !debug;
-	}
+	
 
-	if (debug == false)
+	if (App->input->coliderView == false || App->input->debugMode==false) //@andres
 	{
 		return;
 	}
+
 
 	Uint8 alpha = 80;
 	for (uint i = 0; i < MAX_COLLIDERS; ++i)

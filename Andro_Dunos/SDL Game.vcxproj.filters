@@ -113,6 +113,9 @@
     <ClInclude Include="PowerUp_Enemy.h">
       <Filter>ModulesEnemies\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleStageClear.h">
+      <Filter>ModulesStages</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -189,6 +192,9 @@
     </ClCompile>
     <ClCompile Include="PowerUp_Enemy.cpp">
       <Filter>ModulesEnemies\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleStageClear.cpp">
+      <Filter>ModulesStages</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

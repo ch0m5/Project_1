@@ -59,6 +59,16 @@ update_status ModuleInput::PreUpdate()
 
 	if (keyboard[SDL_SCANCODE_ESCAPE])		// If the Escape key is pressed, exit game
 		return update_status::UPDATE_STOP;
+	
+	if (App->input->keyboard[SDL_SCANCODE_F1] == KEY_DOWN) //enter debug mode @andres
+	{
+		debugMode = !debugMode;
+	}
+	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN && debugMode == true) //enter debug mode @andres
+	{
+		coliderView = !coliderView;
+	}
+
 
 	while (SDL_PollEvent(&e))	// If the windows application is required to quit (press x button), exit game
 	{

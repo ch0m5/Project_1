@@ -31,6 +31,9 @@ public:
 	const Uint8* keys = nullptr;
 	KEY_STATE keyboard[MAX_KEYS];
 	SDL_Event e;
+	//debug mode function
+	bool debugMode = false;
+	bool coliderView = false;
 
 	//second player on off
 	bool secondPlayerState;
