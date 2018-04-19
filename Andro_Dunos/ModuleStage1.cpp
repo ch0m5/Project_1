@@ -71,6 +71,11 @@ bool ModuleStage1::Start()
 	}
 	// we shoukd log the problem if not loaded correctly
 	
+	//ship position
+	App->player1->position.x = 20;
+	App->player2->position.x = 20;
+	App->player1->position.y = 50;
+	App->player2->position.y = 100;
 	// Enemies
 	App->enemies->Enable();
 
