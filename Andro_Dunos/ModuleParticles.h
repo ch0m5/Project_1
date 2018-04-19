@@ -7,7 +7,8 @@
 #include "p2Point.h"
 #include "ModuleCollision.h"
 
-#define MAX_ACTIVE_PARTICLES 300
+#define MAX_ACTIVE_PARTICLES 500
+#define MAX_ID 100	// Carles edit
 
 enum weapon_types	// To mark the weapon Type currently using
 {
@@ -27,7 +28,8 @@ struct Particle
 	Animation anim;
 	uint fx = 0;
 	iPoint position;
-	float fPositionHorizontal, fPositionVertical;	// carles edit
+	float fPositionHorizontal, fPositionVertical;
+	//int arrayId = -1;	// carles edit
 	fPoint speed;
 	Uint32 born = 0;
 	Uint32 life = 0;
@@ -50,9 +52,7 @@ public:
 	bool CleanUp();
 
 	void AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
-	void AddParticleArray(const Particle* colliderArray, int arraySize, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
-	//void AddParticleArray(const Particle* particleArray, int arraySize, int x, int y, int horizontalOffset, int verticalOffset, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
-	//void AddParticleArray2(const Particle& particle, int arraySize, int x, int y, int horizontalOffset, int verticalOffset, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
+	void AddParticleArray(const Particle& particle, int arraySize, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);	// Carles edit
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 private:
@@ -65,6 +65,9 @@ public:
 	int shortLife = 1000;
 	int mediumLife = 2000;
 	int	longLife = 3000;
+
+	//int* arrayIdCounter = nullptr;	// Carles edit
+	int wtf;
 
 	// Type 1 particles
 	Particle smallBlue;
@@ -91,43 +94,39 @@ public:
 	Particle redRocketRightUp;
 
 	// Type 3 particles
-	Particle straightGreen;					// First diagonals
-											//Particle upRightGreen1;				// Starts at  57, 53, Up, Right	// TESTING HERE
-	Particle upRightGreen1[8];				// Starts at  57, 53, Up, Right	// TESTING HERE
-	Particle* downRightGreen1 = nullptr;	// Starts at  57, 53, Up
-	Particle* upLeftGreen1 = nullptr;		// Starts at  57, 53, Up
-	Particle* downLeftGreen1 = nullptr;		// Starts at  57, 53, Up
-	int greenSize1 = 8;						// Size: 2, 4. Move: 2, 2.
+	Particle straightGreen;			
 
-											// Second diagonals cut in half
-	Particle* upRightGreen2 = nullptr;
-	Particle* downRightGreen2 = nullptr;
-	Particle* upLeftGreen2 = nullptr;
-	Particle* downLeftGreen2 = nullptr;
-	int greenSize2 = 0;
+	// First diagonals				// Size: 2, 4. Move: 2, 2.
+	Particle upRightGreen1[8];		// Starts at 57, 53
+	Particle downRightGreen1[8];	// Starts at 57, 60
+	Particle upLeftGreen1[8];		// Starts at 57, 53
+	Particle downLeftGreen1[8];		// Starts at 57, 53
 
-	// Second diagonals full
-	Particle* upRightGreen3 = nullptr;
-	Particle* downRightGreen3 = nullptr;
-	Particle* upLeftGreen3 = nullptr;
-	Particle* downLeftGreen3 = nullptr;
-	int greenSize3 = 0;						// Size: 4, 12. Move: 4, 4.
+	// Second diagonals cut in half
+	Particle upRightGreen2[1];		
+	Particle downRightGreen2[1];
+	Particle upLeftGreen2[1];
+	Particle downLeftGreen2[1];
 
-											// Third diagonals cut in half
-	Particle* upRightGreen4 = nullptr;
-	Particle* downRightGreen4 = nullptr;
-	Particle* upLeftGreen4 = nullptr;
-	Particle* downLeftGreen4 = nullptr;
-	int greenSize4 = 0;
+	// Second diagonals full		// Size: 4, 12. Move: 4, 4. Array size: 8.
+	Particle upRightGreen3[3];		// Starts at 57, 53
+	Particle downRightGreen3[8];	// Starts at 57, 53
+	Particle upLeftGreen3[8];		// Starts at 57, 53
+	Particle downLeftGreen3[8];		// Starts at 57, 53
+
+	// Third diagonals cut in half
+	Particle upRightGreen4[8];		
+	Particle downRightGreen4[8];
+	Particle upLeftGreen4[8];
+	Particle downLeftGreen4[8];
 
 	// Third diagonals full
-	Particle* upRightGreen5 = nullptr;
-	Particle* downRightGreen5 = nullptr;
-	Particle* upLeftGreen5 = nullptr;
-	Particle* downLeftGreen5 = nullptr;
-	int greenSize5 = 0;						// Size 4, 12, starts in 80, 68 in spritesheet, goes up by 4 pixels each time
+	Particle upRightGreen5[8];
+	Particle downRightGreen5[8];
+	Particle upLeftGreen5[8];
+	Particle downLeftGreen5[8];
 
-											// Orange Power
+	// Orange Power
 	Particle bombRightDown;
 	Particle bombRightUp;
 	Particle bombLeftDown;
