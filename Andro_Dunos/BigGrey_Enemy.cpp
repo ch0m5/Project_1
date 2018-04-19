@@ -8,18 +8,12 @@
 
 BigGrey_Enemy::BigGrey_Enemy(int x, int y) : Enemy(x, y)
 {
-	hitboxWidth = 20;
-	hitboxHeight = 20;
+	hitboxWidth = 31;
+	hitboxHeight = 27;
 
-	fly.PushBack({ 0, 55, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 21, 55, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 43, 55, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 64, 55, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 85, 55, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 106, 55, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 0, 76, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 21, 76, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 43, 76, hitboxWidth, hitboxHeight });
+	fly.PushBack({ 515, 2, hitboxWidth, hitboxHeight });
+	fly.PushBack({ 546, 2, hitboxWidth, hitboxHeight });
+	
 	fly.speed = 0.2f;
 
 	animation = &fly;
@@ -30,7 +24,7 @@ BigGrey_Enemy::BigGrey_Enemy(int x, int y) : Enemy(x, y)
 	BigGrey_posy = y;
 
 	BigGrey_Path.PushBack({ -0.25, -0.5 }, 50);
-	BigGrey_Path.PushBack({ -0.25, 0.75 }, 50);
+	BigGrey_Path.PushBack({ -0.25, 0.5 }, 50);
 }
 
 void BigGrey_Enemy::Move()

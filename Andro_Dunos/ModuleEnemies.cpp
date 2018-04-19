@@ -9,6 +9,7 @@
 //Enemy types includes
 #include "Enemy_13_Greyball.h"
 #include "RedLineShip_Enemy.h"
+#include "BigGrey_Enemy.h"
 
 #define SPAWN_MARGIN 50
 
