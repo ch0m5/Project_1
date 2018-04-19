@@ -1,58 +1,67 @@
-#ifndef __ANIMATION_H__
-#define __ANIMATION_H__
+#ifndef __PATH_H__
+#define __PATH_H__
 
-#include "SDL/include/SDL_rect.h"
-#define MAX_FRAMES 25
+#include "p2Point.h"
+#include "Animation.h"
+#define MAX_STEPS 25
 
-class Animation
+struct Step
+{
+	uint frames = 1;
+	fPoint speed;
+	Animation* animation = nullptr;
+};
+
+class Path
 {
 public:
 	bool loop = true;
-	float speed = 1.0f;
-	SDL_Rect frames[MAX_FRAMES];
+	Step steps[MAX_STEPS];
+	fPoint accumulated_speed = { 0.0f, 0.0f };
 
 private:
-	float current_frame = 0.0f;
-	int last_frame = 0;
-	int loops = 0;
+	uint current_frame = 0;
+	uint last_step = 0;
 
 public:
 
-	Animation()
-	{}
-
-	Animation(const Animation& anim) : loop(anim.loop), speed(anim.speed), last_frame(anim.last_frame)
+	void PushBack(fPoint speed, uint frames, Animation* animation = nullptr)
 	{
-		SDL_memcpy(&frames, anim.frames, sizeof(frames));
+		steps[last_step].animation = animation;
+		steps[last_step].frames = frames;
+		steps[last_step++].speed = speed;
 	}
 
-	void PushBack(const SDL_Rect& rect)
+	iPoint GetCurrentPosition(Animation** current_animation = nullptr)
 	{
-		frames[last_frame++] = rect;
-	}
+		current_frame += 1;
 
-	SDL_Rect& GetCurrentFrame()
-	{
-		current_frame += speed;
-		if (current_frame >= last_frame)
+		uint count = 0;
+		uint i = 0;
+		bool need_loop = true;
+		for (; i < last_step; ++i)
 		{
-			current_frame = (loop) ? 0.0f : last_frame - 1;
-			loops++;
+			count += steps[i].frames;
+			if (current_animation != nullptr)
+				*current_animation = steps[i].animation;
+			if (count >= current_frame)
+			{
+				accumulated_speed += steps[i].speed;
+				need_loop = false;
+				break;
+			}
 		}
 
-		return frames[(int)current_frame];
-	}
+		if (need_loop && loop)
+			current_frame = 0;
 
-	bool Finished() const
-	{
-		return loops > 0;
+		return iPoint((int)accumulated_speed.x, (int)accumulated_speed.y);
 	}
 
 	void Reset()
 	{
-		loops = 0;
-		current_frame = 0.0f;
+		current_frame = 0;
 	}
 };
 
-#endif
+#endif // __PATH_H__

@@ -26,29 +26,21 @@ RedLineShip_Enemy::RedLineShip_Enemy(int x, int y) : Enemy(x, y)
 
 	collider = App->collision->AddCollider({ 0, 0, hitboxWidth, hitboxHeight }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	original_y = y;
+	RedLineShip_posx = x;
+	RedLineShip_posy = y;
+
+	RedLineShip_Path.PushBack({ -0.75,-1 }, 50);
+	RedLineShip_Path.PushBack({ -0.75,1 }, 50);
 }
 
 void RedLineShip_Enemy::Move()
 {
-	if (going_up)
-	{
-		if (wave > 1.0f)
-			going_up = false;
-		else
-			wave += 0.01f;
-	}
-	else
-	{
-		if (wave < -1.0f)
-			going_up = true;
-		else
-			wave -= 0.01f;
-	}
+	
+	position.x = RedLineShip_posx + RedLineShip_Path.GetCurrentPosition().x;
+	position.y = RedLineShip_posy + RedLineShip_Path.GetCurrentPosition().y;
 
-	position.y = int(float(original_y) + (15.0f * sinf(2 * PI*wave + 0)));
-	position.x -= 1;
 }
+
 
 /*
 void Enemy_13_Greyball::Fire()

@@ -2,6 +2,7 @@
 #define __REDLINESHIP_ENEMY_H__
 
 #include "Enemy.h"
+#include "NewPath.h"
 
 class RedLineShip_Enemy : public Enemy
 {
@@ -10,6 +11,10 @@ private:
 	bool going_up = true;
 	int original_y = 0;
 	Animation fly;
+	Path RedLineShip_Path;
+
+	int RedLineShip_posx;
+	int RedLineShip_posy;
 
 public:
 
