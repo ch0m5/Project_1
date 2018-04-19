@@ -138,6 +138,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::REDLINE_SHIP:
 			enemies[i] = new RedLineShip_Enemy(info.x, info.y);
 			break;
+		case ENEMY_TYPES::POWERUP_ENEMY:
+			enemies[i] = new PowerUp_Enemy(info.x, info.y);
+			break;
 		}
 	}
 }

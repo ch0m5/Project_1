@@ -4,6 +4,7 @@
 #include "Module.h"			// Following: Includes of all enemy headers
 #include "Enemy_13_Greyball.h"
 #include "RedLineShip_Enemy.h"
+#include "PowerUp_Enemy.h"
 
 #define MAX_ENEMIES 100
 
@@ -11,7 +12,8 @@ enum ENEMY_TYPES
 {
 	NO_TYPE,
 	GREYBALL_UP_DOWN,
-	REDLINE_SHIP
+	REDLINE_SHIP,
+	POWERUP_ENEMY
 };
 
 class Enemy;

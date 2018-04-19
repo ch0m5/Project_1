@@ -99,6 +99,7 @@
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="NewPath.h" />
     <ClInclude Include="p2Point.h" />
+    <ClInclude Include="PowerUp_Enemy.h" />
     <ClInclude Include="RedLineShip_Enemy.h" />
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +126,7 @@
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleUserInterface.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
+    <ClCompile Include="PowerUp_Enemy.cpp" />
     <ClCompile Include="RedLineShip_Enemy.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

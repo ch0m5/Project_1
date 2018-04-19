@@ -110,6 +110,9 @@
     <ClInclude Include="NewPath.h">
       <Filter>Containers</Filter>
     </ClInclude>
+    <ClInclude Include="PowerUp_Enemy.h">
+      <Filter>ModulesEnemies\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -182,6 +185,9 @@
       <Filter>ModulesBase</Filter>
     </ClCompile>
     <ClCompile Include="RedLineShip_Enemy.cpp">
+      <Filter>ModulesEnemies\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="PowerUp_Enemy.cpp">
       <Filter>ModulesEnemies\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
