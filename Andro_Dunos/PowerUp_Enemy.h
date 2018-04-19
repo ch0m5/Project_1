@@ -11,10 +11,10 @@ private:
 	bool going_up = true;
 	int original_y = 0;
 	Animation fly;
-	Path PowerUp_Path;
+	Path PowerUpEnemy_Path;
 
-	int PowerUp_posx;
-	int PowerUp_posy;
+	int PowerUpEnemy_posx;
+	int PowerUpEnemy_posy;
 
 public:
 

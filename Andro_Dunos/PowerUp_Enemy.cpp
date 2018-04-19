@@ -20,17 +20,17 @@ PowerUp_Enemy::PowerUp_Enemy(int x, int y) : Enemy(x, y)
 
 	collider = App->collision->AddCollider({ 0, 0, hitboxWidth, hitboxHeight }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
-	PowerUp_posx = x;
-	PowerUp_posy = y;
+	PowerUpEnemy_posx = x;
+	PowerUpEnemy_posy = y;
 
-	PowerUp_Path.PushBack({ 0.25, 0 }, 50);
+	PowerUpEnemy_Path.PushBack({ 0.25, 0 }, 50);
 	
 }
 
 void PowerUp_Enemy::Move()
 {
 
-	position.x = PowerUp_posx + PowerUp_Path.GetCurrentPosition().x;
-	position.y = PowerUp_posy + PowerUp_Path.GetCurrentPosition().y;
+	position.x = PowerUpEnemy_posx + PowerUpEnemy_Path.GetCurrentPosition().x;
+	position.y = PowerUpEnemy_posy + PowerUpEnemy_Path.GetCurrentPosition().y;
 
 }
