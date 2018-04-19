@@ -17,6 +17,7 @@
 #include "ModuleUserInterface.h"
 #include "ModuleFont.h"
 
+#include <stdio.h>
 ModuleUserInterface::ModuleUserInterface()
 {
 	//ANDRO DUNOS RECTS
@@ -33,8 +34,10 @@ bool ModuleUserInterface::Start()
 	bool ret = true;
 
 	score = 0;
+	player2Score = 145;
+	char player1ScoreStr[8] = {NULL,NULL,NULL,NULL,NULL,NULL,NULL };
+	char player2ScoreStr[8] = { NULL,NULL,NULL,NULL,NULL,NULL,NULL };
 	font_score = App->fonts->Load("Assets/Sprites/User_Interface/Grafical_Interface/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
-	
 	
 	return ret;
 }
@@ -54,8 +57,16 @@ update_status ModuleUserInterface::Update()
 	if (App->mainMenu->IsEnabled() == false)
 	{
 		App->fonts->BlitText(10, 10, font_score, "1p");
-
-		App->fonts->BlitText(190, 10, font_score, "2p");
+		sprintf_s(player1Score_text, 10, "%7d", score);
+		App->fonts->BlitText(50, 10, 0, player1Score_text);
+		
+		if(App->input->secondPlayerState == true)
+		{
+			App->fonts->BlitText(210, 10, font_score, "2p");
+			sprintf_s(player2Score_text, 10, "%7d", score);
+			App->fonts->BlitText(250, 10, 0, player2Score_text);
+		}
 	}
 	return UPDATE_CONTINUE;
 }
+

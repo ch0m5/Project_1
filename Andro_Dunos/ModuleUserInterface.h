@@ -22,9 +22,11 @@ public:
 public:
 	//Variables
 	uint score;
-
+	uint player2Score;
+	
 	int font_score = -1;
-	char score_text[10];
+	char player1Score_text[10];
+	char player2Score_text[10];
 };
 
 #endif
