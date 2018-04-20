@@ -63,6 +63,10 @@ update_status ModuleInput::PreUpdate()
 	if (App->input->keyboard[SDL_SCANCODE_F1] == KEY_DOWN) //enter debug mode @andres
 	{
 		debugMode = !debugMode;
+		if (debugMode == false)
+		{
+			coliderView == false;
+		}
 	}
 	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN && debugMode == true) //enter debug mode @andres
 	{

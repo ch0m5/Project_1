@@ -783,7 +783,7 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 	}
 
 	//GodMode Function
-	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN && App->input->debugMode == true)
 	{
 		if (App->input->debugMode == false)
 		{

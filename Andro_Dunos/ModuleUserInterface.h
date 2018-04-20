@@ -28,6 +28,7 @@ public:
 	
 	int font_score = -1;
 	int font_yellowtxt = -1;
+	int debug_font = -1;
 	char player1Score_text[10];
 	char player2Score_text[10];
 	char teamScore_text[10];

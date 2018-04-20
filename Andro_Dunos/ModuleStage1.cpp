@@ -441,14 +441,21 @@ update_status ModuleStage1::Update()
 	}
 
 	//FasterX function Increase the horizontal velocity 
-	if (App->input->keyboard[SDL_SCANCODE_LSHIFT] == KEY_DOWN)
+	if (App->input->debugMode == false)
 	{
-		if (App->input->keyboard[SDL_SCANCODE_LSHIFT] != KEY_REPEAT)
+
+		fasterX = false;
+		xSpeedMultiplier = 1;
+
+	}
+	if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_DOWN && App->input->debugMode == true)
+	{
+		if (App->input->keyboard[SDL_SCANCODE_F4] != KEY_REPEAT)
 		{
 			fasterX = !fasterX;
 		}
 
-		if (fasterX == true)
+		if (fasterX == true )
 		{
 			xSpeedMultiplier = 10;
 		}

@@ -37,6 +37,7 @@ bool ModuleUserInterface::Start()
 	player2Score = 0;
 	font_score = App->fonts->Load("Assets/Sprites/User_Interface/fonts/Font-score-white.png", "1234567890P", 1);
 	font_yellowtxt = App->fonts->Load("Assets/Sprites/User_Interface/fonts/yellow_font.png", "0123456789abcdefghiklmnoprstuvy©        ", 4);
+	debug_font= App->fonts->Load("Assets/Sprites/User_Interface/fonts/blue_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 	return ret;
 }
 
@@ -47,6 +48,7 @@ bool ModuleUserInterface::CleanUp()
 	//Unload fonts
 	App->fonts->UnLoad(font_score);
 	App->fonts->UnLoad(font_yellowtxt);
+	App->fonts->UnLoad(debug_font);
 	return true;
 }
 
@@ -92,6 +94,23 @@ update_status ModuleUserInterface::Update()
 					App->fonts->BlitText(210, 10, font_score, "2P");
 					sprintf_s(player2Score_text, 10, "%7d", player2Score);
 					App->fonts->BlitText(250, 10, 0, player2Score_text);
+				}
+				//debug mode
+				if (App->input->debugMode == true)
+				{
+					App->fonts->BlitText(10, 20, debug_font, "debug mode");
+				}
+				if (App->player1->godMode == true && App->input->debugMode == true)
+				{
+					App->fonts->BlitText(10, 30, debug_font, "god mode");
+				}
+				if (App->input->coliderView == true && App->input->debugMode == true)
+				{
+					App->fonts->BlitText(10, 40, debug_font, "colider view");
+				}
+				if (App->stage1->fasterX == true && App->input->debugMode == true)
+				{
+					App->fonts->BlitText(10, 50, debug_font, "super speed");
 				}
 			}break;
 
