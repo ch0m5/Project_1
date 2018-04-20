@@ -22,6 +22,7 @@ ModuleEnemies::ModuleEnemies()
 // Destructor
 ModuleEnemies::~ModuleEnemies()
 {
+
 }
 
 bool ModuleEnemies::Start()
@@ -87,14 +88,12 @@ update_status ModuleEnemies::PostUpdate()
 
 // Called before quitting
 bool ModuleEnemies::CleanUp()
-{
+  {
 	LOG("Freeing all enemies");
-
-	App->textures->Unload(sprites);
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)
 	{
-		if (enemies[i] != nullptr)
+ 		if (enemies[i] != nullptr)
 		{
 			delete enemies[i];
 			enemies[i] = nullptr;
@@ -162,3 +161,4 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 		}
 	}
 }
+
