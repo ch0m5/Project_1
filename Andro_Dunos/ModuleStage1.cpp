@@ -107,24 +107,24 @@ bool ModuleStage1::Start()
 
 	//wave 4 ------------------------------------------------------
 	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 720, 140);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 765, 120);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 790, 65);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 825, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 760, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 800, 65);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 840, 100);
 
 	//Powerup------------------------------------------------------
-	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP_ENEMY, 900, 75); // must deliver a powerup particle
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP_ENEMY, 850, 75); // must deliver a powerup particle
 
 	//wave 5 ------------------------------------------------------
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1100, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1130, 105);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1160, 135);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1190, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1200, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1230, 105);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1260, 135);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1290, 80);
 
 	//wave 6 ------------------------------------------------------
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1100 + 300, 90);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1130 + 300, 110);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1160 + 300, 75);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1190 + 300, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1200 + 300, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1230 + 300, 110);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1260 + 300, 75);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1290 + 300, 130);
 
    
 

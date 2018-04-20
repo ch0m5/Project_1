@@ -1,7 +1,7 @@
 #ifndef __ModuleCollision_H__
 #define __ModuleCollision_H__
 
-#define MAX_COLLIDERS 150
+#define MAX_COLLIDERS 1000	// Make dymanic array for final game?
 
 #include "Module.h"
 
