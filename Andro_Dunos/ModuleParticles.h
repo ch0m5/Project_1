@@ -7,7 +7,7 @@
 #include "p2Point.h"
 #include "ModuleCollision.h"
 
-#define MAX_ACTIVE_PARTICLES 2000
+#define MAX_ACTIVE_PARTICLES 1000
 
 enum weapon_types	// To mark the weapon Type currently using
 {
