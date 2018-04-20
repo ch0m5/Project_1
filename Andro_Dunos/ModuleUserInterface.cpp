@@ -33,12 +33,10 @@ bool ModuleUserInterface::Start()
 	LOG("Loading User Interface");	
 	bool ret = true;
 
-	score = 0;
+	player1Score = 0;
 	player2Score = 0;
-	char player1ScoreStr[8] = {NULL,NULL,NULL,NULL,NULL,NULL,NULL };
-	char player2ScoreStr[8] = { NULL,NULL,NULL,NULL,NULL,NULL,NULL };
 	font_score = App->fonts->Load("Assets/Sprites/User_Interface/fonts/Font-score-white.png", "1234567890P", 1);
-	
+	font_yellowtxt = App->fonts->Load("Assets/Sprites/User_Interface/fonts/yellow_font.png", "0123456789abcdefghiklmnoprstuvy©        ", 4);
 	return ret;
 }
 
@@ -48,6 +46,7 @@ bool ModuleUserInterface::CleanUp()
 	LOG("Unloading UI");
 	//Unload fonts
 	App->fonts->UnLoad(font_score);
+	App->fonts->UnLoad(font_yellowtxt);
 	return true;
 }
 
@@ -103,10 +102,10 @@ update_status ModuleUserInterface::Update()
 				App->fonts->BlitText(210, 10, font_score, "2P");
 				App->fonts->BlitText(250, 10, 0, player2Score_text);
 				//Add the 2 scores to have the Team Score and blit them
-				App->fonts->BlitText(120, 20, font_score, "00000");
+				App->fonts->BlitText(115, 20, font_yellowtxt, "teamscore");
 				teamScore = player1Score + player2Score;
 				sprintf_s(teamScore_text, 10, "%7d", teamScore);
-				App->fonts->BlitText(110, 30, 0, teamScore_text);
+				App->fonts->BlitText(110, 30, font_yellowtxt, teamScore_text);
 			}break;
 		
 		case GameOver:
@@ -116,10 +115,10 @@ update_status ModuleUserInterface::Update()
 			App->fonts->BlitText(210, 10, font_score, "2P");
 			App->fonts->BlitText(250, 10, 0, player2Score_text);
 			//Add the 2 scores to have the Team Score and blit them
-			App->fonts->BlitText(120, 20, font_score, "00000");
+			App->fonts->BlitText(115, 20, font_yellowtxt, "teamscore");
 			teamScore = player1Score + player2Score;
 			sprintf_s(teamScore_text, 10, "%7d", teamScore);
-			App->fonts->BlitText(110, 30, 0, teamScore_text);
+			App->fonts->BlitText(110, 30, font_yellowtxt, teamScore_text);
 		}break;
 	}
 
