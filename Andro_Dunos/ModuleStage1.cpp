@@ -66,8 +66,7 @@ bool ModuleStage1::Start()
 	caveBackText = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/cave_background.png");
 	redPlanetText = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/mars.png");
 
-	//Enable modules
-	
+
 
 	App->player1->Enable();
 	if (App->input->secondPlayerState == true)  //@AndresSala

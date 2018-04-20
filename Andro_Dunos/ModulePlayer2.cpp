@@ -155,6 +155,7 @@ bool ModulePlayer2::Start()
 	typeSwap = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Shot_Type_CHANGE.wav");
 	powerUp = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Power_Up_Picked.wav");
 	playerDeathExplosion = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Player_Death_Explosion.wav");
+
 	Mix_VolumeChunk(type1Shot, FXVol);
 	Mix_VolumeChunk(type2Shot, FXVol);
 	Mix_VolumeChunk(type3Shot, FXVol);
@@ -827,6 +828,14 @@ bool ModulePlayer2::CleanUp()
 	App->textures->Unload(graphics);
 
 	App->player2->Disable();
+
+	App->mixer->UnloadFx(type1Shot);
+	App->mixer->UnloadFx(type2Shot);
+	App->mixer->UnloadFx(type3Shot);
+	App->mixer->UnloadFx(type4Shot);
+	App->mixer->UnloadFx(typeSwap);
+	App->mixer->UnloadFx(powerUp);
+	App->mixer->UnloadFx(playerDeathExplosion);
 
 	//Reset player pos
 	position.x = 0;							// Starting point of the ship (using p2Point)
