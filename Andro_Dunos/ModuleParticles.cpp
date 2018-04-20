@@ -113,17 +113,17 @@ bool ModuleParticles::Start()
 	smallBlue.life = shortLife;
 	smallBlue.anim.speed = 0.3f;
 
-	/*mediumBlue.anim.PushBack({ 24, 39, 11, 4 });
+	mediumBlue.anim.PushBack({ 22, 51, 15, 6 });
 	mediumBlue.anim.loop = false;
 	mediumBlue.speed.x = 7.0f;
-	mediumBlue.life = 1200;
+	mediumBlue.life = shortLife;
 	mediumBlue.anim.speed = 0.3f;
 
-	bigBlue.anim.PushBack({ 24, 39, 11, 4 });
+	bigBlue.anim.PushBack({ 21, 6, 16, 10 });
 	bigBlue.anim.loop = false;
 	bigBlue.speed.x = 7.0f;
-	bigBlue.life = 1200;
-	bigBlue.anim.speed = 0.3f;*/
+	bigBlue.life = shortLife;
+	bigBlue.anim.speed = 0.3f;
 
 	//Player Type 2 (yellow)
 	/*YellowBigRight.anim.PushBack({ 6, 69, 10, 3 });
