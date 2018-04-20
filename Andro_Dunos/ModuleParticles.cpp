@@ -504,8 +504,8 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 		{
 			Particle* p = new Particle(particle);
 			p->born = SDL_GetTicks() + delay;
-			p->position.x = p->fPositionHorizontal = x + App->render->camera.x / SCREEN_SIZE;
-			p->position.y = p->fPositionVertical = y + App->render->camera.y / SCREEN_SIZE;
+			p->position.x = p->fPositionHorizontal = (int)x + (int)App->render->camera.x / (int)SCREEN_SIZE;
+			p->position.y = p->fPositionVertical = (int)y + (int)App->render->camera.y / (int)SCREEN_SIZE;
 			if (collider_type != COLLIDER_NONE)
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			active[i] = p;
@@ -526,8 +526,8 @@ void ModuleParticles::AddParticleArray(Particle* particleArray, int arraySize, i
 			{
 				Particle* p = new Particle(particleArray[j]);	// maybe fails in here
 				p->born = SDL_GetTicks() + delay;
-				p->position.x = p->fPositionHorizontal = x + App->render->camera.x / SCREEN_SIZE + movX * j;
-				p->position.y = p->fPositionVertical = y + App->render->camera.y / SCREEN_SIZE + movY * j;
+				p->position.x = p->fPositionHorizontal = (int)x + (int)App->render->camera.x / (int)SCREEN_SIZE + (int)movX * (int)j;
+				p->position.y = p->fPositionVertical = (int)y + (int)App->render->camera.y / (int)SCREEN_SIZE + (int)movY * (int)j;
 				p->arrayId = arrayIdList;
 				if (collider_type != COLLIDER_NONE)
 					p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
@@ -668,7 +668,7 @@ bool Particle::Update()
 
 	if (life > 0)
 	{
-		if ((SDL_GetTicks() - born) > life)
+		if (((int)SDL_GetTicks() - (int)born) > (int)life)
 			ret = false;
 	}
 	else
