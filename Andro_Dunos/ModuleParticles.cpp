@@ -5,6 +5,9 @@
 #include "ModuleRender.h"
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
+#include "ModuleStage1.h"
+#include "ModulePlayer1.h"
+#include "ModulePlayer2.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -110,17 +113,17 @@ bool ModuleParticles::Start()
 	smallBlue.life = shortLife;
 	smallBlue.anim.speed = 0.3f;
 
-	/*mediumBlue.anim.PushBack({ 24, 39, 11, 4 });
+	mediumBlue.anim.PushBack({ 22, 51, 15, 6 });
 	mediumBlue.anim.loop = false;
 	mediumBlue.speed.x = 7.0f;
-	mediumBlue.life = 1200;
+	mediumBlue.life = shortLife;
 	mediumBlue.anim.speed = 0.3f;
 
-	bigBlue.anim.PushBack({ 24, 39, 11, 4 });
+	bigBlue.anim.PushBack({ 21, 6, 16, 10 });
 	bigBlue.anim.loop = false;
 	bigBlue.speed.x = 7.0f;
-	bigBlue.life = 1200;
-	bigBlue.anim.speed = 0.3f;*/
+	bigBlue.life = shortLife;
+	bigBlue.anim.speed = 0.3f;
 
 	//Player Type 2 (yellow)
 	/*YellowBigRight.anim.PushBack({ 6, 69, 10, 3 });
@@ -461,6 +464,17 @@ update_status ModuleParticles::Update()
 
 		if (p->Update() == false)
 		{
+			// carles edit
+			if (p->shotType == BLUE_SHOT)
+			{
+				App->player1->currentBlue -= 1;
+			}
+
+			if (p->shotType == ORANGE_SHOT)
+			{
+				App->player1->currentOrange -= 1;;
+			}
+
 			delete p;
 			active[i] = nullptr;
 		}
@@ -496,7 +510,7 @@ void ModuleParticles::SetParticleArray(Particle* particleArray, int arraySize, i
 	}
 }
 
-void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type, Uint32 delay)
+void ModuleParticles::AddParticle(const Particle& particle, int x, int y, int shotType, COLLIDER_TYPE collider_type, Uint32 delay)
 {
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
@@ -508,6 +522,7 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 			p->fPositionVertical = y + App->render->camera.y / SCREEN_SIZE;
 			p->position.x = (int)p->fPositionHorizontal;
 			p->position.y = (int)p->fPositionVertical;
+			p->shotType = shotType;
 			if (collider_type != COLLIDER_NONE)
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			active[i] = p;
@@ -516,7 +531,7 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, COLLID
 	}
 }
 
-void ModuleParticles::AddParticleArray(Particle* particleArray, int arraySize, int x, int y, int movX, int movY,  COLLIDER_TYPE collider_type, Uint32 delay)	// Carles edit
+void ModuleParticles::AddParticleArray(Particle* particleArray, int arraySize, int x, int y, int movX, int movY, int shotType, COLLIDER_TYPE collider_type, Uint32 delay)	// Carles edit
 {
 	uint i = 0;
 
@@ -533,6 +548,7 @@ void ModuleParticles::AddParticleArray(Particle* particleArray, int arraySize, i
 				p->position.x = (int)p->fPositionHorizontal;
 				p->position.y = (int)p->fPositionVertical;
 				p->arrayId = arrayIdList;
+				p->shotType = shotType;
 				if (collider_type != COLLIDER_NONE)
 					p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 				active[i] = p;
@@ -559,12 +575,23 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
-			if (c2->type == COLLIDER_WALL || c2->type == COLLIDER_ENEMY) 
+			if (c2->type == COLLIDER_WALL || c2->type == COLLIDER_ENEMY)
 			{
 				//AddParticle(shipExplo, active[i]->position.x, active[i]->position.y);
 				
+				// carles edit (NEEDS PLAYER 2 IMPLEMETATION)
+				if (active[i]->shotType == BLUE_SHOT)
+				{
+					App->player1->currentBlue -= 1;
+				}
+
+				if (active[i]->shotType == ORANGE_SHOT)
+				{
+					App->player1->currentOrange -= 1;;
+				}
+
 				// Carles Code <- THIS TRIGGERS THE CORRECT CONDITION
-				if (active[i]->arrayId > -1)	
+				if (active[i]->arrayId > -1)
 				{
 					int arrayIdMarker = active[i]->arrayId;
 
@@ -583,13 +610,14 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 				}
 				// End Carles code
 			}
+			
 			else if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_ENEMY)
 			{
-				
+
 			}
 			else if (c1->type == COLLIDER_ENEMY_SHOT || c2->type == COLLIDER_ENEMY_SHOT)
 			{
-				
+
 			}
 
 			delete active[i];
@@ -598,47 +626,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		}
 	}
 }
-/*
-// TESTING
-void ModuleParticles::SetParticleArray2(Particle* particleArray, int arraySize, int startX, int startY, int particleSizeX, int particleSizeY, int movX, int movY, float speedX, float speedY, int particleLife, float animSpeed, bool animLoop) // Carles edit
-{
-	for (int i = 0; i < arraySize; i++)	// Carles edit
-	{
-		particleArray[i].anim.PushBack({ startX + movX * i, startY + movY * i, particleSizeX, particleSizeY });
-		particleArray[i].anim.loop = animLoop;
-		particleArray[i].speed.x = speedX;
-		particleArray[i].speed.y = speedY;
-		particleArray[i].life = particleLife;
-		particleArray[i].anim.speed = animSpeed;
-	}
-}
 
-void ModuleParticles::AddParticleArray2(Particle* particleArray, int arraySize, int x, int y, int movX, int movY, COLLIDER_TYPE collider_type, Uint32 delay)	// Carles edit
-{
-	uint i = 0;
-
-	for (int j = 0; j < arraySize; j++)
-	{
-		for (i; i < MAX_ACTIVE_PARTICLES; ++i)	// Carles edit
-		{
-			if (active[i] == nullptr)
-			{
-				Particle* p = new Particle(particleArray[j]);	// maybe fails in here
-				p->born = SDL_GetTicks() + delay;
-				p->position.x = p->fPositionHorizontal = x + App->render->camera.x / SCREEN_SIZE + movX * j;
-				p->position.y = p->fPositionVertical = y + App->render->camera.y / SCREEN_SIZE + movY * j;
-				p->arrayId = arrayIdList;
-				if (collider_type != COLLIDER_NONE)
-					p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
-				active[i] = p;
-				break;
-			}
-		}
-	}
-
-	ArrayListNext();
-}
-*/
 // -------------------------------------------------------------
 // -------------------------------------------------------------
 
@@ -680,11 +668,18 @@ bool Particle::Update()
 			ret = false;
 	
 	fPositionHorizontal += speed.x;
-	fPositionVertical += speed.y;
+
+	if (App->stage1->moveMapDown == true)
+		fPositionVertical += speed.y + App->stage1->ySpeedMultiplier * 0.82f;
+
+	else if (App->stage1->moveMapUp == true)
+		fPositionVertical += speed.y - App->stage1->ySpeedMultiplier * 0.82f;
+
+	else { fPositionVertical += speed.y; }
 
 	position.x = (int)fPositionHorizontal;
 	position.y = (int)fPositionVertical;
-
+	
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
 

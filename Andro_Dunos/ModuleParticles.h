@@ -8,6 +8,7 @@
 #include "ModuleCollision.h"
 
 #define MAX_ACTIVE_PARTICLES 1000		// Make dymanic array for final game?
+#define DEFAULT_VALUE -1
 
 enum weapon_types	// To mark the weapon Type currently using
 {
@@ -15,6 +16,13 @@ enum weapon_types	// To mark the weapon Type currently using
 	TYPE_2,
 	TYPE_3,
 	TYPE_4
+};
+
+enum shot_type
+{
+	BLUE_SHOT,
+	ORANGE_SHOT,
+	YELLOW_SHOT
 };
 
 struct SDL_Texture;
@@ -28,7 +36,8 @@ struct Particle
 	uint fx = 0;
 	iPoint position;
 	float fPositionHorizontal, fPositionVertical;
-	int arrayId = -1;	// carles edit
+	int arrayId = DEFAULT_VALUE;	// Id needed to delete the full particle array, default for non arrays
+	int shotType = DEFAULT_VALUE;	// Id for blue and orange power particles
 	fPoint speed;
 	Uint32 born = 0;
 	Uint32 life = 0;
@@ -50,12 +59,9 @@ public:
 	update_status Update();
 	bool CleanUp();
 
-	//void SetParticleArray2(Particle* particleArray, int arraySize, int startX, int startY, int particleSizeX, int particleSizeY, int movX, int movY, float speedX, float speedY, int particleLife, float animSpeed = 0.0f, bool animLoop = false);
-	//void AddParticleArray2(Particle* particleArray, int arraySize, int x, int y, int movX, int movY, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
-
 	void SetParticleArray(Particle* particleArray, int arraySize, int startX, int startY, int particleSizeX, int particleSizeY, int movX, int movY, float speedX, float speedY, int particleLife, float animSpeed = 0.0f, bool animLoop = false);
-	void AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
-	void AddParticleArray(Particle* particleArray, int arraySize, int x, int y, int movX, int movY, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
+	void AddParticle(const Particle& particle, int x, int y, int shotType = DEFAULT_VALUE, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
+	void AddParticleArray(Particle* particleArray, int arraySize, int x, int y, int movX, int movY, int shotType = DEFAULT_VALUE, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
 	void ArrayListNext();
 	void OnCollision(Collider* c1, Collider* c2) override;
 
@@ -70,7 +76,7 @@ public:
 	int mediumLife = 2000;
 	int	longLife = 3000;
 
-	int arrayIdList = 0;	// Carles edit
+	int arrayIdList = 0;
 
 	// Type 1 particles
 	Particle smallBlue;
