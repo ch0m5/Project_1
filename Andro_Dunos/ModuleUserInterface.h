@@ -24,10 +24,22 @@ public:
 	uint score;
 	uint player1Score;
 	uint player2Score;
+	uint teamScore;
 	
 	int font_score = -1;
 	char player1Score_text[10];
 	char player2Score_text[10];
+	char teamScore_text[10];
+
+	enum Scenes
+	{
+		GameOver = -1,
+		MainMenu,
+		Stage1,
+		StageClear
+	};
+
+	int CurrentStage;
 };
 
 #endif
