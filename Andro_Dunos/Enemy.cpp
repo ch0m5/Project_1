@@ -5,6 +5,7 @@
 #include "ModuleRender.h"
 #include "ModulePlayer1.h"
 #include "ModuleUserInterface.h"
+
 Enemy::Enemy(int x, int y) : position(x, y)
 {}
 
