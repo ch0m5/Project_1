@@ -98,6 +98,11 @@ bool ModuleEnemies::CleanUp()
 			delete enemies[i];
 			enemies[i] = nullptr;
 		}
+		
+		queue[i].type = NO_TYPE;
+		queue[i].x = 0;
+		queue[i].y = 0;
+
 	}
 
 	return true;

@@ -527,6 +527,7 @@ void ModuleParticles::AddParticleArray(Particle* particleArray, int arraySize, i
 				Particle* p = new Particle(particleArray[j]);	// maybe fails in here
 				p->born = SDL_GetTicks() + delay;
 				p->position.x = p->fPositionHorizontal = (int)x + (int)App->render->camera.x / (int)SCREEN_SIZE + (int)movX * (int)j;
+
 				p->position.y = p->fPositionVertical = (int)y + (int)App->render->camera.y / (int)SCREEN_SIZE + (int)movY * (int)j;
 				p->arrayId = arrayIdList;
 				if (collider_type != COLLIDER_NONE)
