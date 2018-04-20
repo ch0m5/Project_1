@@ -102,6 +102,7 @@ update_status ModuleMainMenu::Update()
 
 bool ModuleMainMenu::CleanUp()
 {
+	
 	App->player1->Disable();
 	App->player2->Disable();
 	
@@ -111,7 +112,7 @@ bool ModuleMainMenu::CleanUp()
 	App->textures->Unload(viscoGamesText);
 	//App->textures->Unload(orangeLettersText);
 	//App->textures->Unload(whiteLettersText);
-
+	Mix_FadeOutMusic(TIMEFADE);
 	App->mixer->UnloadMusic(MusicMainMenu);
 
 	return true;

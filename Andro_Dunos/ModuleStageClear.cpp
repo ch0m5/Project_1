@@ -78,6 +78,7 @@ bool ModuleStageClear::CleanUp()
 	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
 	App->textures->Unload(stageClearText);
 	App->stageClear->Disable();
+	Mix_FadeOutMusic(TIMEFADE);
 	App->mixer->UnloadMusic(MusicStageClear);
 
 	return ret;

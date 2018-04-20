@@ -90,6 +90,7 @@ bool ModuleStage2::CleanUp()
 	LOG("Unloading colliders")
 		App->collision->Disable();
 
+	Mix_FadeOutMusic(TIMEFADE);
 	App->mixer->UnloadMusic(MusicLvl2);
 
 	return true;

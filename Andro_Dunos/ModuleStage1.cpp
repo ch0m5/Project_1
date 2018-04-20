@@ -262,6 +262,7 @@ bool ModuleStage1::CleanUp()
 	LOG("Unloading particles")
 	App->particles->Disable();
 
+	Mix_FadeOutMusic(TIMEFADE);
 	App->mixer->UnloadMusic(MusicLvl1);
 
 	
