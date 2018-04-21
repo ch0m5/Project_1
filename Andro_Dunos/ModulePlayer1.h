@@ -91,6 +91,13 @@ public:
 	int currentBlue;	// Every shot increases the counter by 2, player will not shot if it gets higher than 4. Each collide substracts 1.
 	int currentOrange;	// Every time it fires increases the counter by x (changes on level), player will not shot until it reaches 0.  Each collide substracts 1.
 	int currentYellow;	// When reaching level yellow one, the max becomes 5 and the counter increases by 1 for each misile fired. Each collide substracts 1.
+	int currentMultipleShots;
+	int currentArrayShots;
+
+	int maxShots;	// TEMPORAL SHOT LIMITATION
+	int maxArrayShots;
+
+	// COUTNER THAT UPDATES DEPENDING ON THE TYPE OF SHOTS WITH NUMBER OF SHOTS MAX = 3?
 
 	// For max: MaxBlueLasers = 3, MaxOrange = 1, MaxYellow = 3
 	// Lower Conditions:
