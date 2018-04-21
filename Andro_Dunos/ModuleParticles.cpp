@@ -8,6 +8,7 @@
 #include "ModuleStage1.h"
 #include "ModulePlayer1.h"
 #include "ModulePlayer2.h"
+#include "NewPath.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -23,6 +24,14 @@ ModuleParticles::~ModuleParticles()
 // Load assets
 bool ModuleParticles::Start()
 {
+	// Particle life values
+	shortLife = 1000;
+	mediumLife = 2000;
+	longLife = 3000;
+
+	// List of Ids needed to delete the full particle array
+	arrayIdList = 0;
+
 	LOG("Loading particles");
 	graphics = App->textures->Load("Assets/Sprites/Players_Ships/Laser_particles.png");
 
@@ -178,7 +187,7 @@ bool ModuleParticles::Start()
 	yellowSmallLeft.life = shortLife;
 	yellowSmallLeft.anim.speed = 0.3f;
 	
-	redRocketDown.anim.PushBack({ 2, 99, 16, 9 });
+	redRocketDown.anim.PushBack({ 2, 99, 16, 9 });	// FIX
 	redRocketDown.anim.PushBack({ 1, 113, 16, 9 });
 	redRocketDown.anim.PushBack({ 3, 129, 16, 9 });
 	redRocketDown.anim.PushBack({ 4, 142, 16, 9 });
@@ -190,7 +199,7 @@ bool ModuleParticles::Start()
 	redRocketDown.speed.x = 0.0f;	// Should be camera horizontal speed
 	redRocketDown.speed.y = 2.0f;
 	redRocketDown.life = mediumLife;
-	redRocketDown.anim.speed = 0.3f;
+	redRocketDown.anim.speed = 0.7f;
 
 	redRocketUp.anim.PushBack({ 2, 99, 16, 9 });
 	redRocketUp.anim.PushBack({ 1, 113, 16, 9 });
@@ -204,7 +213,7 @@ bool ModuleParticles::Start()
 	redRocketUp.speed.x = 0.0f;
 	redRocketUp.speed.y = -2.0f;
 	redRocketUp.life = mediumLife;
-	redRocketUp.anim.speed = 0.3f;
+	redRocketUp.anim.speed = 0.7f;
 
 	redRocketLeftDown.anim.PushBack({ 22, 99, 16, 9 });
 	redRocketLeftDown.anim.PushBack({ 21, 113, 16, 9 });
@@ -218,7 +227,7 @@ bool ModuleParticles::Start()
 	redRocketLeftDown.speed.x = 0.0f;
 	redRocketLeftDown.speed.y = 2.0f;
 	redRocketLeftDown.life = mediumLife;
-	redRocketLeftDown.anim.speed = 0.3f;
+	redRocketLeftDown.anim.speed = 0.7f;
 
 	redRocketLeftUp.anim.PushBack({ 22, 99, 16, 9 });
 	redRocketLeftUp.anim.PushBack({ 21, 113, 16, 9 });
@@ -232,7 +241,7 @@ bool ModuleParticles::Start()
 	redRocketLeftUp.speed.x = 0.0f;
 	redRocketLeftUp.speed.y = 2.0f;
 	redRocketLeftUp.life = mediumLife;
-	redRocketLeftUp.anim.speed = 0.3f;
+	redRocketLeftUp.anim.speed = 0.7f;
 
 	redRocketDownDiagonal.anim.PushBack({ 2, 99, 16, 9 });
 	redRocketDownDiagonal.anim.PushBack({ 1, 113, 16, 9 });
@@ -246,7 +255,7 @@ bool ModuleParticles::Start()
 	redRocketDownDiagonal.speed.x = 2.0f;
 	redRocketDownDiagonal.speed.y = 2.0f;
 	redRocketDownDiagonal.life = mediumLife;
-	redRocketDownDiagonal.anim.speed = 0.3f;
+	redRocketDownDiagonal.anim.speed = 0.7f;
 
 	redRocketUpDiagonal.anim.PushBack({ 2, 99, 16, 9 });
 	redRocketUpDiagonal.anim.PushBack({ 1, 113, 16, 9 });
@@ -260,7 +269,7 @@ bool ModuleParticles::Start()
 	redRocketUpDiagonal.speed.x = 2.0f;	// + camera horizontal speed
 	redRocketUpDiagonal.speed.y = -2.0f;
 	redRocketUpDiagonal.life = mediumLife;
-	redRocketUpDiagonal.anim.speed = 0.3f;
+	redRocketUpDiagonal.anim.speed = 0.7f;
 
 	//Player Type 3 (green)
 	straightGreen.anim.PushBack({ 42, 87, 32, 3 });
@@ -742,8 +751,9 @@ Particle::Particle(const Particle& p) :
 	fx(p.fx),
 	born(p.born),
 	life(p.life),
-	arrayId(p.arrayId),	// Carles edit
-	shotType(p.shotType)	// Carles edit
+	arrayId(p.arrayId),
+	shotType(p.shotType),
+	particlePath(p.particlePath)	// carles edit
 {}
 
 Particle::~Particle()

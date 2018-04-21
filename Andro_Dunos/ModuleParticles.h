@@ -6,6 +6,7 @@
 #include "Globals.h"
 #include "p2Point.h"
 #include "ModuleCollision.h"
+#include "NewPath.h"
 
 #define MAX_ACTIVE_PARTICLES 1000		// Make dymanic array for final game?
 #define DEFAULT_VALUE -1
@@ -36,6 +37,7 @@ struct Particle
 	Animation anim;
 	uint fx = 0;
 	iPoint position;
+	Path particlePath;
 	float fPositionHorizontal, fPositionVertical;
 	int arrayId = DEFAULT_VALUE;	// Id needed to delete the full particle array, default for non arrays
 	int shotType = DEFAULT_VALUE;	// Id for blue and orange power particles
@@ -72,12 +74,13 @@ private:
 	uint last_particle = 0;
 
 public:
-	// Particle current used values
-	int shortLife = 1000;
-	int mediumLife = 2000;
-	int	longLife = 3000;
+	// Particle life values
+	int shortLife;
+	int mediumLife;
+	int	longLife;
 
-	int arrayIdList = 0;
+	// List of Ids needed to delete the full particle array
+	int arrayIdList;
 
 	// Type 1 particles
 	Particle smallBlue;

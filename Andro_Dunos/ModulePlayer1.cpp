@@ -16,15 +16,67 @@
 
 ModulePlayer1::ModulePlayer1()	// @CarlesHoms @Andres
 {
-	// Starting point of the ship (using p2Point)
-	position.x = 0;
-	position.y = SCREEN_HEIGHT / 2 - 10;
+	graphics = nullptr;
 
+	font_score = -1;
+	score = 0;
+
+	// Animation ship crash
+	destroyed = false;
+
+	// Animation pointers
+	shipAnimation = nullptr;
+	propellerAnimation = nullptr;
+	crashAnimation = nullptr;
+
+	// Ship and propeller sizes in pixels
+	shipWidth = 27;
+	shipHeight = 17;
+	propellerWidth = 12;
+	propellerHeight = 17;
+
+	movVertical = 0;	// Counter for the vertical movement of the ship
+	maxVertical = 14;	// Limit of the counter
+
+	//Music 
+	type1Shot = nullptr;		// All use the same channel (3)
+	type2Shot = nullptr;
+	type3Shot = nullptr;
+	type4Shot = nullptr;
+	typeSwap = nullptr;
+	powerUp = nullptr;
+	playerDeathExplosion = nullptr;
+
+	//Collider
+	playerHitbox;
+
+	//Lasers
+	laserHorizontalOffset = 18;	// Horizontal Offset for bullets
+	laserVerticalOffset = 12;	// Vertical Offset for bullets
+	
+	//Types and levels
 	type = TYPE_1;			// Flag/counter for type equipped
 	bluePower = LEVEL_1;	// Flag/counter for blue power level
 	orangePower = LEVEL_0;	// Flag/counter for orange power level
 	yellowPower = LEVEL_0;	// Flag/counter for yellow power level
 	greenPower = LEVEL_0;	// Flag/counter for green power level
+								//Counter to limitate how many lasers, boms, etc can the player have on screen, based on needed particles to be destroyed to make more shots.
+	maxBlue = 4;
+	maxOrange = 0;
+	maxYellow = 0;
+	//int blueShotTimer;	// After the last shot taken, if enough time passes without no shots, the "currentBlue" counter restarts.
+	//int timeBetweenShotsTimer;	// time between each shot, could be a get ticks
+
+	currentBlue = 0;	// Every shot increases the counter by 2, player will not shot if it gets higher than 4. Each collide substracts 1.
+	currentOrange = 0;	// Every time it fires increases the counter by x (changes on level), player will not shot if it reaches MAX.  Each collide substracts 1.
+	currentYellow = 0;	// When reaching level yellow one, the max becomes 3 and the counter increases by 1 for each misile fired. Each collide substracts 1.
+
+	// Starting point of the ship (using p2Point)
+	position.x = 0;
+	position.y = SCREEN_HEIGHT / 2 - 10;
+
+	//Debug Purpose Variables
+	godMode = false;
 
 	/*
 	Sprites positioning
@@ -184,63 +236,63 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 	// Bliting Text
 	//App->fonts->BlitText(50, 10, font_score, "we are going to do the best game ric has ever seen dude!!");
-	
+
 	int speed = 2;
-	
-		if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE &&
-			App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE ||
-			App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT &&
-			App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
-		{
-			if (movVertical > 0)
-			{
-				--movVertical;		// Decrease vertical counter.
-			}
 
-			if (movVertical < 0)
-			{
-				++movVertical;		// Increase vertical counter.
-			}
-		}
-			//Player Movement
-		else if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && destroyed == false)
+	if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE &&
+		App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE ||
+		App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT &&
+		App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+	{
+		if (movVertical > 0)
 		{
-			if (position.y < SCREEN_HEIGHT - shipHeight)
-			{
-				position.y += speed;
-			}
-
-			if (movVertical > -maxVertical)
-			{
-				--movVertical;		// Decrease vertical counter. Animation Purpose.
-			}
+			--movVertical;		// Decrease vertical counter.
 		}
 
-		else if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && destroyed == false)
+		if (movVertical < 0)
 		{
-			if (position.y > 0)
-			{
-				position.y -= speed;
-			}
-
-			if (movVertical < maxVertical)
-			{
-				++movVertical;		// Increase vertical counter. Animation Purpose.
-			}
+			++movVertical;		// Increase vertical counter.
+		}
+	}
+	//Player Movement
+	else if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && destroyed == false)
+	{
+		if (position.y < SCREEN_HEIGHT - shipHeight)
+		{
+			position.y += speed;
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0 && destroyed == false)
+		if (movVertical > -maxVertical)
 		{
-			position.x -= speed;
+			--movVertical;		// Decrease vertical counter. Animation Purpose.
+		}
+	}
+
+	else if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && destroyed == false)
+	{
+		if (position.y > 0)
+		{
+			position.y -= speed;
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - shipWidth && destroyed == false)
+		if (movVertical < maxVertical)
 		{
-			position.x += speed;
+			++movVertical;		// Increase vertical counter. Animation Purpose.
 		}
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0 && destroyed == false)
+	{
+		position.x -= speed;
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - shipWidth && destroyed == false)
+	{
+		position.x += speed;
+	}
 
 	// Depending on the vertical counter, we decide the animation
-	
+
 	if (movVertical >= maxVertical)
 	{
 		shipRect = &shipAnimation->frames[SHIP_FULL_UP];
@@ -259,7 +311,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 		propellerAnimation = &idleBooster;
 	}
 
-	else if (movVertical < -(maxVertical/2) && movVertical > -maxVertical)
+	else if (movVertical < -(maxVertical / 2) && movVertical > -maxVertical)
 	{
 		shipRect = &shipAnimation->frames[SHIP_DOWN];
 		propellerAnimation = &downwardsBooster;
@@ -272,69 +324,76 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	}
 
 	// (TEMPORAL) level up and down
-	if (App->input->keyboard[SDL_SCANCODE_6] == KEY_DOWN && bluePower < LEVEL_7 && App->input->debugMode == true)	// Level up blue
+
+	if (App->input->debugMode == true)
 	{
-		bluePower++;
-		Mix_PlayChannel(3, powerUp, 0);
-	}
+		if (App->input->keyboard[SDL_SCANCODE_6] == KEY_DOWN && bluePower < LEVEL_7)	// Level up blue
+		{
+			bluePower++;
+			Mix_PlayChannel(3, powerUp, 0);
+		}
 
-	if (App->input->keyboard[SDL_SCANCODE_7] == KEY_DOWN && orangePower < LEVEL_5 && App->input->debugMode == true)	// Level up orange
-	{
-		orangePower++;	// Red rockets have 6 particles, IT'S A TRAP
-		
-		if (orangePower < LEVEL_3)
-			maxOrange++;
+		if (App->input->keyboard[SDL_SCANCODE_7] == KEY_DOWN && orangePower < LEVEL_5)	// Level up orange
+		{
+			orangePower++;	// Red rockets have 6 particles, IT'S A TRAP
+			Mix_PlayChannel(3, powerUp, 0);
+		}
 
-		if (orangePower == LEVEL_4)
-			maxOrange += 2;
+		if (App->input->keyboard[SDL_SCANCODE_8] == KEY_DOWN && yellowPower < LEVEL_8)	// Level up yellow
+		{
+			yellowPower++;
+			Mix_PlayChannel(3, powerUp, 0);
+		}
 
-		Mix_PlayChannel(3, powerUp, 0);
-	}
+		if (App->input->keyboard[SDL_SCANCODE_9] == KEY_DOWN && yellowPower < LEVEL_8)	// Level up green
+		{
+			greenPower++;
+			Mix_PlayChannel(3, powerUp, 0);
+		}
 
-	if (App->input->keyboard[SDL_SCANCODE_8] == KEY_DOWN && yellowPower < LEVEL_8 && App->input->debugMode == true)	// Level up yellow
-	{
-		yellowPower++;
+		if (App->input->keyboard[SDL_SCANCODE_0] == KEY_DOWN)	// Level all down
+		{
+			if (bluePower > LEVEL_1)
+				bluePower--;
 
-		if (yellowPower == LEVEL_1)	// Maybe upgrades gradually with level
+			if (orangePower > LEVEL_0)
+				orangePower--;
+
+			if (yellowPower > LEVEL_0)
+				yellowPower--;
+
+			if (greenPower > LEVEL_0)
+				greenPower--;
+		}
+
+		switch (orangePower)
+		{
+		case LEVEL_0:
+			maxOrange = 0;
+			break;
+
+		case LEVEL_1:
+			maxOrange = 1;
+			break;
+
+		case LEVEL_2:
+			maxOrange = 2;
+			break;
+
+		case LEVEL_4:
+			maxOrange = 4;
+			break;
+
+		default:
+			break;
+		}
+
+		if (yellowPower > 0)
+		{
 			maxYellow = 5;
-
-		Mix_PlayChannel(3, powerUp, 0);
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_9] == KEY_DOWN && yellowPower < LEVEL_8 && App->input->debugMode == true)	// Level up green
-	{
-		greenPower++;
-		Mix_PlayChannel(3, powerUp, 0);
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_0] == KEY_DOWN && App->input->debugMode == true)	// Level all down
-	{
-		if (bluePower > LEVEL_1)
-			bluePower--;
-
-		if (orangePower > LEVEL_0)
-		{
-			if (orangePower < LEVEL_3)
-				maxOrange--;
-
-			if (orangePower == LEVEL_4)
-				maxOrange -= 2;
-
-			orangePower--;
 		}
 
-		if (yellowPower > LEVEL_0)
-		{
-			if (yellowPower == LEVEL_1)
-				maxYellow == 0;
-
-			yellowPower--;
-		}
-
-		if (greenPower > LEVEL_0)
-		{
-			greenPower--;
-		}
+		else { maxYellow = 0; }
 	}
 
 	//Change weapon
@@ -601,7 +660,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	/*Preparation for keyholding*/
 	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
 	{
-		if (currentOrange < maxOrange)
+		if (currentOrange == 0)
 		{
 			currentOrange = maxOrange;
 
@@ -633,6 +692,8 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 					break;
 				}
+
+				break;
 
 			case TYPE_2:
 				switch (orangePower)
@@ -673,6 +734,8 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 					break;
 				}
 
+				break;
+
 			case TYPE_3:
 				switch (orangePower)
 				{
@@ -708,6 +771,8 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 					break;
 				}
 
+				break;
+
 			case TYPE_4:
 				switch (orangePower)
 				{
@@ -734,6 +799,8 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 					break;
 				}
+
+				break;
 			}
 		}
 
