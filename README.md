@@ -42,5 +42,8 @@ No licenses were used for this project.
 ![Team Photo](https://raw.githubusercontent.com/ch0m5/Project_1/master/Team_Photo.jpeg)
 *From left to right: Xavi Marín, Dídac Romero, Carles Homs, Andrés Saladrigas*
  ---
-##License & Copyright 
+## License & Copyright 
+
 © Crispy Crunch
+
+Licensed under the [MIT License](LICENSE)
