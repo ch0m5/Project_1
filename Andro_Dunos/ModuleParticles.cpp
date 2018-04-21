@@ -606,12 +606,12 @@ update_status ModuleParticles::Update()
 		{
 			if (p->arrayId > -1)	//ATTEMPT OF ELIMIATING ARRAYS
 			{
-				/*if (p->shotType == BLUE_SHOT)
+				/*if (p->shotType == PLAYER_1_BLUE_SHOT)
 				{
 					App->player1->currentBlue -= 1;
 				}*/
 
-				if (p->shotType == ORANGE_SHOT)
+				if (p->shotType == PLAYER_1_ORANGE_SHOT)
 				{
 					App->player1->currentOrange -= 1;
 				}
@@ -631,17 +631,17 @@ update_status ModuleParticles::Update()
 			}
 
 			// carles edit
-			if (p->shotType == BLUE_SHOT)
+			if (p->shotType == PLAYER_1_BLUE_SHOT)
 			{
 				App->player1->currentBlue -= 1;
 			}
 
-			else if (p->shotType == GREEN_SINGLE_SHOT)
+			else if (p->shotType == PLAYER_1_GREEN_SINGLE_SHOT)
 			{
 				App->player1->currentBlue -= 2;
 			}
 
-			else if (p->shotType == ORANGE_SHOT)
+			else if (p->shotType == PLAYER_1_ORANGE_SHOT)
 			{
 				App->player1->currentOrange -= 1;
 			}
@@ -771,12 +771,12 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 
 				if (active[i]->arrayId > -1)	// carles edit (NEEDS PLAYER 2 IMPLEMETATION)
 				{
-					/*if (active[i]->shotType == BLUE_SHOT)	// ATTEMPT OF ELIMINATING ARRAYS
+					/*if (active[i]->shotType == PLAYER_1_BLUE_SHOT)	// ATTEMPT OF ELIMINATING ARRAYS
 					{
 						App->player1->currentBlue -= 1;
 					}*/
 
-					if (active[i]->shotType == ORANGE_SHOT)
+					if (active[i]->shotType == PLAYER_1_ORANGE_SHOT)
 					{
 						App->player1->currentOrange -= 1;
 					}
@@ -797,17 +797,17 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 					break;
 				}
 				
-				if (active[i]->shotType == BLUE_SHOT)
+				if (active[i]->shotType == PLAYER_1_BLUE_SHOT)
 				{
 					App->player1->currentBlue -= 1;
 				}
 
-				else if (active[i]->shotType == GREEN_SINGLE_SHOT)
+				else if (active[i]->shotType == PLAYER_1_GREEN_SINGLE_SHOT)
 				{
 					App->player1->currentBlue -= 2;
 				}
 
-				else if (active[i]->shotType == ORANGE_SHOT)
+				else if (active[i]->shotType == PLAYER_1_ORANGE_SHOT)
 				{
 					App->player1->currentOrange -= 1;
 				}
