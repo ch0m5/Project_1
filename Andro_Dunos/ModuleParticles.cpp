@@ -443,7 +443,7 @@ bool ModuleParticles::Start()
 	enemyBlueShot.anim.loop = true;
 	enemyBlueShot.anim.speed = 0.6f;
 	enemyBlueShot.speed.x = -3.0f;
-	enemyBlueShot.life = shortLife;
+	enemyBlueShot.life = longLife;
 
 
 	// Explosion particle // @Andres
@@ -583,7 +583,7 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, int sh
 			p->position.x = (int)p->fPositionHorizontal;
 			p->position.y = (int)p->fPositionVertical;
 			p->shotType = shotType;
-			if (collider_type != COLLIDER_NONE)
+			if (collider_type == COLLIDER_PLAYER_SHOT || collider_type == COLLIDER_PLAYER_2_SHOT)
 			{
 				p->fPositionHorizontal = x + App->render->camera.x / SCREEN_SIZE;
 				p->fPositionVertical = y + App->render->camera.y / SCREEN_SIZE;

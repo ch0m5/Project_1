@@ -8,6 +8,7 @@
 #include "PowerUp_Bonus.h"
 #include "PowerUp_Enemy.h"
 #include "ModuleEnemies.h"
+#include "ModuleMixer.h"
 
 
 PowerUp_Bonus::PowerUp_Bonus(int x, int y) : Enemy(x, y)
@@ -46,12 +47,13 @@ void PowerUp_Bonus::OnCollision(Collider* collider)
 	if (dead == false)
 	{
 	
-		if (collider->type == COLLIDER_PLAYER_SHOT)
+		if (collider->type == COLLIDER_PLAYER)
 		{
+			Mix_PlayChannel(3, App->player1->powerUp, 0);
 			App->player1->bluePower++;
 			App->UI->player1Score += score;
 		}
-		if (collider->type == COLLIDER_PLAYER_2_SHOT)
+		if (collider->type == COLLIDER_PLAYER)
 		{
 			App->UI->player2Score += score;
 		}
