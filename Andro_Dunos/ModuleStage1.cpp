@@ -114,7 +114,7 @@ bool ModuleStage1::Start()
 
 	//Powerup------------------------------------------------------
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP_ENEMY, 950, 75); // must deliver a powerup particle
-
+	
 	// Second Enemy: GreyYellowShip (Several waves, no symetry between them)
 	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1200, 30); // X axis +20 & Y axis -20
 	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1180, 50);

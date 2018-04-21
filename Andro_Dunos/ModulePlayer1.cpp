@@ -846,4 +846,8 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 		playerHitbox->to_delete = true;
 		App->fade->FadeToBlack(App->stage1, App->scene_HiScore);	// HARDCODED: Needs "current stage" functionality
 	}
+	/*if ((c1->type == COLLIDER_POWERUP ||c2->type == COLLIDER_POWERUP ))
+	{
+		bluePower++;
+	}*/
 }

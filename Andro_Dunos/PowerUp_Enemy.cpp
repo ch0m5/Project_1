@@ -5,6 +5,7 @@
 #include "ModulePlayer1.h"
 #include "ModuleParticles.h"
 #include "ModuleUserInterface.h"
+#include "ModuleEnemies.h"
 
 PowerUp_Enemy::PowerUp_Enemy(int x, int y) : Enemy(x, y)
 {
@@ -41,9 +42,7 @@ void PowerUp_Enemy::OnCollision(Collider* collider)
 
 	if (dead == false)
 	{
-		App->particles->AddParticle(App->particles->explosion, position.x + 10, position.y);
-		App->particles->AddParticle(App->particles->explosion1, position.x, position.y);
-		App->particles->AddParticle(App->particles->explosion2, position.x + 30, position.y);
+		App->enemies->AddEnemy(ENEMY_TYPES::POWERUP_BONUS, this->position.x, this->position.y); // must deliver a powerup particle
 		if (collider->type == COLLIDER_PLAYER_SHOT)
 		{
 			App->UI->player1Score += score;

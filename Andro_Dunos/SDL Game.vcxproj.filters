@@ -122,6 +122,9 @@
     <ClInclude Include="GreyYellow_Enemy.h">
       <Filter>ModulesEnemies\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="PowerUp_Bonus.h">
+      <Filter>ModulesEnemies\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -206,6 +209,9 @@
       <Filter>ModulesEnemies\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="GreyYellow_Enemy.cpp">
+      <Filter>ModulesEnemies\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="PowerUp_Bonus.cpp">
       <Filter>ModulesEnemies\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
