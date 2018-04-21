@@ -364,15 +364,11 @@ update_status ModuleStage1::Update()
 		//LOG("%0.3f", movementx);
 		movementxBack += xSpeedMultiplier*0.5f ;
 		movementxPlanetsBack += xSpeedMultiplier*0.7f;
-		
 		App->render->camera.x = 3.25*movementx;
-
-		//fast movement testing 
-		//movementx -= xSpeedMultiplier*0.83f*2; // for movement in x direction
-		//movementxBack += xSpeedMultiplier*0.5f*2;
-		//movementxPlanetsBack += xSpeedMultiplier*0.7f*2;
-		//App->render->camera.x = 3.25*movementx*2;
-	
+		if (App->render->camera.x / SCREEN_SIZE > 2920)
+		{
+			backmovementcaveX -= xSpeedMultiplier * 0.1f;
+		}
 	}
 	if (moveMapDown == true)
 	{
@@ -669,7 +665,7 @@ update_status ModuleStage1::Update()
 		App->render->Blit(redPlanetText, 7450 + movementxPlanetsBack, 40, &redPlanetRect); // Mars
 		App->render->Blit(background1Text, 7130 + movementxBack, 120 + movementyBack, &background1Rect); // level background
 	}
-	App->render->Blit(caveBackText, backmovementcaveX, -40, &caveBackRect); // cave background
+	App->render->Blit(caveBackText, backmovementcaveX + SCREEN_WIDTH, -40, &caveBackRect); // cave background
 
 	App->render->Blit(map1Text, 0, -55, &map1Rect); // level map
 
