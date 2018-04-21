@@ -126,29 +126,31 @@ bool ModuleParticles::Start()
 	bigBlue.anim.speed = 0.3f;
 
 	//Player Type 2 (yellow)
-	/*YellowBigRight.anim.PushBack({ 6, 69, 10, 3 });
+	YellowBigRight.anim.PushBack({ 3, 8, 15, 5 });
 	YellowBigRight.anim.loop = false;
 	YellowBigRight.speed.x = 7.0f;
-	YellowBigRight.life = 1200;
+	YellowBigRight.life = shortLife;
 	YellowBigRight.anim.speed = 0.3f;
 
-	YellowBigLeft.anim.PushBack({ 6, 69, 10, 3 });
+	YellowBigLeft.anim.PushBack({ 3, 23, 15, 5 });
 	YellowBigLeft.anim.loop = false;
-	YellowBigLeft.speed.x = 7.0f;
-	YellowBigLeft.life = 1200;
+	YellowBigLeft.speed.x = -7.0f;
+	YellowBigLeft.life = shortLife;
 	YellowBigLeft.anim.speed = 0.3f;
 
-	yellowDown.anim.PushBack({ 6, 69, 10, 3 });
+	yellowDown.anim.PushBack({ 5, 37, 11, 8 });
 	yellowDown.anim.loop = false;
-	yellowDown.speed.x = 7.0f;
-	yellowDown.life = 1200;
+	yellowDown.speed.x = -7.0f;
+	yellowDown.speed.y = 2.0f;
+	yellowDown.life = shortLife;
 	yellowDown.anim.speed = 0.3f;
 
-	yellowUp.anim.PushBack({ 6, 69, 10, 3 });
+	yellowUp.anim.PushBack({ 5, 50, 10, 8 });
 	yellowUp.anim.loop = false;
 	yellowUp.speed.x = 7.0f;
-	yellowUp.life = 1200;
-	yellowUp.anim.speed = 0.3f;*/
+	yellowUp.speed.x = -2.0f;
+	yellowUp.life = shortLife;
+	yellowUp.anim.speed = 0.3f;
 
 	yellowSmallRight.anim.PushBack({ 6, 69, 10, 3 });
 	yellowSmallRight.anim.loop = false;
@@ -161,7 +163,7 @@ bool ModuleParticles::Start()
 	yellowSmallLeft.speed.x = -7.0f;
 	yellowSmallLeft.life = shortLife;
 	yellowSmallLeft.anim.speed = 0.3f;
-
+	// red rocket fix sprite
 	redRocketDown.anim.PushBack({ 0, 99, 16, 9 });	// RedRockets sprites need to be fixed
 	redRocketDown.anim.PushBack({ 0, 113, 16, 9 });
 	redRocketDown.anim.PushBack({ 2, 129, 16, 9 });
@@ -226,12 +228,30 @@ bool ModuleParticles::Start()
 	straightGreen.anim.speed = 0.3f;
 
 	// Parameter list: (Particle* particleArray, int arraySize, int startX, int startY, int particleSizeX, int particleSizeY, int movX, int movY, float speedX, float speedY, int life, int animSpeed = 0.0f, bool animLoop = false)
-	SetParticleArray(upRightGreen1, 8, 57, 49, 2, 4, 2, -2, 5.0f, -4.0f, shortLife);
-	SetParticleArray(downRightGreen1, 8, 57, 60, 2, 4, 2, 2, 5.0f, 4.0f, shortLife);
-	SetParticleArray(upLeftGreen1, 8, 71, 74, 2, 4, -2, -2, -5.0f, -4.0f, shortLife);
-	SetParticleArray(downLeftGreen1, 8, 71, 35, 2, 4, -2, 2, -5.0f, 4.0f, shortLife);
+	SetParticleArray(upRightGreen1, 8, 57, 49, 2, 4, 2, -2, 4.0f, -4.0f, shortLife);
+	SetParticleArray(downRightGreen1, 8, 57, 60, 2, 4, 2, 2, 4.0f, 4.0f, shortLife);
+	SetParticleArray(upLeftGreen1, 8, 71, 74, 2, 4, -2, -2, -4.0f, -4.0f, shortLife);
+	SetParticleArray(downLeftGreen1, 8, 71, 35, 2, 4, -2, 2, -4.0f, 4.0f, shortLife);
 
-	SetParticleArray(downRightGreen3, 8, 114, 41, 4, 12, 4, 4, 5.0f, 7.0f, shortLife);
+	SetParticleArray(upRightGreen2, 4, 114, 29, 4, 12, 4, -4, 4.0f, -4.0f, shortLife);
+	SetParticleArray(downRightGreen2, 4, 114, 41, 4, 12, 4, 4, 4.0f, 4.0f, shortLife);
+	SetParticleArray(upLeftGreen2, 4, 108, 29, 4, 12, -4, -4, -4.0f, -4.0f, shortLife);
+	SetParticleArray(downLeftGreen2, 4, 108, 41, 4, 12, -4, 4, -4.0f, 4.0f, shortLife);
+
+	SetParticleArray(upRightGreen3, 8, 114, 29, 4, 12, 4, -4, 4.0f, -4.0f, shortLife);
+	SetParticleArray(downRightGreen3, 8, 114, 41, 4, 12, 4, 4, 4.0f, 4.0f, shortLife);	// DO NOT DELETE
+	SetParticleArray(upLeftGreen3, 8, 108, 29, 4, 12, -4, -4, -4.0f, -4.0f, shortLife);
+	SetParticleArray(downLeftGreen3, 8, 108, 41, 4, 12, -4, 4, -4.0f, 4.0f, shortLife);
+	
+	SetParticleArray(upRightGreen4, 4, 215, 50, 16, 8, 8, -7, 4.0f, -4.0f, shortLife);
+	SetParticleArray(downRightGreen4, 4, 215, 60, 16, 8, 8, 7, 4.0f, 4.0f, shortLife);
+	SetParticleArray(upLeftGreen4,4, 199, 50, 16, 8, -8, -7, -4.0f, -4.0f, shortLife);
+	SetParticleArray(downLeftGreen4, 4, 199, 60, 16, 8, -8, 7, -4.0f, 4.0f, shortLife);
+
+	SetParticleArray(upRightGreen5, 8, 215, 50, 16, 8, 8, -7, 4.0f, -4.0f, shortLife);
+	SetParticleArray(downRightGreen5, 8, 215, 60, 16, 8, 8, 7, 4.0f, 4.0f, shortLife);
+	SetParticleArray(upLeftGreen5, 8, 199, 50, 16, 8, -8, -7, -4.0f, -4.0f, shortLife);
+	SetParticleArray(downLeftGreen5, 8, 199, 60, 16, 8, -8, 7, -4.0f, 4.0f, shortLife);
 
 	bombRightDown.anim.PushBack({ 121, 113, 8, 9 });
 	bombRightDown.anim.loop = false;
@@ -470,9 +490,14 @@ update_status ModuleParticles::Update()
 				App->player1->currentBlue -= 1;
 			}
 
+			if (p->shotType == GREEN_SINGLE_SHOT)
+			{
+				App->player1->currentBlue -= 2;
+			}
+
 			if (p->shotType == ORANGE_SHOT)
 			{
-				App->player1->currentOrange -= 1;;
+				App->player1->currentOrange -= 1;
 			}
 
 			delete p;
@@ -590,6 +615,11 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 					App->player1->currentOrange -= 1;;
 				}
 
+				if (active[i]->shotType == GREEN_SINGLE_SHOT)
+				{
+					App->player1->currentBlue -= 2;
+				}
+
 				// Carles Code <- THIS TRIGGERS THE CORRECT CONDITION
 				if (active[i]->arrayId > -1)
 				{
@@ -667,7 +697,12 @@ bool Particle::Update()
 		if (anim.Finished())
 			ret = false;
 	
-	fPositionHorizontal += speed.x;
+	if (App->stage1->moveMapRight == true)
+	{
+		fPositionHorizontal += speed.x + App->stage1->ySpeedMultiplier * 0.82f;
+	}
+
+	else { fPositionHorizontal += speed.x; }
 
 	if (App->stage1->moveMapDown == true)
 		fPositionVertical += speed.y + App->stage1->ySpeedMultiplier * 0.82f;

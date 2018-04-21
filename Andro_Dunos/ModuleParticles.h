@@ -21,6 +21,7 @@ enum weapon_types	// To mark the weapon Type currently using
 enum shot_type
 {
 	BLUE_SHOT,
+	GREEN_SINGLE_SHOT,
 	ORANGE_SHOT,
 	YELLOW_SHOT
 };
@@ -112,22 +113,22 @@ public:
 	Particle downLeftGreen1[8];		// Starts at
 
 	// Second diagonals cut in half
-	Particle upRightGreen2[1];		
-	Particle downRightGreen2[1];
-	Particle upLeftGreen2[1];
-	Particle downLeftGreen2[1];
+	Particle upRightGreen2[4];		
+	Particle downRightGreen2[4];
+	Particle upLeftGreen2[4];
+	Particle downLeftGreen2[4];
 
 	// Second diagonals full		// Size: 4, 12. Move: 4, 4. Array size: 8.
-	Particle upRightGreen3[3];		// Starts at
+	Particle upRightGreen3[8];		// Starts at
 	Particle downRightGreen3[8];	// Starts at 114, 42
 	Particle upLeftGreen3[8];		// Starts at
 	Particle downLeftGreen3[8];		// Starts at
 
 	// Third diagonals cut in half
-	Particle upRightGreen4[8];		
-	Particle downRightGreen4[8];
-	Particle upLeftGreen4[8];
-	Particle downLeftGreen4[8];
+	Particle upRightGreen4[4];		
+	Particle downRightGreen4[4];
+	Particle upLeftGreen4[4];
+	Particle downLeftGreen4[4];
 
 	// Third diagonals full
 	Particle upRightGreen5[8];

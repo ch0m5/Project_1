@@ -269,7 +269,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 	if (App->input->keyboard[SDL_SCANCODE_7] == KEY_DOWN && orangePower < LEVEL_5)	// Level up orange
 	{
-		orangePower++;
+		orangePower++;	// Red rockets have 6 particles, IT'S A TRAP
 		
 		if (orangePower < LEVEL_3)
 			maxOrange++;
@@ -281,8 +281,8 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	{
 		yellowPower++;
 
-		if (yellowPower == LEVEL_1)
-			maxYellow = 3;
+		if (yellowPower == LEVEL_1)	// Maybe upgrades gradually with level
+			maxYellow = 5;
 
 		Mix_PlayChannel(3, powerUp, 0);
 	}
@@ -356,8 +356,12 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	// Fire lasers
 	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
 	{
-		if (currentBlue <= 4)
+		if (currentBlue <= maxBlue)
 		{
+			currentBlue += 2;
+
+			// Restart shot counter here
+
 			switch (type)
 			{
 			case TYPE_1:
@@ -438,7 +442,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				switch (bluePower)
 				{
 				case LEVEL_1:
-					App->particles->AddParticle(App->particles->straightGreen, position.x + laserFrontOffset, position.y + laserVerticalOffset - 1, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->straightGreen, position.x + laserFrontOffset, position.y + laserVerticalOffset - 1, GREEN_SINGLE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_2:
@@ -454,19 +458,31 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 					break;
 
 				case LEVEL_4:
-
+					App->particles->AddParticleArray(App->particles->upRightGreen2, 4, position.x + 0, position.y + laserVerticalOffset, 4, -4, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->downRightGreen2, 4, position.x + 0, position.y + laserVerticalOffset, 4, 4, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->upLeftGreen2, 4, position.x + 0, position.y + laserVerticalOffset, -4, -4, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->downLeftGreen2, 4, position.x + 0, position.y + laserVerticalOffset, -4, 4, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_5:
-					App->particles->AddParticleArray(App->particles->downRightGreen3, 8, position.x + 0, position.y + laserVerticalOffset, 4, 4, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->upRightGreen3, 8, position.x + 0, position.y + laserVerticalOffset, 4, -4, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->downRightGreen3, 8, position.x + 0, position.y + laserVerticalOffset, 4, 4, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->upLeftGreen3, 8, position.x + 0, position.y + laserVerticalOffset, -4, -4, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->downLeftGreen3, 8, position.x + 0, position.y + laserVerticalOffset, -4, 4, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_6:
-
+					App->particles->AddParticleArray(App->particles->upRightGreen4, 4, position.x + 0, position.y + laserVerticalOffset, 8, -7, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->downRightGreen4, 4, position.x + 0, position.y + laserVerticalOffset, 8, 7, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->upLeftGreen4, 4, position.x + 0, position.y + laserVerticalOffset, -8, -7, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->downLeftGreen4, 4, position.x + 0, position.y + laserVerticalOffset, -8, 7, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_7:
-
+					App->particles->AddParticleArray(App->particles->upRightGreen5, 8, position.x + 0, position.y + laserVerticalOffset, 8, -7, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->downRightGreen5, 8, position.x + 0, position.y + laserVerticalOffset, 8, 7, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->upLeftGreen5, 8, position.x + 0, position.y + laserVerticalOffset, -8, -7, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->downLeftGreen5, 8, position.x + 0, position.y + laserVerticalOffset, -8, 7, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 				}
 
@@ -527,18 +543,16 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				Mix_PlayChannel(3, type4Shot, 0);
 				break;
 			}
-
-			currentBlue += 2;
-
-			// Restart shot counter here
 		}
 	}
 
 	/*Preparation for keyholding*/
 	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_REPEAT)
 	{
-		if (currentOrange == 0)
+		if (currentOrange < maxOrange)
 		{
+			currentOrange = maxOrange;
+
 			switch (type)
 			{
 			case TYPE_1:
@@ -665,8 +679,6 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 					break;
 				}
 			}
-
-			currentOrange = maxOrange;
 		}
 
 		if (currentYellow < maxYellow)
