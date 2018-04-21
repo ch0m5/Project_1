@@ -164,61 +164,89 @@ bool ModuleParticles::Start()
 	yellowSmallLeft.life = shortLife;
 	yellowSmallLeft.anim.speed = 0.3f;
 	
-	redRocketDown.anim.PushBack({ 0, 99, 16, 9 });	// RedRockets sprites need to be fixed
-	redRocketDown.anim.PushBack({ 0, 113, 16, 9 });
-	redRocketDown.anim.PushBack({ 2, 129, 16, 9 });
-	redRocketDown.anim.PushBack({ 3, 142, 16, 9 });
+	redRocketDown.anim.PushBack({ 2, 99, 16, 9 });
+	redRocketDown.anim.PushBack({ 1, 113, 16, 9 });
+	redRocketDown.anim.PushBack({ 3, 129, 16, 9 });
+	redRocketDown.anim.PushBack({ 4, 142, 16, 9 });
 	redRocketDown.anim.PushBack({ 3, 158, 16, 9 });
 	redRocketDown.anim.PushBack({ 2, 173, 16, 9 });
 	redRocketDown.anim.PushBack({ 3, 188, 16, 9 });
-	redRocketDown.anim.PushBack({ 3, 202, 16, 9 });
+	redRocketDown.anim.PushBack({ 4, 202, 16, 9 });
 	redRocketDown.anim.loop = true;
-	redRocketDown.speed.x = 1.0f;	// Should be camera horizontal speed
+	redRocketDown.speed.x = 0.0f;	// Should be camera horizontal speed
 	redRocketDown.speed.y = 2.0f;
-	redRocketDown.life = shortLife;
+	redRocketDown.life = mediumLife;
 	redRocketDown.anim.speed = 0.3f;
 
-	redRocketUp.anim.PushBack({ 0, 99, 16, 9 });
-	redRocketUp.anim.PushBack({ 0, 113, 16, 9 });
-	redRocketUp.anim.PushBack({ 2, 129, 16, 9 });
-	redRocketUp.anim.PushBack({ 3, 142, 16, 9 });
+	redRocketUp.anim.PushBack({ 2, 99, 16, 9 });
+	redRocketUp.anim.PushBack({ 1, 113, 16, 9 });
+	redRocketUp.anim.PushBack({ 3, 129, 16, 9 });
+	redRocketUp.anim.PushBack({ 4, 142, 16, 9 });
 	redRocketUp.anim.PushBack({ 3, 158, 16, 9 });
 	redRocketUp.anim.PushBack({ 2, 173, 16, 9 });
 	redRocketUp.anim.PushBack({ 3, 188, 16, 9 });
-	redRocketUp.anim.PushBack({ 3, 202, 16, 9 });
+	redRocketUp.anim.PushBack({ 4, 202, 16, 9 });
 	redRocketUp.anim.loop = true;
-	redRocketUp.speed.x = 1.0f;	// Should be camera horizontal speed
+	redRocketUp.speed.x = 0.0f;
 	redRocketUp.speed.y = -2.0f;
-	redRocketUp.life = shortLife;
+	redRocketUp.life = mediumLife;
 	redRocketUp.anim.speed = 0.3f;
 
-	redRocketRightDown.anim.PushBack({ 0, 99, 16, 9 });
-	redRocketRightDown.anim.PushBack({ 0, 113, 16, 9 });
-	redRocketRightDown.anim.PushBack({ 2, 129, 16, 9 });
-	redRocketRightDown.anim.PushBack({ 3, 142, 16, 9 });
-	redRocketRightDown.anim.PushBack({ 3, 158, 16, 9 });
-	redRocketRightDown.anim.PushBack({ 2, 173, 16, 9 });
-	redRocketRightDown.anim.PushBack({ 3, 188, 16, 9 });
-	redRocketRightDown.anim.PushBack({ 3, 202, 16, 9 });
-	redRocketRightDown.anim.loop = true;
-	redRocketRightDown.speed.x = 2.0f;
-	redRocketRightDown.speed.y = 2.0f;		// + camera horizontal speed
-	redRocketRightDown.life = shortLife;
-	redRocketRightDown.anim.speed = 0.3f;
+	redRocketLeftDown.anim.PushBack({ 22, 99, 16, 9 });
+	redRocketLeftDown.anim.PushBack({ 21, 113, 16, 9 });
+	redRocketLeftDown.anim.PushBack({ 23, 129, 16, 9 });
+	redRocketLeftDown.anim.PushBack({ 24, 142, 16, 9 });
+	redRocketLeftDown.anim.PushBack({ 23, 158, 16, 9 });
+	redRocketLeftDown.anim.PushBack({ 22, 173, 16, 9 });
+	redRocketLeftDown.anim.PushBack({ 23, 188, 16, 9 });
+	redRocketLeftDown.anim.PushBack({ 24, 202, 16, 9 });
+	redRocketLeftDown.anim.loop = true;
+	redRocketLeftDown.speed.x = 0.0f;
+	redRocketLeftDown.speed.y = 2.0f;
+	redRocketLeftDown.life = mediumLife;
+	redRocketLeftDown.anim.speed = 0.3f;
 
-	redRocketRightUp.anim.PushBack({ 0, 99, 16, 9 });
-	redRocketRightUp.anim.PushBack({ 0, 113, 16, 9 });
-	redRocketRightUp.anim.PushBack({ 2, 129, 16, 9 });
-	redRocketRightUp.anim.PushBack({ 3, 142, 16, 9 });
-	redRocketRightUp.anim.PushBack({ 3, 158, 16, 9 });
-	redRocketRightUp.anim.PushBack({ 2, 173, 16, 9 });
-	redRocketRightUp.anim.PushBack({ 3, 188, 16, 9 });
-	redRocketRightUp.anim.PushBack({ 3, 202, 16, 9 });
-	redRocketRightUp.anim.loop = true;
-	redRocketRightUp.speed.x = 2.0f;	// + camera horizontal speed
-	redRocketRightUp.speed.y = -2.0f;
-	redRocketRightUp.life = shortLife;
-	redRocketRightUp.anim.speed = 0.3f;
+	redRocketLeftUp.anim.PushBack({ 22, 99, 16, 9 });
+	redRocketLeftUp.anim.PushBack({ 21, 113, 16, 9 });
+	redRocketLeftUp.anim.PushBack({ 23, 129, 16, 9 });
+	redRocketLeftUp.anim.PushBack({ 24, 142, 16, 9 });
+	redRocketLeftUp.anim.PushBack({ 23, 158, 16, 9 });
+	redRocketLeftUp.anim.PushBack({ 22, 173, 16, 9 });
+	redRocketLeftUp.anim.PushBack({ 23, 188, 16, 9 });
+	redRocketLeftUp.anim.PushBack({ 24, 202, 16, 9 });
+	redRocketLeftUp.anim.loop = true;
+	redRocketLeftUp.speed.x = 0.0f;
+	redRocketLeftUp.speed.y = 2.0f;
+	redRocketLeftUp.life = mediumLife;
+	redRocketLeftUp.anim.speed = 0.3f;
+
+	redRocketDownDiagonal.anim.PushBack({ 2, 99, 16, 9 });
+	redRocketDownDiagonal.anim.PushBack({ 1, 113, 16, 9 });
+	redRocketDownDiagonal.anim.PushBack({ 3, 129, 16, 9 });
+	redRocketDownDiagonal.anim.PushBack({ 4, 142, 16, 9 });
+	redRocketDownDiagonal.anim.PushBack({ 3, 158, 16, 9 });
+	redRocketDownDiagonal.anim.PushBack({ 2, 173, 16, 9 });
+	redRocketDownDiagonal.anim.PushBack({ 3, 188, 16, 9 });
+	redRocketDownDiagonal.anim.PushBack({ 4, 202, 16, 9 });
+	redRocketDownDiagonal.anim.loop = true;
+	redRocketDownDiagonal.speed.x = 2.0f;
+	redRocketDownDiagonal.speed.y = 2.0f;
+	redRocketDownDiagonal.life = mediumLife;
+	redRocketDownDiagonal.anim.speed = 0.3f;
+
+	redRocketUpDiagonal.anim.PushBack({ 2, 99, 16, 9 });
+	redRocketUpDiagonal.anim.PushBack({ 1, 113, 16, 9 });
+	redRocketUpDiagonal.anim.PushBack({ 3, 129, 16, 9 });
+	redRocketUpDiagonal.anim.PushBack({ 4, 142, 16, 9 });
+	redRocketUpDiagonal.anim.PushBack({ 3, 158, 16, 9 });
+	redRocketUpDiagonal.anim.PushBack({ 2, 173, 16, 9 });
+	redRocketUpDiagonal.anim.PushBack({ 3, 188, 16, 9 });
+	redRocketUpDiagonal.anim.PushBack({ 4, 202, 16, 9 });
+	redRocketUpDiagonal.anim.loop = true;
+	redRocketUpDiagonal.speed.x = 2.0f;	// + camera horizontal speed
+	redRocketUpDiagonal.speed.y = -2.0f;
+	redRocketUpDiagonal.life = mediumLife;
+	redRocketUpDiagonal.anim.speed = 0.3f;
 
 	//Player Type 3 (green)
 	straightGreen.anim.PushBack({ 42, 87, 32, 3 });
@@ -499,12 +527,12 @@ update_status ModuleParticles::Update()
 				App->player1->currentBlue -= 1;
 			}
 
-			if (p->shotType == GREEN_SINGLE_SHOT)
+			else if (p->shotType == GREEN_SINGLE_SHOT)
 			{
 				App->player1->currentBlue -= 2;
 			}
 
-			if (p->shotType == ORANGE_SHOT)
+			else if (p->shotType == ORANGE_SHOT)
 			{
 				App->player1->currentOrange -= 1;
 			}
@@ -619,14 +647,14 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 					App->player1->currentBlue -= 1;
 				}
 
-				if (active[i]->shotType == ORANGE_SHOT)
-				{
-					App->player1->currentOrange -= 1;;
-				}
-
-				if (active[i]->shotType == GREEN_SINGLE_SHOT)
+				else if (active[i]->shotType == GREEN_SINGLE_SHOT)
 				{
 					App->player1->currentBlue -= 2;
+				}
+
+				else if (active[i]->shotType == ORANGE_SHOT)
+				{
+					App->player1->currentOrange -= 1;
 				}
 
 				// Carles Code <- THIS TRIGGERS THE CORRECT CONDITION
@@ -703,9 +731,12 @@ bool Particle::Update()
 		if (((int)SDL_GetTicks() - (int)born) > (int)life)
 			ret = false;
 	}
-	else
-		if (anim.Finished())
-			ret = false;
+	
+	else if (anim.Finished())	// carles edit (else was above the if, i didn't like it)
+		ret = false;
+	
+	if (position.x > App->render->camera.x / SCREEN_SIZE + SCREEN_WIDTH)	// carles edit, bullets outside the screen will die
+		ret = false;
 	
 	if (App->stage1->moveMapRight == true)
 	{

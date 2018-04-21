@@ -100,8 +100,10 @@ public:
 	// Orange Power
 	Particle redRocketDown;
 	Particle redRocketUp;
-	Particle redRocketRightDown;
-	Particle redRocketRightUp;
+	Particle redRocketLeftDown;
+	Particle redRocketLeftUp;
+	Particle redRocketUpDiagonal;
+	Particle redRocketDownDiagonal;
 
 	// Type 3 particles
 	Particle straightGreen;			
