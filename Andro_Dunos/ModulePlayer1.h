@@ -27,9 +27,9 @@ public:
 
 	SDL_Texture* graphics = nullptr;
 
-	int font_score = -1;
+	int font_score;
 	char score_text[10];
-	uint score = 0;
+	uint score;
 
 	// Ship and booster animations
 	Animation shipVerticalMovement;
@@ -41,7 +41,7 @@ public:
 
 	// Animation ship crash
 	Animation crash;
-	bool destroyed = false;
+	bool destroyed;
 
 	// Animation pointers
 	Animation* shipAnimation = nullptr;
@@ -52,14 +52,14 @@ public:
 	SDL_Rect* shipRect;
 
 	// Ship and propeller sizes in pixels
-	int shipWidth = 27;
-	int shipHeight = 17;
-	int propellerWidth = 12;
-	int propellerHeight = 17;
+	int shipWidth;
+	int shipHeight;
+	int propellerWidth;
+	int propellerHeight;
 
 	fPoint position;	// Float movement
-	float movVertical = 0;	// Counter for the vertical movement of the ship
-	int maxVertical = 14;	// Limit of the counter
+	float movVertical;	// Counter for the vertical movement of the ship
+	int maxVertical;	// Limit of the counter
 
 	//Music 
 	Mix_Chunk *type1Shot = nullptr;		// All use the same channel (3)
@@ -85,15 +85,15 @@ public:
 	int greenPower;				// Flag/counter for green power level
 
 	//Counter to limitate how many lasers, boms, etc can the player have on screen, based on needed particles to be destroyed to make more shots.
-	int maxBlue = 4;
-	int maxOrange = 0;
-	int maxYellow = 0;
+	int maxBlue;
+	int maxOrange;
+	int maxYellow;
 	//int blueShotTimer;	// After the last shot taken, if enough time passes without no shots, the "currentBlue" counter restarts.
 	//int timeBetweenShotsTimer;	// time between each shot, could be a get ticks
 
-	int currentBlue = 0;	// Every shot increases the counter by 2, player will not shot if it gets higher than 4. Each collide substracts 1.
-	int currentOrange = 0;	// Every time it fires increases the counter by x (changes on level), player will not shot if it reaches MAX.  Each collide substracts 1.
-	int currentYellow = 0;	// When reaching level yellow one, the max becomes 3 and the counter increases by 1 for each misile fired. Each collide substracts 1.
+	int currentBlue;	// Every shot increases the counter by 2, player will not shot if it gets higher than 4. Each collide substracts 1.
+	int currentOrange;	// Every time it fires increases the counter by x (changes on level), player will not shot if it reaches MAX.  Each collide substracts 1.
+	int currentYellow;	// When reaching level yellow one, the max becomes 3 and the counter increases by 1 for each misile fired. Each collide substracts 1.
 
 	// For max: MaxBlueLasers = 3, MaxOrange = 1, MaxYellow = 3
 	// Lower Conditions:
@@ -107,7 +107,7 @@ public:
 	// Yellow: collision
 
 	//Debug Purpose Variables
-	bool godMode = false;
+	bool godMode;
 };
 
 #endif
