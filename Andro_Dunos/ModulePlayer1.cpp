@@ -401,19 +401,19 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				switch (bluePower)
 				{
 				case LEVEL_1:
-					App->particles->AddParticle(App->particles->smallBlue, position.x + laserFrontOffset, position.y + laserVerticalOffset - 3, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->smallBlue, position.x + laserFrontOffset, position.y + laserVerticalOffset + 3, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->smallBlue, position.x + laserFrontOffset, position.y + laserVerticalOffset - 5, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->smallBlue, position.x + laserFrontOffset, position.y + laserVerticalOffset + 1, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_2:
 					App->particles->AddParticle(App->particles->smallBlue, position.x + laserFrontOffset, position.y + laserVerticalOffset - 5, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->smallBlue, position.x + laserFrontOffset, position.y + laserVerticalOffset + 0, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->smallBlue, position.x + laserFrontOffset, position.y + laserVerticalOffset + 5, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->smallBlue, position.x + laserFrontOffset, position.y + laserVerticalOffset + 1, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_3:
 					App->particles->AddParticle(App->particles->smallBlue, position.x + laserFrontOffset, position.y + laserVerticalOffset - 5, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->smallBlue, position.x + laserFrontOffset, position.y + laserVerticalOffset + 0, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserFrontOffset, position.y + laserVerticalOffset + 0, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->smallBlue, position.x + laserFrontOffset, position.y + laserVerticalOffset + 5, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
@@ -443,8 +443,8 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				switch (bluePower)
 				{
 				case LEVEL_1:
-					App->particles->AddParticle(App->particles->yellowSmallLeft, position.x + laserFrontOffset, position.y + laserVerticalOffset, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->yellowSmallRight, position.x - 10, position.y + laserVerticalOffset, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->yellowSmallLeft, position.x + laserFrontOffset, position.y + laserVerticalOffset - 2, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->yellowSmallRight, position.x - 10, position.y + laserVerticalOffset - 2, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_2:

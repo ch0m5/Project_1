@@ -580,13 +580,22 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, int sh
 		{
 			Particle* p = new Particle(particle);
 			p->born = SDL_GetTicks() + delay;
-			p->fPositionHorizontal = x + App->render->camera.x / SCREEN_SIZE;
-			p->fPositionVertical = y + App->render->camera.y / SCREEN_SIZE;
 			p->position.x = (int)p->fPositionHorizontal;
 			p->position.y = (int)p->fPositionVertical;
 			p->shotType = shotType;
 			if (collider_type != COLLIDER_NONE)
+			{
+				p->fPositionHorizontal = x + App->render->camera.x / SCREEN_SIZE;
+				p->fPositionVertical = y + App->render->camera.y / SCREEN_SIZE;
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
+			}
+
+			else
+			{
+				p->fPositionHorizontal = x;
+				p->fPositionVertical = y;
+			}
+				
 			active[i] = p;
 			break;
 		}
