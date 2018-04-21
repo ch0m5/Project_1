@@ -151,32 +151,37 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP_ENEMY, 950, 75); // must deliver a powerup particle
 	
 	// Second Enemy: GreyYellowShip (Several waves, no symetry between them)
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1200, 30); // X axis +20 & Y axis -20
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1180, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1200, 70);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1120, 30); // X axis +20 & Y axis -20
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1100, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1120, 70);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1280, 110); // X axis +20 & Y axis +20
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1260, 130);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1280, 150);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1200, 110); // X axis +20 & Y axis +20
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1180, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1200, 150);
 	
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1360, 30); // X axis +20 & Y axis -20
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1340, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1360, 70);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1280, 30); // X axis +20 & Y axis -20
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1260, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1280, 70);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1460, 60); // X axis -10 & Y axis +20
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1450, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1440, 100);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1425, 100);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1450, 120);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1460, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1380, 60); // X axis -10 & Y axis +20
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1370, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1360, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1345, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1370, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1380, 140);
 	
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1540, 70); // X axis +15 & Y axis -15
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1555, 55);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1570, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1460, 70); // X axis +15 & Y axis -15
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1475, 55);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1490, 40);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1650, 110); // X axis +15 & Y axis +15
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1665, 125);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1680, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1540, 110); // X axis +15 & Y axis +15
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1555, 125);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 1570, 140);
+
+	//Powerup------------------------------------------------------
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP_ENEMY, 1590, 75); // must deliver a powerup particle
+
+
 	/*
 	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 720, 140);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 760, 120);
@@ -184,19 +189,13 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::REDLINE_SHIP, 840, 100);
 	*/
 
-	//wave 5 ------------------------------------------------------
-	/*
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1200, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1230, 105);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1260, 135);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1290, 80);
 
-	//wave 6 ------------------------------------------------------
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1200 + 300, 90);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1230 + 300, 110);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1260 + 300, 75);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1290 + 300, 130);
-	*/
+	//wave 5 ------------------------------------------------------
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1680, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1710 , 110);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1740 , 75);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1770 , 130);
+	
    
 
 
