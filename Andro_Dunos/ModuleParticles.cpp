@@ -187,7 +187,7 @@ bool ModuleParticles::Start()
 	yellowSmallLeft.life = shortLife;
 	yellowSmallLeft.anim.speed = 0.3f;
 	
-	redRocketDown.anim.PushBack({ 2, 99, 16, 9 });	// FIX
+	redRocketDown.anim.PushBack({ 2, 99, 16, 9 });
 	redRocketDown.anim.PushBack({ 1, 113, 16, 9 });
 	redRocketDown.anim.PushBack({ 3, 129, 16, 9 });
 	redRocketDown.anim.PushBack({ 4, 142, 16, 9 });
@@ -196,7 +196,7 @@ bool ModuleParticles::Start()
 	redRocketDown.anim.PushBack({ 3, 188, 16, 9 });
 	redRocketDown.anim.PushBack({ 4, 202, 16, 9 });
 	redRocketDown.anim.loop = true;
-	redRocketDown.speed.x = 0.0f;	// Should be camera horizontal speed
+	redRocketDown.speed.x = 0.0f;
 	redRocketDown.speed.y = 2.0f;
 	redRocketDown.life = mediumLife;
 	redRocketDown.anim.speed = 0.7f;
@@ -266,7 +266,7 @@ bool ModuleParticles::Start()
 	redRocketUpDiagonal.anim.PushBack({ 3, 188, 16, 9 });
 	redRocketUpDiagonal.anim.PushBack({ 4, 202, 16, 9 });
 	redRocketUpDiagonal.anim.loop = true;
-	redRocketUpDiagonal.speed.x = 2.0f;	// + camera horizontal speed
+	redRocketUpDiagonal.speed.x = 2.0f;
 	redRocketUpDiagonal.speed.y = -2.0f;
 	redRocketUpDiagonal.life = mediumLife;
 	redRocketUpDiagonal.anim.speed = 0.7f;
@@ -544,6 +544,27 @@ update_status ModuleParticles::Update()
 
 		if (p->Update() == false)
 		{
+			if (p->arrayId > -1)	//ATTEMPT OF ELIMIATING ARRAYS
+			{
+				/*if (p->shotType == BLUE_SHOT)
+				{
+					App->player1->currentBlue -= 1;
+				}*/
+
+				int arrayIdMarker = p->arrayId;
+
+				for (uint j = 0; j < MAX_ACTIVE_PARTICLES; j++)
+				{
+					if (active[j] != nullptr && active[j]->arrayId == arrayIdMarker)
+					{
+						delete active[j];
+						active[j] = nullptr;
+					}
+				}
+
+				continue;
+			}
+
 			// carles edit
 			if (p->shotType == BLUE_SHOT)
 			{
@@ -649,6 +670,7 @@ void ModuleParticles::AddParticleArray(Particle* particleArray, int arraySize, i
 				p->position.x = (int)p->fPositionHorizontal;
 				p->position.y = (int)p->fPositionVertical;
 				p->arrayId = arrayIdList;
+				p->arraySize = arraySize;
 				p->shotType = shotType;
 				if (collider_type != COLLIDER_NONE)
 					p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
@@ -679,26 +701,16 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			if (c2->type == COLLIDER_WALL || c2->type == COLLIDER_ENEMY)
 			{
 				//AddParticle(shipExplo, active[i]->position.x, active[i]->position.y);
-				
-				// carles edit (NEEDS PLAYER 2 IMPLEMETATION)
-				if (active[i]->shotType == BLUE_SHOT)
-				{
-					App->player1->currentBlue -= 1;
-				}
 
-				else if (active[i]->shotType == GREEN_SINGLE_SHOT)
-				{
-					App->player1->currentBlue -= 2;
-				}
+				// End Carles code
 
-				else if (active[i]->shotType == ORANGE_SHOT)
+				if (active[i]->arrayId > -1)	// carles edit (NEEDS PLAYER 2 IMPLEMETATION)
 				{
-					App->player1->currentOrange -= 1;
-				}
+					/*if (active[i]->shotType == BLUE_SHOT)	// ATTEMPT OF ELIMINATING ARRAYS
+					{
+						App->player1->currentBlue -= 1;
+					}*/
 
-				// Carles Code <- THIS TRIGGERS THE CORRECT CONDITION
-				if (active[i]->arrayId > -1)
-				{
 					int arrayIdMarker = active[i]->arrayId;
 
 					//AddParticle(EnemyExplo, active[i]->position.x, active[i]->position.y); explosion needs to be here somewhere?
@@ -714,7 +726,21 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 
 					break;
 				}
-				// End Carles code
+				
+				if (active[i]->shotType == BLUE_SHOT)
+				{
+					App->player1->currentBlue -= 1;
+				}
+
+				else if (active[i]->shotType == GREEN_SINGLE_SHOT)
+				{
+					App->player1->currentBlue -= 2;
+				}
+
+				else if (active[i]->shotType == ORANGE_SHOT)
+				{
+					App->player1->currentOrange -= 1;
+				}
 			}
 			
 			else if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_ENEMY)
@@ -753,6 +779,7 @@ Particle::Particle(const Particle& p) :
 	life(p.life),
 	arrayId(p.arrayId),
 	shotType(p.shotType),
+	arraySize(p.arraySize),	// carles edit
 	particlePath(p.particlePath)	// carles edit
 {}
 

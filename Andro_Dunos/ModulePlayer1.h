@@ -90,6 +90,7 @@ public:
 	int maxYellow;
 	//int blueShotTimer;	// After the last shot taken, if enough time passes without no shots, the "currentBlue" counter restarts.
 	//int timeBetweenShotsTimer;	// time between each shot, could be a get ticks
+	//int weaponChargeTimer
 
 	int currentBlue;	// Every shot increases the counter by 2, player will not shot if it gets higher than 4. Each collide substracts 1.
 	int currentOrange;	// Every time it fires increases the counter by x (changes on level), player will not shot if it reaches MAX.  Each collide substracts 1.

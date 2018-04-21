@@ -39,6 +39,7 @@ struct Particle
 	iPoint position;
 	Path particlePath;
 	float fPositionHorizontal, fPositionVertical;
+	int arraySize = DEFAULT_VALUE;	// Id that marks the array size
 	int arrayId = DEFAULT_VALUE;	// Id needed to delete the full particle array, default for non arrays
 	int shotType = DEFAULT_VALUE;	// Id for blue and orange power particles
 	fPoint speed;
