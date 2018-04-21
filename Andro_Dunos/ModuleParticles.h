@@ -83,17 +83,18 @@ public:
 	// List of Ids needed to delete the full particle array
 	int arrayIdList;
 
-	// Type 1 particles
+	// Type 1 particles		// Needs paths
 	Particle smallBlue;
-	Particle mediumBlue;			// Needs paths
+	Particle mediumBlue;
 	Particle bigBlue;
 
-	// Orange Power
-	//Particle missileHorizontal;
-	//Particle missileUp;			// Needs paths
-	//Particle missileDown;
+	// Orange Power		// Needs paths
+	Particle missileSuperUp;
+	Particle missileUp;			
+	Particle missileDown;
+	Particle missileSuperDown;
 
-	// Type 2 particles
+	// Type 2 particles		// Needs paths
 	Particle yellowBigRight;
 	Particle yellowBigLeft;
 	Particle yellowBigUp;

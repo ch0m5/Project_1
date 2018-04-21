@@ -134,6 +134,49 @@ bool ModuleParticles::Start()
 	bigBlue.life = shortLife;
 	bigBlue.anim.speed = 0.3f;
 
+	/* Missile sprites
+	/	39, 158, 13, 9
+	/	39, 173, 13, 9
+
+	-	39, 142, 13, 9
+	-	38, 127, 13, 9
+
+	\	39, 113, 13, 9
+	\	39, 98, 13, 9
+	*/
+
+	missileSuperUp.anim.PushBack({ 39, 158, 13, 9 });
+	missileSuperUp.anim.PushBack({ 39, 173, 13, 9 });
+	missileSuperUp.anim.loop = true;
+	missileSuperUp.speed.x = 1.0f;
+	missileSuperUp.speed.y = -5.0f;
+	missileSuperUp.life = mediumLife;
+	missileSuperUp.anim.speed = 0.1f;
+
+	missileUp.anim.PushBack({ 39, 158, 13, 9 });
+	missileUp.anim.PushBack({ 39, 173, 13, 9 });
+	missileUp.anim.loop = true;
+	missileUp.speed.x = 6.0f;
+	missileUp.speed.y = -5.0f;
+	missileUp.life = mediumLife;
+	missileUp.anim.speed = 0.1f;
+
+	missileDown.anim.PushBack({ 39, 113, 13, 9 });
+	missileDown.anim.PushBack({ 39, 98, 13, 9 });
+	missileDown.anim.loop = true;
+	missileDown.speed.x = 6.0f;
+	missileDown.speed.y = 5.0f;
+	missileDown.life = mediumLife;
+	missileDown.anim.speed = 0.1f;
+
+	missileSuperDown.anim.PushBack({ 39, 113, 13, 9 });
+	missileSuperDown.anim.PushBack({ 39, 98, 13, 9 });
+	missileSuperDown.anim.loop = true;
+	missileSuperDown.speed.x = 1.0f;
+	missileSuperDown.speed.y = 5.0f;
+	missileSuperDown.life = mediumLife;
+	missileSuperDown.anim.speed = 0.1f;
+
 	//Player Type 2 (yellow)
 	yellowBigRight.anim.PushBack({ 3, 8, 15, 5 });
 	yellowBigRight.anim.loop = false;
@@ -407,56 +450,73 @@ bool ModuleParticles::Start()
 	arrowSuperUp3.anim.PushBack({ 41, 5, 13, 14 });
 	arrowSuperUp3.anim.PushBack({ 41, 19, 13, 14 });
 	arrowSuperUp3.anim.PushBack({ 41, 35, 13, 14 });
-	arrowSuperUp3.anim.PushBack({ 41, 49, 13, 14 });
 	arrowSuperUp3.anim.PushBack({ 41, 48, 13, 14 });
+	arrowSuperUp3.anim.PushBack({ 41, 64, 13, 14 });
 	arrowSuperUp3.anim.loop = false;
 	arrowSuperUp3.speed.x = 7.0f;
 	arrowSuperUp3.speed.y = -1.5;
 	arrowSuperUp3.life = shortLife;
-	arrowSuperUp3.anim.speed = 0.2f;
+	arrowSuperUp3.anim.speed = 0.5f;
 
 	arrowUp3.anim.PushBack({ 41, 5, 13, 14 });
 	arrowUp3.anim.PushBack({ 41, 19, 13, 14 });
 	arrowUp3.anim.PushBack({ 41, 35, 13, 14 });
-	arrowUp3.anim.PushBack({ 41, 49, 13, 14 });
 	arrowUp3.anim.PushBack({ 41, 48, 13, 14 });
+	arrowUp3.anim.PushBack({ 41, 64, 13, 14 });
 	arrowUp3.anim.loop = false;
 	arrowUp3.speed.x = 7.0f;
 	arrowUp3.speed.y = -1.0f;
 	arrowUp3.life = shortLife;
-	arrowUp3.anim.speed = 0.2f;
+	arrowUp3.anim.speed = 0.5f;
 
 	arrowStraight3.anim.PushBack({ 41, 5, 13, 14 });
 	arrowStraight3.anim.PushBack({ 41, 19, 13, 14 });
 	arrowStraight3.anim.PushBack({ 41, 35, 13, 14 });
-	arrowStraight3.anim.PushBack({ 41, 49, 13, 14 });
 	arrowStraight3.anim.PushBack({ 41, 48, 13, 14 });
+	arrowStraight3.anim.PushBack({ 41, 64, 13, 14 });
 	arrowStraight3.anim.loop = false;
 	arrowStraight3.speed.x = 7.0f;
 	arrowStraight3.life = shortLife;
-	arrowStraight3.anim.speed = 0.2f;
+	arrowStraight3.anim.speed = 0.5f;
 
 	arrowDown3.anim.PushBack({ 41, 5, 13, 14 });
 	arrowDown3.anim.PushBack({ 41, 19, 13, 14 });
 	arrowDown3.anim.PushBack({ 41, 35, 13, 14 });
-	arrowDown3.anim.PushBack({ 41, 49, 13, 14 });
 	arrowDown3.anim.PushBack({ 41, 48, 13, 14 });
+	arrowDown3.anim.PushBack({ 41, 64, 13, 14 });
 	arrowDown3.anim.loop = false;
 	arrowDown3.speed.x = 7.0f;
 	arrowDown3.speed.y = 1.0f;
 	arrowDown3.life = shortLife;
-	arrowDown3.anim.speed = 0.2f;
+	arrowDown3.anim.speed = 0.5f;
 
 	arrowSuperDown3.anim.PushBack({ 41, 5, 13, 14 });
 	arrowSuperDown3.anim.PushBack({ 41, 19, 13, 14 });
 	arrowSuperDown3.anim.PushBack({ 41, 35, 13, 14 });
-	arrowSuperDown3.anim.PushBack({ 41, 49, 13, 14 });
 	arrowSuperDown3.anim.PushBack({ 41, 48, 13, 14 });
+	arrowSuperDown3.anim.PushBack({ 41, 64, 13, 14 });
 	arrowSuperDown3.anim.loop = false;
 	arrowSuperDown3.speed.x = 7.0f;
 	arrowSuperDown3.speed.y = 1.5f;
 	arrowSuperDown3.life = shortLife;
-	arrowSuperDown3.anim.speed = 0.2f;
+	arrowSuperDown3.anim.speed = 0.5f;
+
+	// Orange Power
+	laserUp.anim.PushBack({ 63, 11, 3, 16 });
+	laserUp.anim.loop = false;
+	laserUp.speed.x = 0.0f;
+	laserUp.speed.y = -4.0f;
+	laserUp.life = shortLife;
+	laserUp.anim.speed = 0.5f;
+
+	laserDown.anim.PushBack({ 63, 11, 3, 16 });
+	laserDown.anim.loop = false;
+	laserDown.speed.x = 0.0f;
+	laserDown.speed.y = 4.0f;
+	laserDown.life = shortLife;
+	laserDown.anim.speed = 0.5f;
+	//Particle* downRightGreen = nullptr;	// Reusing particles (keep commented)
+	//Particle* upRightGreen = nullptr;
 
 	//Enemy laser
 	enemyBlueShot.anim.PushBack({ 238, 161, 6, 6 });
@@ -550,6 +610,11 @@ update_status ModuleParticles::Update()
 				{
 					App->player1->currentBlue -= 1;
 				}*/
+
+				if (p->shotType == ORANGE_SHOT)
+				{
+					App->player1->currentOrange -= 1;
+				}
 
 				int arrayIdMarker = p->arrayId;
 
@@ -711,6 +776,11 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 						App->player1->currentBlue -= 1;
 					}*/
 
+					if (active[i]->shotType == ORANGE_SHOT)
+					{
+						App->player1->currentOrange -= 1;
+					}
+
 					int arrayIdMarker = active[i]->arrayId;
 
 					//AddParticle(EnemyExplo, active[i]->position.x, active[i]->position.y); explosion needs to be here somewhere?
@@ -807,7 +877,7 @@ bool Particle::Update()
 	
 	if (App->stage1->moveMapRight == true)
 	{
-		fPositionHorizontal += speed.x + App->stage1->ySpeedMultiplier * 0.82f;
+		fPositionHorizontal += speed.x + App->stage1->ySpeedMultiplier * 0.86f;
 	}
 
 	else { fPositionHorizontal += speed.x; }
