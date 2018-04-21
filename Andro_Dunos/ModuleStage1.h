@@ -27,6 +27,8 @@ public:
 	SDL_Texture* bluePlanetText = nullptr;
 	SDL_Texture* caveBackText = nullptr;
 	SDL_Texture* redPlanetText = nullptr;
+	//Star textures
+	SDL_Texture* starsText = nullptr;
 
 	//Rectangles
 	SDL_Rect background1Rect;
@@ -34,6 +36,13 @@ public:
 	SDL_Rect bluePlanetRect;
 	SDL_Rect caveBackRect;
 	SDL_Rect redPlanetRect;
+	//Star Rectangles
+	SDL_Rect starBlue4Rect;
+	SDL_Rect starRed1Rect;
+	SDL_Rect starWhite2Rect;
+	SDL_Rect starWhite8Rect;
+	SDL_Rect starGreen3Rect;
+	SDL_Rect starOrange5Rect;
 
 	// Background movement (position) values
 	//X Axis
@@ -41,6 +50,17 @@ public:
 	float movementxBack = 0;
 	float movementxPlanetsBack = 0;
 	float  backmovementcaveX = 2946; 
+	//Star X Vars
+	float movementXBlueStar = 420;
+	float movementXRedStar = 320;
+	float movementXWhiteStar = 320;
+	float movementXWhite8Star = 370;
+	float movementXGreen3Star = 470;
+	float movementXWhite8StarBack1 = 320;
+	float movementXWhite8StarBack2 = 400;
+	float movementXWhite8StarBack3 = 420;
+	float movementXOrange5Star1 = 400;
+	float movementXOrange5Star2 = 450;
 	//Y Axis
 	float movementy = 0;
 	float movementyBack = 0;

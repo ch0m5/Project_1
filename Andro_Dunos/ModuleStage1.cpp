@@ -48,7 +48,42 @@ ModuleStage1::ModuleStage1()	//@AndresSaladrigas
 	caveBackRect.y = 0;
 	caveBackRect.w = 4509;
 	caveBackRect.h = 489;
+	
+	// starBlue4Rect
+	starBlue4Rect.x = 5;
+	starBlue4Rect.y = 18;
+	starBlue4Rect.w = 3;
+	starBlue4Rect.h = 3;
 
+	//starRed1Rect
+	starRed1Rect.x = 5;
+	starRed1Rect.y = 3;
+	starRed1Rect.w = 3;
+	starRed1Rect.h = 3;
+
+	//starWhite2Rect
+	starWhite2Rect.x = 5;
+	starWhite2Rect.y = 8;
+	starWhite2Rect.w = 3;
+	starWhite2Rect.h = 3;
+
+	//starWhite8Rect
+	starWhite8Rect.x = 21;
+	starWhite8Rect.y = 34;
+	starWhite8Rect.w = 1;
+	starWhite8Rect.h = 1;
+
+	//starGreen3rect
+	starGreen3Rect.x = 5;
+	starGreen3Rect.y = 13;
+	starGreen3Rect.w = 3;
+	starGreen3Rect.h = 3;
+
+	//starOrange5Rect
+	starOrange5Rect.x = 6;
+	starOrange5Rect.y = 23;
+	starOrange5Rect.w = 1;
+	starOrange5Rect.h = 1;
 }
 
 ModuleStage1::~ModuleStage1()
@@ -65,7 +100,7 @@ bool ModuleStage1::Start()
  	map1Text = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/FullMap1_1.png");
 	caveBackText = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/cave_background.png");
 	redPlanetText = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/mars.png");
-
+	starsText = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/Stars.png");
 
 
 	App->player1->Enable();
@@ -73,7 +108,7 @@ bool ModuleStage1::Start()
 	{
 		App->player2->Enable();
 	}
-	// we shoukd log the problem if not loaded correctly
+	// we should log the problem if not loaded correctly
 	
 	App->collision->Enable();
 	App->particles->Enable();
@@ -261,6 +296,17 @@ bool ModuleStage1::CleanUp()
 	 movementx = 0;
 	 movementxBack = 0;
 	 movementxPlanetsBack = 0;
+	 //STars X axis
+	 movementXBlueStar = 420;
+	 movementXRedStar = 320;
+	 movementXWhiteStar = 320;
+	 movementXWhite8Star = 370;
+	 movementXGreen3Star = 470;
+	 movementXWhite8StarBack1 = 320;
+	 movementXWhite8StarBack2 = 400;
+	 movementXWhite8StarBack3 = 420;
+	 movementXOrange5Star1 = 400;
+	 movementXOrange5Star2 = 450;
 	//Y Axis
 	 movementy = 0;
 	 movementyBack = 0;
@@ -288,6 +334,7 @@ bool ModuleStage1::CleanUp()
 	App->textures->Unload(bluePlanetText);
 	App->textures->Unload(caveBackText);
 	App->textures->Unload(redPlanetText);
+	App->textures->Unload(starsText);
 
 	LOG("Unloading enemies");
 	App->enemies->Disable();
@@ -309,35 +356,6 @@ bool ModuleStage1::CleanUp()
 // Update: draw background
 update_status ModuleStage1::Update()
 {
-
-
-	// Draw everything -------------------------------------- Andro Dunos
-	App->render->Blit(caveBackText, backmovementcaveX, -40, &caveBackRect); // cave background
-	//These two if's control the first part of the level outside and the end of the level also outside
-	if (App->render->camera.y < 180 * SCREEN_SIZE)
-	{
-		App->render->Blit(background1Text, movementxBack, 120 + movementyBack, &background1Rect); // level background
-		
-	}
-	if (App->render->camera.x > 7130 * SCREEN_SIZE && App->render->camera.x < 7131 * SCREEN_SIZE)
-	{
-		movementxBack = 0;
-		movementxPlanetsBack = 0;
-	}
-	if (App->render->camera.x > 7130 * SCREEN_SIZE && App->render->camera.y < 180 * SCREEN_SIZE)
-	{
-		App->render->Blit(redPlanetText, 7450 + movementxPlanetsBack, 40, &redPlanetRect); // Mars
-		App->render->Blit(background1Text, 7130 + movementxBack, 120 + movementyBack, &background1Rect); // level background
-	}
-
-	App->render->Blit(map1Text, 0, -55, &map1Rect); // level map
-
-	App->render->Blit(bluePlanetText, 500 + movementxPlanetsBack, -10 , &bluePlanetRect); // Moon 
-	
-	
-
-	
-
 	//Level 1 Map movement Code
 	
 	if (moveMapRight == true)
@@ -442,7 +460,7 @@ update_status ModuleStage1::Update()
 		moveMapDown = false;
 		moveMapUp = false;
 	}
-	if (App->render->camera.x > 7130* SCREEN_SIZE) // 11th SPEED CHANGE: Ships EXIT the inside of the Moon
+	if (App->render->camera.x > 7135* SCREEN_SIZE) // 11th SPEED CHANGE: Ships EXIT the inside of the Moon
 	{
 		ySpeedMultiplier = 1;
 		moveMapRight = false;
@@ -456,8 +474,11 @@ update_status ModuleStage1::Update()
 		moveMapDown = false;
 		moveMapUp = false;
 	}
-	
-	
+	// Win Condition
+	if (App->render->camera.x / SCREEN_SIZE > 8912)
+	{
+		App->fade->FadeToBlack(this, App->stageClear, 1);
+	}
 
 	//make so pressing SPACE the other stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
@@ -506,7 +527,154 @@ update_status ModuleStage1::Update()
 		}
 
 	}
-	
+
+	// Draw everything -------------------------------------- Andro Dunos
+	//BLIT STARS This code it's not clean and we must make it work as particles, but we mut do it after fixing all problems there
+	if (moveMapRight == true)
+	{
+		if (movementXBlueStar * SCREEN_SIZE > App->render->camera.x)
+		{
+			movementXBlueStar -= 1;
+			//Blit the Blue Star
+			App->render->Blit(starsText, movementXBlueStar, 100, &starBlue4Rect);
+		}
+		else
+		{
+			movementXBlueStar += SCREEN_WIDTH;
+		}
+		if (movementXRedStar * SCREEN_SIZE > App->render->camera.x)
+		{
+			movementXRedStar -= 1;
+			//Blit the Red Star
+			App->render->Blit(starsText, movementXRedStar, 30, &starRed1Rect);
+		}
+		else
+		{
+			movementXRedStar += SCREEN_WIDTH;
+		}
+
+		if (movementXWhiteStar * SCREEN_SIZE > App->render->camera.x)
+		{
+			movementXWhiteStar -= 0.15f;
+			//Blit the White Star
+			App->render->Blit(starsText, movementXWhiteStar, 40, &starWhite2Rect);
+		}
+		else
+		{
+			movementXWhiteStar += SCREEN_WIDTH;
+		}
+
+		if (movementXWhite8Star * SCREEN_SIZE > App->render->camera.x)
+		{
+			movementXWhite8Star -= 0.15f;
+			//Blit the White Star
+			App->render->Blit(starsText, movementXWhite8Star, 95, &starWhite8Rect);
+		}
+		else
+		{
+			movementXWhite8Star += SCREEN_WIDTH;
+		}
+
+		if (movementXWhite8StarBack1 * SCREEN_SIZE > App->render->camera.x)
+		{
+			movementXWhite8StarBack1 += 0.20f;
+			//Blit the White Star
+			App->render->Blit(starsText, movementXWhite8StarBack1, 70, &starWhite8Rect);
+		}
+		else
+		{
+			movementXWhite8StarBack1 += SCREEN_WIDTH;
+		}
+
+		if (movementXWhite8StarBack2 * SCREEN_SIZE > App->render->camera.x)
+		{
+			movementXWhite8StarBack2 += 0.20f;
+			//Blit the White Star
+			App->render->Blit(starsText, movementXWhite8StarBack2, 50, &starWhite8Rect);
+		}
+		else
+		{
+			movementXWhite8StarBack2 += SCREEN_WIDTH;
+		}
+
+		if (movementXWhite8StarBack3 * SCREEN_SIZE > App->render->camera.x)
+		{
+			movementXWhite8StarBack3 += 0.20f;
+			//Blit the White Star
+			App->render->Blit(starsText, movementXWhite8StarBack3, 60, &starWhite8Rect);
+		}
+		else
+		{
+			movementXWhite8StarBack3 += SCREEN_WIDTH;
+		}
+
+		if (movementXOrange5Star1 * SCREEN_SIZE > App->render->camera.x)
+		{
+			movementXOrange5Star1 -= 0.10f;
+			//Blit the White Star
+			App->render->Blit(starsText, movementXOrange5Star1, 70, &starOrange5Rect);
+		}
+		else
+		{
+			movementXOrange5Star1 += SCREEN_WIDTH;
+		}
+
+		if (movementXOrange5Star2 * SCREEN_SIZE > App->render->camera.x)
+		{
+			movementXOrange5Star2 -= 0.30f;
+			//Blit the White Star
+			App->render->Blit(starsText, movementXOrange5Star2, 40, &starOrange5Rect);
+		}
+		else
+		{
+			movementXOrange5Star2 += SCREEN_WIDTH;
+		}
+
+		if (movementXGreen3Star * SCREEN_SIZE > App->render->camera.x)
+		{
+			movementXGreen3Star += 0.20f;
+			//Blit the White Star
+			App->render->Blit(starsText, movementXGreen3Star, 97, &starGreen3Rect);
+		}
+		else
+		{
+			movementXGreen3Star += SCREEN_WIDTH;
+		}
+	}
+	else
+	{
+		App->render->Blit(starsText, movementXBlueStar, 100, &starBlue4Rect);
+		App->render->Blit(starsText, movementXRedStar, 30, &starRed1Rect);
+		App->render->Blit(starsText, movementXWhiteStar, 40, &starWhite2Rect);
+		App->render->Blit(starsText, movementXWhite8Star, 95, &starWhite8Rect);
+		App->render->Blit(starsText, movementXWhite8StarBack2, 50, &starWhite8Rect);
+		App->render->Blit(starsText, movementXWhite8StarBack3, 60, &starWhite8Rect);
+		App->render->Blit(starsText, movementXOrange5Star1, 70, &starOrange5Rect);
+		App->render->Blit(starsText, movementXOrange5Star2, 40, &starOrange5Rect);
+		App->render->Blit(starsText, movementXGreen3Star, 97, &starGreen3Rect);
+	}
+																			//These two if's control the first part of the level outside and the end of the level also outside
+	if (App->render->camera.y < 180 * SCREEN_SIZE)
+	{
+		App->render->Blit(background1Text, movementxBack, 120 + movementyBack, &background1Rect); // level background
+
+	}
+	if (App->render->camera.x > 7130 * SCREEN_SIZE && App->render->camera.x < 7131 * SCREEN_SIZE)
+	{
+		movementxBack = 0;
+		movementxPlanetsBack = 0;
+	}
+	if (App->render->camera.x > 7130 * SCREEN_SIZE && App->render->camera.y < 180 * SCREEN_SIZE)
+	{
+		App->render->Blit(redPlanetText, 7450 + movementxPlanetsBack, 40, &redPlanetRect); // Mars
+		App->render->Blit(background1Text, 7130 + movementxBack, 120 + movementyBack, &background1Rect); // level background
+	}
+	App->render->Blit(caveBackText, backmovementcaveX, -40, &caveBackRect); // cave background
+
+	App->render->Blit(map1Text, 0, -55, &map1Rect); // level map
+
+	App->render->Blit(bluePlanetText, 500 + movementxPlanetsBack, -10, &bluePlanetRect); // Moon 
+
 	return UPDATE_CONTINUE;
 
 }
