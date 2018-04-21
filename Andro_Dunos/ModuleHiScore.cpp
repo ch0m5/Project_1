@@ -64,7 +64,10 @@ update_status ModuleHiScore::Update()
 	{
 		App->fade->FadeToBlack(App->scene_HiScore, App->mainMenu, 1);
 	}
-
+	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1)
+	{
+		App->fade->FadeToBlack(App->scene_HiScore, App->stage1, 1);
+	}
 
 	return UPDATE_CONTINUE;
 }

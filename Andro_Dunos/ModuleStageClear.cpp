@@ -67,6 +67,10 @@ update_status ModuleStageClear::Update()
 	{
 		App->fade->FadeToBlack(App->stageClear, App->mainMenu, 1);
 	}
+	if (App->input->keyboard[SDL_SCANCODE_RETURN] == 1)
+	{
+		App->fade->FadeToBlack(App->stageClear, App->stage1, 1);
+	}
 
 
 	return UPDATE_CONTINUE;
