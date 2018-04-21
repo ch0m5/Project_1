@@ -233,15 +233,15 @@ bool ModuleParticles::Start()
 	SetParticleArray(upLeftGreen1, 8, 71, 74, 2, 4, -2, -2, -4.0f, -4.0f, shortLife);
 	SetParticleArray(downLeftGreen1, 8, 71, 35, 2, 4, -2, 2, -4.0f, 4.0f, shortLife);
 
-	SetParticleArray(upRightGreen2, 4, 114, 29, 4, 12, 4, -4, 4.0f, -4.0f, shortLife);
-	SetParticleArray(downRightGreen2, 4, 114, 41, 4, 12, 4, 4, 4.0f, 4.0f, shortLife);
-	SetParticleArray(upLeftGreen2, 4, 108, 29, 4, 12, -4, -4, -4.0f, -4.0f, shortLife);
-	SetParticleArray(downLeftGreen2, 4, 108, 41, 4, 12, -4, 4, -4.0f, 4.0f, shortLife);
+	SetParticleArray(upRightGreen2, 4, 114, 34, 4, 12, 4, -4, 4.0f, -4.0f, shortLife);
+	SetParticleArray(downRightGreen2, 4, 114, 46, 4, 12, 4, 4, 4.0f, 4.0f, shortLife);
+	SetParticleArray(upLeftGreen2, 4, 108, 34, 4, 12, -4, -4, -4.0f, -4.0f, shortLife);
+	SetParticleArray(downLeftGreen2, 4, 108, 46, 4, 12, -4, 4, -4.0f, 4.0f, shortLife);
 
-	SetParticleArray(upRightGreen3, 8, 114, 29, 4, 12, 4, -4, 4.0f, -4.0f, shortLife);
-	SetParticleArray(downRightGreen3, 8, 114, 41, 4, 12, 4, 4, 4.0f, 4.0f, shortLife);	// DO NOT DELETE
-	SetParticleArray(upLeftGreen3, 8, 108, 29, 4, 12, -4, -4, -4.0f, -4.0f, shortLife);
-	SetParticleArray(downLeftGreen3, 8, 108, 41, 4, 12, -4, 4, -4.0f, 4.0f, shortLife);
+	SetParticleArray(upRightGreen3, 8, 114, 34, 4, 12, 4, -4, 4.0f, -4.0f, shortLife);
+	SetParticleArray(downRightGreen3, 8, 114, 46, 4, 12, 4, 4, 4.0f, 4.0f, shortLife);	// DO NOT DELETE
+	SetParticleArray(upLeftGreen3, 8, 108, 34, 4, 12, -4, -4, -4.0f, -4.0f, shortLife);
+	SetParticleArray(downLeftGreen3, 8, 108, 46, 4, 12, -4, 4, -4.0f, 4.0f, shortLife);
 	
 	SetParticleArray(upRightGreen4, 4, 215, 50, 16, 8, 8, -7, 4.0f, -4.0f, shortLife);
 	SetParticleArray(downRightGreen4, 4, 215, 60, 16, 8, 8, 7, 4.0f, 4.0f, shortLife);
@@ -681,7 +681,7 @@ Particle::Particle(const Particle& p) :
 Particle::~Particle()
 {
 	if (collider != nullptr)
-		collider->to_delete = true;
+		collider->to_delete = true;		// EXCEPTION THROWN CONSTANT BUGG HERE
 }
 
 bool Particle::Update()
