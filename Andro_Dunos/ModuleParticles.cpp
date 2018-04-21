@@ -156,8 +156,8 @@ bool ModuleParticles::Start()
 	
 	yellowSmallUp.anim.PushBack({ 24, 68, 8, 6 });
 	yellowSmallUp.anim.loop = false;
-	yellowSmallUp.speed.x = 7.0f;
-	yellowSmallUp.speed.x = -2.0f;
+	yellowSmallUp.speed.x = -7.0f;
+	yellowSmallUp.speed.y = -2.0f;
 	yellowSmallUp.life = shortLife;
 	yellowSmallUp.anim.speed = 0.3f;
 
@@ -170,8 +170,8 @@ bool ModuleParticles::Start()
 
 	yellowBigUp.anim.PushBack({ 5, 50, 11, 8 });
 	yellowBigUp.anim.loop = false;
-	yellowBigUp.speed.x = 7.0f;
-	yellowBigUp.speed.x = -2.0f;
+	yellowBigUp.speed.x = -7.0f;
+	yellowBigUp.speed.y = -2.0f;
 	yellowBigUp.life = shortLife;
 	yellowBigUp.anim.speed = 0.3f;
 
@@ -307,28 +307,28 @@ bool ModuleParticles::Start()
 	bombRightDown.anim.PushBack({ 121, 113, 8, 9 });
 	bombRightDown.anim.loop = false;
 	bombRightDown.speed.x = 3.0f;
-	bombRightDown.speed.y = 1.0f;
+	bombRightDown.speed.y = 6.0f;
 	bombRightDown.life = shortLife;
 	bombRightDown.anim.speed = 0.5f;
 
 	bombRightUp.anim.PushBack({ 121, 98, 8, 9 });
 	bombRightUp.anim.loop = false;
 	bombRightUp.speed.x = 3.0f;
-	bombRightUp.speed.y = -1.0f;
+	bombRightUp.speed.y = -6.0f;
 	bombRightUp.life = shortLife;
 	bombRightUp.anim.speed = 0.5f;
 
 	bombLeftDown.anim.PushBack({ 121, 113, 8, 9 });
 	bombLeftDown.anim.loop = false;
-	bombLeftDown.speed.x = -2.0f;
-	bombLeftDown.speed.y = 1.0f;
+	bombLeftDown.speed.x = -3.0f;
+	bombLeftDown.speed.y = 6.0f;
 	bombLeftDown.life = shortLife;
 	bombLeftDown.anim.speed = 0.5f;
 
 	bombLeftUp.anim.PushBack({ 121, 98, 8, 9 });
 	bombLeftUp.anim.loop = false;
-	bombLeftUp.speed.x = -2.0f;
-	bombLeftUp.speed.y = -1.0f;
+	bombLeftUp.speed.x = -3.0f;
+	bombLeftUp.speed.y = -6.0f;
 	bombLeftUp.life = shortLife;
 	bombLeftUp.anim.speed = 0.5f;
 

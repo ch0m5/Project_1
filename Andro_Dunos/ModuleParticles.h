@@ -8,7 +8,7 @@
 #include "ModuleCollision.h"
 #include "NewPath.h"
 
-#define MAX_ACTIVE_PARTICLES 1000		// Make dymanic array for final game?
+#define MAX_ACTIVE_PARTICLES 3000		// Make dymanic array for final game?
 #define DEFAULT_VALUE -1
 
 enum weapon_types	// To mark the weapon Type currently using
