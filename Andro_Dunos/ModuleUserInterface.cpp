@@ -106,7 +106,7 @@ update_status ModuleUserInterface::Update()
 				}
 				if (App->input->coliderView == true && App->input->debugMode == true)
 				{
-					App->fonts->BlitText(10, 40, debug_font, "colider view");
+					App->fonts->BlitText(10, 40, debug_font, "collider view");
 				}
 				if (App->stage1->fasterX == true && App->input->debugMode == true)
 				{

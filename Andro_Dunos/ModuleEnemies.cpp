@@ -10,6 +10,8 @@
 #include "Enemy_13_Greyball.h"
 #include "RedLineShip_Enemy.h"
 #include "BigGrey_Enemy.h"
+#include "PowerUp_Enemy.h"
+#include "GreyYellow_Enemy.h"
 
 #define SPAWN_MARGIN 50
 
@@ -148,6 +150,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::BIGGREY_ENEMY:
 			enemies[i] = new BigGrey_Enemy(info.x, info.y);
+			break;
+		case ENEMY_TYPES::GREY_YELLOW_SHIP:
+			enemies[i] = new GreyYellow_Enemy(info.x, info.y);
 			break;
 		}
 	}
