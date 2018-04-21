@@ -63,12 +63,12 @@ void RedLineShip_Enemy::OnCollision(Collider* collider)
 	dead = true;
 }
 
-/*
-void Enemy_13_Greyball::Fire()
+
+void RedLineShip_Enemy::Fire()
 {
 	if (position.y == App->player1->position.y)
 	{
-		App->particles->AddParticle(App->particles->yellowSmallLeft, position.x, position.y, COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemyBlueShot, position.x, position.y, -1, COLLIDER_ENEMY_SHOT);
 	}
+
 }
-*/

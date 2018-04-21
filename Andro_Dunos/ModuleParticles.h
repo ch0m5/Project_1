@@ -182,6 +182,9 @@ public:
 	Particle explosion1; //big fire
 	Particle explosion2; //small fire
 
+	//enemy laser
+	Particle enemyBlueShot;
+
 
 
 };

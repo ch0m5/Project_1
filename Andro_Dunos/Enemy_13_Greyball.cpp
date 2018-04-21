@@ -57,7 +57,7 @@ void Enemy_13_Greyball::Fire()
 {
 	if (position.y == App->player1->position.y)
 	{
-		App->particles->AddParticle(App->particles->yellowSmallLeft, position.x-100, position.y, COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->enemyBlueShot, position.x, position.y,-1, COLLIDER_ENEMY_SHOT);
 	}
 }
 

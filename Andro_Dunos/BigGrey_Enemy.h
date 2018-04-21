@@ -29,6 +29,8 @@ public:
 	//void Fire();
 	bool dead = false;
 	uint score = 150;
+
+	void Fire();
 };
 
 #endif // __BIGGREY_ENEMY_H__

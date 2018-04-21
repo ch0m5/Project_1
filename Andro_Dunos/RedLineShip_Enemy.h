@@ -29,6 +29,8 @@ public:
 	uint score = 200;
 	bool dead = false;
 
+	void Fire();
+
 };
 
 #endif // __REDLINESHIP_ENEMY_H__

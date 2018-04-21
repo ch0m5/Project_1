@@ -224,7 +224,7 @@ bool ModuleParticles::Start()
 	straightGreen.anim.PushBack({ 42, 87, 32, 3 });
 	straightGreen.anim.loop = false;
 	straightGreen.speed.x = 7.0f;
-	straightGreen.life = shortLife;
+	straightGreen.life = longLife;
 	straightGreen.anim.speed = 0.3f;
 
 	// Parameter list: (Particle* particleArray, int arraySize, int startX, int startY, int particleSizeX, int particleSizeY, int movX, int movY, float speedX, float speedY, int life, int animSpeed = 0.0f, bool animLoop = false)
@@ -406,6 +406,17 @@ bool ModuleParticles::Start()
 	arrowSuperDown3.speed.y = 1.5f;
 	arrowSuperDown3.life = shortLife;
 	arrowSuperDown3.anim.speed = 0.2f;
+
+	//Enemy laser
+	enemyBlueShot.anim.PushBack({ 238, 161, 6, 6 });
+	enemyBlueShot.anim.PushBack({ 238, 169, 8, 6 });
+	enemyBlueShot.anim.PushBack({ 246, 161, 6, 6 });
+	enemyBlueShot.anim.PushBack({ 239, 177, 6, 8 });
+	enemyBlueShot.anim.loop = true;
+	enemyBlueShot.anim.speed = 0.6f;
+	enemyBlueShot.speed.x = -3.0f;
+	enemyBlueShot.life = shortLife;
+
 
 	// Explosion particle // @Andres
 	explosion.anim.PushBack({ 505, 34, 4, 4 });
