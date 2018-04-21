@@ -26,7 +26,7 @@ public:
 	int hitboxHeight;
 
 	void Move();
-	uint score = 100;
+	uint score = 500;
 	bool dead = false;
 };
 
