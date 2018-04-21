@@ -408,47 +408,45 @@ bool ModuleParticles::Start()
 	arrowSuperDown3.anim.speed = 0.2f;
 
 	// Explosion particle // @Andres
-	/*explosion.anim.PushBack({ 33, 66, 6, 6 });
-	explosion.anim.PushBack({ 45, 64, 10, 8 });
-	explosion.anim.PushBack({ 59, 56, 16, 16 });
-	explosion.anim.PushBack({ 81, 58, 14, 14 });
+	explosion.anim.PushBack({ 505, 34, 4, 4 });
+	explosion.anim.PushBack({ 512, 26, 12, 12 });
+	explosion.anim.PushBack({ 528, 6, 32, 32 });
+	explosion.anim.PushBack({ 563, 7, 30, 30 });
+	explosion.anim.PushBack({ 597, 8, 30, 30 });
+	explosion.anim.PushBack({ 518, 46, 30, 30 });
+	explosion.anim.PushBack({ 552, 47, 30, 30 });
+	explosion.anim.PushBack({ 587, 45, 32, 32 });
+	explosion.anim.PushBack({ 524, 82, 32, 32 });
+	explosion.anim.PushBack({ 571, 82, 32, 32 });
 	explosion.anim.loop = false;
-	explosion.anim.speed = 0.2f;*/
+	explosion.anim.speed = 0.6f;
 
-	// @XaviMarin
-	// Explosion ship 
-	/*shipExplo.anim.PushBack({ 50, 35, 27, 17 });
-	shipExplo.anim.PushBack({ 87, 34, 28, 18 });
-	shipExplo.anim.PushBack({ 125, 31, 30, 21 });
-	shipExplo.anim.PushBack({ 165, 27, 31, 25 });
-	shipExplo.anim.PushBack({ 50, 63, 32, 27 });
-	shipExplo.anim.PushBack({ 92, 59, 32, 31 });
-	shipExplo.anim.PushBack({ 134, 57, 32, 32 });
-	shipExplo.anim.PushBack({ 92, 105, 30, 30 });
-	shipExplo.anim.PushBack({ 132, 110, 24, 15 });
-	shipExplo.anim.PushBack({ 168, 114, 19, 11 });
-	shipExplo.anim.PushBack({ 199, 116, 15, 9 });
-	shipExplo.anim.loop = false;
-	shipExplo.anim.speed = 0.2f;*/
+	explosion1.anim.PushBack({ 632, 24, 8, 8 });
+	explosion1.anim.PushBack({ 642, 18, 13, 14 });
+	explosion1.anim.PushBack({ 658, 7, 25, 25 });
+	explosion1.anim.PushBack({ 688, 6, 27, 26 });
+	explosion1.anim.PushBack({ 718, 3, 30, 29 });
+	explosion1.anim.PushBack({ 632, 39, 29, 28 });
+	explosion1.anim.PushBack({ 665, 39, 29, 28 });
+	explosion1.anim.PushBack({ 698, 40, 28, 27 });
+	explosion1.anim.PushBack({ 728, 42, 29, 27 });
+	explosion1.anim.PushBack({ 632, 74, 29, 27 });
+	explosion1.anim.PushBack({ 665, 76, 28, 26 });
+	explosion1.anim.PushBack({ 698, 77, 26, 24 });
+	explosion1.anim.PushBack({ 727, 79, 21, 21 });
+	explosion1.anim.PushBack({ 638, 107, 17, 17 });
+	explosion1.anim.PushBack({ 665, 115, 6, 6 });
+	explosion1.anim.loop = false;
+	explosion1.anim.speed = 0.6f;
 
-	// Enemy explosion
-	EnemyExplo.anim.PushBack({ 4, 25, 8, 8 });
-	EnemyExplo.anim.PushBack({ 14, 19, 13, 15 });
-	EnemyExplo.anim.PushBack({ 30, 8, 25, 25 });
-	EnemyExplo.anim.PushBack({ 60, 7, 27, 26 });
-	EnemyExplo.anim.PushBack({ 90, 4, 30, 29 });
-	EnemyExplo.anim.PushBack({ 4, 40, 29, 28 });
-	EnemyExplo.anim.PushBack({ 37, 40, 29, 28 });
-	EnemyExplo.anim.PushBack({ 70, 41, 28, 27 });
-	EnemyExplo.anim.PushBack({ 100, 43, 29, 27 });
-	EnemyExplo.anim.PushBack({ 4, 75, 29, 27 });
-	EnemyExplo.anim.PushBack({ 37, 77, 28, 26 });
-	EnemyExplo.anim.PushBack({ 70, 78, 26, 24 });
-	EnemyExplo.anim.PushBack({ 99, 80, 21, 21 });
-	EnemyExplo.anim.PushBack({ 10, 108, 17, 17 });
-	EnemyExplo.anim.PushBack({ 37, 116, 6, 6 });
-	EnemyExplo.anim.loop = false;
-	EnemyExplo.anim.speed = 0.4f;
+	explosion2.anim.PushBack({ 509, 137, 6, 6 });
+	explosion2.anim.PushBack({ 521, 135, 10, 8 });
+	explosion2.anim.PushBack({ 535, 127, 16, 16 });
+	explosion2.anim.PushBack({ 557, 129, 14, 14 });
+	explosion2.anim.loop = false;
+	explosion2.anim.speed = 0.6f;
+
+
 
 
 	return true;

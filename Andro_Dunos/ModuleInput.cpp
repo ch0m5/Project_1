@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleInput.h"
 #include "SDL/include/SDL.h"
+#include "ModuleParticles.h"
 
 ModuleInput::ModuleInput() : Module()	//@CarlesHoms
 {
@@ -65,8 +66,9 @@ update_status ModuleInput::PreUpdate()
 		debugMode = !debugMode;
 		if (debugMode == false)
 		{
-			coliderView == false;
-		}
+			coliderView =false;
+		} 
+
 	}
 	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_DOWN && debugMode == true) //enter debug mode @andres
 	{

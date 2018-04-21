@@ -39,9 +39,14 @@ public:
 	Animation downwardsBooster;
 	Animation superDownwardsBooster;
 
+	// Animation ship crash
+	Animation crash;
+	bool destroyed = false;
+
 	// Animation pointers
 	Animation* shipAnimation = nullptr;
 	Animation* propellerAnimation = nullptr;
+	Animation* crashAnimation = nullptr;
 
 	// Player rectangle pointer
 	SDL_Rect* shipRect;

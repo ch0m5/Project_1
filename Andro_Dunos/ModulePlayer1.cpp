@@ -24,6 +24,8 @@ ModulePlayer1::ModulePlayer1()	// @CarlesHoms @Andres
 	propellerWidth = 12;
 	propellerHeight = 17;
 
+	crashAnimation = nullptr;
+
 	// Starting point of the ship (using p2Point)
 	position.x = 0;		
 	position.y = SCREEN_HEIGHT / 2 - 10;
@@ -121,6 +123,31 @@ ModulePlayer1::ModulePlayer1()	// @CarlesHoms @Andres
 	superDownwardsBooster.PushBack({ 74, 153, propellerWidth, propellerHeight });
 	superDownwardsBooster.PushBack({ 0, 0, propellerWidth, propellerHeight });
 	superDownwardsBooster.speed = 1.4f;
+
+	// Animation
+	crash.PushBack({ 42, 224, 27, 17 });
+	crash.PushBack({ 79, 224, 28, 18 });
+	crash.PushBack({ 117, 224, 30, 21 });
+	crash.PushBack({ 157, 224, 31, 25 });
+
+	crash.PushBack({ 42, 251, 32, 27 });
+	crash.PushBack({ 79, 251, 32, 31 });
+	crash.PushBack({ 117, 251, 32, 32 });
+
+	//same for player 2 from know on
+	crash.PushBack({ 157, 251, 30, 30 });
+
+	crash.PushBack({ 42, 284, 27, 17 });
+	crash.PushBack({ 79, 284, 24, 15 });
+	crash.PushBack({ 117, 284, 19, 11 });
+	crash.PushBack({ 157, 284, 15, 9 });
+
+	crash.PushBack({ 42, 304, 17, 13 });
+	crash.PushBack({ 79, 304, 15, 15 });
+	crash.PushBack({ 117, 304, 30, 21 });
+	crash.PushBack({ 157, 304, 2, 1 });
+	crash.speed = 0.3f;
+	crash.loop = false;
 }
 
 ModulePlayer1::~ModulePlayer1()
@@ -131,7 +158,8 @@ bool ModulePlayer1::Start()
 {
 	LOG("Loading player textures");
 	bool ret = true;
-	graphics = App->textures->Load("Assets/Sprites/Players_Ships/ships.png"); // arcade version
+	destroyed = false;
+	graphics = App->textures->Load("Assets/Sprites/Players_Ships/ships_all.png"); // arcade version
 
 	//Music
 	type1Shot = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Shot_Type-1_(Main_Ships).wav");
@@ -154,7 +182,7 @@ bool ModulePlayer1::Start()
 	
 	// UI must change
 	score = 0;
-	//font_score = App->fonts->Load("Assets/Sprites/User_Interface/Grafical_Interface/rtype_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
+	
 	// Place player hitbox
 	playerHitbox = App->collision->AddCollider({ (int)position.x, (int)position.y, shipWidth, shipHeight}, COLLIDER_PLAYER, this);
 	
@@ -192,7 +220,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 			}
 		}
 			//Player Movement
-		else if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+		else if (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT && destroyed == false)
 		{
 			if (position.y < SCREEN_HEIGHT - shipHeight)
 			{
@@ -205,7 +233,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 			}
 		}
 
-		else if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+		else if (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT && destroyed == false)
 		{
 			if (position.y > 0)
 			{
@@ -218,12 +246,12 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 			}
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0)
+		if (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT && position.x > 0 && destroyed == false)
 		{
 			position.x -= speed;
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - shipWidth)
+		if (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT && position.x < SCREEN_WIDTH - shipWidth && destroyed == false)
 		{
 			position.x += speed;
 		}
@@ -758,10 +786,20 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	}
 
 	// Draw everything --------------------------------------
-	SDL_Rect propellerRect = propellerAnimation->GetCurrentFrame();
+	if (destroyed == false)
+	{
+		SDL_Rect propellerRect = propellerAnimation->GetCurrentFrame();
 
-	App->render->Blit(graphics, position.x - propellerWidth, position.y, &propellerRect,1.0f,false);
-	App->render->Blit(graphics, position.x, position.y, shipRect,1.0f,false);
+		App->render->Blit(graphics, position.x - propellerWidth, position.y, &propellerRect, 1.0f, false);
+		App->render->Blit(graphics, position.x, position.y, shipRect, 1.0f, false);
+	}
+	if (destroyed == true)
+	{
+		SDL_Rect crashrect = crashAnimation->GetCurrentFrame();
+		App->render->Blit(graphics, position.x, position.y, &crashrect, 1.0f, false);
+
+
+	}
 
 	return UPDATE_CONTINUE;
 }
@@ -784,6 +822,10 @@ bool ModulePlayer1::CleanUp()
 	//Reset player pos
 	position.x = 0;							// Starting point of the ship (using p2Point)
 	position.y = SCREEN_HEIGHT / 2 - 10;
+	shipAnimation = nullptr;
+	propellerAnimation = nullptr;
+	crashAnimation = nullptr;
+	crash.Reset();
 
 	return true;
 }
@@ -794,13 +836,14 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 
 	if ((c1->type == COLLIDER_WALL ||
 		c2->type == COLLIDER_WALL ||
-		c1->type == COLLIDER_ENEMY_SHOT ||
-		c1->type == COLLIDER_ENEMY_SHOT ||
-		c2->type == COLLIDER_ENEMY ||
-		c2->type == COLLIDER_ENEMY))
+		c1->type == COLLIDER_ENEMY_SHOT ||  //Cambio @andres
+		c2->type == COLLIDER_ENEMY_SHOT ||  //Cambio @andres
+		c1->type == COLLIDER_ENEMY ||		//Cambio @andres
+		c2->type == COLLIDER_ENEMY))		//Cambio @andres
 	{
+		crashAnimation = &crash;
+		destroyed = true;
 		playerHitbox->to_delete = true;
-		App->player1->Disable();
 		App->fade->FadeToBlack(App->stage1, App->scene_HiScore);	// HARDCODED: Needs "current stage" functionality
 	}
 }

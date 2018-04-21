@@ -177,10 +177,11 @@ public:
 	//Particle greenShield;		// Needs paths
 	//Particle yellowShield;
 
-	Particle explosion;
-	//@XaviMarin
-	//Particle shipExplo;
-	Particle EnemyExplo;
+	//@Andres
+	Particle explosion;  //ring 
+	Particle explosion1; //big fire
+	Particle explosion2; //small fire
+
 
 
 };

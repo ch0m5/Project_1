@@ -57,18 +57,19 @@ void Enemy_13_Greyball::Fire()
 {
 	if (position.y == App->player1->position.y)
 	{
-		App->particles->AddParticle(App->particles->yellowSmallLeft, position.x, position.y, COLLIDER_ENEMY_SHOT);
+		App->particles->AddParticle(App->particles->yellowSmallLeft, position.x-100, position.y, COLLIDER_ENEMY_SHOT);
 	}
 }
 
 void Enemy_13_Greyball::OnCollision(Collider* collider)
 {
-	//App->particles->AddParticle(App->particles->explosion, position.x, position.y);
-	//App->particles->AddParticle(App->particles->shipExplo, (int)position.x, (int)position.y); // Well done!! Only must put the player position in the parameters
+	
 	
 	if (dead==false)
 	{
-		App->particles->AddParticle(App->particles->EnemyExplo, position.x, position.y);
+		App->particles->AddParticle(App->particles->explosion, position.x-50, position.y);
+		App->particles->AddParticle(App->particles->explosion1, position.x, position.y);
+		App->particles->AddParticle(App->particles->explosion2, position.x + 30, position.y);
 		if (collider->type == COLLIDER_PLAYER_SHOT)
 		{
 			App->UI->player1Score += score;

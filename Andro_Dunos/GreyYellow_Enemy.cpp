@@ -45,12 +45,12 @@ void GreyYellow_Enemy::Move()
 
 void GreyYellow_Enemy::OnCollision(Collider* collider)
 {
-	//App->particles->AddParticle(App->particles->explosion, position.x, position.y);
-	//App->particles->AddParticle(App->particles->shipExplo, (int)position.x, (int)position.y); // Well done!! Only must put the player position in the parameters
-
+	
 	if (dead == false)
 	{
-		App->particles->AddParticle(App->particles->EnemyExplo, position.x, position.y);
+		App->particles->AddParticle(App->particles->explosion, position.x + 10, position.y);
+		App->particles->AddParticle(App->particles->explosion1, position.x, position.y);
+		App->particles->AddParticle(App->particles->explosion2, position.x + 30, position.y);
 		if (collider->type == COLLIDER_PLAYER_SHOT)
 		{
 			App->UI->player1Score += score;
