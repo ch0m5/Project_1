@@ -433,13 +433,13 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	{
 		if (currentBlue <= maxBlue)
 		{
-			currentBlue += 2;
-
-			// Restart shot counter here
+			// Restart shot timer here
 
 			switch (type)
 			{
 			case TYPE_1:
+				currentBlue += 2;
+
 				switch (bluePower)
 				{
 				case LEVEL_1:
@@ -491,6 +491,8 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				break;
 
 			case TYPE_2:
+				currentBlue += 2;
+
 				switch (bluePower)
 				{
 				case LEVEL_1:
@@ -553,6 +555,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				switch (bluePower)
 				{
 				case LEVEL_1:
+					currentBlue += 2;
 					App->particles->AddParticle(App->particles->straightGreen, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 1, GREEN_SINGLE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
@@ -601,6 +604,8 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				break;
 
 			case TYPE_4:
+				currentBlue += 2;
+
 				switch (bluePower)
 				{
 				case LEVEL_1:
@@ -658,7 +663,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	}
 
 	/*Preparation for keyholding*/
-	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
+	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_REPEAT)
 	{
 		if (currentOrange == 0)
 		{
@@ -716,6 +721,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 					break;
 
 				case LEVEL_4:
+					currentOrange = maxOrange + 2;
 					App->particles->AddParticle(App->particles->redRocketDown, position.x + 5, position.y + laserVerticalOffset, ORANGE_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->redRocketUp, position.x + 5, position.y + laserVerticalOffset, ORANGE_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->redRocketLeftDown, position.x + 5, position.y + laserVerticalOffset, ORANGE_SHOT, COLLIDER_PLAYER_SHOT);
@@ -725,6 +731,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 					break;
 
 				case LEVEL_5:
+					currentOrange = maxOrange + 2;
 					App->particles->AddParticle(App->particles->redRocketDown, position.x + 5, position.y + laserVerticalOffset, ORANGE_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->redRocketUp, position.x + 5, position.y + laserVerticalOffset, ORANGE_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->redRocketLeftDown, position.x + 5, position.y + laserVerticalOffset, ORANGE_SHOT, COLLIDER_PLAYER_SHOT);

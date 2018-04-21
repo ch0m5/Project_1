@@ -196,14 +196,18 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1750 , 75);
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1780 , 130);
 
-
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1850, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1870, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1890, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1910, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1830, 80);
+	//wave 6----------------------------------------------------
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1850, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1860, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1870, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1880, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1890, 20);
    
-
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1910, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1920, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1930, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1940, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1950, 80);
 
 	// Ground Collider @Andres&Didac
 	App->collision->AddCollider({ 0, 195, 3000, 275 }, COLLIDER_WALL);  // Moon ground collider 

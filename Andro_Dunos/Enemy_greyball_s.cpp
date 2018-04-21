@@ -34,29 +34,20 @@ Enemy_Greyball_S::Enemy_Greyball_S(int x, int y) : Enemy(x, y)
 
 	original_y = y;
 
-	S_Path.PushBack({ 0.25, 0.5 }, 50);
-	S_Path.PushBack({ -0.25, -0.5 }, 50);
+	S_Path.PushBack({ -0.5, 1 }, 70);
+	S_Path.PushBack({ -0.5, 0 }, 20);
+	S_Path.PushBack({ -0.5, -1 }, 70);
+	S_Path.PushBack({ -0.5, 0 }, 20);
+	S_Path.PushBack({ -0.5, 1 }, 70);
+	S_Path.PushBack({ -0.5, 0 }, 20);
+	S_Path.PushBack({ -0.5, -1 }, 70);
+	
 }
 
 void Enemy_Greyball_S::Move()
 {
-	if (going_up)
-	{
-		if (wave > 1.0f)
-			going_up = false;
-		else
-			wave += 0.01f;
-	}
-	else
-	{
-		if (wave < -1.0f)
-			going_up = true;
-		else
-			wave -= 0.01f;
-	}
-	
-	position.y = int(float(original_y) + (25.0f * sinf(2*PI*wave + 0)));
-	position.x -= 1;
+	position.x = GreyS_posx + S_Path.GetCurrentPosition().x;
+	position.y = GreyS_posy + S_Path.GetCurrentPosition().y;
 }
 
 //void Enemy_Greyball_S::Fire()
