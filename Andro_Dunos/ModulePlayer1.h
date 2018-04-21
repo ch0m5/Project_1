@@ -52,14 +52,14 @@ public:
 	SDL_Rect* shipRect;
 
 	// Ship and propeller sizes in pixels
-	int shipHeight;
-	int shipWidth;
-	int propellerWidth;
-	int propellerHeight;
+	int shipWidth = 27;
+	int shipHeight = 17;
+	int propellerWidth = 12;
+	int propellerHeight = 17;
 
 	fPoint position;	// Float movement
-	float movVertical;	// Counter for the vertical movement of the ship
-	int maxVertical;	// Limit of the counter
+	float movVertical = 0;	// Counter for the vertical movement of the ship
+	int maxVertical = 14;	// Limit of the counter
 
 	//Music 
 	Mix_Chunk *type1Shot = nullptr;		// All use the same channel (3)
@@ -74,9 +74,8 @@ public:
 	Collider* playerHitbox;
 	
 	//Lasers
-	int laserFrontOffset;		// Offset for front bullets
-	int laserBackOffset;		// Offset for back bullets	// Distance from ship position to bullet creation
-	int laserVerticalOffset;	// Offset for all bullets
+	int laserHorizontalOffset = 18;	// Horizontal Offset for bullets
+	int laserVerticalOffset = 12;	// Vertical Offset for bullets
 
 	//Types and levels
 	int type;					// Flag/counter for type equipped

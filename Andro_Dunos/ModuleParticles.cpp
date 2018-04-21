@@ -126,31 +126,45 @@ bool ModuleParticles::Start()
 	bigBlue.anim.speed = 0.3f;
 
 	//Player Type 2 (yellow)
-	YellowBigRight.anim.PushBack({ 3, 8, 15, 5 });
-	YellowBigRight.anim.loop = false;
-	YellowBigRight.speed.x = 7.0f;
-	YellowBigRight.life = shortLife;
-	YellowBigRight.anim.speed = 0.3f;
+	yellowBigRight.anim.PushBack({ 3, 8, 15, 5 });
+	yellowBigRight.anim.loop = false;
+	yellowBigRight.speed.x = 7.0f;
+	yellowBigRight.life = shortLife;
+	yellowBigRight.anim.speed = 0.3f;
+	
+	yellowBigLeft.anim.PushBack({ 3, 23, 15, 5 });
+	yellowBigLeft.anim.loop = false;
+	yellowBigLeft.speed.x = -7.0f;
+	yellowBigLeft.life = shortLife;
+	yellowBigLeft.anim.speed = 0.3f;
+	
+	yellowSmallDown.anim.PushBack({ 24, 79, 8, 6 });
+	yellowSmallDown.anim.loop = false;
+	yellowSmallDown.speed.x = -7.0f;
+	yellowSmallDown.speed.y = 2.0f;
+	yellowSmallDown.life = shortLife;
+	yellowSmallDown.anim.speed = 0.3f;
+	
+	yellowSmallUp.anim.PushBack({ 24, 68, 8, 6 });
+	yellowSmallUp.anim.loop = false;
+	yellowSmallUp.speed.x = 7.0f;
+	yellowSmallUp.speed.x = -2.0f;
+	yellowSmallUp.life = shortLife;
+	yellowSmallUp.anim.speed = 0.3f;
 
-	YellowBigLeft.anim.PushBack({ 3, 23, 15, 5 });
-	YellowBigLeft.anim.loop = false;
-	YellowBigLeft.speed.x = -7.0f;
-	YellowBigLeft.life = shortLife;
-	YellowBigLeft.anim.speed = 0.3f;
+	yellowBigDown.anim.PushBack({ 5, 37, 11, 8 });
+	yellowBigDown.anim.loop = false;
+	yellowBigDown.speed.x = -7.0f;
+	yellowBigDown.speed.y = 2.0f;
+	yellowBigDown.life = shortLife;
+	yellowBigDown.anim.speed = 0.3f;
 
-	yellowDown.anim.PushBack({ 5, 37, 11, 8 });
-	yellowDown.anim.loop = false;
-	yellowDown.speed.x = -7.0f;
-	yellowDown.speed.y = 2.0f;
-	yellowDown.life = shortLife;
-	yellowDown.anim.speed = 0.3f;
-
-	yellowUp.anim.PushBack({ 5, 50, 10, 8 });
-	yellowUp.anim.loop = false;
-	yellowUp.speed.x = 7.0f;
-	yellowUp.speed.x = -2.0f;
-	yellowUp.life = shortLife;
-	yellowUp.anim.speed = 0.3f;
+	yellowBigUp.anim.PushBack({ 5, 50, 11, 8 });
+	yellowBigUp.anim.loop = false;
+	yellowBigUp.speed.x = 7.0f;
+	yellowBigUp.speed.x = -2.0f;
+	yellowBigUp.life = shortLife;
+	yellowBigUp.anim.speed = 0.3f;
 
 	yellowSmallRight.anim.PushBack({ 6, 69, 10, 3 });
 	yellowSmallRight.anim.loop = false;
@@ -590,12 +604,19 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, int sh
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			}
 
+			else if (collider_type != COLLIDER_NONE)
+			{
+				p->fPositionHorizontal = x;
+				p->fPositionVertical = y;
+				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
+			}
+				
 			else
 			{
 				p->fPositionHorizontal = x;
 				p->fPositionVertical = y;
 			}
-				
+
 			active[i] = p;
 			break;
 		}

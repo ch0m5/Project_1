@@ -90,10 +90,12 @@ public:
 	//Particle missileDown;
 
 	// Type 2 particles
-	Particle YellowBigRight;
-	Particle YellowBigLeft;
-	Particle yellowDown;
-	Particle yellowUp;
+	Particle yellowBigRight;
+	Particle yellowBigLeft;
+	Particle yellowBigUp;
+	Particle yellowBigDown;
+	Particle yellowSmallDown;
+	Particle yellowSmallUp;
 	Particle yellowSmallRight;
 	Particle yellowSmallLeft;
 
