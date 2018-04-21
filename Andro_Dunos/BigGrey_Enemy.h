@@ -30,6 +30,11 @@ public:
 	bool dead = false;
 	uint score = 150;
 
+	int maxShots = 50;
+	int currentShot = 0;
+
+	int maxDistance = 30;
+
 	void Fire();
 };
 

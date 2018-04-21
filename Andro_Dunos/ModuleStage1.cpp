@@ -196,13 +196,55 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1750 , 75);
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1780 , 130);
 
-
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1850, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1870, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1890, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1910, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1830, 80);
+	//wave 6----------------------------------------------------
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1850, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1860, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1870, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1880, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1890, 20);
    
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1910, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1920, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1930, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1940, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1950, 80);
+
+	//wave final enemies
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8537, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8547, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8552, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8568, 25);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8572, 180);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8579, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8585, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8586, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8589, 150);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8589, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8592, 75);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8615, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8622, 45);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8630, 115);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8638, 95);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8642, 135);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8649, 105);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8655, 25);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8662, 105);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8679, 45);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8683, 55);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8689, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8692, 160);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8695, 76);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8700, 95);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8715, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8720, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8726, 96);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8736, 145);
 
 
 	// Ground Collider @Andres&Didac
