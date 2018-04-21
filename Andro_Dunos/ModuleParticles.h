@@ -125,16 +125,16 @@ public:
 	Particle downLeftGreen3[8];		// Starts at
 
 	// Third diagonals cut in half
-	Particle upRightGreen4[4];		
-	Particle downRightGreen4[4];
-	Particle upLeftGreen4[4];
-	Particle downLeftGreen4[4];
+	Particle upRightGreen4[2];		
+	Particle downRightGreen4[2];
+	Particle upLeftGreen4[2];
+	Particle downLeftGreen4[2];
 
 	// Third diagonals full
-	Particle upRightGreen5[8];
-	Particle downRightGreen5[8];
-	Particle upLeftGreen5[8];
-	Particle downLeftGreen5[8];
+	Particle upRightGreen5[4];
+	Particle downRightGreen5[4];
+	Particle upLeftGreen5[4];
+	Particle downLeftGreen5[4];
 
 	// Orange Power
 	Particle bombRightDown;

@@ -500,17 +500,17 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 					break;
 
 				case LEVEL_6:
-					App->particles->AddParticleArray(App->particles->upRightGreen4, 4, position.x + 0, position.y + laserVerticalOffset, 8, -7, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticleArray(App->particles->downRightGreen4, 4, position.x + 0, position.y + laserVerticalOffset, 8, 7, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticleArray(App->particles->upLeftGreen4, 4, position.x + 0, position.y + laserVerticalOffset, -8, -7, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticleArray(App->particles->downLeftGreen4, 4, position.x + 0, position.y + laserVerticalOffset, -8, 7, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->upRightGreen4, 2, position.x + 0, position.y + laserVerticalOffset, 12, -10, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->downRightGreen4, 2, position.x + 0, position.y + laserVerticalOffset, 10, 12, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->upLeftGreen4, 2, position.x + 0, position.y + laserVerticalOffset, -10, -12, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->downLeftGreen4, 2, position.x + 0, position.y + laserVerticalOffset, -12, 10, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_7:
-					App->particles->AddParticleArray(App->particles->upRightGreen5, 8, position.x + 0, position.y + laserVerticalOffset, 8, -7, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticleArray(App->particles->downRightGreen5, 8, position.x + 0, position.y + laserVerticalOffset, 8, 7, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticleArray(App->particles->upLeftGreen5, 8, position.x + 0, position.y + laserVerticalOffset, -8, -7, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticleArray(App->particles->downLeftGreen5, 8, position.x + 0, position.y + laserVerticalOffset, -8, 7, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->upRightGreen5, 4, position.x + 0, position.y + laserVerticalOffset, 12, -10, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->downRightGreen5, 4, position.x + 0, position.y + laserVerticalOffset, 10, 12, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->upLeftGreen5, 4, position.x + 0, position.y + laserVerticalOffset, -10, -12, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticleArray(App->particles->downLeftGreen5, 4, position.x + 0, position.y + laserVerticalOffset, -12, 10, BLUE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 				}
 

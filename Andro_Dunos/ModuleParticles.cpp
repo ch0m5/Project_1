@@ -163,7 +163,7 @@ bool ModuleParticles::Start()
 	yellowSmallLeft.speed.x = -7.0f;
 	yellowSmallLeft.life = shortLife;
 	yellowSmallLeft.anim.speed = 0.3f;
-	// red rocket fix sprite
+	
 	redRocketDown.anim.PushBack({ 0, 99, 16, 9 });	// RedRockets sprites need to be fixed
 	redRocketDown.anim.PushBack({ 0, 113, 16, 9 });
 	redRocketDown.anim.PushBack({ 2, 129, 16, 9 });
@@ -202,7 +202,7 @@ bool ModuleParticles::Start()
 	redRocketRightDown.anim.PushBack({ 3, 202, 16, 9 });
 	redRocketRightDown.anim.loop = true;
 	redRocketRightDown.speed.x = 2.0f;
-	redRocketRightDown.speed.y = 2.0f;
+	redRocketRightDown.speed.y = 2.0f;		// + camera horizontal speed
 	redRocketRightDown.life = shortLife;
 	redRocketRightDown.anim.speed = 0.3f;
 
@@ -215,7 +215,7 @@ bool ModuleParticles::Start()
 	redRocketRightUp.anim.PushBack({ 3, 188, 16, 9 });
 	redRocketRightUp.anim.PushBack({ 3, 202, 16, 9 });
 	redRocketRightUp.anim.loop = true;
-	redRocketRightUp.speed.x = 2.0f;
+	redRocketRightUp.speed.x = 2.0f;	// + camera horizontal speed
 	redRocketRightUp.speed.y = -2.0f;
 	redRocketRightUp.life = shortLife;
 	redRocketRightUp.anim.speed = 0.3f;
@@ -224,7 +224,7 @@ bool ModuleParticles::Start()
 	straightGreen.anim.PushBack({ 42, 87, 32, 3 });
 	straightGreen.anim.loop = false;
 	straightGreen.speed.x = 7.0f;
-	straightGreen.life = longLife;
+	straightGreen.life = shortLife;
 	straightGreen.anim.speed = 0.3f;
 
 	// Parameter list: (Particle* particleArray, int arraySize, int startX, int startY, int particleSizeX, int particleSizeY, int movX, int movY, float speedX, float speedY, int life, int animSpeed = 0.0f, bool animLoop = false)
@@ -239,19 +239,19 @@ bool ModuleParticles::Start()
 	SetParticleArray(downLeftGreen2, 4, 108, 46, 4, 12, -4, 4, -4.0f, 4.0f, shortLife);
 
 	SetParticleArray(upRightGreen3, 8, 114, 34, 4, 12, 4, -4, 4.0f, -4.0f, shortLife);
-	SetParticleArray(downRightGreen3, 8, 114, 46, 4, 12, 4, 4, 4.0f, 4.0f, shortLife);	// DO NOT DELETE
+	SetParticleArray(downRightGreen3, 8, 114, 46, 4, 12, 4, 4, 4.0f, 4.0f, shortLife);
 	SetParticleArray(upLeftGreen3, 8, 108, 34, 4, 12, -4, -4, -4.0f, -4.0f, shortLife);
 	SetParticleArray(downLeftGreen3, 8, 108, 46, 4, 12, -4, 4, -4.0f, 4.0f, shortLife);
 	
-	SetParticleArray(upRightGreen4, 4, 215, 50, 16, 8, 8, -7, 4.0f, -4.0f, shortLife);
-	SetParticleArray(downRightGreen4, 4, 215, 60, 16, 8, 8, 7, 4.0f, 4.0f, shortLife);
-	SetParticleArray(upLeftGreen4,4, 199, 50, 16, 8, -8, -7, -4.0f, -4.0f, shortLife);
-	SetParticleArray(downLeftGreen4, 4, 199, 60, 16, 8, -8, 7, -4.0f, 4.0f, shortLife);
+	SetParticleArray(upRightGreen4, 2, 215, 40, 12, 18, 12, -10, 4.0f, -4.0f, shortLife);
+	SetParticleArray(downRightGreen4, 2, 216, 59, 18, 12, 10, 12, 4.0f, 4.0f, shortLife);
+	SetParticleArray(upLeftGreen4, 2, 196, 47, 18, 12, -10, -12, -4.0f, -4.0f, shortLife);
+	SetParticleArray(downLeftGreen4, 2, 203, 60, 12, 18, -12, 10, -4.0f, 4.0f, shortLife);
 
-	SetParticleArray(upRightGreen5, 8, 215, 50, 16, 8, 8, -7, 4.0f, -4.0f, shortLife);
-	SetParticleArray(downRightGreen5, 8, 215, 60, 16, 8, 8, 7, 4.0f, 4.0f, shortLife);
-	SetParticleArray(upLeftGreen5, 8, 199, 50, 16, 8, -8, -7, -4.0f, -4.0f, shortLife);
-	SetParticleArray(downLeftGreen5, 8, 199, 60, 16, 8, -8, 7, -4.0f, 4.0f, shortLife);
+	SetParticleArray(upRightGreen5, 4, 215, 40, 12, 18, 12, -10, 4.0f, -4.0f, shortLife);
+	SetParticleArray(downRightGreen5, 4, 216, 59, 18, 12, 10, 12, 4.0f, 4.0f, shortLife);
+	SetParticleArray(upLeftGreen5, 4, 196, 47, 18, 12, -10, -12, -4.0f, -4.0f, shortLife);
+	SetParticleArray(downLeftGreen5, 4, 203, 60, 12, 18, -12, 10, -4.0f, 4.0f, shortLife);
 
 	bombRightDown.anim.PushBack({ 121, 113, 8, 9 });
 	bombRightDown.anim.loop = false;
@@ -684,7 +684,8 @@ Particle::Particle(const Particle& p) :
 	fx(p.fx),
 	born(p.born),
 	life(p.life),
-	arrayId(p.arrayId)	// Carles edit
+	arrayId(p.arrayId),	// Carles edit
+	shotType(p.shotType)	// Carles edit
 {}
 
 Particle::~Particle()
