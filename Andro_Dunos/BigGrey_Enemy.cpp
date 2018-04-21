@@ -14,7 +14,7 @@ BigGrey_Enemy::BigGrey_Enemy(int x, int y) : Enemy(x, y)
 	fly.PushBack({ 515, 2, hitboxWidth, hitboxHeight });
 	fly.PushBack({ 546, 2, hitboxWidth, hitboxHeight });
 	
-	fly.speed = 0.2f;
+	fly.speed = 0.1f;
 
 	animation = &fly;
 
@@ -23,14 +23,22 @@ BigGrey_Enemy::BigGrey_Enemy(int x, int y) : Enemy(x, y)
 	BigGrey_posx = x;
 	BigGrey_posy = y;
 
-	BigGrey_Path.PushBack({ -0.25, -0.5 }, 50);
-	BigGrey_Path.PushBack({ -0.25, 0.5 }, 50);
+	/*BigGrey_Path.PushBack({ -0.25, -0.5 }, 50);
+	BigGrey_Path.PushBack({ -0.25, 0.5 }, 50);*/
 }
 
 void BigGrey_Enemy::Move()
 {
-	position.x = BigGrey_posx + BigGrey_Path.GetCurrentPosition().x;
-	position.y = BigGrey_posy + BigGrey_Path.GetCurrentPosition().y;
+	
+	position.x += 0.1;
+	position.y = App->player1->position.y;
+	/*
+	if (App->player1->position.y > position.y) {
+		position.y -= 0.1;
+	}
+	if (App->player1->position.y < position.y) {
+		position.y += 0.1;
+	}*/
 }
 
 void BigGrey_Enemy::OnCollision(Collider* collider)
@@ -54,10 +62,16 @@ void BigGrey_Enemy::OnCollision(Collider* collider)
 	dead = true;
 }
 
-void BigGrey_Enemy::Fire()
+
+void BigGrey_Enemy::Fire()	//@XaviMarin
 {
-	if (position.y == App->player1->position.y)
+	if (currentShot > maxShots)
 	{
 		App->particles->AddParticle(App->particles->enemyBlueShot, position.x, position.y, -1, COLLIDER_ENEMY_SHOT);
+		currentShot = 0;
+	}
+	else
+	{
+		currentShot++;
 	}
 }
