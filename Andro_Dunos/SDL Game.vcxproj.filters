@@ -128,6 +128,9 @@
     <ClInclude Include="Enemy_GreyBall_S.h">
       <Filter>ModulesEnemies\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="GreyBall_K.h">
+      <Filter>ModulesEnemies\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -218,6 +221,9 @@
       <Filter>ModulesEnemies\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="Enemy_GreyBall_S.cpp">
+      <Filter>ModulesEnemies\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Greyball_K.cpp">
       <Filter>ModulesEnemies\Enemies</Filter>
     </ClCompile>
   </ItemGroup>

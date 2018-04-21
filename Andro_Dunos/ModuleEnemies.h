@@ -6,13 +6,14 @@
 #include "RedLineShip_Enemy.h"
 #include "PowerUp_Enemy.h"
 
-#define MAX_ENEMIES 100
+#define MAX_ENEMIES 500
 
 enum ENEMY_TYPES
 {
 	NO_TYPE,
 	GREYBALL_UP_DOWN,
 	GREYBALL_S,
+	GREYBALL_K,
 	REDLINE_SHIP,
 	POWERUP_ENEMY,
 	BIGGREY_ENEMY,
