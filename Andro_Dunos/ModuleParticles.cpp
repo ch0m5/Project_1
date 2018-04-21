@@ -604,12 +604,19 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, int sh
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
 			}
 
+			else if (collider_type != COLLIDER_NONE)
+			{
+				p->fPositionHorizontal = x;
+				p->fPositionVertical = y;
+				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
+			}
+				
 			else
 			{
 				p->fPositionHorizontal = x;
 				p->fPositionVertical = y;
 			}
-				
+
 			active[i] = p;
 			break;
 		}
