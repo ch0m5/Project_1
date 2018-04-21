@@ -289,13 +289,13 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	}
 
 	// (TEMPORAL) level up and down
-	if (App->input->keyboard[SDL_SCANCODE_6] == KEY_DOWN && bluePower < LEVEL_7)	// Level up blue
+	if (App->input->keyboard[SDL_SCANCODE_6] == KEY_DOWN && bluePower < LEVEL_7 && App->input->debugMode==true)	// Level up blue
 	{
 		bluePower++;
 		Mix_PlayChannel(3, powerUp, 0);
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_7] == KEY_DOWN && orangePower < LEVEL_5)	// Level up orange
+	if (App->input->keyboard[SDL_SCANCODE_7] == KEY_DOWN && orangePower < LEVEL_5 && App->input->debugMode == true)	// Level up orange
 	{
 		orangePower++;	// Red rockets have 6 particles, IT'S A TRAP
 		
@@ -305,7 +305,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 		Mix_PlayChannel(3, powerUp, 0);
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_8] == KEY_DOWN && yellowPower < LEVEL_8)	// Level up yellow
+	if (App->input->keyboard[SDL_SCANCODE_8] == KEY_DOWN && yellowPower < LEVEL_8 && App->input->debugMode == true)	// Level up yellow
 	{
 		yellowPower++;
 
@@ -315,13 +315,13 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 		Mix_PlayChannel(3, powerUp, 0);
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_9] == KEY_DOWN && yellowPower < LEVEL_8)	// Level up green
+	if (App->input->keyboard[SDL_SCANCODE_9] == KEY_DOWN && yellowPower < LEVEL_8 && App->input->debugMode == true)	// Level up green
 	{
 		greenPower++;
 		Mix_PlayChannel(3, powerUp, 0);
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_0] == KEY_DOWN)	// Level all down
+	if (App->input->keyboard[SDL_SCANCODE_0] == KEY_DOWN && App->input->debugMode == true)	// Level all down
 	{
 		if (bluePower > LEVEL_1)
 			bluePower--;
