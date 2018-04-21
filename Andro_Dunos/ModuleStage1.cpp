@@ -192,10 +192,16 @@ bool ModuleStage1::Start()
 
 	//wave 5 ------------------------------------------------------
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1680, 90);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1710 , 110);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1740 , 75);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1770 , 130);
-	
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1720 , 110);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1750 , 75);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1780 , 130);
+
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1850, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1870, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1890, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1910, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1830, 80);
    
 
 
