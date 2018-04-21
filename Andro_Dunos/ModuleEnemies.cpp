@@ -13,6 +13,7 @@
 #include "PowerUp_Enemy.h"
 #include "GreyYellow_Enemy.h"
 #include "PowerUp_Bonus.h"
+#include "Enemy_GreyBall_S.h"
 
 #define SPAWN_MARGIN 50
 
@@ -157,6 +158,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::POWERUP_BONUS:
 			enemies[i] = new PowerUp_Bonus(info.x, info.y);
+			break;
+		case ENEMY_TYPES::GREYBALL_S:
+			enemies[i] = new Enemy_Greyball_S(info.x, info.y);
 			break;
 		}
 	}
