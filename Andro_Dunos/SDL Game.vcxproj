@@ -78,6 +78,7 @@
     <ClInclude Include="Enemy_13_Greyball.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enemy_Example.h" />
+    <ClInclude Include="Enemy_GreyBall_S.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="GreyYellow_Enemy.h" />
     <ClInclude Include="MemLeaks.h" />
@@ -112,6 +113,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enemy_13_Greyball.cpp" />
     <ClCompile Include="Enemy_Example.cpp" />
+    <ClCompile Include="Enemy_GreyBall_S.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="GreyYellow_Enemy.cpp" />
     <ClCompile Include="Main.cpp" />
