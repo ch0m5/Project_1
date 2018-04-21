@@ -144,6 +144,7 @@ void ModuleCollision::DebugDraw()
 
 
 	Uint8 alpha = 80;
+	Uint8 alphaHard = 130;
 	for (uint i = 0; i < MAX_COLLIDERS; ++i)
 	{
 		if (colliders[i] == nullptr)
@@ -170,7 +171,7 @@ void ModuleCollision::DebugDraw()
 				App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
 				break;
 			case COLLIDER_ENEMY_SHOT: // magenta
-				App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);
+				App->render->DrawQuad(colliders[i]->rect, 255, 0, 255, alphaHard);
 				break;
 			case COLLIDER_POWERUP: // BROWN
 				App->render->DrawQuad(colliders[i]->rect, 160, 128, 96, alpha);
