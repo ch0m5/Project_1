@@ -18,9 +18,6 @@ ModulePlayer1::ModulePlayer1()	// @CarlesHoms @Andres
 {
 	graphics = nullptr;
 
-	font_score = -1;
-	score = 0;
-
 	// Animation ship crash
 	destroyed = false;
 
@@ -201,7 +198,7 @@ bool ModulePlayer1::Start()
 
 	// Starting point of the ship (using p2Point)
 	position.x = 0;
-	position.y = SCREEN_HEIGHT / 2 - 10;
+	position.y = (int)(SCREEN_HEIGHT / 2 - 10);
 
 	movVertical = 0;	// Counter for the vertical movement of the ship
 
@@ -212,9 +209,6 @@ bool ModulePlayer1::Start()
 	Mix_VolumeChunk(typeSwap, FXVol);
 	Mix_VolumeChunk(powerUp, FXVol);
 	Mix_VolumeChunk(playerDeathExplosion, FXVol);
-	
-	// UI must change
-	score = 0;
 	
 	// Place player hitbox
 	playerHitbox = App->collision->AddCollider({ (int)position.x, (int)position.y, shipWidth, shipHeight}, COLLIDER_PLAYER, this);
@@ -925,7 +919,7 @@ bool ModulePlayer1::CleanUp()
 
 	//Reset player pos
 	position.x = 0;							// Starting point of the ship (using p2Point)
-	position.y = SCREEN_HEIGHT / 2 - 10;
+	position.y = (int)(SCREEN_HEIGHT / 2 - 10);
 	shipAnimation = nullptr;
 	propellerAnimation = nullptr;
 	crashAnimation = nullptr;
