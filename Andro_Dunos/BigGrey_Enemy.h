@@ -9,13 +9,14 @@ class BigGrey_Enemy : public Enemy
 private:
 	float wave = -1.0f;
 	bool going_up = false;
+	bool going_down = false;
 	int original_y = 0;
 	Animation fly;
 
 	Path BigGrey_Path;
 
-	int BigGrey_posx;
-	int BigGrey_posy;
+	float BigGrey_posx;
+	float BigGrey_posy;
 
 public:
 	virtual void OnCollision(Collider* collider) override;
@@ -34,6 +35,8 @@ public:
 	int currentShot = 0;
 
 	int maxDistance = 30;
+
+	int posfor;
 
 	void Fire();
 };

@@ -131,6 +131,12 @@
     <ClInclude Include="GreyBall_K.h">
       <Filter>ModulesEnemies\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="GreyYellow_Enemy_Up.h">
+      <Filter>ModulesEnemies\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="GreyYellow_Enemy_Down.h">
+      <Filter>ModulesEnemies\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -224,6 +230,12 @@
       <Filter>ModulesEnemies\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="Greyball_K.cpp">
+      <Filter>ModulesEnemies\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="GreyYellow_Enemy_Up.cpp">
+      <Filter>ModulesEnemies\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="GreyYellow_Enemy_Down.cpp">
       <Filter>ModulesEnemies\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
