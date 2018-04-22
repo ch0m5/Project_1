@@ -1034,7 +1034,7 @@ bool ModulePlayer1::CleanUp()
 
 void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 {
-	Mix_PlayChannel(3, playerDeathExplosion, 0);
+	
 
 	if ((c1->type == COLLIDER_WALL ||
 		c2->type == COLLIDER_WALL ||
@@ -1043,6 +1043,7 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 		c1->type == COLLIDER_ENEMY ||		//Cambio @andres
 		c2->type == COLLIDER_ENEMY))		//Cambio @andres
 	{
+		Mix_PlayChannel(3, playerDeathExplosion, 0);
 		crashAnimation = &crash;
 		destroyed = true;
 		playerHitbox->to_delete = true;
