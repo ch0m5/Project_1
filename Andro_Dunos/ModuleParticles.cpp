@@ -380,7 +380,7 @@ bool ModuleParticles::Start()
 	arrowUp1.anim.PushBack({ 41, 23, 13, 6 });
 	arrowUp1.anim.loop = false;
 	arrowUp1.speed.x = 7.0f;
-	arrowUp1.speed.y = -1.0f;
+	arrowUp1.speed.y = -0.6f;
 	arrowUp1.life = shortLife;
 	arrowUp1.anim.speed = 0.5f;
 
@@ -395,7 +395,7 @@ bool ModuleParticles::Start()
 	arrowDown1.anim.PushBack({ 41, 23, 13, 6 });
 	arrowDown1.anim.loop = false;
 	arrowDown1.speed.x = 7.0f;
-	arrowDown1.speed.y = 1.0f;
+	arrowDown1.speed.y = 0.6f;
 	arrowDown1.life = shortLife;
 	arrowDown1.anim.speed = 0.5f;
 
