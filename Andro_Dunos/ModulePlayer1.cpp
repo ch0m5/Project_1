@@ -323,25 +323,25 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 		if (App->input->keyboard[SDL_SCANCODE_6] == KEY_DOWN && bluePower < LEVEL_7)	// Level up blue
 		{
 			bluePower++;
-			Mix_PlayChannel(3, powerUp, 0);
+			Mix_PlayChannel(6, powerUp, 0);
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_7] == KEY_DOWN && orangePower < LEVEL_5)	// Level up orange
 		{
-			orangePower++;	// Red rockets have 6 particles, IT'S A TRAP
-			Mix_PlayChannel(3, powerUp, 0);
+			orangePower++;
+			Mix_PlayChannel(6, powerUp, 0);
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_8] == KEY_DOWN && yellowPower < LEVEL_8)	// Level up yellow
 		{
 			yellowPower++;
-			Mix_PlayChannel(3, powerUp, 0);
+			Mix_PlayChannel(6, powerUp, 0);
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_9] == KEY_DOWN && yellowPower < LEVEL_8)	// Level up green
 		{
 			greenPower++;
-			Mix_PlayChannel(3, powerUp, 0);
+			Mix_PlayChannel(6, powerUp, 0);
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_0] == KEY_DOWN)	// Level all down
@@ -389,7 +389,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 			break;
 		}
 
-		Mix_PlayChannel(3, typeSwap, 0);
+		Mix_PlayChannel(0, typeSwap, 0);
 	}
 
 	// WARNING: ALL BLITTED POSITIONS ARE CORRECTED WITH THE REFERENCE OF SCREEN SIZE 3, HARDCODED INTO THAT SIZE
@@ -469,7 +469,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 					break;
 				}
 
-				Mix_PlayChannel(3, type1Shot, 0);
+				Mix_PlayChannel(1, type1Shot, 0);
 				break;
 
 			case TYPE_2:
@@ -535,7 +535,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 					break;
 				}
 
-				Mix_PlayChannel(3, type2Shot, 0);
+				Mix_PlayChannel(1, type2Shot, 0);
 				break;
 
 			case TYPE_3:
@@ -593,7 +593,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 					break;
 				}
 
-				Mix_PlayChannel(3, type3Shot, 0);
+				Mix_PlayChannel(1, type3Shot, 0);
 				break;
 
 			case TYPE_4:
@@ -654,7 +654,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 					break;
 				}
 
-				Mix_PlayChannel(3, type4Shot, 0);
+				Mix_PlayChannel(1, type4Shot, 0);
 				break;
 			}
 		}
