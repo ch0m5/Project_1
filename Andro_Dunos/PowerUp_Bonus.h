@@ -8,10 +8,8 @@
 class PowerUp_Bonus : public Enemy
 {
 private:
-	float wave = -1.0f;
-	bool going_up = true;
-	int original_y = 0;
-	Animation fly;
+	iPoint originalPos;
+	Animation blueMode, blueClose,blueOpen,redMode,redClose,redShine,redOpen;
 	Path PowerUpBonus_Path;
 
 	int PowerUpBonus_posx;
@@ -28,6 +26,8 @@ public:
 	void Move();
 	uint score = 500;
 	bool dead = false;
+	bool blue = true;
+	bool red = false;
 };
 
 #endif // __POWERUP_BONUS_H__
