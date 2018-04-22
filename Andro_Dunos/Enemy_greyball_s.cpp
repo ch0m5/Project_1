@@ -25,7 +25,7 @@ Enemy_Greyball_S::Enemy_Greyball_S(int x, int y) : Enemy(x, y)
 	fly.PushBack({ 22, 23, hitboxWidth, hitboxHeight });
 	fly.PushBack({ 44, 24, hitboxWidth, hitboxHeight });
 	fly.PushBack({ 67, 26, hitboxWidth, hitboxHeight });
-	fly.speed = 0.2f;
+	fly.speed = 0.6f;
 
 	animation = &fly;
 
@@ -66,9 +66,9 @@ void Enemy_Greyball_S::OnCollision(Collider* collider)
 	
 	if (dead==false)
 	{
-		App->particles->AddParticle(App->particles->explosion, position.x-50, position.y);
+		App->particles->AddParticle(App->particles->explosion, position.x, position.y);
 		App->particles->AddParticle(App->particles->explosion1, position.x, position.y);
-		App->particles->AddParticle(App->particles->explosion2, position.x + 30, position.y);
+		App->particles->AddParticle(App->particles->explosion2, position.x, position.y);
 		Mix_PlayChannel(5, App->enemies->explosion1, 0);
 		Mix_PlayChannel(4, App->enemies->explosion2, 0);
 		if (collider->type == COLLIDER_PLAYER_SHOT)
