@@ -6,6 +6,8 @@
 #include "ModuleParticles.h"
 #include "ModuleUserInterface.h"
 #include "ModuleRender.h"
+#include "ModuleEnemies.h"
+#include "ModuleMixer.h"
 
 BigGrey_Enemy::BigGrey_Enemy(int x, int y) : Enemy(x, y)
 {
@@ -65,6 +67,10 @@ void BigGrey_Enemy::OnCollision(Collider* collider)
 		App->particles->AddParticle(App->particles->explosion, position.x + 10, position.y);
 		App->particles->AddParticle(App->particles->explosion1, position.x, position.y);
 		App->particles->AddParticle(App->particles->explosion2, position.x + 30, position.y);
+
+		Mix_PlayChannel(5, App->enemies->explosion1, 0);
+		Mix_PlayChannel(4, App->enemies->explosion2, 0);
+
 		if (collider->type == COLLIDER_PLAYER_SHOT)
 		{
 			App->UI->player1Score += score;

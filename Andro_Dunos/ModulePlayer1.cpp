@@ -910,6 +910,7 @@ bool ModulePlayer1::CleanUp()
 {
 	LOG("Unloading player 1");
 	App->textures->Unload(graphics);
+	graphics = nullptr;
 
 	App->player1->Disable();
 

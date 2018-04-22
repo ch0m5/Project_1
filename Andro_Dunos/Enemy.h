@@ -4,6 +4,7 @@
 #include "p2Point.h"
 #include "Animation.h"
 
+
 struct SDL_Texture;
 struct Collider;
 
@@ -26,6 +27,8 @@ public:
 	virtual void Draw(SDL_Texture* sprites);
 	virtual void OnCollision(Collider* collider);
 	virtual void Fire() {};
+
+
 };
 
 #endif // __ENEMY_H__

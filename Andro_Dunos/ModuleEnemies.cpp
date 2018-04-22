@@ -5,6 +5,7 @@
 #include "ModuleParticles.h"
 #include "ModuleTextures.h"
 #include "Enemy.h"
+#include "ModuleMixer.h"
 
 //Enemy types includes
 #include "Enemy_13_Greyball.h"
@@ -37,6 +38,11 @@ bool ModuleEnemies::Start()
 	// Create a prototype for each enemy available so we can copy them around
 	sprites = App->textures->Load("Assets/Sprites/Enemies_and_projectiles/table_enemy.png");
 
+	explosion1 = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Enemy_Small_EXPLOSION.wav");
+	explosion2 = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Enemy_Medium_EXPLOSION.wav");
+	Mix_VolumeChunk(explosion1, FXVol);
+	Mix_VolumeChunk(explosion2, FXVol);
+	
 	return true;
 }
 
@@ -94,8 +100,19 @@ update_status ModuleEnemies::PostUpdate()
 }
 
 // Called before quitting
+
 bool ModuleEnemies::CleanUp()
   {
+	LOG("Freeing enemy texture");
+	App->textures->Unload(sprites);
+	sprites = nullptr;
+
+	LOG("Feeing fx");
+	App->mixer->UnloadFx(explosion1);
+	App->mixer->UnloadFx(explosion2);
+	explosion1 = nullptr;
+	explosion2 = nullptr;
+
 	LOG("Freeing all enemies");
 
 	for (uint i = 0; i < MAX_ENEMIES; ++i)

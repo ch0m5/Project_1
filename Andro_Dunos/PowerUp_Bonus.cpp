@@ -3,6 +3,7 @@
 #include "ModuleCollision.h"
 #include "ModuleRender.h"
 #include "ModulePlayer1.h"
+#include "ModulePlayer2.h"
 #include "ModuleParticles.h"
 #include "ModuleUserInterface.h"
 #include "PowerUp_Bonus.h"
@@ -46,15 +47,17 @@ void PowerUp_Bonus::OnCollision(Collider* collider)
 {	
 	if (dead == false)
 	{
-	
+		
 		if (collider->type == COLLIDER_PLAYER)
 		{
-			Mix_PlayChannel(3, App->player1->powerUp, 0);
+			Mix_PlayChannel(6, App->player1->powerUp, 0);
 			App->player1->bluePower++;
 			App->UI->player1Score += score;
 		}
 		if (collider->type == COLLIDER_PLAYER)
 		{
+			Mix_PlayChannel(6, App->player1->powerUp, 0);
+			App->player2->bluePower++;
 			App->UI->player2Score += score;
 		}
 	}

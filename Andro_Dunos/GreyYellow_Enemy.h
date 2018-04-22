@@ -26,7 +26,7 @@ public:
 
 	void Move();
 
-	uint score = 200;
+	uint score = 150;
 	bool dead = false;
 
 };

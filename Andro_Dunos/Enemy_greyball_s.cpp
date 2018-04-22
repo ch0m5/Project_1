@@ -5,6 +5,8 @@
 #include "ModulePlayer1.h"
 #include "ModuleParticles.h"
 #include "ModuleUserInterface.h"
+#include "ModuleEnemies.h"
+#include "ModuleMixer.h"
 
 
 Enemy_Greyball_S::Enemy_Greyball_S(int x, int y) : Enemy(x, y)
@@ -67,6 +69,8 @@ void Enemy_Greyball_S::OnCollision(Collider* collider)
 		App->particles->AddParticle(App->particles->explosion, position.x-50, position.y);
 		App->particles->AddParticle(App->particles->explosion1, position.x, position.y);
 		App->particles->AddParticle(App->particles->explosion2, position.x + 30, position.y);
+		Mix_PlayChannel(5, App->enemies->explosion1, 0);
+		Mix_PlayChannel(4, App->enemies->explosion2, 0);
 		if (collider->type == COLLIDER_PLAYER_SHOT)
 		{
 			App->UI->player1Score += score;

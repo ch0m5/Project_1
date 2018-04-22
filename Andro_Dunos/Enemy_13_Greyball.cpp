@@ -5,6 +5,8 @@
 #include "ModulePlayer1.h"
 #include "ModuleParticles.h"
 #include "ModuleUserInterface.h"
+#include "ModuleEnemies.h"
+#include "ModuleMixer.h"
 
 
 Enemy_13_Greyball::Enemy_13_Greyball(int x, int y) : Enemy(x, y)
@@ -67,9 +69,11 @@ void Enemy_13_Greyball::OnCollision(Collider* collider)
 	
 	if (dead==false)
 	{
-		App->particles->AddParticle(App->particles->explosion, position.x-50, position.y);
-		App->particles->AddParticle(App->particles->explosion1, position.x, position.y);
-		App->particles->AddParticle(App->particles->explosion2, position.x + 30, position.y);
+		App->particles->AddParticle(App->particles->explosion, position.x-50, position.y,-1,COLLIDER_NONE,30);
+		App->particles->AddParticle(App->particles->explosion1, position.x, position.y, - 1, COLLIDER_NONE, 30);
+		App->particles->AddParticle(App->particles->explosion2, position.x + 30, position.y, -1, COLLIDER_NONE, 30);
+		Mix_PlayChannel(5, App->enemies->explosion1, 0);
+		Mix_PlayChannel(4, App->enemies->explosion2, 0);
 		if (collider->type == COLLIDER_PLAYER_SHOT)
 		{
 			App->UI->player1Score += score;

@@ -7,7 +7,9 @@
 #include "ModuleUserInterface.h"
 
 Enemy::Enemy(int x, int y) : position(x, y)
-{}
+{
+
+}
 
 Enemy::~Enemy()
 {

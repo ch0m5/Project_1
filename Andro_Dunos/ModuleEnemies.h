@@ -5,6 +5,7 @@
 #include "Enemy_13_Greyball.h"
 #include "RedLineShip_Enemy.h"
 #include "PowerUp_Enemy.h"
+#include "SDL_mixer/include/SDL_mixer.h"
 
 #define MAX_ENEMIES 500
 
@@ -47,6 +48,10 @@ public:
 
 	bool AddEnemy(ENEMY_TYPES type, int x, int y);
 
+	Mix_Chunk *explosion1 = nullptr;
+	Mix_Chunk *explosion2 = nullptr;
+	
+
 
 
 private:
@@ -58,7 +63,7 @@ private:
 	EnemyInfo queue[MAX_ENEMIES];
 	Enemy* enemies[MAX_ENEMIES];
 	SDL_Texture* sprites;
-	SDL_Texture* table_enemy;
+	
 };
 
 #endif // __ModuleEnemies_H__

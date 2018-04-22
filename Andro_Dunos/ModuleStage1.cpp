@@ -15,6 +15,7 @@
 #include "ModuleHiScore.h"
 #include "ModuleStageClear.h"
 #include "ModuleParticles.h"
+#include "ModuleUserInterface.h"
 
 ModuleStage1::ModuleStage1()	//@AndresSaladrigas
 {
@@ -102,12 +103,18 @@ bool ModuleStage1::Start()
 	redPlanetText = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/mars.png");
 	starsText = App->textures->Load("Assets/Sprites/Levels/STAGE 1/Tileset/Background/Stars.png");
 
-
+	App->player1->godMode = false;
+	App->player2->godMode = false;
 	App->player1->Enable();
+	backmovementcaveX = 2946;
 	if (App->input->secondPlayerState == true)  //@AndresSala
 	{
 		App->player2->Enable();
 	}
+
+	App->UI->player1Score = 0;
+	App->UI->player2Score = 0;
+	App->UI->teamScore = 0;
 	// we should log the problem if not loaded correctly
 	
 	App->collision->Enable();
