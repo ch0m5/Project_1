@@ -52,7 +52,7 @@ void Enemy_13_Greyball::Move()
 	position.y = int(float(original_y) + (25.0f * sinf(2*PI*wave + 0)));
 	position.x -= 1;
 }
-
+/*
 void Enemy_13_Greyball::Fire()
 {
 	if (position.y == App->player1->position.y)
@@ -60,7 +60,7 @@ void Enemy_13_Greyball::Fire()
 		App->particles->AddParticle(App->particles->enemyBlueShot, position.x, position.y,-1, COLLIDER_ENEMY_SHOT);
 	}
 }
-
+*/
 void Enemy_13_Greyball::OnCollision(Collider* collider)
 {
 	
