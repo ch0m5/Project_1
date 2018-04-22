@@ -325,11 +325,11 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 3940, 100 + 208);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 3940, 120 + 208);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 4090, 20+230);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 4040, 40+230);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 4010, 66+230);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 4040, 90+230);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 4090, 120+230);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 4090, 20+230);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 4040, 40+230);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 4010, 66+230);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 4040, 90+230);
+	//App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 4090, 120+230);
 
 	
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 4400, 50+100);
