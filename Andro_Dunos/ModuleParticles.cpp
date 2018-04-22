@@ -192,28 +192,28 @@ bool ModuleParticles::Start()
 	
 	yellowSmallDown.anim.PushBack({ 24, 79, 8, 6 });
 	yellowSmallDown.anim.loop = false;
-	yellowSmallDown.speed.x = -7.0f;
+	yellowSmallDown.speed.x = -5.0f;
 	yellowSmallDown.speed.y = 2.0f;
 	yellowSmallDown.life = shortLife;
 	yellowSmallDown.anim.speed = 0.3f;
 	
 	yellowSmallUp.anim.PushBack({ 24, 68, 8, 6 });
 	yellowSmallUp.anim.loop = false;
-	yellowSmallUp.speed.x = -7.0f;
+	yellowSmallUp.speed.x = -5.0f;
 	yellowSmallUp.speed.y = -2.0f;
 	yellowSmallUp.life = shortLife;
 	yellowSmallUp.anim.speed = 0.3f;
 
 	yellowBigDown.anim.PushBack({ 5, 37, 11, 8 });
 	yellowBigDown.anim.loop = false;
-	yellowBigDown.speed.x = -7.0f;
+	yellowBigDown.speed.x = -5.0f;
 	yellowBigDown.speed.y = 2.0f;
 	yellowBigDown.life = shortLife;
 	yellowBigDown.anim.speed = 0.3f;
 
 	yellowBigUp.anim.PushBack({ 5, 50, 11, 8 });
 	yellowBigUp.anim.loop = false;
-	yellowBigUp.speed.x = -7.0f;
+	yellowBigUp.speed.x = -5.0f;
 	yellowBigUp.speed.y = -2.0f;
 	yellowBigUp.life = shortLife;
 	yellowBigUp.anim.speed = 0.3f;
@@ -282,7 +282,7 @@ bool ModuleParticles::Start()
 	redRocketLeftUp.anim.PushBack({ 24, 202, 16, 9 });
 	redRocketLeftUp.anim.loop = true;
 	redRocketLeftUp.speed.x = 0.0f;
-	redRocketLeftUp.speed.y = 2.0f;
+	redRocketLeftUp.speed.y = -2.0f;
 	redRocketLeftUp.life = mediumLife;
 	redRocketLeftUp.anim.speed = 0.7f;
 

@@ -401,6 +401,8 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 		Mix_PlayChannel(3, typeSwap, 0);
 	}
 
+	// WARNING: ALL BLITTED POSITIONS ARE CORRECTED WITH THE REFERENCE OF SCREEN SIZE 3, HARDCODED INTO THAT SIZE
+
 	// Fire lasers
 	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
 	{
@@ -424,53 +426,53 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				{
 				case LEVEL_1:
 					currentBlue += 2;
-					App->particles->AddParticle(App->particles->smallBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 5, PLAYER_1_BLUE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->smallBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset, PLAYER_1_BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->smallBlue, position.x + laserHorizontalOffset - 6, position.y + laserVerticalOffset - 6, PLAYER_1_BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->smallBlue, position.x + laserHorizontalOffset - 6, position.y + laserVerticalOffset, PLAYER_1_BLUE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_2:
 					currentMultipleShots += 3;
-					App->particles->AddParticle(App->particles->smallBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 7, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->smallBlue, position.x + laserHorizontalOffset - 6, position.y + laserVerticalOffset - 8, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->smallBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 2, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->smallBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset + 3, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->smallBlue, position.x + laserHorizontalOffset - 6, position.y + laserVerticalOffset + 4, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_3:
 					currentMultipleShots += 3;
-					App->particles->AddParticle(App->particles->smallBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 5, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset + 0, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->smallBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset + 5, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->smallBlue, position.x + laserHorizontalOffset - 5, position.y + laserVerticalOffset - 12, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 3, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->smallBlue, position.x + laserHorizontalOffset - 5, position.y + laserVerticalOffset + 8, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_4:
 					currentMultipleShots += 3;
-					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 5, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset + 0, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset + 5, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 14, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 3, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset + 8, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_5:
 					currentMultipleShots += 4;
-					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 5, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset + 0, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset + 5, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset + 5, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 14, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 7, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset + 1, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset + 8, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_6:
 					currentMultipleShots += 4;
-					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 5, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->bigBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset + 0, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->bigBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset + 5, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset + 5, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 20, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->bigBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 12, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->bigBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 0, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->mediumBlue, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset + 12, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_7:
 					currentMultipleShots += 4;
-					App->particles->AddParticle(App->particles->bigBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 5, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->bigBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset + 0, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->bigBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset + 5, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->bigBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset + 5, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->bigBlue, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 24, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->bigBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 12, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->bigBlue, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 0, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->bigBlue, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset + 14, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 				}
 
@@ -488,54 +490,54 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 					
 				case LEVEL_2:
 					currentMultipleShots += 3;
-					App->particles->AddParticle(App->particles->yellowSmallLeft, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 6, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->yellowSmallLeft, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 5, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 2, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->yellowSmallLeft, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 0, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->yellowSmallLeft, position.x + laserHorizontalOffset, position.y + laserVerticalOffset + 1, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_3:
 					currentMultipleShots += 4;
 					App->particles->AddParticle(App->particles->yellowSmallUp, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 6, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 4, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 0, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 5, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset + 1, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->yellowSmallDown, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 0, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 					
 				case LEVEL_4:
 					currentMultipleShots += 5;
 					App->particles->AddParticle(App->particles->yellowSmallUp, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 6, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 4, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 5, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->yellowBigLeft, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 3, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 0, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset, position.y + laserVerticalOffset + 1, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->yellowSmallDown, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 0, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_5:
 					currentMultipleShots += 5;
 					App->particles->AddParticle(App->particles->yellowBigUp, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 6, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 4, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 5, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->yellowBigLeft, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 3, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 0, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset + 1, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->yellowBigDown, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 0, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_6:
 					currentMultipleShots += 6;
 					App->particles->AddParticle(App->particles->yellowBigUp, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 6, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 7, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 2, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 10, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset - 5, position.y + laserVerticalOffset - 2, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->yellowBigLeft, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 3, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset + 3, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset + 6, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->yellowBigDown, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 0, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_7:
 					currentMultipleShots += 6;
 					App->particles->AddParticle(App->particles->yellowBigUp, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 6, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 8, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->yellowBigRight, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 3, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 10, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->yellowBigRight, position.x + laserHorizontalOffset - 5, position.y + laserVerticalOffset - 3, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->yellowBigLeft, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset - 3, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset + 4, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->yellowSmallRight, position.x + laserHorizontalOffset - 10, position.y + laserVerticalOffset + 6, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->yellowBigDown, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 0, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 				}
