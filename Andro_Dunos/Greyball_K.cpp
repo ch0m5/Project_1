@@ -14,17 +14,17 @@ Enemy_Greyball_K::Enemy_Greyball_K(int x, int y) : Enemy(x, y)
 	hitboxWidth = 18;
 	hitboxHeight = 19;
 
-	fly.PushBack({ 0, 3, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 19, 3, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 39, 3, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 59, 1, hitboxWidth, hitboxHeight });
+	fly.PushBack({ 0, 0, hitboxWidth, hitboxHeight });
+	fly.PushBack({ 19, 0, hitboxWidth, hitboxHeight });
+	fly.PushBack({ 39, 0, hitboxWidth, hitboxHeight });
+	fly.PushBack({ 59, 0, hitboxWidth, hitboxHeight });
 	fly.PushBack({ 79, 0, hitboxWidth, hitboxHeight });
 	fly.PushBack({ 101, 0, hitboxWidth, hitboxHeight });
 
 	fly.PushBack({ 0, 22, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 22, 23, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 44, 24, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 67, 26, hitboxWidth, hitboxHeight });
+	fly.PushBack({ 22, 22, hitboxWidth, hitboxHeight });
+	fly.PushBack({ 44, 22, hitboxWidth, hitboxHeight });
+	fly.PushBack({ 67, 22, hitboxWidth, hitboxHeight });
 	fly.speed = 0.8f;
 
 	animation = &fly;
