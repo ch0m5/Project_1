@@ -125,17 +125,17 @@ void PowerUp_Bonus::Move()
 		start_time = SDL_GetTicks();
 	}
 
-	if (App->input->debugMode == true)
-	{
-		if (blue == true)
-		{
-			App->fonts->BlitText(100, 20, App->UI->debug_font, "blue");
-		}
-		if (orange == true)
-		{
-			App->fonts->BlitText(100, 20, App->UI->debug_font, "orange");
-		}
-	}
+	//if (App->input->debugMode == true)
+	//{
+	//	if (blue == true)
+	//	{
+	//		App->fonts->BlitText(100, 20, App->UI->debug_font, "blue");
+	//	}
+	//	if (orange == true)
+	//	{
+	//		App->fonts->BlitText(100, 20, App->UI->debug_font, "orange");
+	//	}
+	//}
 
 	position.x = PowerUpBonus_posx + PowerUpBonus_Path.GetCurrentPosition(&animation).x;
 	position.y = PowerUpBonus_posy + PowerUpBonus_Path.GetCurrentPosition(&animation).y;
