@@ -210,7 +210,7 @@ bool ModulePlayer2::Start()
 	Mix_VolumeChunk(playerDeathExplosion, FXVol);
 
 	// Place player hitbox
-	playerHitbox = App->collision->AddCollider({ (int)position.x, (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
+	playerHitbox = App->collision->AddCollider({ (int)position.x, (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER_2, this);
 
 	return ret;
 }
@@ -873,7 +873,7 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 		else if (godMode == false)
 		{
 			godMode = false;
-			playerHitbox = App->collision->AddCollider({ App->render->camera.x / SCREEN_SIZE + (int)position.x, App->render->camera.y / SCREEN_SIZE + (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
+			playerHitbox = App->collision->AddCollider({ App->render->camera.x / SCREEN_SIZE + (int)position.x, App->render->camera.y / SCREEN_SIZE + (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER_2, this);
 		}
 
 	}
