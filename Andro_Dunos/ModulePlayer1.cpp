@@ -53,8 +53,8 @@ ModulePlayer1::ModulePlayer1()	// @CarlesHoms @Andres
 	//int blueShotTimer;	// After the last shot taken, if enough time passes without no shots, the "currentBlue" counter restarts.
 	//int timeBetweenShotsTimer;	// time between each shot, could be a get ticks
 
-	maxShots = 20;		// Counter Maximums
-	maxArrayShots = 3;
+	maxShots = 18;		// Counter Maximums
+	maxArrayShots = 12;
 
 	/*
 	Sprites positioning
@@ -547,13 +547,13 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 					break;
 
 				case LEVEL_2:
-					maxArrayShots += 1;
+					currentArrayShots += 2;
 					App->particles->AddParticleArray(App->particles->upRightGreen1, 8, position.x + laserHorizontalOffset - 4, position.y + laserVerticalOffset - 4, 2, -2, PLAYER_1_ARRAY_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticleArray(App->particles->downRightGreen1, 8, position.x + laserHorizontalOffset - 4, position.y + laserVerticalOffset - 4, 2, 2, PLAYER_1_ARRAY_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_3:
-					maxArrayShots += 1;
+					currentArrayShots += 4;
 					App->particles->AddParticleArray(App->particles->upRightGreen1, 8, position.x + laserHorizontalOffset - 4, position.y + laserVerticalOffset - 4, 2, -2, PLAYER_1_ARRAY_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticleArray(App->particles->downRightGreen1, 8, position.x + laserHorizontalOffset - 4, position.y + laserVerticalOffset - 4, 2, 2, PLAYER_1_ARRAY_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticleArray(App->particles->upLeftGreen1, 8, position.x + laserHorizontalOffset - 4, position.y + laserVerticalOffset - 4, -2, -2, PLAYER_1_ARRAY_SHOT, COLLIDER_PLAYER_SHOT);
@@ -561,7 +561,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 					break;
 
 				case LEVEL_4:
-					maxArrayShots += 1;
+					currentArrayShots += 4;
 					App->particles->AddParticleArray(App->particles->upRightGreen2, 4, position.x + laserHorizontalOffset - 4, position.y + laserVerticalOffset - 4, 4, -4, PLAYER_1_ARRAY_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticleArray(App->particles->downRightGreen2, 4, position.x + laserHorizontalOffset - 4, position.y + laserVerticalOffset - 4, 4, 4, PLAYER_1_ARRAY_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticleArray(App->particles->upLeftGreen2, 4, position.x + laserHorizontalOffset - 4, position.y + laserVerticalOffset - 4, -4, -4, PLAYER_1_ARRAY_SHOT, COLLIDER_PLAYER_SHOT);
@@ -569,7 +569,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 					break;
 
 				case LEVEL_5:
-					maxArrayShots += 1;
+					currentArrayShots += 4;
 					App->particles->AddParticleArray(App->particles->upRightGreen3, 8, position.x + laserHorizontalOffset - 4, position.y + laserVerticalOffset - 4, 4, -4, PLAYER_1_ARRAY_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticleArray(App->particles->downRightGreen3, 8, position.x + laserHorizontalOffset - 4, position.y + laserVerticalOffset - 4, 4, 4, PLAYER_1_ARRAY_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticleArray(App->particles->upLeftGreen3, 8, position.x + laserHorizontalOffset - 4, position.y + laserVerticalOffset - 4, -4, -4, PLAYER_1_ARRAY_SHOT, COLLIDER_PLAYER_SHOT);
@@ -577,7 +577,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 					break;
 
 				case LEVEL_6:
-					maxArrayShots += 1;
+					currentArrayShots += 4;
 					App->particles->AddParticleArray(App->particles->upRightGreen4, 2, position.x + laserHorizontalOffset - 14, position.y + laserVerticalOffset - 10, 12, -10, PLAYER_1_ARRAY_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticleArray(App->particles->downRightGreen4, 2, position.x + laserHorizontalOffset - 14, position.y + laserVerticalOffset - 10, 10, 12, PLAYER_1_ARRAY_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticleArray(App->particles->upLeftGreen4, 2, position.x + laserHorizontalOffset - 14, position.y + laserVerticalOffset - 10, -10, -12, PLAYER_1_ARRAY_SHOT, COLLIDER_PLAYER_SHOT);
@@ -585,7 +585,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 					break;
 
 				case LEVEL_7:
-					maxArrayShots += 1;
+					currentArrayShots += 4;
 					App->particles->AddParticleArray(App->particles->upRightGreen5, 4, position.x + laserHorizontalOffset - 14, position.y + laserVerticalOffset - 10, 12, -10, PLAYER_1_ARRAY_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticleArray(App->particles->downRightGreen5, 4, position.x + laserHorizontalOffset - 14, position.y + laserVerticalOffset - 10, 10, 12, PLAYER_1_ARRAY_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticleArray(App->particles->upLeftGreen5, 4, position.x + laserHorizontalOffset - 14, position.y + laserVerticalOffset - 10, -10, -12, PLAYER_1_ARRAY_SHOT, COLLIDER_PLAYER_SHOT);
