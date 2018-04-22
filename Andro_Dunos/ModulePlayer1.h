@@ -58,11 +58,15 @@ public:
 	int maxVertical;	// Limit of the counter
 
 	//Music 
-	Mix_Chunk *type1Shot = nullptr;		// All use the same channel (3)
+	Mix_Chunk *type1Shot = nullptr;		// All use the same channel: 1
 	Mix_Chunk *type2Shot = nullptr;
 	Mix_Chunk *type3Shot = nullptr;
 	Mix_Chunk *type4Shot = nullptr;
-	Mix_Chunk *typeSwap = nullptr;
+	Mix_Chunk *typeSwap = nullptr;	// Uses channel 0
+	Mix_Chunk *type1Weapon = nullptr;		// All use the same channel: 1
+	Mix_Chunk *type2Weapon = nullptr;
+	Mix_Chunk *type3Weapon = nullptr;
+	Mix_Chunk *type4Weapon = nullptr;
 	Mix_Chunk *powerUp = nullptr;
 	Mix_Chunk *playerDeathExplosion = nullptr;
 
@@ -82,7 +86,7 @@ public:
 
 	int blueShotTimer;	// After the last shot taken, if enough time passes without no shots, the "currentBlue" counter restarts.
 	//int timeBetweenShotsTimer;	// time between each shot, could be a get ticks
-	//int weaponChargeTimer
+	int weaponChargeTimer;
 
 	int currentBlue;	// Every shot increases the counter by 2, player will not shot if it gets higher than 4. Each collide substracts 1.
 	int currentOrange;	// Every time it fires increases the counter by x (changes on level), player will not shot until it reaches 0.  Each collide substracts 1.
