@@ -113,7 +113,7 @@ void PowerUp_Bonus::OnCollision(Collider* collider)
 		}
 		if (collider->type == COLLIDER_PLAYER_2)
 		{
-			Mix_PlayChannel(6, App->player1->powerUp, 0);
+			Mix_PlayChannel(2, App->player2->powerUp, 0);
 			App->player2->bluePower++;
 			App->UI->player2Score += score;
 		}

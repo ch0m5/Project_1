@@ -25,7 +25,7 @@ Enemy_Greyball_S::Enemy_Greyball_S(int x, int y) : Enemy(x, y)
 	fly.PushBack({ 22, 23, hitboxWidth, hitboxHeight });
 	fly.PushBack({ 44, 24, hitboxWidth, hitboxHeight });
 	fly.PushBack({ 67, 26, hitboxWidth, hitboxHeight });
-	fly.speed = 0.2f;
+	fly.speed = 0.6f;
 
 	animation = &fly;
 
