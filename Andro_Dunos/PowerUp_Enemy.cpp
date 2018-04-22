@@ -87,17 +87,27 @@ PowerUp_Enemy::PowerUp_Enemy(int x, int y) : Enemy(x, y)	//@XaviMarin
 		stop4.speed = 0.1f;
 
 
-		PowerUpEnemy_Path.PushBack({ 0, 0 }, 220, &left);
-		PowerUpEnemy_Path.PushBack({ 0, 0 }, 0, &stop1);
-		PowerUpEnemy_Path.PushBack({ -0.25, 0.25 }, 60, &leftdown);
-		PowerUpEnemy_Path.PushBack({ 0, 0 }, 0, &stop2);
-		PowerUpEnemy_Path.PushBack({ -0.25, -0.25 }, 60, &leftup);
-		PowerUpEnemy_Path.PushBack({ 0, 0 }, 0, &stop3);
-		PowerUpEnemy_Path.PushBack({ 1, 0 }, 250, &right);
-		PowerUpEnemy_Path.PushBack({ 0, 0 }, 0, &stop4);
-
+	
 	}
 	i = 4;
+
+	PowerUpEnemy_Path.PushBack({ 0, 0 }, 240, &left);
+	PowerUpEnemy_Path.PushBack({ 0, 0 }, 10, &stop1);
+	PowerUpEnemy_Path.PushBack({ -0.25, 0.25 }, 90, &leftdown);
+	PowerUpEnemy_Path.PushBack({ 0, 0 }, 10, &stop2);
+	PowerUpEnemy_Path.PushBack({ -0.25, -0.25 }, 90, &leftup);
+	PowerUpEnemy_Path.PushBack({ 0, 0 }, 10, &stop3);
+	PowerUpEnemy_Path.PushBack({ 1, 0 }, 350, &right);
+	PowerUpEnemy_Path.PushBack({ 0, 0 }, 10, &stop4);
+	PowerUpEnemy_Path.PushBack({ 0, 0 }, 240, &left);
+	PowerUpEnemy_Path.PushBack({ 0, 0 }, 10, &stop1);
+	PowerUpEnemy_Path.PushBack({ -0.25, 0.25 }, 90, &leftdown);
+	PowerUpEnemy_Path.PushBack({ 0, 0 }, 10, &stop2);
+	PowerUpEnemy_Path.PushBack({ -0.25, -0.25 }, 90, &leftup);
+	PowerUpEnemy_Path.PushBack({ 0, 0 }, 10, &stop3);
+	PowerUpEnemy_Path.PushBack({ 1.5, 0 }, 350, &right);
+	PowerUpEnemy_Path.PushBack({ 0, 0 }, 10, &stop4);
+	PowerUpEnemy_Path.PushBack({ 0, -1 }, 300, &left);
 
 	//PowerUpEnemy_Path.loop = false;
 	//PowerUpEnemy_Path.Reset();
