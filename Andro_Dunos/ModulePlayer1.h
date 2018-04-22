@@ -80,7 +80,7 @@ public:
 	int yellowPower;			// Flag/counter for yellow power level
 	int greenPower;				// Flag/counter for green power level
 
-	//int blueShotTimer;	// After the last shot taken, if enough time passes without no shots, the "currentBlue" counter restarts.
+	int blueShotTimer;	// After the last shot taken, if enough time passes without no shots, the "currentBlue" counter restarts.
 	//int timeBetweenShotsTimer;	// time between each shot, could be a get ticks
 	//int weaponChargeTimer
 

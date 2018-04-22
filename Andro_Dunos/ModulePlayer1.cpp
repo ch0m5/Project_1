@@ -196,6 +196,8 @@ bool ModulePlayer1::Start()
 	currentMultipleShots = 0;	// TEMPORAL SHOT LIMITATION
 	currentArrayShots = 0;
 
+	blueShotTimer = 0;
+
 	// Starting point of the ship (using p2Point)
 	position.x = 0;
 	position.y = (int)(SCREEN_HEIGHT / 2 - 10);
@@ -395,8 +397,10 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 	// Fire lasers
 	if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN)
 	{
-		if (currentBlue <= 4 && currentMultipleShots < maxShots && currentArrayShots < maxArrayShots)
+		if (currentBlue <= 4 && currentMultipleShots < maxShots && currentArrayShots < maxArrayShots && blueShotTimer < SDL_GetTicks() - 100)
 		{
+			blueShotTimer = SDL_GetTicks();
+
 			if (currentBlue < 0)
 				currentBlue == 0;
 
