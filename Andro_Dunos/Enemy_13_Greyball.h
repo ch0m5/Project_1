@@ -19,7 +19,7 @@ public:
 	int hitboxHeight;
 
 	void Move();
-	void Fire();
+	//void Fire();
 
 	bool dead = false;
 	uint score = 100;
