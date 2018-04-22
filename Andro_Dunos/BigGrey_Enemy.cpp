@@ -5,6 +5,7 @@
 #include "ModulePlayer1.h"
 #include "ModuleParticles.h"
 #include "ModuleUserInterface.h"
+#include "ModuleRender.h"
 
 BigGrey_Enemy::BigGrey_Enemy(int x, int y) : Enemy(x, y)
 {
@@ -30,15 +31,29 @@ BigGrey_Enemy::BigGrey_Enemy(int x, int y) : Enemy(x, y)
 void BigGrey_Enemy::Move()
 {
 	
-	position.x += 0.1;
-	position.y = App->player1->position.y;
-	/*
-	if (App->player1->position.y > position.y) {
-		position.y -= 0.1;
-	}
-	if (App->player1->position.y < position.y) {
-		position.y += 0.1;
+	position.x += 0.5;
+	/*posfor = (this->position.y - App->player1->position.y);
+	if (posfor != 0)
+	{
+		position.y -= (posfor / -posfor) / 10;
 	}*/
+	
+ 	if (App->player1->position.y+App->render->camera.y > (float)position.y- App->render->camera.y /SCREEN_HEIGHT)
+	{
+		//50+camara.y/SCREEN_SIZE
+		position.y += 1;
+		
+		
+	}
+	if (App->player1->position.y < (float)position.y) 
+	{
+		position.y -= 1;
+		
+		
+	}
+
+
+
 }
 
 void BigGrey_Enemy::OnCollision(Collider* collider)

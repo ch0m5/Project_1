@@ -192,9 +192,11 @@ bool ModuleStage1::Start()
 
 	//wave 5 ------------------------------------------------------
 	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1680, 90);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1720 , 110);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1750 , 75);
-	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1780 , 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1750 , 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1750 , 110);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1790 , 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 1790, 110);
+
 
 	//wave 6----------------------------------------------------
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1850, 20);
@@ -208,6 +210,256 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1930, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1940, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 1950, 80);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 1970, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 1980, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 1990, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2000, 60);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 1970, 110);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 1980, 110);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 1990, 110);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2000, 110);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2100, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2110, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2120, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2130, 30);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2100, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2110, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2120, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2130, 140);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2150, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2160, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2170, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2180, 40);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2150, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2160, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2170, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2180, 130);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 2210, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 2220, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 2230, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 2240, 50);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 2360, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 2370, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 2380, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 2390, 120);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2440, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2450, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2455, 180);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2460, 40);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2563, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2572, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2579, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2582, 110);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2693, 102);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2698, 71);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2600, 89);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2601, 121);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2710, 16);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2716, 132);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2722, 25);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2729, 86);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 2800, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 2810, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 2820, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 2830, 50);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 2930, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 2940, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 2950, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 2960, 130);
+	
+	// cave enemies
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 3090, 120);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 3060, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 3070, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 3080, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 3090, 50);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 3500, 90 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 3510, 90 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 3520, 90 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 3530, 90 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 3540, 90 + 208);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 3600, 120 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 3610, 120 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 3620, 120 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 3630, 120 + 208);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 3800, 100 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 3800, 100 + 208);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 3900, 120 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 3900, 100 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 3920, 100 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 3920, 120 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 3940, 100 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 3940, 120 + 208);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 4090, 20+230);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 4040, 40+230);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 4010, 66+230);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 4040, 90+230);
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 4090, 120+230);
+
+	
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 4400, 50+100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 4410, 50 + 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 4420, 50 + 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 4430, 50 + 100);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 4440, 130 + 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 4450, 130 + 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 4460, 130 + 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 4470, 130 + 100);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 4660, 60 + 180);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 4670, 60 + 180);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 4680, 60 + 180);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 4690, 60 + 180);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 4700, 110 + 180);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 4710, 110 + 180);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 4720, 110 + 180);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 4730, 110 + 180);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 4740, 110 + 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 4750, 110 + 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 4760, 110 + 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 4770, 110 + 100);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 4780, 60 + 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 4790, 60 + 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 4800, 60 + 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 4810, 60 + 100);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 4900, 100 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 4900, 100 + 208);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 4950, 40 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 4950, 40 + 208);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 5000, 20 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 5000, 20 + 208);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 5050, 80 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 5050, 80 + 208);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 5100, 60 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 5150, 60 + 208);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 5500, 120 );
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 5510, 120 );
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 5520, 120 );
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 5530, 120 );
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 5600, 90 );
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 5610, 90 );
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 5620, 90 );
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 5630, 90 );
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 5700, 40 );
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 5710, 40 );
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 5720, 40 );
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 5730, 40 );
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 5900, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 5910, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 5920, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 5930, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 5940, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 5950, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 5960, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 5970, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 5980, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 5990, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6000, 80);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6210, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6220, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6230, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6240, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6250, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6260, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6270, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6280, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6290, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6300, 30);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6210, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6220, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6230, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6240, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6250, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6260, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6270, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6280, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6290, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6300, 130);
+
+
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 6700, 100 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 6700, 120 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 6700, 140 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 6700, 160 + 208);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 6800, 50 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 6800, 70 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 6800, 90 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 6800, 110 + 208);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 6900, 200 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 6900, 140 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 6900, 160 + 208);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 6900, 180 + 208);
+
+	//out of cave
+
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 7500, 30 );
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 7550, 30 );
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 7600, 30 );
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 7500, 120 );
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 7550, 120 );
+	App->enemies->AddEnemy(ENEMY_TYPES::BIGGREY_ENEMY, 7600, 120 );
+
+	//wave 1 ------------------------------------------------------
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 7780, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 7790, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 7800, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 7810, 40);
+
+	//wave 2 ------------------------------------------------------
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 7900, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 7920, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 7910, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 7930, 100);
+
+	//wave 3 ------------------------------------------------------
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 8140, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 8160, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 8150, 20);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 8170, 20);
+
+	//wave 4 ------------------------------------------------------
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 8280, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 8300, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 8290, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 8310, 140);
+
+
 
 	//wave final enemies
 
@@ -245,6 +497,12 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8720, 30);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8726, 96);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 8736, 145);
+
+	
+
+
+
+
 
 
 	// Ground Collider @Andres&Didac
