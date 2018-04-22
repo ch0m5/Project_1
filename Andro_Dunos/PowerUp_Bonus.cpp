@@ -150,11 +150,11 @@ void PowerUp_Bonus::OnCollision(Collider* collider)
 		{
 			Mix_PlayChannel(2, App->player1->powerUp, 0);
 			App->UI->player1Score += score;
-			if (blue == true)
+			if (blue == true && App->player1->bluePower < LEVEL_7)
 			{
 				App->player1->bluePower++;
 			}
-			else if (orange == true)
+			else if (orange == true && App->player1->orangePower < LEVEL_5)
 			{
 				App->player1->orangePower++;
 			}
@@ -163,11 +163,11 @@ void PowerUp_Bonus::OnCollision(Collider* collider)
 		{
 			Mix_PlayChannel(2, App->player2->powerUp, 0);
 			App->UI->player2Score += score;
-			if (blue == true)
+			if (blue == true && App->player2->bluePower < LEVEL_7)
 			{
 				App->player2->bluePower++;
 			}
-			else if (orange == true)
+			else if (orange == true && App->player2->orangePower < LEVEL_5)
 			{
 				App->player2->orangePower++;
 			}
