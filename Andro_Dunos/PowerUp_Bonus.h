@@ -9,7 +9,7 @@ class PowerUp_Bonus : public Enemy
 {
 private:
 	iPoint originalPos;
-	Animation blueMode, blueClose,blueOpen,redMode,redClose,redShine,redOpen;
+	Animation blueMode, blueClose, blueOpen, redMode, redClose, redShine, redOpen;
 	Path PowerUpBonus_Path;
 
 	int PowerUpBonus_posx;
@@ -27,8 +27,9 @@ public:
 	uint score = 500;
 	bool dead = false;
 	bool blue = true;
-	bool red = false;
+	bool orange = false;
+	bool move_init = true;
+	uint start_time = 0;
 };
 
 #endif // __POWERUP_BONUS_H__
-
