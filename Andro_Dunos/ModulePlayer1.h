@@ -27,10 +27,6 @@ public:
 
 	SDL_Texture* graphics = nullptr;
 
-	int font_score;
-	char score_text[10];
-	uint score;
-
 	// Ship and booster animations
 	Animation shipVerticalMovement;
 	Animation superUpwardsBooster;
