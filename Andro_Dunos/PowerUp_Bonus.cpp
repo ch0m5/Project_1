@@ -25,11 +25,14 @@ PowerUp_Bonus::PowerUp_Bonus(int x, int y) : Enemy(x, y)
 	blueClose.PushBack({ 607,53, hitboxWidth, hitboxHeight });
 	blueClose.PushBack({ 551,71, hitboxWidth, hitboxHeight }); //repeat
 	blueClose.Finished();
+	blueClose.speed = 0.1f;
 	blueClose.loop = false;
+
 
 	blueOpen.PushBack({ 607,53, hitboxWidth, hitboxHeight });
 	blueOpen.PushBack({ 589,53, hitboxWidth, hitboxHeight });
 	blueOpen.Finished();
+	blueOpen.speed = 0.1f;
 	blueOpen.loop = false;
 
 	//red-----------------------------------------
@@ -39,21 +42,21 @@ PowerUp_Bonus::PowerUp_Bonus(int x, int y) : Enemy(x, y)
 	redShine.PushBack({ 535,35, hitboxWidth, hitboxHeight });
 	redShine.PushBack({ 553,35, hitboxWidth, hitboxHeight });
 	redShine.PushBack({ 571,35, hitboxWidth, hitboxHeight });
-	blueClose.Finished();
-	blueClose.speed = 0.2f;
-	blueClose.loop = false;
+	redShine.Finished();
+	redShine.speed = 0.1f;
+	redShine.loop = false;
 
 	redClose.PushBack({ 607,35, hitboxWidth, hitboxHeight });
 	redClose.PushBack({ 589,35, hitboxWidth, hitboxHeight });
 	redClose.PushBack({ 551,71, hitboxWidth, hitboxHeight }); //closed anim
 	redClose.Finished();
-	redClose.speed = 0.2f;
+	redClose.speed = 0.1f;
 	redClose.loop = false;
 
 	redOpen.PushBack({ 589,35, hitboxWidth, hitboxHeight });
 	redOpen.PushBack({ 607,35, hitboxWidth, hitboxHeight });
 	redOpen.Finished();
-	redOpen.speed = 0.2f;
+	redOpen.speed = 0.1f;
 	redOpen.loop = false;
 
 
@@ -64,18 +67,34 @@ PowerUp_Bonus::PowerUp_Bonus(int x, int y) : Enemy(x, y)
 	
 	PowerUpBonus_posy = y;
 
-	PowerUpBonus_Path.PushBack({ +0.25, 0 }, 5000, &blueMode); //bluemode
-	PowerUpBonus_Path.PushBack({ -0.25, 0 }, 30, &blueClose);//close blue
-	//PowerUpBonus_Path.PushBack({ 0.25, -1 }, 30, &redOpen);//open red
-	PowerUpBonus_Path.PushBack({ 0.25, 0 }, 10, &redShine);//red shine
-	PowerUpBonus_Path.PushBack({ 0.25, -1 }, 170, &redMode);//redmode
-	PowerUpBonus_Path.PushBack({ 0.25, 1 }, 70, &redClose);//red close
-	PowerUpBonus_Path.PushBack({ -0.25, 0 }, 180, &blueOpen);//blue open
-	PowerUpBonus_Path.PushBack({ -0.25, 0 }, 70, &blueMode); //bluemode
-	
+
+	PowerUpBonus_Path.PushBack({ 0.25, 0 }, 570, &blueMode); //bluemode
+	PowerUpBonus_Path.PushBack({ 0.25, 0 }, 30, &blueClose);//close blue
+
+	PowerUpBonus_Path.PushBack({ 0.5, -0.25 }, 30, &redOpen);//open red
+	PowerUpBonus_Path.PushBack({ 0.5, -0.25 }, 260, &redMode);//redmode
+	PowerUpBonus_Path.PushBack({ 0.5, 0}, 40, &redShine);//red shine
+	PowerUpBonus_Path.PushBack({ 0.5, 0.25 }, 260, &redMode);//redmode
+	PowerUpBonus_Path.PushBack({ 0.5, 0.25 }, 30, &redClose);//red close
+
+	PowerUpBonus_Path.PushBack({ 0.5, 0.25 }, 30, &blueOpen);//blue open
+	PowerUpBonus_Path.PushBack({ 0.5, 0.25 }, 220, &blueMode); //bluemode
+	PowerUpBonus_Path.PushBack({ 0.25, 0 }, 320, &blueMode); //bluemode
+	PowerUpBonus_Path.PushBack({ 0.25, -0.25 }, 30, &blueClose);//close blue
+
+
+	PowerUpBonus_Path.PushBack({ 0.5, -0.25 }, 30, &redOpen);//open red
+	PowerUpBonus_Path.PushBack({ 0.5, -0.25}, 260, &redMode);//redmode
+	PowerUpBonus_Path.PushBack({ 0.5, 0 }, 40, &redShine);//red shine
+	PowerUpBonus_Path.PushBack({ 0.5, 0.25 }, 260, &redMode);//redmode
+	PowerUpBonus_Path.PushBack({ 0.5, 0.25 }, 30, &redClose);//red close
+
+	PowerUpBonus_Path.PushBack({ 0, 0.25 }, 570, &blueMode); //bluemode
+	PowerUpBonus_Path.PushBack({ 0, 0.25 }, 30, &blueClose);//close blue
+
 
 	//PowerUpBonus_Path.PushBack({ -0.25, 0 }, 70, &blueMode); //bluemode
-	//PowerUpBonus_Path.PushBack({ -0.25, 0 }, 10, &blueClose);//close blue
+	
 	
 
 	blue = true;
