@@ -101,7 +101,7 @@ update_status ModuleUserInterface::Update()
 				{
 					App->fonts->BlitText(10, 20, debug_font, "debug mode");
 				}
-				if (App->player1->godMode == true && App->input->debugMode == true)
+				if (App->player1->godMode == true && App->input->debugMode == true || App->player2->godMode == true && App->input->debugMode == true)
 				{
 					App->fonts->BlitText(10, 30, debug_font, "god mode");
 				}

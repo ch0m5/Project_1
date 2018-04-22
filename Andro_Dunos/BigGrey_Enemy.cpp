@@ -3,6 +3,7 @@
 #include "ModuleCollision.h"
 #include "ModuleRender.h"
 #include "ModulePlayer1.h"
+#include "ModulePlayer2.h"
 #include "ModuleParticles.h"
 #include "ModuleUserInterface.h"
 #include "ModuleRender.h"
@@ -39,20 +40,36 @@ void BigGrey_Enemy::Move()
 	{
 		position.y -= (posfor / -posfor) / 10;
 	}*/
+	if (App->player1->destroyed == false)
+	{
+		if (App->player1->position.y + App->render->camera.y > (float)position.y - App->render->camera.y / SCREEN_HEIGHT )
+		{
+			//50+camara.y/SCREEN_SIZE
+			position.y += 1;
+
+		}
+		if (App->player1->position.y + App->render->camera.y < (float)position.y - App->render->camera.y / SCREEN_HEIGHT)
+		{
+			position.y -= 1;
+
+		}
+	}
+	else
+	{
+		if (App->player2->position.y + App->render->camera.y >(float)position.y - App->render->camera.y / SCREEN_HEIGHT)
+		{
+			//50+camara.y/SCREEN_SIZE
+			position.y += 1;
+
+		}
+		if (App->player2->position.y + App->render->camera.y < (float)position.y - App->render->camera.y / SCREEN_HEIGHT)
+		{
+			position.y -= 1;
+
+		}
+
+	}
 	
- 	if (App->player1->position.y+App->render->camera.y > (float)position.y- App->render->camera.y /SCREEN_HEIGHT)
-	{
-		//50+camara.y/SCREEN_SIZE
-		position.y += 1;
-		
-		
-	}
-	if (App->player1->position.y < (float)position.y) 
-	{
-		position.y -= 1;
-		
-		
-	}
 
 
 
