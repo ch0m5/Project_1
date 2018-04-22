@@ -7,10 +7,8 @@
 class PowerUp_Enemy : public Enemy
 {
 private:
-	float wave = -1.0f;
-	bool going_up = true;
-	int original_y = 0;
-	Animation fly;
+	iPoint originalPos;
+	Animation left, stop1, leftdown, stop2, leftup, stop3, right, stop4, left2, left3;
 	Path PowerUpEnemy_Path;
 
 	int PowerUpEnemy_posx;
@@ -28,6 +26,8 @@ public:
 	uint score = 100;
 
 	bool dead = false;
+
+	int disappear;
 };
 
 #endif // __POWERUP_ENEMY_H__

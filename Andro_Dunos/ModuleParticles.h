@@ -8,7 +8,7 @@
 #include "ModuleCollision.h"
 #include "NewPath.h"
 
-#define MAX_ACTIVE_PARTICLES 1000		// Make dymanic array for final game?
+#define MAX_ACTIVE_PARTICLES 3000		// Make dymanic array for final game?
 #define DEFAULT_VALUE -1
 
 enum weapon_types	// To mark the weapon Type currently using
@@ -21,10 +21,18 @@ enum weapon_types	// To mark the weapon Type currently using
 
 enum shot_type
 {
-	BLUE_SHOT,
-	GREEN_SINGLE_SHOT,
-	ORANGE_SHOT,
-	YELLOW_SHOT
+	PLAYER_1_BLUE_SHOT,
+	PLAYER_1_GREEN_SINGLE_SHOT,
+	PLAYER_1_MULTIPLE_SHOT,
+	PLAYER_1_ARRAY_SHOT,
+	PLAYER_1_ORANGE_SHOT,
+	PLAYER_1_YELLOW_SHOT,
+	PLAYER_2_BLUE_SHOT,
+	PLAYER_2_GREEN_SINGLE_SHOT,
+	PLAYER_2_MULTIPLE_SHOT,
+	PLAYER_2_ARRAY_SHOT,
+	PLAYER_2_ORANGE_SHOT,
+	PLAYER_2_YELLOW_SHOT
 };
 
 struct SDL_Texture;
@@ -83,17 +91,18 @@ public:
 	// List of Ids needed to delete the full particle array
 	int arrayIdList;
 
-	// Type 1 particles
+	// Type 1 particles		// Needs paths
 	Particle smallBlue;
-	Particle mediumBlue;			// Needs paths
+	Particle mediumBlue;
 	Particle bigBlue;
 
-	// Orange Power
-	//Particle missileHorizontal;
-	//Particle missileUp;			// Needs paths
-	//Particle missileDown;
+	// Orange Power		// Needs paths
+	Particle missileSuperUp;
+	Particle missileUp;			
+	Particle missileDown;
+	Particle missileSuperDown;
 
-	// Type 2 particles
+	// Type 2 particles		// Needs paths
 	Particle yellowBigRight;
 	Particle yellowBigLeft;
 	Particle yellowBigUp;
