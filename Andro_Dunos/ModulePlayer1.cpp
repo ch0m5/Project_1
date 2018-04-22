@@ -39,11 +39,17 @@ ModulePlayer1::ModulePlayer1()	// @CarlesHoms @Andres
 	godMode = false;
 
 	//Music 
-	type1Shot = nullptr;		// All use the same channel (3)
+	type1Shot = nullptr;		// All use the same channel: 1
 	type2Shot = nullptr;
 	type3Shot = nullptr;
 	type4Shot = nullptr;
-	typeSwap = nullptr;
+
+	type1Weapon = nullptr;
+	type2Weapon = nullptr;
+	type3Weapon = nullptr;
+	type4Weapon = nullptr;
+
+	typeSwap = nullptr;		// Channel 0
 	powerUp = nullptr;
 	playerDeathExplosion = nullptr;
 
@@ -176,11 +182,17 @@ bool ModulePlayer1::Start()
 	destroyed = false;
 	graphics = App->textures->Load("Assets/Sprites/Players_Ships/ships_all.png"); // arcade version
 
-	//Music
+	//Music and sounds FX
 	type1Shot = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Shot_Type-1_(Main_Ships).wav");
 	type2Shot = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Shot_Type-2_(Main_Ships).wav");
 	type3Shot = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Shot_Type-3_(Main_Ships).wav");
 	type4Shot = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Shot_Type-4_(Main_Ships).wav");
+	
+	type1Weapon = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Special_Attack_Type-1_(Main_Ships).wav");
+	type2Weapon = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Special_Attack_Type-2_(Main_Ships).wav");
+	type3Weapon = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Special_Attack_Type-3_(Main_Ships).wav");
+	type4Weapon = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Special_Attack_Type-4_(Main_Ships).wav");
+
 	typeSwap = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Laser_Shot_Type_CHANGE.wav");
 	powerUp = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Power_Up_Picked.wav");
 	playerDeathExplosion = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Player_Death_Explosion.wav");
@@ -199,6 +211,7 @@ bool ModulePlayer1::Start()
 	currentArrayShots = 0;
 
 	blueShotTimer = 0;
+	weaponChargeTimer = 0;
 
 	// Starting point of the ship (using p2Point)
 	position.x = 0;
@@ -210,6 +223,12 @@ bool ModulePlayer1::Start()
 	Mix_VolumeChunk(type2Shot, FXVol);
 	Mix_VolumeChunk(type3Shot, FXVol);
 	Mix_VolumeChunk(type4Shot, FXVol);
+
+	Mix_VolumeChunk(type1Weapon, FXVol);
+	Mix_VolumeChunk(type2Weapon, FXVol);
+	Mix_VolumeChunk(type3Weapon, FXVol);
+	Mix_VolumeChunk(type4Weapon, FXVol);
+
 	Mix_VolumeChunk(typeSwap, FXVol);
 	Mix_VolumeChunk(powerUp, FXVol);
 	Mix_VolumeChunk(playerDeathExplosion, FXVol);
@@ -402,6 +421,10 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 		{
 			if (currentBlue <= 4 && currentMultipleShots < maxShots && currentArrayShots < maxArrayShots && blueShotTimer < SDL_GetTicks() - 100)
 			{
+				if (bluePower > LEVEL_1)
+					weaponChargeTimer = SDL_GetTicks();
+				// weapon charge sound?
+
 				blueShotTimer = SDL_GetTicks();
 
 				if (currentBlue < 0)
@@ -849,14 +872,81 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				}
 			}
 
-			if (currentYellow < 5)
-			{
-				if (yellowPower != LEVEL_0)
-				{
-					currentYellow++;
-				}
-			}
+			if (yellowPower != LEVEL_0 && currentYellow < 5)
+				currentYellow++;
 		}
+
+		// Weapon shot
+		if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_UP && weaponChargeTimer < SDL_GetTicks() - 2000 && bluePower > LEVEL_1)
+		{
+			switch (type)
+			{
+			case TYPE_1:
+				App->particles->AddParticle(App->particles->blueWeapon, position.x - 50, position.y - 50, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->blueWeapon, position.x, position.y - 40, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->blueWeapon, position.x - 50, position.y - 30, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->blueWeapon, position.x, position.y - 20, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->blueWeapon, position.x - 50, position.y - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+
+				App->particles->AddParticle(App->particles->blueWeapon, position.x - 50, position.y + 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->blueWeapon, position.x, position.y + 20, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->blueWeapon, position.x - 50, position.y + 30, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->blueWeapon, position.x, position.y + 40, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->blueWeapon, position.x - 50, position.y + 50, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+
+				Mix_PlayChannel(1, type1Weapon, 0);
+				break;
+
+			case TYPE_2:
+				App->particles->AddParticle(App->particles->Weapon2RightUp, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->Weapon2RightDown, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->Weapon2LeftSuperUp, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->Weapon2LeftUp, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->Weapon2LeftStraight, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->Weapon2LeftDown, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->Weapon2LeftSuperDown, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+
+				App->particles->AddParticle(App->particles->Weapon2RightUp, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 400);
+				App->particles->AddParticle(App->particles->Weapon2RightDown, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 400);
+				App->particles->AddParticle(App->particles->Weapon2LeftSuperUp, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 400);
+				App->particles->AddParticle(App->particles->Weapon2LeftUp, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 400);
+				App->particles->AddParticle(App->particles->Weapon2LeftStraight, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 400);
+				App->particles->AddParticle(App->particles->Weapon2LeftDown, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 400);
+				App->particles->AddParticle(App->particles->Weapon2LeftSuperDown, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 400);
+
+				App->particles->AddParticle(App->particles->Weapon2RightUp, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 800);
+				App->particles->AddParticle(App->particles->Weapon2RightDown, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 800);
+				App->particles->AddParticle(App->particles->Weapon2LeftSuperUp, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 800);
+				App->particles->AddParticle(App->particles->Weapon2LeftUp, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 800);
+				App->particles->AddParticle(App->particles->Weapon2LeftStraight, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 800);
+				App->particles->AddParticle(App->particles->Weapon2LeftDown, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 800);
+				App->particles->AddParticle(App->particles->Weapon2LeftSuperDown, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 800);
+
+				App->particles->AddParticle(App->particles->Weapon2RightUp, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 1200);
+				App->particles->AddParticle(App->particles->Weapon2RightDown, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 1200);
+				App->particles->AddParticle(App->particles->Weapon2LeftSuperUp, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 1200);
+				App->particles->AddParticle(App->particles->Weapon2LeftUp, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 1200);
+				App->particles->AddParticle(App->particles->Weapon2LeftStraight, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 1200);
+				App->particles->AddParticle(App->particles->Weapon2LeftDown, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 1200);
+				App->particles->AddParticle(App->particles->Weapon2LeftSuperDown, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT, 1200);
+
+				Mix_PlayChannel(1, type2Weapon, 0);
+				break;
+
+			case TYPE_3:
+				Mix_PlayChannel(1, type3Weapon, 0);
+				break;
+
+			case TYPE_4:
+				Mix_PlayChannel(1, type4Weapon, 0);
+				break;
+			}
+
+			bluePower--;
+		}
+
+		else if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_UP)
+			weaponChargeTimer = SDL_GetTicks();
 
 		//GodMode Function
 		if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN && App->input->debugMode == true)
@@ -898,17 +988,14 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 			App->render->Blit(graphics, position.x - propellerWidth, position.y, &propellerRect, 1.0f, false);
 			App->render->Blit(graphics, position.x, position.y, shipRect, 1.0f, false);
 		}
-		if (destroyed == true)
-		{
-			SDL_Rect crashrect = crashAnimation->GetCurrentFrame();
-			App->render->Blit(graphics, position.x, position.y, &crashrect, 1.0f, false);
-		}
 	}
+
 	if (destroyed == true)
 	{
 		SDL_Rect crashrect = crashAnimation->GetCurrentFrame();
 		App->render->Blit(graphics, position.x, position.y, &crashrect, 1.0f, false);
 	}
+
 	return UPDATE_CONTINUE;
 }
 
@@ -924,6 +1011,12 @@ bool ModulePlayer1::CleanUp()
 	App->mixer->UnloadFx(type2Shot);
 	App->mixer->UnloadFx(type3Shot);
 	App->mixer->UnloadFx(type4Shot);
+
+	App->mixer->UnloadFx(type1Weapon);
+	App->mixer->UnloadFx(type2Weapon);
+	App->mixer->UnloadFx(type3Weapon);
+	App->mixer->UnloadFx(type4Weapon);
+
 	App->mixer->UnloadFx(typeSwap);
 	App->mixer->UnloadFx(powerUp);
 	App->mixer->UnloadFx(playerDeathExplosion);
@@ -935,7 +1028,7 @@ bool ModulePlayer1::CleanUp()
 	propellerAnimation = nullptr;
 	crashAnimation = nullptr;
 	crash.Reset();
-	
+
 	return true;
 }
 
@@ -956,11 +1049,11 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 		
 		if (App->input->secondPlayerState == false)
 		{
-			App->fade->FadeToBlack(App->stage1, App->scene_HiScore);	// HARDCODED: Needs "current stage" functionality
+			App->fade->FadeToBlack(App->stage1, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
 		}
 		else if (App->player2->destroyed == true)
 		{
-			App->fade->FadeToBlack(App->stage1, App->scene_HiScore);	// HARDCODED: Needs "current stage" functionality
+			App->fade->FadeToBlack(App->stage1, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
 		}
 	}
 	/*if ((c1->type == COLLIDER_POWERUP ||c2->type == COLLIDER_POWERUP ))

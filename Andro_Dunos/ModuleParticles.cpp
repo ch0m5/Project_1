@@ -177,6 +177,15 @@ bool ModuleParticles::Start()
 	missileSuperDown.life = mediumLife;
 	missileSuperDown.anim.speed = 0.1f;
 
+	// Weapon
+	blueWeapon.anim.PushBack({ 127, 123, 41, 18 });
+	blueWeapon.anim.PushBack({ 174, 123, 63, 18 });
+	blueWeapon.anim.loop = false;
+	blueWeapon.speed.x = 7.0f;
+	blueWeapon.speed.y = 0.0f;
+	blueWeapon.life = mediumLife;
+	blueWeapon.anim.speed = 0.3f;
+
 	//Player Type 2 (yellow)
 	yellowBigRight.anim.PushBack({ 3, 8, 15, 5 });
 	yellowBigRight.anim.loop = false;
@@ -313,6 +322,76 @@ bool ModuleParticles::Start()
 	redRocketUpDiagonal.speed.y = -2.0f;
 	redRocketUpDiagonal.life = mediumLife;
 	redRocketUpDiagonal.anim.speed = 0.7f;
+
+	Weapon2RightUp.anim.PushBack({ 149, 151, 28, 28 });
+	Weapon2RightUp.anim.PushBack({ 181, 182, 28, 28 });
+	Weapon2RightUp.anim.PushBack({ 180, 151, 28, 28 });
+	Weapon2RightUp.anim.PushBack({ 146, 182, 28, 28 });
+	Weapon2RightUp.anim.loop = true;
+	Weapon2RightUp.speed.x = 10.0f;
+	Weapon2RightUp.speed.y = -4.0f;
+	Weapon2RightUp.life = shortLife;
+	Weapon2RightUp.anim.speed = 0.7f;
+
+	Weapon2RightDown.anim.PushBack({ 149, 151, 28, 28 });
+	Weapon2RightDown.anim.PushBack({ 181, 182, 28, 28 });
+	Weapon2RightDown.anim.PushBack({ 180, 151, 28, 28 });
+	Weapon2RightDown.anim.PushBack({ 146, 182, 28, 28 });
+	Weapon2RightDown.anim.loop = true;
+	Weapon2RightDown.speed.x = 10.0f;
+	Weapon2RightDown.speed.y = 4.0f;
+	Weapon2RightDown.life = shortLife;
+	Weapon2RightDown.anim.speed = 0.7f;
+
+	Weapon2LeftSuperUp.anim.PushBack({ 149, 151, 28, 28 });
+	Weapon2LeftSuperUp.anim.PushBack({ 181, 182, 28, 28 });
+	Weapon2LeftSuperUp.anim.PushBack({ 180, 151, 28, 28 });
+	Weapon2LeftSuperUp.anim.PushBack({ 146, 182, 28, 28 });
+	Weapon2LeftSuperUp.anim.loop = true;
+	Weapon2LeftSuperUp.speed.x = -10.0f;
+	Weapon2LeftSuperUp.speed.y = -7.0f;
+	Weapon2LeftSuperUp.life = shortLife;
+	Weapon2LeftSuperUp.anim.speed = 0.7f;
+
+	Weapon2LeftUp.anim.PushBack({ 149, 151, 28, 28 });
+	Weapon2LeftUp.anim.PushBack({ 181, 182, 28, 28 });
+	Weapon2LeftUp.anim.PushBack({ 180, 151, 28, 28 });
+	Weapon2LeftUp.anim.PushBack({ 146, 182, 28, 28 });
+	Weapon2LeftUp.anim.loop = true;
+	Weapon2LeftUp.speed.x = -10.0f;
+	Weapon2LeftUp.speed.y = -4.0f;
+	Weapon2LeftUp.life = shortLife;
+	Weapon2LeftUp.anim.speed = 0.7f;
+
+	Weapon2LeftStraight.anim.PushBack({ 149, 151, 28, 28 });
+	Weapon2LeftStraight.anim.PushBack({ 181, 182, 28, 28 });
+	Weapon2LeftStraight.anim.PushBack({ 180, 151, 28, 28 });
+	Weapon2LeftStraight.anim.PushBack({ 146, 182, 28, 28 });
+	Weapon2LeftStraight.anim.loop = true;
+	Weapon2LeftStraight.speed.x = -10.0f;
+	Weapon2LeftStraight.speed.y = 0.0f;
+	Weapon2LeftStraight.life = shortLife;
+	Weapon2LeftStraight.anim.speed = 0.7f;
+
+	Weapon2LeftDown.anim.PushBack({ 149, 151, 28, 28 });
+	Weapon2LeftDown.anim.PushBack({ 181, 182, 28, 28 });
+	Weapon2LeftDown.anim.PushBack({ 180, 151, 28, 28 });
+	Weapon2LeftDown.anim.PushBack({ 146, 182, 28, 28 });
+	Weapon2LeftDown.anim.loop = true;
+	Weapon2LeftDown.speed.x = -10.0f;
+	Weapon2LeftDown.speed.y = 4.0f;
+	Weapon2LeftDown.life = shortLife;
+	Weapon2LeftDown.anim.speed = 0.7f;
+
+	Weapon2LeftSuperDown.anim.PushBack({ 149, 151, 28, 28 });
+	Weapon2LeftSuperDown.anim.PushBack({ 181, 182, 28, 28 });
+	Weapon2LeftSuperDown.anim.PushBack({ 180, 151, 28, 28 });
+	Weapon2LeftSuperDown.anim.PushBack({ 146, 182, 28, 28 });
+	Weapon2LeftSuperDown.anim.loop = true;
+	Weapon2LeftSuperDown.speed.x = -10.0f;
+	Weapon2LeftSuperDown.speed.y = 7.0f;
+	Weapon2LeftSuperDown.life = shortLife;
+	Weapon2LeftSuperDown.anim.speed = 0.7f;
 
 	//Player Type 3 (green)
 	straightGreen.anim.PushBack({ 42, 87, 32, 3 });

@@ -27,12 +27,14 @@ enum shot_type
 	PLAYER_1_ARRAY_SHOT,
 	PLAYER_1_ORANGE_SHOT,
 	PLAYER_1_YELLOW_SHOT,
+	PLAYER_1_WEAPON_SHOT,	// why the need of weapon shot, fix
 	PLAYER_2_BLUE_SHOT,
 	PLAYER_2_GREEN_SINGLE_SHOT,
 	PLAYER_2_MULTIPLE_SHOT,
 	PLAYER_2_ARRAY_SHOT,
 	PLAYER_2_ORANGE_SHOT,
-	PLAYER_2_YELLOW_SHOT
+	PLAYER_2_YELLOW_SHOT,
+	PLAYER_2_WEAPON_SHOT
 };
 
 struct SDL_Texture;
@@ -102,6 +104,9 @@ public:
 	Particle missileDown;
 	Particle missileSuperDown;
 
+	// Weapon
+	Particle blueWeapon;
+
 	// Type 2 particles		// Needs paths
 	Particle yellowBigRight;
 	Particle yellowBigLeft;
@@ -119,6 +124,15 @@ public:
 	Particle redRocketLeftUp;
 	Particle redRocketUpDiagonal;
 	Particle redRocketDownDiagonal;
+
+	// Weapon
+	Particle Weapon2RightUp;
+	Particle Weapon2RightDown;
+	Particle Weapon2LeftSuperUp;
+	Particle Weapon2LeftUp;
+	Particle Weapon2LeftStraight;
+	Particle Weapon2LeftDown;
+	Particle Weapon2LeftSuperDown;
 
 	// Type 3 particles
 	Particle straightGreen;			
@@ -159,6 +173,9 @@ public:
 	Particle bombLeftDown;
 	Particle bombLeftUp;
 
+	// Weapon
+	//Particle lasersSpinning;
+
 	// Type 4 particles
 	Particle arrowUp1;
 	Particle arrowStraight1;	// Animation stops at 2nd frame
@@ -181,6 +198,9 @@ public:
 	Particle laserDown;
 	//Particle* downRightGreen = nullptr;	// Reusing particles (keep commented)
 	//Particle* upRightGreen = nullptr;
+
+	// Weapon
+	//Particle type4Weapon;
 
 	// Homing particles
 
