@@ -541,7 +541,7 @@ bool ModuleParticles::Start()
 	explosion.anim.PushBack({ 524, 82, 32, 32 });
 	explosion.anim.PushBack({ 571, 82, 32, 32 });
 	explosion.anim.loop = false;
-	explosion.anim.speed = 0.2f;
+	explosion.anim.speed = 1.5f;
 	explosion.anim.Finished();
 
 	explosion1.anim.PushBack({ 632, 24, 8, 8 });
@@ -560,7 +560,7 @@ bool ModuleParticles::Start()
 	explosion1.anim.PushBack({ 638, 107, 17, 17 });
 	explosion1.anim.PushBack({ 665, 115, 6, 6 });
 	explosion1.anim.loop = false;
-	explosion1.anim.speed = 0.2f;
+	explosion1.anim.speed = 1.5f;
 	explosion1.anim.Finished();
 
 	explosion2.anim.PushBack({ 509, 137, 6, 6 });
@@ -568,7 +568,7 @@ bool ModuleParticles::Start()
 	explosion2.anim.PushBack({ 535, 127, 16, 16 });
 	explosion2.anim.PushBack({ 557, 129, 14, 14 });
 	explosion2.anim.loop = false;
-	explosion2.anim.speed = 0.1f;
+	explosion2.anim.speed = 1.5f;
 	explosion2.anim.Finished();
 
 
