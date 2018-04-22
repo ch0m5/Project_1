@@ -27,9 +27,7 @@ public:
 	uint score = 500;
 	bool dead = false;
 	bool blue = true;
-	bool orange = false;
-	bool move_init = true;
-	uint start_time = 0;
+	bool red = false;
 };
 
 #endif // __POWERUP_BONUS_H__
