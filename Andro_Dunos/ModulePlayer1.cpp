@@ -35,8 +35,10 @@ ModulePlayer1::ModulePlayer1()	// @CarlesHoms @Andres
 	propellerWidth = 12;
 	propellerHeight = 17;
 
-	movVertical = 0;	// Counter for the vertical movement of the ship
 	maxVertical = 14;	// Limit of the counter
+
+	//Debug Purpose Variables
+	godMode = false;
 
 	//Music 
 	type1Shot = nullptr;		// All use the same channel (3)
@@ -47,39 +49,15 @@ ModulePlayer1::ModulePlayer1()	// @CarlesHoms @Andres
 	powerUp = nullptr;
 	playerDeathExplosion = nullptr;
 
-	//Collider
-	playerHitbox;
-
 	//Lasers
 	laserHorizontalOffset = 18;	// Horizontal Offset for bullets
 	laserVerticalOffset = 12;	// Vertical Offset for bullets
-	
-	//Types and levels
-	type = TYPE_1;			// Flag/counter for type equipped
-	bluePower = LEVEL_1;	// Flag/counter for blue power level
-	orangePower = LEVEL_0;	// Flag/counter for orange power level
-	yellowPower = LEVEL_0;	// Flag/counter for yellow power level
-	greenPower = LEVEL_0;	// Flag/counter for green power level
-								//Counter to limitate how many lasers, boms, etc can the player have on screen, based on needed particles to be destroyed to make more shots.
 
 	//int blueShotTimer;	// After the last shot taken, if enough time passes without no shots, the "currentBlue" counter restarts.
 	//int timeBetweenShotsTimer;	// time between each shot, could be a get ticks
 
-	currentBlue = 0;	// Every shot increases the counter by 2, player will not shot if it gets higher than 4. Each collide substracts 1.
-	currentOrange = 0;	// Every time it fires increases the counter by x (changes on level), player will not shot if it reaches MAX.  Each collide substracts 1.
-	currentYellow = 0;	// When reaching level yellow one, the max becomes 3 and the counter increases by 1 for each misile fired. Each collide substracts 1.
-	currentMultipleShots = 0;	// TEMPORAL SHOT LIMITATION
-	currentArrayShots = 0;
-
-	maxShots = 20;
+	maxShots = 20;		// Counter Maximums
 	maxArrayShots = 3;
-
-	// Starting point of the ship (using p2Point)
-	position.x = 0;
-	position.y = SCREEN_HEIGHT / 2 - 10;
-
-	//Debug Purpose Variables
-	godMode = false;
 
 	/*
 	Sprites positioning
@@ -208,7 +186,24 @@ bool ModulePlayer1::Start()
 	powerUp = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Power_Up_Picked.wav");
 	playerDeathExplosion = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Player_Death_Explosion.wav");
 
-	
+	//Types and levels
+	type = TYPE_1;			// Flag/counter for type equipped
+	bluePower = LEVEL_1;	// Flag/counter for blue power level
+	orangePower = LEVEL_0;	// Flag/counter for orange power level
+	yellowPower = LEVEL_0;	// Flag/counter for yellow power level
+	greenPower = LEVEL_0;	// Flag/counter for green power level
+
+	currentBlue = 0;	// Every shot increases the counter by 2, player will not shot if it gets higher than 4. Each collide substracts 1.
+	currentOrange = 0;	// Every time it fires increases the counter by x (changes on level), player will not shot if it reaches MAX.  Each collide substracts 1.
+	currentYellow = 0;	// When reaching level yellow one, the max becomes 3 and the counter increases by 1 for each misile fired. Each collide substracts 1.
+	currentMultipleShots = 0;	// TEMPORAL SHOT LIMITATION
+	currentArrayShots = 0;
+
+	// Starting point of the ship (using p2Point)
+	position.x = 0;
+	position.y = SCREEN_HEIGHT / 2 - 10;
+
+	movVertical = 0;	// Counter for the vertical movement of the ship
 
 	Mix_VolumeChunk(type1Shot, FXVol);
 	Mix_VolumeChunk(type2Shot, FXVol);
@@ -608,8 +603,8 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				{
 				case LEVEL_1:
 					currentBlue += 2;
-					App->particles->AddParticle(App->particles->arrowUp1, position.x + laserHorizontalOffset, position.y + laserVerticalOffset, PLAYER_1_BLUE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->arrowDown1, position.x + laserHorizontalOffset, position.y + laserVerticalOffset, PLAYER_1_BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->arrowUp1, position.x + laserHorizontalOffset - 15, position.y + laserVerticalOffset - 4, PLAYER_1_BLUE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->arrowDown1, position.x + laserHorizontalOffset - 15, position.y + laserVerticalOffset - 4, PLAYER_1_BLUE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_2:
@@ -636,19 +631,19 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 				case LEVEL_5:
 					currentMultipleShots += 4;
-					App->particles->AddParticle(App->particles->arrowSuperUp2, position.x + laserHorizontalOffset, position.y + 8, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->arrowUp3, position.x + laserHorizontalOffset, position.y + 8, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->arrowDown3, position.x + laserHorizontalOffset, position.y + 8, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->arrowSuperDown2, position.x + laserHorizontalOffset, position.y + 8, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->arrowSuperUp2, position.x + laserHorizontalOffset, position.y + laserVerticalOffset, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->arrowUp3, position.x + laserHorizontalOffset, position.y + laserVerticalOffset, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->arrowDown3, position.x + laserHorizontalOffset, position.y + laserVerticalOffset, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->arrowSuperDown2, position.x + laserHorizontalOffset, position.y + laserVerticalOffset, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_6:
 					currentMultipleShots += 5;
-					App->particles->AddParticle(App->particles->arrowSuperUp2, position.x, position.y + 8, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->arrowSuperUp2, position.x + laserHorizontalOffset, position.y + laserVerticalOffset, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->arrowUp3, position.x + laserHorizontalOffset, position.y + laserVerticalOffset, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->arrowStraight3, position.x + laserHorizontalOffset, position.y + laserVerticalOffset, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					App->particles->AddParticle(App->particles->arrowDown3, position.x + laserHorizontalOffset, position.y + laserVerticalOffset, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->arrowSuperDown2, position.x, position.y + 8, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->arrowSuperDown2, position.x + laserHorizontalOffset, position.y + laserVerticalOffset, PLAYER_1_MULTIPLE_SHOT, COLLIDER_PLAYER_SHOT);
 					break;
 
 				case LEVEL_7:
