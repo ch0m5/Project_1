@@ -251,6 +251,10 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 2380, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_K, 2390, 120);
 
+
+	//Powerup------------------------------------------------------
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP_ENEMY, 2420, 75); // must deliver a powerup particle
+
 	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2440, 40);
 	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2450, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2455, 180);
@@ -299,6 +303,10 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 3610, 120 + 208);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 3620, 120 + 208);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 3630, 120 + 208);
+
+
+	//Powerup------------------------------------------------------
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP_ENEMY, 3780, 75+208); // must deliver a powerup particle
 
 	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 3800, 100 + 208);
 	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 3800, 100 + 208);
@@ -386,6 +394,10 @@ bool ModuleStage1::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 5980, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 5990, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6000, 80);
+
+
+	//Powerup------------------------------------------------------
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP_ENEMY, 6010, 75); // must deliver a powerup particle
 
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6210, 30);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 6220, 30);
