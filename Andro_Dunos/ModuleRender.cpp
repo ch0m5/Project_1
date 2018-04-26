@@ -30,7 +30,7 @@ bool ModuleRender::Init()
 	}
 
 	renderer = SDL_CreateRenderer(App->window->window, -1, flags);
-	SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT);
+	SDL_RenderSetLogicalSize(renderer, SCREEN_WIDTH, SCREEN_HEIGHT); // Set the renderer size to the Fullscreen size
 
 	if(renderer == NULL)
 	{

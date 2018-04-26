@@ -688,7 +688,7 @@ update_status ModuleStage1::Update()
 		//LOG("%0.3f", movementx);
 		movementxBack += xSpeedMultiplier*0.5f ;
 		movementxPlanetsBack += xSpeedMultiplier*0.7f;
-		App->render->camera.x = 3.25*movementx;
+		App->render->camera.x = 3.25*movementx/3;		//Must change this HARDCODE to 1 single value
 		if (App->render->camera.x / SCREEN_SIZE > 2920)
 		{
 			backmovementcaveX -= xSpeedMultiplier * 0.1f;
@@ -698,14 +698,14 @@ update_status ModuleStage1::Update()
 	{
 		movementy += ySpeedMultiplier * 0.82f;
 		movementyBack += ySpeedMultiplier * 0.38f; 
-		App->render->camera.y = 3.25*movementy;
+		App->render->camera.y = 3.25*movementy/3;  //Must change this HARDCODE to 1 single value
 		
 	}
 	if (moveMapUp == true)
 	{
 		movementy -= ySpeedMultiplier * 0.82f;
 		movementyBack -= ySpeedMultiplier * 0.38f;
-		App->render->camera.y = 3.25*movementy;
+		App->render->camera.y = 3.25*movementy/3;  //Must change this HARDCODE to 1 single value
 	}
 
 	//Conditions: Where does the background change X and Y speeds
