@@ -1,4 +1,4 @@
---------Roadmap----------
+﻿--------Roadmap----------
 *v0.1.1:
 	Basic Background and map movement.
 	Ship animation and movement.
@@ -37,18 +37,18 @@
 	Fixed, optimized, and cleaned current code
 	
 *v0.7
-	Level 1 Enemies
-	Level 1 Boss
+	Level 6 Map Layout
+	Level 6 Enemies
 	Bonus Ball
 	Player Laser Paths
 	
 *v0.8
-	Level 6 Map Layout
-	Level 6 Enemies
+	Level 1 Boss
+	Level 6 Boss Implemented
 	Player Lasers
 
 *v0.9
-	Level 6 Boss Implemented
+	Level 1 Enemies (Correct Position and amount)
 	User Interface
 	Player Shields
 
