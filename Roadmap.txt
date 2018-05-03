@@ -6,7 +6,7 @@
 *v0.2:
 	Intro Screen + first empty levels
 *v0.3:
-	Particles (Básic)
+	Particles (BÃ¡sic)
 	Basic Lasers
 	Player Screen Limits
 	Map Stage 1 motion
