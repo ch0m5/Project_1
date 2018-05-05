@@ -973,13 +973,13 @@ update_status ModuleStage1::Update()
 		App->render->Blit(starsText, movementXOrange5Star2, 40, &starOrange5Rect);
 		App->render->Blit(starsText, movementXGreen3Star, 97, &starGreen3Rect);
 	}
-																			//These two if's control the first part of the level outside and the end of the level also outside
+		//These two if's control the first part of the level outside and the end of the level also outside
 	if (App->render->camera.y < 180 * SCREEN_SIZE)
 	{
 		App->render->Blit(background1Text, movementxBack, 120 + movementyBack, &background1Rect); // level background
 
 	}
-	if (App->render->camera.x > 7130 * SCREEN_SIZE && App->render->camera.x < 7131 * SCREEN_SIZE)
+	if (App->render->camera.x > 7130 * SCREEN_SIZE && App->render->camera.x < 7140 * SCREEN_SIZE)
 	{
 		movementxBack = 0;
 		movementxPlanetsBack = 0;
