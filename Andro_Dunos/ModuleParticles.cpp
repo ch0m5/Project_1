@@ -121,6 +121,7 @@ bool ModuleParticles::Start()
 	smallBlue.speed.x = 7.0f;
 	smallBlue.life = shortLife;
 	smallBlue.anim.speed = 0.3f;
+	//smallBlue.particlePath.PushBack({ -1, 0 }, 125);
 
 	mediumBlue.anim.PushBack({ 22, 51, 15, 6 });
 	mediumBlue.anim.loop = false;

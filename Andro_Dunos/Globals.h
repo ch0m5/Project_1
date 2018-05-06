@@ -44,6 +44,13 @@ enum weapon_levels	// To mark the different player weapon levels
 	LEVEL_9
 };
 
+enum weapon_charge_stages	// To mark the audio to play when charging the weapon
+{
+	NOT_CHARGING,
+	CHARGING,
+	CHARGED
+};
+
 // Useful typedefs ---------
 typedef unsigned int uint;
 

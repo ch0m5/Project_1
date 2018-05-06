@@ -62,6 +62,8 @@ public:
 	Mix_Chunk *type2Shot = nullptr;
 	Mix_Chunk *type3Shot = nullptr;
 	Mix_Chunk *type4Shot = nullptr;
+	Mix_Chunk *typeCharging = nullptr;
+	Mix_Chunk *typeCharged = nullptr;
 	Mix_Chunk *typeSwap = nullptr;	// Uses channel 0
 	Mix_Chunk *type1Weapon = nullptr;		// All use the same channel: 1
 	Mix_Chunk *type2Weapon = nullptr;
@@ -69,6 +71,8 @@ public:
 	Mix_Chunk *type4Weapon = nullptr;
 	Mix_Chunk *powerUp = nullptr;
 	Mix_Chunk *playerDeathExplosion = nullptr;
+
+	int weaponChargingStage;
 
 	//Collider
 	Collider* playerHitbox;
