@@ -21,6 +21,56 @@ ModuleParticles::ModuleParticles()	// @Andres @CarlesHoms
 ModuleParticles::~ModuleParticles()
 {}
 
+// Called before render is available
+bool ModuleParticles::Init()
+{
+	LOG("Init Module Particles");
+	bool ret = true;
+	// Explosion particle // @Andres
+	explosion.anim.PushBack({ 505, 34, 4, 4 });
+	explosion.anim.PushBack({ 512, 26, 12, 12 });
+	explosion.anim.PushBack({ 528, 6, 32, 32 });
+	explosion.anim.PushBack({ 563, 7, 30, 30 });
+	explosion.anim.PushBack({ 597, 8, 30, 30 });
+	explosion.anim.PushBack({ 518, 46, 30, 30 });
+	explosion.anim.PushBack({ 552, 47, 30, 30 });
+	explosion.anim.PushBack({ 587, 45, 32, 32 });
+	explosion.anim.PushBack({ 524, 82, 32, 32 });
+	explosion.anim.PushBack({ 571, 82, 32, 32 });
+	explosion.anim.loop = false;
+	explosion.anim.speed = 1.5f;
+	explosion.anim.Finished();
+
+	explosion1.anim.PushBack({ 632, 24, 8, 8 });
+	explosion1.anim.PushBack({ 642, 18, 13, 14 });
+	explosion1.anim.PushBack({ 658, 7, 25, 25 });
+	explosion1.anim.PushBack({ 688, 6, 27, 26 });
+	explosion1.anim.PushBack({ 718, 3, 30, 29 });
+	explosion1.anim.PushBack({ 632, 39, 29, 28 });
+	explosion1.anim.PushBack({ 665, 39, 29, 28 });
+	explosion1.anim.PushBack({ 698, 40, 28, 27 });
+	explosion1.anim.PushBack({ 728, 42, 29, 27 });
+	explosion1.anim.PushBack({ 632, 74, 29, 27 });
+	explosion1.anim.PushBack({ 665, 76, 28, 26 });
+	explosion1.anim.PushBack({ 698, 77, 26, 24 });
+	explosion1.anim.PushBack({ 727, 79, 21, 21 });
+	explosion1.anim.PushBack({ 638, 107, 17, 17 });
+	explosion1.anim.PushBack({ 665, 115, 6, 6 });
+	explosion1.anim.loop = false;
+	explosion1.anim.speed = 1.5f;
+	explosion1.anim.Finished();
+
+	explosion2.anim.PushBack({ 509, 137, 6, 6 });
+	explosion2.anim.PushBack({ 521, 135, 10, 8 });
+	explosion2.anim.PushBack({ 535, 127, 16, 16 });
+	explosion2.anim.PushBack({ 557, 129, 14, 14 });
+	explosion2.anim.loop = false;
+	explosion2.anim.speed = 1.5f;
+	explosion2.anim.Finished();
+	
+	return ret;
+}
+
 // Load assets
 bool ModuleParticles::Start()
 {
@@ -609,47 +659,7 @@ bool ModuleParticles::Start()
 	enemyBlueShot.life = longLife;
 
 
-	// Explosion particle // @Andres
-	explosion.anim.PushBack({ 505, 34, 4, 4 });
-	explosion.anim.PushBack({ 512, 26, 12, 12 });
-	explosion.anim.PushBack({ 528, 6, 32, 32 });
-	explosion.anim.PushBack({ 563, 7, 30, 30 });
-	explosion.anim.PushBack({ 597, 8, 30, 30 });
-	explosion.anim.PushBack({ 518, 46, 30, 30 });
-	explosion.anim.PushBack({ 552, 47, 30, 30 });
-	explosion.anim.PushBack({ 587, 45, 32, 32 });
-	explosion.anim.PushBack({ 524, 82, 32, 32 });
-	explosion.anim.PushBack({ 571, 82, 32, 32 });
-	explosion.anim.loop = false;
-	explosion.anim.speed = 1.5f;
-	explosion.anim.Finished();
 
-	explosion1.anim.PushBack({ 632, 24, 8, 8 });
-	explosion1.anim.PushBack({ 642, 18, 13, 14 });
-	explosion1.anim.PushBack({ 658, 7, 25, 25 });
-	explosion1.anim.PushBack({ 688, 6, 27, 26 });
-	explosion1.anim.PushBack({ 718, 3, 30, 29 });
-	explosion1.anim.PushBack({ 632, 39, 29, 28 });
-	explosion1.anim.PushBack({ 665, 39, 29, 28 });
-	explosion1.anim.PushBack({ 698, 40, 28, 27 });
-	explosion1.anim.PushBack({ 728, 42, 29, 27 });
-	explosion1.anim.PushBack({ 632, 74, 29, 27 });
-	explosion1.anim.PushBack({ 665, 76, 28, 26 });
-	explosion1.anim.PushBack({ 698, 77, 26, 24 });
-	explosion1.anim.PushBack({ 727, 79, 21, 21 });
-	explosion1.anim.PushBack({ 638, 107, 17, 17 });
-	explosion1.anim.PushBack({ 665, 115, 6, 6 });
-	explosion1.anim.loop = false;
-	explosion1.anim.speed = 1.5f;
-	explosion1.anim.Finished();
-
-	explosion2.anim.PushBack({ 509, 137, 6, 6 });
-	explosion2.anim.PushBack({ 521, 135, 10, 8 });
-	explosion2.anim.PushBack({ 535, 127, 16, 16 });
-	explosion2.anim.PushBack({ 557, 129, 14, 14 });
-	explosion2.anim.loop = false;
-	explosion2.anim.speed = 1.5f;
-	explosion2.anim.Finished();
 
 
 
