@@ -39,6 +39,17 @@ public:
 	int gamepadP1LAxisY = 0;
 	bool gamepadP1APressed = false;
 	bool gamepadP1XPressed = false;
+	bool gamepadP1StartPressed = false;
+
+	//GAme Controller for Player 2
+	SDL_GameController* gamepadP2 = nullptr;
+	bool gamepadP2con = false;
+	int gamepadP2LAxisX = 0;
+	int gamepadP2LAxisY = 0;
+	bool gamepadP2APressed = false;
+	bool gamepadP2XPressed = false;
+	bool gamepadP2StartPressed = false;
+
 	//debug mode function
 	bool debugMode = false;
 	bool coliderView = false;

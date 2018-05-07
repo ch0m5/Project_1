@@ -114,7 +114,7 @@ update_status ModuleUserInterface::Update()
 				{
 					App->fonts->BlitText(10, 50, debug_font, "super speed");
 				}
-				//Controller Debug 
+				//Controller Debug P1
       				if (App->input->debugMode == true && App->input->gamepadP1con == true)
 				{
 					App->fonts->BlitText(100, 20, debug_font, "p1 controller on");
@@ -134,6 +134,26 @@ update_status ModuleUserInterface::Update()
 				if (App->input->debugMode == true && App->input->gamepadP1con == false)
 				{
 					App->fonts->BlitText(100, 20, debug_font, "p1 controller off");
+				}
+				//Controller Debug P2
+				if (App->input->debugMode == true && App->input->gamepadP2con == true)
+				{
+					App->fonts->BlitText(160, 50, debug_font, "p2 controller on");
+					if (App->input->gamepadP2APressed == true)
+					{
+						App->fonts->BlitText(170, 60, debug_font, "a");
+					}
+					if (App->input->gamepadP2XPressed == true)
+					{
+						App->fonts->BlitText(180, 60, debug_font, "x");
+					}
+					//Check BUTTONS & AXIS Currently PC CRASH DO NOT UNCOMMENT
+					/*sprintf_s(gamepad_P1_LAxis_X, 4, "%7d", App->input->gamepadP1LAxisX);
+					App->fonts->BlitText(100, 30, 0, gamepad_P1_LAxis_X);*/
+				}
+				if (App->input->debugMode == true && App->input->gamepadP2con == false)
+				{
+					App->fonts->BlitText(160, 50, debug_font, "p2 controller off");
 				}
 			}break;
 
