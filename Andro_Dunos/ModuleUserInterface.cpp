@@ -113,6 +113,15 @@ update_status ModuleUserInterface::Update()
 				{
 					App->fonts->BlitText(10, 50, debug_font, "super speed");
 				}
+				//Controller Debug 
+      				if (App->input->debugMode == true && App->input->controllerP1con == true)
+				{
+					App->fonts->BlitText(100, 20, debug_font, "p1 controller on");
+				}
+				if (App->input->debugMode == true && App->input->controllerP1con == false)
+				{
+					App->fonts->BlitText(100, 20, debug_font, "p1 controller off");
+				}
 			}break;
 
 		case StageClear:

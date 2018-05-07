@@ -29,6 +29,7 @@ bool ModuleInput::Init()
 		ret = false;
 		SDL_ClearError();
 	}
+	SDL_Init(SDL_INIT_GAMECONTROLLER);
 
 	return ret;
 }
@@ -83,6 +84,24 @@ update_status ModuleInput::PreUpdate()
 			return update_status::UPDATE_STOP;
 		}
 	}
+
+	//CONTROLLER INPUT
+	for (int i = 0; i < SDL_NumJoysticks(); ++i) {
+		if (SDL_IsGameController(i)) 
+		{
+			controllerP1 = SDL_GameControllerOpen(i);
+			if (SDL_GameControllerGetAttached(controllerP1)) {
+				controllerP1con = true;
+				break;
+			}
+			else {
+				SDL_GameControllerClose(controllerP1);
+				controllerP1 = nullptr;
+				controllerP1con = false;
+			}
+		}
+	}
+
 
 	return update_status::UPDATE_CONTINUE;
 }
