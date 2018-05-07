@@ -118,6 +118,14 @@ update_status ModuleUserInterface::Update()
       				if (App->input->debugMode == true && App->input->gamepadP1con == true)
 				{
 					App->fonts->BlitText(100, 20, debug_font, "p1 controller on");
+					if (App->input->gamepadP1APressed == true)
+					{
+						App->fonts->BlitText(100, 30, debug_font, "a");
+					}
+					if (App->input->gamepadP1XPressed == true)
+					{
+						App->fonts->BlitText(110, 30, debug_font, "x");
+					}
 					//Check BUTTONS & AXIS Currently PC CRASH DO NOT UNCOMMENT
 					/*sprintf_s(gamepad_P1_LAxis_X, 4, "%7d", App->input->gamepadP1LAxisX);
 					App->fonts->BlitText(100, 30, 0, gamepad_P1_LAxis_X);*/

@@ -93,6 +93,8 @@ update_status ModuleInput::PreUpdate()
 			if (SDL_GameControllerGetAttached(gamepadP1)) {
 				gamepadP1LAxisX = SDL_GameControllerGetAxis(gamepadP1, SDL_CONTROLLER_AXIS_LEFTX);
 				gamepadP1LAxisY = SDL_GameControllerGetAxis(gamepadP1, SDL_CONTROLLER_AXIS_LEFTY);
+				gamepadP1APressed = SDL_GameControllerGetButton(gamepadP1, SDL_CONTROLLER_BUTTON_A);
+				gamepadP1XPressed = SDL_GameControllerGetButton(gamepadP1, SDL_CONTROLLER_BUTTON_X);
 				gamepadP1con = true;
 				break;
 			}
@@ -106,11 +108,11 @@ update_status ModuleInput::PreUpdate()
 	}
 
 	//CHECK Left Axis X & Y
-	if (gamepadP1LAxisX > 3200)
+	if (gamepadP1LAxisX > 6400)
 	{
 		keyboard[SDL_SCANCODE_RIGHT] = KEY_STATE::KEY_REPEAT;
 	}
-	else if (gamepadP1LAxisX < -3200)
+	else if (gamepadP1LAxisX < -6400)
 	{
 		keyboard[SDL_SCANCODE_LEFT] = KEY_STATE::KEY_REPEAT;
 	}
@@ -123,7 +125,21 @@ update_status ModuleInput::PreUpdate()
 	{
 		keyboard[SDL_SCANCODE_DOWN] = KEY_STATE::KEY_REPEAT;
 	}
+	//CHECK P1 Buttons
 
+	if (gamepadP1APressed == true && keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_IDLE)
+	{
+		keyboard[SDL_SCANCODE_P] = KEY_STATE::KEY_DOWN;
+	}
+
+	if (gamepadP1XPressed == true && keyboard[SDL_SCANCODE_O] == KEY_STATE::KEY_IDLE)
+	{
+		keyboard[SDL_SCANCODE_O] = KEY_STATE::KEY_DOWN;
+	}
+	/*else
+	{
+	keyboard[SDL_SCANCODE_O] = KEY_STATE::KEY_REPEAT;
+	}*/
 	return update_status::UPDATE_CONTINUE;
 }
 

@@ -37,6 +37,8 @@ public:
 	bool gamepadP1con = false;
 	int gamepadP1LAxisX = 0;
 	int gamepadP1LAxisY = 0;
+	bool gamepadP1APressed = false;
+	bool gamepadP1XPressed = false;
 	//debug mode function
 	bool debugMode = false;
 	bool coliderView = false;
