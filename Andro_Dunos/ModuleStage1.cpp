@@ -806,7 +806,7 @@ update_status ModuleStage1::Update()
 	}
 
 	//make so pressing SPACE the other stage is loaded
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 && App->input->debugMode == true)
 	{
 		App->fade->FadeToBlack(App->stage1, App->scene_HiScore, 1);
 	}
