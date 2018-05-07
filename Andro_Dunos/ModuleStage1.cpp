@@ -129,6 +129,11 @@ bool ModuleStage1::Start()
 	// Enemies
 	App->enemies->Enable();
 
+	//Score
+	App->UI->teamScore = 0;
+	App->UI->player1Score = 0;
+	App->UI->player2Score = 0;
+
 	// First Enemy: GreyBall (4 waves, with 1wave&3wave same position.y and 2wave&4wave same position.y)
 	//wave 1 ------------------------------------------------------
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 480, 50);
@@ -801,7 +806,7 @@ update_status ModuleStage1::Update()
 	}
 
 	//make so pressing SPACE the other stage is loaded
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 && App->input->debugMode == true)
 	{
 		App->fade->FadeToBlack(App->stage1, App->scene_HiScore, 1);
 	}
