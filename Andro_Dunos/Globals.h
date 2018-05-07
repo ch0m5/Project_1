@@ -48,7 +48,8 @@ enum weapon_charge_stages	// To mark the audio to play when charging the weapon
 {
 	NOT_CHARGING,
 	CHARGING,
-	CHARGED
+	CHARGED,
+	CHARGED_LOOP
 };
 
 // Useful typedefs ---------

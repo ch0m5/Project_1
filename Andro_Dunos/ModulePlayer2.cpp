@@ -103,6 +103,26 @@ ModulePlayer2::ModulePlayer2()	// @CarlesHoms @Andres
 	shipVerticalMovement.PushBack({ 154, 131, shipWidth, shipHeight });
 	shipVerticalMovement.PushBack({ 154, 153, shipWidth, shipHeight });
 
+	shipChargedSuperUp.PushBack({ 329, 66, shipWidth + 5, shipHeight + 6 });
+	shipChargedSuperUp.PushBack({ 294, 65, shipWidth + 5, shipHeight + 6 });
+	shipChargedSuperUp.speed = 0.8f;
+
+	shipChargedUp.PushBack({ 329, 89, shipWidth + 5, shipHeight + 6 });
+	shipChargedUp.PushBack({ 294, 88, shipWidth + 5, shipHeight + 6 });
+	shipChargedUp.speed = 0.8f;
+
+	shipCharged.PushBack({ 329, 113, shipWidth + 5, shipHeight + 6 });
+	shipCharged.PushBack({ 294, 112, shipWidth + 5, shipHeight + 6 });
+	shipCharged.speed = 0.8f;
+
+	shipChargedDown.PushBack({ 329, 138, shipWidth + 5, shipHeight + 6 });
+	shipChargedDown.PushBack({ 294, 137, shipWidth + 5, shipHeight + 6 });
+	shipChargedDown.speed = 0.8f;
+
+	shipChargedSuperDown.PushBack({ 329, 164, shipWidth + 5, shipHeight + 6 });
+	shipChargedSuperDown.PushBack({ 294, 163, shipWidth + 5, shipHeight + 6 });
+	shipChargedSuperDown.speed = 0.8f;
+
 	// Booster animations
 	superUpwardsBooster.PushBack({ 42, 63, propellerWidth, propellerHeight });
 	superUpwardsBooster.PushBack({ 0, 0, propellerWidth, propellerHeight });
@@ -251,7 +271,7 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 	{
 		shipAnimation = &shipVerticalMovement;
 		propellerAnimation = &idleBooster;
-		shipRect = &shipAnimation->frames[SHIP_IDLE];
+		shipRect = shipAnimation->frames[SHIP_IDLE];
 
 		// Bliting Text
 		//App->fonts->BlitText(50, 10, font_score, "we are going to do the best game ric has ever seen dude!!");
@@ -310,36 +330,71 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 			position.x += speed;
 		}
 
-		// Depending on the vertical counter, we decide the animation
-
-		if (movVertical >= maxVertical)
+		// Depending on the vertical counter and the weapon charge, we decide the animation
+		if (weaponChargingStage == CHARGED || weaponChargingStage == CHARGED_LOOP)
 		{
-			shipRect = &shipAnimation->frames[SHIP_FULL_UP];
-			propellerAnimation = &superUpwardsBooster;
+			if (movVertical >= maxVertical)
+			{
+				shipAnimation = &shipChargedSuperUp;
+				propellerAnimation = &superUpwardsBooster;
+			}
+
+			else if (movVertical > (maxVertical / 2) && movVertical < maxVertical)
+			{
+				shipAnimation = &shipChargedUp;
+				propellerAnimation = &upwardsBooster;
+			}
+
+			else if (movVertical <= (maxVertical / 2) && movVertical >= -(maxVertical / 2))
+			{
+				shipAnimation = &shipCharged;
+				propellerAnimation = &idleBooster;
+			}
+
+			else if (movVertical < -(maxVertical / 2) && movVertical > -maxVertical)
+			{
+				shipAnimation = &shipChargedDown;
+				propellerAnimation = &downwardsBooster;
+			}
+
+			else if (movVertical <= -maxVertical)
+			{
+				shipAnimation = &shipChargedSuperDown;
+				propellerAnimation = &superDownwardsBooster;
+			}
 		}
 
-		else if (movVertical > (maxVertical / 2) && movVertical < maxVertical)
+		else
 		{
-			shipRect = &shipAnimation->frames[SHIP_UP];
-			propellerAnimation = &upwardsBooster;
-		}
+			if (movVertical >= maxVertical)
+			{
+				shipRect = shipAnimation->frames[SHIP_FULL_UP];
+				propellerAnimation = &superUpwardsBooster;
+			}
 
-		else if (movVertical <= (maxVertical / 2) && movVertical >= -(maxVertical / 2))
-		{
-			shipRect = &shipAnimation->frames[SHIP_IDLE];
-			propellerAnimation = &idleBooster;
-		}
+			else if (movVertical > (maxVertical / 2) && movVertical < maxVertical)
+			{
+				shipRect = shipAnimation->frames[SHIP_UP];
+				propellerAnimation = &upwardsBooster;
+			}
 
-		else if (movVertical < -(maxVertical / 2) && movVertical > -maxVertical)
-		{
-			shipRect = &shipAnimation->frames[SHIP_DOWN];
-			propellerAnimation = &downwardsBooster;
-		}
+			else if (movVertical <= (maxVertical / 2) && movVertical >= -(maxVertical / 2))
+			{
+				shipRect = shipAnimation->frames[SHIP_IDLE];
+				propellerAnimation = &idleBooster;
+			}
 
-		else if (movVertical <= -maxVertical)
-		{
-			shipRect = &shipAnimation->frames[SHIP_FULL_DOWN];
-			propellerAnimation = &superDownwardsBooster;
+			else if (movVertical < -(maxVertical / 2) && movVertical > -maxVertical)
+			{
+				shipRect = shipAnimation->frames[SHIP_DOWN];
+				propellerAnimation = &downwardsBooster;
+			}
+
+			else if (movVertical <= -maxVertical)
+			{
+				shipRect = shipAnimation->frames[SHIP_FULL_DOWN];
+				propellerAnimation = &superDownwardsBooster;
+			}
 		}
 
 		// (TEMPORAL) level up and down
@@ -426,7 +481,6 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 			{
 				if (bluePower > LEVEL_1)
 					weaponChargeTimer = SDL_GetTicks();
-				// weapon charge sound?
 
 				blueShotTimer = SDL_GetTicks();
 
@@ -885,10 +939,15 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 				weaponChargingStage = CHARGING;
 			}
 
-			if (bluePower > LEVEL_1 && weaponChargeTimer < SDL_GetTicks() - 4400 && weaponChargingStage == CHARGING)
+			else if (bluePower > LEVEL_1 && weaponChargeTimer < SDL_GetTicks() - 2200 && weaponChargingStage == CHARGING)
+			{
+				weaponChargingStage = CHARGED;
+			}
+
+			else if (bluePower > LEVEL_1 && weaponChargeTimer < SDL_GetTicks() - 4400 && weaponChargingStage == CHARGED)
 			{
 				Mix_PlayChannel(3, typeCharged, -1);
-				weaponChargingStage = CHARGED;
+				weaponChargingStage = CHARGED_LOOP;
 			}
 		}
 
@@ -1005,9 +1064,16 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 		if (destroyed == false)
 		{
 			SDL_Rect propellerRect = propellerAnimation->GetCurrentFrame();
-
 			App->render->Blit(graphics, position.x - propellerWidth, position.y, &propellerRect, 1.0f, false);
-			App->render->Blit(graphics, position.x, position.y, shipRect, 1.0f, false);
+
+			if (weaponChargingStage == CHARGED || weaponChargingStage == CHARGED_LOOP)
+			{
+				shipRect = shipAnimation->GetCurrentFrame();
+				App->render->Blit(graphics, position.x - 2, position.y - 3, &shipRect, 1.0f, false);
+			}
+
+			else
+				App->render->Blit(graphics, position.x, position.y, &shipRect, 1.0f, false);
 		}
 	}
 

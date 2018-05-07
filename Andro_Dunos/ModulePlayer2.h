@@ -29,6 +29,13 @@ public:
 
 	// Ship and booster animations
 	Animation shipVerticalMovement;
+
+	Animation shipChargedSuperUp;
+	Animation shipChargedUp;
+	Animation shipCharged;
+	Animation shipChargedDown;
+	Animation shipChargedSuperDown;
+
 	Animation superUpwardsBooster;
 	Animation upwardsBooster;
 	Animation idleBooster;
@@ -45,7 +52,7 @@ public:
 	Animation* crashAnimation = nullptr;
 
 	// Player rectangle pointer
-	SDL_Rect* shipRect;
+	SDL_Rect shipRect;
 
 	// Ship and propeller sizes in pixels
 	int shipWidth;
