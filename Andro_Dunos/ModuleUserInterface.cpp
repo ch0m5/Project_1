@@ -161,14 +161,23 @@ update_status ModuleUserInterface::Update()
 			{	//Print the scores, but as we are not playing we don't need to update if the score increases, print teamScore
 				App->fonts->BlitText(10, 10, font_score, "1P");
 				App->fonts->BlitText(50, 10, 0, player1Score_text);
-				App->fonts->BlitText(210, 10, font_score, "2P");
-				App->fonts->BlitText(250, 10, 0, player2Score_text);
+				if (App->input->secondPlayerState == true)
+				{
+					App->fonts->BlitText(210, 10, font_score, "2P");
+					App->fonts->BlitText(250, 10, 0, player2Score_text);
+				}
 				//Print replay
 				App->fonts->BlitText(35, 175, font_yellowtxt, "press enter to play again");
 				App->fonts->BlitText(10, 190, font_yellowtxt, "press space to go to main menu");
 				//Add the 2 scores to have the Team Score and blit them
 				App->fonts->BlitText(115, 20, font_yellowtxt, "teamscore");
-				teamScore = player1Score + player2Score;
+				if (App->input->secondPlayerState == true)
+				{
+					teamScore = player1Score + player2Score;
+				} 
+				else {
+					teamScore = player1Score;
+				}
 				sprintf_s(teamScore_text, 10, "%7d", teamScore);
 				App->fonts->BlitText(110, 30, font_yellowtxt, teamScore_text);
 			}break;
@@ -177,14 +186,24 @@ update_status ModuleUserInterface::Update()
 		{	//Print the scores, but as we are not playing we don't need to update if the score increases, print teamScore
 			App->fonts->BlitText(10, 10, font_score, "1P");
 			App->fonts->BlitText(50, 10, 0, player1Score_text);
-			App->fonts->BlitText(210, 10, font_score, "2P");
-			App->fonts->BlitText(250, 10, 0, player2Score_text);
+			if (App->input->secondPlayerState == true)
+			{
+				App->fonts->BlitText(210, 10, font_score, "2P");
+				App->fonts->BlitText(250, 10, 0, player2Score_text);
+			}
 			//Print replay 
 			App->fonts->BlitText(35,85, font_yellowtxt, "press enter to play again");
 			App->fonts->BlitText(10, 100, font_yellowtxt, "press space to go to main menu");
+			
 			//Add the 2 scores to have the Team Score and blit them
 			App->fonts->BlitText(115, 20, font_yellowtxt, "teamscore");
-			teamScore = player1Score + player2Score;
+			if (App->input->secondPlayerState == true)
+			{
+				teamScore = player1Score + player2Score;
+			}
+			else {
+				teamScore = player1Score;
+			}
 			sprintf_s(teamScore_text, 10, "%7d", teamScore);
 			App->fonts->BlitText(110, 30, font_yellowtxt, teamScore_text);
 		}break;
