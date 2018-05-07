@@ -882,13 +882,13 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				currentYellow++;
 
 			// Charging weapon sounds
-			if (bluePower > LEVEL_1 && weaponChargeTimer < SDL_GetTicks() - 1700 && weaponChargingStage == NOT_CHARGING)
+			if (bluePower > LEVEL_1 && weaponChargeTimer < SDL_GetTicks() - 1300 && weaponChargingStage == NOT_CHARGING)
 			{
 				Mix_PlayChannel(1, typeCharging, 0);
 				weaponChargingStage = CHARGING;
 			}
 			
-			if (bluePower > LEVEL_1 && weaponChargeTimer < SDL_GetTicks() - 4800 && weaponChargingStage == CHARGING)
+			if (bluePower > LEVEL_1 && weaponChargeTimer < SDL_GetTicks() - 4400 && weaponChargingStage == CHARGING)
 			{
 				Mix_PlayChannel(1, typeCharged, -1);
 				weaponChargingStage = CHARGED;
@@ -900,7 +900,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 		{
 			weaponChargingStage = NOT_CHARGING;
 
-			if (weaponChargeTimer < SDL_GetTicks() - 2000 && bluePower > LEVEL_1)
+			if (weaponChargeTimer < SDL_GetTicks() - 2200 && bluePower > LEVEL_1)
 			{
 				switch (type)
 				{
@@ -967,6 +967,9 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 				bluePower--;
 			}
+
+			else if (weaponChargeTimer < SDL_GetTicks() - 1300 && bluePower > LEVEL_1)
+				Mix_HaltChannel(1);
 		}
 
 		//GodMode Function
