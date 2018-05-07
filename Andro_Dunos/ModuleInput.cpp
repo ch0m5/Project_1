@@ -89,19 +89,40 @@ update_status ModuleInput::PreUpdate()
 	for (int i = 0; i < SDL_NumJoysticks(); ++i) {
 		if (SDL_IsGameController(i)) 
 		{
-			controllerP1 = SDL_GameControllerOpen(i);
-			if (SDL_GameControllerGetAttached(controllerP1)) {
-				controllerP1con = true;
+			gamepadP1 = SDL_GameControllerOpen(i);
+			if (SDL_GameControllerGetAttached(gamepadP1)) {
+				gamepadP1LAxisX = SDL_GameControllerGetAxis(gamepadP1, SDL_CONTROLLER_AXIS_LEFTX);
+				gamepadP1LAxisY = SDL_GameControllerGetAxis(gamepadP1, SDL_CONTROLLER_AXIS_LEFTY);
+				gamepadP1con = true;
 				break;
 			}
-			else {
-				SDL_GameControllerClose(controllerP1);
-				controllerP1 = nullptr;
-				controllerP1con = false;
+			else 
+			{
+				SDL_GameControllerClose(gamepadP1);
+				gamepadP1 = nullptr;
+				gamepadP1con = false;
 			}
 		}
 	}
 
+	//CHECK Left Axis X & Y
+	if (gamepadP1LAxisX > 3200)
+	{
+		keyboard[SDL_SCANCODE_RIGHT] = KEY_STATE::KEY_REPEAT;
+	}
+	else if (gamepadP1LAxisX < -3200)
+	{
+		keyboard[SDL_SCANCODE_LEFT] = KEY_STATE::KEY_REPEAT;
+	}
+
+	if (gamepadP1LAxisY < -6400)
+	{
+		keyboard[SDL_SCANCODE_UP] = KEY_STATE::KEY_REPEAT;
+	}
+	else if (gamepadP1LAxisY > 6400)
+	{
+		keyboard[SDL_SCANCODE_DOWN] = KEY_STATE::KEY_REPEAT;
+	}
 
 	return update_status::UPDATE_CONTINUE;
 }

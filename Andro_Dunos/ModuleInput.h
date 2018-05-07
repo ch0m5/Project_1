@@ -33,8 +33,10 @@ public:
 	KEY_STATE keyboard[MAX_KEYS];
 	SDL_Event e;
 	//Game Controllers, currently implementing for player 1
-	SDL_GameController* controllerP1 = nullptr;
-	bool controllerP1con = false;
+	SDL_GameController* gamepadP1 = nullptr;
+	bool gamepadP1con = false;
+	int gamepadP1LAxisX = 0;
+	int gamepadP1LAxisY = 0;
 	//debug mode function
 	bool debugMode = false;
 	bool coliderView = false;

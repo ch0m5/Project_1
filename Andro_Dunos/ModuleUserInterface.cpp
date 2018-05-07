@@ -86,6 +86,7 @@ update_status ModuleUserInterface::Update()
 
 		case Stage1:
 			{
+			//Blit SCORE
 				App->fonts->BlitText(10, 10, font_score, "1P");
 				sprintf_s(player1Score_text, 10, "%7d", player1Score);
 				App->fonts->BlitText(50, 10, 0, player1Score_text);
@@ -96,7 +97,7 @@ update_status ModuleUserInterface::Update()
 					sprintf_s(player2Score_text, 10, "%7d", player2Score);
 					App->fonts->BlitText(250, 10, 0, player2Score_text);
 				}
-				//debug mode
+				//DEBUG mode
 				if (App->input->debugMode == true)
 				{
 					App->fonts->BlitText(10, 20, debug_font, "debug mode");
@@ -114,11 +115,15 @@ update_status ModuleUserInterface::Update()
 					App->fonts->BlitText(10, 50, debug_font, "super speed");
 				}
 				//Controller Debug 
-      				if (App->input->debugMode == true && App->input->controllerP1con == true)
+      				if (App->input->debugMode == true && App->input->gamepadP1con == true)
 				{
 					App->fonts->BlitText(100, 20, debug_font, "p1 controller on");
+					//Check BUTTONS & AXIS Currently PC CRASH DO NOT UNCOMMENT
+					/*sprintf_s(gamepad_P1_LAxis_X, 4, "%7d", App->input->gamepadP1LAxisX);
+					App->fonts->BlitText(100, 30, 0, gamepad_P1_LAxis_X);*/
+					
 				}
-				if (App->input->debugMode == true && App->input->controllerP1con == false)
+				if (App->input->debugMode == true && App->input->gamepadP1con == false)
 				{
 					App->fonts->BlitText(100, 20, debug_font, "p1 controller off");
 				}

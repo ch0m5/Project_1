@@ -32,6 +32,7 @@ public:
 	char player1Score_text[10];
 	char player2Score_text[10];
 	char teamScore_text[10];
+	char gamepad_P1_LAxis_X [4];
 
 	enum Scenes
 	{
