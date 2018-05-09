@@ -24,7 +24,6 @@ bool ModuleInput::Init()
 
 	if (SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
 	{
-		
 		LOG("SDL_EVENTS could not initialize! SDL_Error: %s\n", SDL_GetError());
 		ret = false;
 		SDL_ClearError();
@@ -169,10 +168,18 @@ update_status ModuleInput::PreUpdate()
 	{
 		keyboard[SDL_SCANCODE_P] = KEY_STATE::KEY_DOWN;
 	}
+	else if (gamepadP1APressed == true)
+	{
+		keyboard[SDL_SCANCODE_P] = KEY_STATE::KEY_REPEAT;
+	}
 
 	if (gamepadP1XPressed == true && keyboard[SDL_SCANCODE_O] == KEY_STATE::KEY_IDLE)
 	{
 		keyboard[SDL_SCANCODE_O] = KEY_STATE::KEY_DOWN;
+	}
+	else if (gamepadP1XPressed == true)
+	{
+		keyboard[SDL_SCANCODE_O] = KEY_STATE::KEY_REPEAT;
 	}
 	/*else
 	{
@@ -209,10 +216,18 @@ update_status ModuleInput::PreUpdate()
 	{
 		keyboard[SDL_SCANCODE_V] = KEY_STATE::KEY_DOWN;
 	}
+	else if (gamepadP2APressed == true)
+	{
+		keyboard[SDL_SCANCODE_V] = KEY_STATE::KEY_REPEAT;
+	}
 
 	if (gamepadP2XPressed == true && keyboard[SDL_SCANCODE_B] == KEY_STATE::KEY_IDLE)
 	{
 		keyboard[SDL_SCANCODE_B] = KEY_STATE::KEY_DOWN;
+	}
+	else if (gamepadP2XPressed == true)
+	{
+		keyboard[SDL_SCANCODE_X] = KEY_STATE::KEY_REPEAT;
 	}
 
 	if (gamepadP2StartPressed == true && keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_IDLE)
