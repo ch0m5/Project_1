@@ -964,17 +964,27 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				switch (type)
 				{
 				case TYPE_1:
-					App->particles->AddParticle(App->particles->blueWeapon, position.x - 50, position.y - 50, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->blueWeapon, position.x, position.y - 40, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->blueWeapon, position.x - 50, position.y - 30, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->blueWeapon, position.x, position.y - 20, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->blueWeapon, position.x - 50, position.y - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->weaponBlueVerticalUp, position.x + laserHorizontalOffset, position.y, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->weaponBlueVerticalUp, position.x + laserHorizontalOffset, position.y, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->weaponBlueVerticalUp, position.x + laserHorizontalOffset, position.y, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->weaponBlueVerticalUp, position.x + laserHorizontalOffset, position.y, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
 
-					App->particles->AddParticle(App->particles->blueWeapon, position.x - 50, position.y + 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->blueWeapon, position.x, position.y + 20, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->blueWeapon, position.x - 50, position.y + 30, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->blueWeapon, position.x, position.y + 40, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->blueWeapon, position.x - 50, position.y + 50, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->weaponBlueVerticalDown, position.x + laserHorizontalOffset, position.y, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->weaponBlueVerticalDown, position.x + laserHorizontalOffset, position.y, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->weaponBlueVerticalDown, position.x + laserHorizontalOffset, position.y, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->weaponBlueVerticalDown, position.x + laserHorizontalOffset, position.y, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+
+					App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x - 50, position.y - 50, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y - 40, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x - 50, position.y - 30, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y - 20, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x - 50, position.y - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+
+					App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x - 50, position.y + 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y + 20, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x - 50, position.y + 30, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y + 40, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x - 50, position.y + 50, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
 
 					Mix_PlayChannel(1, type1Weapon, 0);
 					break;

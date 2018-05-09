@@ -171,7 +171,6 @@ bool ModuleParticles::Start()
 	smallBlue.speed.x = 7.0f;
 	smallBlue.life = shortLife;
 	smallBlue.anim.speed = 0.3f;
-	//smallBlue.particlePath.PushBack({ -1, 0 }, 125);
 
 	mediumBlue.anim.PushBack({ 22, 51, 15, 6 });
 	mediumBlue.anim.loop = false;
@@ -229,13 +228,23 @@ bool ModuleParticles::Start()
 	missileSuperDown.anim.speed = 0.1f;
 
 	// Weapon
-	blueWeapon.anim.PushBack({ 127, 123, 41, 18 });
-	blueWeapon.anim.PushBack({ 174, 123, 63, 18 });
-	blueWeapon.anim.loop = false;
-	blueWeapon.speed.x = 7.0f;
-	blueWeapon.speed.y = 0.0f;
-	blueWeapon.life = mediumLife;
-	blueWeapon.anim.speed = 0.3f;
+	weaponBlueHorizontal.anim.PushBack({ 174, 123, 63, 18 });
+	weaponBlueHorizontal.anim.loop = false;
+	weaponBlueHorizontal.speed.x = 7.0f;
+	weaponBlueHorizontal.life = mediumLife;
+	weaponBlueHorizontal.anim.speed = 0.3f;
+
+	weaponBlueVerticalUp.anim.PushBack({ 127, 123, 41, 18 });
+	weaponBlueVerticalUp.anim.loop = false;
+	weaponBlueVerticalUp.speed.y = 2.5f;
+	weaponBlueVerticalUp.life = shortLife;
+	weaponBlueVerticalUp.anim.speed = 0.3f;
+
+	weaponBlueVerticalDown.anim.PushBack({ 127, 123, 41, 18 });
+	weaponBlueVerticalDown.anim.loop = false;
+	weaponBlueVerticalDown.speed.y = -2.5f;
+	weaponBlueVerticalDown.life = shortLife;
+	weaponBlueVerticalDown.anim.speed = 0.3f;
 
 	//Player Type 2 (yellow)
 	yellowBigRight.anim.PushBack({ 3, 8, 15, 5 });
@@ -844,7 +853,44 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, int sh
 		}
 	}
 }
+/*
+void ModuleParticles::AddParticlePath(const Particle& particle, int x, int y, int shotType, COLLIDER_TYPE collider_type, Uint32 delay)
+{
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+		if (active[i] == nullptr)
+		{
+			Particle* p = new Particle(particle);
+			p->born = SDL_GetTicks() + delay;
+			p->position.x = (int)p->fPositionHorizontal;
+			p->position.y = (int)p->fPositionVertical;
+			p->shotType = shotType;
+			if (collider_type == COLLIDER_PLAYER_SHOT || collider_type == COLLIDER_PLAYER_2_SHOT)
+			{
+				p->fPositionHorizontal = x + App->render->camera.x / SCREEN_SIZE;
+				p->fPositionVertical = y + App->render->camera.y / SCREEN_SIZE;
+				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
+			}
 
+			else if (collider_type != COLLIDER_NONE)
+			{
+				p->fPositionHorizontal = x;
+				p->fPositionVertical = y;
+				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
+			}
+
+			else
+			{
+				p->fPositionHorizontal = x;
+				p->fPositionVertical = y;
+			}
+
+			active[i] = p;
+			break;
+		}
+	}
+}
+*/
 void ModuleParticles::AddParticleArray(Particle* particleArray, int arraySize, int x, int y, int movX, int movY, int shotType, COLLIDER_TYPE collider_type, Uint32 delay)	// Carles edit
 {
 	uint i = 0;

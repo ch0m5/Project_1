@@ -76,6 +76,7 @@ public:
 
 	void SetParticleArray(Particle* particleArray, int arraySize, int startX, int startY, int particleSizeX, int particleSizeY, int movX, int movY, float speedX, float speedY, int particleLife, float animSpeed = 0.0f, bool animLoop = false);
 	void AddParticle(const Particle& particle, int x, int y, int shotType = DEFAULT_VALUE, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
+	//void AddParticlePath(const Particle& particle, int x, int y, int shotType = DEFAULT_VALUE, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
 	void AddParticleArray(Particle* particleArray, int arraySize, int x, int y, int movX, int movY, int shotType = DEFAULT_VALUE, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
 	void ArrayListNext();
 	void OnCollision(Collider* c1, Collider* c2) override;
@@ -106,7 +107,9 @@ public:
 	Particle missileSuperDown;
 
 	// Weapon
-	Particle blueWeapon;
+	Particle weaponBlueHorizontal;
+	Particle weaponBlueVerticalUp;
+	Particle weaponBlueVerticalDown;
 
 	// Type 2 particles		// Needs paths
 	Particle yellowBigRight;
