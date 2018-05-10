@@ -708,22 +708,22 @@ update_status ModuleParticles::Update()
 		{
 			if (p->arrayId > -1)	//ATTEMPT OF ELIMIATING ARRAYS
 			{
-				if (p->shotType == PLAYER_1_ARRAY_SHOT)
+				if (active[i]->shotType == PLAYER_1_BLUE_SHOT)
 				{
-					App->player1->currentArrayShots -= 1;
+					App->player1->currentBlue -= 1;
 				}
 
-				else if (p->shotType == PLAYER_1_ORANGE_SHOT)
+				else if (active[i]->shotType == PLAYER_1_ORANGE_SHOT)
 				{
 					App->player1->currentOrange -= 1;
 				}
 
-				else if (p->shotType == PLAYER_2_ARRAY_SHOT)
+				else if (active[i]->shotType == PLAYER_2_BLUE_SHOT)
 				{
-					App->player2->currentArrayShots -= 1;
+					App->player2->currentBlue -= 1;
 				}
 
-				else if (p->shotType == PLAYER_2_ORANGE_SHOT)
+				else if (active[i]->shotType == PLAYER_2_ORANGE_SHOT)
 				{
 					App->player2->currentOrange -= 1;
 				}
@@ -747,19 +747,9 @@ update_status ModuleParticles::Update()
 				App->player1->currentBlue -= 1;
 			}
 
-			else if (p->shotType == PLAYER_1_GREEN_SINGLE_SHOT)
-			{
-				App->player1->currentBlue -= 2;
-			}
-
 			else if (p->shotType == PLAYER_1_ORANGE_SHOT)
 			{
 				App->player1->currentOrange -= 1;
-			}
-
-			else if (p->shotType == PLAYER_1_MULTIPLE_SHOT)
-			{
-				App->player1->currentMultipleShots -= 1;
 			}
 
 			else if (p->shotType == PLAYER_2_BLUE_SHOT)
@@ -767,19 +757,9 @@ update_status ModuleParticles::Update()
 				App->player2->currentBlue -= 1;
 			}
 
-			else if (p->shotType == PLAYER_2_GREEN_SINGLE_SHOT)
-			{
-				App->player2->currentBlue -= 2;
-			}
-
 			else if (p->shotType == PLAYER_2_ORANGE_SHOT)
 			{
 				App->player2->currentOrange -= 1;
-			}
-
-			else if (p->shotType == PLAYER_2_MULTIPLE_SHOT)
-			{
-				App->player2->currentMultipleShots -= 1;
 			}
 
 			delete p;
@@ -942,9 +922,9 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 
 				if (active[i]->arrayId > -1)
 				{
-					if (active[i]->shotType == PLAYER_1_ARRAY_SHOT)
+					if (active[i]->shotType == PLAYER_1_BLUE_SHOT)
 					{
-						App->player1->currentArrayShots -= 1;
+						App->player1->currentBlue -= 1;
 					}
 
 					else if (active[i]->shotType == PLAYER_1_ORANGE_SHOT)
@@ -952,9 +932,9 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 						App->player1->currentOrange -= 1;
 					}
 
-					else if (active[i]->shotType == PLAYER_2_ARRAY_SHOT)
+					else if (active[i]->shotType == PLAYER_2_BLUE_SHOT)
 					{
-						App->player2->currentArrayShots -= 1;
+						App->player2->currentBlue -= 1;
 					}
 
 					else if (active[i]->shotType == PLAYER_2_ORANGE_SHOT)
@@ -983,19 +963,9 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 					App->player1->currentBlue -= 1;
 				}
 
-				else if (active[i]->shotType == PLAYER_1_GREEN_SINGLE_SHOT)
-				{
-					App->player1->currentBlue -= 2;
-				}
-
 				else if (active[i]->shotType == PLAYER_1_ORANGE_SHOT)
 				{
 					App->player1->currentOrange -= 1;
-				}
-
-				else if (active[i]->shotType == PLAYER_1_MULTIPLE_SHOT)
-				{
-					App->player1->currentMultipleShots -= 1;
 				}
 
 				else if (active[i]->shotType == PLAYER_2_BLUE_SHOT)
@@ -1003,19 +973,9 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 					App->player2->currentBlue -= 1;
 				}
 
-				else if (active[i]->shotType == PLAYER_2_GREEN_SINGLE_SHOT)
-				{
-					App->player2->currentBlue -= 2;
-				}
-
 				else if (active[i]->shotType == PLAYER_2_ORANGE_SHOT)
 				{
 					App->player2->currentOrange -= 1;
-				}
-
-				else if (active[i]->shotType == PLAYER_2_MULTIPLE_SHOT)
-				{
-					App->player2->currentMultipleShots -= 1;
 				}
 			}
 			

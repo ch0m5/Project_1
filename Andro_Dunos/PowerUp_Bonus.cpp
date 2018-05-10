@@ -153,6 +153,7 @@ void PowerUp_Bonus::OnCollision(Collider* collider)
 			if (blue == true && App->player1->bluePower < LEVEL_7)
 			{
 				App->player1->bluePower++;
+				App->player1->checkBluePowerParticleLimit();
 			}
 			else if (orange == true && App->player1->orangePower < LEVEL_5)
 			{
@@ -166,6 +167,7 @@ void PowerUp_Bonus::OnCollision(Collider* collider)
 			if (blue == true && App->player2->bluePower < LEVEL_7)
 			{
 				App->player2->bluePower++;
+				App->player2->checkBluePowerParticleLimit();
 			}
 			else if (orange == true && App->player2->orangePower < LEVEL_5)
 			{
