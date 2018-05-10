@@ -152,6 +152,9 @@ void PowerUp_Bonus::OnCollision(Collider* collider)
 			App->UI->player1Score += score;
 			if (blue == true && App->player1->bluePower < LEVEL_7)
 			{
+				if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_REPEAT && App->player1->bluePower == LEVEL_1)
+					App->player1->weaponChargeTimer = SDL_GetTicks();
+
 				App->player1->bluePower++;
 				App->player1->checkBluePowerParticleLimit();
 			}
@@ -166,6 +169,9 @@ void PowerUp_Bonus::OnCollision(Collider* collider)
 			App->UI->player2Score += score;
 			if (blue == true && App->player2->bluePower < LEVEL_7)
 			{
+				if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_REPEAT && App->player2->bluePower == LEVEL_1)
+					App->player2->weaponChargeTimer = SDL_GetTicks();
+
 				App->player2->bluePower++;
 				App->player2->checkBluePowerParticleLimit();
 			}
