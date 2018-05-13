@@ -388,70 +388,70 @@ bool ModuleParticles::Start()
 	Weapon2RightUp.anim.PushBack({ 180, 151, 28, 28 });
 	Weapon2RightUp.anim.PushBack({ 146, 182, 28, 28 });
 	Weapon2RightUp.anim.loop = true;
-	Weapon2RightUp.speed.x = 10.0f;
-	Weapon2RightUp.speed.y = -4.0f;
+	Weapon2RightUp.speed.x = 7.0f;
+	Weapon2RightUp.speed.y = -2.5f;
 	Weapon2RightUp.life = shortLife;
-	Weapon2RightUp.anim.speed = 0.7f;
+	Weapon2RightUp.anim.speed = 0.6f;
 
 	Weapon2RightDown.anim.PushBack({ 149, 151, 28, 28 });
 	Weapon2RightDown.anim.PushBack({ 181, 182, 28, 28 });
 	Weapon2RightDown.anim.PushBack({ 180, 151, 28, 28 });
 	Weapon2RightDown.anim.PushBack({ 146, 182, 28, 28 });
 	Weapon2RightDown.anim.loop = true;
-	Weapon2RightDown.speed.x = 10.0f;
-	Weapon2RightDown.speed.y = 4.0f;
+	Weapon2RightDown.speed.x = 7.0f;
+	Weapon2RightDown.speed.y = 2.5f;
 	Weapon2RightDown.life = shortLife;
-	Weapon2RightDown.anim.speed = 0.7f;
+	Weapon2RightDown.anim.speed = 0.6f;
 
 	Weapon2LeftSuperUp.anim.PushBack({ 149, 151, 28, 28 });
 	Weapon2LeftSuperUp.anim.PushBack({ 181, 182, 28, 28 });
 	Weapon2LeftSuperUp.anim.PushBack({ 180, 151, 28, 28 });
 	Weapon2LeftSuperUp.anim.PushBack({ 146, 182, 28, 28 });
 	Weapon2LeftSuperUp.anim.loop = true;
-	Weapon2LeftSuperUp.speed.x = -10.0f;
+	Weapon2LeftSuperUp.speed.x = -7.0f;
 	Weapon2LeftSuperUp.speed.y = -7.0f;
 	Weapon2LeftSuperUp.life = shortLife;
-	Weapon2LeftSuperUp.anim.speed = 0.7f;
+	Weapon2LeftSuperUp.anim.speed = 0.6f;
 
 	Weapon2LeftUp.anim.PushBack({ 149, 151, 28, 28 });
 	Weapon2LeftUp.anim.PushBack({ 181, 182, 28, 28 });
 	Weapon2LeftUp.anim.PushBack({ 180, 151, 28, 28 });
 	Weapon2LeftUp.anim.PushBack({ 146, 182, 28, 28 });
 	Weapon2LeftUp.anim.loop = true;
-	Weapon2LeftUp.speed.x = -10.0f;
-	Weapon2LeftUp.speed.y = -4.0f;
+	Weapon2LeftUp.speed.x = -7.0f;
+	Weapon2LeftUp.speed.y = -3.0f;
 	Weapon2LeftUp.life = shortLife;
-	Weapon2LeftUp.anim.speed = 0.7f;
+	Weapon2LeftUp.anim.speed = 0.6f;
 
 	Weapon2LeftStraight.anim.PushBack({ 149, 151, 28, 28 });
 	Weapon2LeftStraight.anim.PushBack({ 181, 182, 28, 28 });
 	Weapon2LeftStraight.anim.PushBack({ 180, 151, 28, 28 });
 	Weapon2LeftStraight.anim.PushBack({ 146, 182, 28, 28 });
 	Weapon2LeftStraight.anim.loop = true;
-	Weapon2LeftStraight.speed.x = -10.0f;
+	Weapon2LeftStraight.speed.x = -7.0f;
 	Weapon2LeftStraight.speed.y = 0.0f;
 	Weapon2LeftStraight.life = shortLife;
-	Weapon2LeftStraight.anim.speed = 0.7f;
+	Weapon2LeftStraight.anim.speed = 0.6f;
 
 	Weapon2LeftDown.anim.PushBack({ 149, 151, 28, 28 });
 	Weapon2LeftDown.anim.PushBack({ 181, 182, 28, 28 });
 	Weapon2LeftDown.anim.PushBack({ 180, 151, 28, 28 });
 	Weapon2LeftDown.anim.PushBack({ 146, 182, 28, 28 });
 	Weapon2LeftDown.anim.loop = true;
-	Weapon2LeftDown.speed.x = -10.0f;
-	Weapon2LeftDown.speed.y = 4.0f;
+	Weapon2LeftDown.speed.x = -7.0f;
+	Weapon2LeftDown.speed.y = 3.0f;
 	Weapon2LeftDown.life = shortLife;
-	Weapon2LeftDown.anim.speed = 0.7f;
+	Weapon2LeftDown.anim.speed = 0.6f;
 
 	Weapon2LeftSuperDown.anim.PushBack({ 149, 151, 28, 28 });
 	Weapon2LeftSuperDown.anim.PushBack({ 181, 182, 28, 28 });
 	Weapon2LeftSuperDown.anim.PushBack({ 180, 151, 28, 28 });
 	Weapon2LeftSuperDown.anim.PushBack({ 146, 182, 28, 28 });
 	Weapon2LeftSuperDown.anim.loop = true;
-	Weapon2LeftSuperDown.speed.x = -10.0f;
+	Weapon2LeftSuperDown.speed.x = -7.0f;
 	Weapon2LeftSuperDown.speed.y = 7.0f;
 	Weapon2LeftSuperDown.life = shortLife;
-	Weapon2LeftSuperDown.anim.speed = 0.7f;
+	Weapon2LeftSuperDown.anim.speed = 0.6f;
 
 	//Player Type 3 (green)
 	straightGreen.anim.PushBack({ 42, 87, 32, 3 });
@@ -1041,26 +1041,29 @@ bool Particle::Update()
 	if (position.x > App->render->camera.x / SCREEN_SIZE + SCREEN_WIDTH)	// carles edit, bullets outside the screen will die
 		ret = false;
 	
-	if (App->stage1->moveMapRight == true)
-	{
-		fPositionHorizontal += speed.x + App->stage1->ySpeedMultiplier * 0.86f;
-	}
+	//if (SDL_GetTicks() >= born)	// This addition will make the particle spawn with the marked delay in AddParticle()
+	//{								// CAUTION: The origin position does not change, therefore not following the camera with the delay, needs fixing if this is needed
+		if (App->stage1->moveMapRight == true)
+		{
+			fPositionHorizontal += speed.x + App->stage1->ySpeedMultiplier * 0.86f;
+		}
 
-	else { fPositionHorizontal += speed.x; }
+		else { fPositionHorizontal += speed.x; }
 
-	if (App->stage1->moveMapDown == true)
-		fPositionVertical += speed.y + App->stage1->ySpeedMultiplier * 0.82f;
+		if (App->stage1->moveMapDown == true)
+			fPositionVertical += speed.y + App->stage1->ySpeedMultiplier * 0.82f;
 
-	else if (App->stage1->moveMapUp == true)
-		fPositionVertical += speed.y - App->stage1->ySpeedMultiplier * 0.82f;
+		else if (App->stage1->moveMapUp == true)
+			fPositionVertical += speed.y - App->stage1->ySpeedMultiplier * 0.82f;
 
-	else { fPositionVertical += speed.y; }
+		else { fPositionVertical += speed.y; }
 
-	position.x = (int)fPositionHorizontal;
-	position.y = (int)fPositionVertical;
-	
-	if (collider != nullptr)
-		collider->SetPos(position.x, position.y);
+		position.x = (int)fPositionHorizontal;
+		position.y = (int)fPositionVertical;
+
+		if (collider != nullptr)
+			collider->SetPos(position.x, position.y);
+	//}
 
 	return ret;
 }

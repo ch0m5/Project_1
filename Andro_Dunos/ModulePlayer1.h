@@ -105,7 +105,9 @@ public:
 	int currentBlueShots;
 	int maxBlueShots;
 
-	// COUTNER THAT UPDATES DEPENDING ON THE TYPE OF SHOTS WITH NUMBER OF SHOTS MAX = 3?
+	int fireWeapon;		// Integer that marks which weapon is being fired at the moment (with an enum)
+	int weaponLaserInterval;	// Marks time between fired lasers in a single weapon shot
+	int weaponStage;	// Marks stage of currently firing weapon
 
 	// For max: MaxBlueLasers = 3, MaxOrange = 1, MaxYellow = 3
 	// Lower Conditions:

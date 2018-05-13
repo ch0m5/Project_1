@@ -13,6 +13,7 @@
 
 enum weapon_types	// To mark the weapon Type currently using
 {
+	NONE,
 	TYPE_1 = 1,
 	TYPE_2,
 	TYPE_3,
