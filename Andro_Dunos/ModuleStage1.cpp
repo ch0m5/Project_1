@@ -112,9 +112,7 @@ bool ModuleStage1::Start()
 		App->player2->Enable();
 	}
 
-	App->UI->player1Score = 0;
-	App->UI->player2Score = 0;
-	App->UI->teamScore = 0;
+	
 	// we should log the problem if not loaded correctly
 	
 	App->collision->Enable();
@@ -808,7 +806,7 @@ update_status ModuleStage1::Update()
 	//make so pressing SPACE the other stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 && App->input->debugMode == true)
 	{
-		App->fade->FadeToBlack(App->stage1, App->scene_HiScore, 1);
+		App->fade->FadeToBlack(App->stage1, App->stage2, 1);
 	}
 
 	//enter direct win condition @Andres

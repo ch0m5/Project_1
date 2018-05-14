@@ -34,8 +34,19 @@ public:
 	// Background movement (position) values
 	float movementx = 0 ;
 	float movementxBack = 0;
-	float movementxPlanetsBack = 0;
 	float movementy = -55;
+
+	//Background Movement logic variables
+	bool moveMapRight = true;
+	bool moveMapUp = false;
+	bool moveMapDown = false;
+	int xSpeedMultiplier = 1;
+	float ySpeedMultiplier = 1;
+
+
+
+	//Debug and Developing purpose variables
+	bool fasterX = false;
 
 	//Music
 	Mix_Music * MusicLvl2 = nullptr;

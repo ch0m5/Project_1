@@ -27,7 +27,7 @@ Application::Application()
 	modules[i++] = input = new ModuleInput();
 	modules[i++] = textures = new ModuleTextures();
 	modules[i++] = mixer = new ModuleMixer();
-	//modules[i++] = stage2 = new ModuleStage2();
+	modules[i++] = stage2 = new ModuleStage2();
 	modules[i++] = stage1 = new ModuleStage1();
 	modules[i++] = stageClear = new ModuleStageClear();
 	modules[i++] = scene_HiScore = new ModuleHiScore();
@@ -60,7 +60,7 @@ bool Application::Init()
 
 	// Disable all maps that you do not start with
 	stage1->Disable();
-	//stage2->Disable(); 
+	stage2->Disable(); 
 	scene_HiScore->Disable();
 	stageClear->Disable();
 	// Disable collisions

@@ -12,21 +12,24 @@
 #include "ModuleMixer.h"
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
+#include "ModuleStageClear.h"
+#include "ModuleParticles.h"
+#include "ModuleUserInterface.h"
 
 ModuleStage2::ModuleStage2()	//@AndresSala
 {
 	//ANDRO DUNOS RECTS
 	// Background1Rect  
-	background2Rect.x = 48;
-	background2Rect.y = 27;
-	background2Rect.w = 410; 
+	background2Rect.x = 0;
+	background2Rect.y = 0;
+	background2Rect.w = 2101; 
 	background2Rect.h = 224;
 
 	//map1Rect	
 	map2Rect.x = 0;
 	map2Rect.y = 0; 
-	map2Rect.w = 6154;
-	map2Rect.h = 1802;
+	map2Rect.w = 6983;
+	map2Rect.h = 636;
 
 }
 
@@ -39,26 +42,39 @@ bool ModuleStage2::Start()
 	LOG("Loading background assets");	// Temporal, must decide if we load a full image,
 	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
 	
-	background2Text = App->textures->Load("Assets/Sprites/Levels/STAGE 2/Tileset/Background_lvl_2.png");
-	map2Text = App->textures->Load("Assets/Sprites/Levels/STAGE 2/Tileset/Map_2.png");
+	background2Text = App->textures->Load("Assets/Sprites/Levels/STAGE 6/Tileset/background.png");
+	map2Text = App->textures->Load("Assets/Sprites/Levels/STAGE 6/Tileset/floor lvl 6.png");
 
+	App->player1->godMode = false;
+	App->player2->godMode = false;
 	App->player1->Enable();
 	if (App->input->secondPlayerState == true) //@AndresSala
 	{
 		App->player2->Enable();
 	}
 
+
+	// we should log the problem if not loaded correctly
+
+	App->collision->Enable();
+	App->particles->Enable();
+
+	//ship position
+	App->player1->position.x = 20;
+	App->player2->position.x = 20;
+	App->player1->position.y = 50;
+	App->player2->position.y = 100;
+
 	// Enemies
 	App->enemies->Enable();
 
-	// Collider
-	App->collision->Enable();
-	
-	// Ground Collider
-	App->collision->AddCollider({ 0, 198, 320, 224 }, COLLIDER_WALL);
+	//Score
+	App->UI->teamScore = 0;
+	App->UI->player1Score = 0;
+	App->UI->player2Score = 0;
 
 	//Music
-	MusicLvl2 = App->mixer->LoadMusic("Assets/Audio/Music/07_Stage_2 -Mechanized-Unit-Loop.ogg");
+	MusicLvl2 = App->mixer->LoadMusic("Assets/Audio/Music/13_Stage_6 -Secret-Base-Intro.ogg");
 	Mix_FadeInMusic(MusicLvl2, -1, 1000);
 	Mix_VolumeMusic(MUSICVol);
 	return ret;
@@ -69,8 +85,16 @@ bool ModuleStage2::CleanUp()
 	// reset Background movement (position) values
 	movementx = 0;
 	movementxBack = 0;
-	movementxPlanetsBack = 0;
 	movementy = -55;
+
+	//Reset Camera Position
+	App->render->camera.x = 0;
+	App->render->camera.y = 0;
+	//Reset starting directions
+	moveMapRight = true;
+	moveMapDown = false;
+	moveMapUp = false;
+
 
 	//--------
 	LOG("Unloading players");
@@ -90,6 +114,9 @@ bool ModuleStage2::CleanUp()
 	LOG("Unloading colliders")
 		App->collision->Disable();
 
+	LOG("Unloading particles")
+		App->particles->Disable();
+
 	Mix_FadeOutMusic(TIMEFADE);
 	App->mixer->UnloadMusic(MusicLvl2);
 
@@ -99,17 +126,113 @@ bool ModuleStage2::CleanUp()
 // Update: draw background
 update_status ModuleStage2::Update()
 {
-	// Draw everything -------------------------------------- Andro Dunos
-	App->render->Blit(background2Text, movementxBack, 0, &background2Rect); // level background
-	App->render->Blit(map2Text, 0, 0, &map2Rect); // level map
+	//Level 1 Map movement Code
+
+	if (moveMapRight == true)
+	{
+		movementx += xSpeedMultiplier*0.83f; // for movement in x direction
+											 //LOG("%0.3f", movementx);
+		movementxBack += xSpeedMultiplier*0.5f;
+		
+		App->render->camera.x = 3.25*movementx / 3;		//Must change this HARDCODE to 1 single value
+		
+		
+	}
+	if (moveMapDown == true)
+	{
+		movementx += xSpeedMultiplier*0.83f;
+		movementy += ySpeedMultiplier * 0.82f;
+	
+		App->render->camera.x = 3*movementx / 3;
+		App->render->camera.y = 3*movementy / 3;  //Must change this HARDCODE to 1 single value
+
+	}
+	if (moveMapUp == true)
+	{
+		movementy -= ySpeedMultiplier * 0.82f;
+		App->render->camera.y = 3.25*movementy / 3;  //Must change this HARDCODE to 1 single value
+	}
+
+	//Conditions: Where does the background change X and Y speeds
+	if (App->render->camera.x > 3800 * SCREEN_SIZE) // 1st SPEED CHANGE: Ships enter the inside of the Moon 
+	{
+		moveMapRight = false;
+		moveMapDown = true;
+		moveMapUp = false;
+	}
+
+	if (App->render->camera.y > 411 * SCREEN_SIZE /*&& App->render->camera.y > 4279 * SCREEN_SIZE*/ && moveMapUp == false) // 2nd SPEED CHANGE: Ships continue through the inside of the Moon
+	{
+		moveMapRight = true;
+		moveMapDown = false;
+		moveMapUp = false;
+	}
+
+	
+	// Win Condition
+	if (App->render->camera.x / SCREEN_SIZE > 6700)
+	{
+		App->fade->FadeToBlack(this, App->stageClear, 1);
+	}
 
 	//make so pressing SPACE the other stage is loaded
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 && App->input->debugMode == true)
 	{
 		App->fade->FadeToBlack(App->stage2, App->scene_HiScore, 1);
 	}
 
-	//@andressala
+	//enter direct win condition @Andres
+	if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_DOWN && App->input->debugMode == true)
+	{
+		App->fade->FadeToBlack(App->stage1, App->stageClear, 1);
+	}
+	//enter direct lose condition @Andres
+	if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_DOWN && App->input->debugMode == true)
+	{
+		App->fade->FadeToBlack(App->stage1, App->scene_HiScore, 1);
+	}
+
+	//FasterX function Increase the horizontal velocity 
+	if (App->input->debugMode == false)
+	{
+
+		fasterX = false;
+		xSpeedMultiplier = 1;
+
+	}
+	if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_DOWN && App->input->debugMode == true)
+	{
+		if (App->input->keyboard[SDL_SCANCODE_F4] != KEY_REPEAT)
+		{
+			fasterX = !fasterX;
+		}
+
+		if (fasterX == true)
+		{
+			xSpeedMultiplier = 10;
+		}
+		else if (fasterX == false)
+		{
+			xSpeedMultiplier = 1;
+		}
+
+		if (App->render->camera.x / SCREEN_SIZE > 8912)
+		{
+			App->fade->FadeToBlack(this, App->stageClear, 1);
+		}
+
+	}
+
+	// Draw everything -------------------------------------- Andro Dunos
+	
+	//These two if's control the first part of the level outside and the end of the level also outside
+	
+
+	App->render->Blit(background2Text, movementxBack, 0, &background2Rect); // level background
+
+	
+	App->render->Blit(map2Text, 0, 0, &map2Rect); // level map
+
 
 	return UPDATE_CONTINUE;
 }
