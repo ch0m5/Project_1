@@ -178,12 +178,14 @@ update_status ModuleStage2::Update()
 	//Conditions: Where does the background change X and Y speeds
 	if (App->render->camera.x > 3800 * SCREEN_SIZE) // 1st SPEED CHANGE: Ships enter the inside of the Moon 
 	{
-		moveMapRight = false;
+		ySpeedMultiplier = 2;
+		xSpeedMultiplier = 0.83;
+		moveMapRight = true;
 		moveMapDown = true;
 		moveMapUp = false;
 	}
 
-	if (App->render->camera.y > 411 * SCREEN_SIZE /*&& App->render->camera.y > 4279 * SCREEN_SIZE*/ && moveMapUp == false) // 2nd SPEED CHANGE: Ships continue through the inside of the Moon
+	else if (App->render->camera.y > 411 * SCREEN_SIZE /*&& App->render->camera.y > 4279 * SCREEN_SIZE*/ && moveMapUp == false) // 2nd SPEED CHANGE: Ships continue through the inside of the Moon
 	{
 		moveMapRight = true;
 		moveMapDown = false;
