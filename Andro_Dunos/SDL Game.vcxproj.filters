@@ -24,6 +24,9 @@
     <Filter Include="ModulesEnemies\Enemies">
       <UniqueIdentifier>{97ac0001-32a2-486d-b768-6c49b0370c48}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ModulesEnemies\EnemiesStage2">
+      <UniqueIdentifier>{4b391543-f9f0-4ab0-bc64-ec6a8004cd5b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
