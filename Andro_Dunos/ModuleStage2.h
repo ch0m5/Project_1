@@ -22,11 +22,13 @@ public:
 
 public:
 	//Textures
+	SDL_Texture* backgroundCityText = nullptr;
 	SDL_Texture* background2Text = nullptr;
 	SDL_Texture* map2Text = nullptr;
 	
 
 	//Rectangles
+	SDL_Rect backgroundCityRect;
 	SDL_Rect background2Rect;
 	SDL_Rect map2Rect;
 	

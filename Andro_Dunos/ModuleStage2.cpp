@@ -25,6 +25,13 @@ ModuleStage2::ModuleStage2()	//@AndresSala
 	background2Rect.w = 2101; 
 	background2Rect.h = 224;
 
+	// Backgroundciry 
+	backgroundCityRect.x = 0;
+	backgroundCityRect.y = 0;
+	backgroundCityRect.w = 1663;
+	backgroundCityRect.h = 98;
+
+
 	//map1Rect	
 	map2Rect.x = 0;
 	map2Rect.y = 0; 
@@ -43,6 +50,7 @@ bool ModuleStage2::Start()
 	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
 	
 	background2Text = App->textures->Load("Assets/Sprites/Levels/STAGE 6/Tileset/background.png");
+	background2Text = App->textures->Load("Assets/Sprites/Levels/STAGE 6/Tileset/background_city.png");
 	map2Text = App->textures->Load("Assets/Sprites/Levels/STAGE 6/Tileset/floor lvl 6.png");
 
 	App->player1->godMode = false;
@@ -110,6 +118,7 @@ bool ModuleStage2::CleanUp()
 	LOG("Unloading stage 2");
 	App->textures->Unload(background2Text);
 	App->textures->Unload(map2Text);
+	App->textures->Unload(backgroundCityText);
 
 	LOG("Unloading colliders")
 		App->collision->Disable();
@@ -227,9 +236,9 @@ update_status ModuleStage2::Update()
 	
 	//These two if's control the first part of the level outside and the end of the level also outside
 	
+	App->render->Blit(backgroundCityText, movementxBack, 0, &backgroundCityRect); // level background
 
 	App->render->Blit(background2Text, movementxBack, 0, &background2Rect); // level background
-
 	
 	App->render->Blit(map2Text, 0, 0, &map2Rect); // level map
 
