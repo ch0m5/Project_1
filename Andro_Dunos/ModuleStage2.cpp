@@ -50,7 +50,7 @@ bool ModuleStage2::Start()
 	bool ret = true;					// a single enormous tileset, maybe a tile array for the background
 	
 	background2Text = App->textures->Load("Assets/Sprites/Levels/STAGE 6/Tileset/background.png");
-	background2Text = App->textures->Load("Assets/Sprites/Levels/STAGE 6/Tileset/background_city.png");
+	backgroundCityText = App->textures->Load("Assets/Sprites/Levels/STAGE 6/Tileset/background_city.png");
 	map2Text = App->textures->Load("Assets/Sprites/Levels/STAGE 6/Tileset/floor lvl 6.png");
 
 	App->player1->godMode = false;
@@ -85,6 +85,19 @@ bool ModuleStage2::Start()
 	MusicLvl2 = App->mixer->LoadMusic("Assets/Audio/Music/13_Stage_6 -Secret-Base-Intro.ogg");
 	Mix_FadeInMusic(MusicLvl2, -1, 1000);
 	Mix_VolumeMusic(MUSICVol);
+	
+
+	// Ground Collider @Andres
+	App->collision->AddCollider({ 91, 0 , 495, 10}, COLLIDER_WALL);
+	App->collision->AddCollider({ 0, 198 , 160, 26 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 56, 176 , 68, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 174, 216 , 97, 8 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 238, 106 , 188, 17 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 692, 197 , 181, 19 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 394, 217 , 494, 7 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 716, 183 , 116, 11 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 586, 11 , 111, 14 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 629, 31 , 67, 9 }, COLLIDER_WALL);
 	return ret;
 }
 
@@ -141,7 +154,7 @@ update_status ModuleStage2::Update()
 	{
 		movementx += xSpeedMultiplier*0.83f; // for movement in x direction
 											 //LOG("%0.3f", movementx);
-		movementxBack += xSpeedMultiplier*0.5f;
+		movementxBack += xSpeedMultiplier*0.37f;
 		
 		App->render->camera.x = 3.25*movementx / 3;		//Must change this HARDCODE to 1 single value
 		
@@ -149,11 +162,11 @@ update_status ModuleStage2::Update()
 	}
 	if (moveMapDown == true)
 	{
-		movementx += xSpeedMultiplier*0.83f;
-		movementy += ySpeedMultiplier * 0.82f;
+		
+		movementy += ySpeedMultiplier*0.25f;
 	
-		App->render->camera.x = 3*movementx / 3;
-		App->render->camera.y = 3*movementy / 3;  //Must change this HARDCODE to 1 single value
+
+		App->render->camera.y = 3*movementy/3;  //Must change this HARDCODE to 1 single value
 
 	}
 	if (moveMapUp == true)
@@ -236,7 +249,7 @@ update_status ModuleStage2::Update()
 	
 	//These two if's control the first part of the level outside and the end of the level also outside
 	
-	App->render->Blit(backgroundCityText, movementxBack, 0, &backgroundCityRect); // level background
+	App->render->Blit(backgroundCityText, 4112, 538, &backgroundCityRect); // level background
 
 	App->render->Blit(background2Text, movementxBack, 0, &background2Rect); // level background
 	
