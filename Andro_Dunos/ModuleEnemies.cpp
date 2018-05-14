@@ -18,6 +18,7 @@
 #include "Greyball_K.h"
 #include "GreyYellow_Enemy_Up.h"
 #include "GreyYellow_Enemy_Down.h"
+#include "Shuriken_Enemy.h"
 
 #define SPAWN_MARGIN 50
 
@@ -190,6 +191,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::YELLOWSHIP_DOWN:
 			enemies[i] = new GreyYellow_Enemy_Down(info.x, info.y);
+			break;
+		case ENEMY_TYPES::SHURIKEN_ENEMY:
+			enemies[i] = new Shuriken_Enemy(info.x, info.y);
 			break;
 		}
 	}

@@ -140,6 +140,9 @@
     <ClInclude Include="ModuleStage2.h">
       <Filter>ModulesStages</Filter>
     </ClInclude>
+    <ClInclude Include="Shuriken_Enemy.h">
+      <Filter>ModulesEnemies\EnemiesStage2</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -240,6 +243,9 @@
     </ClCompile>
     <ClCompile Include="ModuleStage2.cpp">
       <Filter>ModulesStages</Filter>
+    </ClCompile>
+    <ClCompile Include="Shuriken_Enemy.cpp">
+      <Filter>ModulesEnemies\EnemiesStage2</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
