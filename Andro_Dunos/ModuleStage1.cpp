@@ -133,6 +133,8 @@ bool ModuleStage1::Start()
 	App->UI->player2Score = 0;
 
 	// First Enemy: GreyBall (4 waves, with 1wave&3wave same position.y and 2wave&4wave same position.y)
+	
+	
 	//wave 1 ------------------------------------------------------
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 480, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 495, 50);

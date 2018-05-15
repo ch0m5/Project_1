@@ -19,6 +19,7 @@
 #include "GreyYellow_Enemy_Up.h"
 #include "GreyYellow_Enemy_Down.h"
 #include "Shuriken_Enemy.h"
+#include "silver_round.h"
 
 #define SPAWN_MARGIN 50
 
@@ -194,6 +195,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::SHURIKEN_ENEMY:
 			enemies[i] = new Shuriken_Enemy(info.x, info.y);
+			break;
+		case ENEMY_TYPES::SILVER_ROUND:
+			enemies[i] = new Silver_Round(info.x, info.y);
 			break;
 		}
 	}

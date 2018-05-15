@@ -143,6 +143,9 @@
     <ClInclude Include="Shuriken_Enemy.h">
       <Filter>ModulesEnemies\EnemiesStage2</Filter>
     </ClInclude>
+    <ClInclude Include="silver_round.h">
+      <Filter>ModulesEnemies\EnemiesStage2</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -245,6 +248,9 @@
       <Filter>ModulesStages</Filter>
     </ClCompile>
     <ClCompile Include="Shuriken_Enemy.cpp">
+      <Filter>ModulesEnemies\EnemiesStage2</Filter>
+    </ClCompile>
+    <ClCompile Include="silver_round.cpp">
       <Filter>ModulesEnemies\EnemiesStage2</Filter>
     </ClCompile>
   </ItemGroup>

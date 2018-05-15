@@ -110,6 +110,7 @@
     <ClInclude Include="PowerUp_Enemy.h" />
     <ClInclude Include="RedLineShip_Enemy.h" />
     <ClInclude Include="Shuriken_Enemy.h" />
+    <ClInclude Include="silver_round.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
@@ -146,6 +147,7 @@
     <ClCompile Include="PowerUp_Enemy.cpp" />
     <ClCompile Include="RedLineShip_Enemy.cpp" />
     <ClCompile Include="Shuriken_Enemy.cpp" />
+    <ClCompile Include="silver_round.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

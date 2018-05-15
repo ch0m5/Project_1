@@ -166,6 +166,9 @@ bool ModuleStage2::Start()
 	App->collision->AddCollider({ 6830, 605, 152, 31 }, COLLIDER_WALL);
 
 
+	//enemies
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND, 480, 50);
+
 
 	
 
