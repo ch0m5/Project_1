@@ -234,7 +234,7 @@ update_status ModuleStage2::Update()
 	if (moveMapDown == true)
 	{
 		
-		movementy += ySpeedMultiplier*0.25f;
+		movementy += ySpeedMultiplier*0.45f;
 	
 
 		App->render->camera.y = 3*movementy/3;  //Must change this HARDCODE to 1 single value
@@ -247,10 +247,10 @@ update_status ModuleStage2::Update()
 	}
 
 	//Conditions: Where does the background change X and Y speeds
-	if (App->render->camera.x > 3800 * SCREEN_SIZE) // 1st SPEED CHANGE: Ships enter the inside of the Moon 
+	if (App->render->camera.x > 3750 * SCREEN_SIZE && App->render->camera.y < 411 * SCREEN_SIZE) // 1st SPEED CHANGE: Ships enter the inside of the Moon 
 	{
 		ySpeedMultiplier = 2;
-		xSpeedMultiplier = 0.83;
+		xSpeedMultiplier = 1;
 		moveMapRight = true;
 		moveMapDown = true;
 		moveMapUp = false;

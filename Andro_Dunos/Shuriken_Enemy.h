@@ -29,7 +29,7 @@ public:
 	uint score = 200;
 	bool dead = false;
 
-	void Fire();
+	//void Fire();
 
 };
 
