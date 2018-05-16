@@ -29,6 +29,9 @@ public:
 
 	//Music 
 	Mix_Music * MusicStageClear = nullptr;
+
+	//Time
+	unsigned int originalTime;
 };
 
 

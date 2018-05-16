@@ -44,6 +44,8 @@ bool ModuleStageClear::Start()
 
 	//Set the animation Speed to initial condition
 	ySpeedAnimation = 0;
+	//Set the original Time
+	originalTime = SDL_GetTicks();
 	//Music
 	MusicStageClear = App->mixer->LoadMusic("Assets/Audio/Music/06_Stage_Clear.ogg");
 	Mix_FadeInMusic(MusicStageClear, 0, 1000);
@@ -64,11 +66,11 @@ update_status ModuleStageClear::Update()
 	{
 		ySpeedAnimation -= 1;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 && App->UI->CompletedLevel == App->UI->Stage1 )
+	if ((App->input->keyboard[SDL_SCANCODE_SPACE] == 1 || (SDL_GetTicks() - originalTime) >= 7000) && App->UI->CompletedLevel == App->UI->Stage1 )
 	{
 		App->fade->FadeToBlack(App->stageClear, App->stage2, 1);
 	}
-	else if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 && App->UI->CompletedLevel == App->UI->Stage2)
+	else if ((App->input->keyboard[SDL_SCANCODE_SPACE] == 1 || (SDL_GetTicks() - originalTime) >= 7000) && App->UI->CompletedLevel == App->UI->Stage2)
 	{
 		App->fade->FadeToBlack(App->stageClear, App->mainMenu, 1);
 	}
