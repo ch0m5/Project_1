@@ -383,6 +383,7 @@ bool ModuleParticles::Start()
 	redRocketUpDiagonal.life = mediumLife;
 	redRocketUpDiagonal.anim.speed = 0.7f;
 
+	// Weapon
 	Weapon2RightUp.anim.PushBack({ 149, 151, 28, 28 });
 	Weapon2RightUp.anim.PushBack({ 181, 182, 28, 28 });
 	Weapon2RightUp.anim.PushBack({ 180, 151, 28, 28 });
@@ -654,8 +655,20 @@ bool ModuleParticles::Start()
 	laserDown.speed.y = 4.0f;
 	laserDown.life = shortLife;
 	laserDown.anim.speed = 0.5f;
-	//Particle* downRightGreen = nullptr;	// Reusing particles (keep commented)
-	//Particle* upRightGreen = nullptr;
+	//downRightGreen	// Same particles as type 3, used those
+	//upRightGreen
+
+	//Weapon
+	weaponYellowBlast.anim.PushBack({ 179, 281, 30, 30 });	//Incorrect blit
+	weaponYellowBlast.anim.PushBack({ 179, 281, 30, 30 });	//Incorrect blit
+	weaponYellowBlast.anim.PushBack({ 178, 217, 30, 30 });
+	weaponYellowBlast.anim.PushBack({ 146, 247, 30, 30 });
+	weaponYellowBlast.anim.PushBack({ 178, 281, 30, 30 });
+	weaponYellowBlast.anim.PushBack({ 147, 281, 30, 30 });
+	weaponYellowBlast.anim.PushBack({ 179, 281, 30, 30 });
+	weaponYellowBlast.anim.loop = false;
+	weaponYellowBlast.life = shortLife;
+	weaponYellowBlast.anim.speed = 0.3f;
 
 	//Enemy laser
 	enemyBlueShot.anim.PushBack({ 238, 161, 6, 6 });

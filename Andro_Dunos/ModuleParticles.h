@@ -199,7 +199,7 @@ public:
 	//Particle* upRightGreen = nullptr;
 
 	// Weapon
-	//Particle type4Weapon;
+	Particle weaponYellowBlast;
 
 	// Homing particles
 
