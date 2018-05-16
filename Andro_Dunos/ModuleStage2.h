@@ -36,7 +36,7 @@ public:
 	// Background movement (position) values
 	float movementx = 0 ;
 	float movementxBack = 0;
-	float movementy = -55;
+	float movementy = 0;
 
 	//Background Movement logic variables
 	bool moveMapRight = true;

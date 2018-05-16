@@ -180,7 +180,7 @@ bool ModuleStage2::CleanUp()
 	// reset Background movement (position) values
 	movementx = 0;
 	movementxBack = 0;
-	movementy = -55;
+	movementy = 0;
 
 	//Reset Camera Position
 	App->render->camera.x = 0;
@@ -258,7 +258,6 @@ update_status ModuleStage2::Update()
 		moveMapDown = true;
 		moveMapUp = false;
 	}
-
 	else if (App->render->camera.y > 411 * SCREEN_SIZE /*&& App->render->camera.y > 4279 * SCREEN_SIZE*/ && moveMapUp == false) // 2nd SPEED CHANGE: Ships continue through the inside of the Moon
 	{
 		moveMapRight = true;
