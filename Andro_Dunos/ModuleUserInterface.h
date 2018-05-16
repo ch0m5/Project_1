@@ -39,10 +39,12 @@ public:
 		GameOver = -1,
 		MainMenu,
 		Stage1,
+		Stage2,
 		StageClear
 	};
 
 	int CurrentStage;
+	int CompletedLevel;
 };
 
 #endif

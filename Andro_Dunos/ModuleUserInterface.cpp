@@ -68,6 +68,10 @@ update_status ModuleUserInterface::Update()
 	{
 		CurrentStage = Stage1;
 	}
+	else if (App->stage2->IsEnabled() == true)
+	{
+		CurrentStage = Stage2;
+	}
 	else if (App->stageClear->IsEnabled() == true)
 	{
 		CurrentStage = StageClear;
@@ -156,6 +160,79 @@ update_status ModuleUserInterface::Update()
 					App->fonts->BlitText(160, 50, debug_font, "p2 controller off");
 				}
 			}break;
+		
+		case Stage2:
+		{
+			//Blit SCORE
+			App->fonts->BlitText(10, 10, font_score, "1P");
+			sprintf_s(player1Score_text, 10, "%7d", player1Score);
+			App->fonts->BlitText(50, 10, 0, player1Score_text);
+
+			if (App->input->secondPlayerState == true)
+			{
+				App->fonts->BlitText(210, 10, font_score, "2P");
+				sprintf_s(player2Score_text, 10, "%7d", player2Score);
+				App->fonts->BlitText(250, 10, 0, player2Score_text);
+			}
+			//DEBUG mode
+			if (App->input->debugMode == true)
+			{
+				App->fonts->BlitText(10, 20, debug_font, "debug mode");
+			}
+			if (App->player1->godMode == true && App->input->debugMode == true || App->player2->godMode == true && App->input->debugMode == true)
+			{
+				App->fonts->BlitText(10, 30, debug_font, "god mode");
+			}
+			if (App->input->coliderView == true && App->input->debugMode == true)
+			{
+				App->fonts->BlitText(10, 40, debug_font, "collider view");
+			}
+			if (App->stage1->fasterX == true && App->input->debugMode == true)
+			{
+				App->fonts->BlitText(10, 50, debug_font, "super speed");
+			}
+			//Controller Debug P1
+			if (App->input->debugMode == true && App->input->gamepadP1con == true)
+			{
+				App->fonts->BlitText(100, 20, debug_font, "p1 controller on");
+				if (App->input->gamepadP1APressed == true)
+				{
+					App->fonts->BlitText(100, 30, debug_font, "a");
+				}
+				if (App->input->gamepadP1XPressed == true)
+				{
+					App->fonts->BlitText(110, 30, debug_font, "x");
+				}
+				//Check BUTTONS & AXIS Currently PC CRASH DO NOT UNCOMMENT
+				/*sprintf_s(gamepad_P1_LAxis_X, 4, "%7d", App->input->gamepadP1LAxisX);
+				App->fonts->BlitText(100, 30, 0, gamepad_P1_LAxis_X);*/
+
+			}
+			if (App->input->debugMode == true && App->input->gamepadP1con == false)
+			{
+				App->fonts->BlitText(100, 20, debug_font, "p1 controller off");
+			}
+			//Controller Debug P2
+			if (App->input->debugMode == true && App->input->gamepadP2con == true)
+			{
+				App->fonts->BlitText(160, 50, debug_font, "p2 controller on");
+				if (App->input->gamepadP2APressed == true)
+				{
+					App->fonts->BlitText(170, 60, debug_font, "a");
+				}
+				if (App->input->gamepadP2XPressed == true)
+				{
+					App->fonts->BlitText(180, 60, debug_font, "x");
+				}
+				//Check BUTTONS & AXIS Currently PC CRASH DO NOT UNCOMMENT
+				/*sprintf_s(gamepad_P1_LAxis_X, 4, "%7d", App->input->gamepadP1LAxisX);
+				App->fonts->BlitText(100, 30, 0, gamepad_P1_LAxis_X);*/
+			}
+			if (App->input->debugMode == true && App->input->gamepadP2con == false)
+			{
+				App->fonts->BlitText(160, 50, debug_font, "p2 controller off");
+			}
+		}break;
 
 		case StageClear:
 			{	//Print the scores, but as we are not playing we don't need to update if the score increases, print teamScore

@@ -802,13 +802,15 @@ update_status ModuleStage1::Update()
 	// Win Condition
 	if (App->render->camera.x / SCREEN_SIZE > 8912)
 	{
+		App->UI->CompletedLevel = App->UI->Stage1;
 		App->fade->FadeToBlack(this, App->stageClear, 1);
 	}
 
 	//make so pressing SPACE the other stage is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 && App->input->debugMode == true)
 	{
-		App->fade->FadeToBlack(App->stage1, App->stage2, 1);
+		App->UI->CompletedLevel = App->UI->Stage1;
+		App->fade->FadeToBlack(App->stage1, App->stageClear, 1);
 	}
 
 	//enter direct win condition @Andres

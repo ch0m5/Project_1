@@ -13,6 +13,7 @@
 #include "ModuleMixer.h"
 #include "ModuleCollision.h"
 #include "ModuleStageClear.h"
+#include "ModuleUserInterface.h"
 
 
 
@@ -63,7 +64,11 @@ update_status ModuleStageClear::Update()
 	{
 		ySpeedAnimation -= 1;
 	}
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1)
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 && App->UI->CompletedLevel == App->UI->Stage1 )
+	{
+		App->fade->FadeToBlack(App->stageClear, App->stage2, 1);
+	}
+	else if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 && App->UI->CompletedLevel == App->UI->Stage2)
 	{
 		App->fade->FadeToBlack(App->stageClear, App->mainMenu, 1);
 	}

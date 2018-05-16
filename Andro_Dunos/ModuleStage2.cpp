@@ -61,7 +61,7 @@ bool ModuleStage2::Start()
 		App->player2->Enable();
 	}
 
-
+	loopNotPlaying = true;
 	// we should log the problem if not loaded correctly
 
 	App->collision->Enable();
@@ -191,7 +191,7 @@ bool ModuleStage2::CleanUp()
 	moveMapDown = false;
 	moveMapUp = false;
 
-
+	loopNotPlaying = false;
 	//--------
 	LOG("Unloading players");
 	App->player1->Disable();
@@ -223,7 +223,10 @@ bool ModuleStage2::CleanUp()
 //Function that will only be called when a song is finished (Will play th eloop after the intro)
 void musicFinished()
 {
-	Mix_PlayMusic(App->stage2->MusicLvl2_loop,-1);
+	if (App->stage2->IsEnabled()==true)
+	{
+		Mix_PlayMusic(App->stage2->MusicLvl2_loop, -1);
+	}
 }
 
 // Update: draw background
@@ -282,13 +285,15 @@ update_status ModuleStage2::Update()
 	// Win Condition
 	if (App->render->camera.x / SCREEN_SIZE > 6700)
 	{
+		App->UI->CompletedLevel = App->UI->Stage2;
 		App->fade->FadeToBlack(this, App->stageClear, 1);
 	}
 
-	//make so pressing SPACE the other stage is loaded
+	//make so pressing SPACE Scene HiScore is loaded
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 && App->input->debugMode == true)
 	{
-		App->fade->FadeToBlack(App->stage2, App->scene_HiScore, 1);
+		App->UI->CompletedLevel = App->UI->Stage2;
+		App->fade->FadeToBlack(App->stage2, App->stageClear, 1);
 	}
 
 	//enter direct win condition @Andres
