@@ -1143,8 +1143,11 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 			break;
 
 		case TYPE_4:
-			Mix_PlayChannel(1, type4Weapon, 0);
+			// 8 columns
 
+
+
+			Mix_PlayChannel(1, type4Weapon, 0);
 			fireWeapon = NONE;
 			break;
 		}
