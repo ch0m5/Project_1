@@ -230,20 +230,20 @@ bool ModuleParticles::Start()
 	// Weapon
 	weaponBlueHorizontal.anim.PushBack({ 174, 123, 63, 18 });
 	weaponBlueHorizontal.anim.loop = false;
-	weaponBlueHorizontal.speed.x = 7.0f;
+	weaponBlueHorizontal.speed.x = 12.0f;
 	weaponBlueHorizontal.life = mediumLife;
 	weaponBlueHorizontal.anim.speed = 0.3f;
 
 	weaponBlueVerticalUp.anim.PushBack({ 127, 123, 41, 18 });
 	weaponBlueVerticalUp.anim.loop = false;
-	weaponBlueVerticalUp.speed.y = 2.5f;
-	weaponBlueVerticalUp.life = shortLife;
+	weaponBlueVerticalUp.speed.y = 3.0f;
+	weaponBlueVerticalUp.life = shortLife - 650;
 	weaponBlueVerticalUp.anim.speed = 0.3f;
 
 	weaponBlueVerticalDown.anim.PushBack({ 127, 123, 41, 18 });
 	weaponBlueVerticalDown.anim.loop = false;
-	weaponBlueVerticalDown.speed.y = -2.5f;
-	weaponBlueVerticalDown.life = shortLife;
+	weaponBlueVerticalDown.speed.y = -3.0f;
+	weaponBlueVerticalDown.life = shortLife - 650;
 	weaponBlueVerticalDown.anim.speed = 0.3f;
 
 	//Player Type 2 (yellow)

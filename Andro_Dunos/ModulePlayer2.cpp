@@ -499,9 +499,6 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 				/*
 				if (currentBlue < 0)
 					currentBlue == 0;
-
-				if (currentArrayShots < 0)
-					currentArrayShots == 0;
 				*/
 				switch (type)
 				{
@@ -960,11 +957,11 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 		}
 
 		// Weapon shot
-		if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_UP)
+		if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_UP && bluePower > LEVEL_1)
 		{
 			weaponChargingStage = NOT_CHARGING;
 
-			if (weaponChargeTimer < SDL_GetTicks() - 2200 && bluePower > LEVEL_1)
+			if (weaponChargeTimer < SDL_GetTicks() - 2200)
 			{
 				switch (type)
 				{
@@ -990,9 +987,10 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 				}
 
 				bluePower--;
+				checkBluePowerParticleLimit();
 			}
 
-			else if (weaponChargeTimer < SDL_GetTicks() - 1300 && bluePower > LEVEL_1)
+			else if (weaponChargeTimer < SDL_GetTicks() - 1300)
 				Mix_HaltChannel(3);
 		}
 
@@ -1002,31 +1000,92 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 			break;
 
 		case TYPE_1:
-			App->particles->AddParticle(App->particles->weaponBlueVerticalUp, position.x + laserHorizontalOffset, position.y, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->weaponBlueVerticalUp, position.x + laserHorizontalOffset, position.y, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->weaponBlueVerticalUp, position.x + laserHorizontalOffset, position.y, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->weaponBlueVerticalUp, position.x + laserHorizontalOffset, position.y, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+			if (weaponLaserInterval < SDL_GetTicks() && weaponStage == 0)
+			{
+				App->particles->AddParticle(App->particles->weaponBlueVerticalUp, position.x + laserHorizontalOffset, position.y, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponBlueVerticalDown, position.x + laserHorizontalOffset, position.y, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
 
-			App->particles->AddParticle(App->particles->weaponBlueVerticalDown, position.x + laserHorizontalOffset, position.y, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->weaponBlueVerticalDown, position.x + laserHorizontalOffset, position.y, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->weaponBlueVerticalDown, position.x + laserHorizontalOffset, position.y, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->weaponBlueVerticalDown, position.x + laserHorizontalOffset, position.y, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y - 10, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y + 10, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
 
-			App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x - 50, position.y - 50, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y - 40, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x - 50, position.y - 30, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y - 20, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x - 50, position.y - 10, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
 
-			App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x - 50, position.y + 10, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y + 20, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x - 50, position.y + 30, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y + 40, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x - 50, position.y + 50, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				Mix_PlayChannel(3, type1Weapon, 0);
+				weaponStage++;
+			}
 
-			Mix_PlayChannel(3, type1Weapon, 0);
+			else if (weaponLaserInterval < SDL_GetTicks() - 150 && weaponStage == 1)
+			{
+				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y - 30, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y + 30, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
 
-			fireWeapon = NONE;
+				weaponStage++;
+			}
+
+			else if (weaponLaserInterval < SDL_GetTicks() - 300 && weaponStage == 3)
+			{
+				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y - 50, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y + 50, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+
+				weaponStage++;
+			}
+
+			else if (weaponLaserInterval < SDL_GetTicks() - 225 && weaponStage == 2)
+			{
+				App->particles->AddParticle(App->particles->weaponBlueVerticalUp, position.x + laserHorizontalOffset, position.y, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponBlueVerticalDown, position.x + laserHorizontalOffset, position.y, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+
+				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y - 10, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y + 10, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+
+				Mix_PlayChannel(-1, type1Weapon, 0);
+				weaponStage++;
+			}
+
+			else if (weaponLaserInterval < SDL_GetTicks() - 375 && weaponStage == 4)
+			{
+				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y - 30, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y + 30, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+
+				weaponStage++;
+			}
+
+			else if (weaponLaserInterval < SDL_GetTicks() - 525 && weaponStage == 6)
+			{
+				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y - 50, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y + 50, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+
+				weaponStage++;
+			}
+
+			else if (weaponLaserInterval < SDL_GetTicks() - 450 && weaponStage == 5)
+			{
+				App->particles->AddParticle(App->particles->weaponBlueVerticalUp, position.x + laserHorizontalOffset, position.y, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponBlueVerticalDown, position.x + laserHorizontalOffset, position.y, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+
+				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y - 10, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y + 10, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+
+				Mix_PlayChannel(-1, type1Weapon, 0);
+				weaponStage++;
+			}
+
+			else if (weaponLaserInterval < SDL_GetTicks() - 600 && weaponStage == 7)
+			{
+				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y - 30, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y + 30, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+
+				weaponStage++;
+			}
+
+			else if (weaponLaserInterval < SDL_GetTicks() - 750 && weaponStage == 8)
+			{
+				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y - 50, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y + 50, PLAYER_2_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
+
+				weaponStage++;
+				fireWeapon = NONE;
+				weaponStage = 0;
+			}
 			break;
 
 		case TYPE_2:

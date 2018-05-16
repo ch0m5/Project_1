@@ -64,6 +64,6 @@ typedef unsigned int uint;
 #define WIN_BORDERLESS 0
 #define WIN_RESIZABLE 0
 #define REN_VSYNC 1
-#define VERSION " (v0.4.6)"		// Adds to the window name "Andro Dunos", used to mark the current working version
+#define VERSION " (v0.7.0)"		// Adds to the window name "Andro Dunos", used to mark the current working version
 
 #endif // __GLOBALS_H__
