@@ -82,8 +82,9 @@ bool ModuleStage2::Start()
 	App->UI->player2Score = 0;
 
 	//Music
-	MusicLvl2 = App->mixer->LoadMusic("Assets/Audio/Music/13_Stage_6 -Secret-Base-Intro.ogg");
-	Mix_FadeInMusic(MusicLvl2, -1, 1000);
+	MusicLvl2_intro = App->mixer->LoadMusic("Assets/Audio/Music/13_Stage_6 -Secret-Base-Intro.ogg");
+	MusicLvl2_loop = App->mixer->LoadMusic("Assets/Audio/Music/13_Stage_6-Secret-Base-Loop.ogg");
+	Mix_FadeInMusic(MusicLvl2_intro, 0, 1000);
 	Mix_VolumeMusic(MUSICVol);
 	
 
@@ -214,14 +215,26 @@ bool ModuleStage2::CleanUp()
 		App->particles->Disable();
 
 	Mix_FadeOutMusic(TIMEFADE);
-	App->mixer->UnloadMusic(MusicLvl2);
-
+	App->mixer->UnloadMusic(MusicLvl2_intro);
+	App->mixer->UnloadMusic(MusicLvl2_loop);
 	return true;
+}
+
+//Function that will only be called when a song is finished (Will play th eloop after the intro)
+void musicFinished()
+{
+	Mix_PlayMusic(App->stage2->MusicLvl2_loop,-1);
 }
 
 // Update: draw background
 update_status ModuleStage2::Update()
 {
+	//If intro stops/ends play the loop
+	if (loopNotPlaying == true)
+	{
+		Mix_HookMusicFinished(musicFinished);
+		loopNotPlaying = false;
+	}
 	//Level 1 Map movement Code
 
 	if (moveMapRight == true)

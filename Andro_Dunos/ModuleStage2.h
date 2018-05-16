@@ -20,6 +20,8 @@ public:
 	update_status Update();
 	bool CleanUp();
 
+	//Note that inside the CPP file there's a function called musicFinished which has to be directly declared there to
+	//work with the mixer apropriate command
 public:
 	//Textures
 	SDL_Texture* backgroundCityText = nullptr;
@@ -51,7 +53,11 @@ public:
 	bool fasterX = false;
 
 	//Music
-	Mix_Music * MusicLvl2 = nullptr;
+	Mix_Music* MusicLvl2_intro = nullptr;
+	Mix_Music* MusicLvl2_loop = nullptr;
+
+	//Music variables for intro and loop music diferences
+	bool loopNotPlaying = true;
 };
 
 #endif
