@@ -659,12 +659,12 @@ bool ModuleParticles::Start()
 	//upRightGreen
 
 	//Weapon
-	weaponYellowBlast.anim.PushBack({ 179, 281, 30, 30 });	//Incorrect blit
-	weaponYellowBlast.anim.PushBack({ 179, 281, 30, 30 });	//Incorrect blit
-	weaponYellowBlast.anim.PushBack({ 178, 217, 30, 30 });
-	weaponYellowBlast.anim.PushBack({ 146, 247, 30, 30 });
-	weaponYellowBlast.anim.PushBack({ 178, 281, 30, 30 });
-	weaponYellowBlast.anim.PushBack({ 147, 281, 30, 30 });
+	weaponYellowBlast.anim.PushBack({ 115, 221, 30, 30 });
+	weaponYellowBlast.anim.PushBack({ 148, 221, 30, 30 });
+	weaponYellowBlast.anim.PushBack({ 179, 221, 30, 30 });
+	weaponYellowBlast.anim.PushBack({ 148, 251, 30, 30 });
+	weaponYellowBlast.anim.PushBack({ 179, 251, 30, 30 });
+	weaponYellowBlast.anim.PushBack({ 148, 281, 30, 30 });
 	weaponYellowBlast.anim.PushBack({ 179, 281, 30, 30 });
 	weaponYellowBlast.anim.loop = false;
 	weaponYellowBlast.life = shortLife;
