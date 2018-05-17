@@ -39,7 +39,7 @@ No licenses were used for this project.
   * Role: QA
   * Github: [DidacRomero](https://github.com/DidacRomero)
 
-![Team Photo](https://raw.githubusercontent.com/ch0m5/Project_1/master/Team_Photo.jpeg)
+![Team Photo](https://raw.githubusercontent.com/ch0m5/Project_1/master/Wiki%20Material/Logo_%26_Team/Team_Photo.jpeg)
 *From left to right: Xavi Marín, Dídac Romero, Carles Homs, Andrés Saladrigas*
  ---
 ## License & Copyright 
