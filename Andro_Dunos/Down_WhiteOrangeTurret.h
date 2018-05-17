@@ -10,7 +10,7 @@ private:
 	float wave = -1.0f;
 	bool going_up = true;
 	int original_y = 0;
-	Animation fly;
+	Animation pos1, pos2, pos3, pos4, pos5, pos6, pos7, pos8, pos9;
 	Path Down_WhiteOrangeTurret_Path;
 
 	int Down_WhiteOrangeTurret_posx;

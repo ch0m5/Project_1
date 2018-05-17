@@ -14,28 +14,28 @@
 
 Down_WhiteOrangeTurret::Down_WhiteOrangeTurret(int x, int y) : Enemy(x, y) // @XaviMarin
 {
-	hitboxWidth = 14;
-	hitboxHeight = 14;
+	hitboxWidth = 15;
+	hitboxHeight = 15;
 
-	fly.PushBack({ 0, 101, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 32, 101, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 65, 101, hitboxWidth, hitboxHeight });
-	fly.PushBack({ 97, 101, hitboxWidth, hitboxHeight });
+	pos1.PushBack({ 292, 688, hitboxWidth, hitboxHeight });
+	pos2.PushBack({ 315, 688, hitboxWidth, hitboxHeight });
+	pos3.PushBack({ 336, 688, hitboxWidth, hitboxHeight });
+	pos4.PushBack({ 227, 716, hitboxWidth, hitboxHeight });
+	pos5.PushBack({ 250, 716, hitboxWidth, hitboxHeight });
+	pos6.PushBack({ 272, 716, hitboxWidth, hitboxHeight });
+	pos7.PushBack({ 292, 716, hitboxWidth, hitboxHeight });
+	pos8.PushBack({ 316, 716, hitboxWidth, hitboxHeight });
+	pos9.PushBack({ 336, 716, hitboxWidth, hitboxHeight });
 
-	fly.speed = 0.6f;
+	//fly.speed = 0.6f;
 
-	animation = &fly;
 
 	collider = App->collision->AddCollider({ 0, 0, hitboxWidth, hitboxHeight }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	Down_WhiteOrangeTurret_posx = x;
 	Down_WhiteOrangeTurret_posy = y;
 
-	original_y = y;
-
-
-	Down_WhiteOrangeTurret_Path.PushBack({ -0.5, 1 }, 70);
-
+	//original_y = y;
 
 }
 
@@ -47,8 +47,8 @@ float Down_WhiteOrangeTurret::resultingAngle()
 
 void Down_WhiteOrangeTurret::Move()
 {
-	position.x = ShurikenEnemy_posx + ShurikenEnemy_Path.GetCurrentPosition().x;
-	position.y = ShurikenEnemy_posy + ShurikenEnemy_Path.GetCurrentPosition().y;
+	position.x = Down_WhiteOrangeTurret_posx + Down_WhiteOrangeTurret_Path.GetCurrentPosition().x;
+	position.y = Down_WhiteOrangeTurret_posy + Down_WhiteOrangeTurret_Path.GetCurrentPosition().y;
 }
 
 
