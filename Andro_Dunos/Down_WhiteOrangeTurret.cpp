@@ -42,6 +42,7 @@ Down_WhiteOrangeTurret::Down_WhiteOrangeTurret(int x, int y) : Enemy(x, y) // @X
 float Down_WhiteOrangeTurret::resultingAngle()
 {
 	float result = atan2(App->player1->position.y - position.y, position.x - App->player1->position.x) * 180 / PI;
+	return result;
 }
 
 void Down_WhiteOrangeTurret::Move()
