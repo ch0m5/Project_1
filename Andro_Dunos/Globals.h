@@ -60,10 +60,10 @@ typedef unsigned int uint;
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 224
 #define WIN_FULLSCREEN 0
-#define WIN_FULLSCREEN_DESKTOP 0
+#define WIN_FULLSCREEN_DESKTOP 1
 #define WIN_BORDERLESS 0
 #define WIN_RESIZABLE 0
 #define REN_VSYNC 1
-#define VERSION " (v0.7.0)"		// Adds to the window name "Andro Dunos", used to mark the current working version
+#define VERSION " (v0.6.5)"		// Adds to the window name "Andro Dunos", used to mark the current working version
 
 #endif // __GLOBALS_H__
