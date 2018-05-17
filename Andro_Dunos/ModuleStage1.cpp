@@ -810,7 +810,7 @@ update_status ModuleStage1::Update()
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == 1 && App->input->debugMode == true)
 	{
 		App->UI->CompletedLevel = App->UI->Stage1;
-		App->fade->FadeToBlack(App->stage1, App->stageClear, 1);
+		App->fade->FadeToBlack(App->stage1, App->stage2, 1);
 	}
 
 	//enter direct win condition @Andres
