@@ -48,6 +48,7 @@ struct Particle
 	float fPositionHorizontal, fPositionVertical;
 	int arraySize = DEFAULT_VALUE;	// Id that marks the array size
 	int arrayId = DEFAULT_VALUE;	// Id needed to delete the full particle array, default for non arrays
+	int laserDamage = 1;
 	int shotType = DEFAULT_VALUE;	// Id for blue and orange power particles
 	fPoint speed;
 	Uint32 born = 0;
@@ -71,7 +72,7 @@ public:
 	update_status Update();
 	bool CleanUp();
 
-	void SetParticleArray(Particle* particleArray, int arraySize, int startX, int startY, int particleSizeX, int particleSizeY, int movX, int movY, float speedX, float speedY, int particleLife, float animSpeed = 0.0f, bool animLoop = false);
+	void SetParticleArray(Particle* particleArray, int arraySize, int startX, int startY, int particleSizeX, int particleSizeY, int movX, int movY, float speedX, float speedY, int particleLife, int laserDamage = 1, float animSpeed = 0.0f, bool animLoop = false);
 	void AddParticle(const Particle& particle, int x, int y, int shotType = DEFAULT_VALUE, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
 	//void AddParticlePath(const Particle& particle, int x, int y, int shotType = DEFAULT_VALUE, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
 	void AddParticleArray(Particle* particleArray, int arraySize, int x, int y, int movX, int movY, int shotType = DEFAULT_VALUE, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);

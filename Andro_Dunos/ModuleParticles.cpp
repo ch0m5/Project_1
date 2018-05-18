@@ -123,12 +123,14 @@ bool ModuleParticles::Init()
 	mediumBlue.anim.loop = false;
 	mediumBlue.speed.x = 7.0f;
 	mediumBlue.life = shortLife;
+	mediumBlue.laserDamage = 2;
 	mediumBlue.anim.speed = 0.3f;
 
 	bigBlue.anim.PushBack({ 21, 6, 16, 10 });
 	bigBlue.anim.loop = false;
 	bigBlue.speed.x = 7.0f;
 	bigBlue.life = shortLife;
+	bigBlue.laserDamage = 3;
 	bigBlue.anim.speed = 0.3f;
 
 	/* Missile sprites
@@ -179,6 +181,7 @@ bool ModuleParticles::Init()
 	weaponBlueHorizontal.anim.loop = false;
 	weaponBlueHorizontal.speed.x = 12.0f;
 	weaponBlueHorizontal.life = mediumLife;
+	weaponBlueHorizontal.laserDamage = 10;
 	weaponBlueHorizontal.anim.speed = 0.3f;
 
 	weaponBlueVerticalUp.anim.PushBack({ 150, 123, 18, 18 });
@@ -198,12 +201,14 @@ bool ModuleParticles::Init()
 	yellowBigRight.anim.loop = false;
 	yellowBigRight.speed.x = 7.0f;
 	yellowBigRight.life = shortLife;
+	yellowBigRight.laserDamage = 2;
 	yellowBigRight.anim.speed = 0.3f;
 
 	yellowBigLeft.anim.PushBack({ 3, 23, 15, 5 });
 	yellowBigLeft.anim.loop = false;
 	yellowBigLeft.speed.x = -7.0f;
 	yellowBigLeft.life = shortLife;
+	yellowBigLeft.laserDamage = 2;
 	yellowBigLeft.anim.speed = 0.3f;
 
 	yellowSmallDown.anim.PushBack({ 24, 79, 8, 6 });
@@ -225,6 +230,7 @@ bool ModuleParticles::Init()
 	yellowBigDown.speed.x = -5.0f;
 	yellowBigDown.speed.y = 2.0f;
 	yellowBigDown.life = shortLife;
+	yellowBigDown.laserDamage = 2;
 	yellowBigDown.anim.speed = 0.3f;
 
 	yellowBigUp.anim.PushBack({ 5, 50, 11, 8 });
@@ -232,6 +238,7 @@ bool ModuleParticles::Init()
 	yellowBigUp.speed.x = -5.0f;
 	yellowBigUp.speed.y = -2.0f;
 	yellowBigUp.life = shortLife;
+	yellowBigUp.laserDamage = 2;
 	yellowBigUp.anim.speed = 0.3f;
 
 	yellowSmallRight.anim.PushBack({ 6, 69, 10, 3 });
@@ -339,6 +346,7 @@ bool ModuleParticles::Init()
 	Weapon2RightUp.speed.x = 7.0f;
 	Weapon2RightUp.speed.y = -2.5f;
 	Weapon2RightUp.life = shortLife;
+	Weapon2RightUp.laserDamage = 10;
 	Weapon2RightUp.anim.speed = 0.6f;
 
 	Weapon2RightDown.anim.PushBack({ 149, 151, 28, 28 });
@@ -349,6 +357,7 @@ bool ModuleParticles::Init()
 	Weapon2RightDown.speed.x = 7.0f;
 	Weapon2RightDown.speed.y = 2.5f;
 	Weapon2RightDown.life = shortLife;
+	Weapon2RightUp.laserDamage = 10;
 	Weapon2RightDown.anim.speed = 0.6f;
 
 	Weapon2LeftSuperUp.anim.PushBack({ 149, 151, 28, 28 });
@@ -359,6 +368,7 @@ bool ModuleParticles::Init()
 	Weapon2LeftSuperUp.speed.x = -7.0f;
 	Weapon2LeftSuperUp.speed.y = -7.0f;
 	Weapon2LeftSuperUp.life = shortLife;
+	Weapon2LeftSuperUp.laserDamage = 10;
 	Weapon2LeftSuperUp.anim.speed = 0.6f;
 
 	Weapon2LeftUp.anim.PushBack({ 149, 151, 28, 28 });
@@ -369,6 +379,7 @@ bool ModuleParticles::Init()
 	Weapon2LeftUp.speed.x = -7.0f;
 	Weapon2LeftUp.speed.y = -3.0f;
 	Weapon2LeftUp.life = shortLife;
+	Weapon2LeftUp.laserDamage = 10;
 	Weapon2LeftUp.anim.speed = 0.6f;
 
 	Weapon2LeftStraight.anim.PushBack({ 149, 151, 28, 28 });
@@ -379,6 +390,7 @@ bool ModuleParticles::Init()
 	Weapon2LeftStraight.speed.x = -7.0f;
 	Weapon2LeftStraight.speed.y = 0.0f;
 	Weapon2LeftStraight.life = shortLife;
+	Weapon2LeftStraight.laserDamage = 10;
 	Weapon2LeftStraight.anim.speed = 0.6f;
 
 	Weapon2LeftDown.anim.PushBack({ 149, 151, 28, 28 });
@@ -389,6 +401,7 @@ bool ModuleParticles::Init()
 	Weapon2LeftDown.speed.x = -7.0f;
 	Weapon2LeftDown.speed.y = 3.0f;
 	Weapon2LeftDown.life = shortLife;
+	Weapon2LeftDown.laserDamage = 10;
 	Weapon2LeftDown.anim.speed = 0.6f;
 
 	Weapon2LeftSuperDown.anim.PushBack({ 149, 151, 28, 28 });
@@ -399,6 +412,7 @@ bool ModuleParticles::Init()
 	Weapon2LeftSuperDown.speed.x = -7.0f;
 	Weapon2LeftSuperDown.speed.y = 7.0f;
 	Weapon2LeftSuperDown.life = shortLife;
+	Weapon2LeftSuperDown.laserDamage = 10;
 	Weapon2LeftSuperDown.anim.speed = 0.6f;
 
 	//Player Type 3 (green)
@@ -406,6 +420,7 @@ bool ModuleParticles::Init()
 	straightGreen.anim.loop = false;
 	straightGreen.speed.x = 7.0f;
 	straightGreen.life = shortLife;
+	straightGreen.laserDamage = 2;
 	straightGreen.anim.speed = 0.3f;
 
 	// Parameter list: (Particle* particleArray, int arraySize, int startX, int startY, int particleSizeX, int particleSizeY, int movX, int movY, float speedX, float speedY, int life, int animSpeed = 0.0f, bool animLoop = false)
@@ -414,25 +429,25 @@ bool ModuleParticles::Init()
 	SetParticleArray(upLeftGreen1, 8, 71, 74, 2, 4, -2, -2, -4.0f, -4.0f, shortLife);
 	SetParticleArray(downLeftGreen1, 8, 71, 35, 2, 4, -2, 2, -4.0f, 4.0f, shortLife);
 
-	SetParticleArray(upRightGreen2, 4, 114, 34, 4, 12, 4, -4, 4.0f, -4.0f, shortLife);
-	SetParticleArray(downRightGreen2, 4, 114, 46, 4, 12, 4, 4, 4.0f, 4.0f, shortLife);
-	SetParticleArray(upLeftGreen2, 4, 108, 34, 4, 12, -4, -4, -4.0f, -4.0f, shortLife);
-	SetParticleArray(downLeftGreen2, 4, 108, 46, 4, 12, -4, 4, -4.0f, 4.0f, shortLife);
+	SetParticleArray(upRightGreen2, 4, 114, 34, 4, 12, 4, -4, 4.0f, -4.0f, shortLife, 2);
+	SetParticleArray(downRightGreen2, 4, 114, 46, 4, 12, 4, 4, 4.0f, 4.0f, shortLife, 2);
+	SetParticleArray(upLeftGreen2, 4, 108, 34, 4, 12, -4, -4, -4.0f, -4.0f, shortLife, 2);
+	SetParticleArray(downLeftGreen2, 4, 108, 46, 4, 12, -4, 4, -4.0f, 4.0f, shortLife, 2);
 
-	SetParticleArray(upRightGreen3, 8, 114, 34, 4, 12, 4, -4, 4.0f, -4.0f, shortLife);
-	SetParticleArray(downRightGreen3, 8, 114, 46, 4, 12, 4, 4, 4.0f, 4.0f, shortLife);
-	SetParticleArray(upLeftGreen3, 8, 108, 34, 4, 12, -4, -4, -4.0f, -4.0f, shortLife);
-	SetParticleArray(downLeftGreen3, 8, 108, 46, 4, 12, -4, 4, -4.0f, 4.0f, shortLife);
+	SetParticleArray(upRightGreen3, 8, 114, 34, 4, 12, 4, -4, 4.0f, -4.0f, shortLife, 3);
+	SetParticleArray(downRightGreen3, 8, 114, 46, 4, 12, 4, 4, 4.0f, 4.0f, shortLife, 3);
+	SetParticleArray(upLeftGreen3, 8, 108, 34, 4, 12, -4, -4, -4.0f, -4.0f, shortLife, 3);
+	SetParticleArray(downLeftGreen3, 8, 108, 46, 4, 12, -4, 4, -4.0f, 4.0f, shortLife, 3);
 
-	SetParticleArray(upRightGreen4, 2, 215, 40, 12, 18, 12, -10, 4.0f, -4.0f, shortLife);
-	SetParticleArray(downRightGreen4, 2, 216, 59, 18, 12, 10, 12, 4.0f, 4.0f, shortLife);
-	SetParticleArray(upLeftGreen4, 2, 196, 47, 18, 12, -10, -12, -4.0f, -4.0f, shortLife);
-	SetParticleArray(downLeftGreen4, 2, 203, 60, 12, 18, -12, 10, -4.0f, 4.0f, shortLife);
+	SetParticleArray(upRightGreen4, 2, 215, 40, 12, 18, 12, -10, 4.0f, -4.0f, shortLife, 4);
+	SetParticleArray(downRightGreen4, 2, 216, 59, 18, 12, 10, 12, 4.0f, 4.0f, shortLife, 4);
+	SetParticleArray(upLeftGreen4, 2, 196, 47, 18, 12, -10, -12, -4.0f, -4.0f, shortLife, 4);
+	SetParticleArray(downLeftGreen4, 2, 203, 60, 12, 18, -12, 10, -4.0f, 4.0f, shortLife, 4);
 
-	SetParticleArray(upRightGreen5, 4, 215, 40, 12, 18, 12, -10, 4.0f, -4.0f, shortLife);
-	SetParticleArray(downRightGreen5, 4, 216, 59, 18, 12, 10, 12, 4.0f, 4.0f, shortLife);
-	SetParticleArray(upLeftGreen5, 4, 196, 47, 18, 12, -10, -12, -4.0f, -4.0f, shortLife);
-	SetParticleArray(downLeftGreen5, 4, 203, 60, 12, 18, -12, 10, -4.0f, 4.0f, shortLife);
+	SetParticleArray(upRightGreen5, 4, 215, 40, 12, 18, 12, -10, 4.0f, -4.0f, shortLife, 5);
+	SetParticleArray(downRightGreen5, 4, 216, 59, 18, 12, 10, 12, 4.0f, 4.0f, shortLife, 5);
+	SetParticleArray(upLeftGreen5, 4, 196, 47, 18, 12, -10, -12, -4.0f, -4.0f, shortLife, 5);
+	SetParticleArray(downLeftGreen5, 4, 203, 60, 12, 18, -12, 10, -4.0f, 4.0f, shortLife, 5);
 
 	bombRightDown.anim.PushBack({ 121, 113, 8, 9 });
 	bombRightDown.anim.loop = false;
@@ -495,6 +510,7 @@ bool ModuleParticles::Init()
 	arrowSuperUp2.speed.x = 7.0f;
 	arrowSuperUp2.speed.y = -1.5f;
 	arrowSuperUp2.life = shortLife;
+	arrowSuperUp2.laserDamage = 2;
 	arrowSuperUp2.anim.speed = 0.3f;
 
 	arrowUp2.anim.PushBack({ 41, 8, 13, 8 });
@@ -504,6 +520,7 @@ bool ModuleParticles::Init()
 	arrowUp2.speed.x = 7.0f;
 	arrowUp2.speed.y = -1.0f;
 	arrowUp2.life = shortLife;
+	arrowUp2.laserDamage = 2;
 	arrowUp2.anim.speed = 0.3f;
 
 	arrowStraight2.anim.PushBack({ 41, 8, 13, 8 });
@@ -512,6 +529,7 @@ bool ModuleParticles::Init()
 	arrowStraight2.anim.loop = false;
 	arrowStraight2.speed.x = 7.0f;
 	arrowStraight2.life = shortLife;
+	arrowStraight2.laserDamage = 2;
 	arrowStraight2.anim.speed = 0.3f;
 
 	arrowDown2.anim.PushBack({ 41, 8, 13, 8 });
@@ -521,6 +539,7 @@ bool ModuleParticles::Init()
 	arrowDown2.speed.x = 7.0f;
 	arrowDown2.speed.y = 1.0f;
 	arrowDown2.life = shortLife;
+	arrowDown2.laserDamage = 2;
 	arrowDown2.anim.speed = 0.3f;
 
 	arrowSuperDown2.anim.PushBack({ 41, 8, 13, 8 });
@@ -530,6 +549,7 @@ bool ModuleParticles::Init()
 	arrowSuperDown2.speed.x = 7.0f;
 	arrowSuperDown2.speed.y = 1.5f;
 	arrowSuperDown2.life = shortLife;
+	arrowSuperDown2.laserDamage = 2;
 	arrowSuperDown2.anim.speed = 0.3f;
 
 	//--------------------------------------------------
@@ -543,6 +563,7 @@ bool ModuleParticles::Init()
 	arrowSuperUp3.speed.x = 7.0f;
 	arrowSuperUp3.speed.y = -1.5;
 	arrowSuperUp3.life = shortLife;
+	arrowSuperUp3.laserDamage = 3;
 	arrowSuperUp3.anim.speed = 0.3f;
 
 	arrowUp3.anim.PushBack({ 41, 5, 13, 14 });
@@ -554,6 +575,7 @@ bool ModuleParticles::Init()
 	arrowUp3.speed.x = 7.0f;
 	arrowUp3.speed.y = -1.0f;
 	arrowUp3.life = shortLife;
+	arrowUp3.laserDamage = 3;
 	arrowUp3.anim.speed = 0.3f;
 
 	arrowStraight3.anim.PushBack({ 41, 5, 13, 14 });
@@ -564,6 +586,7 @@ bool ModuleParticles::Init()
 	arrowStraight3.anim.loop = false;
 	arrowStraight3.speed.x = 7.0f;
 	arrowStraight3.life = shortLife;
+	arrowStraight3.laserDamage = 3;
 	arrowStraight3.anim.speed = 0.3f;
 
 	arrowDown3.anim.PushBack({ 41, 5, 13, 14 });
@@ -575,6 +598,7 @@ bool ModuleParticles::Init()
 	arrowDown3.speed.x = 7.0f;
 	arrowDown3.speed.y = 1.0f;
 	arrowDown3.life = shortLife;
+	arrowDown3.laserDamage = 3;
 	arrowDown3.anim.speed = 0.3f;
 
 	arrowSuperDown3.anim.PushBack({ 41, 5, 13, 14 });
@@ -586,6 +610,7 @@ bool ModuleParticles::Init()
 	arrowSuperDown3.speed.x = 7.0f;
 	arrowSuperDown3.speed.y = 1.5f;
 	arrowSuperDown3.life = shortLife;
+	arrowSuperDown3.laserDamage = 3;
 	arrowSuperDown3.anim.speed = 0.3f;
 
 	// Orange Power
@@ -793,7 +818,7 @@ update_status ModuleParticles::Update()
 }
 
 // Parameter list: (Particle* particleArray, int arraySize, int particleSizeX, int particleSizeY, int startX, int startY, int movX, int movY, float speedX, float speedY, int life, int animSpeed, bool animLoop)
-void ModuleParticles::SetParticleArray(Particle* particleArray, int arraySize, int startX, int startY, int particleSizeX, int particleSizeY, int movX, int movY, float speedX, float speedY, int particleLife, float animSpeed, bool animLoop) // Carles edit
+void ModuleParticles::SetParticleArray(Particle* particleArray, int arraySize, int startX, int startY, int particleSizeX, int particleSizeY, int movX, int movY, float speedX, float speedY, int particleLife, int laserDamage, float animSpeed, bool animLoop) // Carles edit
 {
 	for (int i = 0; i < arraySize; i++)	// Carles edit
 	{
@@ -802,6 +827,7 @@ void ModuleParticles::SetParticleArray(Particle* particleArray, int arraySize, i
 		particleArray[i].speed.x = speedX;
 		particleArray[i].speed.y = speedY;
 		particleArray[i].life = particleLife;
+		particleArray[i].laserDamage = laserDamage;
 		particleArray[i].anim.speed = animSpeed;
 	}
 }
@@ -843,44 +869,7 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, int sh
 		}
 	}
 }
-/*
-void ModuleParticles::AddParticlePath(const Particle& particle, int x, int y, int shotType, COLLIDER_TYPE collider_type, Uint32 delay)
-{
-	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
-	{
-		if (active[i] == nullptr)
-		{
-			Particle* p = new Particle(particle);
-			p->born = SDL_GetTicks() + delay;
-			p->position.x = (int)p->fPositionHorizontal;
-			p->position.y = (int)p->fPositionVertical;
-			p->shotType = shotType;
-			if (collider_type == COLLIDER_PLAYER_SHOT || collider_type == COLLIDER_PLAYER_2_SHOT)
-			{
-				p->fPositionHorizontal = x + App->render->camera.x / SCREEN_SIZE;
-				p->fPositionVertical = y + App->render->camera.y / SCREEN_SIZE;
-				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
-			}
 
-			else if (collider_type != COLLIDER_NONE)
-			{
-				p->fPositionHorizontal = x;
-				p->fPositionVertical = y;
-				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
-			}
-
-			else
-			{
-				p->fPositionHorizontal = x;
-				p->fPositionVertical = y;
-			}
-
-			active[i] = p;
-			break;
-		}
-	}
-}
-*/
 void ModuleParticles::AddParticleArray(Particle* particleArray, int arraySize, int x, int y, int movX, int movY, int shotType, COLLIDER_TYPE collider_type, Uint32 delay)	// Carles edit
 {
 	uint i = 0;
@@ -929,12 +918,6 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
-			if (active[i]->shotType == PLAYER_CONSTANT_SHOT)
-			{
-				// Limitate damage done, so it doesn't wreck bosses
-				break;
-			}
-
 			if (c2->type == COLLIDER_WALL || c2->type == COLLIDER_ENEMY)
 			{
 				if (active[i]->arrayId > -1)
@@ -961,20 +944,43 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 
 					int arrayIdMarker = active[i]->arrayId;
 
-					//AddParticle(EnemyExplo, active[i]->position.x, active[i]->position.y); explosion needs to be here somewhere?
-
-					for (uint j = 0; j < MAX_ACTIVE_PARTICLES; j++)
+					if (active[i]->laserDamage > 1)
 					{
-						if (active[j] != nullptr && active[j]->arrayId == arrayIdMarker)
+						for (uint j = 0; j < MAX_ACTIVE_PARTICLES; j++)
 						{
-							delete active[j];
-							active[j] = nullptr;
+							if (active[j] != nullptr && active[j]->arrayId == arrayIdMarker)
+							{
+								active[j]->laserDamage--;
+							}
+						}
+					}
+
+					else
+					{
+						for (uint j = 0; j < MAX_ACTIVE_PARTICLES; j++)
+						{
+							if (active[j] != nullptr && active[j]->arrayId == arrayIdMarker)
+							{
+								delete active[j];
+								active[j] = nullptr;
+							}
 						}
 					}
 
 					break;
 				}
-				
+
+				else if (active[i]->laserDamage > 1)
+				{
+					active[i]->laserDamage--;
+					break;
+				}
+
+				else if (active[i]->shotType == PLAYER_CONSTANT_SHOT)
+				{
+					break;
+				}
+
 				if (active[i]->shotType == PLAYER_1_BLUE_SHOT)
 				{
 					App->player1->currentBlue -= 1;
@@ -1032,7 +1038,8 @@ Particle::Particle(const Particle& p) :
 	life(p.life),
 	arrayId(p.arrayId),
 	shotType(p.shotType),
-	arraySize(p.arraySize),	// carles edit
+	arraySize(p.arraySize),
+	laserDamage(p.laserDamage),
 	particlePath(p.particlePath)	// carles edit
 {}
 
