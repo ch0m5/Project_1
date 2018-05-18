@@ -45,11 +45,11 @@ float Down_WhiteOrangeTurret::resultingAngle()
 	return result;
 }
 
-void Down_WhiteOrangeTurret::Move()
+/*void Down_WhiteOrangeTurret::Move()
 {
 	position.x = Down_WhiteOrangeTurret_posx + Down_WhiteOrangeTurret_Path.GetCurrentPosition().x;
 	position.y = Down_WhiteOrangeTurret_posy + Down_WhiteOrangeTurret_Path.GetCurrentPosition().y;
-}
+}*/
 
 
 void Down_WhiteOrangeTurret::OnCollision(Collider* collider)

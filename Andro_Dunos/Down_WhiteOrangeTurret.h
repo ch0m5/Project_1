@@ -24,13 +24,13 @@ public:
 	int hitboxWidth;
 	int hitboxHeight;
 
-	void Move();
+	//void Move();
 	float resultingAngle();
 
 	uint score = 200;
 	bool dead = false;
 
-	void Fire();
+	//void Fire();
 
 };
 
