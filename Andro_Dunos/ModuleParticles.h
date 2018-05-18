@@ -25,11 +25,13 @@ enum shot_type
 	PLAYER_1_BLUE_SHOT,
 	PLAYER_1_ORANGE_SHOT,
 	PLAYER_1_YELLOW_SHOT,
-	PLAYER_1_WEAPON_SHOT,	// why the need of weapon shot, fix
+	PLAYER_1_WEAPON_SHOT,
 	PLAYER_2_BLUE_SHOT,
 	PLAYER_2_ORANGE_SHOT,
 	PLAYER_2_YELLOW_SHOT,
-	PLAYER_2_WEAPON_SHOT
+	PLAYER_2_WEAPON_SHOT,
+
+	PLAYER_CONSTANT_SHOT
 };
 
 struct SDL_Texture;
@@ -173,7 +175,7 @@ public:
 	Particle bombLeftUp;
 
 	// Weapon
-	//Particle lasersSpinning;
+	//Particle laserSpinning;
 
 	// Type 4 particles
 	Particle arrowUp1;
@@ -195,8 +197,8 @@ public:
 	// Orange Power
 	Particle laserUp;
 	Particle laserDown;
-	//Particle* downRightGreen = nullptr;	// Reusing particles (keep commented)
-	//Particle* upRightGreen = nullptr;
+	//Particle downRightGreen;	// Reusing particles (keep commented)
+	//Particle upRightGreen;
 
 	// Weapon
 	Particle weaponYellowBlast;

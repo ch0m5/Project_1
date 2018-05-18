@@ -105,9 +105,10 @@ public:
 	int currentBlueShots;
 	int maxBlueShots;
 
-	int fireWeapon;		// Integer that marks which weapon is being fired at the moment (with an enum)
+	int fireWeapon;				// Integer that marks which weapon is being fired at the moment (with an enum)
 	int weaponLaserInterval;	// Marks time between fired lasers in a single weapon shot
-	int weaponStage;	// Marks stage of currently firing weapon
+	int weaponStage;			// Marks stage of currently firing weapon
+	int weaponLoop;				// Marks the number of loops of the weapon, if any
 
 	// For max: MaxBlueLasers = 3, MaxOrange = 1, MaxYellow = 3
 	// Lower Conditions:

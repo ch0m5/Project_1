@@ -26,64 +26,11 @@ bool ModuleParticles::Init()
 {
 	LOG("Init Module Particles");
 	bool ret = true;
-	// Explosion particle // @Andres
-	explosion.anim.PushBack({ 505, 34, 4, 4 });
-	explosion.anim.PushBack({ 512, 26, 12, 12 });
-	explosion.anim.PushBack({ 528, 6, 32, 32 });
-	explosion.anim.PushBack({ 563, 7, 30, 30 });
-	explosion.anim.PushBack({ 597, 8, 30, 30 });
-	explosion.anim.PushBack({ 518, 46, 30, 30 });
-	explosion.anim.PushBack({ 552, 47, 30, 30 });
-	explosion.anim.PushBack({ 587, 45, 32, 32 });
-	explosion.anim.PushBack({ 524, 82, 32, 32 });
-	explosion.anim.PushBack({ 571, 82, 32, 32 });
-	explosion.anim.loop = false;
-	explosion.anim.speed = 1.5f;
-	explosion.anim.Finished();
 
-	explosion1.anim.PushBack({ 632, 24, 8, 8 });
-	explosion1.anim.PushBack({ 642, 18, 13, 14 });
-	explosion1.anim.PushBack({ 658, 7, 25, 25 });
-	explosion1.anim.PushBack({ 688, 6, 27, 26 });
-	explosion1.anim.PushBack({ 718, 3, 30, 29 });
-	explosion1.anim.PushBack({ 632, 39, 29, 28 });
-	explosion1.anim.PushBack({ 665, 39, 29, 28 });
-	explosion1.anim.PushBack({ 698, 40, 28, 27 });
-	explosion1.anim.PushBack({ 728, 42, 29, 27 });
-	explosion1.anim.PushBack({ 632, 74, 29, 27 });
-	explosion1.anim.PushBack({ 665, 76, 28, 26 });
-	explosion1.anim.PushBack({ 698, 77, 26, 24 });
-	explosion1.anim.PushBack({ 727, 79, 21, 21 });
-	explosion1.anim.PushBack({ 638, 107, 17, 17 });
-	explosion1.anim.PushBack({ 665, 115, 6, 6 });
-	explosion1.anim.loop = false;
-	explosion1.anim.speed = 1.5f;
-	explosion1.anim.Finished();
-
-	explosion2.anim.PushBack({ 509, 137, 6, 6 });
-	explosion2.anim.PushBack({ 521, 135, 10, 8 });
-	explosion2.anim.PushBack({ 535, 127, 16, 16 });
-	explosion2.anim.PushBack({ 557, 129, 14, 14 });
-	explosion2.anim.loop = false;
-	explosion2.anim.speed = 1.5f;
-	explosion2.anim.Finished();
-	
-	return ret;
-}
-
-// Load assets
-bool ModuleParticles::Start()
-{
 	// Particle life values
 	shortLife = 1000;
 	mediumLife = 2000;
 	longLife = 3000;
-
-	// List of Ids needed to delete the full particle array
-	arrayIdList = 0;
-
-	LOG("Loading particles");
-	graphics = App->textures->Load("Assets/Sprites/Players_Ships/Laser_particles.png");
 
 	/* Laser Sprites
 
@@ -252,20 +199,20 @@ bool ModuleParticles::Start()
 	yellowBigRight.speed.x = 7.0f;
 	yellowBigRight.life = shortLife;
 	yellowBigRight.anim.speed = 0.3f;
-	
+
 	yellowBigLeft.anim.PushBack({ 3, 23, 15, 5 });
 	yellowBigLeft.anim.loop = false;
 	yellowBigLeft.speed.x = -7.0f;
 	yellowBigLeft.life = shortLife;
 	yellowBigLeft.anim.speed = 0.3f;
-	
+
 	yellowSmallDown.anim.PushBack({ 24, 79, 8, 6 });
 	yellowSmallDown.anim.loop = false;
 	yellowSmallDown.speed.x = -5.0f;
 	yellowSmallDown.speed.y = 2.0f;
 	yellowSmallDown.life = shortLife;
 	yellowSmallDown.anim.speed = 0.3f;
-	
+
 	yellowSmallUp.anim.PushBack({ 24, 68, 8, 6 });
 	yellowSmallUp.anim.loop = false;
 	yellowSmallUp.speed.x = -5.0f;
@@ -298,7 +245,7 @@ bool ModuleParticles::Start()
 	yellowSmallLeft.speed.x = -7.0f;
 	yellowSmallLeft.life = shortLife;
 	yellowSmallLeft.anim.speed = 0.3f;
-	
+
 	redRocketDown.anim.PushBack({ 2, 99, 16, 9 });
 	redRocketDown.anim.PushBack({ 1, 113, 16, 9 });
 	redRocketDown.anim.PushBack({ 3, 129, 16, 9 });
@@ -476,7 +423,7 @@ bool ModuleParticles::Start()
 	SetParticleArray(downRightGreen3, 8, 114, 46, 4, 12, 4, 4, 4.0f, 4.0f, shortLife);
 	SetParticleArray(upLeftGreen3, 8, 108, 34, 4, 12, -4, -4, -4.0f, -4.0f, shortLife);
 	SetParticleArray(downLeftGreen3, 8, 108, 46, 4, 12, -4, 4, -4.0f, 4.0f, shortLife);
-	
+
 	SetParticleArray(upRightGreen4, 2, 215, 40, 12, 18, 12, -10, 4.0f, -4.0f, shortLife);
 	SetParticleArray(downRightGreen4, 2, 216, 59, 18, 12, 10, 12, 4.0f, 4.0f, shortLife);
 	SetParticleArray(upLeftGreen4, 2, 196, 47, 18, 12, -10, -12, -4.0f, -4.0f, shortLife);
@@ -522,14 +469,14 @@ bool ModuleParticles::Start()
 	arrowUp1.speed.x = 7.0f;
 	arrowUp1.speed.y = -0.6f;
 	arrowUp1.life = shortLife;
-	arrowUp1.anim.speed = 0.5f;
+	arrowUp1.anim.speed = 0.3f;
 
 	arrowStraight1.anim.PushBack({ 41, 9, 13, 6 });
 	arrowStraight1.anim.PushBack({ 41, 23, 13, 6 });
 	arrowStraight1.anim.loop = false;
 	arrowStraight1.speed.x = 7.0f;
 	arrowStraight1.life = shortLife;
-	arrowStraight1.anim.speed = 0.5f;
+	arrowStraight1.anim.speed = 0.3f;
 
 	arrowDown1.anim.PushBack({ 41, 9, 13, 6 });
 	arrowDown1.anim.PushBack({ 41, 23, 13, 6 });
@@ -537,7 +484,7 @@ bool ModuleParticles::Start()
 	arrowDown1.speed.x = 7.0f;
 	arrowDown1.speed.y = 0.6f;
 	arrowDown1.life = shortLife;
-	arrowDown1.anim.speed = 0.5f;
+	arrowDown1.anim.speed = 0.3f;
 
 	//------------------------------------------------
 
@@ -548,7 +495,7 @@ bool ModuleParticles::Start()
 	arrowSuperUp2.speed.x = 7.0f;
 	arrowSuperUp2.speed.y = -1.5f;
 	arrowSuperUp2.life = shortLife;
-	arrowSuperUp2.anim.speed = 0.5f;
+	arrowSuperUp2.anim.speed = 0.3f;
 
 	arrowUp2.anim.PushBack({ 41, 8, 13, 8 });
 	arrowUp2.anim.PushBack({ 41, 22, 13, 8 });
@@ -557,7 +504,7 @@ bool ModuleParticles::Start()
 	arrowUp2.speed.x = 7.0f;
 	arrowUp2.speed.y = -1.0f;
 	arrowUp2.life = shortLife;
-	arrowUp2.anim.speed = 0.5f;
+	arrowUp2.anim.speed = 0.3f;
 
 	arrowStraight2.anim.PushBack({ 41, 8, 13, 8 });
 	arrowStraight2.anim.PushBack({ 41, 22, 13, 8 });
@@ -565,7 +512,7 @@ bool ModuleParticles::Start()
 	arrowStraight2.anim.loop = false;
 	arrowStraight2.speed.x = 7.0f;
 	arrowStraight2.life = shortLife;
-	arrowStraight2.anim.speed = 0.5f;
+	arrowStraight2.anim.speed = 0.3f;
 
 	arrowDown2.anim.PushBack({ 41, 8, 13, 8 });
 	arrowDown2.anim.PushBack({ 41, 22, 13, 8 });
@@ -574,7 +521,7 @@ bool ModuleParticles::Start()
 	arrowDown2.speed.x = 7.0f;
 	arrowDown2.speed.y = 1.0f;
 	arrowDown2.life = shortLife;
-	arrowDown2.anim.speed = 0.5f;
+	arrowDown2.anim.speed = 0.3f;
 
 	arrowSuperDown2.anim.PushBack({ 41, 8, 13, 8 });
 	arrowSuperDown2.anim.PushBack({ 41, 22, 13, 8 });
@@ -583,7 +530,7 @@ bool ModuleParticles::Start()
 	arrowSuperDown2.speed.x = 7.0f;
 	arrowSuperDown2.speed.y = 1.5f;
 	arrowSuperDown2.life = shortLife;
-	arrowSuperDown2.anim.speed = 0.5f;
+	arrowSuperDown2.anim.speed = 0.3f;
 
 	//--------------------------------------------------
 
@@ -596,7 +543,7 @@ bool ModuleParticles::Start()
 	arrowSuperUp3.speed.x = 7.0f;
 	arrowSuperUp3.speed.y = -1.5;
 	arrowSuperUp3.life = shortLife;
-	arrowSuperUp3.anim.speed = 0.5f;
+	arrowSuperUp3.anim.speed = 0.3f;
 
 	arrowUp3.anim.PushBack({ 41, 5, 13, 14 });
 	arrowUp3.anim.PushBack({ 41, 19, 13, 14 });
@@ -607,7 +554,7 @@ bool ModuleParticles::Start()
 	arrowUp3.speed.x = 7.0f;
 	arrowUp3.speed.y = -1.0f;
 	arrowUp3.life = shortLife;
-	arrowUp3.anim.speed = 0.5f;
+	arrowUp3.anim.speed = 0.3f;
 
 	arrowStraight3.anim.PushBack({ 41, 5, 13, 14 });
 	arrowStraight3.anim.PushBack({ 41, 19, 13, 14 });
@@ -617,7 +564,7 @@ bool ModuleParticles::Start()
 	arrowStraight3.anim.loop = false;
 	arrowStraight3.speed.x = 7.0f;
 	arrowStraight3.life = shortLife;
-	arrowStraight3.anim.speed = 0.5f;
+	arrowStraight3.anim.speed = 0.3f;
 
 	arrowDown3.anim.PushBack({ 41, 5, 13, 14 });
 	arrowDown3.anim.PushBack({ 41, 19, 13, 14 });
@@ -628,7 +575,7 @@ bool ModuleParticles::Start()
 	arrowDown3.speed.x = 7.0f;
 	arrowDown3.speed.y = 1.0f;
 	arrowDown3.life = shortLife;
-	arrowDown3.anim.speed = 0.5f;
+	arrowDown3.anim.speed = 0.3f;
 
 	arrowSuperDown3.anim.PushBack({ 41, 5, 13, 14 });
 	arrowSuperDown3.anim.PushBack({ 41, 19, 13, 14 });
@@ -639,7 +586,7 @@ bool ModuleParticles::Start()
 	arrowSuperDown3.speed.x = 7.0f;
 	arrowSuperDown3.speed.y = 1.5f;
 	arrowSuperDown3.life = shortLife;
-	arrowSuperDown3.anim.speed = 0.5f;
+	arrowSuperDown3.anim.speed = 0.3f;
 
 	// Orange Power
 	laserUp.anim.PushBack({ 63, 11, 3, 16 });
@@ -667,8 +614,8 @@ bool ModuleParticles::Start()
 	weaponYellowBlast.anim.PushBack({ 148, 281, 30, 30 });
 	weaponYellowBlast.anim.PushBack({ 179, 281, 30, 30 });
 	weaponYellowBlast.anim.loop = false;
-	weaponYellowBlast.life = shortLife;
-	weaponYellowBlast.anim.speed = 0.3f;
+	weaponYellowBlast.life = shortLife - 750;
+	weaponYellowBlast.anim.speed = 0.5f;
 
 	//Enemy laser
 	enemyBlueShot.anim.PushBack({ 238, 161, 6, 6 });
@@ -680,11 +627,60 @@ bool ModuleParticles::Start()
 	enemyBlueShot.speed.x = -3.0f;
 	enemyBlueShot.life = longLife;
 
+	// Explosion particle // @Andres
+	explosion.anim.PushBack({ 505, 34, 4, 4 });
+	explosion.anim.PushBack({ 512, 26, 12, 12 });
+	explosion.anim.PushBack({ 528, 6, 32, 32 });
+	explosion.anim.PushBack({ 563, 7, 30, 30 });
+	explosion.anim.PushBack({ 597, 8, 30, 30 });
+	explosion.anim.PushBack({ 518, 46, 30, 30 });
+	explosion.anim.PushBack({ 552, 47, 30, 30 });
+	explosion.anim.PushBack({ 587, 45, 32, 32 });
+	explosion.anim.PushBack({ 524, 82, 32, 32 });
+	explosion.anim.PushBack({ 571, 82, 32, 32 });
+	explosion.anim.loop = false;
+	explosion.anim.speed = 1.5f;
+	explosion.anim.Finished();
 
+	explosion1.anim.PushBack({ 632, 24, 8, 8 });
+	explosion1.anim.PushBack({ 642, 18, 13, 14 });
+	explosion1.anim.PushBack({ 658, 7, 25, 25 });
+	explosion1.anim.PushBack({ 688, 6, 27, 26 });
+	explosion1.anim.PushBack({ 718, 3, 30, 29 });
+	explosion1.anim.PushBack({ 632, 39, 29, 28 });
+	explosion1.anim.PushBack({ 665, 39, 29, 28 });
+	explosion1.anim.PushBack({ 698, 40, 28, 27 });
+	explosion1.anim.PushBack({ 728, 42, 29, 27 });
+	explosion1.anim.PushBack({ 632, 74, 29, 27 });
+	explosion1.anim.PushBack({ 665, 76, 28, 26 });
+	explosion1.anim.PushBack({ 698, 77, 26, 24 });
+	explosion1.anim.PushBack({ 727, 79, 21, 21 });
+	explosion1.anim.PushBack({ 638, 107, 17, 17 });
+	explosion1.anim.PushBack({ 665, 115, 6, 6 });
+	explosion1.anim.loop = false;
+	explosion1.anim.speed = 1.5f;
+	explosion1.anim.Finished();
 
+	explosion2.anim.PushBack({ 509, 137, 6, 6 });
+	explosion2.anim.PushBack({ 521, 135, 10, 8 });
+	explosion2.anim.PushBack({ 535, 127, 16, 16 });
+	explosion2.anim.PushBack({ 557, 129, 14, 14 });
+	explosion2.anim.loop = false;
+	explosion2.anim.speed = 1.5f;
+	explosion2.anim.Finished();
+	
+	return ret;
+}
 
+// Load assets
+bool ModuleParticles::Start()
+{
+	
+	// List of Ids needed to delete the full particle array
+	arrayIdList = 0;
 
-
+	LOG("Loading particles");
+	graphics = App->textures->Load("Assets/Sprites/Players_Ships/Laser_particles.png");
 
 	return true;
 }
@@ -826,6 +822,7 @@ void ModuleParticles::AddParticle(const Particle& particle, int x, int y, int sh
 				p->fPositionHorizontal = x + App->render->camera.x / SCREEN_SIZE;
 				p->fPositionVertical = y + App->render->camera.y / SCREEN_SIZE;
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
+				p->collider->SetPos(p->position.x, p->position.y);
 			}
 
 			else if (collider_type != COLLIDER_NONE)
@@ -904,7 +901,10 @@ void ModuleParticles::AddParticleArray(Particle* particleArray, int arraySize, i
 				p->arraySize = arraySize;
 				p->shotType = shotType;
 				if (collider_type != COLLIDER_NONE)
+				{
 					p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(), collider_type, this);
+					p->collider->SetPos(p->position.x, p->position.y);
+				}
 				active[i] = p;
 				break;
 			}
@@ -929,10 +929,14 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
+			if (active[i]->shotType == PLAYER_CONSTANT_SHOT)
+			{
+				// Limitate damage done, so it doesn't wreck bosses
+				break;
+			}
+
 			if (c2->type == COLLIDER_WALL || c2->type == COLLIDER_ENEMY)
 			{
-				//AddParticle(shipExplo, active[i]->position.x, active[i]->position.y);
-
 				if (active[i]->arrayId > -1)
 				{
 					if (active[i]->shotType == PLAYER_1_BLUE_SHOT)

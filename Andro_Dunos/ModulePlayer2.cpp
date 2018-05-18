@@ -220,13 +220,13 @@ bool ModulePlayer2::Start()
 	currentBlue = 0;	// Every shot increases the counter by 2, player will not shot if it gets higher than 4. Each collide substracts 1.
 	currentOrange = 0;	// Every time it fires increases the counter by x (changes on level), player will not shot if it reaches MAX.  Each collide substracts 1.
 	currentYellow = 0;	// When reaching level yellow one, the max becomes 5 and the counter increases by 1 for each misile fired. Each collide substracts 1.
-	currentBlueShots = 0;
 
 	checkBluePowerParticleLimit();
 
-	fireWeapon = 0;				// Integer that marks which weapon is being fired at the moment (with an enum)
+	fireWeapon = NONE;			// Integer that marks which weapon is being fired at the moment (with an enum)
 	weaponLaserInterval = 0;	// Marks time between fired lasers in a single weapon shot
-	weaponStage;				// Marks stage of currently firing weapon
+	weaponStage = 0;			// Marks stage of currently firing weapon
+	weaponLoop = 0;				// Marks the number of loops of the weapon, if any
 
 	blueShotTimer = 0;
 	weaponChargeTimer = 0;
@@ -485,20 +485,18 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 			Mix_PlayChannel(2, typeSwap, 0);
 		}
 
-		// WARNING: ALL BLITTED POSITIONS ARE CORRECTED WITH THE REFERENCE OF SCREEN SIZE 3, HARDCODED INTO THAT SIZE
-
 		// Fire lasers
 		if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_DOWN)
 		{
-			if (currentBlue < maxBlueShots && blueShotTimer < SDL_GetTicks() - 100)
-			{
-				if (bluePower > LEVEL_1)
-					weaponChargeTimer = SDL_GetTicks();
+			if (bluePower > LEVEL_1)
+				weaponChargeTimer = SDL_GetTicks();
 
+			if (currentBlue < maxBlueShots && blueShotTimer < SDL_GetTicks() - 100 && fireWeapon == NONE)
+			{
 				blueShotTimer = SDL_GetTicks();
 				/*
 				if (currentBlue < 0)
-					currentBlue == 0;
+				currentBlue == 0;
 				*/
 				switch (type)
 				{
@@ -1134,42 +1132,111 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 			break;
 
 		case TYPE_3:
-			Mix_PlayChannel(3, type3Weapon, 0);
+			if (weaponLaserInterval < SDL_GetTicks() && weaponStage == 0)
+			{
 
-			fireWeapon = NONE;
+
+				Mix_PlayChannel(3, type3Weapon, 0);
+				weaponStage++;
+			}
+
+			else if (weaponLaserInterval < SDL_GetTicks() - 300 && weaponStage == 1)
+			{
+
+				weaponStage++;
+				fireWeapon = NONE;
+				weaponStage = 0;
+			}
 			break;
 
 		case TYPE_4:
-			Mix_PlayChannel(3, type4Weapon, 0);
+			if (weaponLaserInterval < SDL_GetTicks() && weaponStage == 0)
+			{
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset, position.y, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
 
-			fireWeapon = NONE;
+				Mix_PlayChannel(3, type4Weapon, 0);
+				weaponStage++;
+			}
+
+			else if (weaponLaserInterval < SDL_GetTicks() - 30 && weaponStage == 1)
+			{
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 40, position.y - 10, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 40, position.y, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 40, position.y + 10, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+
+				weaponStage++;
+			}
+
+			else if (weaponLaserInterval < SDL_GetTicks() - 60 && weaponStage == 2)
+			{
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 80, position.y - 20, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 80, position.y, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 80, position.y + 20, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+
+				Mix_PlayChannel(3, type4Weapon, 0);
+				weaponStage++;
+			}
+
+			else if (weaponLaserInterval < SDL_GetTicks() - 90 && weaponStage == 3)
+			{
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 120, position.y - 30, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 120, position.y, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 120, position.y + 30, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+
+				weaponStage++;
+			}
+
+			else if (weaponLaserInterval < SDL_GetTicks() - 120 && weaponStage == 4)
+			{
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 160, position.y - 40, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 160, position.y, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 160, position.y + 40, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+
+				Mix_PlayChannel(3, type4Weapon, 0);
+				weaponStage++;
+			}
+
+			else if (weaponLaserInterval < SDL_GetTicks() - 150 && weaponStage == 5)
+			{
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 200, position.y - 50, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 200, position.y, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 200, position.y + 50, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+
+				weaponStage++;
+			}
+
+			else if (weaponLaserInterval < SDL_GetTicks() - 180 && weaponStage == 6)
+			{
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 240, position.y - 60, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 240, position.y, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 240, position.y + 60, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+
+				Mix_PlayChannel(3, type4Weapon, 0);
+				weaponStage++;
+			}
+
+			else if (weaponLaserInterval < SDL_GetTicks() - 210 && weaponStage == 7)
+			{
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 280, position.y - 70, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 280, position.y, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 280, position.y + 70, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
+
+				if (weaponLoop < 1)
+				{
+					weaponLaserInterval = SDL_GetTicks() + 200;		// + delay
+					weaponStage = 0;
+					weaponLoop++;
+				}
+
+				else
+				{
+					weaponStage = 0;
+					weaponLoop = 0;
+					fireWeapon = NONE;
+				}
+			}
+
 			break;
-		}
-
-		//GodMode Function
-		if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN && App->input->debugMode == true)
-		{
-			if (App->input->debugMode == false)
-			{
-				godMode = false;
-			}
-			if (App->input->keyboard[SDL_SCANCODE_F2] != KEY_REPEAT && App->input->debugMode == true)
-			{
-				godMode = !godMode;
-			}
-
-
-			if (godMode == true)
-			{
-				playerHitbox->to_delete = true;
-				playerHitbox = nullptr;
-			}
-			else if (godMode == false)
-			{
-				godMode = false;
-				playerHitbox = App->collision->AddCollider({ App->render->camera.x / SCREEN_SIZE + (int)position.x, App->render->camera.y / SCREEN_SIZE + (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER_2, this);
-			}
-
 		}
 
 		// Update collider position to player position
@@ -1199,6 +1266,34 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 	{
 		SDL_Rect crashrect = crashAnimation->GetCurrentFrame();
 		App->render->Blit(graphics, position.x, position.y, &crashrect, 1.0f, false);
+
+		// VALUES THAT NEED TO RESTART WHEN PLAYER DIES, SHOULD HAPPEN ONLY ONCE
+		/*
+		if (bluePower > LEVEL_1)
+		bluePower--;
+
+		if (orangePower > LEVEL_0)
+		orangePower--;
+
+		if (yellowPower > LEVEL_0)
+		yellowPower--;
+
+		if (greenPower > LEVEL_0)
+		greenPower--;
+
+		checkBluePowerParticleLimit();
+
+		fireWeapon = NONE;				// Integer that marks which weapon is being fired at the moment (with an enum)
+		weaponLaserInterval = 0;	// Marks time between fired lasers in a single weapon shot
+		weaponStage = 0;			// Marks stage of currently firing weapon
+		weaponLoop = 0;				// Marks the number of loops of the weapon, if any
+
+		blueShotTimer = 0;
+		weaponChargeTimer = 0;
+		weaponChargingStage = NOT_CHARGING;
+
+		movVertical = 0;	// Counter for the vertical movement of the ship
+		*/
 	}
 
 	return UPDATE_CONTINUE;
