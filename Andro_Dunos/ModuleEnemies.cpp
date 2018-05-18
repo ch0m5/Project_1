@@ -20,6 +20,8 @@
 #include "GreyYellow_Enemy_Down.h"
 #include "Shuriken_Enemy.h"
 #include "silver_round.h"
+#include "Down_WhiteOrangeTurret.h"
+#include "Down_WhiteOrangeTurret.h"
 
 #define SPAWN_MARGIN 50
 
@@ -199,6 +201,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::SILVER_ROUND:
 			enemies[i] = new Silver_Round(info.x, info.y);
 			break;
+		case ENEMY_TYPES::DOWN_WHITEORANGETURRET:
+			enemies[i] = new Down_WhiteOrangeTurret(info.x, info.y);
+			break;
+		
 		}
 	}
 }
