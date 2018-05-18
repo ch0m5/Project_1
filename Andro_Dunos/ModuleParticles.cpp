@@ -201,14 +201,14 @@ bool ModuleParticles::Init()
 	yellowBigRight.anim.loop = false;
 	yellowBigRight.speed.x = 7.0f;
 	yellowBigRight.life = shortLife;
-	yellowBigRight.laserDamage = 2;
+	yellowBigRight.laserDamage = 3;
 	yellowBigRight.anim.speed = 0.3f;
 
 	yellowBigLeft.anim.PushBack({ 3, 23, 15, 5 });
 	yellowBigLeft.anim.loop = false;
 	yellowBigLeft.speed.x = -7.0f;
 	yellowBigLeft.life = shortLife;
-	yellowBigLeft.laserDamage = 2;
+	yellowBigLeft.laserDamage = 3;
 	yellowBigLeft.anim.speed = 0.3f;
 
 	yellowSmallDown.anim.PushBack({ 24, 79, 8, 6 });
