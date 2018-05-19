@@ -1,6 +1,6 @@
 ---
-name: Custom issue template
-about: Describe Issue Template
+name: BUG Issue Template
+about: Use this Template to easily issue a BUG you've found!
 
 ---
 
