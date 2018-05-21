@@ -46,6 +46,7 @@ public:
 	// Animation ship crash
 	Animation crash;
 	bool destroyed;
+	unsigned short lives;
 
 	// Animation pointers
 	Animation* shipAnimation = nullptr;

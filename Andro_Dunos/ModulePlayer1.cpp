@@ -1349,6 +1349,10 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				App->UI->p1Dead = true;
 				playerHitbox->to_delete = true;
 				this->Disable();
+				if (App->UI->p2Dead == true)
+				{
+					App->fade->FadeToBlack(App->stage1, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
+				}
 			}
 
 			destroyed = false;
@@ -1401,15 +1405,6 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 		destroyed = true;
 		playerHitbox->to_delete = true;
 		lives -= 1;
-
-		if (App->input->secondPlayerState == false)
-		{
-			App->fade->FadeToBlack(App->stage1, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
-		}
-		else if (App->player2->destroyed == true)
-		{
-			App->fade->FadeToBlack(App->stage1, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
-		}
 	}
 }
 

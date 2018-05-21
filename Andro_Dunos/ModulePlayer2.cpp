@@ -14,7 +14,7 @@
 #include "ModuleStage1.h"
 #include "ModuleStage2.h"
 #include "ModuleFont.h"
-
+#include "ModuleUserInterface.h"
 ModulePlayer2::ModulePlayer2()	// @CarlesHoms @Andres
 {
 	graphics = nullptr;
@@ -191,6 +191,8 @@ bool ModulePlayer2::Start()
 	LOG("Loading player textures");
 	bool ret = true;
 	destroyed = false;
+	App->UI->p2Dead = false;
+	lives = 3;
 	graphics = App->textures->Load("Assets/Sprites/Players_Ships/ships_all.png"); // arcade version
 	
 	//Music and sounds FX
@@ -1239,52 +1241,37 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 			break;
 		}
 
-		//GodMode Function
-		if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN && App->input->debugMode == true)
+		
+	}
+
+	//GodMode Function
+	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN && App->input->debugMode == true)
+	{
+		if (App->input->debugMode == false)
 		{
-			if (App->input->debugMode == false)
-			{
-				godMode = false;
-			}
-			if (App->input->keyboard[SDL_SCANCODE_F2] != KEY_REPEAT && App->input->debugMode == true)
-			{
-				godMode = !godMode;
-			}
-
-
-			if (godMode == true)
-			{
-				playerHitbox->to_delete = true;
-				playerHitbox = nullptr;
-			}
-			else if (godMode == false)
-			{
-				godMode = false;
-				playerHitbox = App->collision->AddCollider({ App->render->camera.x / SCREEN_SIZE + (int)position.x, App->render->camera.y / SCREEN_SIZE + (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
-			}
-
+			godMode = false;
 		}
-		// Update collider position to player position
-		if (godMode == false)
+		if (App->input->keyboard[SDL_SCANCODE_F2] != KEY_REPEAT && App->input->debugMode == true)
 		{
-			playerHitbox->SetPos(App->render->camera.x / SCREEN_SIZE + position.x, App->render->camera.y / SCREEN_SIZE + position.y);
+			godMode = !godMode;
 		}
 
-		// Draw everything --------------------------------------
-		if (destroyed == false)
+
+		if (godMode == true)
 		{
-			SDL_Rect propellerRect = propellerAnimation->GetCurrentFrame();
-			App->render->Blit(graphics, position.x - propellerWidth, position.y, &propellerRect, 1.0f, false);
-
-			if (weaponChargingStage == CHARGED || weaponChargingStage == CHARGED_LOOP)
-			{
-				shipRect = shipAnimation->GetCurrentFrame();
-				App->render->Blit(graphics, position.x - 2, position.y - 3, &shipRect, 1.0f, false);
-			}
-
-			else
-				App->render->Blit(graphics, position.x, position.y, &shipRect, 1.0f, false);
+			playerHitbox->to_delete = true;
+			playerHitbox = nullptr;
 		}
+		else if (godMode == false)
+		{
+			godMode = false;
+			playerHitbox = App->collision->AddCollider({ App->render->camera.x / SCREEN_SIZE + (int)position.x, App->render->camera.y / SCREEN_SIZE + (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
+		}
+	}
+	// Update collider position to player position
+	if (godMode == false)
+	{
+		playerHitbox->SetPos(App->render->camera.x / SCREEN_SIZE + position.x, App->render->camera.y / SCREEN_SIZE + position.y);
 	}
 
 	if (destroyed == true)
@@ -1319,6 +1306,52 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 
 		movVertical = 0;	// Counter for the vertical movement of the ship
 		*/
+	}
+
+	// Draw everything --------------------------------------
+	if (destroyed == false)
+	{
+		SDL_Rect propellerRect = propellerAnimation->GetCurrentFrame();
+		App->render->Blit(graphics, position.x - propellerWidth, position.y, &propellerRect, 1.0f, false);
+
+		if (weaponChargingStage == CHARGED || weaponChargingStage == CHARGED_LOOP)
+		{
+			shipRect = shipAnimation->GetCurrentFrame();
+			App->render->Blit(graphics, position.x - 2, position.y - 3, &shipRect, 1.0f, false);
+		}
+
+		else
+			App->render->Blit(graphics, position.x, position.y, &shipRect, 1.0f, false);
+	}
+
+	//When the explosion animation ends, execute this code (RESPAWN)
+	if (crash.Finished() == true && destroyed == true)
+	{
+		//Reset player pos
+		position.x = 0;							// Starting point of the ship (using p2Point)
+		position.y = (int)(SCREEN_HEIGHT / 2 - 10);
+		crash.Reset();
+		crash.ResetLoops();
+		/*crashAnimation->;*/
+
+		if (godMode == false)
+		{
+			playerHitbox = App->collision->AddCollider({ App->render->camera.x / SCREEN_SIZE + (int)position.x, App->render->camera.y / SCREEN_SIZE + (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
+			//playerHitbox->SetPos(App->render->camera.x / SCREEN_SIZE + position.x, App->render->camera.y / SCREEN_SIZE + position.y);
+			playerHitbox->to_delete = false;
+		}
+
+		if (lives < 1)
+		{
+			App->UI->p2Dead = true;
+			playerHitbox->to_delete = true;
+			this->Disable();
+			if (App->UI->p1Dead == true)
+			{
+				App->fade->FadeToBlack(App->stage1, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
+			}
+		}
+		destroyed = false;
 	}
 
 	return UPDATE_CONTINUE;
@@ -1360,24 +1393,13 @@ bool ModulePlayer2::CleanUp()
 
 void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 {
-	
-
-	if ((c1->type == COLLIDER_WALL ||
-		c2->type == COLLIDER_WALL ||
-		c1->type == COLLIDER_ENEMY_SHOT ||  //Cambio @andres
-		c2->type == COLLIDER_ENEMY_SHOT ||  //Cambio @andres
-		c1->type == COLLIDER_ENEMY ||		//Cambio @andres
-		c2->type == COLLIDER_ENEMY))		//Cambio @andres
+	if (c2->type != COLLIDER_POWERUP)
 	{
 		Mix_PlayChannel(3, playerDeathExplosion, 0);
 		crashAnimation = &crash;
 		destroyed = true;
 		playerHitbox->to_delete = true;
-		
-		if (App->player1->destroyed == true)
-		{
-			App->fade->FadeToBlack(App->stage1, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
-		}
+		lives -= 1;
 	}
 	/*if ((c1->type == COLLIDER_POWERUP ||c2->type == COLLIDER_POWERUP ))
 	{
