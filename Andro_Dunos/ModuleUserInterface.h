@@ -45,6 +45,10 @@ public:
 
 	int CurrentStage;
 	int CompletedLevel;
+
+	//Player Variables
+	bool p1Dead;
+	bool p2Dead;
 };
 
 #endif

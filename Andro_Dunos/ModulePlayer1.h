@@ -46,7 +46,6 @@ public:
 	// Animation ship crash
 	Animation crash;
 	bool destroyed;
-	bool dead;
 	unsigned short lives;
 
 	// Animation pointers

@@ -32,7 +32,8 @@ bool ModuleUserInterface::Start()
 {
 	LOG("Loading User Interface");	
 	bool ret = true;
-
+	p1Dead = true;
+	p2Dead = true;
 	player1Score = 0;
 	player2Score = 0;
 	font_score = App->fonts->Load("Assets/Sprites/User_Interface/fonts/Font-score-white.png", "1234567890P", 1);

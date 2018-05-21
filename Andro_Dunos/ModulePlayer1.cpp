@@ -14,6 +14,7 @@
 #include "ModuleStage1.h"
 #include "ModuleStage2.h"
 #include "ModuleFont.h"
+#include  "ModuleUserInterface.h"
 
 ModulePlayer1::ModulePlayer1()	// @CarlesHoms @Andres
 {
@@ -194,7 +195,7 @@ bool ModulePlayer1::Start()
 	LOG("Loading player textures");
 	bool ret = true;
 	destroyed = false;
-	dead = false;
+	App->UI->p1Dead = false;
 	lives = 3;
 	graphics = App->textures->Load("Assets/Sprites/Players_Ships/ships_all.png"); // arcade version
 
@@ -268,8 +269,10 @@ bool ModulePlayer1::Start()
 // Update: draw background
 update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed sprite depending on a counter.
 {
-	// How it works: A counter (movVertical) changes values by pressing UP, DOWN or neither and then one of the SDL_Rects inside
-	// the frames array of ship animation (shipVerticalMovement) is blited depending on the value of the counter.
+	if (destroyed == false)
+	{
+		// How it works: A counter (movVertical) changes values by pressing UP, DOWN or neither and then one of the SDL_Rects inside
+		// the frames array of ship animation (shipVerticalMovement) is blited depending on the value of the counter.
 		shipAnimation = &shipVerticalMovement;
 		propellerAnimation = &idleBooster;
 		shipRect = shipAnimation->frames[SHIP_IDLE];
@@ -946,7 +949,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 			{
 				weaponChargingStage = CHARGED;
 			}
-			
+
 			else if (bluePower > LEVEL_1 && weaponChargeTimer < SDL_GetTicks() - 4400 && weaponChargingStage == CHARGED)
 			{
 				Mix_PlayChannel(1, typeCharged, -1);
@@ -987,22 +990,22 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				bluePower--;
 				checkBluePowerParticleLimit();
 			}
-			
+
 			else if (weaponChargeTimer < SDL_GetTicks() - 1300)
 				Mix_HaltChannel(1);
 		}
-		
+
 		switch (fireWeapon)
 		{
 		case NONE:
 			break;
 
-		case TYPE_1:	
+		case TYPE_1:
 			if (weaponLaserInterval < SDL_GetTicks() && weaponStage == 0)
 			{
 				App->particles->AddParticle(App->particles->weaponBlueVerticalUp, position.x + laserHorizontalOffset, position.y, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->weaponBlueVerticalDown, position.x + laserHorizontalOffset, position.y, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
-		
+
 				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y + 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
 
@@ -1026,7 +1029,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 				weaponStage++;
 			}
-			
+
 			else if (weaponLaserInterval < SDL_GetTicks() - 225 && weaponStage == 2)
 			{
 				App->particles->AddParticle(App->particles->weaponBlueVerticalUp, position.x + laserHorizontalOffset, position.y, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
@@ -1038,7 +1041,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				Mix_PlayChannel(-1, type1Weapon, 0);
 				weaponStage++;
 			}
-			
+
 			else if (weaponLaserInterval < SDL_GetTicks() - 375 && weaponStage == 4)
 			{
 				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y - 30, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
@@ -1054,7 +1057,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 				weaponStage++;
 			}
-			
+
 			else if (weaponLaserInterval < SDL_GetTicks() - 450 && weaponStage == 5)
 			{
 				App->particles->AddParticle(App->particles->weaponBlueVerticalUp, position.x + laserHorizontalOffset, position.y, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
@@ -1074,7 +1077,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 				weaponStage++;
 			}
-			
+
 			else if (weaponLaserInterval < SDL_GetTicks() - 750 && weaponStage == 8)
 			{
 				App->particles->AddParticle(App->particles->weaponBlueHorizontal, position.x, position.y - 50, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
@@ -1096,11 +1099,11 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				App->particles->AddParticle(App->particles->Weapon2LeftStraight, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->Weapon2LeftDown, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->Weapon2LeftSuperDown, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-			
+
 				Mix_PlayChannel(1, type2Weapon, 0);
 				weaponStage++;
 			}
-			
+
 			else if (weaponLaserInterval < SDL_GetTicks() - 120 && weaponStage == 1)
 			{
 				App->particles->AddParticle(App->particles->Weapon2RightUp, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
@@ -1110,11 +1113,11 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				App->particles->AddParticle(App->particles->Weapon2LeftStraight, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->Weapon2LeftDown, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->Weapon2LeftSuperDown, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
-			
+
 				Mix_PlayChannel(-1, type2Weapon, 0);
 				weaponStage++;
 			}
-			
+
 			else if (weaponLaserInterval < SDL_GetTicks() - 240 && weaponStage == 2)
 			{
 				App->particles->AddParticle(App->particles->Weapon2RightUp, position.x + laserHorizontalOffset, position.y + laserVerticalOffset - 10, PLAYER_1_WEAPON_SHOT, COLLIDER_PLAYER_SHOT);
@@ -1220,7 +1223,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 280, position.y - 70, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 280, position.y, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
 				App->particles->AddParticle(App->particles->weaponYellowBlast, position.x + laserHorizontalOffset + 280, position.y + 70, PLAYER_CONSTANT_SHOT, COLLIDER_PLAYER_SHOT);
-				
+
 				if (weaponLoop < 1)
 				{
 					weaponLaserInterval = SDL_GetTicks() + 200;		// + delay
@@ -1238,6 +1241,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 			break;
 		}
+	}
 
 		//GodMode Function
 		if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_DOWN && App->input->debugMode == true)
@@ -1342,7 +1346,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 			if (lives < 1)
 			{
-				dead = true;
+				App->UI->p1Dead = true;
 				playerHitbox->to_delete = true;
 				this->Disable();
 			}
@@ -1390,12 +1394,14 @@ bool ModulePlayer1::CleanUp()
 
 void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 {
+	if (c2->type != COLLIDER_POWERUP)
+	{
 		Mix_PlayChannel(3, playerDeathExplosion, 0);
 		crashAnimation = &crash;
 		destroyed = true;
 		playerHitbox->to_delete = true;
 		lives -= 1;
-		
+
 		if (App->input->secondPlayerState == false)
 		{
 			App->fade->FadeToBlack(App->stage1, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
@@ -1404,6 +1410,7 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 		{
 			App->fade->FadeToBlack(App->stage1, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
 		}
+	}
 }
 
 void ModulePlayer1::checkBluePowerParticleLimit()
