@@ -24,8 +24,10 @@ public:
 	int hitboxWidth;
 	int hitboxHeight;
 
-	//void Move();
+	void Move();
 	float resultingAngle();
+	int time, restart = 0;
+	bool ready;
 
 	uint score = 200;
 	bool dead = false;

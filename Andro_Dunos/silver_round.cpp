@@ -9,7 +9,7 @@
 #include "ModuleMixer.h"
 
 
-Silver_Round::Silver_Round(int x, int y) : Enemy(x, y)
+Silver_Round::Silver_Round(int x, int y) : Enemy(x, y) //must use the position of the spritesheet: table_enemy_goodone.png where there are all the enemies
 {
 	hitboxWidth = 20;
 	hitboxHeight = 20;
@@ -66,13 +66,6 @@ void Silver_Round::Move()
 	position.y = Silver_posy + Silver_Path.GetCurrentPosition(&animation).y;
 }
 
-//void Enemy_Greyball_S::Fire()
-//{
-//	if (position.y == App->player1->position.y)
-//	{
-//		App->particles->AddParticle(App->particles->enemyBlueShot, position.x, position.y,-1, COLLIDER_ENEMY_SHOT);
-//	}
-//}
 
 void Silver_Round::OnCollision(Collider* collider)
 {

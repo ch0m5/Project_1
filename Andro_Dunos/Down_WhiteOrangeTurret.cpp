@@ -45,11 +45,92 @@ float Down_WhiteOrangeTurret::resultingAngle()
 	return result;
 }
 
-/*void Down_WhiteOrangeTurret::Move()
+void Down_WhiteOrangeTurret::Move()
 {
-	position.x = Down_WhiteOrangeTurret_posx + Down_WhiteOrangeTurret_Path.GetCurrentPosition().x;
-	position.y = Down_WhiteOrangeTurret_posy + Down_WhiteOrangeTurret_Path.GetCurrentPosition().y;
-}*/
+	time = SDL_GetTicks();
+	
+	if (time > restart + 2000) {
+		ready = true;
+		restart = time;
+
+		if (App->player1->position.x - position.x < 100 && position.x - App->player1->position.x > -100) {
+			ready = false;
+		}
+	}
+
+	if (resultingAngle() >= -181 && resultingAngle() < 10) {
+		animation = &pos1;
+		if (ready == true) {
+			//App->particles->AddParticle()
+			//ready = false;
+		}
+	}
+
+	else if (resultingAngle() >= 10  && resultingAngle() < 30) {
+		animation = &pos2;
+		if (ready == true) {
+			//App->particles->AddParticle()
+			//ready = false;
+		}
+	}
+
+	else if (resultingAngle() >= 30 && resultingAngle() < 60) {
+		animation = &pos3;
+		if (ready == true) {
+			//App->particles->AddParticle()
+			//ready = false;
+		}
+	}
+
+	else if (resultingAngle() >= 60 && resultingAngle() < 80) {
+		animation = &pos4;
+		if (ready == true) {
+			//App->particles->AddParticle()
+			//ready = false;
+		}
+	}
+
+	else if (resultingAngle() >= 80 && resultingAngle() < 100) {
+		animation = &pos5;
+		if (ready == true) {
+			//App->particles->AddParticle()
+			//ready = false;
+		}
+	}
+
+	else if (resultingAngle() >= 100 && resultingAngle() < 120) {
+		animation = &pos6;
+		if (ready == true) {
+			//App->particles->AddParticle()
+			//ready = false;
+		}
+	}
+
+	else if (resultingAngle() >= 120 && resultingAngle() < 150) {
+		animation = &pos7;
+		if (ready == true) {
+			//App->particles->AddParticle()
+			//ready = false;
+		}
+	}
+	
+	else if (resultingAngle() >= 150 && resultingAngle() < 170) {
+		animation = &pos8;
+		if (ready == true) {
+			//App->particles->AddParticle()
+			//ready = false;
+		}
+	}
+
+	else if (resultingAngle() >= 170 && resultingAngle() <= 180) {
+		animation = &pos9;
+		if (ready == true) {
+			//App->particles->AddParticle()
+			//ready = false;
+		}
+	}
+
+}
 
 
 void Down_WhiteOrangeTurret::OnCollision(Collider* collider)

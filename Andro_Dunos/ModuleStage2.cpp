@@ -169,6 +169,11 @@ bool ModuleStage2::Start()
 
 	//enemies
 	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND, 480, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 266, 121);
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 300, 121);
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 349, 121);
+
+
 
 
 	
