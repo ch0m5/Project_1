@@ -20,12 +20,12 @@ Down_WhiteOrangeTurret::Down_WhiteOrangeTurret(int x, int y) : Enemy(x, y) // @X
 	pos1.PushBack({ 292, 688, hitboxWidth, hitboxHeight });
 	pos2.PushBack({ 315, 688, hitboxWidth, hitboxHeight });
 	pos3.PushBack({ 336, 688, hitboxWidth, hitboxHeight });
-	pos4.PushBack({ 227, 716, hitboxWidth, hitboxHeight });
-	pos5.PushBack({ 250, 716, hitboxWidth, hitboxHeight });
-	pos6.PushBack({ 272, 716, hitboxWidth, hitboxHeight });
-	pos7.PushBack({ 292, 716, hitboxWidth, hitboxHeight });
-	pos8.PushBack({ 316, 716, hitboxWidth, hitboxHeight });
-	pos9.PushBack({ 336, 716, hitboxWidth, hitboxHeight });
+	pos4.PushBack({ 227, 706, hitboxWidth, hitboxHeight });
+	pos5.PushBack({ 250, 704, hitboxWidth, hitboxHeight });
+	pos6.PushBack({ 272, 704, hitboxWidth, hitboxHeight });
+	pos7.PushBack({ 292, 704, hitboxWidth, hitboxHeight });
+	pos8.PushBack({ 316, 704, hitboxWidth, hitboxHeight });
+	pos9.PushBack({ 336, 704, hitboxWidth, hitboxHeight });
 
 	//fly.speed = 0.6f;
 
@@ -41,14 +41,14 @@ Down_WhiteOrangeTurret::Down_WhiteOrangeTurret(int x, int y) : Enemy(x, y) // @X
 
 float Down_WhiteOrangeTurret::resultingAngle()
 {
-	float result = atan2(App->player1->position.y - position.y, position.x - App->player1->position.x) * 180 / PI;
+	float result = (atan2(App->player1->position.y - position.y, position.x - App->player1->position.x) * 180) / PI;
 	return result;
 }
 
 void Down_WhiteOrangeTurret::Move()
 {
 	time = SDL_GetTicks();
-	
+
 	if (time > restart + 2000) {
 		ready = true;
 		restart = time;
@@ -58,78 +58,82 @@ void Down_WhiteOrangeTurret::Move()
 		}
 	}
 
-	if (resultingAngle() >= -181 && resultingAngle() < 10) {
-		animation = &pos1;
-		if (ready == true) {
-			//App->particles->AddParticle()
-			//ready = false;
-		}
-	}
+	if (App->player1->position.x - position.x <= -100 && App->player1->position.x - position.x <= 100) {
 
-	else if (resultingAngle() >= 10  && resultingAngle() < 30) {
-		animation = &pos2;
-		if (ready == true) {
-			//App->particles->AddParticle()
-			//ready = false;
+		if (resultingAngle() >= 10 && resultingAngle() < 20) {
+			animation = &pos2;
+			if (ready == true) {
+				//App->particles->AddParticle()
+				//ready = false;
+			}
 		}
-	}
 
-	else if (resultingAngle() >= 30 && resultingAngle() < 60) {
-		animation = &pos3;
-		if (ready == true) {
-			//App->particles->AddParticle()
-			//ready = false;
+		else if (resultingAngle() >= 20 && resultingAngle() < 40) {
+			animation = &pos3;
+			if (ready == true) {
+				//App->particles->AddParticle()
+				//ready = false;
+			}
 		}
-	}
 
-	else if (resultingAngle() >= 60 && resultingAngle() < 80) {
-		animation = &pos4;
-		if (ready == true) {
-			//App->particles->AddParticle()
-			//ready = false;
+		else if (resultingAngle() >= 40 && resultingAngle() < 80) {
+			animation = &pos4;
+			if (ready == true) {
+				//App->particles->AddParticle()
+				//ready = false;
+			}
 		}
-	}
 
-	else if (resultingAngle() >= 80 && resultingAngle() < 100) {
-		animation = &pos5;
-		if (ready == true) {
-			//App->particles->AddParticle()
-			//ready = false;
+		else if (resultingAngle() >= 80 && resultingAngle() < 100) {
+			animation = &pos5;
+			if (ready == true) {
+				//App->particles->AddParticle()
+				//ready = false;
+			}
 		}
-	}
 
-	else if (resultingAngle() >= 100 && resultingAngle() < 120) {
-		animation = &pos6;
-		if (ready == true) {
-			//App->particles->AddParticle()
-			//ready = false;
+		else if (resultingAngle() >= 100 && resultingAngle() < 120) {
+			animation = &pos6;
+			if (ready == true) {
+				//App->particles->AddParticle()
+				//ready = false;
+			}
 		}
-	}
 
-	else if (resultingAngle() >= 120 && resultingAngle() < 150) {
-		animation = &pos7;
-		if (ready == true) {
-			//App->particles->AddParticle()
-			//ready = false;
+		else if (resultingAngle() >= 120 && resultingAngle() < 150) {
+			animation = &pos7;
+			if (ready == true) {
+				//App->particles->AddParticle()
+				//ready = false;
+			}
 		}
-	}
-	
-	else if (resultingAngle() >= 150 && resultingAngle() < 170) {
-		animation = &pos8;
-		if (ready == true) {
-			//App->particles->AddParticle()
-			//ready = false;
-		}
-	}
 
-	else if (resultingAngle() >= 170 && resultingAngle() <= 180) {
-		animation = &pos9;
-		if (ready == true) {
-			//App->particles->AddParticle()
-			//ready = false;
+		else if (resultingAngle() >= 150 && resultingAngle() < 170) {
+			animation = &pos8;
+			if (ready == true) {
+				//App->particles->AddParticle()
+				//ready = false;
+			}
+		}
+
+		else if (resultingAngle() >= 170 && resultingAngle() <= 180) {
+			animation = &pos9;
+			if (ready == true) {
+				//App->particles->AddParticle()
+				//ready = false;
+			}
+		}
+
+	}
+	else {
+			if (resultingAngle() >= -181 && resultingAngle() < 10) {
+			animation = &pos1;
+			if (ready == true) {
+				//App->particles->AddParticle()
+				//ready = false;
+			}
 		}
 	}
-
 }
 
 
