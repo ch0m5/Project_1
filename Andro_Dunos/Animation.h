@@ -49,6 +49,11 @@ public:
 	{
 		current_frame = 0;
 	}
+
+	void ResetLoops()
+	{
+		loops = 0;
+	}
 };
 
 #endif

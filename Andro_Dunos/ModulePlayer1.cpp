@@ -194,6 +194,8 @@ bool ModulePlayer1::Start()
 	LOG("Loading player textures");
 	bool ret = true;
 	destroyed = false;
+	dead = false;
+	lives = 3;
 	graphics = App->textures->Load("Assets/Sprites/Players_Ships/ships_all.png"); // arcade version
 
 	//Music and sounds FX
@@ -268,14 +270,9 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 {
 	// How it works: A counter (movVertical) changes values by pressing UP, DOWN or neither and then one of the SDL_Rects inside
 	// the frames array of ship animation (shipVerticalMovement) is blited depending on the value of the counter.
-	if (destroyed == false)
-	{
 		shipAnimation = &shipVerticalMovement;
 		propellerAnimation = &idleBooster;
 		shipRect = shipAnimation->frames[SHIP_IDLE];
-
-		// Bliting Text
-		//App->fonts->BlitText(50, 10, font_score, "we are going to do the best game ric has ever seen dude!!");
 
 		int speed = 2;
 
@@ -1274,6 +1271,42 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 			playerHitbox->SetPos(App->render->camera.x / SCREEN_SIZE + position.x, App->render->camera.y / SCREEN_SIZE + position.y);
 		}
 
+		
+
+		if (destroyed == true)
+		{
+			SDL_Rect crashrect = crashAnimation->GetCurrentFrame();
+			App->render->Blit(graphics, position.x, position.y, &crashrect, 1.0f, false);
+
+			// VALUES THAT NEED TO RESTART WHEN PLAYER DIES, SHOULD HAPPEN ONLY ONCE
+			/*
+			if (bluePower > LEVEL_1)
+			bluePower--;
+
+			if (orangePower > LEVEL_0)
+			orangePower--;
+
+			if (yellowPower > LEVEL_0)
+			yellowPower--;
+
+			if (greenPower > LEVEL_0)
+			greenPower--;
+
+			checkBluePowerParticleLimit();
+
+			fireWeapon = NONE;				// Integer that marks which weapon is being fired at the moment (with an enum)
+			weaponLaserInterval = 0;	// Marks time between fired lasers in a single weapon shot
+			weaponStage = 0;			// Marks stage of currently firing weapon
+			weaponLoop = 0;				// Marks the number of loops of the weapon, if any
+
+			blueShotTimer = 0;
+			weaponChargeTimer = 0;
+			weaponChargingStage = NOT_CHARGING;
+
+			movVertical = 0;	// Counter for the vertical movement of the ship
+			*/
+		}
+
 		// Draw everything --------------------------------------
 		if (destroyed == false)
 		{
@@ -1289,41 +1322,33 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 			else
 				App->render->Blit(graphics, position.x, position.y, &shipRect, 1.0f, false);
 		}
-	}
 
-	if (destroyed == true)
-	{
-		SDL_Rect crashrect = crashAnimation->GetCurrentFrame();
-		App->render->Blit(graphics, position.x, position.y, &crashrect, 1.0f, false);
-	
-		// VALUES THAT NEED TO RESTART WHEN PLAYER DIES, SHOULD HAPPEN ONLY ONCE
-		/*
-		if (bluePower > LEVEL_1)
-			bluePower--;
+		//When the explosion animation ends, execute this code (RESPAWN)
+		if (crash.Finished() == true && destroyed == true)
+		{
+			//Reset player pos
+			position.x = 0;							// Starting point of the ship (using p2Point)
+			position.y = (int)(SCREEN_HEIGHT / 2 - 10);
+			crash.Reset();
+			crash.ResetLoops();
+			/*crashAnimation->;*/
 
-		if (orangePower > LEVEL_0)
-			orangePower--;
+			if (godMode == false)
+			{
+				playerHitbox = App->collision->AddCollider({ App->render->camera.x / SCREEN_SIZE + (int)position.x, App->render->camera.y / SCREEN_SIZE + (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
+				//playerHitbox->SetPos(App->render->camera.x / SCREEN_SIZE + position.x, App->render->camera.y / SCREEN_SIZE + position.y);
+				playerHitbox->to_delete = false;
+			}
 
-		if (yellowPower > LEVEL_0)
-			yellowPower--;
+			if (lives < 1)
+			{
+				dead = true;
+				playerHitbox->to_delete = true;
+				this->Disable();
+			}
 
-		if (greenPower > LEVEL_0)
-			greenPower--;
-
-		checkBluePowerParticleLimit();
-
-		fireWeapon = NONE;				// Integer that marks which weapon is being fired at the moment (with an enum)
-		weaponLaserInterval = 0;	// Marks time between fired lasers in a single weapon shot
-		weaponStage = 0;			// Marks stage of currently firing weapon
-		weaponLoop = 0;				// Marks the number of loops of the weapon, if any
-
-		blueShotTimer = 0;
-		weaponChargeTimer = 0;
-		weaponChargingStage = NOT_CHARGING;
-
-		movVertical = 0;	// Counter for the vertical movement of the ship
-		*/
-	}
+			destroyed = false;
+		}
 
 	return UPDATE_CONTINUE;
 }
@@ -1365,19 +1390,11 @@ bool ModulePlayer1::CleanUp()
 
 void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 {
-	
-
-	if ((c1->type == COLLIDER_WALL ||
-		c2->type == COLLIDER_WALL ||
-		c1->type == COLLIDER_ENEMY_SHOT ||  //Cambio @andres
-		c2->type == COLLIDER_ENEMY_SHOT ||  //Cambio @andres
-		c1->type == COLLIDER_ENEMY ||		//Cambio @andres
-		c2->type == COLLIDER_ENEMY))		//Cambio @andres
-	{
 		Mix_PlayChannel(3, playerDeathExplosion, 0);
 		crashAnimation = &crash;
 		destroyed = true;
 		playerHitbox->to_delete = true;
+		lives -= 1;
 		
 		if (App->input->secondPlayerState == false)
 		{
@@ -1387,11 +1404,6 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 		{
 			App->fade->FadeToBlack(App->stage1, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
 		}
-	}
-	/*if ((c1->type == COLLIDER_POWERUP ||c2->type == COLLIDER_POWERUP ))
-	{
-		bluePower++;
-	}*/
 }
 
 void ModulePlayer1::checkBluePowerParticleLimit()
