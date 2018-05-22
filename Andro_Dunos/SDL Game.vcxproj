@@ -115,6 +115,7 @@
     <ClInclude Include="RedLineShip_Enemy.h" />
     <ClInclude Include="Shuriken_Enemy.h" />
     <ClInclude Include="silver_round.h" />
+    <ClInclude Include="silver_round_down.h" />
     <ClInclude Include="Up_WhiteOrageTurret.h" />
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +158,7 @@
     <ClCompile Include="RedLineShip_Enemy.cpp" />
     <ClCompile Include="Shuriken_Enemy.cpp" />
     <ClCompile Include="silver_round.cpp" />
+    <ClCompile Include="silver_round_down.cpp" />
     <ClCompile Include="Up_WhiteOrangeTurret.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -161,6 +161,9 @@
     <ClInclude Include="Drill_Down.h">
       <Filter>ModulesEnemies\EnemiesStage2</Filter>
     </ClInclude>
+    <ClInclude Include="silver_round_down.h">
+      <Filter>ModulesEnemies\EnemiesStage2</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -281,6 +284,9 @@
       <Filter>ModulesEnemies\EnemiesStage2</Filter>
     </ClCompile>
     <ClCompile Include="Drill_Down.cpp">
+      <Filter>ModulesEnemies\EnemiesStage2</Filter>
+    </ClCompile>
+    <ClCompile Include="silver_round_down.cpp">
       <Filter>ModulesEnemies\EnemiesStage2</Filter>
     </ClCompile>
   </ItemGroup>
