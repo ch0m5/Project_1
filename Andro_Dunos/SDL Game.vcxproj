@@ -87,6 +87,8 @@
     <ClInclude Include="GreyBall_K.h" />
     <ClInclude Include="GreyYellow_Enemy.h" />
     <ClInclude Include="GreyYellow_Enemy_Down.h" />
+    <ClInclude Include="GreyYellow_Enemy_Right_Down.h" />
+    <ClInclude Include="GreyYellow_Enemy_Right_Up.h" />
     <ClInclude Include="GreyYellow_Enemy_Up.h" />
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
@@ -133,6 +135,8 @@
     <ClCompile Include="Greyball_K.cpp" />
     <ClCompile Include="GreyYellow_Enemy.cpp" />
     <ClCompile Include="GreyYellow_Enemy_Down.cpp" />
+    <ClCompile Include="GreyYellow_Enemy_Right_Down.cpp" />
+    <ClCompile Include="GreyYellow_Enemy_Right_Up.cpp" />
     <ClCompile Include="GreyYellow_Enemy_Up.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleCollision.cpp" />

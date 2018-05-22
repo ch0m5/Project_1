@@ -168,16 +168,129 @@ bool ModuleStage2::Start()
 
 
 	//enemies
-	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND, 480, 50);
+	/*App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND, 480, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 266, 121);
 	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 300, 121);
 	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 349, 121);
 	App->enemies->AddEnemy(ENEMY_TYPES::DRILL_DOWN, 500, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::DRILL_UP, 520, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_CIRCLE, 540, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_CIRCLE, 540, 0);*/
 
 
-	
+
+	/*App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND, 400, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND, 410, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND, 420, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND, 430, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND, 440, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND, 450, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND, 460, 50);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND_DOWN, 400, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND_DOWN, 410, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND_DOWN, 420, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND_DOWN, 430, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND_DOWN, 440, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND_DOWN, 450, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND_DOWN, 460, 60);*/
+
+	//Torrent Down
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 270, 121);
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 301, 121);
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 338, 121);
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 358, 121);
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 401, 121);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 968, 118);
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 1000, 118);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 3278, 67);
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 3312, 67);
+
+	//Torrent Up AQUI DEBERIA IR LAS UP TURRETS
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 253, 104);
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 288, 104);
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 323, 104);
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 373, 104);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 481, 218);
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 545, 218);
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 584, 218);
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 646, 218);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 944, 107);
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 982, 107);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 3213, 158);
+	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 3256, 158);
+
+	//GreyYellow Enemy
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 430, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 440, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 450, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 460, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 470, 30);
+
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_RIGHT_UP, 430, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_RIGHT_UP, 440, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_RIGHT_UP, 450, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_RIGHT_UP, 460, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_RIGHT_UP, 470, 200);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 750, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 760, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 770, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 770, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 780, 140);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 780, 60);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 820, 65);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 835, 85);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 835, 45);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 860, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 875, 110);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 875, 150);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2103, 46);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2113, 46);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2123, 46);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2133, 46);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_DOWN, 2134, 46);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_RIGHT_UP, 2163, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_RIGHT_UP, 2173, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_RIGHT_UP, 2183, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_RIGHT_UP, 2193, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_RIGHT_UP, 2203, 200);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_RIGHT_DOWN, 2208, 64);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_RIGHT_DOWN, 2218, 64);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_RIGHT_DOWN, 2228, 64);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_RIGHT_DOWN, 2238, 64);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_RIGHT_DOWN, 2248, 64);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2270, 46);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2280, 46);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2290, 46);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2300, 46);
+	App->enemies->AddEnemy(ENEMY_TYPES::YELLOWSHIP_UP, 2310, 46);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 2910, 60);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 2966, 180);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 2989, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 3022, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 3070, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 3090, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 3133, 110);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 3140, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 3176, 90);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 3197, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 3224, 80);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 3256, 100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 3270, 90);
 
 	return ret;
 }

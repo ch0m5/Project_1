@@ -33,9 +33,9 @@ Application::Application()
 	modules[i++] = scene_HiScore = new ModuleHiScore();
 	modules[i++] = mainMenu = new ModuleMainMenu();
 	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = player2 = new ModulePlayer2();
 	modules[i++] = player1 = new ModulePlayer1();
-	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = fonts = new ModuleFont();

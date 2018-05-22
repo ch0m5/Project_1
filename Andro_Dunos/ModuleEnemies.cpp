@@ -26,6 +26,8 @@
 #include "Drill_Down.h"
 #include "Drill_Up.h"
 #include "Greyball_Circle.h"
+#include "GreyYellow_Enemy_Right_Up.h"
+#include "GreyYellow_Enemy_Right_Down.h"
 
 
 #define SPAWN_MARGIN 50
@@ -220,6 +222,12 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::GREYBALL_CIRCLE:
 			enemies[i] = new Greyball_Circle(info.x, info.y);
+			break;
+		case ENEMY_TYPES::YELLOWSHIP_RIGHT_UP:
+			enemies[i] = new GreyYellow_Enemy_Right_Up(info.x, info.y);
+			break;
+		case ENEMY_TYPES::YELLOWSHIP_RIGHT_DOWN:
+			enemies[i] = new GreyYellow_Enemy_Right_Down(info.x, info.y);
 			break;
 		
 		}

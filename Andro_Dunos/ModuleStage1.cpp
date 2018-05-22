@@ -134,21 +134,20 @@ bool ModuleStage1::Start()
 
 	// First Enemy: GreyBall (4 waves, with 1wave&3wave same position.y and 2wave&4wave same position.y)
 	
-	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND_DOWN, 480, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND, 480, 80);
+
 	
 	//wave 1 ------------------------------------------------------
-
-	//App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 480, 50);
-	//App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 495, 50);
-	//App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 510, 50);
-	//App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 525, 50);
-	//
-	////wave 2 ------------------------------------------------------
-	//App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 480 + 120, 130);
-	//App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 495 + 120, 130);
-	//App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 510 + 120, 130);
-	//App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 525 + 120, 130);
+	
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 480, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 495, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 510, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 525, 50);
+	
+	//wave 2 ------------------------------------------------------
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 480 + 120, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 495 + 120, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 510 + 120, 130);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 525 + 120, 130);
 	
 	//wave 3 ------------------------------------------------------
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 480 + 270, 50);
