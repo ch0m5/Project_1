@@ -58,9 +58,15 @@ void Down_WhiteOrangeTurret::Move()
 		}
 	}
 
-	if (App->player1->position.x - position.x <= -100 && App->player1->position.x - position.x <= 100) {
+		if (resultingAngle() >= -181 && resultingAngle() < 10) {
+		animation = &pos1;
+			if (ready == true) {
+			//App->particles->AddParticle()
+			//ready = false;
+			}
+		}
 
-		if (resultingAngle() >= 10 && resultingAngle() < 20) {
+		else if (resultingAngle() >= 10 && resultingAngle() < 20) {
 			animation = &pos2;
 			if (ready == true) {
 				//App->particles->AddParticle()
@@ -123,17 +129,6 @@ void Down_WhiteOrangeTurret::Move()
 				//ready = false;
 			}
 		}
-
-	}
-	else {
-			if (resultingAngle() >= -181 && resultingAngle() < 10) {
-			animation = &pos1;
-			if (ready == true) {
-				//App->particles->AddParticle()
-				//ready = false;
-			}
-		}
-	}
 }
 
 
