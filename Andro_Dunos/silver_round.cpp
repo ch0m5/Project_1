@@ -14,25 +14,25 @@ Silver_Round::Silver_Round(int x, int y) : Enemy(x, y) //must use the position o
 	hitboxWidth = 20;
 	hitboxHeight = 20;
 
-	left.PushBack({ 630, 0, hitboxWidth, hitboxHeight });
+	left.PushBack({ 0, 224, hitboxWidth, hitboxHeight });
 	left.speed = 0.1f;
 
-	leftUp.PushBack({ 650, 0, hitboxWidth, hitboxHeight });
+	leftUp.PushBack({ 20, 224, hitboxWidth, hitboxHeight });
 	leftUp.speed = 0.1f;
 
-	leftUP2.PushBack({ 670, 0, hitboxWidth, hitboxHeight });
+	leftUP2.PushBack({ 40, 224, hitboxWidth, hitboxHeight });
 	leftUP2.speed = 0.1f;
 
-	up.PushBack({ 690, 0, hitboxWidth, hitboxHeight });
+	up.PushBack({ 60, 224, hitboxWidth, hitboxHeight });
 	up.speed = 0.1f;
 
-	upRight.PushBack({ 710, 0, hitboxWidth, hitboxHeight });
+	upRight.PushBack({ 80, 224, hitboxWidth, hitboxHeight });
 	upRight.speed = 0.1f;
 
-	upRight2.PushBack({ 730, 0, hitboxWidth, hitboxHeight });
+	upRight2.PushBack({ 100, 224, hitboxWidth, hitboxHeight });
 	upRight2.speed = 0.1f;
 	
-	right.PushBack({ 630, 20, hitboxWidth, hitboxHeight });
+	right.PushBack({ 0, 244, hitboxWidth, hitboxHeight });
 	right.speed = 0.1f;
 
 	
@@ -44,19 +44,23 @@ Silver_Round::Silver_Round(int x, int y) : Enemy(x, y) //must use the position o
 
 	original_y = y;
 
-	Silver_Path.PushBack({ -0.5, 0 }, 70, &left);
+	Silver_Path.PushBack({ -0.25, 0 }, 350, &left);
 
-	Silver_Path.PushBack({ -0.5, 0.5 }, 20,&leftUp);
+	//Silver_Path.PushBack({ -0.5, 0.5 }, 20,&leftUp);
 
-	Silver_Path.PushBack({ -0.25, 0.5 }, 20,&leftUP2);
+	//Silver_Path.PushBack({ -0.25, 0.5 }, 20,&leftUP2);
 
-	Silver_Path.PushBack({ 0, 0.5 }, 20,&up);
+	Silver_Path.PushBack({ -0.25, -0.5 }, 50,&up);
 
-	Silver_Path.PushBack({ 0.25, 0.5 }, 70,&upRight);
+	//Silver_Path.PushBack({ 0.25, 0.5 }, 70,&upRight);
 
-	Silver_Path.PushBack({ 0.5, 0.5 }, 20,&upRight2);
+	//Silver_Path.PushBack({ 0.5, 0.5 }, 20,&upRight2);
 
-	Silver_Path.PushBack({ 0.5, 0 }, 70,&right);
+	Silver_Path.PushBack({ 1, 0 }, 200,&right);
+
+	Silver_Path.PushBack({ -0.25, -0.5 }, 50, &up);
+
+	Silver_Path.PushBack({ -0.25, 0 }, 200, &left);
 
 }
 

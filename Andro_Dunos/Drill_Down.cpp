@@ -30,8 +30,9 @@ Drill_Down::Drill_Down(int x, int y) : Enemy(x, y)
 
 	original_y = y;
 
-	Path.PushBack({ 0, -0.5 }, 30);
-	Path.PushBack({ 0, -1 }, 70);
+	Path.PushBack({ 0, 0 }, 350);
+	Path.PushBack({ 0, 0.25 }, 50);
+	Path.PushBack({ 0, 0.75 }, 400);
 
 }
 

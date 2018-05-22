@@ -36,8 +36,9 @@ Greyball_Circle::Greyball_Circle(int x, int y) : Enemy(x, y)
 
 	original_y = y;
 
-	S_Path.PushBack({ 0.5, 1 }, 120);
-	S_Path.PushBack({ -0.5, -1 }, 120);
+	S_Path.PushBack({ -0.5, 0 }, 250);
+	S_Path.PushBack({ 0.75, 0.5 }, 220);
+	S_Path.PushBack({ 0, 0.5 }, 150);
 	
 }
 

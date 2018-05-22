@@ -172,8 +172,9 @@ bool ModuleStage2::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 266, 121);
 	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 300, 121);
 	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 349, 121);
-
-
+	App->enemies->AddEnemy(ENEMY_TYPES::DRILL_DOWN, 500, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::DRILL_UP, 520, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_CIRCLE, 540, 0);
 
 
 	

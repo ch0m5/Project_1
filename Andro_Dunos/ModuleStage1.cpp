@@ -136,6 +136,7 @@ bool ModuleStage1::Start()
 	
 	
 	//wave 1 ------------------------------------------------------
+
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 480, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 495, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_UP_DOWN, 510, 50);
