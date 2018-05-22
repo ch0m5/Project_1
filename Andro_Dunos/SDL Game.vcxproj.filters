@@ -152,6 +152,15 @@
     <ClInclude Include="Down_WhiteOrangeTurret.h">
       <Filter>ModulesEnemies\EnemiesStage2</Filter>
     </ClInclude>
+    <ClInclude Include="Greyball_Circle.h">
+      <Filter>ModulesEnemies\EnemiesStage2</Filter>
+    </ClInclude>
+    <ClInclude Include="Drill_Up.h">
+      <Filter>ModulesEnemies\EnemiesStage2</Filter>
+    </ClInclude>
+    <ClInclude Include="Drill_Down.h">
+      <Filter>ModulesEnemies\EnemiesStage2</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -263,6 +272,15 @@
       <Filter>ModulesEnemies\EnemiesStage2</Filter>
     </ClCompile>
     <ClCompile Include="Down_WhiteOrangeTurret.cpp">
+      <Filter>ModulesEnemies\EnemiesStage2</Filter>
+    </ClCompile>
+    <ClCompile Include="Greyball_Circle.cpp">
+      <Filter>ModulesEnemies\EnemiesStage2</Filter>
+    </ClCompile>
+    <ClCompile Include="Drill_Up.cpp">
+      <Filter>ModulesEnemies\EnemiesStage2</Filter>
+    </ClCompile>
+    <ClCompile Include="Drill_Down.cpp">
       <Filter>ModulesEnemies\EnemiesStage2</Filter>
     </ClCompile>
   </ItemGroup>
