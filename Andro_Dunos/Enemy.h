@@ -17,6 +17,8 @@ protected:
 public:
 	iPoint position;
 
+	int life = 1;	// Standard value for all enemies
+
 public:
 	Enemy(int x, int y);
 	virtual ~Enemy();

@@ -14,6 +14,8 @@ Enemy_13_Greyball::Enemy_13_Greyball(int x, int y) : Enemy(x, y)
 	hitboxWidth = 18;
 	hitboxHeight = 19;
 
+	life = 1;	// In the constructor, the value for each specific enemy needs to be defined
+
 	fly.PushBack({ 0, 3, hitboxWidth, hitboxHeight });
 	fly.PushBack({ 19, 3, hitboxWidth, hitboxHeight });
 	fly.PushBack({ 39, 3, hitboxWidth, hitboxHeight });
@@ -65,12 +67,10 @@ void Enemy_13_Greyball::Fire()
 */
 void Enemy_13_Greyball::OnCollision(Collider* collider)
 {
-	
-	
-	if (dead==false)
+	if (dead == false)
 	{
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y,-1,COLLIDER_NONE,30);
-		App->particles->AddParticle(App->particles->explosion1, position.x, position.y, - 1, COLLIDER_NONE, 30);
+		App->particles->AddParticle(App->particles->explosion, position.x, position.y, -1, COLLIDER_NONE, 30);
+		App->particles->AddParticle(App->particles->explosion1, position.x, position.y, -1, COLLIDER_NONE, 30);
 		App->particles->AddParticle(App->particles->explosion2, position.x, position.y, -1, COLLIDER_NONE, 30);
 		Mix_PlayChannel(5, App->enemies->explosion1, 0);
 		Mix_PlayChannel(4, App->enemies->explosion2, 0);
@@ -82,6 +82,6 @@ void Enemy_13_Greyball::OnCollision(Collider* collider)
 		{
 			App->UI->player2Score += score;
 		}
+		dead = true;
 	}
-	dead = true;
 }

@@ -240,10 +240,21 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			enemies[i]->OnCollision(c2);
-			delete enemies[i];
-			enemies[i] = nullptr;
-			break;
+			if (enemies[i]->life > 1)	// When an enemy is hit, if it has more than 1 HP, one is substracted and the hit blit animation should play
+			{
+				enemies[i]->life--;
+				break;
+				//playHitAnimationOfEnemy, it can be it's own function on the enemie's file
+				//or be included inside the enemie's OnCollision function and let it do the work with an inside condition
+			}
+			
+			else	// if enemy has only 1 HP left, execute it's OnCollision function and destroy it
+			{
+				enemies[i]->OnCollision(c2);
+				delete enemies[i];
+				enemies[i] = nullptr;
+				break;
+			}
 		}
 	}
 }
