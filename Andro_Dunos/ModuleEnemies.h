@@ -61,7 +61,7 @@ public:
 
 	Mix_Chunk *explosion1 = nullptr;
 	Mix_Chunk *explosion2 = nullptr;
-	
+	Mix_Chunk *enemyHit = nullptr;
 
 
 

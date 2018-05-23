@@ -51,8 +51,11 @@ bool ModuleEnemies::Start()
 
 	explosion1 = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Enemy_Small_EXPLOSION.wav");
 	explosion2 = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Enemy_Medium_EXPLOSION.wav");
+	enemyHit = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Enemy_WHITE_SPRITE_Hit.wav");
+
 	Mix_VolumeChunk(explosion1, FXVol);
 	Mix_VolumeChunk(explosion2, FXVol);
+	Mix_VolumeChunk(enemyHit, FXVol);
 	
 	return true;
 }
@@ -121,8 +124,11 @@ bool ModuleEnemies::CleanUp()
 	LOG("Feeing fx");
 	App->mixer->UnloadFx(explosion1);
 	App->mixer->UnloadFx(explosion2);
+	App->mixer->UnloadFx(enemyHit);
+
 	explosion1 = nullptr;
 	explosion2 = nullptr;
+	enemyHit = nullptr;
 
 	LOG("Freeing all enemies");
 
@@ -240,12 +246,11 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			if (enemies[i]->life > 1)	// When an enemy is hit, if it has more than 1 HP, one is substracted and the hit blit animation should play
+			if (enemies[i]->life > 1)	// When an enemy is hit, if it has more than 1 HP, one is substracted and the hit blit animation (should) plays
 			{
 				enemies[i]->life--;
+				Mix_PlayChannel(-1, enemyHit, 0);
 				break;
-				//playHitAnimationOfEnemy, it can be it's own function on the enemie's file
-				//or be included inside the enemie's OnCollision function and let it do the work with an inside condition
 			}
 			
 			else	// if enemy has only 1 HP left, execute it's OnCollision function and destroy it
