@@ -640,6 +640,7 @@ bool ModuleParticles::Init()
 	weaponYellowBlast.anim.PushBack({ 179, 281, 30, 30 });
 	weaponYellowBlast.anim.loop = false;
 	weaponYellowBlast.life = shortLife - 750;
+	weaponYellowBlast.laserDamage = 15;
 	weaponYellowBlast.anim.speed = 0.5f;
 
 	//Enemy laser
@@ -740,7 +741,7 @@ update_status ModuleParticles::Update()
 
 		if (p->Update() == false)
 		{
-			if (p->arrayId > -1)	//ATTEMPT OF ELIMIATING ARRAYS
+			if (p->arrayId > DEFAULT_VALUE)	//ATTEMPT OF ELIMIATING ARRAYS
 			{
 				if (active[i]->shotType == PLAYER_1_BLUE_SHOT)
 				{
@@ -918,9 +919,36 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if (active[i] != nullptr && active[i]->collider == c1)
 		{
-			if (c2->type == COLLIDER_WALL || c2->type == COLLIDER_ENEMY)
+			if (c2->type == COLLIDER_WALL)
 			{
-				if (active[i]->arrayId > -1)
+				if (active[i]->shotType == PLAYER_1_CONSTANT_WEAPON_SHOT ||
+					active[i]->shotType == PLAYER_2_CONSTANT_WEAPON_SHOT ||
+					active[i]->shotType == PLAYER_1_WEAPON_SHOT ||
+					active[i]->shotType == PLAYER_2_WEAPON_SHOT)
+				{
+					break;
+				}
+
+				else
+					active[i]->laserDamage = 0;
+			}
+
+			if (active[i]->arrayId > DEFAULT_VALUE)
+			{
+				int arrayIdMarker = active[i]->arrayId;
+
+				if (active[i]->laserDamage > 1)
+				{
+					for (uint j = 0; j < MAX_ACTIVE_PARTICLES; j++)
+					{
+						if (active[j] != nullptr && active[j]->arrayId == arrayIdMarker)
+						{
+							active[j]->laserDamage--;
+						}
+					}
+				}
+
+				else
 				{
 					if (active[i]->shotType == PLAYER_1_BLUE_SHOT)
 					{
@@ -942,66 +970,52 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 						App->player2->currentOrange -= 1;
 					}
 
-					int arrayIdMarker = active[i]->arrayId;
-
-					if (active[i]->laserDamage > 1)
+					for (uint j = 0; j < MAX_ACTIVE_PARTICLES; j++)
 					{
-						for (uint j = 0; j < MAX_ACTIVE_PARTICLES; j++)
+						if (active[j] != nullptr && active[j]->arrayId == arrayIdMarker)
 						{
-							if (active[j] != nullptr && active[j]->arrayId == arrayIdMarker)
-							{
-								active[j]->laserDamage--;
-							}
+							delete active[j];
+							active[j] = nullptr;
 						}
 					}
-
-					else
-					{
-						for (uint j = 0; j < MAX_ACTIVE_PARTICLES; j++)
-						{
-							if (active[j] != nullptr && active[j]->arrayId == arrayIdMarker)
-							{
-								delete active[j];
-								active[j] = nullptr;
-							}
-						}
-					}
-
-					break;
 				}
 
-				else if (active[i]->laserDamage > 1)
-				{
-					active[i]->laserDamage--;
-					break;
-				}
-
-				else if (active[i]->shotType == PLAYER_CONSTANT_SHOT)
-				{
-					break;
-				}
-
-				if (active[i]->shotType == PLAYER_1_BLUE_SHOT)
-				{
-					App->player1->currentBlue -= 1;
-				}
-
-				else if (active[i]->shotType == PLAYER_1_ORANGE_SHOT)
-				{
-					App->player1->currentOrange -= 1;
-				}
-
-				else if (active[i]->shotType == PLAYER_2_BLUE_SHOT)
-				{
-					App->player2->currentBlue -= 1;
-				}
-
-				else if (active[i]->shotType == PLAYER_2_ORANGE_SHOT)
-				{
-					App->player2->currentOrange -= 1;
-				}
+				break;
 			}
-			
+
+			else if (active[i]->laserDamage > 1)
+			{
+				active[i]->laserDamage--;
+				break;
+			}
+
+			else if (active[i]->shotType == PLAYER_1_CONSTANT_WEAPON_SHOT || active[i]->shotType == PLAYER_2_CONSTANT_WEAPON_SHOT)
+			{
+				if (active[i]->collider != nullptr)
+					active[i]->collider->to_delete = true;
+				break;
+			}
+
+			if (active[i]->shotType == PLAYER_1_BLUE_SHOT)
+			{
+				App->player1->currentBlue -= 1;
+			}
+
+			else if (active[i]->shotType == PLAYER_1_ORANGE_SHOT)
+			{
+				App->player1->currentOrange -= 1;
+			}
+
+			else if (active[i]->shotType == PLAYER_2_BLUE_SHOT)
+			{
+				App->player2->currentBlue -= 1;
+			}
+
+			else if (active[i]->shotType == PLAYER_2_ORANGE_SHOT)
+			{
+				App->player2->currentOrange -= 1;
+			}
+			/*
 			else if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_ENEMY)
 			{
 
@@ -1010,7 +1024,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 			{
 
 			}
-
+			*/
 			delete active[i];
 			active[i] = nullptr;
 			break;
