@@ -14,6 +14,7 @@ BigGrey_Enemy::BigGrey_Enemy(int x, int y) : Enemy(x, y)
 {
 	hitboxWidth = 31;
 	hitboxHeight = 27;
+	life = 5;
 
 	fly.PushBack({ 515, 2, hitboxWidth, hitboxHeight });
 	fly.PushBack({ 546, 2, hitboxWidth, hitboxHeight });

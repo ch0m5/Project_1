@@ -292,6 +292,58 @@ bool ModuleStage2::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 3256, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREY_YELLOW_SHIP, 3270, 90);
 
+	//drill enemy
+	App->enemies->AddEnemy(ENEMY_TYPES::DRILL_UP, 2392, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::DRILL_UP, 2567, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::DRILL_UP, 2825, 200);
+	App->enemies->AddEnemy(ENEMY_TYPES::DRILL_DOWN, 2698, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::DRILL_DOWN, 2484, 0);
+
+	//Greyball S
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 490, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 500, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 510, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 520, 40);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 530, 40);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 630, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 640, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 650, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 660, 120);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_S, 670, 120);
+
+
+	//greyball circle 
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_CIRCLE, 1030, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_CIRCLE, 1090, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_CIRCLE, 1050, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_CIRCLE, 1100, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_CIRCLE, 1070, 0);
+
+	//powerup
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP_ENEMY, 1273, 50);
+	App->enemies->AddEnemy(ENEMY_TYPES::POWERUP_ENEMY, 1899, 50);
+
+
+	//greyball circle
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_CIRCLE, 1300, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_CIRCLE, 1350, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_CIRCLE, 1320, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_CIRCLE, 1370, 0);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYBALL_CIRCLE, 1340, 0);
+
+
+	//silver round
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND, 820, 180);
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND, 860, 180);
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND, 840, 180);
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND, 880, 180);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND_DOWN, 820, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND_DOWN, 860, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND_DOWN, 840, 30);
+	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND_DOWN, 880, 30);
+
 	return ret;
 }
 

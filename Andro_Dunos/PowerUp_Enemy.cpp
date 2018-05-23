@@ -20,6 +20,8 @@ PowerUp_Enemy::PowerUp_Enemy(int x, int y) : Enemy(x, y)	//@XaviMarin
 {
 	hitboxWidth = 18;
 	hitboxHeight = 26;
+	life = 1;
+
 	int i = 0;
 	for (; i < 3; ++i) {
 		// left movement -------------------------------------

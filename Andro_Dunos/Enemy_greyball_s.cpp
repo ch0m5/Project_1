@@ -13,6 +13,7 @@ Enemy_Greyball_S::Enemy_Greyball_S(int x, int y) : Enemy(x, y)
 {
 	hitboxWidth = 18;
 	hitboxHeight = 19;
+	life = 1;
 
 	fly.PushBack({ 0, 3, hitboxWidth, hitboxHeight });
 	fly.PushBack({ 19, 3, hitboxWidth, hitboxHeight });

@@ -15,6 +15,8 @@ GreyYellow_Enemy_Down::GreyYellow_Enemy_Down(int x, int y) : Enemy(x, y)
 	hitboxWidth = 29;
 	hitboxHeight = 17;
 
+	life = 1;
+
 	fly.PushBack({ 319, 121, hitboxWidth, hitboxHeight });
 	fly.PushBack({ 289, 120, hitboxWidth, hitboxHeight });
 	fly.PushBack({ 259, 119, hitboxWidth, hitboxHeight });

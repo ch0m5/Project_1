@@ -14,6 +14,8 @@ Drill_Down::Drill_Down(int x, int y) : Enemy(x, y)
 	hitboxWidth = 15;
 	hitboxHeight = 32;
 
+	life = 10;
+
 	fly.PushBack({ 4, 298, hitboxWidth, hitboxHeight });
 	fly.PushBack({ 20,298, hitboxWidth, hitboxHeight });
 	fly.PushBack({ 36, 298, hitboxWidth, hitboxHeight });

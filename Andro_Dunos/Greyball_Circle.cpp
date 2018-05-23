@@ -14,6 +14,8 @@ Greyball_Circle::Greyball_Circle(int x, int y) : Enemy(x, y)
 	hitboxWidth = 18;
 	hitboxHeight = 19;
 
+	life = 1;
+
 	fly.PushBack({ 0, 3, hitboxWidth, hitboxHeight });
 	fly.PushBack({ 19, 3, hitboxWidth, hitboxHeight });
 	fly.PushBack({ 39, 3, hitboxWidth, hitboxHeight });

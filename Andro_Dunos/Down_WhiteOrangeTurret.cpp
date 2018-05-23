@@ -16,6 +16,7 @@ Down_WhiteOrangeTurret::Down_WhiteOrangeTurret(int x, int y) : Enemy(x, y) // @X
 {
 	hitboxWidth = 15;
 	hitboxHeight = 15;
+	life = 2;
 
 	pos1.PushBack({ 292, 688, hitboxWidth, hitboxHeight });
 	pos2.PushBack({ 315, 688, hitboxWidth, hitboxHeight });

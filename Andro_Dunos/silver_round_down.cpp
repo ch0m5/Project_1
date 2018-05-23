@@ -14,6 +14,8 @@ Silver_Round_Down::Silver_Round_Down(int x, int y) : Enemy(x, y) //must use the 
 	hitboxWidth = 20;
 	hitboxHeight = 20;
 
+	life = 2;
+
 	left.PushBack({ 0, 224, hitboxWidth, hitboxHeight });
 	left.speed = 0.1f;
 

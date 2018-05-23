@@ -14,6 +14,8 @@ GreyYellow_Enemy_Right_Up::GreyYellow_Enemy_Right_Up(int x, int y) : Enemy(x, y)
 	hitboxWidth = 29;
 	hitboxHeight = 17;
 
+	life = 1;
+
 	fly.PushBack({ 319, 173, hitboxWidth, hitboxHeight });
 	fly.PushBack({ 289, 172, hitboxWidth, hitboxHeight });
 	fly.PushBack({ 259, 171, hitboxWidth, hitboxHeight });
