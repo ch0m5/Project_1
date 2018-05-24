@@ -344,6 +344,8 @@ bool ModuleStage2::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND_DOWN, 840, 30);
 	App->enemies->AddEnemy(ENEMY_TYPES::SILVER_ROUND_DOWN, 880, 30);
 
+	//rock enemy
+	App->enemies->AddEnemy(ENEMY_TYPES::ROCKSUBBOSS, 3903, 166);
 	return ret;
 }
 
@@ -437,7 +439,7 @@ update_status ModuleStage2::Update()
 	}
 
 	//Conditions: Where does the background change X and Y speeds
-	if (App->render->camera.x > 3750 * SCREEN_SIZE && App->render->camera.y < 411 * SCREEN_SIZE) // 1st SPEED CHANGE: Ships enter the inside of the Moon 
+	if (App->render->camera.x > 3790 * SCREEN_SIZE && App->render->camera.y < 411 * SCREEN_SIZE) // 1st SPEED CHANGE: Ships enter the inside of the Moon 
 	{
 		ySpeedMultiplier = 2;
 		xSpeedMultiplier = 1;

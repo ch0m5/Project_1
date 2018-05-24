@@ -28,6 +28,8 @@
 #include "Greyball_Circle.h"
 #include "GreyYellow_Enemy_Right_Up.h"
 #include "GreyYellow_Enemy_Right_Down.h"
+#include "Rock-Sub-Boss.h"
+#include "Sub-Boss.h"
 
 
 #define SPAWN_MARGIN 50
@@ -234,6 +236,12 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::YELLOWSHIP_RIGHT_DOWN:
 			enemies[i] = new GreyYellow_Enemy_Right_Down(info.x, info.y);
+			break;
+		case ENEMY_TYPES::ROCKSUBBOSS:
+			enemies[i] = new Rock_Sub_Boss(info.x, info.y);
+			break;
+		case ENEMY_TYPES::SUBBOSS2:
+			enemies[i] = new Sub_Boss(info.x, info.y);
 			break;
 		
 		}

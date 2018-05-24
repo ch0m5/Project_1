@@ -115,9 +115,11 @@
     <ClInclude Include="PowerUp_Bonus.h" />
     <ClInclude Include="PowerUp_Enemy.h" />
     <ClInclude Include="RedLineShip_Enemy.h" />
+    <ClInclude Include="Rock-Sub-Boss.h" />
     <ClInclude Include="Shuriken_Enemy.h" />
     <ClInclude Include="silver_round.h" />
     <ClInclude Include="silver_round_down.h" />
+    <ClInclude Include="Sub-Boss.h" />
     <ClInclude Include="Up_WhiteOrageTurret.h" />
   </ItemGroup>
   <ItemGroup>
@@ -160,9 +162,11 @@
     <ClCompile Include="PowerUp_Bonus.cpp" />
     <ClCompile Include="PowerUp_Enemy.cpp" />
     <ClCompile Include="RedLineShip_Enemy.cpp" />
+    <ClCompile Include="Rock-Sub-Boss.cpp" />
     <ClCompile Include="Shuriken_Enemy.cpp" />
     <ClCompile Include="silver_round.cpp" />
     <ClCompile Include="silver_round_down.cpp" />
+    <ClCompile Include="Sub-Boss.cpp" />
     <ClCompile Include="Up_WhiteOrangeTurret.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
