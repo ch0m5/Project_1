@@ -17,6 +17,7 @@
 #include "ModuleFont.h"
 #include "ModuleUserInterface.h"
 #include "ModuleStageClear.h"
+#include "ModuleBoss.h"
 
 
 Application::Application()
@@ -40,7 +41,7 @@ Application::Application()
 	modules[i++] = fade = new ModuleFadeToBlack();
 	modules[i++] = fonts = new ModuleFont();
 	modules[i++] = UI = new ModuleUserInterface();
-	
+	modules[i++] = Bosses = new ModuleBoss();
 }	
 
 Application::~Application()
@@ -57,6 +58,7 @@ bool Application::Init()
 	player1->Disable();
 	player2->Disable();
 	enemies->Disable();
+	Bosses->Disable();
 
 	// Disable all maps that you do not start with
 	stage1->Disable();

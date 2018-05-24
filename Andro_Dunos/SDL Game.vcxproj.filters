@@ -179,6 +179,12 @@
     <ClInclude Include="Green-Sub-Boss.h">
       <Filter>ModulesEnemies\EnemiesStage2</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleBoss.h">
+      <Filter>ModulesEnemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>ModulesEnemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -318,6 +324,12 @@
     </ClCompile>
     <ClCompile Include="Green-Sub-Boss.cpp">
       <Filter>ModulesEnemies\EnemiesStage2</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleBoss.cpp">
+      <Filter>ModulesEnemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>ModulesEnemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
