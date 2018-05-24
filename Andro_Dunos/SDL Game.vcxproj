@@ -83,6 +83,7 @@
     <ClInclude Include="Enemy_Example.h" />
     <ClInclude Include="Enemy_GreyBall_S.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="Green-Sub-Boss.h" />
     <ClInclude Include="Greyball_Circle.h" />
     <ClInclude Include="GreyBall_K.h" />
     <ClInclude Include="GreyYellow_Enemy.h" />
@@ -133,6 +134,7 @@
     <ClCompile Include="Enemy_Example.cpp" />
     <ClCompile Include="Enemy_GreyBall_S.cpp" />
     <ClCompile Include="Globals.cpp" />
+    <ClCompile Include="Green-Sub-Boss.cpp" />
     <ClCompile Include="Greyball_Circle.cpp" />
     <ClCompile Include="Greyball_K.cpp" />
     <ClCompile Include="GreyYellow_Enemy.cpp" />

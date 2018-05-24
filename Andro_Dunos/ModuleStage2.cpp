@@ -346,6 +346,9 @@ bool ModuleStage2::Start()
 
 	//rock enemy
 	App->enemies->AddEnemy(ENEMY_TYPES::ROCKSUBBOSS, 3903, 166);
+
+	//Green sub enemy
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENSUBBOSS, 5744, 449);
 	return ret;
 }
 

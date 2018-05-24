@@ -30,6 +30,7 @@
 #include "GreyYellow_Enemy_Right_Down.h"
 #include "Rock-Sub-Boss.h"
 #include "Sub-Boss.h"
+#include "Green-Sub-Boss.h"
 
 
 #define SPAWN_MARGIN 50
@@ -242,6 +243,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			break;
 		case ENEMY_TYPES::SUBBOSS2:
 			enemies[i] = new Sub_Boss(info.x, info.y);
+			break;
+		case ENEMY_TYPES::GREENSUBBOSS:
+			enemies[i] = new Green_Sub_Boss(info.x, info.y);
 			break;
 		
 		}
