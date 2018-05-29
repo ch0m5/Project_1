@@ -245,8 +245,11 @@ update_status ModuleUserInterface::Update()
 					App->fonts->BlitText(250, 10, 0, player2Score_text);
 				}
 				//Print replay
-				App->fonts->BlitText(35, 175, font_yellowtxt, "press enter to play again");
-				App->fonts->BlitText(10, 190, font_yellowtxt, "press space to go to main menu");
+				if (CompletedLevel == 2)
+				{
+					App->fonts->BlitText(35, 175, font_yellowtxt, "press enter to play again");
+					App->fonts->BlitText(10, 190, font_yellowtxt, "press space to go to main menu");
+				}
 				//Add the 2 scores to have the Team Score and blit them
 				App->fonts->BlitText(115, 20, font_yellowtxt, "teamscore");
 				if (App->input->secondPlayerState == true)
