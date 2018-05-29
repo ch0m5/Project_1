@@ -1347,11 +1347,18 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 			if (lives < 1)
 			{
 				App->UI->p1Dead = true;
-				playerHitbox->to_delete = true;
+				if (playerHitbox != nullptr)
+				{
+					playerHitbox->to_delete = true;
+				}
 				this->Disable();
-				if (App->UI->p2Dead == true)
+				if (App->UI->p2Dead == true && App->UI->CurrentStage == App->UI->Stage1)
 				{
 					App->fade->FadeToBlack(App->stage1, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
+				}
+				else if (App->UI->p2Dead == true && App->UI->CurrentStage == App->UI->Stage2)
+				{
+					App->fade->FadeToBlack(App->stage2, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
 				}
 			}
 
