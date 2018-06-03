@@ -32,6 +32,8 @@ bool ModuleUserInterface::Start()
 {
 	LOG("Loading User Interface");	
 	bool ret = true;
+	startTime = SDL_GetTicks();
+	showPress1P = false;
 	p1Dead = true;
 	p2Dead = true;
 	player1Score = 0;
@@ -83,8 +85,20 @@ update_status ModuleUserInterface::Update()
 	{
 		case MainMenu:
 			{
-			App->fonts->BlitText(65, 190, font_yellowtxt, "press space to play");
-				player1Score = 0;
+		//	App->fonts->BlitText(65, 190, font_yellowtxt, "press space to play");
+			if (SDL_GetTicks() - startTime >= 750)
+			{
+				showPress1P = !showPress1P;
+				startTime = SDL_GetTicks();
+			}
+			if (showPress1P == true)
+			{
+				App->fonts->BlitText(85, 140, font_yellowtxt, "press 1p start");
+			}
+			App->fonts->BlitText(40, 193, font_yellowtxt, "© 1992 visco corporation");
+			App->fonts->BlitText(65, 201, font_yellowtxt, "all rights reserved");
+
+			player1Score = 0;
 				player2Score = 0;
 				teamScore = 0;
 			}break;

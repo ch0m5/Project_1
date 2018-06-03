@@ -49,6 +49,10 @@ public:
 	//Player Variables
 	bool p1Dead;
 	bool p2Dead;
+
+	//Logic Variables
+	int startTime;
+	bool showPress1P;
 };
 
 #endif
