@@ -38,9 +38,20 @@ bool ModuleUserInterface::Start()
 	p2Dead = true;
 	player1Score = 0;
 	player2Score = 0;
+	//Load fonts
 	font_score = App->fonts->Load("Assets/Sprites/User_Interface/fonts/Font-score-white.png", "1234567890P", 1);
 	font_yellowtxt = App->fonts->Load("Assets/Sprites/User_Interface/fonts/yellow_font.png", "0123456789abcdefghiklmnoprstuvy©        ", 4);
 	debug_font= App->fonts->Load("Assets/Sprites/User_Interface/fonts/blue_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
+	
+	//Load player boxes
+	hudTex = App->textures->Load("Assets/Sprites/User_Interface/Grafical_Interface/hud_elements.png");
+	
+
+	//Setting up all the Rects
+	blueBoxNormalRect = {1,13, 32, 7};
+	redBoxFintaelRect = {1,58, 32, 7 };
+	yellowBoxHomingRect = { 1,103, 32, 7 };
+	greenBoxRollingRect = { 34,13, 32, 7 };
 	return ret;
 }
 
@@ -48,6 +59,9 @@ bool ModuleUserInterface::Start()
 bool ModuleUserInterface::CleanUp()
 {
 	LOG("Unloading UI");
+	//Unload Textures
+	App->textures->Unload(hudTex);
+	hudTex = nullptr;
 	//Unload fonts
 	App->fonts->UnLoad(font_score);
 	App->fonts->UnLoad(font_yellowtxt);
@@ -110,12 +124,24 @@ update_status ModuleUserInterface::Update()
 				sprintf_s(player1Score_text, 10, "%7d", player1Score);
 				App->fonts->BlitText(50, 10, 0, player1Score_text);
 
+
+				//Blit SCORE
 				if (App->input->secondPlayerState == true)
 				{
 					App->fonts->BlitText(210, 10, font_score, "2P");
 					sprintf_s(player2Score_text, 10, "%7d", player2Score);
 					App->fonts->BlitText(250, 10, 0, player2Score_text);
 				}
+				//Blit Boxes
+				App->render->Blit(hudTex, 10, 20, &blueBoxNormalRect, false);
+				App->render->Blit(hudTex, 42, 20, &redBoxFintaelRect, false);
+				App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
+				App->render->Blit(hudTex, 106, 20, &greenBoxRollingRect, false);
+
+
+
+
+
 				//DEBUG mode
 				if (App->input->debugMode == true)
 				{

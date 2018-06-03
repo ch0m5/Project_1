@@ -50,9 +50,19 @@ public:
 	bool p1Dead;
 	bool p2Dead;
 
+	//Player Boxes textures
+	SDL_Texture* hudTex = nullptr;
+
+	//Player Boxes Squares
+	SDL_Rect blueBoxNormalRect;
+	SDL_Rect redBoxFintaelRect;
+	SDL_Rect yellowBoxHomingRect;
+	SDL_Rect greenBoxRollingRect;
+
 	//Logic Variables
 	int startTime;
 	bool showPress1P;
+
 };
 
 #endif
