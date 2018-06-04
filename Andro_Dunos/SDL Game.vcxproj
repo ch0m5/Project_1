@@ -100,6 +100,8 @@
     <ClInclude Include="ModuleFont.h" />
     <ClInclude Include="ModuleHiScore.h" />
     <ClInclude Include="ModuleParticles.h" />
+    <ClInclude Include="ModuleShieldsP1.h" />
+    <ClInclude Include="ModuleShieldsP2.h" />
     <ClInclude Include="ModuleStage1.h" />
     <ClInclude Include="ModuleFadeToBlack.h" />
     <ClInclude Include="ModuleInput.h" />
@@ -152,6 +154,8 @@
     <ClCompile Include="ModuleFont.cpp" />
     <ClCompile Include="ModuleHiScore.cpp" />
     <ClCompile Include="ModuleParticles.cpp" />
+    <ClCompile Include="ModuleShieldsP1.cpp" />
+    <ClCompile Include="ModuleShieldsP2.cpp" />
     <ClCompile Include="ModuleStage1.cpp" />
     <ClCompile Include="ModuleFadeToBlack.cpp" />
     <ClCompile Include="ModuleInput.cpp" />

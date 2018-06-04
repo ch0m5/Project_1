@@ -12,6 +12,9 @@
 #include "ModuleMixer.h"
 #include "ModuleUserInterface.h"
 #include "ModuleFont.h"
+#include "ModuleShieldsP1.h"
+#include "ModuleShieldsP2.h"
+
 PowerUp_Bonus::PowerUp_Bonus(int x, int y) : Enemy(x, y)
 {
 	hitboxWidth = 16;
@@ -158,11 +161,27 @@ void PowerUp_Bonus::OnCollision(Collider* collider)
 				App->player1->bluePower++;
 				App->player1->checkBluePowerParticleLimit();
 			}
+
 			else if (orange == true && App->player1->orangePower < LEVEL_5)
 			{
 				App->player1->orangePower++;
 			}
+			/*	SHIELD/ROCKETS IMPLEMENTATION
+			else if (yellow == true && App->player1->yellowPower < LEVEL_8)
+			{
+				App->player1->yellowPower++;
+			}
+			*//*
+			else if (green == true && App->player1->greenPower < LEVEL_8)
+			{
+				if (App->player1->greenPower == LEVEL_0)
+					App->shieldsP1->Enable();
+
+				App->player1->greenPower++;
+				App->shieldsP1->life += 5;
+			}*/
 		}
+
 		if (collider->type == COLLIDER_PLAYER_2)
 		{
 			Mix_PlayChannel(2, App->player2->powerUp, 0);
@@ -175,10 +194,25 @@ void PowerUp_Bonus::OnCollision(Collider* collider)
 				App->player2->bluePower++;
 				App->player2->checkBluePowerParticleLimit();
 			}
+
 			else if (orange == true && App->player2->orangePower < LEVEL_5)
 			{
 				App->player2->orangePower++;
 			}
+			/*	SHIELD/ROCKETS IMPLEMENTATION
+			else if (yellow == true && App->player2->yellowPower < LEVEL_8)
+			{
+				App->player2->yellowPower++;
+			}
+			*//*
+			else if (green == true && App->player2->greenPower < LEVEL_8)
+			{
+				if (App->player2->greenPower == LEVEL_0)
+					App->shieldsP2->Enable();
+
+				App->player2->greenPower++;
+				App->shieldsP2->life += 5;
+			}*/
 		}
 	}
 	dead = true;

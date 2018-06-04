@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 19
+#define NUM_MODULES 19 // 21 with shields
 
 class Module;
 
@@ -26,6 +26,9 @@ class ModuleFont;
 class ModuleUserInterface;
 class ModuleStageClear;
 class ModuleBoss;
+//class ModuleShieldsP1;
+//class ModuleShieldsP2;
+
 class Application
 
 {
@@ -50,7 +53,9 @@ public:
 	ModuleFont* fonts = nullptr;
 	ModuleUserInterface* UI = nullptr;
 	ModuleStageClear* stageClear = nullptr;
-	ModuleBoss* Bosses=nullptr;
+	ModuleBoss* Bosses = nullptr;
+	//ModuleShieldsP1* shieldsP1 = nullptr;
+	//ModuleShieldsP2* shieldsP2 = nullptr;
 
 public:
 

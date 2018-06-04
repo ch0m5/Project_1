@@ -15,6 +15,8 @@
 #include "ModuleStage2.h"
 #include "ModuleFont.h"
 #include "ModuleUserInterface.h"
+#include "ModuleShieldsP2.h"
+
 ModulePlayer2::ModulePlayer2()	// @CarlesHoms @Andres
 {
 	graphics = nullptr;
@@ -413,21 +415,21 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 			if (App->input->keyboard[SDL_SCANCODE_7] == KEY_DOWN && orangePower < LEVEL_5)	// Level up orange
 			{
 				orangePower++;
-				checkBluePowerParticleLimit();
 				Mix_PlayChannel(6, powerUp, 0);
 			}
 
 			if (App->input->keyboard[SDL_SCANCODE_8] == KEY_DOWN && yellowPower < LEVEL_8)	// Level up yellow
 			{
 				yellowPower++;
-				checkBluePowerParticleLimit();
 				Mix_PlayChannel(6, powerUp, 0);
 			}
 
 			if (App->input->keyboard[SDL_SCANCODE_9] == KEY_DOWN && yellowPower < LEVEL_8)	// Level up green
 			{
+				if (greenPower <= LEVEL_0)
+					//App->shieldsP2->Enable();
+
 				greenPower++;
-				checkBluePowerParticleLimit();
 				Mix_PlayChannel(6, powerUp, 0);
 			}
 
@@ -436,6 +438,8 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 				if (bluePower > LEVEL_1)
 					bluePower--;
 
+				checkBluePowerParticleLimit();
+
 				if (orangePower > LEVEL_0)
 					orangePower--;
 
@@ -443,9 +447,16 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 					yellowPower--;
 
 				if (greenPower > LEVEL_0)
+				{
 					greenPower--;
+					//App->shieldsP2->life -= 5;
+				}
 
-				checkBluePowerParticleLimit();
+				if (greenPower == LEVEL_0)
+				{
+					//App->shieldsP2->Disable();
+					//App->shieldsP2->life = 0;
+				}
 			}
 		}
 

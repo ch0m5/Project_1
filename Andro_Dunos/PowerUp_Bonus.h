@@ -28,6 +28,8 @@ public:
 	bool dead = false;
 	bool blue = true;
 	bool orange = false;
+	bool yellow = false;
+	bool green = false;
 	bool move_init = true;
 	uint start_time = 0;
 };

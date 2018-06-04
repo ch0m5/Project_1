@@ -81,7 +81,25 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_POWERUP] = false;
 	matrix[COLLIDER_ENEMY][COLLIDER_POWERUP] = false;
 	matrix[COLLIDER_PLAYER][COLLIDER_POWERUP] = true;
+	//matrix[COLLIDER_PLAYER_2][COLLIDER_POWERUP] = true;	// This was missing, if something fucks up maybe is because of this line, try to uncomment it
 	matrix[COLLIDER_WALL][COLLIDER_POWERUP] = false;
+
+	matrix[COLLIDER_PLAYER_SHIELD][COLLIDER_WALL] = false;	//@CarlesHoms
+	matrix[COLLIDER_PLAYER_SHIELD][COLLIDER_PLAYER] = false;
+	matrix[COLLIDER_PLAYER_SHIELD][COLLIDER_PLAYER_2] = false;
+	matrix[COLLIDER_PLAYER_SHIELD][COLLIDER_ENEMY] = true;
+	matrix[COLLIDER_PLAYER_SHIELD][COLLIDER_PLAYER_SHOT] = false;
+	matrix[COLLIDER_PLAYER_SHIELD][COLLIDER_PLAYER_2_SHOT] = false;
+	matrix[COLLIDER_PLAYER_SHIELD][COLLIDER_ENEMY_SHOT] = true;
+	matrix[COLLIDER_PLAYER_SHIELD][COLLIDER_PLAYER_SHIELD] = false;
+
+	matrix[COLLIDER_WALL][COLLIDER_PLAYER_SHIELD] = false;	//@CarlesHoms
+	matrix[COLLIDER_PLAYER][COLLIDER_PLAYER_SHIELD] = false;
+	matrix[COLLIDER_PLAYER_2][COLLIDER_PLAYER_SHIELD] = false;
+	matrix[COLLIDER_ENEMY][COLLIDER_PLAYER_SHIELD] = true;
+	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_PLAYER_SHIELD] = false;
+	matrix[COLLIDER_PLAYER_2_SHOT][COLLIDER_PLAYER_SHIELD] = false;
+	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_PLAYER_SHIELD] = true;
 
 	//screen parameter to render bellow and avoid green background @Andres
 	screen = { 0, 0, SCREEN_WIDTH * SCREEN_SIZE, SCREEN_HEIGHT * SCREEN_SIZE };
@@ -184,14 +202,17 @@ void ModuleCollision::DebugDraw()
 			case COLLIDER_PLAYER_SHOT: // yellow
 				App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
 				break;
-			case COLLIDER_PLAYER_2_SHOT: // white
-				App->render->DrawQuad(colliders[i]->rect, 255, 255, 255, alpha);
+			case COLLIDER_PLAYER_2_SHOT: // yellow
+				App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
 				break;
 			case COLLIDER_ENEMY_SHOT: // magenta
 				App->render->DrawQuad(colliders[i]->rect, 255, 0, 255, alphaHard);
 				break;
 			case COLLIDER_POWERUP: // BROWN
 				App->render->DrawQuad(colliders[i]->rect, 160, 128, 96, alpha);
+				break;
+			case COLLIDER_PLAYER_SHIELD: // cyan
+				App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);	//@CarlesHoms
 				break;
 		}
 	}

@@ -18,6 +18,8 @@
 #include "ModuleUserInterface.h"
 #include "ModuleStageClear.h"
 #include "ModuleBoss.h"
+#include "ModuleShieldsP1.h"
+#include "ModuleShieldsP2.h"
 
 
 Application::Application()
@@ -35,6 +37,8 @@ Application::Application()
 	modules[i++] = mainMenu = new ModuleMainMenu();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = enemies = new ModuleEnemies();
+	//modules[i++] = shieldsP2 = new ModuleShieldsP2();	// TEMPORAL, REMOVE NEEDED
+	//modules[i++] = shieldsP1 = new ModuleShieldsP1();	// TEMPORAL, REMOVE NEEDED
 	modules[i++] = player2 = new ModulePlayer2();
 	modules[i++] = player1 = new ModulePlayer1();
 	modules[i++] = collision = new ModuleCollision();
@@ -59,6 +63,8 @@ bool Application::Init()
 	player2->Disable();
 	enemies->Disable();
 	Bosses->Disable();
+	//shieldsP1->Disable();
+	//shieldsP2->Disable();
 
 	// Disable all maps that you do not start with
 	stage1->Disable();

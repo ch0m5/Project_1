@@ -185,6 +185,12 @@
     <ClInclude Include="Boss.h">
       <Filter>ModulesEnemies</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleShieldsP1.h">
+      <Filter>ModulesPlayers</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleShieldsP2.h">
+      <Filter>ModulesPlayers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -330,6 +336,12 @@
     </ClCompile>
     <ClCompile Include="Boss.cpp">
       <Filter>ModulesEnemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleShieldsP1.cpp">
+      <Filter>ModulesPlayers</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleShieldsP2.cpp">
+      <Filter>ModulesPlayers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
