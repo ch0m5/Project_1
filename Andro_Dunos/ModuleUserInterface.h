@@ -55,9 +55,18 @@ public:
 
 	//Player Boxes Squares
 	SDL_Rect blueBoxNormalRect;
+	SDL_Rect blueBoxReverseRect;
+	SDL_Rect blueBoxWayRect;
+	SDL_Rect blueBoxLaserRect;
 	SDL_Rect redBoxFintaelRect;
+	SDL_Rect redBoxHawkRect;
+	SDL_Rect redBoxLaserRect;
+	SDL_Rect redBoxNormalRect;
 	SDL_Rect yellowBoxHomingRect;
 	SDL_Rect greenBoxRollingRect;
+	SDL_Rect greenBoxSideRect;
+	SDL_Rect greenBoxRearRect;
+	SDL_Rect greenBoxFrontRect;
 
 	//Logic Variables
 	int startTime;

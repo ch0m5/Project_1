@@ -17,6 +17,7 @@
 #include "ModuleUserInterface.h"
 #include "ModuleFont.h"
 #include "ModuleStageClear.h"
+#include "ModuleParticles.h"
 #include <stdio.h>
 ModuleUserInterface::ModuleUserInterface()	//@DídacRomero
 {
@@ -49,9 +50,18 @@ bool ModuleUserInterface::Start()
 
 	//Setting up all the Rects
 	blueBoxNormalRect = {1,13, 32, 7};
+	blueBoxReverseRect = { 1,24, 32, 7 };
+	blueBoxWayRect = { 1,35, 32, 7 };
+	blueBoxLaserRect = { 1,47, 32, 7 };
 	redBoxFintaelRect = {1,58, 32, 7 };
+	redBoxHawkRect = { 1,69, 32, 7 };
+	redBoxLaserRect = { 1,80, 32, 7 };
+	redBoxNormalRect = { 1,92, 32, 7 };
 	yellowBoxHomingRect = { 1,103, 32, 7 };
 	greenBoxRollingRect = { 34,13, 32, 7 };
+	greenBoxSideRect = { 34,24, 32, 7 };
+	greenBoxRearRect = { 34,35, 32, 7 };
+	greenBoxFrontRect = { 34,47, 32, 7 };
 	return ret;
 }
 
@@ -118,25 +128,80 @@ update_status ModuleUserInterface::Update()
 			}break;
 
 		case Stage1:
-			{
+		{
 			//Blit SCORE
-				App->fonts->BlitText(10, 10, font_score, "1P");
-				sprintf_s(player1Score_text, 10, "%7d", player1Score);
-				App->fonts->BlitText(50, 10, 0, player1Score_text);
+			App->fonts->BlitText(10, 10, font_score, "1P");
+			sprintf_s(player1Score_text, 10, "%7d", player1Score);
+			App->fonts->BlitText(50, 10, 0, player1Score_text);
 
 
-				//Blit SCORE
-				if (App->input->secondPlayerState == true)
-				{
-					App->fonts->BlitText(210, 10, font_score, "2P");
-					sprintf_s(player2Score_text, 10, "%7d", player2Score);
-					App->fonts->BlitText(250, 10, 0, player2Score_text);
-				}
-				//Blit Boxes
+			//Blit SCORE
+			if (App->input->secondPlayerState == true)
+			{
+				App->fonts->BlitText(210, 10, font_score, "2P");
+				sprintf_s(player2Score_text, 10, "%7d", player2Score);
+				App->fonts->BlitText(250, 10, 0, player2Score_text);
+			}
+			//Blit Boxes P1
+			if (App->player1->type == weapon_types::TYPE_1)
+			{
 				App->render->Blit(hudTex, 10, 20, &blueBoxNormalRect, false);
 				App->render->Blit(hudTex, 42, 20, &redBoxFintaelRect, false);
 				App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
 				App->render->Blit(hudTex, 106, 20, &greenBoxRollingRect, false);
+			}
+			else if (App->player1->type == weapon_types::TYPE_2)
+			{
+				App->render->Blit(hudTex, 10, 20, &blueBoxReverseRect, false);
+				App->render->Blit(hudTex, 42, 20, &redBoxHawkRect, false);
+				App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
+				App->render->Blit(hudTex, 106, 20, &greenBoxSideRect, false);
+			}
+			else if (App->player1->type == weapon_types::TYPE_3)
+			{
+				App->render->Blit(hudTex, 10, 20, &blueBoxWayRect, false);
+				App->render->Blit(hudTex, 42, 20, &redBoxLaserRect, false);
+				App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
+				App->render->Blit(hudTex, 106, 20, &greenBoxRearRect, false);
+			}
+			else if (App->player1->type == weapon_types::TYPE_4)
+			{
+				App->render->Blit(hudTex, 10, 20, &blueBoxLaserRect, false);
+				App->render->Blit(hudTex, 42, 20, &redBoxNormalRect, false);
+				App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
+				App->render->Blit(hudTex, 106, 20, &greenBoxFrontRect, false);
+			}
+			//Blit Boxes P2
+			if (App->player2->type == weapon_types::TYPE_1)
+			{
+				App->render->Blit(hudTex, 185, 20, &blueBoxNormalRect, false);
+				App->render->Blit(hudTex, 217, 20, &redBoxFintaelRect, false);
+				App->render->Blit(hudTex, 249, 20, &yellowBoxHomingRect, false);
+				App->render->Blit(hudTex, 281, 20, &greenBoxRollingRect, false);
+			}
+			else if (App->player2->type == weapon_types::TYPE_2)
+			{
+				App->render->Blit(hudTex, 185, 20, &blueBoxReverseRect, false);
+				App->render->Blit(hudTex, 217, 20, &redBoxHawkRect, false);
+				App->render->Blit(hudTex, 249, 20, &yellowBoxHomingRect, false);
+				App->render->Blit(hudTex, 281, 20, &greenBoxSideRect, false);
+			}
+			else if (App->player2->type == weapon_types::TYPE_3)
+			{
+				App->render->Blit(hudTex, 185, 20, &blueBoxWayRect, false);
+				App->render->Blit(hudTex, 217, 20, &redBoxLaserRect, false);
+				App->render->Blit(hudTex, 249, 20, &yellowBoxHomingRect, false);
+				App->render->Blit(hudTex, 281, 20, &greenBoxRearRect, false);
+			}
+			else if (App->player2->type == weapon_types::TYPE_4)
+			{
+				App->render->Blit(hudTex, 185, 20, &blueBoxLaserRect, false);
+				App->render->Blit(hudTex, 217, 20, &redBoxNormalRect, false);
+				App->render->Blit(hudTex, 249, 20, &yellowBoxHomingRect, false);
+				App->render->Blit(hudTex, 281, 20, &greenBoxFrontRect, false);
+			}
+
+
 
 
 
@@ -214,6 +279,35 @@ update_status ModuleUserInterface::Update()
 				App->fonts->BlitText(210, 10, font_score, "2P");
 				sprintf_s(player2Score_text, 10, "%7d", player2Score);
 				App->fonts->BlitText(250, 10, 0, player2Score_text);
+			}
+			//Blit Boxes
+			if (App->player1->type == weapon_types::TYPE_1)
+			{
+				App->render->Blit(hudTex, 10, 20, &blueBoxNormalRect, false);
+				App->render->Blit(hudTex, 42, 20, &redBoxFintaelRect, false);
+				App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
+				App->render->Blit(hudTex, 106, 20, &greenBoxRollingRect, false);
+			}
+			else if (App->player1->type == weapon_types::TYPE_2)
+			{
+				App->render->Blit(hudTex, 10, 20, &blueBoxReverseRect, false);
+				App->render->Blit(hudTex, 42, 20, &redBoxHawkRect, false);
+				App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
+				App->render->Blit(hudTex, 106, 20, &greenBoxSideRect, false);
+			}
+			else if (App->player1->type == weapon_types::TYPE_3)
+			{
+				App->render->Blit(hudTex, 10, 20, &blueBoxWayRect, false);
+				App->render->Blit(hudTex, 42, 20, &redBoxLaserRect, false);
+				App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
+				App->render->Blit(hudTex, 106, 20, &greenBoxRearRect, false);
+			}
+			else if (App->player1->type == weapon_types::TYPE_4)
+			{
+				App->render->Blit(hudTex, 10, 20, &blueBoxLaserRect, false);
+				App->render->Blit(hudTex, 42, 20, &redBoxNormalRect, false);
+				App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
+				App->render->Blit(hudTex, 106, 20, &greenBoxFrontRect, false);
 			}
 			//DEBUG mode
 			if (App->input->debugMode == true)
