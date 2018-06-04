@@ -90,6 +90,12 @@ public:
 	bool p1ShowType;
 	bool p2ShowType;
 
+	//Animation the bar of death
+	Animation beamCharging;
+	Animation beamCharged;
+	Animation beamIdle;
+	SDL_Texture* beamTex = nullptr;
+
 };
 
 #endif

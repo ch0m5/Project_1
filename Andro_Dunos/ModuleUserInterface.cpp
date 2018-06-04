@@ -21,8 +21,86 @@
 #include <stdio.h>
 ModuleUserInterface::ModuleUserInterface()	//@DídacRomero
 {
-	//ANDRO DUNOS RECTS
+	
+	// Beam Pushbacks 
+	beamIdle.PushBack({ 29, 28, 64, 6 });
 
+	beamCharged.PushBack({ 165, 96, 64, 7 });
+	beamCharged.PushBack({ 165, 107, 64, 7 });
+	beamCharged.PushBack({ 165, 116, 64, 7 });
+	beamCharged.PushBack({ 165, 126, 64, 7 });
+	beamCharged.loop = true;
+	beamCharged.speed = 0.5f;
+
+	beamCharging.PushBack({ 29, 28, 64, 6 });
+	beamCharging.PushBack({ 29, 35, 64, 6 });
+	beamCharging.PushBack({ 29, 42, 64, 6 });
+	beamCharging.PushBack({ 29, 49, 64, 6 });
+	beamCharging.PushBack({ 29, 56, 64, 6 });
+	beamCharging.PushBack({ 29, 63, 64, 6 });
+	beamCharging.PushBack({ 29, 70, 64, 6 });
+	beamCharging.PushBack({ 29, 77, 64, 6 });
+	beamCharging.PushBack({ 29, 84, 64, 6 });
+	beamCharging.PushBack({ 29, 91, 64, 6 });
+	beamCharging.PushBack({ 29, 98, 64, 6 });
+	beamCharging.PushBack({ 29, 105, 64, 6 });
+	beamCharging.PushBack({ 29, 112, 64, 6 });
+	beamCharging.PushBack({ 29, 119, 64, 6 });
+	beamCharging.PushBack({ 29, 126, 64, 6 });
+	beamCharging.PushBack({ 29, 133, 64, 6 });
+	beamCharging.PushBack({ 29, 140, 64, 6 });
+	beamCharging.PushBack({ 29, 147, 64, 6 });
+	beamCharging.PushBack({ 29, 154, 64, 6 });
+	beamCharging.PushBack({ 29, 161, 64, 6 });
+	beamCharging.PushBack({ 29, 168, 64, 6 });
+	beamCharging.PushBack({ 29, 175, 64, 6 });
+	beamCharging.PushBack({ 29, 182, 64, 6 });
+	beamCharging.PushBack({ 29, 189, 64, 6 });
+	beamCharging.PushBack({ 29, 196, 64, 6 });
+	beamCharging.PushBack({ 29, 203, 64, 6 });
+	beamCharging.PushBack({ 29, 210, 64, 6 });
+	beamCharging.PushBack({ 29, 217, 64, 6 });
+	beamCharging.PushBack({ 29, 224, 64, 6 });
+	beamCharging.PushBack({ 97, 29, 64, 6 });		//Point of inflection bar clipping
+	beamCharging.PushBack({ 97, 36, 64, 6 });
+	beamCharging.PushBack({ 97, 43, 64, 6 });
+	beamCharging.PushBack({ 97, 50, 64, 6 });
+	beamCharging.PushBack({ 97, 57, 64, 6 });
+	beamCharging.PushBack({ 97, 64, 64, 6 });
+	beamCharging.PushBack({ 97, 71, 64, 6 });
+	beamCharging.PushBack({ 97, 78, 64, 6 });
+	beamCharging.PushBack({ 97, 85, 64, 6 });
+	beamCharging.PushBack({ 97, 92, 64, 6 });
+	beamCharging.PushBack({ 97, 99, 64, 6 });
+	beamCharging.PushBack({ 97, 106, 64, 6 });
+	beamCharging.PushBack({ 97, 113, 64, 6 });
+	beamCharging.PushBack({ 97, 120, 64, 6 });
+	beamCharging.PushBack({ 97, 127, 64, 6 });
+	beamCharging.PushBack({ 97, 134, 64, 6 });
+	beamCharging.PushBack({ 97, 141, 64, 6 });
+	beamCharging.PushBack({ 97, 148, 64, 6 });
+	beamCharging.PushBack({ 97, 155, 64, 6 });
+	beamCharging.PushBack({ 97, 162, 64, 6 });
+	beamCharging.PushBack({ 97, 169, 64, 6 });
+	beamCharging.PushBack({ 97, 176, 64, 6 });
+	beamCharging.PushBack({ 97, 183, 64, 6 });
+	beamCharging.PushBack({ 97, 190, 64, 6 });
+	beamCharging.PushBack({ 97, 197, 64, 6 });
+	beamCharging.PushBack({ 97, 204, 64, 6 });
+	beamCharging.PushBack({ 97, 211, 64, 6 });
+	beamCharging.PushBack({ 165, 29, 64, 6 });	//Point of inflection
+	beamCharging.PushBack({ 165, 36, 64, 6 });
+	beamCharging.PushBack({ 165, 43, 64, 6 });
+	beamCharging.PushBack({ 165, 50, 64, 6 });
+	beamCharging.PushBack({ 165, 57, 64, 6 });
+	beamCharging.PushBack({ 165, 64, 64, 6 });
+	beamCharging.PushBack({ 165, 74, 64, 6 }); //All good until here
+	beamCharging.PushBack({ 165, 82, 64, 7 });
+	beamCharging.PushBack({ 165, 88, 64, 7 });
+
+
+	beamCharging.loop = false;
+	beamCharging.speed = 0.5f;
 }
 
 ModuleUserInterface::~ModuleUserInterface()
@@ -47,9 +125,10 @@ bool ModuleUserInterface::Start()
 	debug_font= App->fonts->Load("Assets/Sprites/User_Interface/fonts/blue_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 	powerUpFont = App->fonts->Load("Assets/Sprites/User_Interface/fonts/numbers_powerup.png", "012345678", 1);
 	typeFont = App->fonts->Load("Assets/Sprites/User_Interface/fonts/type_font.png", "1234-type ", 2);
+	
 	//Load player boxes
 	hudTex = App->textures->Load("Assets/Sprites/User_Interface/Grafical_Interface/hud_elements.png");
-	
+	beamTex = App->textures->Load("Assets/Sprites/User_Interface/Grafical_Interface/pritesheet-charge-beam.png");
 
 	//Setting up all the Rects
 	blueBoxNormalRect = {1,13, 32, 7};
@@ -85,6 +164,8 @@ bool ModuleUserInterface::CleanUp()
 	App->fonts->UnLoad(debug_font);
 	App->fonts->UnLoad(powerUpFont);
 	App->fonts->UnLoad(typeFont);
+	App->textures->Unload(hudTex);
+	App->textures->Unload(beamTex);
 	return true;
 }
 
@@ -150,6 +231,43 @@ update_status ModuleUserInterface::Update()
 				sprintf_s(player2Score_text, 10, "%7d", player2Score);
 				App->fonts->BlitText(250, 10, 0, player2Score_text);
 			}
+			//Blit P1 Charging Special Attack beam
+			if (p1Dead == false)
+			{
+				if (App->player1->destroyed == false)
+				{
+					if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_REPEAT)
+					{
+						
+						if (beamCharging.Finished())
+						{
+							App->render->Blit(beamTex, 74, 27, &(beamCharged.GetCurrentFrame()), 1, false);
+						}
+						else
+						{
+							App->render->Blit(beamTex, 74, 28, &(beamCharging.GetCurrentFrame()), 1, false);
+						}
+						if (App->player1->bluePower < 2)
+						{
+							App->render->Blit(beamTex, 74, 28, &(beamIdle.GetCurrentFrame()), 1, false);
+						}
+					}
+					else
+					{
+						beamCharging.Reset();
+						beamCharging.ResetLoops();
+						App->render->Blit(beamTex, 74, 28, &(beamIdle.GetCurrentFrame()), 1, false);
+					}
+				}
+				else
+				{
+					App->render->Blit(beamTex, 74, 28, &(beamIdle.GetCurrentFrame()), 1, false);
+				}
+
+			}
+			
+			//App->render->Blit(beamTex, 74, 28, &(beamIdle.GetCurrentFrame()),1,false);
+
 		//TYPE banner that doesn't let boxes to be seen
 			if (App->input->keyboard[SDL_SCANCODE_O] == KEY_DOWN && p1Dead == false)
 			{
@@ -211,7 +329,7 @@ update_status ModuleUserInterface::Update()
 					App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
 					App->render->Blit(hudTex, 106, 20, &greenBoxFrontRect, false);
 				}
-				
+			
 				//Blit powerUp levels in the boxes
 				if (p1Dead == false)
 				{
