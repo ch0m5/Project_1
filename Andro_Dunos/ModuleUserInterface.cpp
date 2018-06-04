@@ -358,6 +358,30 @@ update_status ModuleUserInterface::Update()
 				App->render->Blit(hudTex, 249, 20, &yellowBoxHomingRect, false);
 				App->render->Blit(hudTex, 281, 20, &greenBoxFrontRect, false);
 			}
+			//HUD Lives 1P
+			if (p1Dead == false)
+			{
+				if (App->player1->lives == 2 || App->player1->lives == 3)
+				{
+					App->render->Blit(hudTex, 18, 28, &livesP1, false);
+				}
+				if (App->player1->lives == 3)
+				{
+					App->render->Blit(hudTex, 26, 28, &livesP1, false);
+				}
+			}
+			//HUD Lives 2P
+			if (p2Dead == false)
+			{
+				if (App->player2->lives == 2 || App->player2->lives == 3)
+				{
+					App->render->Blit(hudTex, 193, 28, &livesP2, false);
+				}
+				if (App->player2->lives == 3)
+				{
+					App->render->Blit(hudTex, 201, 28, &livesP2, false);
+				}
+			}
 			//DEBUG mode
 			if (App->input->debugMode == true)
 			{
