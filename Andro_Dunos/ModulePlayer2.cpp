@@ -1344,7 +1344,10 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 		if (lives < 1)
 		{
 			App->UI->p2Dead = true;
-			playerHitbox->to_delete = true;
+			if (playerHitbox != nullptr)
+			{
+				playerHitbox->to_delete = true;
+			}
 			this->Disable();
 			if (App->UI->p1Dead == true && App->UI->CurrentStage == App->UI->Stage1)
 			{
