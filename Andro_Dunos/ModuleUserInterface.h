@@ -68,6 +68,8 @@ public:
 	SDL_Rect greenBoxRearRect;
 	SDL_Rect greenBoxFrontRect;
 
+	SDL_Rect livesP1;
+	SDL_Rect livesP2;
 	//Logic Variables
 	int startTime;
 	bool showPress1P;

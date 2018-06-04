@@ -62,6 +62,10 @@ bool ModuleUserInterface::Start()
 	greenBoxSideRect = { 34,24, 32, 7 };
 	greenBoxRearRect = { 34,35, 32, 7 };
 	greenBoxFrontRect = { 34,47, 32, 7 };
+	//lives rects
+	livesP1 = {2,2,7,7};
+	livesP2 = {14,2,7,7};
+
 	return ret;
 }
 
@@ -109,7 +113,6 @@ update_status ModuleUserInterface::Update()
 	{
 		case MainMenu:
 			{
-		//	App->fonts->BlitText(65, 190, font_yellowtxt, "press space to play");
 			if (SDL_GetTicks() - startTime >= 750)
 			{
 				showPress1P = !showPress1P;
@@ -135,14 +138,14 @@ update_status ModuleUserInterface::Update()
 			App->fonts->BlitText(50, 10, 0, player1Score_text);
 
 
-			//Blit SCORE
+			//Blit P2 SCORE
 			if (App->input->secondPlayerState == true)
 			{
 				App->fonts->BlitText(210, 10, font_score, "2P");
 				sprintf_s(player2Score_text, 10, "%7d", player2Score);
 				App->fonts->BlitText(250, 10, 0, player2Score_text);
 			}
-			//Blit Boxes P1
+		//Blit Boxes (P1)
 			if (App->player1->type == weapon_types::TYPE_1)
 			{
 				App->render->Blit(hudTex, 10, 20, &blueBoxNormalRect, false);
@@ -171,7 +174,7 @@ update_status ModuleUserInterface::Update()
 				App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
 				App->render->Blit(hudTex, 106, 20, &greenBoxFrontRect, false);
 			}
-			//Blit Boxes P2
+		//Blit Boxes (P2)
 			if (App->player2->type == weapon_types::TYPE_1)
 			{
 				App->render->Blit(hudTex, 185, 20, &blueBoxNormalRect, false);
@@ -200,7 +203,30 @@ update_status ModuleUserInterface::Update()
 				App->render->Blit(hudTex, 249, 20, &yellowBoxHomingRect, false);
 				App->render->Blit(hudTex, 281, 20, &greenBoxFrontRect, false);
 			}
-
+		//HUD Lives 1P
+			if (p1Dead == false)
+			{
+				if (App->player1->lives == 2 || App->player1->lives == 3)
+				{
+					App->render->Blit(hudTex, 18, 28, &livesP1, false);
+				}
+				if (App->player1->lives == 3)
+				{
+					App->render->Blit(hudTex, 26, 28, &livesP1, false);
+				}
+			}
+		//HUD Lives 2P
+			if (p2Dead == false)
+			{
+				if (App->player2->lives == 2 || App->player2->lives == 3)
+				{
+					App->render->Blit(hudTex, 193, 28, &livesP2, false);
+				}
+				if (App->player2->lives == 3)
+				{
+					App->render->Blit(hudTex, 201, 28, &livesP2, false);
+				}
+			}
 				//DEBUG mode
 				if (App->input->debugMode == true)
 				{
