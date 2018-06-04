@@ -29,11 +29,22 @@ public:
 	int font_score = -1;
 	int font_yellowtxt = -1;
 	int debug_font = -1;
+	int powerUpFont = -1;
+
 	char player1Score_text[10];
 	char player2Score_text[10];
 	char teamScore_text[10];
 	char gamepad_P1_LAxis_X [4];
-
+	//P1 PowerUp Levels
+	char p1BluePowerLevel[2];
+	char p1OrangePowerLevel[2];
+	char p1YellowPowerLevel[2];
+	char p1GreenPowerLevel[2];
+	//P2 PowerUp Levels
+	char p2BluePowerLevel[2];
+	char p2OrangePowerLevel[2];
+	char p2YellowPowerLevel[2];
+	char p2GreenPowerLevel[2];
 	enum Scenes
 	{
 		GameOver = -1,

@@ -43,7 +43,7 @@ bool ModuleUserInterface::Start()
 	font_score = App->fonts->Load("Assets/Sprites/User_Interface/fonts/Font-score-white.png", "1234567890P", 1);
 	font_yellowtxt = App->fonts->Load("Assets/Sprites/User_Interface/fonts/yellow_font.png", "0123456789abcdefghiklmnoprstuvy©        ", 4);
 	debug_font= App->fonts->Load("Assets/Sprites/User_Interface/fonts/blue_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
-	
+	powerUpFont = App->fonts->Load("Assets/Sprites/User_Interface/fonts/numbers_powerup.png", "012345678", 1);
 	//Load player boxes
 	hudTex = App->textures->Load("Assets/Sprites/User_Interface/Grafical_Interface/hud_elements.png");
 	
@@ -80,6 +80,7 @@ bool ModuleUserInterface::CleanUp()
 	App->fonts->UnLoad(font_score);
 	App->fonts->UnLoad(font_yellowtxt);
 	App->fonts->UnLoad(debug_font);
+	App->fonts->UnLoad(powerUpFont);
 	return true;
 }
 
@@ -202,6 +203,30 @@ update_status ModuleUserInterface::Update()
 				App->render->Blit(hudTex, 217, 20, &redBoxNormalRect, false);
 				App->render->Blit(hudTex, 249, 20, &yellowBoxHomingRect, false);
 				App->render->Blit(hudTex, 281, 20, &greenBoxFrontRect, false);
+			}
+		//Blit powerUp levels in the boxes
+			if (p1Dead == false)
+			{
+				sprintf_s(p1BluePowerLevel, 10, "%7d", App->player1->bluePower);
+				App->fonts->BlitText(12, 21, powerUpFont, p1BluePowerLevel);
+				sprintf_s(p1OrangePowerLevel, 10, "%7d", App->player1->orangePower);
+				App->fonts->BlitText(44, 21, powerUpFont, p1OrangePowerLevel);
+				sprintf_s(p1YellowPowerLevel, 10, "%7d", App->player1->yellowPower);
+				App->fonts->BlitText(76, 21, powerUpFont, p1YellowPowerLevel);
+				sprintf_s(p1GreenPowerLevel, 10, "%7d", App->player1->greenPower);
+				App->fonts->BlitText(108, 21, powerUpFont, p1GreenPowerLevel);
+			}
+			
+			if (p2Dead == false)
+			{
+				sprintf_s(p2BluePowerLevel, 10, "%7d", App->player2->bluePower);
+				App->fonts->BlitText(187, 21, powerUpFont, p2BluePowerLevel);
+				sprintf_s(p2OrangePowerLevel, 10, "%7d", App->player2->orangePower);
+				App->fonts->BlitText(219, 21, powerUpFont, p2OrangePowerLevel);
+				sprintf_s(p2YellowPowerLevel, 10, "%7d", App->player2->yellowPower);
+				App->fonts->BlitText(243, 21, powerUpFont, p2OrangePowerLevel);
+				sprintf_s(p2GreenPowerLevel, 10, "%7d", App->player2->greenPower);
+				App->fonts->BlitText(283, 21, powerUpFont, p2GreenPowerLevel);
 			}
 		//HUD Lives 1P
 			if (p1Dead == false)
@@ -357,6 +382,30 @@ update_status ModuleUserInterface::Update()
 				App->render->Blit(hudTex, 217, 20, &redBoxNormalRect, false);
 				App->render->Blit(hudTex, 249, 20, &yellowBoxHomingRect, false);
 				App->render->Blit(hudTex, 281, 20, &greenBoxFrontRect, false);
+			}
+			//Blit powerUp levels in the boxes
+			if (p1Dead == false)
+			{
+				sprintf_s(p1BluePowerLevel, 10, "%7d", App->player1->bluePower);
+				App->fonts->BlitText(12, 21, powerUpFont, p1BluePowerLevel);
+				sprintf_s(p1OrangePowerLevel, 10, "%7d", App->player1->orangePower);
+				App->fonts->BlitText(44, 21, powerUpFont, p1OrangePowerLevel);
+				sprintf_s(p1YellowPowerLevel, 10, "%7d", App->player1->yellowPower);
+				App->fonts->BlitText(76, 21, powerUpFont, p1YellowPowerLevel);
+				sprintf_s(p1GreenPowerLevel, 10, "%7d", App->player1->greenPower);
+				App->fonts->BlitText(108, 21, powerUpFont, p1GreenPowerLevel);
+			}
+
+			if (p2Dead == false)
+			{
+				sprintf_s(p2BluePowerLevel, 10, "%7d", App->player2->bluePower);
+				App->fonts->BlitText(187, 21, powerUpFont, p2BluePowerLevel);
+				sprintf_s(p2OrangePowerLevel, 10, "%7d", App->player2->orangePower);
+				App->fonts->BlitText(219, 21, powerUpFont, p2OrangePowerLevel);
+				sprintf_s(p2YellowPowerLevel, 10, "%7d", App->player2->yellowPower);
+				App->fonts->BlitText(243, 21, powerUpFont, p2OrangePowerLevel);
+				sprintf_s(p2GreenPowerLevel, 10, "%7d", App->player2->greenPower);
+				App->fonts->BlitText(283, 21, powerUpFont, p2GreenPowerLevel);
 			}
 			//HUD Lives 1P
 			if (p1Dead == false)
