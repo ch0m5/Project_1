@@ -35,6 +35,8 @@ bool ModuleUserInterface::Start()
 	bool ret = true;
 	startTime = SDL_GetTicks();
 	showPress1P = false;
+	p1ShowType = false;
+	p2ShowType = false;
 	p1Dead = true;
 	p2Dead = true;
 	player1Score = 0;
@@ -44,6 +46,7 @@ bool ModuleUserInterface::Start()
 	font_yellowtxt = App->fonts->Load("Assets/Sprites/User_Interface/fonts/yellow_font.png", "0123456789abcdefghiklmnoprstuvy©        ", 4);
 	debug_font= App->fonts->Load("Assets/Sprites/User_Interface/fonts/blue_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 	powerUpFont = App->fonts->Load("Assets/Sprites/User_Interface/fonts/numbers_powerup.png", "012345678", 1);
+	typeFont = App->fonts->Load("Assets/Sprites/User_Interface/fonts/type_font.png", "1234-type ", 2);
 	//Load player boxes
 	hudTex = App->textures->Load("Assets/Sprites/User_Interface/Grafical_Interface/hud_elements.png");
 	
@@ -81,6 +84,7 @@ bool ModuleUserInterface::CleanUp()
 	App->fonts->UnLoad(font_yellowtxt);
 	App->fonts->UnLoad(debug_font);
 	App->fonts->UnLoad(powerUpFont);
+	App->fonts->UnLoad(typeFont);
 	return true;
 }
 
@@ -146,88 +150,157 @@ update_status ModuleUserInterface::Update()
 				sprintf_s(player2Score_text, 10, "%7d", player2Score);
 				App->fonts->BlitText(250, 10, 0, player2Score_text);
 			}
-		//Blit Boxes (P1)
-			if (App->player1->type == weapon_types::TYPE_1)
+		//TYPE banner that doesn't let boxes to be seen
+			if (App->input->keyboard[SDL_SCANCODE_O] == KEY_DOWN && p1Dead == false)
 			{
-				App->render->Blit(hudTex, 10, 20, &blueBoxNormalRect, false);
-				App->render->Blit(hudTex, 42, 20, &redBoxFintaelRect, false);
-				App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
-				App->render->Blit(hudTex, 106, 20, &greenBoxRollingRect, false);
+				p1TypeSwapStartTime = SDL_GetTicks();
+				p1ShowType = true;
 			}
-			else if (App->player1->type == weapon_types::TYPE_2)
-			{
-				App->render->Blit(hudTex, 10, 20, &blueBoxReverseRect, false);
-				App->render->Blit(hudTex, 42, 20, &redBoxHawkRect, false);
-				App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
-				App->render->Blit(hudTex, 106, 20, &greenBoxSideRect, false);
-			}
-			else if (App->player1->type == weapon_types::TYPE_3)
-			{
-				App->render->Blit(hudTex, 10, 20, &blueBoxWayRect, false);
-				App->render->Blit(hudTex, 42, 20, &redBoxLaserRect, false);
-				App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
-				App->render->Blit(hudTex, 106, 20, &greenBoxRearRect, false);
-			}
-			else if (App->player1->type == weapon_types::TYPE_4)
-			{
-				App->render->Blit(hudTex, 10, 20, &blueBoxLaserRect, false);
-				App->render->Blit(hudTex, 42, 20, &redBoxNormalRect, false);
-				App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
-				App->render->Blit(hudTex, 106, 20, &greenBoxFrontRect, false);
-			}
-		//Blit Boxes (P2)
-			if (App->player2->type == weapon_types::TYPE_1)
-			{
-				App->render->Blit(hudTex, 185, 20, &blueBoxNormalRect, false);
-				App->render->Blit(hudTex, 217, 20, &redBoxFintaelRect, false);
-				App->render->Blit(hudTex, 249, 20, &yellowBoxHomingRect, false);
-				App->render->Blit(hudTex, 281, 20, &greenBoxRollingRect, false);
-			}
-			else if (App->player2->type == weapon_types::TYPE_2)
-			{
-				App->render->Blit(hudTex, 185, 20, &blueBoxReverseRect, false);
-				App->render->Blit(hudTex, 217, 20, &redBoxHawkRect, false);
-				App->render->Blit(hudTex, 249, 20, &yellowBoxHomingRect, false);
-				App->render->Blit(hudTex, 281, 20, &greenBoxSideRect, false);
-			}
-			else if (App->player2->type == weapon_types::TYPE_3)
-			{
-				App->render->Blit(hudTex, 185, 20, &blueBoxWayRect, false);
-				App->render->Blit(hudTex, 217, 20, &redBoxLaserRect, false);
-				App->render->Blit(hudTex, 249, 20, &yellowBoxHomingRect, false);
-				App->render->Blit(hudTex, 281, 20, &greenBoxRearRect, false);
-			}
-			else if (App->player2->type == weapon_types::TYPE_4)
-			{
-				App->render->Blit(hudTex, 185, 20, &blueBoxLaserRect, false);
-				App->render->Blit(hudTex, 217, 20, &redBoxNormalRect, false);
-				App->render->Blit(hudTex, 249, 20, &yellowBoxHomingRect, false);
-				App->render->Blit(hudTex, 281, 20, &greenBoxFrontRect, false);
-			}
-		//Blit powerUp levels in the boxes
-			if (p1Dead == false)
-			{
-				sprintf_s(p1BluePowerLevel, 10, "%7d", App->player1->bluePower);
-				App->fonts->BlitText(12, 21, powerUpFont, p1BluePowerLevel);
-				sprintf_s(p1OrangePowerLevel, 10, "%7d", App->player1->orangePower);
-				App->fonts->BlitText(44, 21, powerUpFont, p1OrangePowerLevel);
-				sprintf_s(p1YellowPowerLevel, 10, "%7d", App->player1->yellowPower);
-				App->fonts->BlitText(76, 21, powerUpFont, p1YellowPowerLevel);
-				sprintf_s(p1GreenPowerLevel, 10, "%7d", App->player1->greenPower);
-				App->fonts->BlitText(108, 21, powerUpFont, p1GreenPowerLevel);
-			}
+				
 			
-			if (p2Dead == false)
+			if (p1ShowType == true)
 			{
-				sprintf_s(p2BluePowerLevel, 10, "%7d", App->player2->bluePower);
-				App->fonts->BlitText(187, 21, powerUpFont, p2BluePowerLevel);
-				sprintf_s(p2OrangePowerLevel, 10, "%7d", App->player2->orangePower);
-				App->fonts->BlitText(219, 21, powerUpFont, p2OrangePowerLevel);
-				sprintf_s(p2YellowPowerLevel, 10, "%7d", App->player2->yellowPower);
-				App->fonts->BlitText(243, 21, powerUpFont, p2OrangePowerLevel);
-				sprintf_s(p2GreenPowerLevel, 10, "%7d", App->player2->greenPower);
-				App->fonts->BlitText(283, 21, powerUpFont, p2GreenPowerLevel);
+				if (SDL_GetTicks() - p1TypeSwapStartTime >= 300)
+				{
+					p1ShowType = false;
+				}
+				switch (App->player1->type)	// Shield position and particle maximum variation
+				{
+				case weapon_types::TYPE_1:
+					App->fonts->BlitText(10, 20, typeFont, "type-1");
+					break;
+				case weapon_types::TYPE_2:
+					App->fonts->BlitText(10, 20, typeFont, "type-2");
+					break;
+				case weapon_types::TYPE_3:
+					App->fonts->BlitText(10, 20, typeFont, "type-3");
+					break;
+				case weapon_types::TYPE_4:
+					App->fonts->BlitText(10, 20, typeFont, "type-4");
+					break;
+				};
 			}
+			else
+			{
+				//Blit Boxes (P1)
+				if (App->player1->type == weapon_types::TYPE_1)
+				{
+					App->render->Blit(hudTex, 10, 20, &blueBoxNormalRect, false);
+					App->render->Blit(hudTex, 42, 20, &redBoxFintaelRect, false);
+					App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
+					App->render->Blit(hudTex, 106, 20, &greenBoxRollingRect, false);
+				}
+				else if (App->player1->type == weapon_types::TYPE_2)
+				{
+					App->render->Blit(hudTex, 10, 20, &blueBoxReverseRect, false);
+					App->render->Blit(hudTex, 42, 20, &redBoxHawkRect, false);
+					App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
+					App->render->Blit(hudTex, 106, 20, &greenBoxSideRect, false);
+				}
+				else if (App->player1->type == weapon_types::TYPE_3)
+				{
+					App->render->Blit(hudTex, 10, 20, &blueBoxWayRect, false);
+					App->render->Blit(hudTex, 42, 20, &redBoxLaserRect, false);
+					App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
+					App->render->Blit(hudTex, 106, 20, &greenBoxRearRect, false);
+				}
+				else if (App->player1->type == weapon_types::TYPE_4)
+				{
+					App->render->Blit(hudTex, 10, 20, &blueBoxLaserRect, false);
+					App->render->Blit(hudTex, 42, 20, &redBoxNormalRect, false);
+					App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
+					App->render->Blit(hudTex, 106, 20, &greenBoxFrontRect, false);
+				}
+				
+				//Blit powerUp levels in the boxes
+				if (p1Dead == false)
+				{
+					sprintf_s(p1BluePowerLevel, 10, "%7d", App->player1->bluePower);
+					App->fonts->BlitText(12, 21, powerUpFont, p1BluePowerLevel);
+					sprintf_s(p1OrangePowerLevel, 10, "%7d", App->player1->orangePower);
+					App->fonts->BlitText(44, 21, powerUpFont, p1OrangePowerLevel);
+					sprintf_s(p1YellowPowerLevel, 10, "%7d", App->player1->yellowPower);
+					App->fonts->BlitText(76, 21, powerUpFont, p1YellowPowerLevel);
+					sprintf_s(p1GreenPowerLevel, 10, "%7d", App->player1->greenPower);
+					App->fonts->BlitText(108, 21, powerUpFont, p1GreenPowerLevel);
+				}
+			}
+
+			//TYPE banner that doesn't let boxes to be seen P2
+			if (App->input->keyboard[SDL_SCANCODE_B] == KEY_DOWN && p1Dead == false)
+			{
+				p2TypeSwapStartTime = SDL_GetTicks();
+				p2ShowType = true;
+			}
+
+
+			if (p2ShowType == true)
+			{
+				if (SDL_GetTicks() - p2TypeSwapStartTime >= 300)
+				{
+					p2ShowType = false;
+				}
+				switch (App->player2->type)	// Shield position and particle maximum variation
+				{
+				case weapon_types::TYPE_1:
+					App->fonts->BlitText(185, 20, typeFont, "type-1");
+					break;
+				case weapon_types::TYPE_2:
+					App->fonts->BlitText(185, 20, typeFont, "type-2");
+					break;
+				case weapon_types::TYPE_3:
+					App->fonts->BlitText(185, 20, typeFont, "type-3");
+					break;
+				case weapon_types::TYPE_4:
+					App->fonts->BlitText(185, 20, typeFont, "type-4");
+					break;
+				};
+			}
+			else
+			{
+				//Blit Boxes (P2)
+				if (App->player2->type == weapon_types::TYPE_1)
+				{
+					App->render->Blit(hudTex, 185, 20, &blueBoxNormalRect, false);
+					App->render->Blit(hudTex, 217, 20, &redBoxFintaelRect, false);
+					App->render->Blit(hudTex, 249, 20, &yellowBoxHomingRect, false);
+					App->render->Blit(hudTex, 281, 20, &greenBoxRollingRect, false);
+				}
+				else if (App->player2->type == weapon_types::TYPE_2)
+				{
+					App->render->Blit(hudTex, 185, 20, &blueBoxReverseRect, false);
+					App->render->Blit(hudTex, 217, 20, &redBoxHawkRect, false);
+					App->render->Blit(hudTex, 249, 20, &yellowBoxHomingRect, false);
+					App->render->Blit(hudTex, 281, 20, &greenBoxSideRect, false);
+				}
+				else if (App->player2->type == weapon_types::TYPE_3)
+				{
+					App->render->Blit(hudTex, 185, 20, &blueBoxWayRect, false);
+					App->render->Blit(hudTex, 217, 20, &redBoxLaserRect, false);
+					App->render->Blit(hudTex, 249, 20, &yellowBoxHomingRect, false);
+					App->render->Blit(hudTex, 281, 20, &greenBoxRearRect, false);
+				}
+				else if (App->player2->type == weapon_types::TYPE_4)
+				{
+					App->render->Blit(hudTex, 185, 20, &blueBoxLaserRect, false);
+					App->render->Blit(hudTex, 217, 20, &redBoxNormalRect, false);
+					App->render->Blit(hudTex, 249, 20, &yellowBoxHomingRect, false);
+					App->render->Blit(hudTex, 281, 20, &greenBoxFrontRect, false);
+				}
+				//Blit powerUp levels in the boxes
+				if (p2Dead == false)
+				{
+					sprintf_s(p2BluePowerLevel, 10, "%7d", App->player2->bluePower);
+					App->fonts->BlitText(187, 21, powerUpFont, p2BluePowerLevel);
+					sprintf_s(p2OrangePowerLevel, 10, "%7d", App->player2->orangePower);
+					App->fonts->BlitText(219, 21, powerUpFont, p2OrangePowerLevel);
+					sprintf_s(p2YellowPowerLevel, 10, "%7d", App->player2->yellowPower);
+					App->fonts->BlitText(243, 21, powerUpFont, p2OrangePowerLevel);
+					sprintf_s(p2GreenPowerLevel, 10, "%7d", App->player2->greenPower);
+					App->fonts->BlitText(283, 21, powerUpFont, p2GreenPowerLevel);
+				}
+			}
+		
 		//HUD Lives 1P
 			if (p1Dead == false)
 			{
