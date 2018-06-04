@@ -30,6 +30,7 @@ public:
 	int font_yellowtxt = -1;
 	int debug_font = -1;
 	int powerUpFont = -1;
+	int typeFont = -1;
 
 	char player1Score_text[10];
 	char player2Score_text[10];
@@ -83,7 +84,11 @@ public:
 	SDL_Rect livesP2;
 	//Logic Variables
 	int startTime;
+	int p1TypeSwapStartTime;
+	int p2TypeSwapStartTime;
 	bool showPress1P;
+	bool p1ShowType;
+	bool p2ShowType;
 
 };
 
