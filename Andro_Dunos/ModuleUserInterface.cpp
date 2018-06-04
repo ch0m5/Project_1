@@ -201,12 +201,6 @@ update_status ModuleUserInterface::Update()
 				App->render->Blit(hudTex, 281, 20, &greenBoxFrontRect, false);
 			}
 
-
-
-
-
-
-
 				//DEBUG mode
 				if (App->input->debugMode == true)
 				{
@@ -308,6 +302,35 @@ update_status ModuleUserInterface::Update()
 				App->render->Blit(hudTex, 42, 20, &redBoxNormalRect, false);
 				App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
 				App->render->Blit(hudTex, 106, 20, &greenBoxFrontRect, false);
+			}
+			//Blit Boxes P2
+			if (App->player2->type == weapon_types::TYPE_1)
+			{
+				App->render->Blit(hudTex, 185, 20, &blueBoxNormalRect, false);
+				App->render->Blit(hudTex, 217, 20, &redBoxFintaelRect, false);
+				App->render->Blit(hudTex, 249, 20, &yellowBoxHomingRect, false);
+				App->render->Blit(hudTex, 281, 20, &greenBoxRollingRect, false);
+			}
+			else if (App->player2->type == weapon_types::TYPE_2)
+			{
+				App->render->Blit(hudTex, 185, 20, &blueBoxReverseRect, false);
+				App->render->Blit(hudTex, 217, 20, &redBoxHawkRect, false);
+				App->render->Blit(hudTex, 249, 20, &yellowBoxHomingRect, false);
+				App->render->Blit(hudTex, 281, 20, &greenBoxSideRect, false);
+			}
+			else if (App->player2->type == weapon_types::TYPE_3)
+			{
+				App->render->Blit(hudTex, 185, 20, &blueBoxWayRect, false);
+				App->render->Blit(hudTex, 217, 20, &redBoxLaserRect, false);
+				App->render->Blit(hudTex, 249, 20, &yellowBoxHomingRect, false);
+				App->render->Blit(hudTex, 281, 20, &greenBoxRearRect, false);
+			}
+			else if (App->player2->type == weapon_types::TYPE_4)
+			{
+				App->render->Blit(hudTex, 185, 20, &blueBoxLaserRect, false);
+				App->render->Blit(hudTex, 217, 20, &redBoxNormalRect, false);
+				App->render->Blit(hudTex, 249, 20, &yellowBoxHomingRect, false);
+				App->render->Blit(hudTex, 281, 20, &greenBoxFrontRect, false);
 			}
 			//DEBUG mode
 			if (App->input->debugMode == true)
