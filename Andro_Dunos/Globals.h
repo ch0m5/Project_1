@@ -14,6 +14,9 @@ void log(const char file[], int line, const char* format, ...);
 
 #define PI 3.14
 
+// Shield used define
+#define RADIUS (24)
+
 enum update_status	// To flag if the modules' status
 {
 	UPDATE_CONTINUE = 1,

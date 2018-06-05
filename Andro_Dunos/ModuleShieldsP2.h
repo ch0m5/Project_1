@@ -1,42 +1,58 @@
-//#ifndef _MODULE_SHIELD_P2_H_
-//#define _MODULE_SHIELD_P2_H_
-//
-//#include "Module.h"
-//#include "Animation.h"
-//#include "Globals.h"
-//
-//#define ROT_STEPS (8)
-//
-//struct SDL_Texture;
-//
-//class ModuleShieldsP2 : public Module {
-//public:
-//	ModuleShieldsP2();
-//	~ModuleShieldsP2();
-//
-//	void OnCollision(Collider* col_1, Collider* col_2);
-//	bool Start();
-//	update_status Update();
-//	bool CleanUp();
-//
-//public:
-//	SDL_Texture* graphics = nullptr;
-//
-//	Animation base_anim, lvl1, lvl2, lvl3;
-//	Animation rotation_lvl1[ROT_STEPS];
-//	Animation rotation_level[ROT_STEPS];
-//
-//	Animation* current_lvl;
-//	int timer;
-//	int life;	// carles edit
-//
-//	Collider* collider1;
-//	Collider* collider2;
-//
-//	iPoint position1, position2;
-//	iPoint pos1_t1[8], pos2_t1[8];
-//	int circ;
-//	//int life = 3;
-//};
-//
-//#endif // !_MODULE_SHIELD_
+#ifndef _MODULE_SHIELD_P2_H_
+#define _MODULE_SHIELD_P2_H_
+
+#include "Module.h"
+#include "Animation.h"
+#include "Globals.h"
+
+struct SDL_Texture;
+
+class ModuleShieldsP2 : public Module {
+public:
+	ModuleShieldsP2();
+	~ModuleShieldsP2();
+
+	void OnCollision(Collider* col_1, Collider* col_2);
+	bool Start();
+	update_status Update();
+	bool CleanUp();
+
+	void spinTheShields(Animation* shield1Animation, Animation* shield2Animation, int greenLevel);
+	int checkShieldsLife(int life);
+
+public:
+	int shieldWidth = 14;
+	int shieldHeight = 16;
+
+	SDL_Texture* graphics = nullptr;
+
+	//Animation base_anim, lvl1, lvl2, lvl3;
+
+	//Front
+	Animation frontRed, frontGreen, frontYellow;
+
+	//Back
+	Animation backRed, backGreen, backYellow;
+
+	//Top
+	Animation topRed, topGreen, topYellow;
+
+	//Bottom
+	Animation bottomRed, bottomGreen, bottomYellow;
+
+	//Rotate
+	Animation rotateRed[8], rotateGreen[8], rotateYellow[8];
+
+	int life = 0;	// carles edit
+	float angle;
+
+	Animation* shield1Animation = nullptr;
+	Animation* shield2Animation = nullptr;
+
+	Collider* shield1Collider = nullptr;
+	Collider* shield2Collider = nullptr;
+
+	iPoint shield1Pos, shield2Pos;
+};
+
+#endif // !_MODULE_SHIELD_

@@ -5,9 +5,6 @@
 #include "Animation.h"
 #include "Globals.h"
 
-// Shield used defines
-#define RADIUS (24)
-
 struct SDL_Texture;
 
 class ModuleShieldsP1 : public Module {
@@ -56,10 +53,6 @@ public:
 	Collider* shield2Collider = nullptr;
 
 	iPoint shield1Pos, shield2Pos;
-
-	//iPoint pos1_t1[8], pos2_t1[8];
-	//int circ;
-	//int life = 3;
 };
 
 #endif // !_MODULE_SHIELD_

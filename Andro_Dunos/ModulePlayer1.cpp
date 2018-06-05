@@ -431,7 +431,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 			if (App->input->keyboard[SDL_SCANCODE_9] == KEY_DOWN && greenPower < LEVEL_8)	// Level up green
 			{
-				if (greenPower <= LEVEL_0)
+				if (greenPower == LEVEL_0)
 					App->shieldsP1->Enable();
 
 				greenPower++;
@@ -460,7 +460,6 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 				if (greenPower == LEVEL_0)
 				{
-					greenPower--;
 					App->shieldsP1->life = 0;
 
 					if (App->shieldsP1->shield1Collider != nullptr)

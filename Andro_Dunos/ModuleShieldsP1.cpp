@@ -110,7 +110,7 @@ bool ModuleShieldsP1::Start()
 	shield2Pos.x = App->player1->position.x + 5;
 	shield2Pos.y = App->player1->position.y + 10;
 
-	// ---- Declares colliders for shield parts individually ----------- COLLIDER_PLAYER_SHIELD
+	// ---- Declares colliders for shield parts individually
 	shield1Collider = App->collision->AddCollider({ (int)shield1Pos.x, (int)shield1Pos.y, shieldWidth, shieldHeight }, COLLIDER_PLAYER_SHIELD, this);
 	shield2Collider = App->collision->AddCollider({ (int)shield2Pos.x, (int)shield2Pos.y, shieldWidth, shieldHeight }, COLLIDER_PLAYER_SHIELD, this);
 
@@ -342,12 +342,15 @@ void ModuleShieldsP1::OnCollision(Collider* c1, Collider* c2)
 
 		else
 		{
+			life--;
+			App->player1->greenPower = LEVEL_0;
+
 			if (shield1Collider != nullptr)
 				shield1Collider->to_delete = true;
 			if (shield2Collider != nullptr)
 				shield2Collider->to_delete = true;
 
-			Disable();	// Could create problems, maybe a direct deletion is needed
+			Disable();
 		}
 	}
 }
@@ -358,7 +361,7 @@ bool ModuleShieldsP1::CleanUp()
 	LOG("Unloading shield");
 	App->textures->Unload(graphics);
 
-	//Get rid of colliders;
+	//Get rid of colliders, I DON'T KNOW IF THIS IS CORRECT
 	shield1Collider = nullptr;
 	shield2Collider = nullptr;
 

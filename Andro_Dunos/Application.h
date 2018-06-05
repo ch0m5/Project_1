@@ -3,7 +3,7 @@
 
 #include "Globals.h"
 
-#define NUM_MODULES 20 // 21 with shields
+#define NUM_MODULES 21
 
 class Module;
 
