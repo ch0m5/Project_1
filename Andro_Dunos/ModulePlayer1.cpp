@@ -1349,6 +1349,10 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 			playerHitbox = App->collision->AddCollider({ App->render->camera.x / SCREEN_SIZE + (int)position.x, App->render->camera.y / SCREEN_SIZE + (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
 			isInvincible = false;
 		}
+		if (invStartTime != 0 && SDL_GetTicks() - invStartTime > 3999 && SDL_GetTicks() - invStartTime < 4020 && godMode == true)
+		{
+			isInvincible = false;
+		}
 
 		if (isInvincible == true && (SDL_GetTicks() - dontShowStartTime) > 200)
 		{
