@@ -14,13 +14,6 @@
 
 ModuleShieldsP1::ModuleShieldsP1()
 {
-	/* SOUNDS FX NEEDED
-	Power_Up_Picked
-	Power_Up_UNIT_SHIELDS_EQUIPPED
-	Power_Up_UNIT_SHIELDS_EQUIPPING
-	*/
-
-	//Blitting needs fixing, except for front
 	//Front
 	frontRed.PushBack({ 510 + shieldWidth * 0, 288, shieldWidth, shieldHeight });
 	frontRed.PushBack({ 510 + shieldWidth * 1, 288, shieldWidth, shieldHeight });
@@ -149,6 +142,15 @@ bool ModuleShieldsP1::Start()
 		ret = false;
 	}
 	
+	//----channel 5
+	shieldsEquipping = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Power_Up_UNIT_SHIELDS_EQUIPPING.wav");
+	shieldsEquipped = App->mixer->LoadFX("Assets/Audio/Sounds_FX/Power_Up_UNIT_SHIELDS_EQUIPPED.wav");
+	shieldsTypeChange = App->mixer->LoadFX("Assets/Audio/Sounds_FX/HighScore_Name_Entry_Letter_SELECT_or_Shield_Type_Change.wav");
+
+	Mix_VolumeChunk(shieldsEquipping, FXVol);
+	Mix_VolumeChunk(shieldsEquipped, FXVol);
+	Mix_VolumeChunk(shieldsTypeChange, FXVol);
+
 	// starting rotation angle
 	angle = 0.5f;
 
@@ -413,6 +415,10 @@ bool ModuleShieldsP1::CleanUp()
 		shield1Collider->to_delete = true;
 	if (shield2Collider != nullptr)
 		shield2Collider->to_delete = true;
+
+	App->mixer->UnloadFx(shieldsEquipping);
+	App->mixer->UnloadFx(shieldsEquipped);
+	App->mixer->UnloadFx(shieldsTypeChange);
 
 	//Get rid of colliders
 	shield1Collider = nullptr;

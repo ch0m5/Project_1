@@ -428,7 +428,10 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 			if (App->input->keyboard[SDL_SCANCODE_9] == KEY_DOWN && greenPower < LEVEL_8)	// Level up green
 			{
 				if (greenPower == LEVEL_0)
+				{
 					App->shieldsP1->Enable();
+					Mix_PlayChannel(5, App->shieldsP1->shieldsEquipping, 0);
+				}
 
 				greenPower++;
 				App->shieldsP1->life += 5;
@@ -480,30 +483,10 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 			checkBluePowerParticleLimit();	// Changes the new particle limit
 
-			switch (type)	// Shield position and particle maximum variation
-			{
-			case TYPE_1:
-
-				//Change shield position
-				break;
-
-			case TYPE_2:
-
-				//Change shield position
-				break;
-
-			case TYPE_3:
-
-				//Change shield position
-				break;
-
-			case TYPE_4:
-
-				//Change shield position
-				break;
-			}
-
 			Mix_PlayChannel(0, typeSwap, 0);
+
+			if (App->shieldsP1->life > 1)
+				Mix_PlayChannel(5, App->shieldsP1->shieldsTypeChange, 0);
 		}
 
 		// Fire lasers

@@ -4,6 +4,7 @@
 #include "Module.h"
 #include "Animation.h"
 #include "Globals.h"
+#include "ModuleMixer.h"
 
 struct SDL_Texture;
 
@@ -26,22 +27,20 @@ public:
 
 	SDL_Texture* graphics = nullptr;
 
-	//Animation base_anim, lvl1, lvl2, lvl3;
-
 	//Front
 	Animation frontRed, frontGreen, frontYellow;
-
 	//Back
 	Animation backRed, backGreen, backYellow;
-
 	//Top
 	Animation topRed, topGreen, topYellow;
-
 	//Bottom
 	Animation bottomRed, bottomGreen, bottomYellow;
-
 	//Rotate
-	Animation rotateRed[8], rotateGreen[8], rotateYellow[8];
+	Animation topRight, topLeft, bottomRight, bottomLeft;
+
+	Mix_Chunk *shieldsEquipping = nullptr;
+	Mix_Chunk *shieldsEquipped = nullptr;
+	Mix_Chunk *shieldsTypeChange = nullptr;
 
 	int life = 0;	// carles edit
 	float angle;
