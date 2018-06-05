@@ -110,6 +110,9 @@ public:
 	int hiScore;
 	int coins;
 
+
+
+
 };
 
 #endif

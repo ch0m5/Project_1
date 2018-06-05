@@ -1380,34 +1380,6 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 	{
 		SDL_Rect crashrect = crashAnimation->GetCurrentFrame();
 		App->render->Blit(graphics, position.x, position.y, &crashrect, 1.0f, false);
-
-		// VALUES THAT NEED TO RESTART WHEN PLAYER DIES, SHOULD HAPPEN ONLY ONCE
-		/*
-		if (bluePower > LEVEL_1)
-		bluePower--;
-
-		if (orangePower > LEVEL_0)
-		orangePower--;
-
-		if (yellowPower > LEVEL_0)
-		yellowPower--;
-
-		if (greenPower > LEVEL_0)
-		greenPower--;
-
-		checkBluePowerParticleLimit();
-
-		fireWeapon = NONE;				// Integer that marks which weapon is being fired at the moment (with an enum)
-		weaponLaserInterval = 0;	// Marks time between fired lasers in a single weapon shot
-		weaponStage = 0;			// Marks stage of currently firing weapon
-		weaponLoop = 0;				// Marks the number of loops of the weapon, if any
-
-		blueShotTimer = 0;
-		weaponChargeTimer = 0;
-		weaponChargingStage = NOT_CHARGING;
-
-		movVertical = 0;	// Counter for the vertical movement of the ship
-		*/
 	}
 
 	// Draw everything --------------------------------------
@@ -1435,6 +1407,33 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 		crash.Reset();
 		crash.ResetLoops();
 		/*crashAnimation->;*/
+
+		// VALUES THAT NEED TO RESTART WHEN PLAYER DIES, SHOULD HAPPEN ONLY ONCE
+
+		if (bluePower > LEVEL_1)
+			bluePower--;
+
+		if (orangePower > LEVEL_0)
+			orangePower--;
+
+		if (yellowPower > LEVEL_0)
+			yellowPower--;
+
+		if (greenPower > LEVEL_0)
+			greenPower--;
+
+		checkBluePowerParticleLimit();
+
+		fireWeapon = NONE;				// Integer that marks which weapon is being fired at the moment (with an enum)
+		weaponLaserInterval = 0;	// Marks time between fired lasers in a single weapon shot
+		weaponStage = 0;			// Marks stage of currently firing weapon
+		weaponLoop = 0;				// Marks the number of loops of the weapon, if any
+
+		blueShotTimer = 0;
+		weaponChargeTimer = 0;
+		weaponChargingStage = NOT_CHARGING;
+
+		movVertical = 0;	// Counter for the vertical movement of the ship
 
 		if (godMode == false)
 		{
