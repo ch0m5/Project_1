@@ -212,7 +212,10 @@ bool ModuleUserInterface::Start()
 	//Load player boxes
 	hudTex = App->textures->Load("Assets/Sprites/User_Interface/Grafical_Interface/hud_elements.png");
 	beamTex = App->textures->Load("Assets/Sprites/User_Interface/Grafical_Interface/pritesheet-charge-beam.png");
+	
 	coinInserted = App->mixer->LoadFX("Assets/Audio/Sounds_FX/COIN_inserted.wav");
+	Mix_VolumeChunk(coinInserted, FXVol);
+
 	//Setting up all the Rects
 	blueBoxNormalRect = {1,13, 32, 7};
 	blueBoxReverseRect = { 1,24, 32, 7 };
