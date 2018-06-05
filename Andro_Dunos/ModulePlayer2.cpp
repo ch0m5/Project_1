@@ -1370,6 +1370,10 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 		dontShow = !dontShow;
 		dontShowStartTime = SDL_GetTicks();
 	}
+	else if (isInvincible == false)
+	{
+		dontShow = false;
+	}
 	// Update collider position to player position
 	/*if (godMode == false)
 	{*/
@@ -1444,19 +1448,50 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 
 		if (lives < 1)
 		{
-			App->UI->p2Dead = true;
+			bluePower = 1;
+			orangePower = 0;
+			yellowPower = 0;
+			greenPower = 0;
+
+			checkBluePowerParticleLimit();
+
+			fireWeapon = NONE;				// Integer that marks which weapon is being fired at the moment (with an enum)
+			weaponLaserInterval = 0;	// Marks time between fired lasers in a single weapon shot
+			weaponStage = 0;			// Marks stage of currently firing weapon
+			weaponLoop = 0;				// Marks the number of loops of the weapon, if any
+
+			blueShotTimer = 0;
+			weaponChargeTimer = 0;
+			weaponChargingStage = NOT_CHARGING;
+
+			movVertical = 0;
+
+			
 			if (playerHitbox != nullptr)
 			{
 				playerHitbox->to_delete = true;
 			}
-			this->Disable();
-			if (App->UI->p1Dead == true && App->UI->CurrentStage == App->UI->Stage1)
+			if (App->UI->coins < 1)
 			{
-				App->fade->FadeToBlack(App->stage1, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
+				App->UI->p2Dead = true;
+				this->Disable();
+				if (App->UI->p1Dead == true && App->UI->CurrentStage == App->UI->Stage1)
+				{
+					App->fade->FadeToBlack(App->stage1, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
+				}
+				else if (App->UI->p1Dead == true && App->UI->CurrentStage == App->UI->Stage2)
+				{
+					App->fade->FadeToBlack(App->stage2, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
+				}
 			}
-			else if (App->UI->p1Dead == true && App->UI->CurrentStage == App->UI->Stage2)
+			else
 			{
-				App->fade->FadeToBlack(App->stage2, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
+				App->UI->p2Dead = false;
+				lives = 3;
+				bluePower++;
+				orangePower++;
+				greenPower++;
+				App->UI->coins -= 1;
 			}
 		}
 		destroyed = false;
