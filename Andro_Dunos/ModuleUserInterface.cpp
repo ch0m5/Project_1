@@ -323,6 +323,10 @@ update_status ModuleUserInterface::Update()
 
 		case Stage1:
 		{
+			if (p1Dead == true && p2Dead == true && coins < 1)
+			{
+				App->fade->FadeToBlack(App->stage1, App->scene_HiScore);
+			}
 			//Blit Coins
 			App->fonts->BlitText(230, 210, creditsFont, "credit ");
 			sprintf_s(coins_text, 10, "%7d", coins);
@@ -653,6 +657,10 @@ update_status ModuleUserInterface::Update()
 		
 		case Stage2:
 		{
+			if (p1Dead == true && p2Dead == true && coins < 1)
+			{
+				App->fade->FadeToBlack(App->stage2, App->scene_HiScore);
+			}
 			//Blit Coins
 			App->fonts->BlitText(230, 210, creditsFont, "credit ");
 			sprintf_s(coins_text, 10, "%7d", coins);
@@ -955,7 +963,7 @@ update_status ModuleUserInterface::Update()
 			App->fonts->BlitText(10, 10, font_score, "1P");
 			App->fonts->BlitText(50, 10, 0, player1Score_text);
 			App->fonts->BlitText(145, 10, hiScoreFont, hiScore_text);
-
+			App->fonts->BlitText(120, 10, hiScoreFont, "hi-");
 			if (App->input->secondPlayerState == true)
 			{
 				App->fonts->BlitText(210, 10, font_score, "2P");
