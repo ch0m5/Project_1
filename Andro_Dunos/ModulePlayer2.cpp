@@ -1286,6 +1286,12 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 		playerHitbox = App->collision->AddCollider({ App->render->camera.x / SCREEN_SIZE + (int)position.x, App->render->camera.y / SCREEN_SIZE + (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
 		isInvincible = false;
 	}
+
+	if (isInvincible == true && (SDL_GetTicks() - dontShowStartTime) > 200)
+	{
+		dontShow = !dontShow;
+		dontShowStartTime = SDL_GetTicks();
+	}
 	// Update collider position to player position
 	/*if (godMode == false)
 	{*/
@@ -1327,7 +1333,7 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 	}
 
 	// Draw everything --------------------------------------
-	if (destroyed == false)
+	if (destroyed == false && dontShow == false)
 	{
 		SDL_Rect propellerRect = propellerAnimation->GetCurrentFrame();
 		App->render->Blit(graphics, position.x - propellerWidth, position.y, &propellerRect, 1.0f, false);
@@ -1424,6 +1430,8 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 		crashAnimation = &crash;
 		blueShotTimer = SDL_GetTicks();
 		invStartTime = SDL_GetTicks();
+		isInvincible = true;
+		dontShowStartTime = SDL_GetTicks();
 		destroyed = true;
 		playerHitbox->to_delete = true;
 		lives -= 1;

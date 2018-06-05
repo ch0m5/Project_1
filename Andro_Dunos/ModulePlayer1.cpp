@@ -1371,7 +1371,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 		{
 			//Reset player pos
 			position.x = 0;							// Starting point of the ship (using p2Point)
-			position.y = (int)(SCREEN_HEIGHT / 2 - 10);
+			position.y = (int)(SCREEN_HEIGHT / 2 - 40);
 			crash.Reset();
 			crash.ResetLoops();
 			/*crashAnimation->;*/
