@@ -124,7 +124,9 @@ public:
 
 	//Invincibility
 	int invStartTime;
+	int dontShowStartTime;
 	bool isInvincible;
+	bool dontShow;
 	//Debug Purpose Variables
 	bool godMode;
 };

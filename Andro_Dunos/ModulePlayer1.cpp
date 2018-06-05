@@ -248,6 +248,7 @@ bool ModulePlayer1::Start()
 	//Invincibility stuff
 	invStartTime = 0;
 	isInvincible = 0;
+	dontShow = false;
 
 	Mix_VolumeChunk(type1Shot, FXVol);
 	Mix_VolumeChunk(type2Shot, FXVol);
@@ -1292,6 +1293,12 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 			isInvincible = false;
 		}
 
+		if (isInvincible == true && (SDL_GetTicks() - dontShowStartTime) > 200)
+		{
+			dontShow = !dontShow;
+			dontShowStartTime = SDL_GetTicks();
+		}
+
 		/*if ( isInvincible==true && SDL_GetTicks() - invStartTime == 4000)
 		{
 			playerHitbox = App->collision->AddCollider({ App->render->camera.x / SCREEN_SIZE + (int)position.x, App->render->camera.y / SCREEN_SIZE + (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
@@ -1344,7 +1351,7 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 		}
 
 		// Draw everything --------------------------------------
-		if (destroyed == false)
+		if (destroyed == false && dontShow == false)
 		{
 			SDL_Rect propellerRect = propellerAnimation->GetCurrentFrame();
 			App->render->Blit(graphics, position.x - propellerWidth, position.y, &propellerRect, 1.0f, false);
@@ -1442,6 +1449,7 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 		Mix_PlayChannel(3, playerDeathExplosion, 0);
 		blueShotTimer = SDL_GetTicks();
 		invStartTime = SDL_GetTicks();
+		dontShow = SDL_GetTicks();
 		isInvincible = true;
 		crashAnimation = &crash;
 		destroyed = true;
