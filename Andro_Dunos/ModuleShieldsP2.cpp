@@ -187,50 +187,50 @@ update_status ModuleShieldsP2::Update()
 		switch (App->player2->greenPower)
 		{
 		case LEVEL_1:
-			shield1Animation = &topRed;
-			shield2Animation = &bottomRed;
+			shield1Animation = &frontRed;
+			shield2Animation = &frontRed;
 			spinTheShields(shield1Animation, shield2Animation, LEVEL_1);
 			break;
 
 		case LEVEL_2:
-			shield1Animation = &topGreen;
-			shield2Animation = &bottomGreen;
+			shield1Animation = &frontGreen;
+			shield2Animation = &frontGreen;
 			spinTheShields(shield1Animation, shield2Animation, LEVEL_2);
 			break;
 
 		case LEVEL_3:
-			shield1Animation = &topGreen;
-			shield2Animation = &bottomGreen;
+			shield1Animation = &frontGreen;
+			shield2Animation = &frontGreen;
 			spinTheShields(shield1Animation, shield2Animation, LEVEL_3);
 			break;
 
 		case LEVEL_4:
-			shield1Animation = &topYellow;
-			shield2Animation = &bottomYellow;
+			shield1Animation = &frontYellow;
+			shield2Animation = &frontYellow;
 			spinTheShields(shield1Animation, shield2Animation, LEVEL_4);
 			break;
 
 		case LEVEL_5:
-			shield1Animation = &topYellow;
-			shield2Animation = &bottomYellow;
+			shield1Animation = &frontYellow;
+			shield2Animation = &frontYellow;
 			spinTheShields(shield1Animation, shield2Animation, LEVEL_5);
 			break;
 
 		case LEVEL_6:
-			shield1Animation = &topGreen;
-			shield2Animation = &bottomGreen;
+			shield1Animation = &frontGreen;
+			shield2Animation = &frontGreen;
 			spinTheShields(shield1Animation, shield2Animation, LEVEL_6);
 			break;
 
 		case LEVEL_7:
-			shield1Animation = &topGreen;
-			shield2Animation = &bottomGreen;
+			shield1Animation = &frontGreen;
+			shield2Animation = &frontGreen;
 			spinTheShields(shield1Animation, shield2Animation, LEVEL_7);
 			break;
 
 		case LEVEL_8:
-			shield1Animation = &topGreen;
-			shield2Animation = &bottomGreen;
+			shield1Animation = &frontGreen;
+			shield2Animation = &frontGreen;
 			spinTheShields(shield1Animation, shield2Animation, LEVEL_8);
 			break;
 		}
