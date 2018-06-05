@@ -100,6 +100,7 @@ update_status ModuleInput::PreUpdate()
 						gamepadP1LAxisY = SDL_GameControllerGetAxis(gamepadP1, SDL_CONTROLLER_AXIS_LEFTY);
 						gamepadP1APressed = SDL_GameControllerGetButton(gamepadP1, SDL_CONTROLLER_BUTTON_A);
 						gamepadP1XPressed = SDL_GameControllerGetButton(gamepadP1, SDL_CONTROLLER_BUTTON_X);
+						gamepadP1YPressed = SDL_GameControllerGetButton(gamepadP1, SDL_CONTROLLER_BUTTON_Y);
 						gamepadP1StartPressed = SDL_GameControllerGetButton(gamepadP1, SDL_CONTROLLER_BUTTON_START);
 						gamepadP1con = true;
 					}
@@ -129,6 +130,7 @@ update_status ModuleInput::PreUpdate()
 						gamepadP2LAxisY = SDL_GameControllerGetAxis(gamepadP2, SDL_CONTROLLER_AXIS_LEFTY);
 						gamepadP2APressed = SDL_GameControllerGetButton(gamepadP2, SDL_CONTROLLER_BUTTON_A);
 						gamepadP2XPressed = SDL_GameControllerGetButton(gamepadP2, SDL_CONTROLLER_BUTTON_X);
+						gamepadP2YPressed = SDL_GameControllerGetButton(gamepadP2, SDL_CONTROLLER_BUTTON_Y);
 						gamepadP2StartPressed = SDL_GameControllerGetButton(gamepadP2, SDL_CONTROLLER_BUTTON_START);
 						gamepadP2con = true;
 						break;
@@ -181,6 +183,15 @@ update_status ModuleInput::PreUpdate()
 	{
 		keyboard[SDL_SCANCODE_O] = KEY_STATE::KEY_REPEAT;
 	}
+
+	if (gamepadP1YPressed == true && keyboard[SDL_SCANCODE_3] == KEY_STATE::KEY_IDLE)
+	{
+		keyboard[SDL_SCANCODE_3] = KEY_STATE::KEY_DOWN;
+	}
+	else if (gamepadP1YPressed == true)
+	{
+		keyboard[SDL_SCANCODE_3] = KEY_STATE::KEY_REPEAT;
+	}
 	/*else
 	{
 	keyboard[SDL_SCANCODE_O] = KEY_STATE::KEY_REPEAT;
@@ -227,12 +238,21 @@ update_status ModuleInput::PreUpdate()
 	}
 	else if (gamepadP2XPressed == true)
 	{
-		keyboard[SDL_SCANCODE_X] = KEY_STATE::KEY_REPEAT;
+		keyboard[SDL_SCANCODE_B] = KEY_STATE::KEY_REPEAT;
 	}
 
 	if (gamepadP2StartPressed == true && keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_IDLE)
 	{
 		keyboard[SDL_SCANCODE_SPACE] = KEY_STATE::KEY_DOWN;
+	}
+
+	if (gamepadP2YPressed == true && keyboard[SDL_SCANCODE_3] == KEY_STATE::KEY_IDLE)
+	{
+		keyboard[SDL_SCANCODE_3] = KEY_STATE::KEY_DOWN;
+	}
+	else if (gamepadP2YPressed == true)
+	{
+		keyboard[SDL_SCANCODE_3] = KEY_STATE::KEY_REPEAT;
 	}
 	/*else
 	{
