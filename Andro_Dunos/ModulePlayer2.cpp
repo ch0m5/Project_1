@@ -1434,7 +1434,7 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 		weaponLoop = 0;				// Marks the number of loops of the weapon, if any
 
 		blueShotTimer = 0;
-		weaponChargeTimer = 0;
+		weaponChargeTimer = SDL_GetTicks();
 		weaponChargingStage = NOT_CHARGING;
 
 		movVertical = 0;	// Counter for the vertical movement of the ship
@@ -1448,10 +1448,10 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 
 		if (lives < 1)
 		{
-			bluePower = 1;
-			orangePower = 0;
-			yellowPower = 0;
-			greenPower = 0;
+			bluePower = LEVEL_1;
+			orangePower = LEVEL_0;
+			yellowPower = LEVEL_0;
+			greenPower = LEVEL_0;
 
 			checkBluePowerParticleLimit();
 
@@ -1461,7 +1461,7 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 			weaponLoop = 0;				// Marks the number of loops of the weapon, if any
 
 			blueShotTimer = 0;
-			weaponChargeTimer = 0;
+			weaponChargeTimer = SDL_GetTicks();
 			weaponChargingStage = NOT_CHARGING;
 
 			movVertical = 0;
@@ -1539,6 +1539,10 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 	if (c2->type != COLLIDER_POWERUP)
 	{
 		Mix_PlayChannel(3, playerDeathExplosion, 0);
+
+		weaponChargeTimer = SDL_GetTicks();
+		weaponChargingStage = NOT_CHARGING;
+
 		crashAnimation = &crash;
 		blueShotTimer = SDL_GetTicks();
 		invStartTime = SDL_GetTicks();
