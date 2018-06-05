@@ -9,9 +9,9 @@ class PowerUp_Bonus : public Enemy
 {
 private:
 	iPoint originalPos;
-	Animation blueMode, blueClose, blueOpen, redMode, redClose, redShine, redOpen;
+	Animation blueMode, blueClose, blueOpen, redMode, redClose, redShine, redOpen, greenMode, greenClose, greenOpen;
 	Path PowerUpBonus_Path;
-
+	//589,72
 	int PowerUpBonus_posx;
 	int PowerUpBonus_posy;
 

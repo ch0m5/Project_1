@@ -62,7 +62,20 @@ PowerUp_Bonus::PowerUp_Bonus(int x, int y) : Enemy(x, y)
 	redOpen.speed = 0.1f;
 	redOpen.loop = false;
 
+	//Green-------------------------------------
 
+	greenMode.PushBack({ 516,71,hitboxWidth,hitboxHeight});
+	
+	greenClose.PushBack({ 607,73, hitboxWidth,hitboxHeight });
+	greenClose.PushBack({589,73, hitboxWidth,hitboxHeight});
+	greenClose.PushBack({ 551,71, hitboxWidth, hitboxHeight });
+	greenClose.speed = 0.1f;
+	greenClose.loop = false;
+
+	greenOpen.PushBack({ 607,73, hitboxWidth,hitboxHeight });
+	greenOpen.PushBack({ 589,73, hitboxWidth,hitboxHeight });
+	greenOpen.speed = 0.1f;
+	greenOpen.loop = false;
 
 	collider = App->collision->AddCollider({ 0, 0, hitboxWidth, hitboxHeight }, COLLIDER_TYPE::COLLIDER_POWERUP, (Module*)App->enemies);
 
@@ -80,6 +93,11 @@ PowerUp_Bonus::PowerUp_Bonus(int x, int y) : Enemy(x, y)
 	PowerUpBonus_Path.PushBack({ 0.5, 0.25 }, 260, &redMode);//redmode
 	PowerUpBonus_Path.PushBack({ 0.5, 0.25 }, 30, &redClose);//red close
 
+	PowerUpBonus_Path.PushBack({ 0.5, 0.25 }, 30, &greenOpen);//green open
+	PowerUpBonus_Path.PushBack({ 0.5, 0.25 }, 220, &greenMode); //green mode
+	PowerUpBonus_Path.PushBack({ 0.25, 0 }, 320, &greenMode); //green mode
+	PowerUpBonus_Path.PushBack({ 0.25, -0.25 }, 30, &greenClose);//close green
+
 	PowerUpBonus_Path.PushBack({ 0.5, 0.25 }, 30, &blueOpen);//blue open
 	PowerUpBonus_Path.PushBack({ 0.5, 0.25 }, 220, &blueMode); //bluemode
 	PowerUpBonus_Path.PushBack({ 0.25, 0 }, 320, &blueMode); //bluemode
@@ -91,6 +109,11 @@ PowerUp_Bonus::PowerUp_Bonus(int x, int y) : Enemy(x, y)
 	PowerUpBonus_Path.PushBack({ 0.5, 0 }, 40, &redShine);//red shine
 	PowerUpBonus_Path.PushBack({ 0.5, 0.25 }, 260, &redMode);//redmode
 	PowerUpBonus_Path.PushBack({ 0.5, 0.25 }, 30, &redClose);//red close
+
+	PowerUpBonus_Path.PushBack({ 0.5, 0.25 }, 30, &greenOpen);//green open
+	PowerUpBonus_Path.PushBack({ 0.5, 0 }, 540, &greenMode); //green mode
+	//PowerUpBonus_Path.PushBack({ 0.25, 0 }, 320, &greenMode); //green mode
+	PowerUpBonus_Path.PushBack({ 0.25, -0.25 }, 30, &greenClose);//close green
 
 	PowerUpBonus_Path.PushBack({ 0, 0.25 }, 570, &blueMode); //bluemode
 	PowerUpBonus_Path.PushBack({ 0, 0.25 }, 30, &blueClose);//close blue
@@ -117,13 +140,21 @@ void PowerUp_Bonus::Move()
 	{
 		blue = true;
 		orange = false;
+		green = false;
 	}
 	else if (timePassed > 5000 && timePassed < 10000)
 	{
 		blue = false;
 		orange = true;
+		green = false;
 	}
-	else if (timePassed > 10000)
+	else if (timePassed > 10000 && timePassed < 15000)
+	{
+		blue = false;
+		orange = false;
+		green = true;
+	}
+	else if (timePassed > 15000)
 	{
 		start_time = SDL_GetTicks();
 	}
@@ -171,7 +202,7 @@ void PowerUp_Bonus::OnCollision(Collider* collider)
 			{
 				App->player1->yellowPower++;
 			}
-			*//*
+			*/
 			else if (green == true && App->player1->greenPower < LEVEL_8)
 			{
 				if (App->player1->greenPower == LEVEL_0)
@@ -179,7 +210,7 @@ void PowerUp_Bonus::OnCollision(Collider* collider)
 
 				App->player1->greenPower++;
 				App->shieldsP1->life += 5;
-			}*/
+			}
 		}
 
 		if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_PLAYER_2_INV)
@@ -204,7 +235,7 @@ void PowerUp_Bonus::OnCollision(Collider* collider)
 			{
 				App->player2->yellowPower++;
 			}
-			*//*
+			*/
 			else if (green == true && App->player2->greenPower < LEVEL_8)
 			{
 				if (App->player2->greenPower == LEVEL_0)
@@ -212,7 +243,7 @@ void PowerUp_Bonus::OnCollision(Collider* collider)
 
 				App->player2->greenPower++;
 				App->shieldsP2->life += 5;
-			}*/
+			}
 		}
 	}
 	dead = true;
