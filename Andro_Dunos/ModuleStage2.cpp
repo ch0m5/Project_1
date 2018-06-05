@@ -494,7 +494,7 @@ update_status ModuleStage2::Update()
 	//enter direct lose condition @Andres
 	if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_DOWN && App->input->debugMode == true)
 	{
-		App->fade->FadeToBlack(App->stage1, App->scene_HiScore, 1);
+		App->fade->FadeToBlack(App->stage2, App->scene_HiScore, 1);
 	}
 
 	//FasterX function Increase the horizontal velocity 

@@ -25,7 +25,10 @@ public:
 	int hitboxHeight;
 
 	void Move();
-	/*void Fire();*/
+	void Fire();
+
+	int maxShots = 150;
+	int currentShot = 0;
 
 	bool dead = false;
 	uint score = 2000;

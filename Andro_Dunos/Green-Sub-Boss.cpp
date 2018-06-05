@@ -61,13 +61,19 @@ void Green_Sub_Boss::Move()
 
 }
 
-//void Drill_Up::Fire()
-//{
-//	if (position.y == App->player1->position.y)
-//	{
-//		App->particles->AddParticle(App->particles->enemyBlueShot, position.x, position.y,-1, COLLIDER_ENEMY_SHOT);
-//	}
-//}
+void  Green_Sub_Boss::Fire()
+{
+	if (currentShot > maxShots)
+	{
+		App->particles->AddParticle(App->particles->biglaser, position.x-35, position.y, -1, COLLIDER_ENEMY_SHOT);
+
+		currentShot = 0;
+	}
+	else
+	{
+		currentShot++;
+	}
+}
 
 void Green_Sub_Boss::OnCollision(Collider* collider)
 {

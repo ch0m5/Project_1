@@ -653,6 +653,15 @@ bool ModuleParticles::Init()
 	enemyBlueShot.speed.x = -3.0f;
 	enemyBlueShot.life = longLife;
 
+	//big enemy laser 
+	biglaser.anim.PushBack({ 6, 355, 30,13 });
+	biglaser.anim.PushBack({ 62, 355, 32, 14 });
+	biglaser.anim.loop = true;
+	biglaser.anim.speed = 0.6f;
+	biglaser.speed.x = -3.0f;
+	biglaser.life = longLife;
+
+
 	// Explosion particle // @Andres
 	explosion.anim.PushBack({ 505, 34, 4, 4 });
 	explosion.anim.PushBack({ 512, 26, 12, 12 });
