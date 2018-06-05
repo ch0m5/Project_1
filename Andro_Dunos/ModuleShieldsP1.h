@@ -21,8 +21,7 @@ public:
 	bool CleanUp();
 
 	void spinTheShields(Animation* shield1Animation, Animation* shield2Animation, int greenLevel);
-	//int give_position_x(int radius, float angle_deg); // preparations for later
-	//int give_position_y(int radius, float angle_deg); // preparations for later
+	int checkShieldsLife(int life);
 
 public:
 	int shieldWidth = 14;
@@ -47,7 +46,7 @@ public:
 	//Rotate
 	Animation rotateRed[8], rotateGreen[8], rotateYellow[8];
 
-	int life;	// carles edit
+	int life = 0;	// carles edit
 	float angle;
 
 	Animation* shield1Animation = nullptr;

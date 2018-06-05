@@ -84,44 +84,6 @@ ModuleShieldsP1::ModuleShieldsP1()
 	bottomYellow.PushBack({ 69, 219, shieldWidth, shieldHeight });
 	bottomYellow.loop = true;
 	bottomYellow.speed = 0.2f;
-
-	// ---- Animation for the TYPE-1 laser's shield (rotating)
-	/*rotation_lvl1[0].PushBack({ 0,0,9,shieldHeight });
-	rotation_lvl1[0].PushBack({ 11,0,9,shieldHeight });
-	rotation_lvl1[0].PushBack({ 22,0,9,shieldHeight });
-	rotation_lvl1[0].PushBack({ 33,0,9,shieldHeight });
-	rotation_lvl1[0].PushBack({ 44,0,9,shieldHeight });
-	rotation_lvl1[0].PushBack({ 57,0,9,shieldHeight });
-	rotation_lvl1[0].loop = true;
-	rotation_lvl1[0].speed = 0.25f;
-
-	rotation_lvl1[1].PushBack({ 128,shieldHeight,9,shieldHeight });
-	rotation_lvl1[1].PushBack({ 117,shieldHeight,9,shieldHeight });
-	rotation_lvl1[1].PushBack({ 106,shieldHeight,9,shieldHeight });
-	rotation_lvl1[1].PushBack({ 95,shieldHeight,9,shieldHeight });
-	rotation_lvl1[1].PushBack({ 84,shieldHeight,9,shieldHeight });
-	rotation_lvl1[1].PushBack({ 72,shieldHeight,9,shieldHeight });
-	rotation_lvl1[1].loop = true;
-	rotation_lvl1[1].speed = 0.25f;*/
-
-	//... and so on
-
-
-	//// ---- Animation for lvl2 LaserShield (Yellow)
-	//lvl2.PushBack({ 46, 18, 5, shieldWidth });
-	//lvl2.PushBack({ 30, 18, 5, shieldWidth });
-	//lvl2.PushBack({ 36, 18, 5, shieldWidth });
-	//lvl2.PushBack({ 30, 18, 5, shieldWidth });
-	//lvl2.loop = true;
-	//lvl2.speed = 0.5f;
-
-	//// ---- Animation for lvl3 LaserShield (Green)
-	//lvl3.PushBack({ 46, 18, 5, shieldWidth });
-	//lvl3.PushBack({ 15, 18, 5, shieldWidth });
-	//lvl3.PushBack({ 22, 18, 5, shieldWidth });
-	//lvl3.PushBack({ 15, 18, 5, shieldWidth });
-	//lvl3.loop = true;
-	//lvl3.speed = 0.5f;
 }
 
 ModuleShieldsP1::~ModuleShieldsP1() {}
@@ -139,8 +101,7 @@ bool ModuleShieldsP1::Start()
 		ret = false;
 	}
 	
-	// add REST
-	life = 5;
+	// starting rotation angle
 	angle = 0.5f;
 
 	//Type 2 starting position as a standard
@@ -150,8 +111,8 @@ bool ModuleShieldsP1::Start()
 	shield2Pos.y = App->player1->position.y + 10;
 
 	// ---- Declares colliders for shield parts individually ----------- COLLIDER_PLAYER_SHIELD
-	shield1Collider = App->collision->AddCollider({ (int)shield1Pos.x, (int)shield1Pos.y, shieldWidth, shieldHeight }, COLLIDER_PLAYER_SHOT, this);
-	shield2Collider = App->collision->AddCollider({ (int)shield2Pos.x, (int)shield2Pos.y, shieldWidth, shieldHeight }, COLLIDER_PLAYER_SHOT, this);
+	shield1Collider = App->collision->AddCollider({ (int)shield1Pos.x, (int)shield1Pos.y, shieldWidth, shieldHeight }, COLLIDER_PLAYER_SHIELD, this);
+	shield2Collider = App->collision->AddCollider({ (int)shield2Pos.x, (int)shield2Pos.y, shieldWidth, shieldHeight }, COLLIDER_PLAYER_SHIELD, this);
 
 	shield1Collider->SetPos(shield1Pos.x + App->render->camera.x, shield1Pos.y + App->render->camera.y);
 	shield2Collider->SetPos(shield2Pos.x + App->render->camera.x, shield2Pos.y + App->render->camera.y);
@@ -161,40 +122,58 @@ bool ModuleShieldsP1::Start()
 
 update_status ModuleShieldsP1::Update()
 {
+	App->player1->greenPower = checkShieldsLife(life);
+
 	switch (App->player1->type)
 	{
 	case TYPE_1:
 		switch (App->player1->greenPower)
 		{
 		case LEVEL_1:
+			shield1Animation = &topRed;
+			shield2Animation = &bottomRed;
 			spinTheShields(shield1Animation, shield2Animation, LEVEL_1);
 			break;
 
 		case LEVEL_2:
+			shield1Animation = &topGreen;
+			shield2Animation = &bottomGreen;
 			spinTheShields(shield1Animation, shield2Animation, LEVEL_2);
 			break;
 
 		case LEVEL_3:
+			shield1Animation = &topGreen;
+			shield2Animation = &bottomGreen;
 			spinTheShields(shield1Animation, shield2Animation, LEVEL_3);
 			break;
 
 		case LEVEL_4:
+			shield1Animation = &topYellow;
+			shield2Animation = &bottomYellow;
 			spinTheShields(shield1Animation, shield2Animation, LEVEL_4);
 			break;
 
 		case LEVEL_5:
+			shield1Animation = &topYellow;
+			shield2Animation = &bottomYellow;
 			spinTheShields(shield1Animation, shield2Animation, LEVEL_5);
 			break;
 
 		case LEVEL_6:
+			shield1Animation = &topGreen;
+			shield2Animation = &bottomGreen;
 			spinTheShields(shield1Animation, shield2Animation, LEVEL_6);
 			break;
 
 		case LEVEL_7:
+			shield1Animation = &topGreen;
+			shield2Animation = &bottomGreen;
 			spinTheShields(shield1Animation, shield2Animation, LEVEL_7);
 			break;
 
 		case LEVEL_8:
+			shield1Animation = &topGreen;
+			shield2Animation = &bottomGreen;
 			spinTheShields(shield1Animation, shield2Animation, LEVEL_8);
 			break;
 		}
@@ -363,12 +342,14 @@ void ModuleShieldsP1::OnCollision(Collider* c1, Collider* c2)
 
 		else
 		{
-			shield1Collider->to_delete = true;
-			shield2Collider->to_delete = true;
+			if (shield1Collider != nullptr)
+				shield1Collider->to_delete = true;
+			if (shield2Collider != nullptr)
+				shield2Collider->to_delete = true;
+
 			Disable();	// Could create problems, maybe a direct deletion is needed
 		}
 	}
-
 }
 
 bool ModuleShieldsP1::CleanUp()
@@ -500,4 +481,31 @@ void ModuleShieldsP1::spinTheShields(Animation* shield1Animation, Animation* shi
 		else if (angle <= 2.0f)
 			shield1Animation = shield2Animation = &frontYellow;
 	}
+}
+
+int ModuleShieldsP1::checkShieldsLife(int life)
+{
+	if (life <= 5)
+		return LEVEL_1;
+
+	else if (life <= 10)
+		return LEVEL_2;
+
+	else if (life <= 15)
+		return LEVEL_3;
+
+	else if (life <= 20)
+		return LEVEL_4;
+
+	else if (life <= 25)
+		return LEVEL_5;
+
+	else if (life <= 30)
+		return LEVEL_6;
+
+	else if (life <= 35)
+		return LEVEL_7;
+
+	else if (life <= 40)
+		return LEVEL_8;
 }

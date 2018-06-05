@@ -424,12 +424,13 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 				Mix_PlayChannel(6, powerUp, 0);
 			}
 
-			if (App->input->keyboard[SDL_SCANCODE_9] == KEY_DOWN && yellowPower < LEVEL_8)	// Level up green
+			if (App->input->keyboard[SDL_SCANCODE_9] == KEY_DOWN && greenPower < LEVEL_8)	// Level up green
 			{
 				if (greenPower <= LEVEL_0)
 					//App->shieldsP2->Enable();
 
 				greenPower++;
+				//App->shieldsP1->life += 5;
 				Mix_PlayChannel(6, powerUp, 0);
 			}
 
@@ -449,13 +450,19 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 				if (greenPower > LEVEL_0)
 				{
 					greenPower--;
-					//App->shieldsP2->life -= 5;
+					//App->shieldsP1->life -= 5;
 				}
 
 				if (greenPower == LEVEL_0)
 				{
-					//App->shieldsP2->Disable();
-					//App->shieldsP2->life = 0;
+					//App->shieldsP1->life = 0;
+
+					/*if (App->shieldsP1->shield1Collider != nullptr)
+						App->shieldsP1->shield1Collider->to_delete = true;
+					if (App->shieldsP1->shield2Collider != nullptr)
+						App->shieldsP1->shield2Collider->to_delete = true;*/
+
+					//App->shieldsP1->Disable();
 				}
 			}
 		}
