@@ -1409,22 +1409,10 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 			crash.ResetLoops();
 			/*crashAnimation->;*/
 
-			if (App->shieldsP1->life > 0)
+			if (App->player1->greenPower > LEVEL_0)
 				App->shieldsP1->Enable();
 
 			// VALUES THAT NEED TO RESTART WHEN PLAYER DIES, SHOULD HAPPEN ONLY ONCE
-
-			if (bluePower > LEVEL_1)
-				bluePower--;
-
-			if (orangePower > LEVEL_0)
-				orangePower--;
-
-			if (yellowPower > LEVEL_0)
-				yellowPower--;
-
-			if (greenPower > LEVEL_0)
-				greenPower--;
 
 			checkBluePowerParticleLimit();
 
@@ -1545,6 +1533,31 @@ void ModulePlayer1::OnCollision(Collider* c1, Collider* c2)
 		
 		weaponChargeTimer = SDL_GetTicks();
 		weaponChargingStage = NOT_CHARGING;
+
+		if (bluePower > LEVEL_1)
+			bluePower--;
+
+		if (orangePower > LEVEL_0)
+			orangePower--;
+
+		if (yellowPower > LEVEL_0)
+			yellowPower--;
+
+		if (greenPower > LEVEL_0)
+		{
+			greenPower--;
+			App->shieldsP1->life -= 5;
+		}
+
+		if (greenPower == LEVEL_0)
+		{
+			App->shieldsP1->life = 0;
+
+			if (App->shieldsP1->shield1Collider != nullptr)
+				App->shieldsP1->shield1Collider->to_delete = true;
+			if (App->shieldsP1->shield2Collider != nullptr)
+				App->shieldsP1->shield2Collider->to_delete = true;
+		}
 
 		App->shieldsP1->Disable();
 
