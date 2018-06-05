@@ -1280,6 +1280,12 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 			playerHitbox = App->collision->AddCollider({ App->render->camera.x / SCREEN_SIZE + (int)position.x, App->render->camera.y / SCREEN_SIZE + (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER_2, this);
 		}
 	}
+	if (invStartTime != 0 && SDL_GetTicks() - invStartTime > 3999 && SDL_GetTicks() - invStartTime < 4020 && godMode == false)
+	{
+		playerHitbox->to_delete = true;
+		playerHitbox = App->collision->AddCollider({ App->render->camera.x / SCREEN_SIZE + (int)position.x, App->render->camera.y / SCREEN_SIZE + (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER, this);
+		isInvincible = false;
+	}
 	// Update collider position to player position
 	/*if (godMode == false)
 	{*/
@@ -1348,7 +1354,7 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 
 		if (godMode == false)
 		{
-			playerHitbox = App->collision->AddCollider({ App->render->camera.x / SCREEN_SIZE + (int)position.x, App->render->camera.y / SCREEN_SIZE + (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER_2, this);
+			playerHitbox = App->collision->AddCollider({ App->render->camera.x / SCREEN_SIZE + (int)position.x, App->render->camera.y / SCREEN_SIZE + (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER_2_INV, this);
 			//playerHitbox->SetPos(App->render->camera.x / SCREEN_SIZE + position.x, App->render->camera.y / SCREEN_SIZE + position.y);
 			playerHitbox->to_delete = false;
 		}
@@ -1417,6 +1423,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 		Mix_PlayChannel(3, playerDeathExplosion, 0);
 		crashAnimation = &crash;
 		blueShotTimer = SDL_GetTicks();
+		invStartTime = SDL_GetTicks();
 		destroyed = true;
 		playerHitbox->to_delete = true;
 		lives -= 1;
