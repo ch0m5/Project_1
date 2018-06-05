@@ -282,9 +282,9 @@ update_status ModuleShieldsP2::Update()
 		}
 
 		shield1Pos.x = App->player2->position.x + 5;
-		shield1Pos.y = App->player2->position.y - 15;
+		shield1Pos.y = App->player2->position.y - 13;
 		shield2Pos.x = App->player2->position.x + 5;
-		shield2Pos.y = App->player2->position.y + 17;
+		shield2Pos.y = App->player2->position.y + 15;
 		break;
 
 		// ---- Stays in front of ship
@@ -445,10 +445,10 @@ void ModuleShieldsP2::spinTheShields(Animation* shield1Animation, Animation* shi
 	//Where r is the radius, cx, cy the origin, and a the angle.
 
 	shield1Pos.x = (int)(App->player2->position.x + 5 + RADIUS * cosf(angle));
-	shield1Pos.y = (int)(App->player2->position.y + 0 - RADIUS * sinf(angle));
+	shield1Pos.y = (int)(App->player2->position.y + 1 - RADIUS * sinf(angle));
 
 	shield2Pos.x = (int)(App->player2->position.x + 5 + RADIUS * cosf(angle + 3.0f));	// before was 3
-	shield2Pos.y = (int)(App->player2->position.y + 0 - RADIUS * sinf(angle + 3.0f));
+	shield2Pos.y = (int)(App->player2->position.y + 1 - RADIUS * sinf(angle + 3.0f));
 
 	angle -= 0.1f;
 
