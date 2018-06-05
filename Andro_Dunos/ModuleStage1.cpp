@@ -122,16 +122,36 @@ bool ModuleStage1::Start()
 		if (App->shieldsP2->life > 0)
 			App->shieldsP2->Enable();
 	}
-
+	
+	//Reset player 1 power values
 	App->player1->bluePower = LEVEL_1;		// Flag/counter for blue power level
 	App->player1->orangePower = LEVEL_0;	// Flag/counter for orange power level
 	App->player1->yellowPower = LEVEL_0;	// Flag/counter for yellow power level
 	App->player1->greenPower = LEVEL_0;		// Flag/counter for green power level
 
+	App->shieldsP1->life = 0;
+
+	if (App->shieldsP1->shield1Collider != nullptr)
+		App->shieldsP1->shield1Collider->to_delete = true;
+	if (App->shieldsP1->shield2Collider != nullptr)
+		App->shieldsP1->shield2Collider->to_delete = true;
+
+	App->shieldsP1->Disable();
+
+	//Reset player 2 power values
 	App->player2->bluePower = LEVEL_1;		// Flag/counter for blue power level
 	App->player2->orangePower = LEVEL_0;	// Flag/counter for orange power level
 	App->player2->yellowPower = LEVEL_0;	// Flag/counter for yellow power level
 	App->player2->greenPower = LEVEL_0;		// Flag/counter for green power level
+
+	App->shieldsP2->life = 0;
+
+	if (App->shieldsP2->shield1Collider != nullptr)
+		App->shieldsP2->shield1Collider->to_delete = true;
+	if (App->shieldsP2->shield2Collider != nullptr)
+		App->shieldsP2->shield2Collider->to_delete = true;
+
+	App->shieldsP2->Disable();
 	
 	// we should log the problem if not loaded correctly
 	
