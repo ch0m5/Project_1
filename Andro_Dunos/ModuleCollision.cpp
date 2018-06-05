@@ -74,6 +74,8 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_POWERUP][COLLIDER_PLAYER_2_SHOT] = false;
 	matrix[COLLIDER_POWERUP][COLLIDER_ENEMY_SHOT] = false;
 	matrix[COLLIDER_POWERUP][COLLIDER_POWERUP] = false;
+	matrix[COLLIDER_POWERUP][COLLIDER_PLAYER_INV] = true;
+	matrix[COLLIDER_POWERUP][COLLIDER_PLAYER_2_INV] = true;
 
 
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_POWERUP] = false;
@@ -100,6 +102,25 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_PLAYER_SHOT][COLLIDER_PLAYER_SHIELD] = false;
 	matrix[COLLIDER_PLAYER_2_SHOT][COLLIDER_PLAYER_SHIELD] = false;
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_PLAYER_SHIELD] = true;
+
+	matrix[COLLIDER_PLAYER_INV][COLLIDER_WALL] = false;
+	matrix[COLLIDER_PLAYER_INV][COLLIDER_PLAYER] = false;
+	matrix[COLLIDER_PLAYER_INV][COLLIDER_PLAYER_2] = false;
+	matrix[COLLIDER_PLAYER_INV][COLLIDER_ENEMY] = false;
+	matrix[COLLIDER_PLAYER_INV][COLLIDER_POWERUP] = true;
+	matrix[COLLIDER_PLAYER_INV][COLLIDER_PLAYER_SHOT] = false;
+	matrix[COLLIDER_PLAYER_INV][COLLIDER_PLAYER_2_SHOT] = false;
+	matrix[COLLIDER_PLAYER_INV][COLLIDER_ENEMY_SHOT] = false;
+
+	matrix[COLLIDER_PLAYER_2_INV][COLLIDER_WALL] = false;
+	matrix[COLLIDER_PLAYER_2_INV][COLLIDER_PLAYER] = false;
+	matrix[COLLIDER_PLAYER_2_INV][COLLIDER_PLAYER_2] = false;
+	matrix[COLLIDER_PLAYER_2_INV][COLLIDER_ENEMY] = false;
+	matrix[COLLIDER_PLAYER_2_INV][COLLIDER_POWERUP] = true;
+	matrix[COLLIDER_PLAYER_2_INV][COLLIDER_PLAYER_SHOT] = false;
+	matrix[COLLIDER_PLAYER_2_INV][COLLIDER_PLAYER_2_SHOT] = false;
+	matrix[COLLIDER_PLAYER_2_INV][COLLIDER_ENEMY_SHOT] = false;
+	
 
 	//screen parameter to render bellow and avoid green background @Andres
 	screen = { 0, 0, SCREEN_WIDTH * SCREEN_SIZE, SCREEN_HEIGHT * SCREEN_SIZE };
@@ -213,6 +234,12 @@ void ModuleCollision::DebugDraw()
 				break;
 			case COLLIDER_PLAYER_SHIELD: // cyan
 				App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);	//@CarlesHoms
+				break;
+			case COLLIDER_PLAYER_INV:
+				App->render->DrawQuad(colliders[i]->rect, 255, 255, 128, alpha);	// WHITE/YELLOW/BROWN
+				break;
+			case COLLIDER_PLAYER_2_INV:
+				App->render->DrawQuad(colliders[i]->rect, 255, 255, 128, alpha);    // WHITE/YELLOW/BROWN
 				break;
 		}
 	}

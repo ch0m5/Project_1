@@ -149,7 +149,7 @@ void PowerUp_Bonus::OnCollision(Collider* collider)
 {
 	if (dead == false)
 	{
-		if (collider->type == COLLIDER_PLAYER)
+		if (collider->type == COLLIDER_PLAYER || collider->type == COLLIDER_PLAYER_INV)
 		{
 			Mix_PlayChannel(2, App->player1->powerUp, 0);
 			App->UI->player1Score += score;
@@ -182,7 +182,7 @@ void PowerUp_Bonus::OnCollision(Collider* collider)
 			}*/
 		}
 
-		if (collider->type == COLLIDER_PLAYER_2)
+		if (collider->type == COLLIDER_PLAYER_2 || collider->type == COLLIDER_PLAYER_2_INV)
 		{
 			Mix_PlayChannel(2, App->player2->powerUp, 0);
 			App->UI->player2Score += score;
