@@ -39,6 +39,7 @@ public:
 	int gamepadP1LAxisY = 0;
 	bool gamepadP1APressed = false;
 	bool gamepadP1XPressed = false;
+	bool gamepadP1YPressed = false;
 	bool gamepadP1StartPressed = false;
 
 	//GAme Controller for Player 2
@@ -48,6 +49,7 @@ public:
 	int gamepadP2LAxisY = 0;
 	bool gamepadP2APressed = false;
 	bool gamepadP2XPressed = false;
+	bool gamepadP2YPressed = false;
 	bool gamepadP2StartPressed = false;
 
 	//debug mode function
