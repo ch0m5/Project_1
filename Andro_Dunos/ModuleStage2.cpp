@@ -15,6 +15,8 @@
 #include "ModuleStageClear.h"
 #include "ModuleParticles.h"
 #include "ModuleUserInterface.h"
+#include "ModuleShieldsP1.h"
+#include "ModuleShieldsP2.h"
 
 ModuleStage2::ModuleStage2()	//@AndresSala
 {
@@ -55,10 +57,18 @@ bool ModuleStage2::Start()
 
 	App->player1->godMode = false;
 	App->player2->godMode = false;
+
 	App->player1->Enable();
+
+	if (App->shieldsP1->life > 0)
+		App->shieldsP1->Enable();
+
 	if (App->input->secondPlayerState == true) //@AndresSala
 	{
 		App->player2->Enable();
+
+		if (App->shieldsP2->life > 0)
+			App->shieldsP2->Enable();
 	}
 
 	loopNotPlaying = true;
@@ -370,10 +380,14 @@ bool ModuleStage2::CleanUp()
 	loopNotPlaying = false;
 	//--------
 	LOG("Unloading players");
+
 	App->player1->Disable();
+	App->shieldsP1->Disable();
+
 	if (App->input->secondPlayerState == true) //@AndresSala
 	{
 		App->player2->Disable();
+		App->shieldsP2->Disable();
 	}
 
 	LOG("Unloading enemies");

@@ -22,68 +22,116 @@ ModuleShieldsP1::ModuleShieldsP1()
 
 	//Blitting needs fixing, except for front
 	//Front
-	frontRed.PushBack({ 69, 241, shieldWidth, shieldHeight });
-	frontRed.PushBack({ 69, 241, shieldWidth, shieldHeight });
+	frontRed.PushBack({ 510 + shieldWidth * 0, 288, shieldWidth, shieldHeight });
+	frontRed.PushBack({ 510 + shieldWidth * 1, 288, shieldWidth, shieldHeight });
+	frontRed.PushBack({ 510 + shieldWidth * 2, 288, shieldWidth, shieldHeight });
+	frontRed.PushBack({ 510 + shieldWidth * 3, 288, shieldWidth, shieldHeight });
+	frontRed.PushBack({ 510 + shieldWidth * 4, 288, shieldWidth, shieldHeight });
+	frontRed.PushBack({ 510 + shieldWidth * 5, 288, shieldWidth, shieldHeight });
 	frontRed.loop = true;
 	frontRed.speed = 0.2f;
 
-	frontGreen.PushBack({69, 263, shieldWidth, shieldHeight});
-	frontGreen.PushBack({ 69, 263, shieldWidth, shieldHeight });
+	frontGreen.PushBack({ 510 + shieldWidth * 0, 304, shieldWidth, shieldHeight });
+	frontGreen.PushBack({ 510 + shieldWidth * 1, 304, shieldWidth, shieldHeight });
+	frontGreen.PushBack({ 510 + shieldWidth * 2, 304, shieldWidth, shieldHeight });
+	frontGreen.PushBack({ 510 + shieldWidth * 3, 304, shieldWidth, shieldHeight });
+	frontGreen.PushBack({ 510 + shieldWidth * 4, 304, shieldWidth, shieldHeight });
+	frontGreen.PushBack({ 510 + shieldWidth * 5, 304, shieldWidth, shieldHeight });
 	frontGreen.loop = true;
 	frontGreen.speed = 0.2f;
 
-	frontYellow.PushBack({69, 219, shieldWidth, shieldHeight});
-	frontYellow.PushBack({ 69, 219, shieldWidth, shieldHeight });
+	frontYellow.PushBack({ 510 + shieldWidth * 0, 272, shieldWidth, shieldHeight });
+	frontYellow.PushBack({ 510 + shieldWidth * 1, 272, shieldWidth, shieldHeight });
+	frontYellow.PushBack({ 510 + shieldWidth * 2, 272, shieldWidth, shieldHeight });
+	frontYellow.PushBack({ 510 + shieldWidth * 3, 272, shieldWidth, shieldHeight });
+	frontYellow.PushBack({ 510 + shieldWidth * 4, 272, shieldWidth, shieldHeight });
+	frontYellow.PushBack({ 510 + shieldWidth * 5, 272, shieldWidth, shieldHeight });
 	frontYellow.loop = true;
 	frontYellow.speed = 0.2f;
 
 	//Back
-	backRed.PushBack({ 69, 241, shieldWidth, shieldHeight });
-	backRed.PushBack({ 69, 241, shieldWidth, shieldHeight });
+	backRed.PushBack({ 512 + shieldWidth * 0, 336, shieldWidth, shieldHeight });
+	backRed.PushBack({ 512 + shieldWidth * 1, 336, shieldWidth, shieldHeight });
+	backRed.PushBack({ 512 + shieldWidth * 2, 336, shieldWidth, shieldHeight });
+	backRed.PushBack({ 512 + shieldWidth * 3, 336, shieldWidth, shieldHeight });
+	backRed.PushBack({ 512 + shieldWidth * 4, 336, shieldWidth, shieldHeight });
+	backRed.PushBack({ 512 + shieldWidth * 5, 336, shieldWidth - 1, shieldHeight });
 	backRed.loop = true;
 	backRed.speed = 0.2f;
 
-	backGreen.PushBack({ 69, 263, shieldWidth, shieldHeight });
-	backGreen.PushBack({ 69, 263, shieldWidth, shieldHeight });
+	backGreen.PushBack({ 512 + shieldWidth * 0, 320, shieldWidth, shieldHeight });
+	backGreen.PushBack({ 512 + shieldWidth * 1, 320, shieldWidth, shieldHeight });
+	backGreen.PushBack({ 512 + shieldWidth * 2, 320, shieldWidth, shieldHeight });
+	backGreen.PushBack({ 512 + shieldWidth * 3, 320, shieldWidth, shieldHeight });
+	backGreen.PushBack({ 512 + shieldWidth * 4, 320, shieldWidth, shieldHeight });
+	backGreen.PushBack({ 512 + shieldWidth * 5, 320, shieldWidth - 1, shieldHeight });
 	backGreen.loop = true;
 	backGreen.speed = 0.2f;
 
-	backYellow.PushBack({ 69, 219, shieldWidth, shieldHeight });
-	backYellow.PushBack({ 69, 219, shieldWidth, shieldHeight });
+	backYellow.PushBack({ 512 + shieldWidth * 0, 352, shieldWidth, shieldHeight });
+	backYellow.PushBack({ 512 + shieldWidth * 1, 352, shieldWidth, shieldHeight });
+	backYellow.PushBack({ 512 + shieldWidth * 2, 352, shieldWidth, shieldHeight });
+	backYellow.PushBack({ 512 + shieldWidth * 3, 352, shieldWidth, shieldHeight });
+	backYellow.PushBack({ 512 + shieldWidth * 4, 352, shieldWidth, shieldHeight });
+	backYellow.PushBack({ 512 + shieldWidth * 5, 352, shieldWidth - 1, shieldHeight });
 	backYellow.loop = true;
 	backYellow.speed = 0.2f;
 
 	//Top
-	topRed.PushBack({ 69, 241, shieldWidth, shieldHeight });
-	topRed.PushBack({ 69, 241, shieldWidth, shieldHeight });
+	topRed.PushBack({ 623, 273 + shieldHeight * 0, shieldWidth, shieldHeight });
+	topRed.PushBack({ 623, 273 + shieldHeight * 1, shieldWidth, shieldHeight });
+	topRed.PushBack({ 623, 273 + shieldHeight * 2, shieldWidth, shieldHeight });
+	topRed.PushBack({ 623, 273 + shieldHeight * 3, shieldWidth, shieldHeight });
+	topRed.PushBack({ 623, 273 + shieldHeight * 4, shieldWidth, shieldHeight });
+	topRed.PushBack({ 623, 273 + shieldHeight * 5, shieldWidth, shieldHeight });
 	topRed.loop = true;
-	topRed.speed = 0.2f;
+	topRed.speed = 0.3f;
 
-	topGreen.PushBack({ 69, 263, shieldWidth, shieldHeight });
-	topGreen.PushBack({ 69, 263, shieldWidth, shieldHeight });
+	topGreen.PushBack({ 639, 273 + shieldHeight * 0, shieldWidth, shieldHeight });
+	topGreen.PushBack({ 639, 273 + shieldHeight * 1, shieldWidth, shieldHeight });
+	topGreen.PushBack({ 639, 273 + shieldHeight * 2, shieldWidth, shieldHeight });
+	topGreen.PushBack({ 639, 273 + shieldHeight * 3, shieldWidth, shieldHeight });
+	topGreen.PushBack({ 639, 273 + shieldHeight * 4, shieldWidth, shieldHeight });
+	topGreen.PushBack({ 639, 273 + shieldHeight * 5, shieldWidth, shieldHeight });
 	topGreen.loop = true;
-	topGreen.speed = 0.2f;
+	topGreen.speed = 0.3f;
 
-	topYellow.PushBack({ 69, 219, shieldWidth, shieldHeight });
-	topYellow.PushBack({ 69, 219, shieldWidth, shieldHeight });
+	topYellow.PushBack({ 607, 273 + shieldHeight * 0, shieldWidth, shieldHeight });
+	topYellow.PushBack({ 607, 273 + shieldHeight * 1, shieldWidth, shieldHeight });
+	topYellow.PushBack({ 607, 273 + shieldHeight * 2, shieldWidth, shieldHeight });
+	topYellow.PushBack({ 607, 273 + shieldHeight * 3, shieldWidth, shieldHeight });
+	topYellow.PushBack({ 607, 273 + shieldHeight * 4, shieldWidth, shieldHeight });
+	topYellow.PushBack({ 607, 273 + shieldHeight * 5, shieldWidth, shieldHeight });
 	topYellow.loop = true;
-	topYellow.speed = 0.2f;
+	topYellow.speed = 0.3f;
 
 	//Bottom
-	bottomRed.PushBack({ 69, 241, shieldWidth, shieldHeight });
-	bottomRed.PushBack({ 69, 241, shieldWidth, shieldHeight });
+	bottomRed.PushBack({ 671, 271 + shieldHeight * 0, shieldWidth, shieldHeight });
+	bottomRed.PushBack({ 671, 271 + shieldHeight * 1, shieldWidth, shieldHeight });
+	bottomRed.PushBack({ 671, 271 + shieldHeight * 2, shieldWidth, shieldHeight });
+	bottomRed.PushBack({ 671, 271 + shieldHeight * 3, shieldWidth, shieldHeight });
+	bottomRed.PushBack({ 671, 271 + shieldHeight * 4, shieldWidth, shieldHeight });
+	bottomRed.PushBack({ 671, 271 + shieldHeight * 5, shieldWidth, shieldHeight });
 	bottomRed.loop = true;
-	bottomRed.speed = 0.2f;
+	bottomRed.speed = 0.3f;
 
-	bottomGreen.PushBack({ 69, 263, shieldWidth, shieldHeight });
-	bottomGreen.PushBack({ 69, 263, shieldWidth, shieldHeight });
+	bottomGreen.PushBack({ 655, 271 + shieldHeight * 0, shieldWidth, shieldHeight });
+	bottomGreen.PushBack({ 655, 271 + shieldHeight * 1, shieldWidth, shieldHeight });
+	bottomGreen.PushBack({ 655, 271 + shieldHeight * 2, shieldWidth, shieldHeight });
+	bottomGreen.PushBack({ 655, 271 + shieldHeight * 3, shieldWidth, shieldHeight });
+	bottomGreen.PushBack({ 655, 271 + shieldHeight * 4, shieldWidth, shieldHeight });
+	bottomGreen.PushBack({ 655, 271 + shieldHeight * 5, shieldWidth, shieldHeight });
 	bottomGreen.loop = true;
-	bottomGreen.speed = 0.2f;
+	bottomGreen.speed = 0.3f;
 
-	bottomYellow.PushBack({ 69, 219, shieldWidth, shieldHeight });
-	bottomYellow.PushBack({ 69, 219, shieldWidth, shieldHeight });
+	bottomYellow.PushBack({ 687, 271 + shieldHeight * 0, shieldWidth, shieldHeight });
+	bottomYellow.PushBack({ 687, 271 + shieldHeight * 1, shieldWidth, shieldHeight });
+	bottomYellow.PushBack({ 687, 271 + shieldHeight * 2, shieldWidth, shieldHeight });
+	bottomYellow.PushBack({ 687, 271 + shieldHeight * 3, shieldWidth, shieldHeight });
+	bottomYellow.PushBack({ 687, 271 + shieldHeight * 4, shieldWidth, shieldHeight });
+	bottomYellow.PushBack({ 687, 271 + shieldHeight * 5, shieldWidth, shieldHeight });
 	bottomYellow.loop = true;
-	bottomYellow.speed = 0.2f;
+	bottomYellow.speed = 0.3f;
 }
 
 ModuleShieldsP1::~ModuleShieldsP1() {}
@@ -225,9 +273,9 @@ update_status ModuleShieldsP1::Update()
 		}
 		
 		shield1Pos.x = App->player1->position.x + 5;
-		shield1Pos.y = App->player1->position.y - 12;
+		shield1Pos.y = App->player1->position.y - 15;
 		shield2Pos.x = App->player1->position.x + 5;
-		shield2Pos.y = App->player1->position.y + 14;
+		shield2Pos.y = App->player1->position.y + 17;
 		break;
 
 		// ---- Stays in front of ship
@@ -268,9 +316,9 @@ update_status ModuleShieldsP1::Update()
 		}
 
 		shield1Pos.x = App->player1->position.x + 29;
-		shield1Pos.y = App->player1->position.y - 8;
+		shield1Pos.y = App->player1->position.y - 5;
 		shield2Pos.x = App->player1->position.x + 29;
-		shield2Pos.y = App->player1->position.y + 10;
+		shield2Pos.y = App->player1->position.y + 13;
 		break;
 
 		// ---- Stays behind ship
@@ -311,9 +359,9 @@ update_status ModuleShieldsP1::Update()
 		}
 
 		shield1Pos.x = App->player1->position.x - shieldHeight;
-		shield1Pos.y = App->player1->position.y - 8;
+		shield1Pos.y = App->player1->position.y - 5;
 		shield2Pos.x = App->player1->position.x - shieldHeight;
-		shield2Pos.y = App->player1->position.y + 10;
+		shield2Pos.y = App->player1->position.y + 13;
 		break;
 	}
 
@@ -361,7 +409,12 @@ bool ModuleShieldsP1::CleanUp()
 	LOG("Unloading shield");
 	App->textures->Unload(graphics);
 
-	//Get rid of colliders, I DON'T KNOW IF THIS IS CORRECT
+	if (shield1Collider != nullptr)
+		shield1Collider->to_delete = true;
+	if (shield2Collider != nullptr)
+		shield2Collider->to_delete = true;
+
+	//Get rid of colliders
 	shield1Collider = nullptr;
 	shield2Collider = nullptr;
 
@@ -381,42 +434,69 @@ void ModuleShieldsP1::spinTheShields(Animation* shield1Animation, Animation* shi
 	shield1Pos.x = (int)(App->player1->position.x + 5 + RADIUS * cosf(angle));
 	shield1Pos.y = (int)(App->player1->position.y + 0 - RADIUS * sinf(angle));
 
-	shield2Pos.x = (int)(App->player1->position.x + 5 + RADIUS * cosf(angle + 3.0f));
+	shield2Pos.x = (int)(App->player1->position.x + 5 + RADIUS * cosf(angle + 3.0f));	// before was 3
 	shield2Pos.y = (int)(App->player1->position.y + 0 - RADIUS * sinf(angle + 3.0f));
 
 	angle -= 0.1f;
 
-	if (angle == 0)
+	if (angle == 0.0f)
 		angle = 2.0f;
 
 	if (greenLevel == LEVEL_1)
 	{
 		if (angle <= 0.2f)
-			shield1Animation = shield2Animation = &frontRed;
+		{
+			shield1Animation = &frontRed;
+			shield2Animation = &backRed;
+		}
 
 		else if (angle <= 0.4f)
-			shield1Animation = shield2Animation = &frontRed;	//&topRightRed;
+		{
+			shield1Animation = &frontRed;	//&topRightRed;
+			shield2Animation = &backRed;
+		}
 
 		else if (angle <= 0.7f)
-			shield1Animation = shield2Animation = &topRed;
+		{
+			shield1Animation = &topRed;
+			shield2Animation = &bottomRed;
+		}
 
 		else if (angle <= 0.9f)
-			shield1Animation = shield2Animation = &topRed;	//&topLeftRed;
+		{
+			shield1Animation = &topRed;		//&topLeftRed;
+			shield2Animation = &bottomRed;
+		}
 
 		else if (angle <= 1.2f)
-			shield1Animation = shield2Animation = &backRed;
+		{
+			shield1Animation = &backRed;
+			shield2Animation = &frontRed;
+		}
 
 		else if (angle <= 1.4f)
-			shield1Animation = shield2Animation = &backRed;	//&bottomLeftRed;
+		{
+			shield1Animation = &backRed;	//&bottomLeftRed
+			shield2Animation = &frontRed;
+		}
 
 		else if (angle <= 1.7f)
-			shield1Animation = shield2Animation = &bottomRed;
+		{
+			shield1Animation = &bottomRed;
+			shield2Animation = &topRed;
+		}
 
 		else if (angle <= 1.9f)
-			shield1Animation = shield2Animation = &bottomRed;	//&bottomRightRed;
+		{
+			shield1Animation = &bottomRed;	//&bottomRightRed;
+			shield2Animation = &topRed;
+		}
 
 		else if (angle <= 2.0f)
-			shield1Animation = shield2Animation = &frontRed;
+		{
+			shield1Animation = &frontRed;
+			shield2Animation = &backRed;
+		}
 	}
 
 	else if (greenLevel == LEVEL_2 ||
@@ -426,31 +506,58 @@ void ModuleShieldsP1::spinTheShields(Animation* shield1Animation, Animation* shi
 		greenLevel == LEVEL_8)
 	{
 		if (angle <= 0.2f)
-			shield1Animation = shield2Animation = &frontGreen;
+		{
+			shield1Animation = &frontGreen;
+			shield2Animation = &backGreen;
+		}
 
 		else if (angle <= 0.4f)
-			shield1Animation = shield2Animation = &frontGreen;	//&topRightGreen;
+		{
+			shield1Animation = &frontGreen;	//&topRightRed;
+			shield2Animation = &backGreen;
+		}
 
 		else if (angle <= 0.7f)
-			shield1Animation = shield2Animation = &topGreen;
+		{
+			shield1Animation = &topGreen;
+			shield2Animation = &bottomGreen;
+		}
 
 		else if (angle <= 0.9f)
-			shield1Animation = shield2Animation = &topGreen;	//&topLeftGreen;
+		{
+			shield1Animation = &topGreen;	//&topLeftRed;
+			shield2Animation = &bottomGreen;
+		}
 
 		else if (angle <= 1.2f)
-			shield1Animation = shield2Animation = &backGreen;
+		{
+			shield1Animation = &backGreen;
+			shield2Animation = &frontGreen;
+		}
 
 		else if (angle <= 1.4f)
-			shield1Animation = shield2Animation = &backGreen;	//&bottomLeftGreen;
+		{
+			shield1Animation = &backGreen;	//&bottomLeftRed
+			shield2Animation = &frontGreen;
+		}
 
 		else if (angle <= 1.7f)
-			shield1Animation = shield2Animation = &bottomGreen;
+		{
+			shield1Animation = &bottomGreen;
+			shield2Animation = &topGreen;
+		}
 
 		else if (angle <= 1.9f)
-			shield1Animation = shield2Animation = &bottomGreen;	//&bottomRightGreen;
+		{
+			shield1Animation = &bottomGreen;	//&bottomRightRed;
+			shield2Animation = &topGreen;
+		}
 
 		else if (angle <= 2.0f)
-			shield1Animation = shield2Animation = &frontGreen;
+		{
+			shield1Animation = &frontGreen;
+			shield2Animation = &backGreen;
+		}
 	}
 
 	else if (greenLevel == LEVEL_4 ||
@@ -458,31 +565,58 @@ void ModuleShieldsP1::spinTheShields(Animation* shield1Animation, Animation* shi
 
 	{
 		if (angle <= 0.2f)
-			shield1Animation = shield2Animation = &frontYellow;
+		{
+			shield1Animation = &frontYellow;
+			shield2Animation = &backYellow;
+		}
 
 		else if (angle <= 0.4f)
-			shield1Animation = shield2Animation = &frontYellow;	//&topRightYellow;
+		{
+			shield1Animation = &frontYellow;	//&topRightRed;
+			shield2Animation = &backYellow;
+		}
 
 		else if (angle <= 0.7f)
-			shield1Animation = shield2Animation = &topYellow;
+		{
+			shield1Animation = &topYellow;
+			shield2Animation = &bottomYellow;
+		}
 
 		else if (angle <= 0.9f)
-			shield1Animation = shield2Animation = &topYellow;	//&topLeftYellow;
+		{
+			shield1Animation = &topYellow;		//&topLeftRed;
+			shield2Animation = &bottomYellow;
+		}
 
 		else if (angle <= 1.2f)
-			shield1Animation = shield2Animation = &backYellow;
+		{
+			shield1Animation = &backYellow;
+			shield2Animation = &frontYellow;
+		}
 
 		else if (angle <= 1.4f)
-			shield1Animation = shield2Animation = &backYellow;	//&bottomLeftYellow;
+		{
+			shield1Animation = &backYellow;	//&bottomLeftRed
+			shield2Animation = &frontYellow;
+		}
 
 		else if (angle <= 1.7f)
-			shield1Animation = shield2Animation = &bottomYellow;
+		{
+			shield1Animation = &bottomYellow;
+			shield2Animation = &topYellow;
+		}
 
 		else if (angle <= 1.9f)
-			shield1Animation = shield2Animation = &bottomYellow;	//&bottomRightYellow;
+		{
+			shield1Animation = &bottomYellow;	//&bottomRightRed;
+			shield2Animation = &topYellow;
+		}
 
 		else if (angle <= 2.0f)
-			shield1Animation = shield2Animation = &frontYellow;
+		{
+			shield1Animation = &frontYellow;
+			shield2Animation = &backYellow;
+		}
 	}
 }
 

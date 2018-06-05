@@ -12,6 +12,8 @@
 #include "ModuleMixer.h"
 #include "ModuleCollision.h"
 #include "ModuleEnemies.h"
+#include "ModuleShieldsP1.h"
+#include "ModuleShieldsP2.h"
 
 ModuleMainMenu::ModuleMainMenu()	//@CarlesHoms
 {
@@ -59,11 +61,13 @@ bool ModuleMainMenu::Start()
 	//whiteLettersText = App->textures->Load("Assets/Sprites/Backgrounds/1_FullMap.png");
 
 	App->player1->Disable();
+	App->shieldsP1->Disable();
+
 	App->player2->Disable();
+	App->shieldsP2->Disable();
+
 	App->enemies->Disable();
 	App->collision->Disable();
-	
-	
 
 	//Music
 	MusicMainMenu = App->mixer->LoadMusic("Assets/Audio/Music/02_Title.ogg");
@@ -102,9 +106,10 @@ update_status ModuleMainMenu::Update()
 
 bool ModuleMainMenu::CleanUp()
 {
-	
 	App->player1->Disable();
+	App->shieldsP1->Disable();
 	App->player2->Disable();
+	App->shieldsP2->Disable();
 	
 	LOG("Unloading Main Menu");
 	App->textures->Unload(backgroundText);

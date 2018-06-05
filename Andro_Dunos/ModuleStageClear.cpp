@@ -14,7 +14,8 @@
 #include "ModuleCollision.h"
 #include "ModuleStageClear.h"
 #include "ModuleUserInterface.h"
-
+#include "ModuleShieldsP1.h"
+#include "ModuleShieldsP2.h"
 
 
 ModuleStageClear::ModuleStageClear()	//@Andres
@@ -38,9 +39,12 @@ bool ModuleStageClear::Start()
 	stageClearText = App->textures->Load("Assets/Sprites/User_Interface/Stage_Clear/StageClear-(1).png");
 
 	App->collision->Disable();
+
 	App->player1->Disable();
+	App->shieldsP1->Disable();
+
 	App->player2->Disable();
-	
+	App->shieldsP2->Disable();
 
 	//Set the animation Speed to initial condition
 	ySpeedAnimation = 0;

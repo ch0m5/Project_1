@@ -21,7 +21,7 @@ public:
 	int checkShieldsLife(int life);
 
 public:
-	int shieldWidth = 14;
+	int shieldWidth = 16;
 	int shieldHeight = 16;
 
 	SDL_Texture* graphics = nullptr;

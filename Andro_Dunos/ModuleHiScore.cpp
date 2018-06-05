@@ -12,7 +12,8 @@
 #include "ModuleMainMenu.h"
 #include "ModuleMixer.h"
 #include "ModuleCollision.h"
-
+#include "ModuleShieldsP1.h"
+#include "ModuleShieldsP2.h"
 
 
 ModuleHiScore::ModuleHiScore()	//@DídacRomero
