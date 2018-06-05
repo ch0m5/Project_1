@@ -217,22 +217,22 @@ bool ModuleStage2::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 3278, 67);
 	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 3312, 67);
 
-	//Torrent Up AQUI DEBERIA IR LAS UP TURRETS
-	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 253, 104);
-	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 288, 104);
-	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 323, 104);
-	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 373, 104);
+	////Torrent Up AQUI DEBERIA IR LAS UP TURRETS
+	//App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 253, 104);
+	//App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 288, 104);
+	//App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 323, 104);
+	//App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 373, 104);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 481, 218);
-	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 545, 218);
-	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 584, 218);
-	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 646, 218);
+	//App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 481, 218);
+	//App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 545, 218);
+	//App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 584, 218);
+	//App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 646, 218);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 944, 107);
-	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 982, 107);
+	//App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 944, 107);
+	//App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 982, 107);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 3213, 158);
-	App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 3256, 158);
+	//App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 3213, 158);
+	//App->enemies->AddEnemy(ENEMY_TYPES::DOWN_WHITEORANGETURRET, 3256, 158);
 
 	//GreyYellow Enemy
 
@@ -367,6 +367,7 @@ bool ModuleStage2::CleanUp()
 	// reset Background movement (position) values
 	movementx = 0;
 	movementxBack = 0;
+	movementxBack2 = 4112;
 	movementy = 0;
 
 	//Reset Camera Position
@@ -469,11 +470,12 @@ update_status ModuleStage2::Update()
 		moveMapRight = true;
 		moveMapDown = false;
 		moveMapUp = false;
+		movementxBack2 += xSpeedMultiplier * 0.5f;
 	}
 
 	
 	// Win Condition
-	if (App->render->camera.x / SCREEN_SIZE > 6700)
+	if (App->render->camera.x / SCREEN_SIZE > 6650)
 	{
 		App->UI->CompletedLevel = App->UI->Stage2;
 		App->fade->FadeToBlack(this, App->stageClear, 1);
@@ -532,7 +534,7 @@ update_status ModuleStage2::Update()
 	
 	//These two if's control the first part of the level outside and the end of the level also outside
 	
-	App->render->Blit(backgroundCityText, 4112, 538, &backgroundCityRect); // level background
+	App->render->Blit(backgroundCityText, movementxBack2 , 538, &backgroundCityRect); // level background
 
 	App->render->Blit(background2Text, movementxBack, 0, &background2Rect); // level background
 	

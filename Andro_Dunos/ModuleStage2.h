@@ -38,6 +38,7 @@ public:
 	// Background movement (position) values
 	float movementx = 0 ;
 	float movementxBack = 0;
+	float movementxBack2 = 4112;
 	float movementy = 0;
 
 	//Background Movement logic variables
