@@ -212,7 +212,7 @@ bool ModuleUserInterface::Start()
 	//Load player boxes
 	hudTex = App->textures->Load("Assets/Sprites/User_Interface/Grafical_Interface/hud_elements.png");
 	beamTex = App->textures->Load("Assets/Sprites/User_Interface/Grafical_Interface/pritesheet-charge-beam.png");
-	coinInserted = App->mixer->LoadFX("Assets/Audio/Sounds_FX/COIN_inserted.wav");
+
 	//Setting up all the Rects
 	blueBoxNormalRect = {1,13, 32, 7};
 	blueBoxReverseRect = { 1,24, 32, 7 };
@@ -250,7 +250,6 @@ bool ModuleUserInterface::CleanUp()
 	App->fonts->UnLoad(hiScoreFont);
 	App->textures->Unload(hudTex);
 	App->textures->Unload(beamTex);
-	App->mixer->UnloadFx(coinInserted);
 
 	return true;
 }
@@ -261,7 +260,6 @@ update_status ModuleUserInterface::Update()
 	//Coins inserted code
 	if (App->input->keyboard[SDL_SCANCODE_3] == KEY_DOWN)
 	{
-		Mix_PlayChannel(4,coinInserted,0);
 		coins++;
 		if (coins > 99) { coins = 99; }
 		if (coins < 0) { coins = 0; }

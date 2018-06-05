@@ -1275,14 +1275,14 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 		}
 		else if (godMode == false)
 		{
-			playerHitbox->to_delete = true;
 			godMode = false;
+			playerHitbox->to_delete = true;
 			playerHitbox = App->collision->AddCollider({ App->render->camera.x / SCREEN_SIZE + (int)position.x, App->render->camera.y / SCREEN_SIZE + (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER_2, this);
 		}
 	}
 	// Update collider position to player position
-	//if (godMode == false)
-	//{
+	/*if (godMode == false)
+	{*/
 		playerHitbox->SetPos(App->render->camera.x / SCREEN_SIZE + position.x, App->render->camera.y / SCREEN_SIZE + position.y);
 	//}
 

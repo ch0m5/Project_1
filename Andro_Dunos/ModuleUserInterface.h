@@ -104,8 +104,6 @@ public:
 	Animation p2BeamIdle;
 	SDL_Texture* beamTex = nullptr;
 
-	//Sound FX
-	Mix_Chunk* coinInserted = nullptr;
 
 	int hiScore;
 	int coins;

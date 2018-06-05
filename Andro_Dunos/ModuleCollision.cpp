@@ -107,20 +107,22 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_PLAYER_INV][COLLIDER_PLAYER] = false;
 	matrix[COLLIDER_PLAYER_INV][COLLIDER_PLAYER_2] = false;
 	matrix[COLLIDER_PLAYER_INV][COLLIDER_ENEMY] = false;
-	matrix[COLLIDER_PLAYER_INV][COLLIDER_POWERUP] = true;
 	matrix[COLLIDER_PLAYER_INV][COLLIDER_PLAYER_SHOT] = false;
 	matrix[COLLIDER_PLAYER_INV][COLLIDER_PLAYER_2_SHOT] = false;
 	matrix[COLLIDER_PLAYER_INV][COLLIDER_ENEMY_SHOT] = false;
+	matrix[COLLIDER_PLAYER_INV][COLLIDER_POWERUP] = true;
+	matrix[COLLIDER_PLAYER_INV][COLLIDER_PLAYER_2_INV] = false;
 
 	matrix[COLLIDER_PLAYER_2_INV][COLLIDER_WALL] = false;
 	matrix[COLLIDER_PLAYER_2_INV][COLLIDER_PLAYER] = false;
 	matrix[COLLIDER_PLAYER_2_INV][COLLIDER_PLAYER_2] = false;
 	matrix[COLLIDER_PLAYER_2_INV][COLLIDER_ENEMY] = false;
-	matrix[COLLIDER_PLAYER_2_INV][COLLIDER_POWERUP] = true;
 	matrix[COLLIDER_PLAYER_2_INV][COLLIDER_PLAYER_SHOT] = false;
 	matrix[COLLIDER_PLAYER_2_INV][COLLIDER_PLAYER_2_SHOT] = false;
 	matrix[COLLIDER_PLAYER_2_INV][COLLIDER_ENEMY_SHOT] = false;
-	
+	matrix[COLLIDER_PLAYER_2_INV][COLLIDER_POWERUP] = true;
+	matrix[COLLIDER_PLAYER_2_INV][COLLIDER_PLAYER_INV] = false;
+
 
 	//screen parameter to render bellow and avoid green background @Andres
 	screen = { 0, 0, SCREEN_WIDTH * SCREEN_SIZE, SCREEN_HEIGHT * SCREEN_SIZE };
@@ -235,12 +237,13 @@ void ModuleCollision::DebugDraw()
 			case COLLIDER_PLAYER_SHIELD: // cyan
 				App->render->DrawQuad(colliders[i]->rect, 0, 255, 255, alpha);	//@CarlesHoms
 				break;
-			case COLLIDER_PLAYER_INV:
-				App->render->DrawQuad(colliders[i]->rect, 255, 255, 128, alpha);	// WHITE/YELLOW/BROWN
+			case (COLLIDER_PLAYER_INV):
+				App->render->DrawQuad(colliders[i]->rect, 255, 255, 128, alpha);	//White/Yellow/Brown
 				break;
-			case COLLIDER_PLAYER_2_INV:
-				App->render->DrawQuad(colliders[i]->rect, 255, 255, 128, alpha);    // WHITE/YELLOW/BROWN
+			case (COLLIDER_PLAYER_2_INV):
+				App->render->DrawQuad(colliders[i]->rect, 255, 255, 128, alpha);	//White/Yellow/Brown
 				break;
+
 		}
 	}
 }
