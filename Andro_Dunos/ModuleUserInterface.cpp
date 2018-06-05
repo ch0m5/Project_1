@@ -195,6 +195,7 @@ bool ModuleUserInterface::Start()
 	showPress1P = false;
 	p1ShowType = false;
 	p2ShowType = false;
+	hiScore = 0;
 	p1Dead = true;
 	p2Dead = true;
 	player1Score = 0;
@@ -205,7 +206,7 @@ bool ModuleUserInterface::Start()
 	debug_font= App->fonts->Load("Assets/Sprites/User_Interface/fonts/blue_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 	powerUpFont = App->fonts->Load("Assets/Sprites/User_Interface/fonts/numbers_powerup.png", "012345678", 1);
 	typeFont = App->fonts->Load("Assets/Sprites/User_Interface/fonts/type_font.png", "1234-type ", 2);
-	
+	hiScoreFont = App->fonts->Load("Assets/Sprites/User_Interface/fonts/red_font_high_score.png", "1234567890hi- ", 2);
 	//Load player boxes
 	hudTex = App->textures->Load("Assets/Sprites/User_Interface/Grafical_Interface/hud_elements.png");
 	beamTex = App->textures->Load("Assets/Sprites/User_Interface/Grafical_Interface/pritesheet-charge-beam.png");
@@ -244,8 +245,10 @@ bool ModuleUserInterface::CleanUp()
 	App->fonts->UnLoad(debug_font);
 	App->fonts->UnLoad(powerUpFont);
 	App->fonts->UnLoad(typeFont);
+	App->fonts->UnLoad(hiScoreFont);
 	App->textures->Unload(hudTex);
 	App->textures->Unload(beamTex);
+
 	return true;
 }
 
@@ -298,6 +301,13 @@ update_status ModuleUserInterface::Update()
 
 		case Stage1:
 		{
+			//Calculate hiScore
+			if (player1Score > hiScore) { hiScore = player1Score;}
+			if (player2Score > hiScore) { hiScore = player2Score;}
+			//Blit Hi Score
+			App->fonts->BlitText(120, 10, hiScoreFont, "hi-");
+			sprintf_s(hiScore_text, 10, "%7d", hiScore);
+			App->fonts->BlitText(145, 10, hiScoreFont, hiScore_text);
 			//Blit SCORE
 			App->fonts->BlitText(10, 10, font_score, "1P");
 			sprintf_s(player1Score_text, 10, "%7d", player1Score);
@@ -609,6 +619,13 @@ update_status ModuleUserInterface::Update()
 		
 		case Stage2:
 		{
+			//Calculate hiScore
+			if (player1Score > hiScore) { hiScore = player1Score; }
+			if (player2Score > hiScore) { hiScore = player2Score; }
+			//Blit Hi Score
+			App->fonts->BlitText(120, 10, hiScoreFont, "hi-");
+			sprintf_s(hiScore_text, 10, "%7d", hiScore);
+			App->fonts->BlitText(145, 10, hiScoreFont, hiScore_text);
 			//Blit SCORE
 			App->fonts->BlitText(10, 10, font_score, "1P");
 			sprintf_s(player1Score_text, 10, "%7d", player1Score);
@@ -849,6 +866,8 @@ update_status ModuleUserInterface::Update()
 			{	//Print the scores, but as we are not playing we don't need to update if the score increases, print teamScore
 				App->fonts->BlitText(10, 10, font_score, "1P");
 				App->fonts->BlitText(50, 10, 0, player1Score_text);
+				App->fonts->BlitText(120, 10, hiScoreFont, "hi-");
+				App->fonts->BlitText(145, 10, hiScoreFont, hiScore_text);
 				if (App->input->secondPlayerState == true)
 				{
 					App->fonts->BlitText(210, 10, font_score, "2P");
@@ -877,6 +896,8 @@ update_status ModuleUserInterface::Update()
 		{	//Print the scores, but as we are not playing we don't need to update if the score increases, print teamScore
 			App->fonts->BlitText(10, 10, font_score, "1P");
 			App->fonts->BlitText(50, 10, 0, player1Score_text);
+			App->fonts->BlitText(145, 10, hiScoreFont, hiScore_text);
+
 			if (App->input->secondPlayerState == true)
 			{
 				App->fonts->BlitText(210, 10, font_score, "2P");
