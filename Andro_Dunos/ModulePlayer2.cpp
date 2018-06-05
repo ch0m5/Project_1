@@ -455,6 +455,7 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 
 				if (greenPower == LEVEL_0)
 				{
+					greenPower--;
 					//App->shieldsP1->life = 0;
 
 					/*if (App->shieldsP1->shield1Collider != nullptr)
