@@ -91,9 +91,12 @@ public:
 	bool p2ShowType;
 
 	//Animation the bar of death
-	Animation beamCharging;
-	Animation beamCharged;
-	Animation beamIdle;
+	Animation p1BeamCharging;
+	Animation p1BeamCharged;
+	Animation p1BeamIdle;
+	Animation p2BeamCharging;
+	Animation p2BeamCharged;
+	Animation p2BeamIdle;
 	SDL_Texture* beamTex = nullptr;
 
 };
