@@ -122,6 +122,9 @@ public:
 	// Orange: collision (2nd, bombs, just have really short life)
 	// Yellow: collision
 
+	//Invincibility
+	int invStartTime;
+	bool isInvincible;
 	//Debug Purpose Variables
 	bool godMode;
 };
