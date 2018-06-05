@@ -21,8 +21,166 @@
 #include <stdio.h>
 ModuleUserInterface::ModuleUserInterface()	//@DídacRomero
 {
-	//ANDRO DUNOS RECTS
+	
+	// Beam Pushbacks P1
+	p1BeamIdle.PushBack({ 29, 28, 64, 6 });
 
+	p1BeamCharged.PushBack({ 165, 96, 64, 7 });
+	p1BeamCharged.PushBack({ 165, 107, 64, 7 });
+	p1BeamCharged.PushBack({ 165, 116, 64, 7 });
+	p1BeamCharged.PushBack({ 165, 126, 64, 7 });
+	p1BeamCharged.loop = true;
+	p1BeamCharged.speed = 0.5f;
+
+	p1BeamCharging.PushBack({ 29, 28, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 35, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 42, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 49, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 56, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 63, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 70, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 77, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 84, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 91, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 98, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 105, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 112, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 119, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 126, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 133, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 140, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 147, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 154, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 161, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 168, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 175, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 182, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 189, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 196, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 203, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 210, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 217, 64, 6 });
+	p1BeamCharging.PushBack({ 29, 224, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 29, 64, 6 });		//Point of inflection bar clipping
+	p1BeamCharging.PushBack({ 97, 36, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 43, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 50, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 57, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 64, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 71, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 78, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 85, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 92, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 99, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 106, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 113, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 120, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 127, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 134, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 141, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 148, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 155, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 162, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 169, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 176, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 183, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 190, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 197, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 204, 64, 6 });
+	p1BeamCharging.PushBack({ 97, 211, 64, 6 });
+	p1BeamCharging.PushBack({ 165, 29, 64, 6 });	//Point of inflection
+	p1BeamCharging.PushBack({ 165, 36, 64, 6 });
+	p1BeamCharging.PushBack({ 165, 43, 64, 6 });
+	p1BeamCharging.PushBack({ 165, 50, 64, 6 });
+	p1BeamCharging.PushBack({ 165, 57, 64, 6 });
+	p1BeamCharging.PushBack({ 165, 64, 64, 6 });
+	p1BeamCharging.PushBack({ 165, 74, 64, 6 }); //All good until here
+	p1BeamCharging.PushBack({ 165, 82, 64, 7 });
+	p1BeamCharging.PushBack({ 165, 88, 64, 7 });
+
+
+	p1BeamCharging.loop = false;
+	p1BeamCharging.speed = 0.5f;
+
+	// Beam Pushbacks P2
+	p2BeamIdle.PushBack({ 29, 28, 64, 6 });
+
+	p2BeamCharged.PushBack({ 165, 96, 64, 7 });
+	p2BeamCharged.PushBack({ 165, 107, 64, 7 });
+	p2BeamCharged.PushBack({ 165, 116, 64, 7 });
+	p2BeamCharged.PushBack({ 165, 126, 64, 7 });
+	p2BeamCharged.loop = true;
+	p2BeamCharged.speed = 0.5f;
+
+	p2BeamCharging.PushBack({ 29, 28, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 35, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 42, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 49, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 56, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 63, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 70, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 77, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 84, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 91, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 98, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 105, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 112, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 119, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 126, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 133, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 140, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 147, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 154, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 161, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 168, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 175, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 182, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 189, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 196, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 203, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 210, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 217, 64, 6 });
+	p2BeamCharging.PushBack({ 29, 224, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 29, 64, 6 });		//Point of inflection bar clipping
+	p2BeamCharging.PushBack({ 97, 36, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 43, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 50, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 57, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 64, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 71, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 78, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 85, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 92, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 99, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 106, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 113, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 120, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 127, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 134, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 141, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 148, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 155, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 162, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 169, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 176, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 183, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 190, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 197, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 204, 64, 6 });
+	p2BeamCharging.PushBack({ 97, 211, 64, 6 });
+	p2BeamCharging.PushBack({ 165, 29, 64, 6 });	//Point of inflection
+	p2BeamCharging.PushBack({ 165, 36, 64, 6 });
+	p2BeamCharging.PushBack({ 165, 43, 64, 6 });
+	p2BeamCharging.PushBack({ 165, 50, 64, 6 });
+	p2BeamCharging.PushBack({ 165, 57, 64, 6 });
+	p2BeamCharging.PushBack({ 165, 64, 64, 6 });
+	p2BeamCharging.PushBack({ 165, 74, 64, 6 }); //All good until here
+	p2BeamCharging.PushBack({ 165, 82, 64, 7 });
+	p2BeamCharging.PushBack({ 165, 88, 64, 7 });
+
+
+	p2BeamCharging.loop = false;
+	p2BeamCharging.speed = 0.5f;
 }
 
 ModuleUserInterface::~ModuleUserInterface()
@@ -37,6 +195,7 @@ bool ModuleUserInterface::Start()
 	showPress1P = false;
 	p1ShowType = false;
 	p2ShowType = false;
+	hiScore = 0;
 	p1Dead = true;
 	p2Dead = true;
 	player1Score = 0;
@@ -47,9 +206,10 @@ bool ModuleUserInterface::Start()
 	debug_font= App->fonts->Load("Assets/Sprites/User_Interface/fonts/blue_font.png", "! @,_./0123456789$;<&?abcdefghijklmnopqrstuvwxyz", 1);
 	powerUpFont = App->fonts->Load("Assets/Sprites/User_Interface/fonts/numbers_powerup.png", "012345678", 1);
 	typeFont = App->fonts->Load("Assets/Sprites/User_Interface/fonts/type_font.png", "1234-type ", 2);
+	hiScoreFont = App->fonts->Load("Assets/Sprites/User_Interface/fonts/red_font_high_score.png", "1234567890hi- ", 2);
 	//Load player boxes
 	hudTex = App->textures->Load("Assets/Sprites/User_Interface/Grafical_Interface/hud_elements.png");
-	
+	beamTex = App->textures->Load("Assets/Sprites/User_Interface/Grafical_Interface/pritesheet-charge-beam.png");
 
 	//Setting up all the Rects
 	blueBoxNormalRect = {1,13, 32, 7};
@@ -85,6 +245,10 @@ bool ModuleUserInterface::CleanUp()
 	App->fonts->UnLoad(debug_font);
 	App->fonts->UnLoad(powerUpFont);
 	App->fonts->UnLoad(typeFont);
+	App->fonts->UnLoad(hiScoreFont);
+	App->textures->Unload(hudTex);
+	App->textures->Unload(beamTex);
+
 	return true;
 }
 
@@ -137,6 +301,13 @@ update_status ModuleUserInterface::Update()
 
 		case Stage1:
 		{
+			//Calculate hiScore
+			if (player1Score > hiScore) { hiScore = player1Score;}
+			if (player2Score > hiScore) { hiScore = player2Score;}
+			//Blit Hi Score
+			App->fonts->BlitText(120, 10, hiScoreFont, "hi-");
+			sprintf_s(hiScore_text, 10, "%7d", hiScore);
+			App->fonts->BlitText(145, 10, hiScoreFont, hiScore_text);
 			//Blit SCORE
 			App->fonts->BlitText(10, 10, font_score, "1P");
 			sprintf_s(player1Score_text, 10, "%7d", player1Score);
@@ -150,6 +321,67 @@ update_status ModuleUserInterface::Update()
 				sprintf_s(player2Score_text, 10, "%7d", player2Score);
 				App->fonts->BlitText(250, 10, 0, player2Score_text);
 			}
+
+			//Blit P1 Charging Special Attack beam
+			if (p1Dead == false)
+			{
+				if (App->player1->destroyed == false)
+				{
+					if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_REPEAT)
+					{
+						
+						if (p1BeamCharging.Finished())
+						{
+							App->render->Blit(beamTex, 74, 27, &(p1BeamCharged.GetCurrentFrame()), 1, false);
+						}
+						else
+						{
+							App->render->Blit(beamTex, 74, 28, &(p1BeamCharging.GetCurrentFrame()), 1, false);
+						}
+						if (App->player1->bluePower < 2)
+						{
+							App->render->Blit(beamTex, 74, 28, &(p1BeamIdle.GetCurrentFrame()), 1, false);
+						}
+					}
+					else
+					{
+						p1BeamCharging.Reset();
+						p1BeamCharging.ResetLoops();
+						App->render->Blit(beamTex, 74, 28, &(p1BeamIdle.GetCurrentFrame()), 1, false);
+					}
+				}
+			}
+			
+			//Blit P2 Charging Special Attack beam
+			if (p2Dead == false)
+			{
+				if (App->player2->destroyed == false)
+				{
+					if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_REPEAT)
+					{
+
+						if (p2BeamCharging.Finished())
+						{
+							App->render->Blit(beamTex, 249, 28, &(p2BeamCharged.GetCurrentFrame()), 1, false);
+						}
+						else
+						{
+							App->render->Blit(beamTex, 249, 28, &(p2BeamCharging.GetCurrentFrame()), 1, false);
+						}
+						if (App->player2->bluePower < 2)
+						{
+							App->render->Blit(beamTex, 249, 28, &(p2BeamIdle.GetCurrentFrame()), 1, false);
+						}
+					}
+					else
+					{
+						p2BeamCharging.Reset();
+						p2BeamCharging.ResetLoops();
+						App->render->Blit(beamTex, 249, 28, &(p2BeamIdle.GetCurrentFrame()), 1, false);
+					}
+				}
+			}
+
 		//TYPE banner that doesn't let boxes to be seen
 			if (App->input->keyboard[SDL_SCANCODE_O] == KEY_DOWN && p1Dead == false)
 			{
@@ -211,7 +443,7 @@ update_status ModuleUserInterface::Update()
 					App->render->Blit(hudTex, 74, 20, &yellowBoxHomingRect, false);
 					App->render->Blit(hudTex, 106, 20, &greenBoxFrontRect, false);
 				}
-				
+			
 				//Blit powerUp levels in the boxes
 				if (p1Dead == false)
 				{
@@ -387,6 +619,13 @@ update_status ModuleUserInterface::Update()
 		
 		case Stage2:
 		{
+			//Calculate hiScore
+			if (player1Score > hiScore) { hiScore = player1Score; }
+			if (player2Score > hiScore) { hiScore = player2Score; }
+			//Blit Hi Score
+			App->fonts->BlitText(120, 10, hiScoreFont, "hi-");
+			sprintf_s(hiScore_text, 10, "%7d", hiScore);
+			App->fonts->BlitText(145, 10, hiScoreFont, hiScore_text);
 			//Blit SCORE
 			App->fonts->BlitText(10, 10, font_score, "1P");
 			sprintf_s(player1Score_text, 10, "%7d", player1Score);
@@ -397,6 +636,65 @@ update_status ModuleUserInterface::Update()
 				App->fonts->BlitText(210, 10, font_score, "2P");
 				sprintf_s(player2Score_text, 10, "%7d", player2Score);
 				App->fonts->BlitText(250, 10, 0, player2Score_text);
+			}
+			//Blit P1 Charging Special Attack beam
+			if (p1Dead == false)
+			{
+				if (App->player1->destroyed == false)
+				{
+					if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_REPEAT)
+					{
+
+						if (p1BeamCharging.Finished())
+						{
+							App->render->Blit(beamTex, 74, 27, &(p1BeamCharged.GetCurrentFrame()), 1, false);
+						}
+						else
+						{
+							App->render->Blit(beamTex, 74, 28, &(p1BeamCharging.GetCurrentFrame()), 1, false);
+						}
+						if (App->player1->bluePower < 2)
+						{
+							App->render->Blit(beamTex, 74, 28, &(p1BeamIdle.GetCurrentFrame()), 1, false);
+						}
+					}
+					else
+					{
+						p1BeamCharging.Reset();
+						p1BeamCharging.ResetLoops();
+						App->render->Blit(beamTex, 74, 28, &(p1BeamIdle.GetCurrentFrame()), 1, false);
+					}
+				}
+			}
+
+			//Blit P2 Charging Special Attack beam
+			if (p2Dead == false)
+			{
+				if (App->player2->destroyed == false)
+				{
+					if (App->input->keyboard[SDL_SCANCODE_V] == KEY_STATE::KEY_REPEAT)
+					{
+
+						if (p2BeamCharging.Finished())
+						{
+							App->render->Blit(beamTex, 249, 28, &(p2BeamCharged.GetCurrentFrame()), 1, false);
+						}
+						else
+						{
+							App->render->Blit(beamTex, 249, 28, &(p2BeamCharging.GetCurrentFrame()), 1, false);
+						}
+						if (App->player2->bluePower < 2)
+						{
+							App->render->Blit(beamTex, 249, 28, &(p2BeamIdle.GetCurrentFrame()), 1, false);
+						}
+					}
+					else
+					{
+						p2BeamCharging.Reset();
+						p2BeamCharging.ResetLoops();
+						App->render->Blit(beamTex, 249, 28, &(p2BeamIdle.GetCurrentFrame()), 1, false);
+					}
+				}
 			}
 			//Blit Boxes
 			if (App->player1->type == weapon_types::TYPE_1)
@@ -568,6 +866,8 @@ update_status ModuleUserInterface::Update()
 			{	//Print the scores, but as we are not playing we don't need to update if the score increases, print teamScore
 				App->fonts->BlitText(10, 10, font_score, "1P");
 				App->fonts->BlitText(50, 10, 0, player1Score_text);
+				App->fonts->BlitText(120, 10, hiScoreFont, "hi-");
+				App->fonts->BlitText(145, 10, hiScoreFont, hiScore_text);
 				if (App->input->secondPlayerState == true)
 				{
 					App->fonts->BlitText(210, 10, font_score, "2P");
@@ -596,6 +896,8 @@ update_status ModuleUserInterface::Update()
 		{	//Print the scores, but as we are not playing we don't need to update if the score increases, print teamScore
 			App->fonts->BlitText(10, 10, font_score, "1P");
 			App->fonts->BlitText(50, 10, 0, player1Score_text);
+			App->fonts->BlitText(145, 10, hiScoreFont, hiScore_text);
+
 			if (App->input->secondPlayerState == true)
 			{
 				App->fonts->BlitText(210, 10, font_score, "2P");

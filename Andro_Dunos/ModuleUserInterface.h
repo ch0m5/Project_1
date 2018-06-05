@@ -31,9 +31,11 @@ public:
 	int debug_font = -1;
 	int powerUpFont = -1;
 	int typeFont = -1;
+	int hiScoreFont = -1;
 
 	char player1Score_text[10];
 	char player2Score_text[10];
+	char hiScore_text[10];
 	char teamScore_text[10];
 	char gamepad_P1_LAxis_X [4];
 	//P1 PowerUp Levels
@@ -89,6 +91,18 @@ public:
 	bool showPress1P;
 	bool p1ShowType;
 	bool p2ShowType;
+
+	//Animation the bar of death
+	Animation p1BeamCharging;
+	Animation p1BeamCharged;
+	Animation p1BeamIdle;
+	Animation p2BeamCharging;
+	Animation p2BeamCharged;
+	Animation p2BeamIdle;
+	SDL_Texture* beamTex = nullptr;
+
+
+	int hiScore;
 
 };
 
