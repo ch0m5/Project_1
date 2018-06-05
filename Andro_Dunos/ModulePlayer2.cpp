@@ -216,10 +216,6 @@ bool ModulePlayer2::Start()
 
 	//Types and levels
 	type = TYPE_1;			// Flag/counter for type equipped
-	bluePower = LEVEL_1;	// Flag/counter for blue power level
-	orangePower = LEVEL_0;	// Flag/counter for orange power level
-	yellowPower = LEVEL_0;	// Flag/counter for yellow power level
-	greenPower = LEVEL_0;	// Flag/counter for green power level
 
 	currentBlue = 0;	// Every shot increases the counter by 2, player will not shot if it gets higher than 4. Each collide substracts 1.
 	currentOrange = 0;	// Every time it fires increases the counter by x (changes on level), player will not shot if it reaches MAX.  Each collide substracts 1.
@@ -1412,6 +1408,9 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 		crash.ResetLoops();
 		/*crashAnimation->;*/
 
+		if (App->shieldsP2->life > 0)
+			App->shieldsP2->Enable();
+
 		// VALUES THAT NEED TO RESTART WHEN PLAYER DIES, SHOULD HAPPEN ONLY ONCE
 
 		if (bluePower > LEVEL_1)
@@ -1475,6 +1474,7 @@ update_status ModulePlayer2::Update()	// Moves the ship and changes it's printed
 			{
 				App->UI->p2Dead = true;
 				this->Disable();
+				App->shieldsP2->Disable();
 				if (App->UI->p1Dead == true && App->UI->CurrentStage == App->UI->Stage1)
 				{
 					App->fade->FadeToBlack(App->stage1, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
@@ -1542,6 +1542,8 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 
 		weaponChargeTimer = SDL_GetTicks();
 		weaponChargingStage = NOT_CHARGING;
+
+		App->shieldsP2->Disable();
 
 		crashAnimation = &crash;
 		blueShotTimer = SDL_GetTicks();

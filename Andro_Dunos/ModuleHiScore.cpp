@@ -37,7 +37,16 @@ bool ModuleHiScore::Start()
 	hiScoreBackTex = App->textures->Load("Assets/Sprites/User_Interface/Grafical_Interface/game_over_background.png");
 
 	App->collision->Disable();
-	
+
+	App->player1->bluePower = LEVEL_1;	// Flag/counter for blue power level
+	App->player1->orangePower = LEVEL_0;	// Flag/counter for orange power level
+	App->player1->yellowPower = LEVEL_0;	// Flag/counter for yellow power level
+	App->player1->greenPower = LEVEL_0;	// Flag/counter for green power level
+
+	App->player2->bluePower = LEVEL_1;	// Flag/counter for blue power level
+	App->player2->orangePower = LEVEL_0;	// Flag/counter for orange power level
+	App->player2->yellowPower = LEVEL_0;	// Flag/counter for yellow power level
+	App->player2->greenPower = LEVEL_0;	// Flag/counter for green power level
 
 	//Set the animation Speed to initial condition
 	ySpeedAnimation = 0;
