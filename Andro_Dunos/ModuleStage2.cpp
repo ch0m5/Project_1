@@ -87,9 +87,9 @@ bool ModuleStage2::Start()
 	App->enemies->Enable();
 
 	//Score
-	App->UI->teamScore = 0;
-	App->UI->player1Score = 0;
-	App->UI->player2Score = 0;
+	//App->UI->teamScore = 0;
+	//App->UI->player1Score = 0;
+	//App->UI->player2Score = 0;
 
 	//Music
 	MusicLvl2_intro = App->mixer->LoadMusic("Assets/Audio/Music/13_Stage_6 -Secret-Base-Intro.ogg");
