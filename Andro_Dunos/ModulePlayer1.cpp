@@ -1376,6 +1376,10 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 			dontShow = !dontShow;
 			dontShowStartTime = SDL_GetTicks();
 		}
+		else if(isInvincible == false)
+		{
+			dontShow = false;
+		}
 
 		/*if ( isInvincible==true && SDL_GetTicks() - invStartTime == 4000)
 		{
@@ -1398,34 +1402,6 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 		{
 			SDL_Rect crashrect = crashAnimation->GetCurrentFrame();
 			App->render->Blit(graphics, position.x, position.y, &crashrect, 1.0f, false);
-
-			// VALUES THAT NEED TO RESTART WHEN PLAYER DIES, SHOULD HAPPEN ONLY ONCE
-			/*
-			if (bluePower > LEVEL_1)
-			bluePower--;
-
-			if (orangePower > LEVEL_0)
-			orangePower--;
-
-			if (yellowPower > LEVEL_0)
-			yellowPower--;
-
-			if (greenPower > LEVEL_0)
-			greenPower--;
-
-			checkBluePowerParticleLimit();
-
-			fireWeapon = NONE;				// Integer that marks which weapon is being fired at the moment (with an enum)
-			weaponLaserInterval = 0;	// Marks time between fired lasers in a single weapon shot
-			weaponStage = 0;			// Marks stage of currently firing weapon
-			weaponLoop = 0;				// Marks the number of loops of the weapon, if any
-
-			blueShotTimer = 0;
-			weaponChargeTimer = 0;
-			weaponChargingStage = NOT_CHARGING;
-
-			movVertical = 0;	// Counter for the vertical movement of the ship
-			*/
 		}
 
 		// Draw everything --------------------------------------
@@ -1454,6 +1430,33 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 			crash.ResetLoops();
 			/*crashAnimation->;*/
 
+			// VALUES THAT NEED TO RESTART WHEN PLAYER DIES, SHOULD HAPPEN ONLY ONCE
+
+			if (bluePower > LEVEL_1)
+				bluePower--;
+
+			if (orangePower > LEVEL_0)
+				orangePower--;
+
+			if (yellowPower > LEVEL_0)
+				yellowPower--;
+
+			if (greenPower > LEVEL_0)
+				greenPower--;
+
+			checkBluePowerParticleLimit();
+
+			fireWeapon = NONE;				// Integer that marks which weapon is being fired at the moment (with an enum)
+			weaponLaserInterval = 0;	// Marks time between fired lasers in a single weapon shot
+			weaponStage = 0;			// Marks stage of currently firing weapon
+			weaponLoop = 0;				// Marks the number of loops of the weapon, if any
+
+			blueShotTimer = 0;
+			weaponChargeTimer = 0;
+			weaponChargingStage = NOT_CHARGING;
+
+			movVertical = 0;	// Counter for the vertical movement of the ship
+
 			if (godMode == false)
 			{
 				playerHitbox = App->collision->AddCollider({ App->render->camera.x / SCREEN_SIZE + (int)position.x, App->render->camera.y / SCREEN_SIZE + (int)position.y, shipWidth, shipHeight }, COLLIDER_PLAYER_INV, this);
@@ -1463,19 +1466,50 @@ update_status ModulePlayer1::Update()	// Moves the ship and changes it's printed
 
 			if (lives < 1)
 			{
-				App->UI->p1Dead = true;
+				bluePower = 1;
+				orangePower = 0;
+				yellowPower = 0;
+				greenPower= 0;
+
+				checkBluePowerParticleLimit();
+
+				fireWeapon = NONE;				// Integer that marks which weapon is being fired at the moment (with an enum)
+				weaponLaserInterval = 0;	// Marks time between fired lasers in a single weapon shot
+				weaponStage = 0;			// Marks stage of currently firing weapon
+				weaponLoop = 0;				// Marks the number of loops of the weapon, if any
+
+				blueShotTimer = 0;
+				weaponChargeTimer = 0;
+				weaponChargingStage = NOT_CHARGING;
+
+				movVertical = 0;
+				
+			
 				if (playerHitbox != nullptr)
 				{
 					playerHitbox->to_delete = true;
 				}
-				this->Disable();
-				if (App->UI->p2Dead == true && App->UI->CurrentStage == App->UI->Stage1)
+				if (App->UI->coins < 1)
 				{
-					App->fade->FadeToBlack(App->stage1, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
+					App->UI->p1Dead = true;
+					this->Disable();
+					if (App->UI->p2Dead == true && App->UI->CurrentStage == App->UI->Stage1)
+					{
+						App->fade->FadeToBlack(App->stage1, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
+					}
+					else if (App->UI->p2Dead == true && App->UI->CurrentStage == App->UI->Stage2)
+					{
+						App->fade->FadeToBlack(App->stage2, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
+					}
 				}
-				else if (App->UI->p2Dead == true && App->UI->CurrentStage == App->UI->Stage2)
+				else
 				{
-					App->fade->FadeToBlack(App->stage2, App->scene_HiScore);    // HARDCODED: Needs "current stage" functionality
+					App->UI->p1Dead = false;
+					lives = 3;
+					bluePower++;
+					orangePower++;
+					greenPower++;
+					App->UI->coins -= 1;
 				}
 			}
 
