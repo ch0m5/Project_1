@@ -6,8 +6,7 @@
 #include "Globals.h"
 
 // Shield used defines
-//#define ROT_STEPS (8)
-#define RADIUS (27)
+#define RADIUS (24)
 
 struct SDL_Texture;
 

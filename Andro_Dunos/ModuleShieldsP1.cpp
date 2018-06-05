@@ -23,52 +23,64 @@ ModuleShieldsP1::ModuleShieldsP1()
 	//Blitting needs fixing, except for front
 	//Front
 	frontRed.PushBack({ 69, 241, shieldWidth, shieldHeight });
+	frontRed.PushBack({ 69, 241, shieldWidth, shieldHeight });
 	frontRed.loop = true;
 	frontRed.speed = 0.2f;
 
 	frontGreen.PushBack({69, 263, shieldWidth, shieldHeight});
+	frontGreen.PushBack({ 69, 263, shieldWidth, shieldHeight });
 	frontGreen.loop = true;
 	frontGreen.speed = 0.2f;
 
 	frontYellow.PushBack({69, 219, shieldWidth, shieldHeight});
+	frontYellow.PushBack({ 69, 219, shieldWidth, shieldHeight });
 	frontYellow.loop = true;
 	frontYellow.speed = 0.2f;
 
 	//Back
 	backRed.PushBack({ 69, 241, shieldWidth, shieldHeight });
+	backRed.PushBack({ 69, 241, shieldWidth, shieldHeight });
 	backRed.loop = true;
 	backRed.speed = 0.2f;
 
 	backGreen.PushBack({ 69, 263, shieldWidth, shieldHeight });
+	backGreen.PushBack({ 69, 263, shieldWidth, shieldHeight });
 	backGreen.loop = true;
 	backGreen.speed = 0.2f;
 
+	backYellow.PushBack({ 69, 219, shieldWidth, shieldHeight });
 	backYellow.PushBack({ 69, 219, shieldWidth, shieldHeight });
 	backYellow.loop = true;
 	backYellow.speed = 0.2f;
 
 	//Top
 	topRed.PushBack({ 69, 241, shieldWidth, shieldHeight });
+	topRed.PushBack({ 69, 241, shieldWidth, shieldHeight });
 	topRed.loop = true;
 	topRed.speed = 0.2f;
 
 	topGreen.PushBack({ 69, 263, shieldWidth, shieldHeight });
+	topGreen.PushBack({ 69, 263, shieldWidth, shieldHeight });
 	topGreen.loop = true;
 	topGreen.speed = 0.2f;
 
+	topYellow.PushBack({ 69, 219, shieldWidth, shieldHeight });
 	topYellow.PushBack({ 69, 219, shieldWidth, shieldHeight });
 	topYellow.loop = true;
 	topYellow.speed = 0.2f;
 
 	//Bottom
 	bottomRed.PushBack({ 69, 241, shieldWidth, shieldHeight });
+	bottomRed.PushBack({ 69, 241, shieldWidth, shieldHeight });
 	bottomRed.loop = true;
 	bottomRed.speed = 0.2f;
 
 	bottomGreen.PushBack({ 69, 263, shieldWidth, shieldHeight });
+	bottomGreen.PushBack({ 69, 263, shieldWidth, shieldHeight });
 	bottomGreen.loop = true;
 	bottomGreen.speed = 0.2f;
 
+	bottomYellow.PushBack({ 69, 219, shieldWidth, shieldHeight });
 	bottomYellow.PushBack({ 69, 219, shieldWidth, shieldHeight });
 	bottomYellow.loop = true;
 	bottomYellow.speed = 0.2f;
@@ -128,12 +140,21 @@ bool ModuleShieldsP1::Start()
 	}
 	
 	// add REST
-	life = 0;
+	life = 5;
 	angle = 0.5f;
 
-	// ---- Declares colliders for shield parts individually
-	shield1Collider = App->collision->AddCollider({ (int)shield1Pos.x, (int)shield1Pos.y, shieldWidth, shieldHeight }, COLLIDER_PLAYER_SHIELD, this);
-	shield2Collider = App->collision->AddCollider({ (int)shield2Pos.x, (int)shield2Pos.y, shieldWidth, shieldHeight }, COLLIDER_PLAYER_SHIELD, this);
+	//Type 2 starting position as a standard
+	shield1Pos.x = App->player1->position.x + 5;
+	shield1Pos.y = App->player1->position.y - 8;
+	shield2Pos.x = App->player1->position.x + 5;
+	shield2Pos.y = App->player1->position.y + 10;
+
+	// ---- Declares colliders for shield parts individually ----------- COLLIDER_PLAYER_SHIELD
+	shield1Collider = App->collision->AddCollider({ (int)shield1Pos.x, (int)shield1Pos.y, shieldWidth, shieldHeight }, COLLIDER_PLAYER_SHOT, this);
+	shield2Collider = App->collision->AddCollider({ (int)shield2Pos.x, (int)shield2Pos.y, shieldWidth, shieldHeight }, COLLIDER_PLAYER_SHOT, this);
+
+	shield1Collider->SetPos(shield1Pos.x + App->render->camera.x, shield1Pos.y + App->render->camera.y);
+	shield2Collider->SetPos(shield2Pos.x + App->render->camera.x, shield2Pos.y + App->render->camera.y);
 
 	return ret;
 }
@@ -225,9 +246,9 @@ update_status ModuleShieldsP1::Update()
 		}
 		
 		shield1Pos.x = App->player1->position.x + 5;
-		shield1Pos.y = App->player1->position.y - 8;
+		shield1Pos.y = App->player1->position.y - 12;
 		shield2Pos.x = App->player1->position.x + 5;
-		shield2Pos.y = App->player1->position.y + 10;
+		shield2Pos.y = App->player1->position.y + 14;
 		break;
 
 		// ---- Stays in front of ship
@@ -318,8 +339,8 @@ update_status ModuleShieldsP1::Update()
 	}
 
 	// ---- Updates colliders
-	shield1Collider->SetPos(shield1Pos.x, shield1Pos.y);
-	shield2Collider->SetPos(shield2Pos.x, shield2Pos.y);
+	shield1Collider->SetPos(shield1Pos.x + App->render->camera.x, shield1Pos.y + App->render->camera.y);
+	shield2Collider->SetPos(shield2Pos.x + App->render->camera.x, shield2Pos.y + App->render->camera.y);
 
 	// ----------> shield1Rect = base_anim.GetCurrentFrame();
 
@@ -327,8 +348,8 @@ update_status ModuleShieldsP1::Update()
 	SDL_Rect shield1Rect = shield1Animation->GetCurrentFrame();
 	SDL_Rect shield2Rect = shield2Animation->GetCurrentFrame();
 
-	App->render->Blit(graphics, shield1Pos.x, shield1Pos.y, &shield1Rect);
-	App->render->Blit(graphics, shield2Pos.x, shield2Pos.y, &shield2Rect);
+	App->render->Blit(graphics, shield1Pos.x + App->render->camera.x, shield1Pos.y + App->render->camera.y, &shield1Rect);	//false before
+	App->render->Blit(graphics, shield2Pos.x + App->render->camera.x, shield2Pos.y + App->render->camera.y, &shield2Rect);
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -375,6 +396,10 @@ void ModuleShieldsP1::spinTheShields(Animation* shield1Animation, Animation* shi
 
 	shield1Pos.x = (int)(App->player1->position.x + 5 + RADIUS * cosf(angle));
 	shield1Pos.y = (int)(App->player1->position.y + 0 - RADIUS * sinf(angle));
+
+	shield2Pos.x = (int)(App->player1->position.x + 5 + RADIUS * cosf(angle + 3.0f));
+	shield2Pos.y = (int)(App->player1->position.y + 0 - RADIUS * sinf(angle + 3.0f));
+
 	angle -= 0.1f;
 
 	if (angle == 0)
