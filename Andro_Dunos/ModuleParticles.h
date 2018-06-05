@@ -224,7 +224,7 @@ public:
 
 	//enemy laser
 	Particle enemyBlueShot;
-
+	Particle gastank;
 	Particle biglaser;
 
 

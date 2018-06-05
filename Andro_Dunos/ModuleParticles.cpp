@@ -661,6 +661,16 @@ bool ModuleParticles::Init()
 	biglaser.speed.x = -3.0f;
 	biglaser.life = longLife;
 
+	//enemy gass tank
+	gastank.anim.PushBack({ 9, 377, 13,11 });
+	gastank.anim.PushBack({ 30, 377, 11, 11 });
+	gastank.anim.PushBack({ 48, 375, 10, 13 });
+	gastank.anim.PushBack({ 68, 378, 9, 10 });
+	gastank.anim.PushBack({ 85, 378, 10, 10 });
+	gastank.anim.loop = true;
+	gastank.anim.speed = 0.2f;
+	gastank.speed.x = -3.0f;
+	gastank.life = longLife;
 
 	// Explosion particle // @Andres
 	explosion.anim.PushBack({ 505, 34, 4, 4 });
