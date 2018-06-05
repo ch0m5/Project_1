@@ -60,6 +60,16 @@ bool ModuleMainMenu::Start()
 	//orangeLettersText = App->textures->Load("Assets/Sprites/Backgrounds/1_FullMap.png");
 	//whiteLettersText = App->textures->Load("Assets/Sprites/Backgrounds/1_FullMap.png");
 
+	App->player1->bluePower = LEVEL_1;		// Flag/counter for blue power level
+	App->player1->orangePower = LEVEL_0;	// Flag/counter for orange power level
+	App->player1->yellowPower = LEVEL_0;	// Flag/counter for yellow power level
+	App->player1->greenPower = LEVEL_0;		// Flag/counter for green power level
+
+	App->player2->bluePower = LEVEL_1;		// Flag/counter for blue power level
+	App->player2->orangePower = LEVEL_0;	// Flag/counter for orange power level
+	App->player2->yellowPower = LEVEL_0;	// Flag/counter for yellow power level
+	App->player2->greenPower = LEVEL_0;		// Flag/counter for green power level
+
 	App->player1->Disable();
 	App->shieldsP1->Disable();
 
