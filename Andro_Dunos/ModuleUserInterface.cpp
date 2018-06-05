@@ -196,6 +196,7 @@ bool ModuleUserInterface::Start()
 	p1ShowType = false;
 	p2ShowType = false;
 	hiScore = 0;
+	coins = 0;
 	p1Dead = true;
 	p2Dead = true;
 	player1Score = 0;
@@ -207,6 +208,7 @@ bool ModuleUserInterface::Start()
 	powerUpFont = App->fonts->Load("Assets/Sprites/User_Interface/fonts/numbers_powerup.png", "012345678", 1);
 	typeFont = App->fonts->Load("Assets/Sprites/User_Interface/fonts/type_font.png", "1234-type ", 2);
 	hiScoreFont = App->fonts->Load("Assets/Sprites/User_Interface/fonts/red_font_high_score.png", "1234567890hi- ", 2);
+	creditsFont = App->fonts->Load("Assets/Sprites/User_Interface/fonts/credits_font.png", "0123456789cdeirtscder         ", 3);
 	//Load player boxes
 	hudTex = App->textures->Load("Assets/Sprites/User_Interface/Grafical_Interface/hud_elements.png");
 	beamTex = App->textures->Load("Assets/Sprites/User_Interface/Grafical_Interface/pritesheet-charge-beam.png");
@@ -255,6 +257,13 @@ bool ModuleUserInterface::CleanUp()
 // Update: draw background
 update_status ModuleUserInterface::Update()
 {
+	//Coins inserted code
+	if (App->input->keyboard[SDL_SCANCODE_3] == KEY_DOWN)
+	{
+		coins++;
+		if (coins > 99) { coins = 99; }
+		if (coins < 0) { coins = 0; }
+	}
 	//Determine which of the Stages we're currently in
 	if (App->scene_HiScore->IsEnabled() == true)
 	{
@@ -292,8 +301,19 @@ update_status ModuleUserInterface::Update()
 				App->fonts->BlitText(85, 140, font_yellowtxt, "press 1p start");
 			}
 			App->fonts->BlitText(40, 193, font_yellowtxt, "© 1992 visco corporation");
-			App->fonts->BlitText(65, 201, font_yellowtxt, "all rights reserved");
-
+			App->fonts->BlitText(65, 202, font_yellowtxt, "all rights reserved");
+			//Blit Coins
+			App->fonts->BlitText(230, 210, creditsFont, "credit ");
+			sprintf_s(coins_text, 10, "%7d", coins);
+			if (coins < 10)
+			{
+				App->fonts->BlitText(280, 210, creditsFont, "0");
+				App->fonts->BlitText(241, 210, creditsFont, coins_text);
+			}
+			else
+			{
+				App->fonts->BlitText(241, 210, creditsFont, coins_text);
+			}
 			player1Score = 0;
 				player2Score = 0;
 				teamScore = 0;
@@ -301,6 +321,18 @@ update_status ModuleUserInterface::Update()
 
 		case Stage1:
 		{
+			//Blit Coins
+			App->fonts->BlitText(230, 210, creditsFont, "credit ");
+			sprintf_s(coins_text, 10, "%7d", coins);
+			if (coins < 10)
+			{
+				App->fonts->BlitText(280, 210, creditsFont, "0");
+				App->fonts->BlitText(241, 210, creditsFont, coins_text);
+			}
+			else
+			{
+				App->fonts->BlitText(241, 210, creditsFont, coins_text);
+			}
 			//Calculate hiScore
 			if (player1Score > hiScore) { hiScore = player1Score;}
 			if (player2Score > hiScore) { hiScore = player2Score;}
@@ -619,6 +651,18 @@ update_status ModuleUserInterface::Update()
 		
 		case Stage2:
 		{
+			//Blit Coins
+			App->fonts->BlitText(230, 210, creditsFont, "credit ");
+			sprintf_s(coins_text, 10, "%7d", coins);
+			if (coins < 10)
+			{
+				App->fonts->BlitText(280, 210, creditsFont, "0");
+				App->fonts->BlitText(241, 210, creditsFont, coins_text);
+			}
+			else
+			{
+				App->fonts->BlitText(241, 210, creditsFont, coins_text);
+			}
 			//Calculate hiScore
 			if (player1Score > hiScore) { hiScore = player1Score; }
 			if (player2Score > hiScore) { hiScore = player2Score; }
@@ -863,6 +907,18 @@ update_status ModuleUserInterface::Update()
 		}break;
 
 		case StageClear:
+			//Blit Coins
+			App->fonts->BlitText(230, 210, creditsFont, "credit ");
+			sprintf_s(coins_text, 10, "%7d", coins);
+			if (coins < 10)
+			{
+				App->fonts->BlitText(280, 210, creditsFont, "0");
+				App->fonts->BlitText(241, 210, creditsFont, coins_text);
+			}
+			else
+			{
+				App->fonts->BlitText(241, 210, creditsFont, coins_text);
+			}
 			{	//Print the scores, but as we are not playing we don't need to update if the score increases, print teamScore
 				App->fonts->BlitText(10, 10, font_score, "1P");
 				App->fonts->BlitText(50, 10, 0, player1Score_text);
