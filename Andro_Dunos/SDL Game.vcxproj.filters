@@ -337,10 +337,10 @@
     <ClCompile Include="Boss.cpp">
       <Filter>ModulesEnemies</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleShieldsP1.cpp">
+    <ClCompile Include="ModuleShieldsP2.cpp">
       <Filter>ModulesPlayers</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleShieldsP2.cpp">
+    <ClCompile Include="ModuleShieldsP1.cpp">
       <Filter>ModulesPlayers</Filter>
     </ClCompile>
   </ItemGroup>

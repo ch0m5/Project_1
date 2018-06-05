@@ -1415,6 +1415,7 @@ void ModulePlayer2::OnCollision(Collider* c1, Collider* c2)
 	{
 		Mix_PlayChannel(3, playerDeathExplosion, 0);
 		crashAnimation = &crash;
+		blueShotTimer = SDL_GetTicks();
 		destroyed = true;
 		playerHitbox->to_delete = true;
 		lives -= 1;

@@ -701,7 +701,6 @@ bool ModuleParticles::Init()
 // Load assets
 bool ModuleParticles::Start()
 {
-	
 	// List of Ids needed to delete the full particle array
 	arrayIdList = 0;
 

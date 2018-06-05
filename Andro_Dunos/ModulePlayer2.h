@@ -53,7 +53,7 @@ public:
 	Animation* propellerAnimation = nullptr;
 	Animation* crashAnimation = nullptr;
 
-	// Player rectangle pointer
+	// Player rectangle
 	SDL_Rect shipRect;
 
 	// Ship and propeller sizes in pixels
