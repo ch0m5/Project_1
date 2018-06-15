@@ -10,51 +10,53 @@ No previous installations is required to play the game, just download and execut
 
 ## Usage
 ### General Controls
-ESC: Quit the game
-Spacebar (or Start in a gamepad): Jump to next stage 
-Insert Coin: 3
+- ESC: Quit the game
+- Spacebar (or Start in a gamepad): Jump to next stage 
+- Insert Coin: 3
 
 ### Player 1 Controls
-Keyboard:
-	Move: UP/DOWN/LEFT/RIGHT
-	Shoot: P (Hold for Special Attack)
-	Change Weapon Type: O
-XBOX Controller:
-	Move: Left stick to move
-	Shoot: A (Hold for Special Attack)
-	Change type of Shot: X
-	Insert Coin: Y
-	Start: Start to play, restart the game when you win/loose
+- Keyboard:
+	- Move: UP/DOWN/LEFT/RIGHT
+	- Shoot: P (Hold for Special Attack)
+	- Change Weapon Type: O
+	
+- XBOX Controller:
+	- Move: Left stick to move
+	- Shoot: A (Hold for Special Attack)
+	- Change type of Shot: X
+	- Insert Coin: Y
+	- Start: Start to play, restart the game when you win/loose
 
-Special Attack: Pressing SHOOT for 2 sec. and releasing
+- Special Attack: Pressing SHOOT for 2 sec. and releasing
 
 ### Player 2 Controls
-Keyboard:
-	Move: W/A/S/D
-	Shoot: V (Hold for Special Attack)
-	Change Weapon Type: B
-XBOX Controller:
-	Move: Left stick to move
-	Shoot: A (Hold for Special Attack)
-	Change type of Shot: X
-	Insert Coin: Y
-	Start: Start to play, restart the game when you win/loose
+- Keyboard:
+	- Move: W/A/S/D
+	- Shoot: V (Hold for Special Attack)
+	- Change Weapon Type: B
+	
+- XBOX Controller:
+	- Move: Left stick to move
+	- Shoot: A (Hold for Special Attack)
+	- Change type of Shot: X
+	- Insert Coin: Y
+	- Start: Start to play, restart the game when you win/loose
 
-Special Attack: Pressing SHOOT for 2 sec. and releasing
+- Special Attack: Pressing SHOOT for 2 sec. and releasing
 
 ### Debug Mode
-F1: Enable/Disable Debug Mode
-F2: Enable/Disable Player God Mode (Invencivility, no collider)
-F3: Enable/Disable Collider View
-F4: Enable/Disable Super X Speed (Note that this option currently supports X axis only)
-F6: Direct WIN
-F7: Direct LOOSE
+- F1: Enable/Disable Debug Mode
+- F2: Enable/Disable Player God Mode (Invencivility, no collider)
+- F3: Enable/Disable Collider View
+- F4: Enable/Disable Super X Speed (Note that this option currently supports X axis only)
+- F6: Direct WIN
+- F7: Direct LOOSE
 
-Press 6 for: Blue Power (Primary) Level Up (Max lvl: 7, Not Implemented)
-Press 7 for: Orange Power (Secondary) Level Up (Max lvl: 5, Not Implemented)
-Press 8 for: Yellow Power (Missiles) Level Up (Max lvl: 8, Not Implemented)
-Press 9 for: Green Power (Shields) Level Up (Max lvl: 8, Not Implemented)
-Press 0 for: All Powers Level Down
+- Press 6 for: Blue Power (Primary) Level Up (Max lvl: 7, Not Implemented)
+- Press 7 for: Orange Power (Secondary) Level Up (Max lvl: 5, Not Implemented)
+- Press 8 for: Yellow Power (Missiles) Level Up (Max lvl: 8, Not Implemented)
+- Press 9 for: Green Power (Shields) Level Up (Max lvl: 8, Not Implemented)
+- Press 0 for: All Powers Level Down
 
 ## Contributing
 1. Fork it!
