@@ -52,10 +52,10 @@ No previous installations is required to play the game, just download and execut
 - F6: Direct WIN
 - F7: Direct LOOSE
 
-- Press 6 for: Blue Power (Primary) Level Up (Max lvl: 7, Not Implemented)
-- Press 7 for: Orange Power (Secondary) Level Up (Max lvl: 5, Not Implemented)
-- Press 8 for: Yellow Power (Missiles) Level Up (Max lvl: 8, Not Implemented)
-- Press 9 for: Green Power (Shields) Level Up (Max lvl: 8, Not Implemented)
+- Press 6 for: Blue Power (Primary) Level Up (Max lvl: 7)
+- Press 7 for: Orange Power (Secondary) Level Up (Max lvl: 5)
+- Press 8 for: Yellow Power (Missiles) Level Up (Max lvl: 8)
+- Press 9 for: Green Power (Shields) Level Up (Max lvl: 8)
 - Press 0 for: All Powers Level Down
 
 ## Contributing
