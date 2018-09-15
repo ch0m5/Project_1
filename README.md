@@ -66,9 +66,6 @@ feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request and we might look into it. :D
 
-## License
-No licenses were used for this project.
-
 ## The Team: Crispy Crunch
 * Xavi Marín
   * Role: Managment
